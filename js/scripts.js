@@ -110,10 +110,10 @@ var $map = $('#map-content');
     if( $map.length ) {
 
       $map.gMap({
-        address: '9930 124th Avenue Northeast Kirkland, Washington',
+        address: 'IIIT Allahabad',
         zoom: 14,
         markers: [
-          { 'address' : '9930 124th Avenue Northeast  Kirkland, Washington',}
+          { 'address' : 'IIIT Allahabad',}
         ]
       });
 
