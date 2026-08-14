@@ -1,0 +1,98 @@
+/* ============================================================
+   HOME HERO — FLUID RESPONSIVE LAYER
+   ------------------------------------------------------------
+   Purpose: The base hero in style.css uses fixed pixel values
+   (.headerRow padding 46px 200px, fixed avatar/name sizes) and
+   the media queries jump from an empty 768–1024 block straight
+   to 1580px+, leaving 1025–1579px unhandled. The page only lined
+   up at ~1512px.
+
+   This layer makes the hero scale PROPORTIONALLY across the whole
+   768–1779px range using clamp()/viewport units, calibrated so the
+   layout at 1512px stays visually identical to the original.
+
+   Untouched on purpose:
+     - Mobile  (max-width: 767px)   -> handled in style.css
+     - Desktop (min-width: 1780px)  -> handled in style.css
+   ============================================================ */
+
+/* Soft edge fade on the client-logo marquee so it reads as an
+   intentional ticker instead of hard-cut logos. Safe at all sizes. */
+.workCompanyInfo {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 768px) and (max-width: 1779px) {
+  /* --- Header: proportional side gutters instead of a fixed 200px ---
+     13.2vw ≈ 200px at 1512px (reference), so the "good" width is
+     preserved while narrower/wider screens keep pills the same
+     relative distance from the edges. */
+  .headerRow {
+    padding-top: clamp(28px, 3vw, 56px);
+    padding-bottom: clamp(28px, 3vw, 56px);
+    padding-left: clamp(56px, 13.2vw, 235px);
+    padding-right: clamp(56px, 13.2vw, 235px);
+  }
+
+  /* Keep the Resume label from ever wrapping or being clipped. */
+  .btnResume {
+    width: auto;
+    min-width: 160px;
+  }
+  .btnResume .btnText {
+    white-space: nowrap;
+  }
+
+  /* --- Content column: full 1069px when there's room, otherwise
+     add gutters so content never touches the screen edges. This
+     does NOT change the 1512px layout (viewport is wide enough). */
+  .userContainer {
+    max-width: min(1069px, calc(100% - 48px));
+    width: 100%;
+  }
+
+  /* --- Fluid hero elements. All clamps hit their MAX at ~1512px,
+     so the reference layout is unchanged and only smaller screens
+     scale down. --- */
+  .userPic {
+    width: clamp(160px, 14vw, 213px);
+    height: clamp(160px, 14vw, 213px);
+  }
+
+  .userName {
+    font-size: clamp(34px, 3.2vw, 48px);
+  }
+
+  .userSummery {
+    max-width: 620px;
+    width: 90%;
+  }
+
+  .userSection {
+    padding: clamp(32px, 4vw, 48px) 0;
+  }
+}
+
+/* Extra tightening on the smaller end of the range so the two pills
+   under the name never collide. */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .userExpDetails {
+    flex-wrap: wrap;
+  }
+  .workCompListItem {
+    padding: 0 16px;
+  }
+}
