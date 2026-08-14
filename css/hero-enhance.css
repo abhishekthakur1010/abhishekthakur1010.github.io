@@ -1,0 +1,594 @@
+/* ============================================
+   HOMEPAGE ENHANCEMENTS
+   ============================================ */
+
+/* Global font — force Poppins everywhere */
+body,
+body *,
+button,
+input,
+select,
+textarea,
+.contentItem,
+.contentItemData,
+.headingItem,
+.subItem,
+.conversionRateText,
+.conversionRate,
+.conversionRate span,
+.viewBtn,
+.comingBtn,
+.navTabBar button,
+.designBtn,
+.recommendItemHeading,
+.recommendItemDetails,
+.recUserName,
+.recUserdesignation,
+.userSummaryTitle,
+.userSummarySection p,
+.breakingTitle,
+.contentBottomTitle,
+.contentBottomData,
+.accordion-button,
+.accordion-body,
+.footerCopyText,
+.footerSocialLink a,
+.enh-positioning-lead,
+.enh-pos-label,
+.enh-pos-text {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Tighter name */
+.userName {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Summary — slightly larger, tighter, more confident */
+.userSummery {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-top: 16px;
+}
+
+/* Badges — subtle refinement */
+.userExpDetails {
+  margin-top: 16px;
+}
+
+.userExp {
+  font-size: 13px;
+}
+
+.userPositionBox {
+  font-size: 13px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (min-width: 1580px) {
+  .userSummery {
+    font-size: 18px;
+    line-height: 1.7;
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1579px) {
+  .userSummery {
+    font-size: 16px;
+    width: 75%;
+  }
+}
+
+@media (max-width: 767px) {
+  .userSummery {
+    font-size: 14px;
+    line-height: 1.75;
+    width: 100%;
+  }
+}
+
+/* ============================================
+   PROOF STRIP — Below Hero
+   ============================================ */
+
+.proof-strip {
+  padding: 40px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  background: transparent;
+}
+
+.proof-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 40px;
+  flex: 1;
+}
+
+.proof-divider {
+  width: 1px;
+  height: 48px;
+  background: #ddd;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.proof-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.proof-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #888;
+  margin-top: 8px;
+  line-height: 1.4;
+  max-width: 180px;
+}
+
+/* ============================================
+   PROOF STRIP — Responsive
+   ============================================ */
+
+@media (min-width: 1580px) {
+  .proof-num {
+    font-size: 44px;
+  }
+  .proof-label {
+    font-size: 13px;
+  }
+  .proof-item {
+    padding: 0 56px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .proof-grid {
+    flex-wrap: wrap;
+    gap: 32px 0;
+  }
+  .proof-item {
+    flex: 1 1 50%;
+    padding: 0 24px;
+  }
+  .proof-divider {
+    display: none;
+  }
+  .proof-num {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .proof-strip {
+    padding: 32px 0;
+  }
+  .proof-grid {
+    flex-wrap: wrap;
+    gap: 28px 0;
+  }
+  .proof-item {
+    flex: 1 1 50%;
+    padding: 0 16px;
+  }
+  .proof-num {
+    font-size: 28px;
+  }
+  .proof-label {
+    font-size: 11px;
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 479px) {
+  .proof-item {
+    flex: 1 1 100%;
+    padding: 0;
+    flex-direction: row;
+    gap: 12px;
+    text-align: left;
+    align-items: center;
+  }
+  .proof-num {
+    font-size: 24px;
+    min-width: 60px;
+  }
+  .proof-label {
+    max-width: none;
+    font-size: 12px;
+  }
+  .proof-grid {
+    gap: 20px 0;
+    padding: 0 8px;
+  }
+}
+
+/* ============================================
+   FEATURED WORK — Case Study Cards Enhancement
+   ============================================ */
+
+/* Card container — clean, unified feel */
+.featureSection .contentItem {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  background: #fff;
+}
+
+.featureSection .contentItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+}
+
+/* Image — reduced, softened, supporting role */
+.featureSection .contentItemImg {
+  overflow: hidden;
+  position: relative;
+  max-height: 380px;
+}
+
+.featureSection .contentItemImg img {
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.featureSection .contentItem:hover .contentItemImg img {
+  transform: scale(1.02);
+  opacity: 1;
+}
+
+/* Title — dominant */
+.featureSection .headingItem {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #1a1a1a;
+  font-style: normal;
+}
+
+/* Subtitle — clearly secondary */
+.featureSection .subItem {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.5;
+  margin-top: 4px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Data area — balanced padding */
+.featureSection .contentItemData {
+  padding: 24px 20px 28px;
+  position: relative;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Top row — title left, CTA right */
+.featureSection .contentItemDataTopRow {
+  margin-bottom: 0;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.featureSection .contentItemLeftData {
+  flex: 1;
+}
+
+/* CTA — right-aligned with title */
+.featureSection .contentItemButton {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.featureSection .contentItemButton .viewBtn,
+.featureSection .contentItemButton .comingBtn {
+  display: inline-flex;
+}
+
+/* Metrics — left-aligned, compact, connected */
+.featureSection .conversionItemSection {
+  gap: 24px;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.featureSection .conversionItemList {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.featureSection .conversionRateText {
+  font-size: 14px !important;
+  color: #aaa !important;
+  font-weight: 500 !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.featureSection .conversionRate {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.featureSection .conversionRate span {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.featureSection .conversionRate svg {
+  width: 9px;
+  height: 9px;
+}
+
+/* View button — pill, subtle default, dark on hover */
+.featureSection .viewBtn {
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 18px;
+  height: 38px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.featureSection .contentItem:hover .viewBtn {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Coming Soon button */
+.featureSection .comingBtn {
+  border-radius: 100px;
+  font-size: 13px;
+  padding: 0 18px;
+  height: 38px;
+  white-space: nowrap;
+}
+
+/* Tab bar — refine */
+.featureTabSection .navTabBar button {
+  font-size: 16px !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.featureTabSection .navTabBar button:hover,
+.featureTabSection .navTabBar button.active-button {
+  font-size: 16px !important;
+}
+
+.featureTabSection .designBtn {
+  font-size: 16px;
+}
+
+/* Section spacing */
+.featureSection {
+  padding-top: 12px;
+}
+
+.featureSection .tabBarInfo {
+  margin-bottom: 12px;
+}
+
+.featureSection .tabContentDetails {
+  gap: 24px;
+}
+
+/* ============================================
+   FEATURED WORK — Responsive
+   ============================================ */
+
+@media (min-width: 1580px) {
+  .featureSection .headingItem {
+    font-size: 26px;
+  }
+  .featureSection .subItem {
+    font-size: 15px;
+  }
+  .featureSection .conversionRate span {
+    font-size: 16px !important;
+  }
+  .featureSection .conversionRateText {
+    font-size: 14px !important;
+  }
+  .featureSection .viewBtn {
+    font-size: 15px;
+    height: 42px;
+    padding: 0 22px;
+  }
+  .featureSection .contentItemData {
+    padding: 32px 36px 36px;
+  }
+  .featureSection .contentItemImg {
+    max-height: 440px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .featureSection .headingItem {
+    font-size: 18px;
+  }
+  .featureSection .conversionItemSection {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .featureSection .contentItem {
+    border-radius: 14px;
+  }
+  .featureSection .contentItemImg {
+    max-height: 220px;
+  }
+  .featureSection .contentItemDataTopRow {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+  .featureSection .contentItemButton {
+    margin-top: 16px !important;
+    width: 100%;
+  }
+  .featureSection .contentItemButton .viewBtn,
+  .featureSection .contentItemButton .comingBtn {
+    width: 100% !important;
+    justify-content: center;
+  }
+  .featureSection .headingItem {
+    font-size: 18px;
+  }
+  .featureSection .subItem {
+    font-size: 12px;
+  }
+  .featureSection .contentItemData {
+    padding: 20px 16px 24px;
+  }
+  .featureSection .conversionItemSection {
+    gap: 12px 24px;
+    padding-top: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .featureSection .conversionRate span {
+    font-size: 12px;
+  }
+  .featureSection .conversionRate span {
+    font-size: 15px;
+  }
+  .featureSection .viewBtn {
+    border-radius: 12px;
+    height: 44px;
+    font-size: 14px;
+  }
+  .featureSection .comingBtn {
+    border-radius: 12px;
+    height: 44px;
+    font-size: 14px;
+  }
+  .featureSection .conversionRateText {
+    font-size: 10px;
+  }
+}
+
+/* ============================================
+   POSITIONING SECTION — "Why me"
+   ============================================ */
+
+.enh-positioning-lead {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #555;
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+.enh-positioning-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 24px;
+  border-top: 1px solid #eee;
+}
+
+.enh-pos-item {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-top: none;
+  border-bottom: 1px solid #eee;
+  align-items: baseline;
+}
+
+.enh-pos-item:last-child {
+  border-bottom: none;
+}
+
+.enh-pos-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #aaa;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.enh-pos-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #444;
+}
+
+/* Responsive */
+@media (min-width: 1580px) {
+  .enh-positioning-lead {
+    font-size: 15px;
+  }
+  .enh-pos-text {
+    font-size: 14px;
+  }
+  .enh-pos-label {
+    min-width: 140px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .enh-pos-item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 0;
+  }
+  .enh-pos-label {
+    min-width: auto;
+    font-size: 10px;
+  }
+  .enh-pos-text {
+    font-size: 13px;
+  }
+  .enh-positioning-lead {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Resume button — no overrides, use base style.css */
+
+/* Resume button — no overrides needed */

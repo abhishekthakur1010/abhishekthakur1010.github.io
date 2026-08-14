@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Page title -->
+    <title>Abhishek Thakur</title>
+    <link rel="icon" href="./images/favicon.ico" />
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="./js/bootstrap.min.js"></script> -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/slick-theme.css" rel="stylesheet" />
+    <link href="./css/slick.css" rel="stylesheet" />
+    <link href="./css/toastify.min.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/about-enhance.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      id="topSection"
+      class="topSection sectionContentItem sectionActiveItem"
+    >
+      <div class="dotBgInfo aboutBg"></div>
+      <!-- /Header -->
+      <header class="innerHeader">
+        <div class="headerRow">
+          <a class="logoArea" href="./index.html">
+            <img class="mainLogo" src="./images/logo.svg" alt="logo" />
+            <img class="hoverLogo" src="./images/logo-name.svg" alt="logo" />
+          </a>
+          <div class="rightSection">
+            <a href="./resume.pdf" class="btnResume" download>
+              <svg class="btnArrowIcon" viewBox="0 0 16 14" fill="none">
+                <path
+                  d="M8.98384 0.372498L7.45529 1.90104L11.4735 5.91921L0.390625 5.91921L0.390625 8.08136L11.4735 8.08136L7.45529 12.0985L8.98384 13.6276L15.6101 7.00129L8.98384 0.372498Z"
+                  fill="white"
+                />
+              </svg>
+
+              <span class="btnText">Resume</span>
+              <span class="btnDownloadIcon"
+                ><svg viewBox="0 0 19 19" fill="none">
+                  <path
+                    d="M16.1301 8.97322L14.6015 7.44467L10.5834 11.4628L10.5834 0.380005L8.4212 0.380005L8.4212 11.4628L4.40405 7.44467L2.875 8.97322L9.50127 15.5995L16.1301 8.97322Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M18.5164 16.4576L0.482422 16.4576L0.482422 18.6198L18.5164 18.6198V16.4576Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+            </a>
+            <div class="menuInfo" onclick="showTopMenu()">
+              <img src="./images/menu-icon.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- /Header ends -->
+
+      <section id="aboutSection" class="aboutSection">
+        <div id="fixedNavBarBox" class="vertNavBar">
+          <div>
+            <div class="vertNavBarList">
+              <a class="lineAnimation active" href="#topSection">
+                <span>Before 2012</span> Seeds of Curiosity</a
+              >
+            </div>
+            <div class="vertNavBarList">
+              <a class="lineAnimation" href="#learning">
+                <span>2012-16</span>
+                Learning & Exploration
+              </a>
+            </div>
+            <div class="vertNavBarList">
+              <a class="lineAnimation" href="#designing">
+                <span>2016-19</span> Designing in the Startup Era
+              </a>
+            </div>
+            <div class="vertNavBarList">
+              <a class="lineAnimation" href="#pandemic">
+                <span>2019-22</span> Pause, Purpose & Perspective
+              </a>
+            </div>
+            <div class="vertNavBarList">
+              <a class="lineAnimation" href="#backtoBuild">
+                <span>2022-Now</span> Leading with Intent
+              </a>
+            </div>
+            <!-- <div class="vertNavBarList">
+              <a class="lineAnimation" href="#lifeBreathing">
+                <span>Beyond Work</span>
+              </a>
+            </div> -->
+            <div class="vertNavBarList vertNavBarSub">
+              <a class="lineAnimation" href="#travel">
+                <span>Beyond Work</span>Travel
+              </a>
+            </div>
+            <div class="vertNavBarList vertNavBarSub">
+              <a class="lineAnimation" href="#cycling">
+                Cycling & Discipline
+              </a>
+            </div>
+            <div class="vertNavBarList vertNavBarSub">
+              <a class="lineAnimation" href="#givingBack"> Giving Back </a>
+            </div>
+            <div class="vertNavBarList vertNavBarSub">
+              <a class="lineAnimation" href="#nature"> Nature </a>
+            </div>
+
+            <!-- More dropdown -->
+            <div class="enh-more-wrap">
+              <button class="enh-more-btn" onclick="this.parentElement.classList.toggle('open')" aria-label="More sections">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="3" cy="8" r="1.5" fill="#999"/>
+                  <circle cx="8" cy="8" r="1.5" fill="#999"/>
+                  <circle cx="13" cy="8" r="1.5" fill="#999"/>
+                </svg>
+              </button>
+              <div class="enh-more-dropdown">
+                <a href="#travel" class="enh-more-link lineAnimation" onclick="document.querySelector('.enh-more-wrap').classList.remove('open')">✈️ Travel</a>
+                <a href="#cycling" class="enh-more-link lineAnimation" onclick="document.querySelector('.enh-more-wrap').classList.remove('open')">🚴 Cycling & Discipline</a>
+                <a href="#givingBack" class="enh-more-link lineAnimation" onclick="document.querySelector('.enh-more-wrap').classList.remove('open')">❤️ Giving Back</a>
+                <a href="#nature" class="enh-more-link lineAnimation" onclick="document.querySelector('.enh-more-wrap').classList.remove('open')">🌿 Nature</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aboutContentWrapper">
+          <div class="aboutTitle">
+            <span>Hi! I’m Abhishek</span> 
+          </div>
+          <p class="aboutText">
+              I’m currently working at Delhivery as a Lead Product Designer with 10+ years 
+            of experience in product and UX design leadership across B2C, B2B, and platform-first 
+            companies like Jio Platforms, Swiggy Dineout, Times Internet and a few startups.
+            <br><b>Design is impact.</b> I believe design has the power to connect people, scale products, and drive meaningful business growth.</br>
+               <b>Design is everywhere.</b> But with the right tools and skills, it becomes visible, tangible, and powerful.
+          </p>
+
+          <!-- Highlights Strip -->
+          <div class="enh-highlights">
+            <div class="enh-tagline">I bring clarity to complex systems — so millions can use them with confidence.</div>
+            <div class="enh-stats-strip">
+              <div class="enh-stat">
+                <span class="enh-stat-num">100M+</span>
+                <span class="enh-stat-label">Users Impacted</span>
+              </div>
+              <div class="enh-stat">
+                <span class="enh-stat-num">10+</span>
+                <span class="enh-stat-label">Years in Design</span>
+              </div>
+              <div class="enh-stat">
+                <span class="enh-stat-num">6</span>
+                <span class="enh-stat-label">Industries</span>
+              </div>
+              <div class="enh-stat">
+                <span class="enh-stat-num">3+</span>
+                <span class="enh-stat-label">Years Leading</span>
+              </div>
+              <div class="enh-stat">
+                <span class="enh-stat-num">5</span>
+                <span class="enh-stat-label">Awards</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sectionContentItem">
+            <div class="contentItemHeading">
+              📟 Before 2012: Seeds of Curiosity
+            </div>
+            <div class="contentItemInfo">
+              “You really experience things when you take them slow. Even tech,
+              when rare, felt magical”
+            </div>
+            <p class="contentItemDetails">
+              Life felt slower, simpler, and more detailed. With limited access to 
+              tech, I became deeply observant - curious about the things I couldn’t 
+              afford but always tried to understand. That habit of paying attention 
+              laid the foundation for how I see and solve problems today. 
+            </p>
+            <div class="contentItemGallery">
+              <div class="curiosityGalleryRow">
+                <div class="contentGalleryItem">
+                  <img src="./images/about/curiosity/curiosity-01.png" alt="" />
+                </div>
+                <div class="contentGalleryItem">
+                  <img src="./images/about/curiosity/curiosity-02.png" alt="" />
+                </div>
+              </div>
+              <div class="curiosityGalleryRow">
+                <div class="contentGalleryItem">
+                  <img src="./images/about/curiosity/curiosity-03.png" alt="" />
+                </div>
+                <div class="contentGalleryItem">
+                  <img src="./images/about/curiosity/curiosity-04.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="learning" class="sectionContentItem sectionActiveItem">
+            <div class="contentItemHeading">
+              🎓 2012-16: From Code to Design
+            </div>
+            <div class="contentItemInfo">
+              “Design began with people - not tools. What stayed wasn’t just the
+              code but the collaboration. Good design is never solo.”
+            </div>
+            <p class="contentItemDetails">
+              IIIT Allahabad opened up a world of exploration. I had cleared the
+              IIT JEE and opted for IIIT to stay close to CS/IT - hoping to
+              build something meaningful in tech. I led the design & marketing
+              wing of our tech society, worked on front-end projects and started
+              noticing design in everything—teamwork, conversations,
+              problem-solving. That’s when design found me.
+            </p>
+            <div class="contentItemGallery codeToDesign">
+              <div class="aboutCodeDesignRow">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/codetodesign/code-to-design-02.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/codetodesign/code-to-design-03.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/codetodesign/code-to-design-04.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/codetodesign/code-to-design-05.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/codetodesign/code-to-design-06.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/codetodesign/code-to-design-07.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="designing" class="sectionContentItem sectionActiveItem">
+            <div class="contentItemHeading">
+              🚀 2016-19: Designing Through India’s Mobile Revolution
+            </div>
+            <div class="contentItemInfo">
+              “In a faster world, magic shifted from ideas to instant
+              experiences. The challenge wasn’t just to build fast, but to make
+              fast feel effortless”
+            </div>
+            <p class="contentItemDetails">
+              India’s startup boom brought a wave of urgency. At Times Internet,
+              I transitioned fully into product design, solving for scale, speed
+              and real-time users. I represented our team at Facebook’s product
+              event, alongside folks from Amazon, Flipkart and MMT. This was the
+              era where design became data-driven, mobile-first, and
+              mission-critical.
+            </p>
+            <div class="contentItemGallery">
+              <div class="aboutCodeDesignMobileRow">
+                <div
+                  class="contentGalleryItem designFirstColumn mobileWFull opacity"
+                >
+                  <img
+                    src="./images/about/2016-19-designing/designing-01.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity deskView">
+                  <img
+                    src="./images/about/2016-19-designing/designing-02.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignMobileRow deskView">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-03.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-04.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-05.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-06.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignMobileRow deskView">
+                <div class="contentGalleryItem opacity designLastColumn">
+                  <img
+                    src="./images/about/2016-19-designing/designing-07.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-08.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div class="aboutCodeDesignMobileRow mobileView">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-02.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-03.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignMobileRow mobileView">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-04.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-05.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignMobileRow mobileView">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-06.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2016-19-designing/designing-08.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignMobileRow mobileView">
+                <div class="contentGalleryItem opacity mobileWFull">
+                  <img
+                    src="./images/about/2016-19-designing/designing-07.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="pandemic" class="sectionContentItem sectionActiveItem">
+            <div class="contentItemHeading">
+              🌍 2019-22: The Pandemic & Inner Shift
+            </div>
+            <div class="contentItemInfo">
+              “Stillness revealed what speed never could—clarity, discipline,
+              and a different kind of design: within”
+            </div>
+            <p class="contentItemDetails">
+              Covid slowed the world and so did I. I stepped away from corporate
+              life to prepare for Indian Civil Service and reflect on deeper
+              problems around people, systems and purpose. I also helped shape
+              design strategy for a travel-tech startup during this time. Though
+              I didn’t clear the exam, the clarity, focus, and perspective I
+              gained stay with me.
+            </p>
+            <div class="contentItemGallery">
+              <div class="aboutCodeDesignRow deskView">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-01.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-02.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow deskView">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-03.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-04.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow mobileView">
+                <div class="contentGalleryItem">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-01.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow mobileView">
+                <div class="contentGalleryItem">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-02.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow mobileView">
+                <div class="contentGalleryItem">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-03.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow mobileView">
+                <div class="contentGalleryItem">
+                  <img
+                    src="./images/about/2019-22-pandemic/pandemic-04.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="backtoBuild" class="sectionContentItem sectionActiveItem">
+            <div class="contentItemHeading">
+              💼 2022-Now: Back to Build, Forward to Lead
+            </div>
+            <div class="contentItemInfo">
+              “Returning wasn’t stepping back it was showing up with more
+              clarity, more purpose. Now, I build with both hands and both eyes
+              wide open.”
+            </div>
+            <p class="contentItemDetails">
+              Returning to design felt intentional. I joined Jio, and now lead
+              product designer at Delhivery, driving design across high-impact
+              verticals in logistics and supply chain. The systems thinking and
+              leadership mindset shaped during Civil Services Exam now guide how
+              I lead teams, shape strategy, and scale user impact.
+            </p>
+
+            <div class="contentItemGallery">
+              <div class="aboutCodeDesignRow">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2022-back-to-build/back-to-build-01.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2022-back-to-build/back-to-build-02.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2022-back-to-build/back-to-build-03.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2022-back-to-build/back-to-build-04.png"
+                    alt=""
+                  />
+                </div>
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2022-back-to-build/back-to-build-05.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="aboutCodeDesignRow">
+                <div class="contentGalleryItem opacity">
+                  <img
+                    src="./images/about/2022-back-to-build/back-to-build-06.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sectionContentItem showFullGallery">
+            <div class="contentItemHeading">Achievement Records</div>
+
+            <p class="contentItemDetails">
+              Highlights that shaped my journey - small wins, real impact, and
+              moments that reflect the values I bring to work and life. And a
+              few quiet wins that never made it here, but stayed with me.
+            </p>
+          </div>
+          <!-- Achievement Records Tab section -->
+          <div class="sectionContentItem">
+            <div class="achieveTabSection tabWrapper">
+              <div class="achieveTabHeader">
+                <nav class="navTabBar">
+                  <button data-tab="0">
+                    <span class="deskTab">Awards Earned </span
+                    ><span class="mobileTab">Awards</span>
+                  </button>
+                  <button data-tab="1">Contributions</button>
+                  <button data-tab="2">Fitness & Social</button>
+                </nav>
+              </div>
+              <div class="achieveTabDetails">
+                <!-- Explorer Content Section -->
+                <div class="tab-content">
+                  <div class="achieveAwardsData">
+                    <div class="achieveAwardsRow">
+                      <div class="achieveAwardsList">
+                        <img
+                          class="deskView"
+                          src="./images/about/achievement/achievement-awards-earned-01.svg"
+                          alt=""
+                        />
+                        <img
+                          class="mobileView"
+                          src="./images/about/achievement/achievement-awards-earned-mobile-01.svg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="achieveAwardsList">
+                        <img
+                          class="deskView"
+                          src="./images/about/achievement/achievement-awards-earned-02.svg"
+                          alt=""
+                        />
+                        <img
+                          class="mobileView"
+                          src="./images/about/achievement/achievement-awards-earned-mobile-02.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="achieveAwardsRow">
+                      <div class="achieveAwardsList">
+                        <img
+                          class="deskView"
+                          src="./images/about/achievement/achievement-awards-earned-03.svg"
+                          alt=""
+                        />
+                        <img
+                          class="mobileView"
+                          src="./images/about/achievement/achievement-awards-earned-mobile-03.svg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="achieveAwardsList">
+                        <img
+                          class="deskView"
+                          src="./images/about/achievement/achievement-awards-earned-04.svg"
+                          alt=""
+                        />
+                        <img
+                          class="mobileView"
+                          src="./images/about/achievement/achievement-awards-earned-mobile-04.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="achieveAwardsRow">
+                      <div class="achieveAwardsList">
+                        <img
+                          class="deskView"
+                          src="./images/about/achievement/achievement-awards-earned-05.svg"
+                          alt=""
+                        />
+                        <img
+                          class="mobileView"
+                          src="./images/about/achievement/achievement-awards-earned-mobile-05.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Recruiters Content Section -->
+                <div class="tab-content">
+                  <div class="achieveAwardsList">
+                    <img
+                      src="./images/about/achievement/achievement-contributions.svg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <!-- Designers Content Section -->
+                <div class="tab-content">
+                  <div class="achieveAwardsList">
+                    <img
+                      src="./images/about/achievement/achievement-fitness.svg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section>
+      <div class="aboutContentWrapper sectionContentItem">
+        <div id="travel" class="breathingSection sectionActiveItem">
+          <div class="breathingHeading">Life Is Not Merely Breathing</div>
+          <p class="breathingDetails">
+            It’s about moving, feeling, giving and being present - through
+            travel, long rides, shared impact, and quiet moments with nature.
+          </p>
+        </div>
+        <div class="sectionContentItem mb0">
+          <div class="contentItemHeading contentBreathingHead">✈️ Travel</div>
+          <div class="sectionDataDetails">
+            <p>
+              I’ve explored 6–7 countries to understand how people live, think,
+              and create. These journeys shaped how I view culture,
+              storytelling, and design as deeply contextual experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="contentAutoGallery">
+        <div class="contentAutoGalleryInfo">
+          <div class="contentAutoGalleryItem opacity">
+            <img src="./images/about/travel/travel-01.png" alt="" />
+          </div>
+          <div class="contentAutoGalleryItem opacity">
+            <img src="./images/about/travel/travel-02.png" alt="" />
+          </div>
+          <div class="contentAutoGalleryItem opacity">
+            <img src="./images/about/travel/travel-03.png" alt="" />
+          </div>
+          <div class="contentAutoGalleryItem opacity">
+            <img src="./images/about/travel/travel-04.png" alt="" />
+          </div>
+          <div class="contentAutoGalleryItem opacity">
+            <img src="./images/about/travel/travel-05.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="aboutContentWrapper">
+        <div id="cycling" class="sectionContentItem sectionActiveItem mb0">
+          <div class="contentItemHeading contentBreathingHead">
+            🚴‍♂️ Cycling & Discipline
+          </div>
+          <div class="sectionDataDetails">
+            <p>
+              From cycling solo, from Gurgaon to Dehradun to riding in club
+              events and health awareness cyclothons, cycling is where I find
+              rhythm and reflection. It keeps me grounded, focused, and present.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="aboutStravaContentWrapper">
+        <div class="contentItemGallery contentItemGap aboutStravaItemGallery">
+          <div class="aboutCodeDesignMobileRow fullGalleryItem">
+            <div class="contentGalleryItem opacity">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="9750084970"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+              <script src="https://strava-embeds.com/embed.js"></script>
+              <!-- <img src="./images/about/cycling/cycling-01.png" alt="" /> -->
+            </div>
+            <div class="contentGalleryItem opacity">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="10360434929"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+              <script src="https://strava-embeds.com/embed.js"></script>
+              <!-- <img src="./images/about/cycling/cycling-02.png" alt="" /> -->
+            </div>
+          </div>
+          <div class="aboutCodeDesignMobileRow fullGalleryItem">
+            <div class="contentGalleryItem opacity">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="8703735224"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+              <script src="https://strava-embeds.com/embed.js"></script>
+              <!-- <img src="./images/about/cycling/cycling-03.png" alt="" /> -->
+            </div>
+            <div class="contentGalleryItem opacity">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="8743221111"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+              <script src="https://strava-embeds.com/embed.js"></script>
+              <!-- <img src="./images/about/cycling/cycling-04.png" alt="" /> -->
+            </div>
+          </div>
+          <div class="aboutCodeDesignMobileRow fullGalleryItem">
+            <div class="contentGalleryItem opacity">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="10330067152"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+              <script src="https://strava-embeds.com/embed.js"></script>
+              <!-- <img src="./images/about/cycling/cycling-05.png" alt="" /> -->
+            </div>
+            <div class="contentGalleryItem opacity">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="activity"
+                data-embed-id="10346024179"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+              <script src="https://strava-embeds.com/embed.js"></script>
+              <!-- <img src="./images/about/cycling/cycling-06.png" alt="" /> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="aboutContentWrapper">
+        <div id="givingBack" class="sectionContentItem sectionActiveItem">
+          <div class="contentItemHeading contentBreathingHead">
+            ❤️ Giving Back
+          </div>
+          <div class="sectionDataDetails">
+            <p>
+              Through my work with NGOs like CRY Foundation and the Robin Hood
+              Army, I’ve supported education, food drives, and community
+              outreach. Designing for impact starts with being close to the
+              ground.
+            </p>
+          </div>
+          <div class="contentItemGallery contentItemGap">
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-01.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-02.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-03.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-04.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-05.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-06.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-07.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-08.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-09.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/giving-back/giving-back-10.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="nature" class="sectionContentItem mb44 sectionActiveItem">
+          <div class="contentItemHeading contentBreathingHead">
+            🌿 Nature & Companionship
+          </div>
+          <div class="sectionDataDetails">
+            <p>
+              My best thinking often happens in nature or with Luna & Bruno, my
+              dog and occasional life coach. I believe in simple living, deep
+              observation, and meaningful presence.
+            </p>
+          </div>
+          <div class="contentItemGallery contentItemGap">
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-01.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-02.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-03.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-04.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-05.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-06.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="aboutCodeDesignGivingRow">
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-07.png"
+                  alt=""
+                />
+              </div>
+              <div class="contentGalleryItem opacity">
+                <img
+                  src="./images/about/companionship/companionship-08.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="greatSection">
+          <div class="greatHeading">That’s great, you made it this far!</div>
+          <div class="greatDetails">
+            Trust me, you already have the patience and curiosity that matter
+            most. If you’d like to connect over a call, I’d love to hear your
+            story too.
+          </div>
+          <div class="greatButtonInfo">
+            <a
+              class="letConnectBtn"
+              href="mailto:abhi.thakur1010@gmail.com"
+              target="_blank"
+            >
+              Let’s Connect
+              <span class="mobileView">
+                <svg viewBox="0 0 13 13" fill="none">
+                  <path
+                    d="M5.53788 1.35018L10.0218 5.83412L0.73565 5.5749L0.794301 7.17652L9.84787 7.42435L5.93918 11.333L7.12934 12.5232L12.9991 6.65342L6.61688 0.271179L5.53788 1.35018Z"
+                    fill="black"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /footer -->
+    <footer class="footerSection">
+      <div class="wrapperContainer">
+        <div class="footerInfo">
+          <div class="footerCopyText">
+            © 2025 <a href="./index.html">Abhishek Thakur Design</a>
+          </div>
+          <div class="footerSocialLink">
+            <a
+              href="https://www.linkedin.com/in/abhishekthakur1010/"
+              target="_blank"
+              >Linkedin
+              <svg viewBox="0 0 13 12" fill="none">
+                <path
+                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.behance.net/abhishekthakur1010/"
+              target="_blank"
+              >Behance
+              <svg viewBox="0 0 13 12" fill="none">
+                <path
+                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+            <a href="https://dribbble.com/abhishek_thakur_" target="_blank"
+              >Dribbble
+              <svg viewBox="0 0 13 12" fill="none">
+                <path
+                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+            <a href="mailto:abhi.thakur1010@gmail.com" target="_blank"
+              >Email
+              <svg viewBox="0 0 13 12" fill="none">
+                <path
+                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- /footer ends -->
+    <div id="hamburgerMenu" class="hamBurgerMenu">
+      <div class="hamBurgerMenuSection">
+        <div class="menuTopSection">
+          <div class="menuHeader headerSticky">
+            <div class="menuLogo">
+              <img src="./images/white-logo.png" alt="" />
+            </div>
+            <div class="menuCloseInfo" onclick="closeTopMenu()">
+              <img src="./images/mobile-close-icon.png" />
+            </div>
+          </div>
+          <div class="menuLinkData">
+            <ul class="menuLinkList">
+              <li><a href="./index.html">Home</a></li>
+              <li>
+                <a href="./resume.pdf" download>
+                  Resume
+                  <svg viewBox="0 0 19 19" fill="none">
+                    <path
+                      d="M16.1301 8.97322L14.6015 7.44467L10.5834 11.4628L10.5834 0.380005L8.4212 0.380005L8.4212 11.4628L4.40405 7.44467L2.875 8.97322L9.50127 15.5995L16.1301 8.97322Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M18.5164 16.4576L0.482422 16.4576L0.482422 18.6198L18.5164 18.6198V16.4576Z"
+                      fill="white"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li><a href="./about-us.html">About Me</a></li>
+              <li>
+                <a href="javascript:void(0)" onclick="showToast()"
+                  >Blogs <span class="commingText">Coming Soon</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/abhishekthakur1010/"
+                  target="_blank"
+                  >Linked in
+                  <img class="linkArrow" src="./images/menu-arrow-icon.svg"
+                /></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.behance.net/abhishekthakur1010/"
+                  target="_blank"
+                  >Behance
+                  <img class="linkArrow" src="./images/menu-arrow-icon.svg"
+                /></a>
+              </li>
+              <li>
+                <a href="https://dribbble.com/abhishek_thakur_" target="_blank"
+                  >Dribbble
+                  <img class="linkArrow" src="./images/menu-arrow-icon.svg"
+                /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="menuBottomSection">
+          <div class="menuBottomDetails">
+            <div class="menuUserSummaryExpData">
+              <div class="userSummaryExpItem">
+                <div class="userSummaryExpHeading">Experience</div>
+                <div class="userSummaryExpTitle">10+ Year, UX</div>
+              </div>
+              <div class="userSummaryExpItem">
+                <div class="userSummaryExpHeading">Graduate: BTech IT</div>
+                <div class="userSummaryExpTitle">IIIT Allahabad</div>
+              </div>
+              <div class="userSummaryExpItem">
+                <div class="userSummaryExpHeading">Cleared</div>
+                <div class="userSummaryExpTitle">IIT JEE</div>
+              </div>
+              <div class="userSummaryExpItem">
+                <div class="userSummaryExpHeading">UPSC Aspirant</div>
+                <div class="userSummaryExpTitle">For 3 Years</div>
+              </div>
+              <div class="userSummaryExpItem">
+                <div class="userSummaryExpHeading">Trusted By</div>
+                <div class="userSummaryExpTitle">Millions of Users</div>
+              </div>
+            </div>
+            <div class="userSummaryAward">
+              <div class="userSummaryAwardList">
+                <div class="userSummaryAwardListData">
+                  <div class="userSummaryAwardItem">
+                    <img src="./images/award-black-01.svg" alt="" />
+                  </div>
+                  <div class="userSummaryAwardItem">
+                    <img src="./images/award-black-02.svg" alt="" />
+                  </div>
+                  <div class="userSummaryAwardItem">
+                    <img src="./images/award-black-03.svg" alt="" />
+                  </div>
+                  <div class="userSummaryAwardItem">
+                    <img src="./images/award-black-04.svg" alt="" />
+                  </div>
+                  <div class="userSummaryAwardItem">
+                    <img src="./images/award-black-05.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="menuLetSection">
+              <div class="menuLetCraftText">
+                Let’s craft brilliance together!
+              </div>
+              <div class="menuLetBtnInfo">
+                <a
+                  class="menuLetConnectBtn"
+                  href="mailto:abhi.thakur1010@gmail.com"
+                  target="_blank"
+                  >Let’s connect</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ScrollTop -->
+    <div id="scrollTopBtn" class="scrollTopSection" onclick="scrollToTop()">
+      <img src="./images/go-to-top.svg" alt="Go To Top" />
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-2.2.0.min.js"
+      type="text/javascript"
+    ></script>
+    <script src="./js/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/toastify-js.js"></script>
+    <script type="text/javascript">
+      const sections = document.querySelectorAll(".sectionActiveItem[id]");
+      const navLinks = document.querySelectorAll(
+        ".vertNavBarList .lineAnimation"
+      );
+
+      window.addEventListener("scroll", () => {
+        let bottomOffset = window.innerHeight; // Full height of viewport
+
+        sections.forEach((section, index) => {
+          // const rect = section.getBoundingClientRect();
+          const sectionTop = section.getBoundingClientRect().top;
+
+          if (sectionTop <= window.innerHeight * 0.3 && sectionTop >= -100) {
+            // Remove active class from all links
+            navLinks.forEach((link) => link.classList.remove("active"));
+
+            // Add active class to the matching link
+            const id = section.getAttribute("id");
+            const activeLink = document.querySelector(
+              `.vertNavBarList .lineAnimation[href="#${id}"]`
+            );
+            if (activeLink) activeLink.classList.add("active");
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      document.querySelectorAll(".tabWrapper").forEach((wrapper) => {
+        const buttons = wrapper.querySelectorAll("nav button");
+        const contents = wrapper.querySelectorAll(".tab-content");
+
+        function showTab(index) {
+          contents.forEach((content, i) => {
+            content.classList.toggle("active", i === index);
+          });
+
+          buttons.forEach((btn, i) => {
+            btn.classList.toggle("active-button", i === index);
+          });
+        }
+
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const index = parseInt(btn.getAttribute("data-tab"), 10);
+            showTab(index);
+          });
+        });
+
+        showTab(0); // Initialize first tab as active
+      });
+    </script>
+    <script>
+      window.addEventListener("scroll", () => {
+        const aboutSection = document.getElementById("aboutSection");
+        const fixedNavBarBox = document.getElementById("fixedNavBarBox");
+        const topOffset = aboutSection.getBoundingClientRect().top;
+
+        if (topOffset <= -200) {
+          fixedNavBarBox.classList.add("fixed");
+        } else {
+          fixedNavBarBox.classList.remove("fixed");
+        }
+      });
+
+      // Close more dropdown on click outside
+      document.addEventListener('click', function(e) {
+        var moreWrap = document.querySelector('.enh-more-wrap');
+        if (moreWrap && !moreWrap.contains(e.target)) {
+          moreWrap.classList.remove('open');
+        }
+      });
+
+      function showTopMenu() {
+        document.getElementById("hamburgerMenu").className =
+          "hamBurgerMenu show";
+      }
+      function closeTopMenu() {
+        document.getElementById("hamburgerMenu").classList.remove("show");
+      }
+    </script>
+    <script>
+      document.querySelectorAll(".lineAnimation").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").slice(1); // remove '#'
+          const target = document.getElementById(targetId);
+          const offset = 56; // height of sticky nav + breathing room
+
+          if (target) {
+            const topPos =
+              target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: topPos, behavior: "smooth" });
+          }
+        });
+      });
+    </script>
+    <script>
+      function showToast() {
+        Toastify({
+          text: "Coming soon, I’m still crafting this case study",
+          duration: 3000,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#1F1F1F",
+          close: false,
+          stopOnFocus: true,
+          avatar: "./images/info-icon.svg",
+          className: "custom-toast", // Add a custom class
+        }).showToast();
+      }
+      window.onscroll = function () {
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        if (
+          document.body.scrollTop > 1000 ||
+          document.documentElement.scrollTop > 1000
+        ) {
+          // scrollBtn.style.display = "block";
+          scrollBtn.classList.add("show");
+        } else {
+          // scrollBtn.style.display = "none";
+          scrollBtn.classList.remove("show");
+        }
+      };
+
+      // Scroll to top on click
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>

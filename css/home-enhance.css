@@ -1,0 +1,265 @@
+/* ============================================
+   LANDING PAGE — Minimal & Classy Enhancements
+   Layers on top of style.css
+   ============================================ */
+
+/* --- 1. HERO SECTION — Cleaner spacing --- */
+.userSection .userContainer {
+  padding-bottom: 8px;
+}
+
+.userSummery {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #555;
+  max-width: 560px;
+}
+
+.userName {
+  letter-spacing: -0.02em;
+}
+
+/* --- 2. FEATURE PROJECTS — Tighter, more refined --- */
+.featureSection {
+  padding-top: 24px;
+}
+
+.contentItem {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contentItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.contentItemImg {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.contentItemImg img {
+  transition: transform 0.5s ease;
+}
+
+.contentItem:hover .contentItemImg img {
+  transform: scale(1.02);
+}
+
+/* --- 3. TESTIMONIALS — Cleaner cards --- */
+.recommendWrapper {
+  padding: 64px 0 48px;
+}
+
+.recommendTitle {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.recommendSliderItem {
+  transition: transform 0.3s ease;
+}
+
+.recommendItemHeading {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.recommendItemDetails {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* --- 4. SUMMARY SECTION — Tighter bio --- */
+.userSummaryWrapper {
+  padding: 64px 0;
+}
+
+.userSummaryTitle {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.userSummarySection > .d-flex > p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+  max-width: 600px;
+}
+
+/* Stats row — cleaner */
+.userSummaryExp {
+  gap: 0;
+}
+
+.userSummaryExpItem {
+  padding: 12px 0;
+}
+
+.userSummaryExpHeading {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+}
+
+.userSummaryExpTitle {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* --- 5. BREAKING IT DOWN — Cleaner tabs --- */
+.breakingSection {
+  padding: 48px 0;
+}
+
+.breakingTitle {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+/* FAQ accordion items */
+.contentShowBottom {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.contentBottomTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.contentBottomData {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* --- 6. ACCORDION ANSWERS — Cleaner text --- */
+.accordion-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #555;
+}
+
+.accordion-button {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* --- 7. FOOTER — Minimal --- */
+.footerSection {
+  padding: 24px 0;
+  border-top: 1px solid #eee;
+}
+
+.footerCopyText {
+  font-size: 12px;
+  color: #999;
+}
+
+.footerSocialLink a {
+  font-size: 12px;
+}
+
+/* --- 8. GLOBAL POLISH --- */
+
+/* Smoother transitions everywhere */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tab buttons — pill style */
+.tabBarInfo .navTabBar button {
+  transition: all 0.25s ease;
+}
+
+/* Design menu button */
+.designBtn {
+  transition: all 0.25s ease;
+}
+
+.designBtn:hover {
+  transform: translateY(-1px);
+}
+
+/* Scroll to top button */
+.scrollTopSection {
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 9. SECTION DIVIDERS — Subtle rhythm --- */
+.graydientContainer {
+  padding-top: 32px;
+}
+
+/* --- 10. VISUAL FEED GALLERY --- */
+.contentGalleryBoxItem {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.contentGalleryBoxItem:hover {
+  transform: scale(1.01);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (min-width: 1440px) {
+  .recommendTitle {
+    font-size: 28px;
+  }
+  .userSummaryTitle {
+    font-size: 32px;
+  }
+  .breakingTitle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .recommendWrapper {
+    padding: 48px 0 36px;
+  }
+  .userSummaryWrapper {
+    padding: 48px 0;
+  }
+  .breakingSection {
+    padding: 36px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .recommendTitle {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+  .userSummaryTitle {
+    font-size: 22px;
+  }
+  .breakingTitle {
+    font-size: 20px;
+  }
+  .userSummarySection > .d-flex > p {
+    font-size: 13px;
+  }
+  .contentBottomTitle {
+    font-size: 16px;
+  }
+  .recommendWrapper {
+    padding: 40px 0 28px;
+  }
+}

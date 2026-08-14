@@ -28,7 +28,6 @@
     <link href="./css/photoswipe.css" rel="stylesheet" />
     <link href="./css/toastify.min.css" rel="stylesheet" />
     <link href="./css/style.css" rel="stylesheet" />
-    <link href="./css/hero-enhance.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -91,7 +90,7 @@
             <div class="userName">Abhishek Thakur</div>
             <div class="userExpDetails">
               <div class="userExp">
-                <img src="./images/user-exp-icon.png" alt="" /> 10+ Years<span
+                <img src="./images/user-exp-icon.png" alt="" /> 9+ Years<span
                   class="userExpDesign"
                   >, Design Expertise</span
                 >
@@ -105,11 +104,11 @@
             </div>
             <div class="userSummery">
               Designing for <span style="font-weight:700;">100M+ users</span> across 
-              <a href="https://www.jio.com/" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Jio</a>, 
+              <a href="https://www.jio.com/" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Jio Platforms</a>, 
               <a href="https://www.delhivery.com/" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Delhivery</a>, 
-              <a href="https://timesinternet.in/products" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Times Internet</a> & 
+              <a href="https://timesinternet.in/products" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Times Internet</a>, and 
               <a href="https://www.swiggy.com/dineout" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Swiggy Dineout</a>
-              — scalable design systems for B2B & B2C at scale.
+              &mdash; solving real-world problems with scalable design for B2B & B2C.
             </div>
           </div>
         </div>
@@ -211,7 +210,7 @@
           <div class="userName">Abhishek Thakur</div>
           <div class="userExpDetails">
             <div class="userExp">
-              <img src="./images/user-exp-icon.png" alt="" /> 10+ Years<span
+              <img src="./images/user-exp-icon.png" alt="" /> 9+ Years<span
                 class="userExpDesign"
                 >, Design Expertise</span
               >
@@ -3212,27 +3211,25 @@
       <section class="userSummaryWrapper">
         <div id="userSummarySection" class="wrapperContainer">
           <div class="userSummarySection">
-            <div class="userSummaryTitle">Why me</div>
+            <div class="userSummaryTitle">Here’s why I might be the one</div>
             <div class="d-flex flex-column">
-              <p class="enh-positioning-lead">
-                I turn complex systems into clear, scalable experiences. 
-                10+ years across logistics, commerce, healthcare, and telecom — 
-                leading teams, building design systems, and shipping products used by millions.
+              <p>
+                With 9+ years in UX and product design, I’ve crafted solutions
+                across logistics, e-commerce, healthcare, edtech, food delivery,
+                table booking, and telecom. I’ve led cross-functional teams,
+                redefined journeys, and delivered systems that balance user
+                needs with business goals. I’m deeply curious about how people
+                interact with products, and I let that curiosity along with data
+                and user voices, guide my design process. I thrive in ambiguity,
+                listen deeply to users, and let data shape better experiences.
               </p>
-              <div class="enh-positioning-points">
-                <div class="enh-pos-item">
-                  <span class="enh-pos-label">How I think</span>
-                  <span class="enh-pos-text">Systems-first. I connect user needs to business outcomes through structured, data-informed design.</span>
-                </div>
-                <div class="enh-pos-item">
-                  <span class="enh-pos-label">What I bring</span>
-                  <span class="enh-pos-text">Clarity in ambiguity. I simplify complex workflows, align cross-functional teams, and ship with intent.</span>
-                </div>
-                <div class="enh-pos-item">
-                  <span class="enh-pos-label">What drives me</span>
-                  <span class="enh-pos-text">Real-world impact. Products that work for people at scale — not just pixels on a screen.</span>
-                </div>
-              </div>
+              <p>
+                Outside of work, I’m still learning—about life, leadership, and
+                the craft itself. Rooted in the mountains and guided by
+                curiosity, I bring clarity to complexity and heart to every
+                screen I design. I'm growing every day and I’m just getting
+                started.
+              </p>
             </div>
 
             <div id="userSummaryDetailsSection" class="userSummaryDetails">
@@ -3267,7 +3264,7 @@
             <div class="userSummaryExp">
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Experience</div>
-                <div class="userSummaryExpTitle">10+ Year, UX</div>
+                <div class="userSummaryExpTitle">9+ Year, UX</div>
               </div>
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Lead Exp</div>
@@ -3548,11 +3545,7 @@
                       </div>
                     </div>
                     <div class="contentShowBottomRight">
-                      <a
-                        class="connectBtn"
-                        href="mailto:abhi.thakur1010@gmail.com"
-                        target="_blank"
-                      >
+                      <a class="connectBtn" href="/cdn-cgi/l/email-protection#a2c3c0cacb8cd6cac3c9d7d093929392e2c5cfc3cbce8cc1cdcf" target="_blank">
                         Let’s connect
                         <span class="mobileView">
                           <svg viewBox="0 0 13 13" fill="none">
@@ -3594,7 +3587,7 @@
                           data-bs-parent="#accordionRecruiters"
                         >
                           <div class="accordion-body">
-                            10+ years in design, with 3+ years in leadership
+                            9+ years in design, with 3+ years in leadership
                             roles
                           </div>
                         </div>
@@ -3749,11 +3742,7 @@
                       </div>
                     </div>
                     <div class="contentShowBottomRight">
-                      <a
-                        class="connectBtn"
-                        href="mailto:abhi.thakur1010@gmail.com"
-                        target="_blank"
-                      >
+                      <a class="connectBtn" href="/cdn-cgi/l/email-protection#58393a3031762c3039332d2a69686968183f35393134763b3735" target="_blank">
                         Let’s connect
                         <span class="mobileView">
                           <svg viewBox="0 0 13 13" fill="none">
@@ -3965,11 +3954,7 @@
                       </div>
                     </div>
                     <div class="contentShowBottomRight">
-                      <a
-                        class="connectBtn"
-                        href="mailto:abhi.thakur1010@gmail.com"
-                        target="_blank"
-                      >
+                      <a class="connectBtn" href="/cdn-cgi/l/email-protection#f796959f9ed9839f969c8285c6c7c6c7b7909a969e9bd994989a" target="_blank">
                         Let’s connect
                         <span class="mobileView">
                           <svg viewBox="0 0 13 13" fill="none">
@@ -4167,11 +4152,7 @@
                       </div>
                     </div>
                     <div class="contentShowBottomRight">
-                      <a
-                        class="connectBtn"
-                        href="mailto:abhi.thakur1010@gmail.com"
-                        target="_blank"
-                      >
+                      <a class="connectBtn" href="/cdn-cgi/l/email-protection#c1a0a3a9a8efb5a9a0aab4b3f0f1f0f181a6aca0a8adefa2aeac" target="_blank">
                         Let’s connect
                         <span class="mobileView">
                           <svg viewBox="0 0 13 13" fill="none">
@@ -4391,11 +4372,7 @@
                       </div>
                     </div>
                     <div class="contentShowBottomRight">
-                      <a
-                        class="connectBtn"
-                        href="mailto:abhi.thakur1010@gmail.com"
-                        target="_blank"
-                      >
+                      <a class="connectBtn" href="/cdn-cgi/l/email-protection#6c0d0e04054218040d07191e5d5c5d5c2c0b010d0500420f0301" target="_blank">
                         Let’s connect
                         <span class="mobileView">
                           <svg viewBox="0 0 13 13" fill="none">
@@ -4455,8 +4432,7 @@
                 />
               </svg>
             </a>
-            <a href="mailto:abhi.thakur1010@gmail.com" target="_blank"
-              >Email
+            <a href="/cdn-cgi/l/email-protection#0a6b686263247e626b617f783b3a3b3a4a6d676b636624696567" target="_blank">Email
               <svg viewBox="0 0 13 12" fill="none">
                 <path
                   d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
@@ -4659,7 +4635,7 @@
             <div class="menuUserSummaryExpData">
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Experience</div>
-                <div class="userSummaryExpTitle">10+ Year, UX</div>
+                <div class="userSummaryExpTitle">9+ Year, UX</div>
               </div>
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Lead Exp</div>
@@ -4705,11 +4681,7 @@
                 Let’s craft brilliance together!
               </div>
               <div class="menuLetBtnInfo">
-                <a
-                  class="menuLetConnectBtn"
-                  href="mailto:abhi.thakur1010@gmail.com"
-                  target="_blank"
-                  >Let’s connect</a
+                <a class="menuLetConnectBtn" href="/cdn-cgi/l/email-protection#2746454f4e09534f464c52551617161767404a464e4b0944484a" target="_blank">Let’s connect</a
                 >
               </div>
             </div>
@@ -4725,7 +4697,7 @@
     >
       <img src="./images/go-to-top.svg" alt="Go To Top" />
     </div>
-    <script
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script
       src="https://code.jquery.com/jquery-2.2.0.min.js"
       type="text/javascript"
     ></script>
@@ -4870,14 +4842,14 @@
       awardSection.addEventListener("mouseenter", () => {
         leftImage.classList.add("show");
         rightImage.classList.add("show");
-        // voiceClip.currentTime = 0;
-        // voiceClip.play();
+        voiceClip.currentTime = 0;
+        voiceClip.play();
       });
 
       awardSection.addEventListener("mouseleave", () => {
         leftImage.classList.remove("show");
         rightImage.classList.remove("show");
-        // voiceClip.pause();
+        voiceClip.pause();
         voiceClip.currentTime = 0;
       });
 

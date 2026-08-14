@@ -1,0 +1,479 @@
+/* ============================================
+   CASE STUDY PAGE ENHANCEMENTS
+   Same approach as about-enhance.css
+   ============================================ */
+
+/* --- 1. WIDER CONTENT — All wrappers consistent --- */
+.mainWrapper {
+  max-width: 780px !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+.contentWrapper01,
+.contentWrapper02,
+.contentWrapper03,
+.contentWrapper04,
+.contentWrapper05,
+.contentWrapper06 {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+.wrapperContainer {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* --- 2. NAV → Horizontal Top Bar (hidden on load, sticky on scroll) --- */
+.vertNavBarRight {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  z-index: 50 !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04) !important;
+  padding: 0 24px !important;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.vertNavBarRight.stickyNav {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  pointer-events: all !important;
+  position: fixed !important;
+  top: 0 !important;
+}
+
+.vertNavBarRight .vertNavBarList {
+  display: flex;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.vertNavBarRight .vertNavBarList::before {
+  display: none !important;
+}
+
+.vertNavBarRight .vertNavBarList a {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 13px;
+  font-weight: 400;
+  color: #999;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  border-left: none !important;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.vertNavBarRight .vertNavBarList a:hover {
+  color: #555 !important;
+  font-weight: 500;
+  border-left: none !important;
+}
+
+.vertNavBarRight .vertNavBarList a.active {
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+  border-left: none !important;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+/* --- 3. Scroll offset for sections --- */
+.sectionActiveItem[id] {
+  scroll-margin-top: 60px;
+}
+
+/* --- 4. Global font --- */
+body,
+body *,
+button,
+input,
+.accordion-button,
+.accordion-body,
+.contentDetailsText,
+.contentDetItemHeading,
+.contentDetItemSubHeading,
+.contentDetailsItemText,
+.contentDetailsItemText p,
+.contentCaseStudyAccordion,
+.headerLeftSection,
+.footerSection,
+.footerCopyText,
+.footerSocialLink a {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* --- 5. Section spacing — consistent rhythm --- */
+.contentDetailsItemInfo {
+  margin-bottom: 48px !important;
+}
+
+.contentFullImageBox {
+  margin: 32px 0 !important;
+}
+
+.mainWrapper > * + * {
+  margin-top: 32px;
+}
+
+.contentDetailsSection {
+  margin-bottom: 40px !important;
+}
+
+/* Accordion items spacing */
+.contentCaseStudyAccordion .accordion-item {
+  margin-bottom: 8px !important;
+}
+
+/* Space between content wrappers */
+.contentWrapper01,
+.contentWrapper02,
+.contentWrapper03,
+.contentWrapper04,
+.contentWrapper05,
+.contentWrapper06 {
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (min-width: 1440px) {
+  .mainWrapper {
+    max-width: 860px !important;
+  }
+  .contentWrapper01,
+  .contentWrapper02,
+  .contentWrapper03,
+  .contentWrapper04,
+  .contentWrapper05,
+  .contentWrapper06,
+  .wrapperContainer {
+    max-width: 1000px !important;
+  }
+  .vertNavBarRight .vertNavBarList a {
+    font-size: 14px;
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .vertNavBarRight .vertNavBarList a {
+    font-size: 12px;
+    padding: 12px 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .vertNavBarRight {
+    display: none !important;
+  }
+  .mainWrapper {
+    max-width: 100% !important;
+    padding: 0 20px !important;
+  }
+  .contentWrapper01,
+  .contentWrapper02,
+  .contentWrapper03,
+  .contentWrapper04,
+  .contentWrapper05,
+  .contentWrapper06,
+  .wrapperContainer {
+    max-width: 100% !important;
+    padding: 0 20px !important;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY & READABILITY
+   ============================================ */
+
+/* Base body text — bump to 16px for readability */
+.contentDetailsText,
+.contentDetailsItemText p,
+.contentCaseStudyAccordion .accordion-body,
+.dotListDataRow,
+.listDataDetails li,
+.contentPageDetails li,
+.contentPageCouponSection p,
+.contentPageCoupon li,
+.contentPageThemeDetails,
+.outcomeDataDetails,
+.outcomeList li,
+.noteContentSection,
+.heuristicTextContent,
+.whatIntroExplore,
+.challengeRowText,
+.designTeamHighlightText,
+.delhStudyFocusBox p,
+.delhStudyFocusList li {
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+}
+
+/* Only apply dark color to elements NOT inside dark backgrounds */
+.mainWrapper .contentDetailsText,
+.mainWrapper .contentDetailsItemText p,
+.mainWrapper .contentCaseStudyAccordion .accordion-body,
+.mainWrapper .dotListDataRow,
+.mainWrapper .listDataDetails li {
+  color: #444 !important;
+}
+
+/* Subheadings — 18px, bolder */
+.contentDetItemSubHeading,
+.contentPageHeading,
+.enhanceFinalContentSubText,
+.enhanceProductOverallTitle,
+.enhancePerformListItemText {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #1a1a1a !important;
+}
+
+.aboutResearchHeading {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+.delhiverySummaeyItemHead {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+.delhiverySummaeyItemText {
+  font-size: 14px !important;
+}
+
+/* Accordion headings — cleaner */
+.contentCaseStudyAccordion .accordion-button {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+.contentCaseStudyAccordion .accordion-button.accordion-arrow-left {
+  font-size: 18px !important;
+}
+
+/* ============================================
+   SPACING & RHYTHM
+   ============================================ */
+
+/* More breathing between sections */
+.mb48 { margin-bottom: 48px !important; }
+.mb64 { margin-bottom: 64px !important; }
+
+/* Section gaps */
+.contentDetailsSection {
+  margin-bottom: 40px;
+}
+
+.contentDetailsImgBox {
+  margin: 24px 0;
+}
+
+.contentDetailsImgBox img {
+  border-radius: 12px;
+}
+
+/* ============================================
+   IMAGE ALIGNMENT & CONSISTENCY
+   ============================================ */
+
+/* All images — consistent radius and alignment */
+.mainWrapper img,
+.contentWrapper01 img,
+.contentWrapper02 img,
+.contentWrapper03 img,
+.contentWrapper04 img,
+.contentWrapper05 img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Image boxes — center and consistent spacing */
+.contentDetailsImgBox,
+.contentDetailsImgFullBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Fix chevron/arrow style broken layouts */
+.contentDetailsImgBox img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   HEADER / HERO SECTION
+   ============================================ */
+
+/* Left section text — bigger, cleaner */
+.headerLeftSection .headerTitle {
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em;
+}
+
+.headerLeftSection .headerSubTitle {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: #555 !important;
+}
+
+/* ============================================
+   RESPONSIVE ADDITIONS
+   ============================================ */
+
+@media (min-width: 1440px) {
+  .contentDetailsText,
+  .contentDetailsItemText p,
+  .contentCaseStudyAccordion .accordion-body,
+  .dotListDataRow,
+  .listDataDetails li {
+    font-size: 17px !important;
+  }
+  .contentDetItemSubHeading,
+  .contentCaseStudyAccordion .accordion-button {
+    font-size: 20px !important;
+  }
+  .headerLeftSection .headerTitle {
+    font-size: 32px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .contentDetailsText,
+  .contentDetailsItemText p,
+  .contentCaseStudyAccordion .accordion-body {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+  .contentDetItemSubHeading,
+  .contentCaseStudyAccordion .accordion-button {
+    font-size: 17px !important;
+  }
+  .headerLeftSection .headerTitle {
+    font-size: 22px !important;
+  }
+  .mainWrapper img,
+  .contentWrapper01 img {
+    border-radius: 8px;
+  }
+  .contentDetailsImgBox {
+    margin: 16px 0;
+  }
+}
+
+/* ============================================
+   ACCORDION & CONTENT IMAGES — Keep original, just ensure fit
+   ============================================ */
+
+/* No image overrides — use original case-study.css styling */
+
+/* ============================================
+   IMAGE GRID SPACING — Breathing room between images
+   ============================================ */
+
+/* Design team image grid */
+.designTeamImageBox {
+  gap: 16px 0 !important;
+}
+
+.designTeamImageBoxRow {
+  gap: 16px !important;
+}
+
+.designTeamImageBoxRow img {
+  border-radius: 12px;
+}
+
+/* General content image boxes — add vertical spacing */
+.contentFullImageBox {
+  margin: 24px 0 !important;
+}
+
+/* Image rows inside accordions and content */
+.contentDetailsImgBox {
+  margin: 16px 0 !important;
+}
+
+/* Multiple images stacked — add gap */
+.contentDetailsImgBox + .contentDetailsImgBox {
+  margin-top: 16px !important;
+}
+
+/* Gallery rows */
+.galleryImageBox {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ============================================
+   SECTION ALIGNMENT — Same left/right edges
+   ============================================ */
+
+/* Remove extra padding from bg sections so text aligns with mainWrapper */
+.enhanceContentBgSection {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: transparent !important;
+}
+
+/* Content inside contentWrapper01 should match mainWrapper alignment */
+.contentWrapper01 .contentDetailsItemInfo,
+.contentWrapper01 .enhanceContentBgSection {
+  max-width: 780px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Ensure accordion content aligns */
+.contentCaseStudyAccordion {
+  max-width: 100%;
+}
+
+/* Full image boxes — centered */
+.contentFullImageBox {
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 767px) {
+  .enhanceContentBgSection {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
