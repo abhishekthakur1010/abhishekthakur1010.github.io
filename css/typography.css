@@ -1,0 +1,60 @@
+/* ============================================================
+   TYPOGRAPHY CONSISTENCY LAYER  (loaded LAST on every page)
+   ------------------------------------------------------------
+   Goal: make headings, subheadings, content and paragraphs
+   consistent across ALL pages.
+
+   Before this file:
+     - body text used "SF Pro" while headings used "Poppins"
+     - case-study pages forced SF Pro on everything
+     - body colors varied (#222 / #2b2b2b / #444)
+   After:
+     - ONE typeface (Poppins) everywhere
+     - one body/paragraph color + line-height
+     - one heading color, weight scale, leading and tracking
+
+   Note: role-based font-SIZES (e.g. the large hero name) are left
+   intact on purpose so existing layouts don't break. Consistency
+   comes from a unified family, color, weight, leading and tracking.
+   ============================================================ */
+
+/* 1. One typeface across the whole site (overrides the SF Pro !important base) */
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, ul, ol,
+button, input, select, textarea, label,
+div, blockquote, figcaption, small, strong, em {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* 2. Consistent body / content / paragraph text */
+body {
+  color: #333333;
+  font-weight: 400;
+}
+
+p,
+li {
+  line-height: 1.65;
+  color: #333333;
+}
+
+/* 3. Consistent heading hierarchy: single color, unified weights, leading, tracking */
+h1, h2, h3, h4, h5, h6 {
+  color: #1a1a1a;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
