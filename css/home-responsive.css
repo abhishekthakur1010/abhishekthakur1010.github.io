@@ -68,8 +68,8 @@
      so the reference layout is unchanged and only smaller screens
      scale down. --- */
   .userPic {
-    width: clamp(160px, 14vw, 213px);
-    height: clamp(160px, 14vw, 213px);
+    width: clamp(150px, 13vw, 192px);
+    height: clamp(150px, 13vw, 192px);
   }
 
   .userName {
@@ -394,5 +394,296 @@
   }
   .connectBtn:hover {
     font-size: 16px !important;
+  }
+}
+
+/* ============================================================
+   "About Me" DISCOVERABILITY — visible header link (desktop) +
+   footer link, so it isn't hidden behind the avatar hover.
+   (Mobile uses the hamburger menu, which already lists it.)
+   ============================================================ */
+.rightSection {
+  align-items: center;
+}
+.navAboutLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  margin-right: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a !important;
+  text-decoration: none;
+  border-radius: 99px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.navAboutLink:hover {
+  color: #000000 !important;
+  background: rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 767px) {
+  .navAboutLink {
+    display: none; /* mobile uses the hamburger menu + footer link */
+  }
+}
+
+/* ============================================================
+   HEADER AS A PILL NAVBAR (exploration) — mirror the project
+   category nav: one rounded white bar, logo left, nav + divider
+   + Resume right. Desktop/tablet only; mobile keeps its bar.
+   ============================================================ */
+@media (min-width: 768px) {
+  .headerRow {
+    max-width: min(1200px, calc(100% - 64px)) !important;
+    margin: 44px auto 0 !important;
+    padding: 10px 14px 10px 24px !important;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 100px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    align-items: center;
+  }
+  /* logo sits plainly inside the bar (no separate gray pill) */
+  .headerRow .logoArea {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 8px !important;
+    height: auto !important;
+  }
+  /* subtle divider before the Resume CTA, like the category nav */
+  .navDivider {
+    width: 1px;
+    height: 30px;
+    background: #ececec;
+    margin: 0 6px 0 10px;
+    flex: 0 0 auto;
+  }
+}
+@media (max-width: 767px) {
+  .navDivider {
+    display: none;
+  }
+}
+
+/* ============================================================
+   HERO AVATAR — remove the About-Me hover overlay (now that
+   "About Me" is in the header + footer), and trim size a touch
+   on large screens.
+   ============================================================ */
+.hoverUserPic {
+  display: none !important;
+}
+.userPic {
+  cursor: default;
+}
+@media (min-width: 1780px) and (max-width: 1920px) {
+  .userPic {
+    width: 232px !important;
+    height: 232px !important;
+  }
+}
+
+/* ============================================================
+   Resume button — match the "How I Design?" font style
+   (Poppins; weight 500 at base, 600 on large screens; and no
+   weight jump on hover). Sizes already match.
+   ============================================================ */
+.btnResume,
+.btnResume .btnText,
+.btnResume:hover {
+  font-weight: 500 !important;
+}
+@media (min-width: 1780px) and (max-width: 1920px) {
+  .btnResume,
+  .btnResume .btnText,
+  .btnResume:hover {
+    font-weight: 600 !important;
+  }
+}
+
+/* ============================================================
+   DESKTOP HEADER = logo + hamburger menu (same panel as mobile).
+   Removes About Me / Resume / divider from the bar; the hamburger
+   sits on the right with a circular hover.
+   ============================================================ */
+@media (min-width: 768px) {
+  .headerRow .navAboutLink,
+  .headerRow .navDivider,
+  .headerRow .btnResume {
+    display: none !important;
+  }
+  .headerRow .menuInfo {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-right: 0;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+  .headerRow .menuInfo:hover {
+    background: #f0efef; /* circle appears on hover */
+  }
+  .headerRow .menuInfo img {
+    width: 20px;
+    height: auto;
+  }
+}
+
+/* ============================================================
+   DESKTOP MENU OVERLAY — REDESIGN (min-width: 768px only)
+   Mobile menu is intentionally left untouched.
+   - content centered in a max-width column
+   - larger nav links with hairline dividers + hover slide
+   - bottom band: stats row + awards + "Let's connect" footer
+   ============================================================ */
+@media (min-width: 768px) {
+  /* keep the whole overlay to one screen — no scroll */
+  .hamBurgerMenuSection {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* one centered column for EVERY band — identical left/right margins */
+  .menuHeader,
+  .menuLinkData,
+  .menuBottomDetails {
+    max-width: min(1200px, calc(100% - 64px)); /* mirror the homepage pill */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* dark top: flex column so header + nav stack cleanly (fixes overlap) */
+  .menuTopSection {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 28px;
+  }
+  .menuHeader {
+    height: auto;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    align-items: center;
+    background: transparent;
+    position: static;
+  }
+  /* logo: match the homepage size + left position */
+  .menuLogo {
+    width: auto;
+  }
+  .menuLogo img {
+    height: 29px;
+    width: auto;
+    display: block;
+  }
+  /* close (X): sit where the hamburger was, right-aligned */
+  .menuCloseInfo {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .menuCloseInfo img {
+    width: 44px;
+    height: 44px;
+  }
+  .menuLinkData {
+    margin-top: 24px;
+  }
+
+  /* nav links — full column width so icons align at the right edge */
+  .menuLinkList {
+    max-width: 100%;
+    width: 100%;
+  }
+  .menuLinkList li:not(:last-child) {
+    margin-bottom: 0;
+  }
+  .menuLinkList a {
+    height: auto;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 16px 2px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: color 0.25s ease, padding-left 0.25s ease;
+  }
+  .menuLinkList a:hover {
+    color: #bdbdbd;
+    padding-left: 12px;
+  }
+  .menuLinkList a svg {
+    width: 18px;
+  }
+  .linkArrow {
+    width: 14px;
+  }
+  .commingText {
+    font-size: 14px;
+    align-self: center;
+  }
+  /* no divider under the last link (Dribbble) */
+  .menuLinkList li:last-child a {
+    border-bottom: none;
+  }
+
+  /* bottom band — SAME margins as the top; items spread end-to-end */
+  .menuBottomSection {
+    padding: 48px 0 40px; /* space above the Experience row */
+    flex: 1 1 auto; /* fill the rest of the screen */
+    display: flex;
+  }
+  .menuUserSummaryExpData {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+  .menuBottomDetails .userSummaryAward {
+    margin: 40px 0 0;
+    padding-top: 0;
+    flex: 0 0 auto; /* don't stretch — keep badges grouped with the stats */
+    width: 100%;
+  }
+  .menuBottomDetails .userSummaryAwardListData {
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .menuBottomDetails .userSummaryAwardItem img {
+    height: 60px;
+    width: auto;
+  }
+  .menuLetSection {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* pin "Let's craft brilliance" to the bottom */
+  }
+  .menuLetCraftText {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .menuLetConnectBtn {
+    height: 48px;
+    font-size: 15px;
+    padding: 0 26px;
+  }
+}
+
+/* menu logo matches the homepage logo size on large screens too */
+@media (min-width: 1780px) and (max-width: 1920px) {
+  .menuLogo img {
+    height: 37px;
   }
 }
