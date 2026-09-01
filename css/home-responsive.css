@@ -610,7 +610,7 @@
   }
   .menuLinkList a {
     height: auto;
-    font-size: 20px;
+    font-size: clamp(20px, 1.35vw, 28px); /* fluid — scales with the display */
     font-weight: 600;
     line-height: 1;
     padding: 16px 2px;
@@ -649,6 +649,13 @@
     justify-content: space-between;
     gap: 24px;
     padding-bottom: 24px;
+  }
+  /* fluid stat text in the menu — scales with the display (menu-only) */
+  .menuUserSummaryExpData .userSummaryExpHeading {
+    font-size: clamp(13px, 0.95vw, 20px);
+  }
+  .menuUserSummaryExpData .userSummaryExpTitle {
+    font-size: clamp(16px, 1.25vw, 26px);
   }
   .menuBottomDetails .userSummaryAward {
     margin: 40px 0 0;
