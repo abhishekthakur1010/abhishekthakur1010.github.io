@@ -694,3 +694,70 @@
     height: 37px;
   }
 }
+
+/* ============================================================
+   PROJECT TABS — original pill bar (tabs left), with
+   "Trusted By / Millions of Users" on the right.
+   ============================================================ */
+/* balanced pill: equal breathing room top/bottom and left/right */
+.featureSection .tabBarInfo {
+  padding: 15px 16px;
+}
+.featureSection .navTabBar button {
+  height: 38px;
+}
+.featureSection .tabTrustInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 24px;
+  margin-right: 12px; /* clear the pill's rounded right edge */
+  border-left: 1px solid var(--whisperColor);
+  text-align: left;
+}
+.featureSection .tabTrustLabel {
+  font-size: 13px;
+  color: #7a7a7a;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.featureSection .tabTrustValue {
+  font-size: 16px;
+  color: #1a1a1a;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* ============================================================
+   FIXED BOTTOM BAR — reduce oversized sizing on large screens
+   ============================================================ */
+@media (min-width: 1780px) and (max-width: 1920px) {
+  .userFixedSection {
+    max-width: 820px;
+    padding: 8px 12px;
+  }
+  .userFixedPicInfo {
+    width: 52px;
+    height: 52px;
+  }
+  .userFixedName {
+    font-size: 19px;
+  }
+  .userFixedWork {
+    font-size: 14px;
+  }
+  .btnWhy {
+    height: 50px;
+    font-size: 15px;
+    padding: 0 24px;
+  }
+  .btnBook {
+    height: 50px;
+    font-size: 16px;
+    padding: 0 26px;
+  }
+  .btnBook:hover {
+    font-size: 16px;
+  }
+}

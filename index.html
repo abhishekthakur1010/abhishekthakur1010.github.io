@@ -29,7 +29,7 @@
     <link href="./css/toastify.min.css" rel="stylesheet" />
     <link href="./css/style.css?v=4" rel="stylesheet" />
     <link href="./css/hero-enhance.css" rel="stylesheet" />
-    <link href="./css/home-responsive.css?v=35" rel="stylesheet" />
+    <link href="./css/home-responsive.css?v=48" rel="stylesheet" />
     <link href="./css/typography.css?v=3" rel="stylesheet" />
   </head>
 
@@ -291,16 +291,9 @@
                 ><span class="mobileTab">Research</span>
               </button>
             </nav>
-            <div class="tabRightBar">
-              <div class="designBtn" onclick="openMenu()">
-                How I Design?
-                <svg viewBox="0 0 13 12" fill="none">
-                  <path
-                    d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
-                    fill="white"
-                  ></path>
-                </svg>
-              </div>
+            <div class="tabTrustInfo">
+              <div class="tabTrustLabel">Trusted By</div>
+              <div class="tabTrustValue">Millions of Users</div>
             </div>
           </div>
 
@@ -4199,8 +4192,8 @@
               </li>
               <li><a href="./about-us.html">About Me</a></li>
               <li>
-                <a href="javascript:void(0)" onclick="showToast()"
-                  >Blogs <span class="commingText">Coming Soon</span>
+                <a href="javascript:void(0)" onclick="closeTopMenu(); openMenu()"
+                  >How I Design?
                 </a>
               </li>
               <li>
