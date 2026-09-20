@@ -329,6 +329,75 @@ body.csv2 {
     columns: 1;
   }
 }
+/* team / process photo strip — equal-height single row, widths
+   proportional to each photo (all share the same native height) */
+.csv2 .teamrow {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+.csv2 .teamrow img {
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  display: block;
+}
+.csv2 .teamrow img:nth-child(1) { flex: 306 1 0; }
+.csv2 .teamrow img:nth-child(2) { flex: 625 1 0; }
+.csv2 .teamrow img:nth-child(3) { flex: 624 1 0; }
+.csv2 .teamrow img:nth-child(4) { flex: 304 1 0; }
+
+/* research & process artifacts — full-width framed diagrams */
+.csv2 .research {
+  display: grid;
+  gap: 22px;
+  margin-top: 28px;
+}
+.csv2 .research figure {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.csv2 .research figure:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+}
+.csv2 .research figcaption {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  padding: 13px 15px 0;
+}
+.csv2 .research .shot {
+  padding: 13px;
+}
+.csv2 .research .shot img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+/* single horizontal row — all items fit on one line, no scroll */
+.csv2 .showgrid.showgrid-row {
+  columns: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+}
+.csv2 .showgrid.showgrid-row img {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
 
 /* ---------- Section scaffolding ---------- */
 .csv2 section.block {
