@@ -1,0 +1,668 @@
+/* ============================================================
+   CASE STUDY V2 — modern editorial layout (self-contained)
+   Framework: Context -> Problem -> Solution -> Outcome
+   ============================================================ */
+:root {
+  --ink: #141414;
+  --ink-2: #3d3d3d;
+  --muted: #6b6b6b;
+  --faint: #9a9a9a;
+  --line: #ececec;
+  --bg: #ffffff;
+  --bg-soft: #f6f6f5;
+  --bg-dark: #121212;
+  --accent: #ff2d2d;
+  --radius: 22px;
+  --maxw: 1120px;
+  --font: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body.csv2 {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+.csv2 img {
+  max-width: 100%;
+  display: block;
+}
+.csv2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.csv2 .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------- Top bar ---------- */
+.csv2 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.csv2 .topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+}
+.csv2 .topbar .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+.csv2 .topbar .back svg {
+  width: 16px;
+  height: 16px;
+}
+.csv2 .topbar .brand {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 16px;
+}
+.csv2 .topbar .cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ---------- Hero ---------- */
+.csv2 .hero {
+  padding: 84px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+/* faint B&W team photo as a background cover */
+.csv2 .hero-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* white gradient on top of a grayscale photo:
+     pure white in the centre, photo shows faintly at the L/R edges */
+  background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.84) 0%,
+      rgba(255, 255, 255, 0.96) 16%,
+      #ffffff 30%,
+      #ffffff 70%,
+      rgba(255, 255, 255, 0.96) 84%,
+      rgba(255, 255, 255, 0.84) 100%
+    ),
+    url("../images/design-study/design-top-header-bg.png");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+.csv2 .hero > .wrap {
+  position: relative;
+  z-index: 1;
+}
+/* showcase slot (your designs go here) */
+.csv2 .hero-showcase {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.csv2 .hero-showcase img {
+  width: 100%;
+  border-radius: calc(var(--radius) - 4px);
+}
+.csv2 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.csv2 .eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+}
+.csv2 .hero h1 {
+  font-size: clamp(38px, 5.4vw, 68px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  max-width: 15ch;
+}
+.csv2 .hero h1 .hl {
+  color: var(--accent);
+}
+.csv2 .hero .sub {
+  margin-top: 22px;
+  font-size: clamp(16px, 1.6vw, 20px);
+  color: var(--muted);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+.csv2 .hero-media {
+  margin-top: 48px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+.csv2 .hero-media img {
+  width: 100%;
+}
+
+/* meta strip */
+.csv2 .meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  padding: 28px 0 0;
+  border-top: 1px solid var(--line);
+}
+.csv2 .meta .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  margin-bottom: 8px;
+}
+.csv2 .meta .val {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ---------- Section scaffolding ---------- */
+.csv2 section.block {
+  padding: 76px 0;
+}
+.csv2 section.soft {
+  background: var(--bg-soft);
+}
+.csv2 .sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.csv2 .sec-num {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.csv2 .sec-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+  font-weight: 600;
+}
+.csv2 h2.sec-title {
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  max-width: 20ch;
+}
+.csv2 .lead {
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 64ch;
+  margin-top: 18px;
+}
+
+/* ---------- At a glance (4 acts) ---------- */
+.csv2 .acts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.csv2 .act {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+}
+.csv2 .soft .act {
+  background: #fff;
+}
+.csv2 .act .k {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.csv2 .act .k .n {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.csv2 .act .k .t {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  font-weight: 600;
+}
+.csv2 .act h3 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.csv2 .act p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- Impact band ---------- */
+.csv2 .impact {
+  background: var(--bg-dark);
+  color: #fff;
+  padding: 64px 0;
+}
+.csv2 .impact .sec-label {
+  color: #8a8a8a;
+}
+.csv2 .impact .stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 8px;
+}
+.csv2 .impact .stat .num {
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.csv2 .impact .stat .num .accent {
+  color: var(--accent);
+}
+.csv2 .impact .stat .cap {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #b6b6b6;
+  line-height: 1.5;
+}
+
+/* ---------- Company stats ---------- */
+.csv2 .statgrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 8px;
+}
+.csv2 .statcard {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  background: #fff;
+}
+.csv2 .statcard .n {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.csv2 .statcard .l {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* ---------- Problem list ---------- */
+.csv2 .problems {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+.csv2 .problem {
+  display: flex;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+.csv2 .problem .idx {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff0f0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+.csv2 .problem h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.csv2 .problem p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ---------- Solution / flows ---------- */
+.csv2 .flow {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+.csv2 .flow:first-of-type {
+  border-top: none;
+}
+.csv2 .flow .tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.csv2 .flow h3 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.csv2 .flow p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.csv2 .flow .win {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.csv2 .flow .win b {
+  color: var(--ink);
+}
+.csv2 .ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.csv2 .ba figure {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.csv2 .ba figcaption {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 10px 14px 0;
+}
+.csv2 .ba .shot {
+  padding: 12px;
+}
+
+/* ---------- Outcome / reflection ---------- */
+.csv2 .outcome .lead {
+  color: #cfcfcf;
+}
+.csv2 .reflection {
+  margin-top: 40px;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 24px;
+  max-width: 60ch;
+}
+.csv2 .reflection .q {
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ---------- Placeholder ---------- */
+.csv2 .ph {
+  color: #b0733f;
+  background: #fff5ea;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+.csv2 .impact .ph {
+  color: #ffd9a1;
+  background: rgba(255, 174, 74, 0.14);
+}
+
+/* ---------- Next / footer ---------- */
+.csv2 .next {
+  padding: 64px 0 24px;
+}
+.csv2 .nextgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 8px;
+}
+.csv2 .nextcard {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 26px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.csv2 .nextcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+.csv2 .nextcard .l {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+}
+.csv2 .nextcard h4 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 10px 0 6px;
+}
+.csv2 .nextcard p {
+  color: var(--muted);
+  font-size: 14px;
+}
+.csv2 .foot {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.csv2 .foot a {
+  font-weight: 600;
+  color: var(--ink);
+}
+.csv2 .foot .social {
+  display: flex;
+  gap: 20px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .csv2 .acts,
+  .csv2 .impact .stats,
+  .csv2 .statgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .csv2 .problems {
+    grid-template-columns: 1fr;
+  }
+  .csv2 .flow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .csv2 .meta {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .csv2 .nextgrid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .csv2 .wrap {
+    padding: 0 20px;
+  }
+  .csv2 .acts,
+  .csv2 .impact .stats,
+  .csv2 .statgrid,
+  .csv2 .meta {
+    grid-template-columns: 1fr;
+  }
+  .csv2 section.block {
+    padding: 56px 0;
+  }
+  .csv2 .hero {
+    padding: 56px 0 40px;
+  }
+}
+
+/* ============================================================
+   FINE-TUNE — scroll reveal, hover polish, stagger
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .csv2 .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .csv2 .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+  /* stagger children within grids */
+  .csv2 .acts > *:nth-child(2),
+  .csv2 .statgrid > *:nth-child(2),
+  .csv2 .impact .stats > *:nth-child(2),
+  .csv2 .problems > *:nth-child(2),
+  .csv2 .nextgrid > *:nth-child(2) {
+    transition-delay: 0.07s;
+  }
+  .csv2 .acts > *:nth-child(3),
+  .csv2 .statgrid > *:nth-child(3),
+  .csv2 .impact .stats > *:nth-child(3),
+  .csv2 .problems > *:nth-child(3) {
+    transition-delay: 0.14s;
+  }
+  .csv2 .acts > *:nth-child(4),
+  .csv2 .statgrid > *:nth-child(4),
+  .csv2 .impact .stats > *:nth-child(4),
+  .csv2 .problems > *:nth-child(4) {
+    transition-delay: 0.21s;
+  }
+  .csv2 .problems > *:nth-child(5) {
+    transition-delay: 0.28s;
+  }
+  .csv2 .problems > *:nth-child(6) {
+    transition-delay: 0.35s;
+  }
+}
+
+/* hover polish */
+.csv2 .act,
+.csv2 .statcard,
+.csv2 .problem {
+  transition: transform 0.28s ease, box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+.csv2 .act:hover,
+.csv2 .statcard:hover,
+.csv2 .problem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+  border-color: #e2e2e2;
+}
+.csv2 .ba figure {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.csv2 .ba figure:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.1);
+}
+.csv2 .ba .shot {
+  overflow: hidden;
+}
+.csv2 .ba .shot img {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.csv2 .ba figure:hover .shot img {
+  transform: scale(1.035);
+}
+
+/* hero image subtle zoom-in on load */
+@media (prefers-reduced-motion: no-preference) {
+  .csv2 .hero-media img {
+    animation: heroZoom 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes heroZoom {
+    from {
+      transform: scale(1.06);
+      opacity: 0.6;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+/* accent underline flourish on section titles */
+.csv2 .sec-title {
+  position: relative;
+}
