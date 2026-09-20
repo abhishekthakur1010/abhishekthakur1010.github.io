@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=2" rel="stylesheet" />
+    <link href="./css/case-study-v2.css?v=22" rel="stylesheet" />
   </head>
 
   <body class="csv2">
@@ -31,16 +31,34 @@
     <header class="hero">
       <div class="hero-cover" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="eyebrow">Delhivery · Express · Last Mile</div>
-        <h1>
-          Designing the <span class="hl">Last Mile</span> for a ₹8,000&nbsp;Cr+
-          delivery network
-        </h1>
-        <p class="sub">
-          From dispatch to doorstep — rebuilding the tools that field execs,
-          delivery partners, and ops teams at India's largest parcel network
-          use every single day.
-        </p>
+        <div class="hero-top">
+          <div class="hero-copy">
+            <div class="eyebrow">Delhivery · Express · Last Mile</div>
+            <h1>
+              Designing the <span class="hl">Last Mile</span> for a
+              ₹8,000&nbsp;Cr+ delivery network
+            </h1>
+            <p class="sub">
+              From dispatch to doorstep — rebuilding the tools that field execs,
+              delivery partners, and ops teams at India's largest parcel network
+              use every single day.
+            </p>
+          </div>
+          <div class="hero-device">
+            <div class="phone">
+              <div class="phone-screen">
+                <img
+                  src="./images/design-study/delhivery-case-study-fe-digital-payment.png"
+                  alt="QR-first digital payment screen in the redesigned FE app"
+                />
+              </div>
+            </div>
+            <div class="device-badge">
+              <b>21% <em>→</em> 32%</b>
+              <span>QR payment adoption</span>
+            </div>
+          </div>
+        </div>
 
         <div class="meta">
           <div>
@@ -64,8 +82,28 @@
       </div>
     </header>
 
+    <!-- Showcase — the work at a glance -->
+    <section class="showcase">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-num">·</span>
+          <span class="sec-label">The work</span>
+        </div>
+        <div class="showgrid">
+          <img src="./images/design-study/design-delivery-motion-01.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-02.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-03.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-04.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-05.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-06.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-07.png" alt="Delhivery design showcase" />
+          <img src="./images/design-study/design-delivery-motion-08.png" alt="Delhivery design showcase" />
+        </div>
+      </div>
+    </section>
+
     <!-- At a glance -->
-    <section class="block soft">
+    <section class="block">
       <div class="wrap">
         <div class="sec-head">
           <span class="sec-num">·</span>
@@ -90,7 +128,7 @@
           <div class="act">
             <div class="k"><span class="n">04</span><span class="t">Outcome</span></div>
             <h3>Faster, safer, more digital</h3>
-            <p>QR adoption up 21%→32% (~₹2.5L/day saved), design throughput ~2×, and <span class="ph">[add delivery-time / error-rate result]</span>.</p>
+            <p>QR adoption up 21%→32% (~₹2.5L/day saved) and design throughput roughly doubled after moving to weekly design sprints.</p>
           </div>
         </div>
       </div>
@@ -115,10 +153,6 @@
           <div class="stat">
             <div class="num">~2<span class="accent">×</span></div>
             <div class="cap">Design output &amp; planning clarity after the weekly design sprint</div>
-          </div>
-          <div class="stat">
-            <div class="num"><span class="ph">__%</span></div>
-            <div class="cap">Faster deliveries / fewer NSL errors <span class="ph">[your number]</span></div>
           </div>
         </div>
       </div>
@@ -238,7 +272,7 @@
               <figcaption>Before</figcaption>
               <div class="shot"><img src="./images/design-study/delhivery-case-study-fe-landing-before.png" alt="FE landing before" /></div>
             </figure>
-            <figure>
+            <figure class="after">
               <figcaption>After</figcaption>
               <div class="shot"><img src="./images/design-study/delhivery-case-study-fe-landing.png" alt="FE landing after" /></div>
             </figure>
@@ -262,7 +296,7 @@
               <figcaption>Before</figcaption>
               <div class="shot"><img src="./images/design-study/delhivery-case-study-fe-shipment-listing-before.png" alt="Shipment listing before" /></div>
             </figure>
-            <figure>
+            <figure class="after">
               <figcaption>After</figcaption>
               <div class="shot"><img src="./images/design-study/delhivery-case-study-fe-shipment-listing.png" alt="Shipment listing after" /></div>
             </figure>
@@ -286,7 +320,7 @@
               <figcaption>Before</figcaption>
               <div class="shot"><img src="./images/design-study/delhivery-case-study-fe-digital-payment-before.png" alt="Payment before" /></div>
             </figure>
-            <figure>
+            <figure class="after">
               <figcaption>After</figcaption>
               <div class="shot"><img src="./images/design-study/delhivery-case-study-fe-digital-payment.png" alt="Payment after" /></div>
             </figure>
@@ -309,11 +343,11 @@
           <div class="ba">
             <figure>
               <figcaption>Onboarding</figcaption>
-              <div class="shot"><img src="./images/design-study/design-lg-landing-page-img.png" alt="Partner onboarding" /></div>
+              <div class="shot"><img src="./images/design-study/design-lg-landing-page-img.png?v=2" alt="Partner onboarding" /></div>
             </figure>
             <figure>
               <figcaption>Doc verification</figcaption>
-              <div class="shot"><img src="./images/design-study/design-doc-verification-img.png" alt="Doc verification" /></div>
+              <div class="shot"><img src="./images/design-study/design-doc-verification-img.png?v=2" alt="Doc verification" /></div>
             </figure>
           </div>
         </div>
@@ -333,11 +367,11 @@
           <div class="ba">
             <figure>
               <figcaption>Score</figcaption>
-              <div class="shot"><img src="./images/design-study/design-delhivery-premier-league-score-page.png" alt="DPL score" /></div>
+              <div class="shot"><img src="./images/design-study/design-delhivery-premier-league-score-page.png?v=2" alt="DPL score" /></div>
             </figure>
             <figure>
               <figcaption>Rank list</figcaption>
-              <div class="shot"><img src="./images/design-study/design-delhivery-premier-rank-page.png" alt="DPL rank" /></div>
+              <div class="shot"><img src="./images/design-study/design-delhivery-premier-rank-page.png?v=2" alt="DPL rank" /></div>
             </figure>
           </div>
         </div>
@@ -361,7 +395,6 @@
           <div class="stat"><div class="num">32<span class="accent">%</span></div><div class="cap">QR payment adoption (from 21%)</div></div>
           <div class="stat"><div class="num">₹2.5L<span class="accent">/day</span></div><div class="cap">Cash-handling cost saved</div></div>
           <div class="stat"><div class="num">~2<span class="accent">×</span></div><div class="cap">Design throughput after weekly sprints</div></div>
-          <div class="stat"><div class="num"><span class="ph">+__</span></div><div class="cap">Partner onboarding / delivery-success lift <span class="ph">[your number]</span></div></div>
         </div>
         <div class="reflection">
           <div class="q">"Great UX doesn't start in a Figma file — it starts in the field. Shipping what truly works at scale is where design leadership earns its mark."</div>
@@ -378,14 +411,24 @@
         </div>
         <div class="nextgrid">
           <a class="nextcard" href="./jiomart-discovery.html">
-            <div class="l">Case study</div>
-            <h4>Optimizing Product Discovery</h4>
-            <p>Making browsing effortless across homepage, PLP, and PDP at JioMart.</p>
+            <div class="nextthumb">
+              <img src="./images/enhanceProduct/heaser-top-right-img.png" alt="JioMart product discovery preview" />
+            </div>
+            <div class="nextinfo">
+              <div class="l">Case study</div>
+              <h4>Optimizing Product Discovery</h4>
+              <p>Making browsing effortless across homepage, PLP, and PDP at JioMart.</p>
+            </div>
           </a>
           <a class="nextcard" href="./jio-checkout.html">
-            <div class="l">Case study</div>
-            <h4>Streamlining Checkout XP</h4>
-            <p>From cart to payment — a smoother checkout for millions.</p>
+            <div class="nextthumb">
+              <img src="./images/stream-header-img.png" alt="Jio checkout experience preview" />
+            </div>
+            <div class="nextinfo">
+              <div class="l">Case study</div>
+              <h4>Streamlining Checkout XP</h4>
+              <p>From cart to payment — a smoother checkout for millions.</p>
+            </div>
           </a>
         </div>
       </div>
