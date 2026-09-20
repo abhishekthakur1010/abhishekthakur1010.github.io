@@ -116,7 +116,7 @@ body.csv2 {
       rgba(255, 255, 255, 0.96) 84%,
       rgba(255, 255, 255, 0.84) 100%
     ),
-    url("../images/design-study/design-top-header-bg.png");
+    url("../images/design-study/design-top-header-bg.png?v=2");
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
