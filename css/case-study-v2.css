@@ -300,6 +300,22 @@ body.csv2 {
   padding: 24px 0 0;
   position: relative;
 }
+/* group sub-heading inside a showcase/section to separate blocks */
+.csv2 .group-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+  margin: 40px 0 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.csv2 .group-label.first {
+  margin-top: 8px;
+  padding-top: 0;
+  border-top: none;
+}
 .csv2 .showgrid {
   columns: 4;
   column-gap: 16px;
@@ -350,11 +366,46 @@ body.csv2 {
 .csv2 .teamrow img:nth-child(3) { flex: 624 1 0; }
 .csv2 .teamrow img:nth-child(4) { flex: 304 1 0; }
 
+/* tall screen shots: show inside a fixed-height frame that scrolls to
+   reveal the full long screen instead of shrinking the whole image */
+.csv2 .ba figure.tall .shot {
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.csv2 .ba figure.tall .shot img {
+  width: 100%;
+  height: auto;
+  transition: none;
+}
+.csv2 .ba figure.tall:hover .shot img {
+  transform: none;
+}
+.csv2 .ba figure.tall .shot::-webkit-scrollbar {
+  width: 8px;
+}
+.csv2 .ba figure.tall .shot::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+}
+.csv2 .ba figure.tall figcaption::after {
+  content: " · scroll to view";
+  color: var(--faint);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 /* research & process artifacts — full-width framed diagrams */
 .csv2 .research {
   display: grid;
   gap: 22px;
   margin-top: 28px;
+}
+.csv2 .group-label + .research {
+  margin-top: 0;
 }
 .csv2 .research figure {
   border: 1px solid var(--line);
@@ -397,6 +448,60 @@ body.csv2 {
   width: 100%;
   height: auto;
   margin: 0;
+}
+/* uniform row of equal-height frames; each tall screen scrolls
+   vertically inside its frame so tops/bottoms all align */
+.csv2 .showgrid.showgrid-scroll {
+  columns: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+}
+.csv2 .showgrid.showgrid-scroll .shot-frame {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 360px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.csv2 .showgrid.showgrid-scroll .shot-frame img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  display: block;
+}
+.csv2 .showgrid.showgrid-scroll .shot-frame::-webkit-scrollbar {
+  width: 6px;
+}
+.csv2 .showgrid.showgrid-scroll .shot-frame::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: 6px;
+}
+.csv2 .showgrid.showgrid-scroll .shot-cell {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.csv2 .showgrid.showgrid-scroll .shot-cell .shot-frame {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.csv2 .showgrid.showgrid-scroll .shot-name {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--faint);
+  letter-spacing: 0.01em;
+  line-height: 1.3;
 }
 
 /* ---------- Section scaffolding ---------- */
