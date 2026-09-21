@@ -126,6 +126,19 @@
     strip.style.zIndex = "9995";
   }
 
+  // vertically center the site's scroll-to-top button on the strip's
+  // baseline so the arrow, strip, and WhatsApp button all line up
+  var scrollBtn = document.getElementById("scrollTopBtn");
+  function alignScrollBtn() {
+    if (!scrollBtn || !strip) return;
+    var r = strip.getBoundingClientRect();
+    if (!r.height) return;
+    var sz = scrollBtn.offsetHeight || 44;
+    scrollBtn.style.bottom =
+      window.innerHeight - (r.top + r.height / 2) - sz / 2 + "px";
+    scrollBtn.style.top = "auto";
+  }
+
   /* Keep the button parked just to the RIGHT of the strip, centered
      on the strip's vertical middle. Recomputed on resize/scroll so it
      always tucks against / emerges from the strip's right edge. */
@@ -152,6 +165,7 @@
       fab.style.setProperty("--wa-hidden-x", "-64px");
     }
     placePanel();
+    alignScrollBtn();
   }
 
   /* Anchor the panel just above the launcher, right edges aligned,

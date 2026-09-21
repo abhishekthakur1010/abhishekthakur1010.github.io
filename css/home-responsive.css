@@ -276,6 +276,9 @@
   align-items: center !important;
   justify-content: center !important;
   left: auto !important;
+  /* override slick's base translate(0,-50%) so hover transforms don't
+     shift the button vertically */
+  transform: none !important;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 /* Align the arrow pair with the RIGHT edge of the heading's container
@@ -285,20 +288,24 @@
   right: max(20px, calc((100% - 808px) / 2)) !important;
 }
 .recommendSliderVariable .slick-prev {
-  right: calc(max(20px, (100% - 808px) / 2) + 54px) !important;
+  right: calc(max(20px, (100% - 808px) / 2) + 52px) !important;
 }
 @media (min-width: 1780px) and (max-width: 1920px) {
   .recommendSliderVariable .slick-next {
     right: calc((100% - 1069px) / 2) !important;
   }
   .recommendSliderVariable .slick-prev {
-    right: calc((100% - 1069px) / 2 + 54px) !important;
+    right: calc((100% - 1069px) / 2 + 52px) !important;
   }
 }
 .recommendSliderVariable .slick-prev:hover,
 .recommendSliderVariable .slick-next:hover {
   background: #000000 !important;
-  transform: translateY(-1px);
+  transform: scale(1.08) !important;
+}
+.recommendSliderVariable .slick-prev:active,
+.recommendSliderVariable .slick-next:active {
+  transform: scale(0.94) !important;
 }
 
 /* Crisp, centered SVG chevrons (no more off-center PNGs) */
