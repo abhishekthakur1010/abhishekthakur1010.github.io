@@ -22,14 +22,14 @@
 
   var css =
     "" +
-    ".wa-fab{position:fixed;right:58px;bottom:118px;z-index:10000;width:56px;height:56px;border:none;border-radius:50%;" +
+    ".wa-fab{position:fixed;right:54px;bottom:120px;z-index:10000;width:56px;height:56px;border:none;border-radius:50%;" +
     "background:#25D366;box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;justify-content:center;" +
     "transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease;}" +
     ".wa-fab:hover{transform:scale(1.06);box-shadow:0 12px 30px rgba(0,0,0,.28);}" +
     ".wa-fab svg{width:32px;height:32px;}" +
     ".wa-fab .wa-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:#ff3b30;color:#fff;" +
     "border-radius:50%;font:700 11px/18px 'Poppins',sans-serif;text-align:center;border:2px solid #fff;}" +
-    ".wa-panel{position:fixed;right:58px;bottom:184px;z-index:10001;width:340px;max-width:calc(100vw - 32px);" +
+    ".wa-panel{position:fixed;right:54px;bottom:188px;z-index:10001;width:340px;max-width:calc(100vw - 32px);" +
     "background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.26);font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;" +
     "opacity:0;transform:translateY(12px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .22s cubic-bezier(.22,1,.36,1);}" +
     ".wa-panel.wa-open{opacity:1;transform:none;pointer-events:auto;}" +
@@ -47,7 +47,7 @@
     ".wa-send{flex:0 0 auto;width:42px;height:42px;border:none;border-radius:50%;background:#25D366;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s ease;}" +
     ".wa-send:hover{transform:scale(1.06);}" +
     ".wa-send svg{width:20px;height:20px;fill:#fff;}" +
-    "@media (max-width:768px){.wa-fab{right:18px;bottom:104px;width:52px;height:52px;}.wa-fab svg{width:28px;height:28px;}.wa-panel{right:14px;left:14px;width:auto;max-width:none;bottom:166px;}}";
+    "@media (max-width:768px){.wa-fab{right:10px;bottom:98px;width:52px;height:52px;}.wa-fab svg{width:28px;height:28px;}.wa-panel{right:14px;left:14px;width:auto;max-width:none;bottom:160px;}}";
 
   var style = document.createElement("style");
   style.textContent = css;
