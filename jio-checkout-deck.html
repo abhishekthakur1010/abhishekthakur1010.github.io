@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JioMart Checkout — Case Study Deck · Abhishek Thakur</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/deck.css?v=1" rel="stylesheet" />
+  </head>
+
+  <body class="deck">
+    <!-- Progress bar -->
+    <div class="deck-progress"><span id="deckBar"></span></div>
+
+    <!-- Top bar -->
+    <header class="deck-top">
+      <a class="deck-brand" href="./jio-checkout.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Full case study
+      </a>
+      <div class="deck-title-mini">JioMart · Checkout XP</div>
+      <div class="deck-count"><b id="deckNow">1</b> / <span id="deckTotal">10</span></div>
+    </header>
+
+    <!-- Slides -->
+    <main class="deck-stage" id="deckStage">
+      <!-- 01 — Cover -->
+      <section class="slide slide-cover is-active" data-label="Intro">
+        <div class="s-inner">
+          <div class="s-copy">
+            <div class="s-tag">Case study · E-commerce</div>
+            <h1>The checkout that was <span class="hl">quietly leaking</span> users.</h1>
+            <p class="s-sub">How a cart-to-payment redesign lifted JioMart's conversion by 20.5%.</p>
+            <div class="s-hint">Use → or click to move · <kbd>F</kbd> for fullscreen</div>
+          </div>
+          <div class="s-visual">
+            <div class="phone-pop">
+              <img src="./images/stream-study/stream-case-study-order-success-page.png" alt="Redesigned order success screen" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 — The stage -->
+      <section class="slide slide-split" data-label="Context">
+        <div class="s-inner">
+          <div class="s-copy">
+            <div class="s-num">01</div>
+            <div class="s-tag">The context</div>
+            <h2>Every shopping trip ends at one screen.</h2>
+            <p class="s-sub">Checkout is the exit door — where intent turns into a purchase, or an abandoned cart. JioMart's was never truly optimized.</p>
+          </div>
+          <div class="s-visual">
+            <div class="phone-pop soft">
+              <img src="./images/stream-study/stream-case-study-cart-page-before-01.png" alt="Original cart page" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 — The problem (big idea) -->
+      <section class="slide slide-statement" data-label="Problem">
+        <div class="s-inner center">
+          <div class="s-num">02</div>
+          <div class="s-tag">The problem</div>
+          <h2 class="big">Functional on the surface.<br /><span class="muted">Friction underneath.</span></h2>
+          <div class="chips">
+            <span>Buried cart</span>
+            <span>No delivery clarity</span>
+            <span>Clunky coupons</span>
+            <span>Long address form</span>
+            <span>Cluttered payment</span>
+            <span>…and it felt flat</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 — Insight -->
+      <section class="slide slide-statement alt" data-label="Insight">
+        <div class="s-inner center">
+          <div class="s-num">·</div>
+          <div class="s-tag">The insight</div>
+          <h2 class="big">Checkout felt like a <span class="hl">chore</span>,<br />not a continuation of shopping.</h2>
+          <p class="s-sub wide">So we rebuilt it around one idea: make it fast, clear, and rewarding — every step.</p>
+        </div>
+      </section>
+
+      <!-- 05 — Solution: Cart -->
+      <section class="slide slide-ba" data-label="Cart">
+        <div class="s-inner">
+          <div class="s-copy">
+            <div class="s-tag">Solution · Cart</div>
+            <h2>A cart that helps you decide.</h2>
+            <p class="s-sub">One clear primary action. Everything else steps back. Best coupon applied automatically, savings colour-coded.</p>
+          </div>
+          <div class="s-visual ba">
+            <figure><span class="ba-tag">Before</span><img src="./images/stream-study/stream-case-study-cart-page-before-01.png" alt="Cart before" /></figure>
+            <figure class="after"><span class="ba-tag">After</span><img src="./images/stream-study/stream-case-study-cart-page-01.png" alt="Cart after" /></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 — Solution: Payment -->
+      <section class="slide slide-ba" data-label="Payment">
+        <div class="s-inner">
+          <div class="s-copy">
+            <div class="s-tag">Solution · Payment</div>
+            <h2>The amount, always in view.</h2>
+            <p class="s-sub">Never make a user scroll to find what they owe. Cut the length, kept the payable amount pinned, surfaced every method upfront.</p>
+          </div>
+          <div class="s-visual ba">
+            <figure><span class="ba-tag">Before</span><img src="./images/stream-study/stream-case-study-payment-page-before.png" alt="Payment before" /></figure>
+            <figure class="after"><span class="ba-tag">After</span><img src="./images/stream-study/stream-case-study-payment-page.png" alt="Payment after" /></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 — Solution: Order Success -->
+      <section class="slide slide-ba" data-label="Delight">
+        <div class="s-inner">
+          <div class="s-copy">
+            <div class="s-tag">Solution · Order success</div>
+            <h2>End on a reward. Loop back to browsing.</h2>
+            <p class="s-sub">A clear savings callout, ordered items front and centre, and a primary "Continue shopping" CTA turn the last screen into the next trip.</p>
+          </div>
+          <div class="s-visual ba">
+            <figure><span class="ba-tag">Before</span><img src="./images/stream-study/stream-case-study-order-success-page-before.png" alt="Order success before" /></figure>
+            <figure class="after"><span class="ba-tag">After</span><img src="./images/stream-study/stream-case-study-order-success-page.png" alt="Order success after" /></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 — Coupons -->
+      <section class="slide slide-split reverse" data-label="Coupons">
+        <div class="s-inner">
+          <div class="s-copy">
+            <div class="s-tag">Solution · Coupons</div>
+            <h2>Move savings to the <span class="hl">start</span>.</h2>
+            <p class="s-sub">A dedicated coupon store lets shoppers browse and apply offers early — not fumble for them at the last step.</p>
+          </div>
+          <div class="s-visual">
+            <div class="phone-pop soft">
+              <img src="./images/stream-study/stream-case-study-coupon-page.png" alt="Coupon store" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 — Impact (numbers) -->
+      <section class="slide slide-impact" data-label="Impact">
+        <div class="s-inner center">
+          <div class="s-num">04</div>
+          <div class="s-tag light">The impact</div>
+          <div class="metrics">
+            <div class="metric"><div class="mn" data-count="20.5" data-suffix="%">+0<em>%</em></div><div class="ml">E-commerce conversion</div></div>
+            <div class="metric"><div class="mn" data-count="29" data-suffix="%">+0<em>%</em></div><div class="ml">New users</div></div>
+            <div class="metric"><div class="mn" data-count="8.15" data-suffix="%">+0<em>%</em></div><div class="ml">Orders placed</div></div>
+            <div class="metric"><div class="mn" data-count="36" data-suffix="%">-0<em>%</em></div><div class="ml">Support calls</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 — Close -->
+      <section class="slide slide-close" data-label="Reflection">
+        <div class="s-inner center">
+          <blockquote>
+            "Every frustration you remove is a leak in trust you seal.
+            Fixing checkout isn't UX polish — it's business-critical."
+          </blockquote>
+          <div class="close-cta">
+            <a class="btn primary" href="./jio-checkout.html">Read the full case study</a>
+            <a class="btn ghost" href="./index.html">See more work</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Nav controls -->
+    <button class="deck-nav prev" id="deckPrev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="deck-nav next" id="deckNext" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <nav class="deck-dots" id="deckDots" aria-label="Slide navigation"></nav>
+
+    <script src="./js/deck.js" defer></script>
+  </body>
+</html>
