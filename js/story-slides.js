@@ -1,350 +1,235 @@
 /* ============================================================
-   JioMart Discovery — "From Browsing to Believing"
-   SLIDE DATA (content only — rendering lives in story.js)
-   Central thesis: JioMart wasn't asking users to click too much.
-   It was asking them to trust with too little evidence.
-   Trust = Clarity + Proof + Control
+   JioMart Discovery — "Come shopping with Priya"
+   Interactive product walkthrough (Growth.Design style)
+   SCENE + BEAT model.  Content only — rendering in story.js.
+
+   Journey rail:  HOME → PLP → PDP → CART
+   Micro rail:    ACTION → FRICTION → WHY → DESIGN MOVE → SIGNAL
+
+   Walkthrough beat fields:
+     micro   : 0-4 index into [Action,Friction,Why,Design move,Signal]
+     view    : "before" | "after"  (which screen the device shows)
+     focus   : 0-1 vertical focus point on the screenshot
+     react   : Priya's short line (speech bubble)
+     hi      : [{x,y,w,h}] highlight boxes on the device (percent)
+     note    : short insight/why line shown beside the UI
+     research: small "observed through" tag (optional)
+     signal  : [{t,dir}] qualitative experience signals (dir up|down)
    ============================================================ */
 window.STORY = {
   imgBase: "./images/enhanceProduct/",
-  slides: [
-    /* 01 — COVER */
+  microLabels: ["Action", "Friction", "Why", "Design move", "Signal"],
+  journey: [
+    { k: "home", s: "Home", d: "Orient" },
+    { k: "plp", s: "PLP", d: "Compare" },
+    { k: "pdp", s: "PDP", d: "Believe" },
+    { k: "cart", s: "Cart", d: "Commit" }
+  ],
+  scenes: [
+    /* 01 — OPENING */
     {
       type: "cover",
       eyebrow: "JioMart · Product Discovery · DS 2.0",
       headline: ["From browsing", "to believing."],
       body:
-        "How we redesigned discovery across Home, PLP and PDP to reduce cognitive load and help shoppers decide with confidence.",
+        "I led JioMart's discovery redesign across Home, PLP and PDP as part of DS 2.0. It looked like a discovery problem. It became a confidence problem.",
       img: "Hero.png",
-      meta: [
-        { l: "Role", v: "Design Lead — Product Discovery" },
-        { l: "Timeline", v: "Aug 2023 – Oct 2023" },
-        { l: "Surfaces", v: "Home · Search · PLP · PDP" },
-        { l: "Context", v: "JioMart DS 2.0" }
-      ],
-      cta: "Press → to begin"
+      cta: "Press → to start shopping"
     },
 
-    /* 02 — SETTING THE STAGE */
+    /* 02 — PRODUCT CONTEXT */
     {
-      type: "statement",
-      eyebrow: "Stage 1 · The setup",
-      headline: ["Millions came to shop.", "But browsing didn't always", "lead to belief."],
-      body:
-        "People came to JioMart ready to buy. But inconsistent navigation, unclear information and weak product cues made simple decisions feel like work.",
-      note: "And every unanswered question weakened confidence."
+      type: "journey-map",
+      eyebrow: "The battlefield",
+      headline: ["Where users orient,", "compare and decide."],
+      flow: ["Home", "Search", "PLP", "PDP", "Cart"],
+      active: ["Home", "PLP", "PDP"],
+      note: "Three moments decided whether browsing became buying."
     },
 
     /* 03 — MEET PRIYA */
     {
       type: "priya",
-      eyebrow: "Our shopper",
-      headline: ["Meet Priya."],
-      body:
-        "32, Navi Mumbai. It's 9 PM. She needs atta, shampoo, and maybe that air fryer everyone keeps recommending. She isn't here to explore an interface — she just wants to make the right choice.",
-      modules: [
-        { l: "Goal", v: "Find the right things quickly." },
-        { l: "Behaviour", v: "Scans first. Reads when needed." },
-        { l: "Expectation", v: "\u201CShow me enough to know I'm making the right choice.\u201D" }
-      ],
-      note: "Priya isn't impatient. She's busy.",
-      side: "right"
+      eyebrow: "Come shopping with",
+      name: "Priya · 32",
+      body: "Shopping after work. Scans fast, reads only when it matters.",
+      thought: "\u201CNeed atta, shampoo… and maybe an air fryer.\u201D",
+      cta: "Let's open the app."
     },
 
-    /* 04 — THE FRICTION */
+    /* 04 — HOME walkthrough */
     {
-      type: "friction",
-      eyebrow: "The experience",
-      headline: ["Every screen asked Priya", "to think too much."],
-      img: "enhance-final-old-home-page.png",
-      reveals: [
-        "Icons changed meaning.",
-        "Categories competed for attention.",
-        "Products looked similar.",
-        "Important information came too late.",
-        "Ratings and reviews were easy to miss.",
-        "Seller, return and delivery info required hunting."
-      ],
-      end: ["More cognitive load.", "Less confidence."],
-      emotion: "confused"
+      type: "walkthrough",
+      stage: "home",
+      eyebrow: "01 · Home — Orient",
+      before: "enhance-final-old-home-page.png",
+      after: "enhance-final-new-home-page.png?v=2",
+      beats: [
+        { micro: 0, view: "before", focus: 0.12, react: "Okay… where do I start?",
+          note: "Priya lands on Home and scans for a starting point." },
+        { micro: 1, view: "before", focus: 0.2,
+          hi: [{ x: 6, y: 20, w: 88, h: 16 }],
+          note: "Categories, promos, search and scan all competed for first attention.",
+          research: "Heuristic evaluation" },
+        { micro: 2, view: "before", focus: 0.22,
+          hi: [{ x: 6, y: 22, w: 88, h: 12 }],
+          note: "Inconsistent icons meant meaning had to be interpreted, not recognised.",
+          research: "Behavioural data",
+          signal: [{ t: "Cognitive effort", dir: "up" }] },
+        { micro: 3, view: "after", focus: 0.2,
+          hi: [{ x: 6, y: 18, w: 88, h: 18 }],
+          note: "A consistent category system, clearer hierarchy and recognisable search / scan entry points." },
+        { micro: 4, view: "after", focus: 0.2, react: "Okay. I know where to go.",
+          signal: [{ t: "Orientation", dir: "up" }, { t: "Cognitive effort", dir: "down" }] }
+      ]
     },
 
-    /* 05 — THE REFRAME */
+    /* 05 — PLP walkthrough */
     {
-      type: "reframe",
-      eyebrow: "The reframe",
-      pre: ["The problem wasn't", "discovery alone."],
-      reveal: "It was trust.",
+      type: "walkthrough",
+      stage: "plp",
+      eyebrow: "02 · PLP — Compare",
+      before: "enhance-final-old-plp-page.png",
+      after: "enhance-final-new-plp-page.png",
+      beats: [
+        { micro: 0, view: "before", focus: 0.35, react: "Which one is actually better?",
+          note: "Priya searches for an air fryer and starts comparing." },
+        { micro: 1, view: "before", focus: 0.45,
+          hi: [{ x: 6, y: 34, w: 88, h: 30 }],
+          note: "Every card looked equally important — nothing guided the eye." },
+        { micro: 2, view: "before", focus: 0.5,
+          hi: [{ x: 8, y: 40, w: 40, h: 20 }],
+          note: "Small imagery, hidden ratings and flat price hierarchy made comparison mental work.",
+          research: "Competitive benchmarking",
+          signal: [{ t: "Decision effort", dir: "up" }] },
+        { micro: 3, view: "after", focus: 0.46,
+          hi: [{ x: 6, y: 32, w: 88, h: 34 }],
+          note: "Larger imagery, visible ratings, clear price hierarchy, filters and a wishlist to defer choices." },
+        { micro: 4, view: "after", focus: 0.46, react: "This one looks promising.",
+          signal: [{ t: "Scannability", dir: "up" }, { t: "Comparison effort", dir: "down" }, { t: "Decision confidence", dir: "up" }] }
+      ]
+    },
+
+    /* 06 — PDP TRUST MOMENT (dramatic) */
+    {
+      type: "pdp-trust",
+      eyebrow: "03 · PDP — Believe",
+      img: "enhance-final-old-pdp-1st-fold.png",
+      focus: 0.3,
       questions: [
-        { q: "\u201CCan I find it?\u201D", t: "Navigation problem" },
-        { q: "\u201CIs this the right one?\u201D", t: "Decision problem" },
-        { q: "\u201CCan I trust it?\u201D", t: "Confidence problem" }
+        "Is this actually good?",
+        "Which variant?",
+        "When will it arrive?",
+        "Can I return it?",
+        "Who is selling it?",
+        "What do others think?"
       ],
-      note: "We needed to solve all three."
+      reveal: "This was the trust gap."
     },
 
-    /* 06 — TRUST LEAKS */
+    /* 07 — PDP DIAGNOSIS (scroll old PDP, pin issues) */
     {
-      type: "hotspots",
-      eyebrow: "Where confidence broke",
-      headline: ["Trust was leaking", "at every step."],
-      hotspots: [
-        { n: "01", t: "Navigation", q: "Where should I go?", img: "enhance-final-old-home-page.png", focus: 0.14 },
-        { n: "02", t: "Visual language", q: "What does this mean?", img: "enhance-final-old-home-page.png", focus: 0.24 },
-        { n: "03", t: "Product information", q: "Which one is actually better?", img: "enhance-final-old-plp-page.png", focus: 0.5 },
-        { n: "04", t: "Social proof", q: "Has anyone else bought this?", img: "enhance-final-old-pdp-1st-fold.png", focus: 0.6 },
-        { n: "05", t: "Product credibility", q: "What exactly am I getting?", img: "enhance-final-old-pdp-3rd-fold.png", focus: 0.5 }
+      type: "walkthrough",
+      stage: "pdp",
+      eyebrow: "PDP — Diagnosis",
+      before: "enhance-final-old-pdp-1st-fold.png",
+      after: "enhance-final-old-pdp-3rd-fold.png",
+      staticView: true,
+      beats: [
+        { micro: 0, view: "before", focus: 0.1, react: "Let me evaluate before I buy.",
+          note: "Priya needs reassurance — fast." },
+        { micro: 1, view: "before", focus: 0.2,
+          hi: [{ x: 8, y: 8, w: 84, h: 24 }],
+          note: "Images: not enough product context.", research: "Heuristic evaluation" },
+        { micro: 1, view: "before", focus: 0.45,
+          hi: [{ x: 8, y: 40, w: 84, h: 14 }],
+          note: "Variants harder to compare · offers had weak hierarchy." },
+        { micro: 2, view: "before", focus: 0.7,
+          hi: [{ x: 8, y: 62, w: 84, h: 16 }],
+          note: "Seller trust hidden · specs too text-heavy · returns surfaced too late.",
+          signal: [{ t: "Unanswered questions", dir: "up" }] },
+        { micro: 2, view: "before", focus: 0.9,
+          hi: [{ x: 8, y: 82, w: 84, h: 14 }],
+          note: "Reviews were weak social validation — right when doubt peaks." }
       ]
     },
 
-    /* 07 — RESEARCH */
+    /* 08 — TRUST FRAMEWORK */
     {
-      type: "research",
-      eyebrow: "Stage 2 · Understanding the problem",
-      headline: ["Before redesigning screens,", "we mapped where", "confidence broke."],
-      cards: [
-        { t: "Heuristic evaluation", d: "Where does the interface make people stop and think?" },
-        { t: "Behaviour + heatmaps", d: "What are shoppers engaging with, skipping or abandoning?" },
-        { t: "Competitive benchmarking", d: "How do mature marketplaces reduce uncertainty?" },
-        { t: "User journey review", d: "What information does someone need at each decision?" }
-      ]
-    },
-
-    /* 08 — RESEARCH FINDINGS */
-    {
-      type: "findings",
-      eyebrow: "What we learned",
-      headline: ["Five patterns", "kept repeating."],
-      reveals: [
-        "People recognised faster than they recalled.",
-        "Too many choices slowed decisions.",
-        "Inconsistent patterns created hesitation.",
-        "Missing context reduced product confidence.",
-        "Social proof mattered near the decision."
-      ],
-      end: ["Trust wasn't one feature.", "It was the sum of dozens", "of small signals."]
-    },
-
-    /* 09 — TRUST FRAMEWORK */
-    {
-      type: "equation",
+      type: "trust-framework",
       eyebrow: "The model",
       headline: ["So we reduced trust", "to three ingredients."],
       pillars: [
-        { k: "Clarity", d: "I understand what I'm seeing." },
-        { k: "Proof", d: "I have reasons to believe it." },
-        { k: "Control", d: "I can compare, filter, save and change my mind." }
-      ],
-      note: "Every major design decision had to strengthen at least one."
-    },
-
-    /* 10 — PRINCIPLE 1 */
-    {
-      type: "principle-text",
-      eyebrow: "Design principle 01",
-      headline: ["Reduce thinking", "before adding features."],
-      contrast: { bad: "More widgets \u2260 better discovery", good: "Better hierarchy \u2192 easier discovery" },
-      body:
-        "We simplified structure, reduced competing signals and made important actions easier to recognise."
-    },
-
-    /* 11 — PRINCIPLE 2 */
-    {
-      type: "principle-morph",
-      eyebrow: "Design principle 02",
-      headline: ["Recognition", "over recall."],
-      before: "enhance-final-old-home-page.png",
-      after: "enhance-final-new-home-page.png?v=2",
-      focus: 0.22,
-      points: ["Consistent iconography", "Predictable placement", "Clear labels", "Familiar visual patterns"],
-      note: "If shoppers have to remember what an icon means, the interface is already asking too much."
-    },
-
-    /* 12 — PRINCIPLE 3 */
-    {
-      type: "principle-stack",
-      eyebrow: "Design principle 03",
-      headline: ["Show proof", "where doubt appears."],
-      stack: ["Product", "Price", "Rating", "Reviews", "Delivery", "Returns"],
-      note: "Don't make shoppers hunt for reassurance."
-    },
-
-    /* 13 — TRANSITION TO SOLUTION */
-    {
-      type: "journey",
-      eyebrow: "Stage 3 · The redesign",
-      headline: ["Same Priya.", "Same shopping list.", "Different experience."],
-      body:
-        "Instead of redesigning three isolated screens, we rebuilt one continuous confidence journey.",
-      steps: [
-        { s: "Home", d: "Orient" },
-        { s: "Search", d: "Focus" },
-        { s: "PLP", d: "Narrow" },
-        { s: "PDP", d: "Believe" }
-      ],
-      note: "One journey. Different questions."
-    },
-
-    /* 14 — HOME */
-    {
-      type: "ui",
-      eyebrow: "01 · Orient",
-      headline: ["Home should answer", "one question first."],
-      sub: "\u201CWhere do I begin?\u201D",
-      before: "enhance-final-old-home-page.png",
-      after: "enhance-final-new-home-page.png?v=2",
-      focus: 0.2,
-      annotations: [
-        "Consistent categories",
-        "Clear search",
-        "Scan + voice entry points",
-        "Simpler promotional hierarchy",
-        "Better navigation grouping"
-      ],
-      note: "Less interpreting. More moving.",
-      emotion: "curious"
-    },
-
-    /* 15 — ICON INTERACTION */
-    {
-      type: "icon-guess",
-      eyebrow: "A quick test",
-      headline: ["Can you tell what", "these icons do?"],
-      reveal: "Neither could everyone else.",
-      final: "Recognition beats memorisation."
-    },
-
-    /* 16 — PLP */
-    {
-      type: "ui",
-      eyebrow: "02 · Narrow",
-      headline: ["Finding products", "wasn't enough."],
-      sub: "Priya needed help choosing between them.",
-      before: "enhance-final-old-plp-page.png",
-      after: "enhance-final-new-plp-page.png",
-      focus: 0.46,
-      annotations: [
-        "Clearer filters",
-        "Simplified product cards",
-        "Visible ratings",
-        "Clear price + discount hierarchy",
-        "Best Seller / Trending signals",
-        "Larger product imagery"
-      ],
-      note: "The listing stopped being a catalogue. It became a decision tool.",
-      emotion: "curious"
-    },
-
-    /* 17 — SOCIAL PROOF */
-    {
-      type: "social-proof",
-      eyebrow: "Proof near the decision",
-      headline: ["Let other shoppers", "reduce the uncertainty."],
-      chips: ["4.6 ★", "122 reviews", "Best Seller", "10% OFF"],
-      body:
-        "Ratings, reviews and useful popularity signals help shoppers understand where to look first.",
-      flow: { a: "Social proof", b: "Lower uncertainty" },
-      img: "enhance-final-new-plp-page.png",
-      focus: 0.46,
-      side: "right"
-    },
-
-    /* 18 — PDP TRANSITION */
-    {
-      type: "pdp-transition",
-      eyebrow: "The moment of commitment",
-      pre: ["Then came the page", "where trust mattered most."],
-      reveal: "The PDP.",
-      questions: [
-        "\u201CDoes this look genuine?\u201D",
-        "\u201CWhich variant?\u201D",
-        "\u201CWhen will it arrive?\u201D",
-        "\u201CCan I return it?\u201D",
-        "\u201CDo people actually like it?\u201D",
-        "\u201CWho is selling it?\u201D"
-      ],
-      note: "This is where browsing becomes commitment.",
-      img: "enhance-final-old-pdp-1st-fold.png",
-      focus: 0.3
-    },
-
-    /* 19 — PDP FIRST FOLD */
-    {
-      type: "ui",
-      eyebrow: "03 · Believe",
-      headline: ["Answer doubt before", "asking for commitment."],
-      before: "enhance-final-old-pdp-1st-fold.png",
-      after: "enhance-final-new-pdp-1st-fold.png",
-      focus: 0.42,
-      annotations: [
-        "High-quality contextual imagery",
-        "Brand + product hierarchy",
-        "Ratings + reviews",
-        "Variants upfront",
-        "Price + discount clarity",
-        "Delivery location"
-      ],
-      note: "Trust before Add to Cart.",
-      emotion: "happy"
-    },
-
-    /* 20 — PDP DEEPER JOURNEY (scrollable) */
-    {
-      type: "pdp-scroll",
-      eyebrow: "The deeper page",
-      headline: ["Confidence", "has layers."],
-      img: "enhance-final-new-pdp-1st-fold.png",
-      layers: [
-        { focus: 0.05, q: "What am I buying?", d: "Images + specifications" },
-        { focus: 0.3, q: "Is it worth it?", d: "Price + offers" },
-        { focus: 0.55, q: "Can I trust it?", d: "Reviews + seller + trust signals" },
-        { focus: 0.78, q: "What if something goes wrong?", d: "Delivery + returns" },
-        { focus: 1.0, q: "What else could work?", d: "Similar products + recently viewed" }
+        { k: "Clarity", d: "Do I understand the product?" },
+        { k: "Proof", d: "Why should I believe it?" },
+        { k: "Control", d: "Can I inspect, compare or change my mind?" }
       ]
     },
 
-    /* 21 — UGC */
+    /* 09 — NEW PDP VERTICAL JOURNEY (hero) */
     {
-      type: "ui",
-      eyebrow: "The reassurance layer",
-      headline: ["JioMart could describe", "the product."],
-      sub: "Shoppers needed other shoppers to validate it.",
-      before: "enhance-final-old-pdp-5th-fold.png",
-      after: "enhance-final-new-pdp-5th-fold.png",
-      focus: 0.4,
-      annotations: [
-        "Ratings distribution",
-        "Photo reviews",
-        "Review filters",
-        "Helpful / like interaction",
-        "View all reviews"
-      ],
-      note: "Brand information creates understanding. UGC creates reassurance.",
-      emotion: "happy"
+      type: "pdp-scroll",
+      eyebrow: "PDP rebuilt — the confidence journey",
+      img: "enhance-final-new-pdp-1st-fold.png",
+      layers: [
+        { focus: 0.05, tag: "Clarity", q: "First fold", d: "Imagery · brand/product hierarchy · variants · pricing · delivery", signal: { t: "Product understanding", dir: "up" } },
+        { focus: 0.32, tag: "Proof", q: "Offers & seller", d: "Offers · seller information · trust badges · key features", signal: { t: "Credibility", dir: "up" } },
+        { focus: 0.58, tag: "Proof from people", q: "Reviews & UGC", d: "Ratings distribution · photo reviews · filters · helpful actions", signal: { t: "Social reassurance", dir: "up" } },
+        { focus: 0.82, tag: "Control", q: "Policies & discovery", d: "Compare · returns · similar products · recently viewed", signal: { t: "Decision control", dir: "up" } }
+      ]
     },
 
-    /* 22 — COGNITIVE LOAD BEFORE/AFTER */
+    /* 10 — SPOT THE ISSUE (interaction) */
     {
-      type: "load",
-      eyebrow: "The transformation",
+      type: "spot-issue",
+      eyebrow: "Before I tell you what we found…",
+      headline: ["What would you look for", "before buying this?"],
+      img: "enhance-final-old-pdp-1st-fold.png",
+      focus: 0.35,
+      reveals: ["Ratings", "Delivery", "Seller", "Returns", "Reviews"],
+      end: "These were exactly the signals that weren't prominent enough."
+    },
+
+    /* 11 — UGC (new reviews fold) */
+    {
+      type: "walkthrough",
+      stage: "pdp",
+      eyebrow: "PDP — Reassurance",
+      before: "enhance-final-old-pdp-5th-fold.png",
+      after: "enhance-final-new-pdp-5th-fold.png",
+      beats: [
+        { micro: 1, view: "before", focus: 0.4,
+          hi: [{ x: 8, y: 30, w: 84, h: 40 }],
+          note: "Brand could describe the product — but shoppers needed other shoppers to validate it." },
+        { micro: 3, view: "after", focus: 0.4,
+          hi: [{ x: 8, y: 28, w: 84, h: 44 }],
+          note: "Ratings distribution, photo reviews, filters and helpful actions — proof from people." },
+        { micro: 4, view: "after", focus: 0.4, react: "Others liked it too. Good.",
+          signal: [{ t: "Reassurance", dir: "up" }, { t: "Credibility", dir: "up" }] }
+      ]
+    },
+
+    /* 12 — BEFORE/AFTER MENTAL MODEL */
+    {
+      type: "mental-model",
+      eyebrow: "System thinking",
       headline: ["The interface stopped", "making Priya do the work."],
       before: ["Find", "Interpret", "Search", "Remember", "Compare", "Doubt"],
       after: ["Recognise", "Compare", "Trust", "Choose"],
-      note: "We removed decisions the interface should have made easier."
+      note: "We made the decision easier — not just the interface cleaner."
     },
 
-    /* 23 — IMPACT */
+    /* 13 — IMPACT + REFLECTION */
     {
       type: "impact",
-      eyebrow: "The impact",
+      eyebrow: "Impact & reflection",
       headline: ["Small clarity.", "Compounding confidence."],
       experience: [
-        "Simpler navigation",
-        "Stronger product hierarchy",
-        "Richer product information",
-        "More visible social proof",
-        "Clearer delivery / seller / return info",
-        "Improved discovery continuity"
+        { t: "Navigation clarity", dir: "up" },
+        { t: "Product scannability", dir: "up" },
+        { t: "Social proof visibility", dir: "up" },
+        { t: "Product confidence", dir: "up" },
+        { t: "Seller / return clarity", dir: "up" }
       ],
       metrics: [
         { n: 65, suffix: "%", sign: "+", l: "Monthly active users" },
@@ -352,17 +237,16 @@ window.STORY = {
         { n: 38, suffix: "%", sign: "+", l: "Revenue" },
         { n: 36, suffix: "%", sign: "-", l: "Support calls" }
       ],
-      disclaimer:
-        "Broader JioMart performance indicators — not solely attributable to this redesign."
+      metricsLabel: "Broader JioMart business context",
+      disclaimer: "Platform-level indicators — not solely attributable to this redesign."
     },
 
-    /* 24 — CLOSING */
+    /* 14 — CLOSING */
     {
       type: "closing",
       pre: ["People don't trust a marketplace", "because it tells them to."],
       reveal: ["They trust it when every interaction", "gives them fewer reasons to doubt."],
       note: "That became the principle behind JioMart Discovery 2.0.",
-      quote: "Good discovery isn't more content. It's the right evidence, at the right moment.",
       cta: [
         { label: "Explore full case study", href: "./jiomart-discovery.html", primary: true },
         { label: "Next project →", href: "./index.html" }
