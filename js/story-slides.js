@@ -70,15 +70,34 @@ window.STORY = {
         { micro: 1, view: "before", focus: 0.2,
           hi: [{ x: 6, y: 20, w: 88, h: 16 }],
           note: "Categories, promos, search and scan all competed for first attention.",
-          research: "Heuristic evaluation" },
+          research: "Heuristic evaluation",
+          evidence: {
+            method: "Heuristic evaluation",
+            img: "enhance-heuristic-evaluation.png", crop: 0.15,
+            finding: "Several discovery issues weren't isolated UI problems — they repeatedly violated consistency, recognition and usability principles.",
+            implication: "Reduce interpretation and make common actions predictable."
+          } },
         { micro: 2, view: "before", focus: 0.22,
           hi: [{ x: 6, y: 22, w: 88, h: 12 }],
           note: "Inconsistent icons meant meaning had to be interpreted, not recognised.",
           research: "Behavioural data",
-          signal: [{ t: "Cognitive effort", dir: "up" }] },
+          signal: [{ t: "Cognitive effort", dir: "up" }],
+          evidence: {
+            method: "Competitive benchmarking",
+            img: "enhance-competitive-01.png", crop: 0.4,
+            question: "How were mature commerce products helping shoppers orient faster?",
+            finding: "Strong marketplaces relied on familiar navigation patterns, clear hierarchy and predictable product structures.",
+            implication: "Borrow proven patterns instead of reinventing navigation."
+          } },
         { micro: 3, view: "after", focus: 0.2,
           hi: [{ x: 6, y: 18, w: 88, h: 18 }],
-          note: "A consistent category system, clearer hierarchy and recognisable search / scan entry points." },
+          note: "A consistent category system, clearer hierarchy and recognisable search / scan entry points.",
+          evidence: {
+            method: "Patterns & guidelines",
+            img: "enhance-categories-subcategories.png", crop: 0.3,
+            finding: "JioMart needed predictable component behaviour and content hierarchy across Home, PLP and PDP.",
+            implication: "Create reusable patterns instead of solving every widget independently."
+          } },
         { micro: 4, view: "after", focus: 0.2, react: "Okay. I know where to go.",
           signal: [{ t: "Orientation", dir: "up" }, { t: "Cognitive effort", dir: "down" }] }
       ]
@@ -96,7 +115,16 @@ window.STORY = {
           note: "Priya searches for an air fryer and starts comparing." },
         { micro: 1, view: "before", focus: 0.45,
           hi: [{ x: 6, y: 34, w: 88, h: 30 }],
-          note: "Every card looked equally important — nothing guided the eye." },
+          note: "Every card looked equally important — nothing guided the eye. The wishlist existed, but few users found it.",
+          evidence: {
+            method: "Usability testing · PLP",
+            img: "enhance-usability-test-plp.png", crop: 0.4, pending: true,
+            stat: "59.1% misclick rate",
+            stats: ["9 / 12 completed the task", "Avg 17.56s", "59.1% misclick"],
+            quote: "The action existed. Its affordance didn't.",
+            finding: "The feature existed, but discoverability was weak.",
+            implication: "Improve affordance, placement and product-card hierarchy."
+          } },
         { micro: 2, view: "before", focus: 0.5,
           hi: [{ x: 8, y: 40, w: 40, h: 20 }],
           note: "Small imagery, hidden ratings and flat price hierarchy made comparison mental work.",
@@ -104,7 +132,14 @@ window.STORY = {
           signal: [{ t: "Decision effort", dir: "up" }] },
         { micro: 3, view: "after", focus: 0.46,
           hi: [{ x: 6, y: 32, w: 88, h: 34 }],
-          note: "Larger imagery, visible ratings, clear price hierarchy, filters and a wishlist to defer choices." },
+          note: "We weren't redesigning a card. We were deciding what deserved attention first.",
+          evidence: {
+            method: "Product-card research",
+            img: "enhance-product-cards.png", crop: 0.4,
+            question: "What information actually helps someone compare a product?",
+            finding: "Across grocery, beauty, electronics and general goods, the same decision cues recurred: image, name, variant, rating, price, discount, availability.",
+            implication: "Design one card that surfaces the deciding cues first."
+          } },
         { micro: 4, view: "after", focus: 0.46, react: "This one looks promising.",
           signal: [{ t: "Scannability", dir: "up" }, { t: "Comparison effort", dir: "down" }, { t: "Decision confidence", dir: "up" }] }
       ]
@@ -166,6 +201,20 @@ window.STORY = {
       ]
     },
 
+    /* 08b — PRIORITISATION (short moment) */
+    {
+      type: "prioritise",
+      eyebrow: "From research to execution",
+      pre: ["We found more problems", "than we could solve at once."],
+      reveal: "So we prioritised.",
+      img: "enhance-insight-impact.png", crop: 0.4,
+      tiers: [
+        { k: "High impact · lower effort", d: "Faster wins" },
+        { k: "High impact · higher effort", d: "Planned strategically" },
+        { k: "Low impact", d: "Deprioritised" }
+      ]
+    },
+
     /* 09 — NEW PDP VERTICAL JOURNEY (hero) */
     {
       type: "pdp-scroll",
@@ -200,7 +249,17 @@ window.STORY = {
       beats: [
         { micro: 1, view: "before", focus: 0.4,
           hi: [{ x: 8, y: 30, w: 84, h: 40 }],
-          note: "Brand could describe the product — but shoppers needed other shoppers to validate it." },
+          note: "Brand could describe the product — but shoppers needed other shoppers to validate it.",
+          evidence: {
+            method: "User research · Reviews & ratings",
+            img: "enhance-reviews-research.png", crop: 0.4, pending: true,
+            themes: [
+              { h: "Writing reviews", p: "Users didn't always know where to write one — awareness of the flow was limited." },
+              { h: "Reading reviews", p: "\u201CAre they authentic? Relevant? What's good and bad? Is this helpful?\u201D" }
+            ],
+            finding: "The issue wasn't simply adding reviews.",
+            implication: "Make reviews useful enough to reduce doubt — summary, distribution, photos, filters, helpful actions."
+          } },
         { micro: 3, view: "after", focus: 0.4,
           hi: [{ x: 8, y: 28, w: 84, h: 44 }],
           note: "Ratings distribution, photo reviews, filters and helpful actions — proof from people." },

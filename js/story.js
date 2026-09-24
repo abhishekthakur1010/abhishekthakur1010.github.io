@@ -36,6 +36,7 @@
       case "trust-framework": return sc.pillars.length;
       case "pdp-scroll": return sc.layers.length - 1;
       case "spot-issue": return sc.reveals.length + 1;
+      case "prioritise": return (sc.tiers.length + 1);
       case "mental-model": return 2;
       case "impact": return 2;
       case "closing": return 2;
@@ -195,6 +196,19 @@
         "<div class='metrics reveal' data-step='2'>" + metrics + "</div>" +
         "<p class='disclaimer reveal' data-step='2'>" + esc(sc.disclaimer) + "</p></div></div>";
     },
+    prioritise: function (sc) {
+      var tiers = sc.tiers.map(function (t, i) {
+        return "<div class='ptier reveal' data-step='" + (i + 2) + "'><span class='pt-k'>" + esc(t.k) + "</span><span class='pt-d'>" + esc(t.d) + "</span></div>";
+      }).join("");
+      return "<div class='slide-split'><div class='col-copy'>" +
+        "<div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" +
+        "<div class='reframe-pre'>" + lines(sc.pre) + "</div>" +
+        "<div class='reframe-reveal reveal' data-step='1'>" + esc(sc.reveal) + "</div>" +
+        "<div class='ptiers'>" + tiers + "</div></div>" +
+        "<div class='col-visual'><div class='ev-img artifact' style='--crop:" + Math.round((sc.crop || 0.3) * 100) + "%'>" +
+        "<img src='" + img(sc.img) + "' alt='' onerror=\"this.parentElement.classList.add('failed')\"><span class='artifact-tag'>Impact / effort matrix</span></div></div></div>";
+    },
+
     closing: function (sc) {
       var ctas = sc.cta.map(function (c) { return "<a class='btn " + (c.primary ? "primary" : "ghost") + "' href='" + c.href + "'>" + esc(c.label) + "</a>"; }).join("");
       return "<div class='slide-statement center closing'>" +
@@ -211,6 +225,7 @@
       "<div class='wt-react'></div>" +
       "<div class='wt-note'></div>" +
       "<div class='wt-research'></div>" +
+      "<div class='wt-evidence'></div>" +
       "<div class='wt-signals'></div></div>" +
       "<div class='col-visual'>" + deviceHTML(sc.before, sc.after) + "</div></div>";
   }
@@ -345,7 +360,60 @@
       }).join("");
     }
 
+    // evidence pill
+    var ev = curSceneEl.querySelector(".wt-evidence");
+    if (ev) {
+      if (beat.evidence) {
+        ev.innerHTML = "<button class='evidence-pill'>" +
+          "<span>Behind the decision · " + esc(beat.evidence.method) + "</span>" +
+          "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17L17 7M17 7H8M17 7v9'/></svg></button>";
+        ev.querySelector(".evidence-pill").addEventListener("click", function (e) {
+          e.stopPropagation();
+          openEvidence(beat.evidence);
+        });
+      } else {
+        ev.innerHTML = "";
+      }
+    }
+
     renderMicro(beat.micro);
+  }
+
+  /* ---------- Evidence overlay ---------- */
+  function openEvidence(ev) {
+    var panel = document.getElementById("evidencePanel");
+    if (!panel) return;
+    var statsHTML = ev.stats
+      ? "<div class='ev-stats'>" + ev.stats.map(function (s) { return "<span>" + esc(s) + "</span>"; }).join("") + "</div>"
+      : "";
+    var quoteHTML = ev.quote ? "<blockquote class='ev-quote'>\u201C" + esc(ev.quote) + "\u201D</blockquote>" : "";
+    var qHTML = ev.question ? "<div class='ev-q'>" + esc(ev.question) + "</div>" : "";
+    var statHTML = ev.stat ? "<div class='ev-bigstat'>" + esc(ev.stat) + "</div>" : "";
+    var themesHTML = ev.themes
+      ? "<div class='ev-themes'>" + ev.themes.map(function (t) { return "<div class='ev-theme'><b>" + esc(t.h) + "</b><span>" + esc(t.p) + "</span></div>"; }).join("") + "</div>"
+      : "";
+    var imgSrc = img(ev.img);
+    var pendingClass = ev.pending ? " pending" : "";
+    panel.querySelector(".ev-body").innerHTML =
+      "<div class='ev-tag'>Real project artifact</div>" +
+      "<div class='ev-method'>" + esc(ev.method) + "</div>" +
+      "<div class='ev-img" + pendingClass + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
+      "<img src='" + imgSrc + "' alt='' onerror=\"this.parentElement.classList.add('failed')\">" +
+      (ev.pending ? "<span class='ev-pending'>Artifact image to be added</span>" : "") + "</div>" +
+      qHTML + statHTML + statsHTML + quoteHTML + themesHTML +
+      "<div class='ev-finding'><span class='ev-l'>What it revealed</span>" + esc(ev.finding) + "</div>" +
+      "<div class='ev-impl'><span class='ev-l'>Design implication</span>" + esc(ev.implication) + "</div>";
+    panel.classList.add("open");
+    document.body.classList.add("evidence-open");
+  }
+  function closeEvidence() {
+    var panel = document.getElementById("evidencePanel");
+    if (panel) panel.classList.remove("open");
+    document.body.classList.remove("evidence-open");
+  }
+  function evidenceOpen() {
+    var panel = document.getElementById("evidencePanel");
+    return panel && panel.classList.contains("open");
   }
 
   /* ---------- rails ---------- */
@@ -408,6 +476,9 @@
   if (prevBtn) prevBtn.addEventListener("click", prev);
 
   document.addEventListener("keydown", function (e) {
+    // evidence panel intercepts ESC first
+    if (e.key === "Escape" && evidenceOpen()) { closeEvidence(); return; }
+    if (evidenceOpen()) { if (e.key === "Escape") closeEvidence(); return; }
     if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); next(); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
     else if (e.key === "Home") go(0);
@@ -416,7 +487,8 @@
   });
 
   stage.addEventListener("click", function (e) {
-    if (e.target.closest("a, button, .device, .pillar")) return;
+    if (evidenceOpen()) return;
+    if (e.target.closest("a, button, .device, .pillar, .evidence-pill")) return;
     var x = e.clientX / window.innerWidth;
     if (x < 0.25) prev(); else next();
   });
@@ -441,6 +513,17 @@
   }
   function closeOverview() { if (overviewEl) overviewEl.classList.remove("open"); }
   function toggleOverview() { if (overviewEl && overviewEl.classList.contains("open")) closeOverview(); else openOverview(); }
+
+  /* ---------- evidence panel close wiring ---------- */
+  (function () {
+    var panel = document.getElementById("evidencePanel");
+    if (!panel) return;
+    panel.addEventListener("click", function (e) {
+      if (e.target.closest(".ev-close") || e.target.classList.contains("ev-backdrop")) closeEvidence();
+      // click artifact image to toggle zoom
+      if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) e.target.closest(".ev-img").classList.toggle("zoom");
+    });
+  })();
 
   /* ---------- theme ---------- */
   (function () {

@@ -254,3 +254,84 @@ body.story[data-theme="light"] .theme-toggle .ic-moon { display: block; }
   .equation, .jm-flow, .mm-row { flex-direction: column; }
   .tb-mini, .dots { display: none; }
 }
+
+/* ============================================================
+   EVIDENCE COMPONENT — pill + premium side-panel
+   ============================================================ */
+.wt-evidence { margin-top: 16px; min-height: 0; }
+.evidence-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--line2); background: var(--panel);
+  color: var(--ink); font-family: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.evidence-pill:hover { border-color: var(--accent); transform: translateY(-1px); background: var(--nav-h); }
+.evidence-pill svg { width: 14px; height: 14px; color: var(--accent); }
+
+/* panel */
+.evidence { position: fixed; inset: 0; z-index: 80; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.evidence.open { opacity: 1; pointer-events: auto; }
+.ev-backdrop { position: absolute; inset: 0; background: rgba(4,8,12,0.55); backdrop-filter: blur(3px); }
+body.story[data-theme="light"] .ev-backdrop { background: rgba(16,21,27,0.35); }
+.ev-card {
+  position: absolute; top: 0; right: 0; height: 100%;
+  width: min(460px, 92vw); background: var(--bg2);
+  border-left: 1px solid var(--line2);
+  box-shadow: -30px 0 80px rgba(0,0,0,0.4);
+  transform: translateX(24px); transition: transform 0.4s var(--ease);
+  overflow-y: auto; padding: 62px 32px 40px;
+}
+.evidence.open .ev-card { transform: none; }
+.ev-close {
+  position: absolute; top: 18px; right: 20px; width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--line2); background: var(--nav); color: var(--ink);
+  display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;
+}
+.ev-close:hover { background: var(--nav-h); }
+.ev-close svg { width: 16px; height: 16px; }
+.ev-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.ev-method { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 18px; }
+.ev-img {
+  position: relative; width: 100%; height: 220px; border-radius: 14px; overflow: hidden;
+  background: var(--panel); border: 1px solid var(--panel-line); margin-bottom: 18px; cursor: zoom-in;
+}
+.ev-img img { width: 100%; height: 100%; object-fit: cover; object-position: center var(--crop, 30%); transition: transform 0.4s var(--ease); }
+.ev-img.zoom { height: auto; cursor: zoom-out; }
+.ev-img.zoom img { height: auto; object-fit: contain; }
+.ev-img.pending, .ev-img.failed { display: flex; align-items: center; justify-content: center; height: 160px; border-style: dashed; }
+.ev-img.pending img, .ev-img.failed img { display: none; }
+.ev-pending { font-size: 12px; color: var(--dim); }
+.ev-img.failed::after { content: "Artifact image to be added"; font-size: 12px; color: var(--dim); }
+.ev-q { font-size: 15px; font-style: italic; color: var(--soft); margin-bottom: 14px; }
+.ev-bigstat { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); margin-bottom: 12px; }
+.ev-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.ev-stats span { font-size: 12.5px; font-weight: 700; padding: 6px 11px; border-radius: 999px; background: var(--panel); border: 1px solid var(--panel-line); color: var(--ink); }
+.ev-quote { font-family: "Caveat", cursive; font-size: 24px; font-weight: 700; color: var(--ink); border-left: 3px solid var(--accent); padding-left: 14px; margin: 0 0 16px; }
+.ev-themes { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.ev-theme { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 12px 14px; }
+.ev-theme b { display: block; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.ev-theme span { font-size: 13px; line-height: 1.5; color: var(--soft); }
+.ev-finding, .ev-impl { margin-top: 14px; font-size: 15px; line-height: 1.55; color: var(--soft); }
+.ev-l { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 5px; }
+.ev-impl { color: var(--ink); font-weight: 600; }
+
+/* dim scene behind evidence */
+body.story.evidence-open .stage { filter: blur(1px); }
+
+/* ============================================================
+   PRIORITISE scene (impact / effort)
+   ============================================================ */
+.ptiers { display: flex; flex-direction: column; gap: 10px; margin-top: 26px; }
+.ptier { background: var(--panel); border: 1px solid var(--panel-line); border-left: 3px solid var(--accent); border-radius: 12px; padding: 13px 16px; }
+.ptier:nth-child(1) { border-left-color: var(--good); }
+.ptier:nth-child(3) { border-left-color: var(--dim); }
+.ptier .pt-k { display: block; font-size: 15px; font-weight: 700; color: var(--ink); }
+.ptier .pt-d { font-size: 13px; color: var(--dim); }
+.ev-img.artifact { height: min(64vh, 520px); cursor: zoom-in; margin: 0 auto; max-width: 420px; }
+.artifact-tag { position: absolute; top: 12px; left: 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: rgba(0,0,0,0.55); color: #fff; }
+
+@media (max-width: 620px) {
+  .ptiers { gap: 8px; }
+  .ev-card { padding: 60px 20px 30px; }
+}
