@@ -1374,21 +1374,22 @@ body.csv2 {
 .csv2 .hero-device { overflow: visible; }
 .csv2 .phone-fan { position: relative; display: flex; align-items: center; justify-content: center; }
 /* front (PDP) keeps the original look, sits on top */
-.csv2 .phone-front { position: relative; z-index: 3; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
-/* back phones: same size, hidden directly behind the front phone */
+.csv2 .phone-front { position: relative; z-index: 3; transition: transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+/* back phones: same size as the front, stacked exactly behind it and hidden.
+   Override the base .phone rotate(3deg) so our own transform controls them. */
 .csv2 .phone-back {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0;
   z-index: 1; opacity: 0;
-  transform: translate(0, 0) rotate(0deg) scale(0.9);
-  transform-origin: center bottom;
-  box-shadow: 0 26px 56px rgba(0,0,0,0.24);
-  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.45s ease;
+  transform: rotate(3deg);            /* match the front phone at rest (hidden behind) */
+  transform-origin: bottom center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.28);
+  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
   pointer-events: none;
 }
-/* on hover: Home fans left, PLP fans right, and the PDP lifts slightly */
-.csv2 .phone-fan:hover .phone-front { transform: translateY(-6px); }
-.csv2 .phone-fan:hover .phone-left  { opacity: 1; transform: translate(-58%, -6%) rotate(-12deg) scale(0.94); }
-.csv2 .phone-fan:hover .phone-right { opacity: 1; transform: translate(58%, -6%) rotate(12deg) scale(0.94); }
+/* on hover: PDP lifts, Home swings out left, PLP swings out right — clearly tilted */
+.csv2 .phone-fan:hover .phone-front { transform: translateY(-10px) rotate(3deg); }
+.csv2 .phone-fan:hover .phone-left  { opacity: 1; transform: translateX(-46%) translateY(-2%) rotate(-16deg); }
+.csv2 .phone-fan:hover .phone-right { opacity: 1; transform: translateX(46%) translateY(-2%) rotate(16deg); }
 .csv2 .hero-device .device-badge { z-index: 5; }
 @media (max-width: 860px) {
   .csv2 .phone-back { display: none; }
