@@ -1397,3 +1397,30 @@ body.csv2 {
   .csv2 .phone-back { display: none; }
 }
 
+
+/* ============================================================
+   The product — one app / many missions + store credibility
+   ============================================================ */
+.csv2 .product-band { background: var(--bg-soft); }
+.csv2 .pb-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.csv2 .pb-copy h2 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); }
+.csv2 .pb-copy p { margin-top: 16px; max-width: 44ch; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.csv2 .pb-cats { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+.csv2 .pb-cats span { font-size: 13px; font-weight: 600; color: var(--ink-2); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 15px; }
+
+.csv2 .pb-stores { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.csv2 .pb-store { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,0.06); transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease; }
+.csv2 .pb-store:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(0,0,0,0.1); }
+.csv2 .pb-store img { width: 100%; height: auto; display: block; background: #f0f0f0; }
+.csv2 .pb-store figcaption { display: flex; flex-direction: column; gap: 3px; padding: 16px 18px 18px; }
+.csv2 .pb-store-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); }
+.csv2 .pb-rate { font-size: 26px; font-weight: 800; color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; }
+.csv2 .pb-rate .star { color: #f5a623; font-size: 20px; }
+.csv2 .pb-sub { font-size: 13px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .csv2 .pb-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 460px) {
+  .csv2 .pb-stores { grid-template-columns: 1fr; }
+}
