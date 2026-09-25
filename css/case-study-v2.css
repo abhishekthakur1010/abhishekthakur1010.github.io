@@ -1389,8 +1389,8 @@ body.csv2 {
 }
 /* on hover: PDP lifts, Home swings out left, PLP swings out right — clearly tilted */
 .csv2 .phone-fan:hover .phone-front { animation: none; transform: translateY(-10px) rotate(3deg); }
-.csv2 .phone-fan:hover .phone-left  { opacity: 1; transform: translateX(-46%) translateY(-2%) rotate(-16deg); }
-.csv2 .phone-fan:hover .phone-right { opacity: 1; transform: translateX(46%) translateY(-2%) rotate(16deg); }
+.csv2 .phone-fan:hover .phone-left  { opacity: 1; transform: translateX(-52%) translateY(-1%) rotate(-22deg); }
+.csv2 .phone-fan:hover .phone-right { opacity: 1; transform: translateX(52%) translateY(-1%) rotate(22deg); }
 .csv2 .hero-device .device-badge { z-index: 5; }
 @media (max-width: 860px) {
   .csv2 .phone-back { display: none; }
