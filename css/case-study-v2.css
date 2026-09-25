@@ -1380,6 +1380,7 @@ body.csv2 {
 .csv2 .phone-back {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0;
   z-index: 1; opacity: 0;
+  animation: none !important;         /* stop the float loop so our hover transform applies */
   transform: rotate(3deg);            /* match the front phone at rest (hidden behind) */
   transform-origin: bottom center;
   box-shadow: 0 30px 60px rgba(0,0,0,0.28);
@@ -1387,7 +1388,7 @@ body.csv2 {
   pointer-events: none;
 }
 /* on hover: PDP lifts, Home swings out left, PLP swings out right — clearly tilted */
-.csv2 .phone-fan:hover .phone-front { transform: translateY(-10px) rotate(3deg); }
+.csv2 .phone-fan:hover .phone-front { animation: none; transform: translateY(-10px) rotate(3deg); }
 .csv2 .phone-fan:hover .phone-left  { opacity: 1; transform: translateX(-46%) translateY(-2%) rotate(-16deg); }
 .csv2 .phone-fan:hover .phone-right { opacity: 1; transform: translateX(46%) translateY(-2%) rotate(16deg); }
 .csv2 .hero-device .device-badge { z-index: 5; }
