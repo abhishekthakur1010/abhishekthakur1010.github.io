@@ -1373,8 +1373,9 @@ body.csv2 {
    ============================================================ */
 .csv2 .hero-device { overflow: visible; }
 .csv2 .phone-fan { position: relative; display: flex; align-items: center; justify-content: center; }
-/* front (PDP) keeps the original look, sits on top */
-.csv2 .phone-front { position: relative; z-index: 3; transition: transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+/* front (PDP) sits on top. Disable the float animation here so the hover
+   is driven purely by a smooth transition (no animation snap/jerk). */
+.csv2 .phone-front { position: relative; z-index: 3; animation: none !important; transform: rotate(3deg); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
 /* back phones: same size as the front, stacked exactly behind it and hidden.
    Override the base .phone rotate(3deg) so our own transform controls them. */
 .csv2 .phone-back {
@@ -1387,8 +1388,8 @@ body.csv2 {
   transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
   pointer-events: none;
 }
-/* on hover: PDP lifts, Home swings out left, PLP swings out right — clearly tilted */
-.csv2 .phone-fan:hover .phone-front { animation: none; transform: translateY(-10px) rotate(3deg); }
+/* on hover: PDP lifts smoothly, Home swings out left, PLP swings out right — clearly tilted */
+.csv2 .phone-fan:hover .phone-front { transform: translateY(-10px) rotate(3deg); }
 .csv2 .phone-fan:hover .phone-left  { opacity: 1; transform: translateX(-46%) translateY(-2%) rotate(-10deg); }
 .csv2 .phone-fan:hover .phone-right { opacity: 1; transform: translateX(46%) translateY(-2%) rotate(10deg); }
 .csv2 .hero-device .device-badge { z-index: 5; }
