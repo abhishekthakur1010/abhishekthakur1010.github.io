@@ -1368,23 +1368,28 @@ body.csv2 {
 }
 
 /* ============================================================
-   Hero phone fan-out on hover — back phones layered inside the
-   existing .phone (does NOT change the original layout)
+   Hero phone fan — Home + PLP tilted behind the PDP (like the deck)
    ============================================================ */
-.csv2 .phone-screen { position: relative; z-index: 2; }
-.csv2 .phone-back {
-  position: absolute; top: 9px; left: 9px; right: 9px; bottom: 9px;
-  border-radius: 34px; overflow: hidden; background: #fff;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.28);
-  transform: rotate(0deg) scale(0.96); opacity: 0; z-index: 0;
-  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.5s ease;
-  pointer-events: none;
-}
-.csv2 .phone-back img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-/* reveal on hover: Home fans left, PLP fans right */
-.csv2 .phone:hover .phone-back-0 { transform: translate(-62%, -4%) rotate(-11deg) scale(0.94); opacity: 1; }
-.csv2 .phone:hover .phone-back-1 { transform: translate(62%, -4%) rotate(11deg) scale(0.94); opacity: 1; }
 .csv2 .hero-device { overflow: visible; }
-.csv2 .device-badge { z-index: 3; }
-@media (max-width: 860px) { .csv2 .phone-back { display: none; } }
+.csv2 .phone-fan { position: relative; display: flex; align-items: center; justify-content: center; }
+/* front (PDP) keeps the original look */
+.csv2 .phone-front { position: relative; z-index: 3; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+/* back phones: real tilted phone frames peeking from behind */
+.csv2 .phone-back {
+  position: absolute; top: 50%; left: 50%;
+  width: 236px; margin: 0;
+  z-index: 1;
+  box-shadow: 0 26px 56px rgba(0,0,0,0.24);
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.csv2 .phone-left  { transform: translate(-74%, -52%) rotate(-13deg); }
+.csv2 .phone-right { transform: translate(-26%, -50%) rotate(13deg); }
+/* subtle spread on hover */
+.csv2 .phone-fan:hover .phone-left  { transform: translate(-84%, -53%) rotate(-15deg); }
+.csv2 .phone-fan:hover .phone-right { transform: translate(-16%, -51%) rotate(15deg); }
+.csv2 .phone-fan:hover .phone-front { transform: translateY(-4px); }
+.csv2 .hero-device .device-badge { z-index: 5; }
+@media (max-width: 860px) {
+  .csv2 .phone-back { display: none; }
+}
 
