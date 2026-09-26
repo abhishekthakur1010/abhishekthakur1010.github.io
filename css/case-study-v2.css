@@ -1481,22 +1481,27 @@ body.csv2 {
 .csv2 .iter-tab.is-on { background: #0b0e12; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
 .csv2 .iter-tab .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
 
-.csv2 .iter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 3vw, 44px); justify-items: center; }
-.csv2 .iter-mock { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
-.csv2 .iter-mock figcaption { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); }
+.csv2 .iter-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(8px, 1vw, 16px); justify-items: center; align-items: start; }
+.csv2 .iter-mock { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+.csv2 .iter-mock figcaption { font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--faint); text-align: center; }
 .csv2 .mockf {
-  position: relative; width: 100%; max-width: 300px;
-  background: #0b0e12; border-radius: 30px; padding: 10px;
-  box-shadow: 0 26px 60px rgba(0,0,0,0.28), inset 0 0 0 1.5px rgba(255,255,255,0.06);
+  position: relative; width: 100%; max-width: 160px;
+  background: #0b0e12; border-radius: 18px; padding: 6px;
+  box-shadow: 0 16px 38px rgba(0,0,0,0.24), inset 0 0 0 1px rgba(255,255,255,0.06);
 }
-.csv2 .mockf-notch { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 36%; height: 18px; background: #0b0e12; border-radius: 0 0 14px 14px; z-index: 3; }
+.csv2 .mockf-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 34%; height: 11px; background: #0b0e12; border-radius: 0 0 9px 9px; z-index: 3; }
 .csv2 .mockf img {
-  display: block; width: 100%; height: 620px;
+  display: block; width: 100%; height: 340px;
   object-fit: cover; object-position: top center;
-  border-radius: 22px; background: #fff;
+  border-radius: 13px; background: #fff;
   transition: opacity 0.25s ease;
 }
-@media (max-width: 860px) {
-  .csv2 .iter-grid { grid-template-columns: 1fr; }
-  .csv2 .mockf img { height: 560px; }
+@media (max-width: 1000px) {
+  .csv2 .iter-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .csv2 .mockf { max-width: 220px; }
+  .csv2 .mockf img { height: 460px; }
+}
+@media (max-width: 560px) {
+  .csv2 .iter-grid { grid-template-columns: repeat(2, 1fr); }
+  .csv2 .mockf img { height: 380px; }
 }
