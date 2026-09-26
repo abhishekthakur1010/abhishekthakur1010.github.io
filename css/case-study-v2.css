@@ -1443,7 +1443,7 @@ body.csv2 {
   width: 36%; height: 18px; background: #0b0e12; border-radius: 0 0 14px 14px; z-index: 3;
 }
 .csv2 .ba .shot.mock img {
-  display: block; width: 100%; height: 440px;
+  display: block; width: 100%; height: 600px;
   object-fit: cover; object-position: top center;
   border-radius: 22px; background: #fff;
 }
@@ -1452,5 +1452,5 @@ body.csv2 {
 
 @media (max-width: 640px) {
   .csv2 .ba .shot.mock { max-width: 240px; }
-  .csv2 .ba .shot.mock img { height: 360px; }
+  .csv2 .ba .shot.mock img { height: 480px; }
 }
