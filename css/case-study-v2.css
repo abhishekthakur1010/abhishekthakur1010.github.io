@@ -1424,3 +1424,33 @@ body.csv2 {
 @media (max-width: 460px) {
   .csv2 .pb-stores { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Before/After — black phone mock (bezel + notch), like the deck
+   ============================================================ */
+.csv2 .ba .shot.mock {
+  position: relative;
+  background: #0b0e12;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 4px auto 0;
+  max-width: 300px;
+  box-shadow: 0 26px 60px rgba(0,0,0,0.28), inset 0 0 0 1.5px rgba(255,255,255,0.06);
+  overflow: visible;
+}
+.csv2 .ba .shot.mock .mock-notch {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  width: 36%; height: 18px; background: #0b0e12; border-radius: 0 0 14px 14px; z-index: 3;
+}
+.csv2 .ba .shot.mock img {
+  display: block; width: 100%; height: 440px;
+  object-fit: cover; object-position: top center;
+  border-radius: 22px; background: #fff;
+}
+/* hover: gentle lift on the whole card already exists; keep image steady */
+.csv2 .ba figure:hover .shot.mock img { transform: none; }
+
+@media (max-width: 640px) {
+  .csv2 .ba .shot.mock { max-width: 240px; }
+  .csv2 .ba .shot.mock img { height: 360px; }
+}
