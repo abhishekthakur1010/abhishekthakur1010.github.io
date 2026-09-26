@@ -1449,10 +1449,12 @@ body.csv2 {
 }
 .csv2 .ba figure:hover .shot.mock img { transform: none; }
 
-/* tall screens (PDP): fixed-height frame, scroll to reveal the full page */
+/* tall screens (PDP): scroll frame matched to the sibling "after" mock's height
+   via the same aspect ratio (1206x2622), so before === after height at any width */
 .csv2 .ba .shot.mock.tall { overflow: hidden; }
 .csv2 .ba .shot.mock.tall .mock-scroll {
-  height: 731px; overflow-y: auto; border-radius: 22px; background: #fff;
+  aspect-ratio: 1206 / 2622; height: auto;
+  overflow-y: auto; border-radius: 22px; background: #fff;
   scrollbar-width: thin; -webkit-overflow-scrolling: touch;
 }
 .csv2 .ba .shot.mock.tall .mock-scroll::-webkit-scrollbar { width: 6px; }
@@ -1466,5 +1468,4 @@ body.csv2 {
 
 @media (max-width: 640px) {
   .csv2 .ba .shot.mock { max-width: 280px; }
-  .csv2 .ba .shot.mock.tall .mock-scroll { height: 560px; }
 }
