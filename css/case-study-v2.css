@@ -1452,7 +1452,7 @@ body.csv2 {
 /* tall screens (PDP): fixed-height frame, scroll to reveal the full page */
 .csv2 .ba .shot.mock.tall { overflow: hidden; }
 .csv2 .ba .shot.mock.tall .mock-scroll {
-  height: 600px; overflow-y: auto; border-radius: 22px; background: #fff;
+  height: 480px; overflow-y: auto; border-radius: 22px; background: #fff;
   scrollbar-width: thin; -webkit-overflow-scrolling: touch;
 }
 .csv2 .ba .shot.mock.tall .mock-scroll::-webkit-scrollbar { width: 6px; }
