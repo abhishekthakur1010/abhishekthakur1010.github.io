@@ -1442,15 +1442,29 @@ body.csv2 {
   position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
   width: 36%; height: 18px; background: #0b0e12; border-radius: 0 0 14px 14px; z-index: 3;
 }
+/* default: frame hugs the image height — no white space */
 .csv2 .ba .shot.mock img {
-  display: block; width: 100%; height: 600px;
-  object-fit: contain; object-position: top center;
+  display: block; width: 100%; height: auto;
   border-radius: 22px; background: #fff;
 }
-/* hover: gentle lift on the whole card already exists; keep image steady */
 .csv2 .ba figure:hover .shot.mock img { transform: none; }
+
+/* tall screens (PDP): fixed-height frame, scroll to reveal the full page */
+.csv2 .ba .shot.mock.tall { overflow: hidden; }
+.csv2 .ba .shot.mock.tall .mock-scroll {
+  height: 600px; overflow-y: auto; border-radius: 22px; background: #fff;
+  scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+}
+.csv2 .ba .shot.mock.tall .mock-scroll::-webkit-scrollbar { width: 6px; }
+.csv2 .ba .shot.mock.tall .mock-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.22); border-radius: 6px; }
+.csv2 .ba .shot.mock.tall img { border-radius: 0; }
+.csv2 .ba .shot.mock.tall::after {
+  content: "scroll \2195"; position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  z-index: 4; font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
+  padding: 4px 11px; border-radius: 999px; background: rgba(0,0,0,0.6); color: #fff; pointer-events: none;
+}
 
 @media (max-width: 640px) {
   .csv2 .ba .shot.mock { max-width: 280px; }
-  .csv2 .ba .shot.mock img { height: 500px; }
+  .csv2 .ba .shot.mock.tall .mock-scroll { height: 500px; }
 }
