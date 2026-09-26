@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=43" rel="stylesheet" />
+    <link href="./css/case-study-v2.css?v=44" rel="stylesheet" />
   </head>
 
   <body class="csv2">
@@ -141,20 +141,53 @@
       </div>
     </section>
 
-    <!-- Showcase — the work at a glance -->
+    <!-- Showcase — iterations across Before / V1 / Live -->
     <section class="showcase">
       <div class="wrap">
         <div class="sec-head">
           <span class="sec-num">·</span>
           <span class="sec-label">The work</span>
         </div>
-        <div class="showgrid showgrid-row">
-          <img src="./images/enhanceProduct/enhance-final-new-home-page.png?v=2" alt="Redesigned JioMart homepage" />
-          <img src="./images/enhanceProduct/enhance-final-new-plp-page.png" alt="Redesigned product listing page" />
-          <img src="./images/enhanceProduct/enhance-final-new-pdp-1st-fold.png" alt="Redesigned product detail page" />
-          <img src="./images/enhanceProduct/enhance-final-new-electronic-plp.png" alt="Redesigned electronics listing" />
-          <img src="./images/enhanceProduct/enhance-final-new-pdp-5th-fold.png" alt="Redesigned reviews and ratings" />
-          <img src="./images/enhanceProduct/enhance-final-product-detail-page.png" alt="Product detail experience" />
+
+        <div class="iter">
+          <div class="iter-head">
+            <p class="iter-note">How the design evolved — from the original app, to the first DS 2.0 release, to what's live today.</p>
+            <div class="iter-tabs" role="tablist">
+              <button class="iter-tab" data-stage="before" role="tab">Before</button>
+              <button class="iter-tab is-on" data-stage="v1" role="tab">V1</button>
+              <button class="iter-tab" data-stage="live" role="tab"><span class="dot"></span>Live</button>
+            </div>
+          </div>
+
+          <div class="iter-grid">
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span>
+                <img data-before="./images/enhanceProduct/enhance-problem-home.png"
+                     data-v1="./images/enhanceProduct/enhance-v1-home.png"
+                     data-live="./images/enhanceProduct/enhance-v2-home.png"
+                     src="./images/enhanceProduct/enhance-v1-home.png" alt="Homepage" />
+              </span>
+              <figcaption>Homepage</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span>
+                <img data-before="./images/enhanceProduct/enhance-problem-plp.png"
+                     data-v1="./images/enhanceProduct/enhance-v1-plp.png"
+                     data-live="./images/enhanceProduct/enhance-v2-plp-grid.png"
+                     src="./images/enhanceProduct/enhance-v1-plp.png" alt="Product listing" />
+              </span>
+              <figcaption>Product listing</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span>
+                <img data-before="./images/enhanceProduct/enhance-problem-pdp.png"
+                     data-v1="./images/enhanceProduct/enhance-v1-pdp.png"
+                     data-live="./images/enhanceProduct/enhance-v2-pdp-main.png"
+                     src="./images/enhanceProduct/enhance-v1-pdp.png" alt="Product detail" />
+              </span>
+              <figcaption>Product detail</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -571,6 +604,24 @@
         );
         targets.forEach(function (el) {
           io.observe(el);
+        });
+      })();
+
+      // Iteration tabs — Before / V1 / Live
+      (function () {
+        var iter = document.querySelector(".iter");
+        if (!iter) return;
+        var tabs = iter.querySelectorAll(".iter-tab");
+        var imgs = iter.querySelectorAll(".iter-mock img");
+        function setStage(stage) {
+          tabs.forEach(function (t) { t.classList.toggle("is-on", t.getAttribute("data-stage") === stage); });
+          imgs.forEach(function (im) {
+            var src = im.getAttribute("data-" + stage);
+            if (src) im.src = src;
+          });
+        }
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () { setStage(t.getAttribute("data-stage")); });
         });
       })();
     </script>
