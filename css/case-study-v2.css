@@ -1434,7 +1434,7 @@ body.csv2 {
   border-radius: 30px;
   padding: 10px;
   margin: 4px auto 0;
-  max-width: 300px;
+  max-width: 360px;
   box-shadow: 0 26px 60px rgba(0,0,0,0.28), inset 0 0 0 1.5px rgba(255,255,255,0.06);
   overflow: visible;
 }
@@ -1444,13 +1444,13 @@ body.csv2 {
 }
 .csv2 .ba .shot.mock img {
   display: block; width: 100%; height: 600px;
-  object-fit: cover; object-position: top center;
+  object-fit: contain; object-position: top center;
   border-radius: 22px; background: #fff;
 }
 /* hover: gentle lift on the whole card already exists; keep image steady */
 .csv2 .ba figure:hover .shot.mock img { transform: none; }
 
 @media (max-width: 640px) {
-  .csv2 .ba .shot.mock { max-width: 240px; }
-  .csv2 .ba .shot.mock img { height: 480px; }
+  .csv2 .ba .shot.mock { max-width: 280px; }
+  .csv2 .ba .shot.mock img { height: 500px; }
 }
