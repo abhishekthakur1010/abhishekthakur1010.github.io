@@ -1493,7 +1493,7 @@ body.csv2 {
 .csv2 .mockf-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 34%; height: 11px; background: #0b0e12; border-radius: 0 0 9px 9px; z-index: 3; }
 /* image fills the frame width from the top */
 .csv2 .mockf-scroll {
-  display: block; height: 220px; overflow: hidden; border-radius: 13px; background: #fff;
+  display: block; height: 360px; overflow: hidden; border-radius: 13px; background: #fff;
   scrollbar-width: thin; -webkit-overflow-scrolling: touch;
 }
 /* only genuinely long screens scroll + show the hint */
@@ -1512,9 +1512,9 @@ body.csv2 {
 @media (max-width: 1000px) {
   .csv2 .iter-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .csv2 .mockf { max-width: 220px; }
-  .csv2 .mockf-scroll { height: 300px; }
+  .csv2 .mockf-scroll { height: 420px; }
 }
 @media (max-width: 560px) {
   .csv2 .iter-grid { grid-template-columns: repeat(2, 1fr); }
-  .csv2 .mockf-scroll { height: 300px; }
+  .csv2 .mockf-scroll { height: 360px; }
 }
