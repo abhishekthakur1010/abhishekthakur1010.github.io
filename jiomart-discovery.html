@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=48" rel="stylesheet" />
+    <link href="./css/case-study-v2.css?v=49" rel="stylesheet" />
   </head>
 
   <body class="csv2">
@@ -640,16 +640,33 @@
         if (!iter) return;
         var tabs = iter.querySelectorAll(".iter-tab");
         var imgs = iter.querySelectorAll(".iter-mock img");
+        // mark a mock scrollable only when its image is taller than the frame
+        function checkScroll(im) {
+          var frame = im.closest(".mockf");
+          var scroll = im.closest(".mockf-scroll");
+          if (!frame || !scroll) return;
+          var overflow = im.offsetHeight > scroll.clientHeight + 2;
+          frame.classList.toggle("is-scrollable", overflow);
+        }
+        function checkAll() { imgs.forEach(checkScroll); }
         function setStage(stage) {
           tabs.forEach(function (t) { t.classList.toggle("is-on", t.getAttribute("data-stage") === stage); });
           imgs.forEach(function (im) {
             var src = im.getAttribute("data-" + stage);
-            if (src) im.src = src;
+            if (src && !im.src.endsWith(src.replace("./", ""))) {
+              im.onload = function () { checkScroll(im); };
+              im.src = src;
+            }
           });
         }
         tabs.forEach(function (t) {
           t.addEventListener("click", function () { setStage(t.getAttribute("data-stage")); });
         });
+        // initial pass (images may already be cached/loaded)
+        imgs.forEach(function (im) {
+          if (im.complete) checkScroll(im); else im.addEventListener("load", function () { checkScroll(im); });
+        });
+        window.addEventListener("resize", checkAll);
       })();
     </script>
     <script src="./js/case-study-lightbox.js" defer></script>

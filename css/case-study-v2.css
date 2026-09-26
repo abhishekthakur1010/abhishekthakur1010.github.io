@@ -1491,18 +1491,20 @@ body.csv2 {
   overflow: hidden;
 }
 .csv2 .mockf-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 34%; height: 11px; background: #0b0e12; border-radius: 0 0 9px 9px; z-index: 3; }
-/* image fills the frame width from the top; long screens scroll vertically inside */
+/* image fills the frame width from the top */
 .csv2 .mockf-scroll {
-  display: block; height: 340px; overflow-y: auto; border-radius: 13px; background: #fff;
+  display: block; height: 300px; overflow: hidden; border-radius: 13px; background: #fff;
   scrollbar-width: thin; -webkit-overflow-scrolling: touch;
 }
+/* only genuinely long screens scroll + show the hint */
+.csv2 .mockf.is-scrollable .mockf-scroll { overflow-y: auto; }
 .csv2 .mockf-scroll::-webkit-scrollbar { width: 4px; }
 .csv2 .mockf-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
 .csv2 .mockf img {
   display: block; width: 100%; height: auto;
   border-radius: 0; background: #fff;
 }
-.csv2 .mockf::after {
+.csv2 .mockf.is-scrollable::after {
   content: "scroll \2195"; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
   z-index: 4; font-size: 9px; font-weight: 700; letter-spacing: 0.02em;
   padding: 3px 9px; border-radius: 999px; background: rgba(0,0,0,0.6); color: #fff; pointer-events: none;
@@ -1510,9 +1512,9 @@ body.csv2 {
 @media (max-width: 1000px) {
   .csv2 .iter-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .csv2 .mockf { max-width: 220px; }
-  .csv2 .mockf-scroll { height: 470px; }
+  .csv2 .mockf-scroll { height: 420px; }
 }
 @media (max-width: 560px) {
   .csv2 .iter-grid { grid-template-columns: repeat(2, 1fr); }
-  .csv2 .mockf-scroll { height: 400px; }
+  .csv2 .mockf-scroll { height: 360px; }
 }
