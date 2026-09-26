@@ -12,7 +12,7 @@
   window.__csLightbox = true;
 
   var SELECTOR =
-    ".csv2 .showgrid img, .csv2 .ba .shot img, .csv2 .research .shot img, .csv2 .teamrow img, .csv2 .phone-screen img, .csv2 .tl-gallery img, .csv2.about .hero-grid img, .csv2 .award-row img, .csv2 .beyond .b-gallery img";
+    ".csv2 .showgrid img, .csv2 .ba .shot img, .csv2 .research .shot img, .csv2 .teamrow img, .csv2 .phone-screen img, .csv2 .tl-gallery img, .csv2.about .hero-grid img, .csv2 .award-row img, .csv2 .beyond .b-gallery img, .csv2 .mockf img";
 
   var css =
     "" +
