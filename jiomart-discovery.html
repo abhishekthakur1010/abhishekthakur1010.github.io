@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=51" rel="stylesheet" />
+    <link href="./css/case-study-v2.css?v=52" rel="stylesheet" />
   </head>
 
   <body class="csv2">
@@ -551,10 +551,74 @@
           <span class="sec-label">Customer feedback</span>
         </div>
         <h2 class="sec-title">What shoppers said.</h2>
-        <div class="research">
-          <figure>
-            <div class="shot"><img src="./images/stream-study/stream-case-study-feedbacks.png" alt="Customer feedback and app-store reviews for the redesigned JioMart app" /></div>
-          </figure>
+        <p class="lead">Real reviews from the Play Store &amp; App Store after the redesign shipped.</p>
+
+        <div class="reviews">
+          <div class="rv-summary">
+            <div class="rv-score">
+              <div class="rv-big">4.6<span class="star">★</span></div>
+              <div class="rv-scale">App Store</div>
+              <div class="rv-count">213K ratings · No. 16 in Shopping</div>
+            </div>
+            <div class="rv-score">
+              <div class="rv-big">4.0<span class="star">★</span></div>
+              <div class="rv-scale">Play Store</div>
+              <div class="rv-count">10Cr+ downloads · 25.3L reviews</div>
+            </div>
+            <div class="rv-bars">
+              <div class="rv-bar"><span>5</span><i><b style="width:72%"></b></i></div>
+              <div class="rv-bar"><span>4</span><i><b style="width:15%"></b></i></div>
+              <div class="rv-bar"><span>3</span><i><b style="width:6%"></b></i></div>
+              <div class="rv-bar"><span>2</span><i><b style="width:3%"></b></i></div>
+              <div class="rv-bar"><span>1</span><i><b style="width:4%"></b></i></div>
+            </div>
+          </div>
+
+          <div class="rv-filters" role="tablist">
+            <button class="rv-chip is-on" data-filter="all">All</button>
+            <button class="rv-chip" data-filter="5">5 ★</button>
+            <button class="rv-chip" data-filter="4">4 ★</button>
+            <button class="rv-chip" data-filter="recent">Most recent</button>
+          </div>
+
+          <div class="rv-grid">
+            <article class="rv-card" data-stars="5" data-date="2023-02">
+              <div class="rv-top"><span class="rv-av">U</span><div><b>Unnamed shopper</b><span class="rv-meta">Redmi Note 8 · Feb 2023</span></div><span class="rv-stars">★★★★★</span></div>
+              <p>After the latest update the app is totally changed — much faster, well designed and easy to use. Finally a clean, optimised interface. 5/5.</p>
+              <div class="rv-foot"><span class="rv-src">Play Store</span><button class="rv-help">👍 Helpful · 214</button></div>
+            </article>
+
+            <article class="rv-card" data-stars="5" data-date="2023-02">
+              <div class="rv-top"><span class="rv-av">D</span><div><b>Dhruv Chhabra</b><span class="rv-meta">realme 8 5G · Feb 2023</span></div><span class="rv-stars">★★★★★</span></div>
+              <p>Really good app. Best service experience and user experience.</p>
+              <div class="rv-foot"><span class="rv-src">Play Store</span><button class="rv-help">👍 Helpful · 98</button></div>
+            </article>
+
+            <article class="rv-card" data-stars="5" data-date="2023-02">
+              <div class="rv-top"><span class="rv-av">S</span><div><b>SAURA8H</b><span class="rv-meta">Galaxy A23 · Feb 2023</span></div><span class="rv-stars">★★★★★</span></div>
+              <p>Just fabulous. Ordering groceries has never been this smooth.</p>
+              <div class="rv-foot"><span class="rv-src">Play Store</span><button class="rv-help">👍 Helpful · 61</button></div>
+            </article>
+
+            <article class="rv-card" data-stars="4" data-date="2023-02">
+              <div class="rv-top"><span class="rv-av">U</span><div><b>Unnamed shopper</b><span class="rv-meta">Galaxy S10 Lite · Feb 2023</span></div><span class="rv-stars">★★★★☆</span></div>
+              <p>Improved, and the new UI looks much better than earlier. Checkout feels quicker too.</p>
+              <div class="rv-foot"><span class="rv-src">Play Store</span><button class="rv-help">👍 Helpful · 77</button></div>
+            </article>
+
+            <article class="rv-card" data-stars="5" data-date="2023-02">
+              <div class="rv-top"><span class="rv-av">R</span><div><b>Ritesh Ka. Patel</b><span class="rv-meta">Redmi 5A · Feb 2023</span></div><span class="rv-stars">★★★★★</span></div>
+              <p>Excellent shopping experience online.</p>
+              <div class="rv-foot"><span class="rv-src">Play Store</span><button class="rv-help">👍 Helpful · 43</button></div>
+            </article>
+
+            <article class="rv-card" data-stars="5" data-date="2023-02">
+              <div class="rv-top"><span class="rv-av">S</span><div><b>Sachin Katole</b><span class="rv-meta">Galaxy A20s · Feb 2023</span></div><span class="rv-stars">★★★★★</span></div>
+              <p>Very good app experience. Clean layout and easy to find products.</p>
+              <div class="rv-foot"><span class="rv-src">Play Store</span><button class="rv-help">👍 Helpful · 52</button></div>
+            </article>
+          </div>
+          <p class="rv-note">Reviews as published on the App Store &amp; Google Play (Feb 2023). Rating distribution is indicative.</p>
         </div>
       </div>
     </section>
@@ -667,6 +731,41 @@
           if (im.complete) checkScroll(im); else im.addEventListener("load", function () { checkScroll(im); });
         });
         window.addEventListener("resize", checkAll);
+      })();
+
+      // Interactive reviews — filter chips + helpful toggle
+      (function () {
+        var wrap = document.querySelector(".reviews");
+        if (!wrap) return;
+        var chips = wrap.querySelectorAll(".rv-chip");
+        var cards = Array.prototype.slice.call(wrap.querySelectorAll(".rv-card"));
+        function applyFilter(f) {
+          chips.forEach(function (c) { c.classList.toggle("is-on", c.getAttribute("data-filter") === f); });
+          if (f === "recent") {
+            var grid = wrap.querySelector(".rv-grid");
+            cards.slice().sort(function (a, b) {
+              return (b.getAttribute("data-date") || "").localeCompare(a.getAttribute("data-date") || "");
+            }).forEach(function (c) { c.classList.remove("is-hidden"); grid.appendChild(c); });
+            return;
+          }
+          cards.forEach(function (c) {
+            var show = f === "all" || c.getAttribute("data-stars") === f;
+            c.classList.toggle("is-hidden", !show);
+          });
+        }
+        chips.forEach(function (c) {
+          c.addEventListener("click", function () { applyFilter(c.getAttribute("data-filter")); });
+        });
+        wrap.querySelectorAll(".rv-help").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var liked = btn.classList.toggle("is-liked");
+            var m = btn.textContent.match(/(\d+)/);
+            if (m) {
+              var n = parseInt(m[1], 10) + (liked ? 1 : -1);
+              btn.textContent = "👍 Helpful · " + n;
+            }
+          });
+        });
       })();
     </script>
     <script src="./js/case-study-lightbox.js?v=2" defer></script>
