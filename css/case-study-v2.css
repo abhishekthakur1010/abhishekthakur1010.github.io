@@ -1492,16 +1492,16 @@ body.csv2 {
 .csv2 .mockf-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 34%; height: 11px; background: #0b0e12; border-radius: 0 0 9px 9px; z-index: 3; }
 .csv2 .mockf img {
   display: block; width: 100%; height: 340px;
-  object-fit: cover; object-position: top center;
+  object-fit: contain; object-position: top center;
   border-radius: 13px; background: #fff;
   transition: opacity 0.25s ease;
 }
 @media (max-width: 1000px) {
   .csv2 .iter-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .csv2 .mockf { max-width: 220px; }
-  .csv2 .mockf img { height: 460px; }
+  .csv2 .mockf img { height: 470px; }
 }
 @media (max-width: 560px) {
   .csv2 .iter-grid { grid-template-columns: repeat(2, 1fr); }
-  .csv2 .mockf img { height: 380px; }
+  .csv2 .mockf img { height: 400px; }
 }
