@@ -110,31 +110,71 @@
           <span class="sec-num">·</span>
           <span class="sec-label">The work</span>
         </div>
-        <div class="group-label first">Redesigned screens</div>
-        <div class="showgrid showgrid-scroll">
-          <div class="shot-cell">
-            <div class="shot-frame"><img src="./images/stream-study/stream-case-study-add-address.png" alt="Address selection screen" /></div>
-            <div class="shot-name">Address Selection</div>
+        <div class="iter">
+          <div class="iter-head">
+            <p class="iter-note">How the checkout evolved — from the original app, to the first DS 2.0 release, to what's live today.</p>
+            <div class="iter-tabs" role="tablist">
+              <button class="iter-tab" data-stage="before" role="tab">Before</button>
+              <button class="iter-tab is-on" data-stage="v1" role="tab">V1</button>
+              <button class="iter-tab" data-stage="live" role="tab"><span class="dot"></span>Live</button>
+            </div>
           </div>
-          <div class="shot-cell">
-            <div class="shot-frame"><img src="./images/stream-study/stream-case-study-cart-page-01.png" alt="Cart page" /></div>
-            <div class="shot-name">Cart Page</div>
-          </div>
-          <div class="shot-cell">
-            <div class="shot-frame"><img src="./images/stream-study/stream-case-study-coupon-page.png" alt="Coupon page" /></div>
-            <div class="shot-name">Coupon Page</div>
-          </div>
-          <div class="shot-cell">
-            <div class="shot-frame"><img src="./images/stream-study/stream-case-study-payment-page.png" alt="Payment page" /></div>
-            <div class="shot-name">Payment Page</div>
-          </div>
-          <div class="shot-cell">
-            <div class="shot-frame"><img src="./images/stream-study/stream-case-study-order-success-page.png" alt="Order success screen" /></div>
-            <div class="shot-name">Order Success Screen</div>
-          </div>
-          <div class="shot-cell">
-            <div class="shot-frame"><img src="./images/stream-study/stream-case-study-support-page.png" alt="Help and support screen" /></div>
-            <div class="shot-name">Help &amp; Support</div>
+
+          <div class="iter-grid">
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img data-before="./images/stream-study/stream-case-study-coupon-page-before.png?v=2"
+                     data-v1="./images/stream-study/stream-case-study-coupon-page.png?v=3"
+                     data-live="./images/stream-study/stream-case-study-coupon-page.png?v=3"
+                     src="./images/stream-study/stream-case-study-coupon-page.png?v=3" alt="Coupon store" />
+              </span></span>
+              <figcaption>Coupon store</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img data-before="./images/stream-study/stream-case-study-cart-page-before-01.png?v=2"
+                     data-v1="./images/stream-study/stream-case-study-cart-page-01.png?v=3"
+                     data-live="./images/stream-study/stream-case-study-cart-page-01.png?v=3"
+                     src="./images/stream-study/stream-case-study-cart-page-01.png?v=3" alt="Cart" />
+              </span></span>
+              <figcaption>Cart</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img data-before="./images/stream-study/stream-case-study-add-address-before.png?v=2"
+                     data-v1="./images/stream-study/stream-case-study-add-address.png?v=3"
+                     data-live="./images/stream-study/stream-case-study-add-address.png?v=3"
+                     src="./images/stream-study/stream-case-study-add-address.png?v=3" alt="Address" />
+              </span></span>
+              <figcaption>Address</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img data-before="./images/stream-study/stream-case-study-payment-page-before.png?v=2"
+                     data-v1="./images/stream-study/stream-case-study-payment-page.png?v=3"
+                     data-live="./images/stream-study/stream-case-study-payment-page.png?v=3"
+                     src="./images/stream-study/stream-case-study-payment-page.png?v=3" alt="Payment" />
+              </span></span>
+              <figcaption>Payment</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img data-before="./images/stream-study/stream-case-study-order-success-page-before.png?v=2"
+                     data-v1="./images/stream-study/stream-case-study-order-success-page.png?v=3"
+                     data-live="./images/stream-study/stream-case-study-order-success-page.png?v=3"
+                     src="./images/stream-study/stream-case-study-order-success-page.png?v=3" alt="Order success" />
+              </span></span>
+              <figcaption>Order success</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img data-before="./images/stream-study/stream-case-study-order-tracking-before.png"
+                     data-v1="./images/stream-study/stream-case-study-order-tracking.png?v=2"
+                     data-live="./images/stream-study/stream-case-study-order-tracking.png?v=2"
+                     src="./images/stream-study/stream-case-study-order-tracking.png?v=2" alt="Order tracking" />
+              </span></span>
+              <figcaption>Order tracking</figcaption>
+            </figure>
           </div>
         </div>
 
@@ -687,6 +727,35 @@
         targets.forEach(function (el) {
           io.observe(el);
         });
+      })();
+
+      // Iteration tabs — Before / V1 / Live
+      (function () {
+        var iter = document.querySelector(".iter");
+        if (!iter) return;
+        var tabs = iter.querySelectorAll(".iter-tab");
+        var imgs = iter.querySelectorAll(".iter-mock img");
+        function checkScroll(im) {
+          var frame = im.closest(".mockf");
+          var scroll = im.closest(".mockf-scroll");
+          if (!frame || !scroll) return;
+          frame.classList.toggle("is-scrollable", im.offsetHeight > scroll.clientHeight + 2);
+        }
+        function checkAll() { imgs.forEach(checkScroll); }
+        function setStage(stage) {
+          tabs.forEach(function (t) { t.classList.toggle("is-on", t.getAttribute("data-stage") === stage); });
+          imgs.forEach(function (im) {
+            var src = im.getAttribute("data-" + stage);
+            if (src) { im.onload = function () { checkScroll(im); }; im.src = src; }
+          });
+        }
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () { setStage(t.getAttribute("data-stage")); });
+        });
+        imgs.forEach(function (im) {
+          if (im.complete) checkScroll(im); else im.addEventListener("load", function () { checkScroll(im); });
+        });
+        window.addEventListener("resize", checkAll);
       })();
 
       // Interactive reviews — filter chips + helpful toggle
