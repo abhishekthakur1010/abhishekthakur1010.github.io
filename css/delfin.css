@@ -240,6 +240,15 @@
 .delfin .df-reflect-q { margin-top: 44px; border-left: 3px solid var(--accent); }
 .delfin .df-reflect-q .q { color: #fff; font-size: clamp(20px, 2.4vw, 30px); font-weight: 600; line-height: 1.4; }
 
+/* ---------- behind the build (team photos) ---------- */
+.delfin .df-team { margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--line); }
+.delfin .df-team-head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); margin-bottom: 20px; }
+.delfin .df-teamrow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.delfin .df-teamrow figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.delfin .df-teamrow img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); background: var(--bg-soft); cursor: zoom-in; transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+.delfin .df-teamrow img:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.12); }
+.delfin .df-teamrow figcaption { font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--faint); text-align: center; }
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -257,6 +266,7 @@
   .delfin .df-gps-flow { grid-template-columns: repeat(2, 1fr); }
   .delfin .df-timeline { grid-template-columns: 1fr; }
   .delfin .df-reviews { grid-template-columns: 1fr; }
+  .delfin .df-teamrow { grid-template-columns: repeat(3, 1fr); }
   .delfin .df-lessons { grid-template-columns: 1fr; }
   .delfin .df-roadmap { grid-template-columns: 1fr; }
   .delfin .df-rm-arrow { display: none; }
@@ -264,6 +274,7 @@
 @media (max-width: 640px) {
   .delfin .block { padding: 60px 0; }
   .delfin .df-pat-grid, .delfin .df-anno, .delfin .df-recover, .delfin .df-signals, .delfin .df-role, .delfin .df-states { grid-template-columns: 1fr; }
+  .delfin .df-teamrow { grid-template-columns: repeat(2, 1fr); }
   .delfin .df-eco { height: auto; max-width: none; display: flex; flex-direction: column; gap: 12px; }
   .delfin .df-eco-center, .delfin .df-eco-node { position: static; transform: none; width: 100%; }
   .delfin .df-eco-center { border-radius: 16px; height: auto; padding: 20px; }
