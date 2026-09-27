@@ -24,8 +24,8 @@ window.DECK = {
       headline: ["Making ", "discovery", " feel personal across Home, PLP & PDP"],
       highlight: "discovery",
       body: "Refining content structure, navigation, and widgets across JioMart's homepage, listing, and product pages — turning aimless browsing into confident decisions for millions of shoppers.",
-      hero: "Hero.png",
-      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png"],
+      hero: "enhance-v2-pdp-main.png",
+      backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
       badge: { n: "+65%", l: "Monthly active users" },
       meta: [
         { l: "My role", v: "Design Lead — Discovery · Jio central design team" },
