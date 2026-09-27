@@ -35,7 +35,21 @@ window.DECK = {
       cta: "Press → to begin"
     },
 
-    /* 02 — WHY CHECKOUT MATTERS */
+    /* 02 — WHAT IS JIOMART */
+    {
+      section: "intro", type: "categories",
+      eyebrow: "The product",
+      headline: ["One app.", "Every kind of order."],
+      sub: "Groceries, electronics, fashion and more — every one of them ends at the same checkout.",
+      cats: ["Grocery", "Mobiles", "Electronics", "Fashion", "Beauty", "Home & Living", "Furniture", "Medicine"],
+      snapshot: [
+        { store: "App Store", img: "enhance-store-appstore.png", rating: "4.6", stat: "No. 16 · Shopping", sub: "213K ratings" },
+        { store: "Play Store", img: "enhance-store-playstore-v2.png", rating: "4.0", stat: "10Cr+ downloads", sub: "25.3L reviews" }
+      ],
+      reasons: ["Delivery", "Assortment", "Value", "Quality", "Payment", "Support"]
+    },
+
+    /* 03 — WHY CHECKOUT MATTERS */
     {
       section: "intro", type: "problem-flow",
       eyebrow: "The product",
