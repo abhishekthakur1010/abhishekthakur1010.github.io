@@ -430,6 +430,18 @@ body.csv2 {
     grid-template-columns: 1fr;
   }
 }
+/* four research figures on a single line */
+.csv2 .research.research-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 1000px) {
+  .csv2 .research.research-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .csv2 .research.research-4 { grid-template-columns: 1fr; }
+}
 /* award badges — laurel wreath + label, all on one line */
 .csv2 .award-row {
   display: flex;
