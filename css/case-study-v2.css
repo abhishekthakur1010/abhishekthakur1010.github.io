@@ -1592,3 +1592,22 @@ body.csv2 {
 @media (max-width: 560px) {
   .csv2 .rv-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Research tiles — compact, uniform-shape thumbnails (all 5 same size)
+   ============================================================ */
+.csv2 .research-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 26px; }
+.csv2 .research-tiles figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.csv2 .research-tiles .rt-thumb {
+  aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; border: 1px solid var(--line);
+  background: #fff; cursor: zoom-in; transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.csv2 .research-tiles .rt-thumb:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,0.09); }
+.csv2 .research-tiles .rt-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.csv2 .research-tiles figcaption { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--faint); text-align: center; }
+@media (max-width: 900px) {
+  .csv2 .research-tiles { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 520px) {
+  .csv2 .research-tiles { grid-template-columns: repeat(2, 1fr); }
+}
