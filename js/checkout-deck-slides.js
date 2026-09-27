@@ -142,7 +142,7 @@ window.DECK = {
       sub: "One clear primary action, automatic best-coupon, a colour-coded payment breakdown, and product details surfaced up front.",
       before: { img: "stream-case-study-cart-page-before-01.png", focus: 0.05, notes: ["Buried actions", "Flat pricing"] },
       v1: { img: "stream-case-study-cart-page-01.png", focus: 0.05, notes: ["Clear primary CTA", "Auto best-coupon"] },
-      v2: { img: "stream-case-study-cart-page-01.png", focus: 0.05, notes: ["Shipped live", "Colour-coded savings"] },
+      v2: { video: "stream-live-cart.mp4", poster: "stream-case-study-cart-page-01.png", notes: ["Live in the app", "Colour-coded savings"] },
       evidence: {
         method: "Heuristic evaluation · UX audit",
         img: "stream-case-study-behavior-heuristic.png", crop: 0.2,
@@ -161,7 +161,7 @@ window.DECK = {
       sub: "Cut the scroll, kept the payable amount and breakdown pinned, and surfaced UPI, wallet and bank methods upfront.",
       before: { img: "stream-case-study-payment-page-before.png", focus: 0.05, notes: ["Heavy scroll", "Amount hidden"] },
       v1: { img: "stream-case-study-payment-page.png", focus: 0.05, notes: ["Payable pinned", "Methods upfront"] },
-      v2: { img: "stream-case-study-payment-page.png", focus: 0.05, notes: ["Shipped live", "Cleaner spacing"] },
+      v2: { video: "stream-live-payment.mp4", poster: "stream-case-study-payment-page.png", notes: ["Live in the app", "Cleaner spacing"] },
       punch: "Never make a user scroll to find what they owe.",
       signal: [{ t: "Payment clarity", dir: "up" }, { t: "Steps to pay", dir: "down" }]
     },
@@ -186,20 +186,33 @@ window.DECK = {
       sub: "A clear savings callout, ordered-item images, a 'Continue shopping' CTA, status colours, and a 'Rate your experience' prompt.",
       before: { img: "stream-case-study-order-success-page-before.png", focus: 0.05, notes: ["Plain confirmation", "Dead end"] },
       v1: { img: "stream-case-study-order-success-page.png", focus: 0.05, notes: ["Savings callout", "Loop back to shop"] },
-      v2: { img: "stream-case-study-order-success-page.png", focus: 0.05, notes: ["Shipped live", "Reward moment"] },
+      v2: { video: "stream-live-success.mp4", poster: "stream-case-study-order-success-page.png", notes: ["Live in the app", "Reward moment"] },
       punch: "End on a reward, then loop back to browsing.",
       signal: [{ t: "Delight", dir: "up" }, { t: "Repeat visits", dir: "up" }]
     },
 
-    /* 11 — COUPON STORE + SUPPORT */
+    /* 11 — ORDER TRACKING (the wow moment — live video) */
     {
       section: "evolution", type: "evolution",
-      eyebrow: "Coupons & support · 05",
+      eyebrow: "After the order · 05",
+      headline: ["Calming the post-order wait."],
+      sub: "The old screen was a static status list — no live location, no way to reach the rider, no help. The redesign adds real-time map tracking, ETA, delivery OTP and one-tap help.",
+      before: { img: "stream-case-study-order-tracking-before.png", focus: 0.05, notes: ["Static status list", "No live tracking"] },
+      v1: { img: "stream-case-study-order-tracking.png", focus: 0.05, notes: ["Live map & ETA", "Call the rider"] },
+      v2: { video: "stream-live-tracking.mp4", poster: "stream-case-study-order-tracking.png", notes: ["Live in the app", "Real-time tracking"] },
+      punch: "Turn the anxious wait into a reassuring, connected experience.",
+      signal: [{ t: "Reassurance", dir: "up" }, { t: "Post-order panic", dir: "down" }]
+    },
+
+    /* 12 — COUPONS & SUPPORT */
+    {
+      section: "evolution", type: "evolution",
+      eyebrow: "Savings & help · 06",
       headline: ["Savings early, help that helps."],
       sub: "A dedicated coupon store moves savings to the start of the journey; a rebuilt help hub with chat, call and a guided bot cut support load.",
       before: { img: "stream-case-study-coupon-page-before.png", focus: 0.05, notes: ["Coupons hard to find", "Generic FAQs"] },
-      v1: { img: "stream-case-study-coupon-page.png", focus: 0.05, notes: ["Browse & filter offers", "Action-oriented help"] },
-      v2: { img: "stream-case-study-support-page.png", focus: 0.05, notes: ["Shipped live", "Guided chatbot"] },
+      v1: { img: "stream-case-study-coupon-page.png", focus: 0.05, notes: ["Browse & filter offers", "Savings up front"] },
+      v2: { img: "stream-case-study-support-page.png", focus: 0.05, notes: ["Action-oriented help", "Guided chatbot"] },
       evidence: {
         method: "Support impact · FY 22–23",
         img: "stream-case-study-key-performance.png", crop: 0.2,
