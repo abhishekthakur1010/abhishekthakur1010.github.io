@@ -141,7 +141,7 @@ window.DECK = {
       headline: ["A cart that helps you decide."],
       sub: "One clear primary action, automatic best-coupon, a colour-coded payment breakdown, and product details surfaced up front.",
       before: { img: "stream-case-study-cart-page-before-01.png", focus: 0.05, notes: ["Buried actions", "Flat pricing"] },
-      v1: { img: "stream-case-study-cart-page-01.png", focus: 0.05, notes: ["Clear primary CTA", "Auto best-coupon"] },
+      v1: { img: "stream-v1-cart.png", focus: 0.05, notes: ["Clear primary CTA", "Auto best-coupon"] },
       v2: { video: "stream-live-cart.mp4", poster: "stream-case-study-cart-page-01.png", notes: ["Live in the app", "Colour-coded savings"] },
       evidence: {
         method: "Heuristic evaluation · UX audit",
@@ -160,7 +160,7 @@ window.DECK = {
       headline: ["The amount, always in view."],
       sub: "Cut the scroll, kept the payable amount and breakdown pinned, and surfaced UPI, wallet and bank methods upfront.",
       before: { img: "stream-case-study-payment-page-before.png", focus: 0.05, notes: ["Heavy scroll", "Amount hidden"] },
-      v1: { img: "stream-case-study-payment-page.png", focus: 0.05, notes: ["Payable pinned", "Methods upfront"] },
+      v1: { img: "stream-v1-payment.png", focus: 0.05, notes: ["Payable pinned", "Methods upfront"] },
       v2: { video: "stream-live-payment.mp4", poster: "stream-case-study-payment-page.png", notes: ["Live in the app", "Cleaner spacing"] },
       punch: "Never make a user scroll to find what they owe.",
       signal: [{ t: "Payment clarity", dir: "up" }, { t: "Steps to pay", dir: "down" }]
@@ -173,7 +173,7 @@ window.DECK = {
       headline: ["Let the map do the typing."],
       sub: "Simplified the map-based add/edit flow, surfaced key fields in the first viewport, and added drag-to-select with auto-fill.",
       before: { img: "stream-case-study-add-address-before.png", focus: 0.05, notes: ["Long form", "Unexplained fields"] },
-      v1: { img: "stream-case-study-add-address.png", focus: 0.05, notes: ["Map-based", "Auto-fill"] },
+      v1: { img: "stream-v1-address.png", focus: 0.05, notes: ["Map-based", "Auto-fill"] },
       v2: { img: "stream-case-study-add-address.png", focus: 0.05, notes: ["Shipped live", "Fewer fields"] },
       signal: [{ t: "Form completion", dir: "up" }, { t: "Effort", dir: "down" }]
     },
@@ -185,7 +185,7 @@ window.DECK = {
       headline: ["Close the loop with delight."],
       sub: "A clear savings callout, ordered-item images, a 'Continue shopping' CTA, status colours, and a 'Rate your experience' prompt.",
       before: { img: "stream-case-study-order-success-page-before.png", focus: 0.05, notes: ["Plain confirmation", "Dead end"] },
-      v1: { img: "stream-case-study-order-success-page.png", focus: 0.05, notes: ["Savings callout", "Loop back to shop"] },
+      v1: { img: "stream-v1-success.png", focus: 0.05, notes: ["Savings callout", "Loop back to shop"] },
       v2: { video: "stream-live-success.mp4", poster: "stream-case-study-order-success-page.png", notes: ["Live in the app", "Reward moment"] },
       punch: "End on a reward, then loop back to browsing.",
       signal: [{ t: "Delight", dir: "up" }, { t: "Repeat visits", dir: "up" }]
@@ -198,7 +198,7 @@ window.DECK = {
       headline: ["Calming the post-order wait."],
       sub: "The old screen was a static status list — no live location, no way to reach the rider, no help. The redesign adds real-time map tracking, ETA, delivery OTP and one-tap help.",
       before: { img: "stream-case-study-order-tracking-before.png", focus: 0.05, notes: ["Static status list", "No live tracking"] },
-      v1: { img: "stream-case-study-order-tracking.png", focus: 0.05, notes: ["Live map & ETA", "Call the rider"] },
+      v1: { img: "stream-v1-tracking.jpg", focus: 0.05, notes: ["Live map & ETA", "Call the rider"] },
       v2: { video: "stream-live-tracking.mp4", poster: "stream-case-study-order-tracking.png", notes: ["Live in the app", "Real-time tracking"] },
       punch: "Turn the anxious wait into a reassuring, connected experience.",
       signal: [{ t: "Reassurance", dir: "up" }, { t: "Post-order panic", dir: "down" }]
@@ -211,8 +211,8 @@ window.DECK = {
       headline: ["Savings early, help that helps."],
       sub: "A dedicated coupon store moves savings to the start of the journey; a rebuilt help hub with chat, call and a guided bot cut support load.",
       before: { img: "stream-case-study-coupon-page-before.png", focus: 0.05, notes: ["Coupons hard to find", "Generic FAQs"] },
-      v1: { img: "stream-case-study-coupon-page.png", focus: 0.05, notes: ["Browse & filter offers", "Savings up front"] },
-      v2: { img: "stream-case-study-support-page.png", focus: 0.05, notes: ["Action-oriented help", "Guided chatbot"] },
+      v1: { img: "stream-v1-coupon.png", focus: 0.05, notes: ["Browse & filter offers", "Savings up front"] },
+      v2: { img: "stream-v1-support.png", focus: 0.05, notes: ["Action-oriented help", "Guided chatbot"] },
       evidence: {
         method: "Support impact · FY 22–23",
         img: "stream-case-study-key-performance.png", crop: 0.2,
