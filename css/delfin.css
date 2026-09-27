@@ -174,6 +174,10 @@
 .delfin .df-home-phone { display: flex; justify-content: center; }
 .delfin .df-home-phone .df-phone { width: 280px; }
 .delfin .df-home-phone .df-ph-scr { aspect-ratio: 300/620; }
+/* featured home screen in the shared black mock frame */
+.delfin .df-home-mock { width: 100%; }
+.delfin .df-home-mock .mockf { max-width: 300px; }
+.delfin .df-home-mock .mockf-scroll { height: 560px; }
 .delfin .df-home-layers { display: flex; flex-direction: column; gap: 14px; }
 .delfin .df-layer { position: relative; padding: 22px 24px 22px 62px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
 .delfin .df-layer-n { position: absolute; left: 22px; top: 22px; font-size: 13px; font-weight: 800; color: var(--accent); }

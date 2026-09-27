@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link href="./css/case-study-v2.css?v=56" rel="stylesheet" />
-    <link href="./css/delfin.css?v=9" rel="stylesheet" />
+    <link href="./css/delfin.css?v=10" rel="stylesheet" />
   </head>
 
   <body class="csv2 delfin">
@@ -285,7 +285,13 @@
           became reusable payment infrastructure for FASTag, GPS and the services to come.
         </p>
         <div class="df-home">
-          <div class="df-home-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" /></div></div>
+          <div class="df-home-phone">
+            <figure class="iter-mock df-home-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
+              </span></span>
+            </figure>
+          </div>
           <div class="df-home-layers">
             <div class="df-layer"><span class="df-layer-n">01</span><b>Pending actions first</b><p>FASTags needing attention, low balance, hotlisted, activation and GPS installation pending.</p></div>
             <div class="df-layer"><span class="df-layer-n">02</span><b>Services &amp; wallets</b><p>FASTag and GPS, with the DelFin wallet and bank-specific wallet always in reach.</p></div>
@@ -398,7 +404,7 @@
 
       // The work — mark tall screens as scrollable (vertical scroll inside the black frame)
       (function () {
-        var imgs = Array.prototype.slice.call(document.querySelectorAll(".df-iter .iter-mock img"));
+        var imgs = Array.prototype.slice.call(document.querySelectorAll(".df-iter .iter-mock img, .df-home-mock img"));
         if (!imgs.length) return;
         function checkScroll(im) {
           var frame = im.closest(".mockf");
