@@ -23,8 +23,8 @@ window.DECK = {
       headline: ["Streamlining ", "checkout", " from cart to payment"],
       highlight: "checkout",
       body: "Rebuilding JioMart's cart, address, payment and confirmation into a faster, clearer, more rewarding flow — the one screen every customer touches, but nobody had optimized.",
-      hero: "stream-case-study-order-success-page.png",
-      backShots: ["stream-case-study-cart-page-01.png", "stream-case-study-payment-page.png"],
+      hero: "stream-case-study-cart-page-01.png",
+      backShots: ["stream-case-study-payment-page.png", "stream-case-study-order-success-page.png"],
       badge: { n: "+20.5%", l: "Conversion rate" },
       meta: [
         { l: "My role", v: "Design Lead — Checkout · Jio central design team" },
