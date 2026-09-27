@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link href="./css/case-study-v2.css?v=56" rel="stylesheet" />
-    <link href="./css/delfin.css?v=8" rel="stylesheet" />
+    <link href="./css/delfin.css?v=9" rel="stylesheet" />
   </head>
 
   <body class="csv2 delfin">
@@ -80,16 +80,51 @@
     </header>
 
     <!-- The work — product screens -->
-    <section class="block">
+    <section class="showcase block">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">The work</span></div>
-        <div class="showgrid">
-          <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
-          <img src="./images/delfin/delfin-wallet.png" alt="DelFin wallet" loading="lazy" />
-          <img src="./images/delfin/delfin-axis-wallet.png" alt="Axis pool FASTag wallet" loading="lazy" />
-          <img src="./images/delfin/delfin-gps-plan-select.png" alt="GPS plan selection" loading="lazy" />
-          <img src="./images/delfin/delfin-gps-address.png" alt="GPS installation address" loading="lazy" />
-          <img src="./images/delfin/delfin-home-first.png" alt="First-time home" loading="lazy" />
+        <div class="iter df-iter">
+          <div class="iter-head">
+            <p class="iter-note">The DelFin app end to end — home as a control centre, a wallet built as infrastructure, and the FASTag &amp; GPS journeys built on top.</p>
+          </div>
+          <div class="iter-grid">
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
+              </span></span>
+              <figcaption>Home · control centre</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-wallet.png" alt="DelFin wallet" loading="lazy" />
+              </span></span>
+              <figcaption>DelFin wallet</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-axis-wallet.png" alt="Axis pool FASTag wallet" loading="lazy" />
+              </span></span>
+              <figcaption>Axis pool wallet</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-gps-plan-select.png" alt="GPS plan selection" loading="lazy" />
+              </span></span>
+              <figcaption>GPS · plan select</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-gps-address.png" alt="GPS installation address" loading="lazy" />
+              </span></span>
+              <figcaption>GPS · install address</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-home-first.png" alt="First-time home" loading="lazy" />
+              </span></span>
+              <figcaption>First-time home</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -350,7 +385,7 @@
     <script>
       // Scroll-reveal
       (function () {
-        var sel = ".block .sec-head, .block .sec-title, .block .lead, .showgrid img, .act, .stat, .df-eco, .df-platform, .df-model, .df-banks .df-bank, .df-normalise, .df-home, .df-resume, .df-lesson, .reflection, .df-review, .nextcard";
+        var sel = ".block .sec-head, .block .sec-title, .block .lead, .iter-mock, .act, .stat, .df-eco, .df-platform, .df-model, .df-banks .df-bank, .df-normalise, .df-home, .df-resume, .df-lesson, .reflection, .df-review, .nextcard";
         var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
         if (!targets.length) return;
         targets.forEach(function (el) { el.classList.add("reveal"); });
@@ -359,6 +394,23 @@
           entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
         }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
         targets.forEach(function (el) { io.observe(el); });
+      })();
+
+      // The work — mark tall screens as scrollable (vertical scroll inside the black frame)
+      (function () {
+        var imgs = Array.prototype.slice.call(document.querySelectorAll(".df-iter .iter-mock img"));
+        if (!imgs.length) return;
+        function checkScroll(im) {
+          var frame = im.closest(".mockf");
+          var scroll = im.closest(".mockf-scroll");
+          if (!frame || !scroll) return;
+          frame.classList.toggle("is-scrollable", im.offsetHeight > scroll.clientHeight + 2);
+        }
+        function checkAll() { imgs.forEach(checkScroll); }
+        imgs.forEach(function (im) {
+          if (im.complete) checkScroll(im); else im.addEventListener("load", function () { checkScroll(im); });
+        });
+        window.addEventListener("resize", checkAll);
       })();
     </script>
     <script src="./js/case-study-lightbox.js?v=5" defer></script>
