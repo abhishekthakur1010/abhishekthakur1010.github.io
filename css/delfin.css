@@ -16,6 +16,15 @@
 .delfin .df-dark { background: var(--bg-dark); }
 .delfin .df-dark .sec-label { color: var(--faint); }
 
+/* ---------- chapter dividers (3 major chapters) ---------- */
+.delfin .df-chapter { padding: 72px 0; border-top: 1px solid var(--line); background: var(--bg); }
+.delfin .df-chapter .df-ch-n { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); margin-bottom: 16px; }
+.delfin .df-ch-title { font-size: clamp(34px, 5vw, 60px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; color: var(--ink); }
+.delfin .df-ch-sub { margin-top: 16px; font-size: clamp(16px, 1.7vw, 20px); color: var(--muted); max-width: 56ch; line-height: 1.5; }
+.delfin .df-chapter-dark { background: var(--bg-dark); border-top-color: #262626; }
+.delfin .df-chapter-dark .df-ch-title { color: #fff; }
+.delfin .df-chapter-dark .df-ch-sub { color: rgba(255,255,255,.66); }
+
 /* ---------- placeholder screen slots ---------- */
 .delfin .ph {
   display: flex; align-items: center; justify-content: center; text-align: center;

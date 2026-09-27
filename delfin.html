@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link href="./css/case-study-v2.css?v=56" rel="stylesheet" />
-    <link href="./css/delfin.css?v=6" rel="stylesheet" />
+    <link href="./css/delfin.css?v=7" rel="stylesheet" />
   </head>
 
   <body class="csv2 delfin">
@@ -76,13 +76,17 @@
           <div><div class="label">Type</div><div class="val">0→1 Product · Android</div></div>
           <div><div class="label">Status</div><div class="val">Launched</div></div>
         </div>
-        <div class="meta df-meta df-meta-2">
-          <div><div class="label">Team</div><div class="val">Product + Engineering + 2 Product Designers</div></div>
-          <div><div class="label">Designers I guided</div><div class="val">Juhi Garg · Abhijeet Purandare</div></div>
-          <div class="df-meta-wide"><div class="label">My contribution</div><div class="val">Product strategy · Experience strategy · UX architecture · Design direction · Technical feasibility · Stakeholder alignment · Execution leadership</div></div>
-        </div>
       </div>
     </header>
+
+    <!-- ============ CHAPTER 01 ============ -->
+    <section class="df-chapter">
+      <div class="wrap">
+        <span class="df-ch-n">Chapter 01</span>
+        <h2 class="df-ch-title">Finding the problem</h2>
+        <p class="df-ch-sub">The business opportunity, the platform bet, and the constraints we designed inside.</p>
+      </div>
+    </section>
 
     <!-- ============ 02 · THE OPPORTUNITY ============ -->
     <section class="block">
@@ -185,17 +189,15 @@
           <p class="df-note">Synthesised needs, not survey statistics — the signals we consistently heard and designed toward.</p>
         </div>
 
-        <!-- behind the build -->
-        <div class="df-team">
-          <div class="df-team-head">Behind the build</div>
-          <div class="df-teamrow">
-            <figure><img src="./images/delfin/delfin-team-brainstorm.png" alt="Whiteboard brainstorming with the team" loading="lazy" /><figcaption>Whiteboarding</figcaption></figure>
-            <figure><img src="./images/delfin/delfin-team-workshop.png" alt="Working session with product and engineering" loading="lazy" /><figcaption>Working session</figcaption></figure>
-            <figure><img src="./images/delfin/delfin-team-stakeholder.png" alt="Presenting to stakeholders" loading="lazy" /><figcaption>Stakeholder review</figcaption></figure>
-            <figure><img src="./images/delfin/delfin-team-ideas.jpg" alt="Sharing ideas with the design team" loading="lazy" /><figcaption>Sharing ideas</figcaption></figure>
-            <figure><img src="./images/delfin/delfin-team-latenight.png" alt="Late-night crunch before launch" loading="lazy" /><figcaption>Late-night crunch</figcaption></figure>
-          </div>
-        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHAPTER 02 ============ -->
+    <section class="df-chapter df-chapter-dark">
+      <div class="wrap">
+        <span class="df-ch-n">Chapter 02</span>
+        <h2 class="df-ch-title">The decisions</h2>
+        <p class="df-ch-sub">Making complex financial infrastructure feel simple — three principles that shaped the product.</p>
       </div>
     </section>
 
@@ -335,6 +337,15 @@
     </section>
 
     <!-- ============ 10 · HOME AS CONTROL CENTRE ============ -->
+    <!-- ============ CHAPTER 03 ============ -->
+    <section class="df-chapter">
+      <div class="wrap">
+        <span class="df-ch-n">Chapter 03</span>
+        <h2 class="df-ch-title">Solution &amp; impact</h2>
+        <p class="df-ch-sub">The shipped product, how the foundation extended to GPS, and what launched into the world.</p>
+      </div>
+    </section>
+
     <section class="block soft">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">Home as a control centre</span></div>
@@ -566,7 +577,7 @@
     <script>
       // Scroll-reveal
       (function () {
-        var sel = ".block .sec-head, .block .sec-title, .block .lead, .df-eco, .df-hmw, .df-platform, .df-note, .df-role-item, .df-patterns, .df-team, .df-teamrow figure, .df-underneath, .df-model, .df-split, .df-anno, .df-banks, .df-normalise, .df-states .df-state, .df-recover > div, .df-home, .df-wallet, .df-gps-flow, .df-resume, .df-timeline .df-tl-col, .df-signals .statcard, .df-review, .df-roadmap > div, .df-lesson, .reflection, .nextcard, .df-meta";
+        var sel = ".block .sec-head, .block .sec-title, .block .lead, .df-eco, .df-hmw, .df-platform, .df-note, .df-role-item, .df-patterns, .df-chapter .df-ch-n, .df-chapter .df-ch-title, .df-chapter .df-ch-sub, .df-underneath, .df-model, .df-split, .df-anno, .df-banks, .df-normalise, .df-states .df-state, .df-recover > div, .df-home, .df-wallet, .df-gps-flow, .df-resume, .df-timeline .df-tl-col, .df-signals .statcard, .df-review, .df-roadmap > div, .df-lesson, .reflection, .nextcard, .df-meta";
         var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
         if (!targets.length) return;
         targets.forEach(function (el) { el.classList.add("reveal"); });
