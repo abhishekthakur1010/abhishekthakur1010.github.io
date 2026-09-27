@@ -1611,3 +1611,8 @@ body.csv2 {
 @media (max-width: 520px) {
   .csv2 .research-tiles { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* iteration mock — Live video layer */
+.csv2 .mockf-video { display: none; width: 100%; height: auto; border-radius: 0; background: #fff; }
+.csv2 .mockf.show-video .mockf-video { display: block; }
+.csv2 .mockf.show-video img { display: none; }

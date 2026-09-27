@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=55" rel="stylesheet" />
+    <link href="./css/case-study-v2.css?v=56" rel="stylesheet" />
   </head>
 
   <body class="csv2">
@@ -136,6 +136,7 @@
                      data-v1="./images/stream-study/stream-case-study-cart-page-01.png?v=3"
                      data-live="./images/stream-study/stream-case-study-cart-page-01.png?v=3"
                      src="./images/stream-study/stream-case-study-cart-page-01.png?v=3" alt="Cart" />
+                <video class="mockf-video" muted loop playsinline preload="none" data-src="./images/stream-study/stream-live-cart.mp4"></video>
               </span></span>
               <figcaption>Cart</figcaption>
             </figure>
@@ -154,6 +155,7 @@
                      data-v1="./images/stream-study/stream-case-study-payment-page.png?v=3"
                      data-live="./images/stream-study/stream-case-study-payment-page.png?v=3"
                      src="./images/stream-study/stream-case-study-payment-page.png?v=3" alt="Payment" />
+                <video class="mockf-video" muted loop playsinline preload="none" data-src="./images/stream-study/stream-live-payment.mp4"></video>
               </span></span>
               <figcaption>Payment</figcaption>
             </figure>
@@ -163,6 +165,7 @@
                      data-v1="./images/stream-study/stream-case-study-order-success-page.png?v=3"
                      data-live="./images/stream-study/stream-case-study-order-success-page.png?v=3"
                      src="./images/stream-study/stream-case-study-order-success-page.png?v=3" alt="Order success" />
+                <video class="mockf-video" muted loop playsinline preload="none" data-src="./images/stream-study/stream-live-success.mp4"></video>
               </span></span>
               <figcaption>Order success</figcaption>
             </figure>
@@ -172,6 +175,7 @@
                      data-v1="./images/stream-study/stream-case-study-order-tracking.png?v=2"
                      data-live="./images/stream-study/stream-case-study-order-tracking.png?v=2"
                      src="./images/stream-study/stream-case-study-order-tracking.png?v=2" alt="Order tracking" />
+                <video class="mockf-video" muted loop playsinline preload="none" data-src="./images/stream-study/stream-live-tracking.mp4"></video>
               </span></span>
               <figcaption>Order tracking</figcaption>
             </figure>
@@ -729,7 +733,7 @@
         });
       })();
 
-      // Iteration tabs — Before / V1 / Live
+      // Iteration tabs — Before / V1 / Live (Live can be a video)
       (function () {
         var iter = document.querySelector(".iter");
         if (!iter) return;
@@ -745,8 +749,21 @@
         function setStage(stage) {
           tabs.forEach(function (t) { t.classList.toggle("is-on", t.getAttribute("data-stage") === stage); });
           imgs.forEach(function (im) {
+            var frame = im.closest(".mockf");
+            var vid = frame ? frame.querySelector(".mockf-video") : null;
             var src = im.getAttribute("data-" + stage);
             if (src) { im.onload = function () { checkScroll(im); }; im.src = src; }
+            if (vid) {
+              if (stage === "live") {
+                // load lazily on first play
+                if (!vid.src) vid.src = vid.getAttribute("data-src");
+                frame.classList.add("show-video");
+                var p = vid.play(); if (p && p.catch) p.catch(function () {});
+              } else {
+                frame.classList.remove("show-video");
+                try { vid.pause(); } catch (e) {}
+              }
+            }
           });
         }
         tabs.forEach(function (t) {
