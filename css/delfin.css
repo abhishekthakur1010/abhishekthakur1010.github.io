@@ -38,17 +38,8 @@
 .delfin .df-hero h1 { font-size: clamp(36px, 5vw, 66px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; max-width: 16ch; }
 .delfin .df-hero .sub { max-width: 54ch; }
 
-/* hero device composition: front + two behind that fan out on hover */
-.delfin .df-hero-stage { position: relative; height: 460px; display: flex; align-items: center; justify-content: center; }
-.delfin .df-hero-stage .df-phone { position: absolute; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .5s ease; }
-.delfin .df-phone-front { z-index: 3; }
-/* resting state — back phones tucked behind the front, only peeking */
-.delfin .df-phone-back-l { z-index: 1; transform: translate(-16%, 5%) rotate(-6deg) scale(.9); opacity: .9; }
-.delfin .df-phone-back-r { z-index: 2; transform: translate(16%, 5%) rotate(6deg) scale(.9); opacity: .9; }
-/* hover — fan them out wide, lift the front */
-.delfin .df-fan:hover .df-phone-front { transform: translateY(-10px); }
-.delfin .df-fan:hover .df-phone-back-l { transform: translate(-52%, 8%) rotate(-12deg) scale(.92); opacity: 1; }
-.delfin .df-fan:hover .df-phone-back-r { transform: translate(52%, 8%) rotate(12deg) scale(.92); opacity: 1; }
+/* hero device composition reuses the shared .hero-device / .phone-fan mock
+   and hover interaction from case-study-v2.css (same as the discovery case study) */
 .delfin .df-badge { position: absolute; z-index: 4; left: 6%; bottom: 8%; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.14); }
 .delfin .df-badge b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--accent); }
 .delfin .df-badge span { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint); }
@@ -259,7 +250,6 @@
    ============================================================ */
 @media (max-width: 1000px) {
   .delfin .df-hero-top { grid-template-columns: 1fr; gap: 40px; }
-  .delfin .df-hero-stage { height: 400px; }
   .delfin .df-meta, .delfin .df-meta-2 { grid-template-columns: repeat(2, 1fr); }
   .delfin .df-role { grid-template-columns: repeat(2, 1fr); }
   .delfin .df-split, .delfin .df-banks, .delfin .df-normalise, .delfin .df-home, .delfin .df-wallet { grid-template-columns: 1fr; gap: 32px; }
@@ -287,9 +277,5 @@
   .delfin .df-flow span { font-size: 12px; padding: 7px 10px; }
   .delfin .df-phones-2 { flex-wrap: wrap; }
   .delfin .df-resume-marks span { font-size: 9px; }
-  .delfin .df-hero-stage .df-phone { width: 180px; }
-  .delfin .df-phone-back-l { transform: translate(-40%, 8%) rotate(-9deg) scale(.86); }
-  .delfin .df-phone-back-r { transform: translate(40%, 8%) rotate(9deg) scale(.86); }
-  .delfin .df-fan:hover .df-phone-back-l { transform: translate(-46%, 8%) rotate(-10deg) scale(.88); }
-  .delfin .df-fan:hover .df-phone-back-r { transform: translate(46%, 8%) rotate(10deg) scale(.88); }
+
 }
