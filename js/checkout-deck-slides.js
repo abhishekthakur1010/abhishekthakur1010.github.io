@@ -133,7 +133,7 @@ window.DECK = {
       headline: ["More friction than", "we could fix at once."],
       sub: "I ranked every issue by impact and effort, then sequenced the checkout screens into a redesign roadmap.",
       reveal: "So I prioritised.",
-      img: "stream-case-study-analysis.png", crop: 0.2,
+      img: "stream-impact-effort-matrix.png", crop: 0,
       tiers: [
         { k: "High impact · low effort", d: "Quick wins" },
         { k: "High impact · high effort", d: "Big bets" },
