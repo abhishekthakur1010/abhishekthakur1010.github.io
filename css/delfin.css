@@ -1,0 +1,276 @@
+/* ============================================================
+   DelFin case study — scoped styles (prefix .delfin / df-)
+   Builds on case-study-v2.css tokens (--ink, --accent, --line…)
+   ============================================================ */
+
+/* reveal (reuse the site's pattern) */
+.delfin .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.delfin .reveal.in { opacity: 1; transform: none; }
+
+.delfin .block { padding: 84px 0; }
+.delfin .sec-title { font-size: clamp(26px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 700; max-width: 22ch; }
+.delfin .lead { margin-top: 18px; max-width: 64ch; color: var(--muted); }
+.delfin .df-note { margin-top: 22px; font-size: 13.5px; font-style: italic; color: var(--faint); max-width: 70ch; }
+
+/* dark section variant */
+.delfin .df-dark { background: var(--bg-dark); }
+.delfin .df-dark .sec-label { color: var(--faint); }
+
+/* ---------- placeholder screen slots ---------- */
+.delfin .ph {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: repeating-linear-gradient(135deg, #f4f4f3, #f4f4f3 12px, #eeeeec 12px, #eeeeec 24px);
+  color: var(--faint); border: 1px dashed #d3d3d0;
+}
+.delfin .ph span { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 0 10px; }
+.delfin .df-dark .ph { background: repeating-linear-gradient(135deg, #1b1b1b, #1b1b1b 12px, #202020 12px, #202020 24px); border-color: #333; color: #777; }
+
+/* ---------- generic phone frame ---------- */
+.delfin .df-phone { position: relative; width: 232px; aspect-ratio: 422/910; background: #0e0e0e; border-radius: 36px; padding: 8px; box-shadow: 0 26px 60px rgba(0,0,0,.22); flex: 0 0 auto; }
+.delfin .df-phone::before { content: ""; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 74px; height: 16px; background: #0e0e0e; border-radius: 0 0 12px 12px; z-index: 2; }
+.delfin .df-ph-scr { width: 100%; height: 100%; border-radius: 28px; overflow: hidden; background: #fff; }
+.delfin .df-ph-scr.tall { aspect-ratio: auto; }
+
+/* ---------- 01 · HERO ---------- */
+.delfin .df-hero { padding: 72px 0 44px; }
+.delfin .df-hero-top { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.delfin .df-hero h1 { font-size: clamp(36px, 5vw, 66px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; max-width: 16ch; }
+.delfin .df-hero .sub { max-width: 54ch; }
+
+/* hero device composition: front + two fanned behind */
+.delfin .df-hero-stage { position: relative; height: 460px; display: flex; align-items: center; justify-content: center; }
+.delfin .df-hero-stage .df-phone { position: absolute; }
+.delfin .df-phone-front { z-index: 3; }
+.delfin .df-phone-back-l { z-index: 1; transform: translate(-42%, 8%) rotate(-9deg) scale(.9); opacity: .96; }
+.delfin .df-phone-back-r { z-index: 2; transform: translate(42%, 8%) rotate(9deg) scale(.9); opacity: .96; }
+.delfin .df-badge { position: absolute; z-index: 4; left: 6%; bottom: 8%; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; box-shadow: 0 18px 44px rgba(0,0,0,.14); }
+.delfin .df-badge b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--accent); }
+.delfin .df-badge span { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint); }
+
+.delfin .df-meta { grid-template-columns: repeat(4, 1fr); }
+.delfin .df-meta-2 { margin-top: 22px; padding-top: 22px; grid-template-columns: 1fr 1fr 2fr; }
+.delfin .df-meta-wide { grid-column: auto; }
+
+/* ---------- 02 · ECOSYSTEM DIAGRAM ---------- */
+.delfin .df-eco { position: relative; margin: 48px auto 0; max-width: 760px; height: 420px; }
+.delfin .df-eco-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 168px; height: 168px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,.24); }
+.delfin .df-eco-center b { font-size: 20px; font-weight: 700; }
+.delfin .df-eco-center span { font-size: 11px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+.delfin .df-eco-node { position: absolute; width: 132px; padding: 14px 12px 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px; text-align: center; font-weight: 700; font-size: 15px; box-shadow: 0 12px 30px rgba(0,0,0,.06); }
+.delfin .df-eco-node .tag { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+.delfin .df-eco-node .tag.launched { color: var(--accent); }
+.delfin .df-eco-node .tag.future { color: var(--faint); }
+.delfin .df-eco-node.n1 { top: 0; left: 50%; transform: translateX(-50%); }
+.delfin .df-eco-node.n2 { top: 30%; right: 0; }
+.delfin .df-eco-node.n3 { bottom: 4%; right: 12%; }
+.delfin .df-eco-node.n4 { bottom: 4%; left: 12%; }
+.delfin .df-eco-node.n5 { top: 30%; left: 0; }
+
+/* strategic question callout */
+.delfin .df-hmw { margin-top: 44px; border-left: 3px solid var(--accent); padding: 6px 0 6px 24px; max-width: 60ch; }
+.delfin .df-hmw-k { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); }
+.delfin .df-hmw p { margin-top: 10px; font-size: clamp(20px, 2.4vw, 28px); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; color: var(--ink); }
+
+/* ---------- 03 · PLATFORM LAYER ---------- */
+.delfin .df-platform { margin-top: 44px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.delfin .df-plat-top { padding: 26px 28px; background: var(--bg-soft); }
+.delfin .df-plat-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); }
+.delfin .df-plat-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.delfin .df-plat-chips span { font-size: 14px; font-weight: 600; padding: 9px 16px; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
+.delfin .df-plat-arrow { text-align: center; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--faint); padding: 14px; position: relative; }
+.delfin .df-plat-arrow::before, .delfin .df-plat-arrow::after { content: ""; position: absolute; top: 0; height: 14px; width: 1px; background: var(--line); left: 50%; }
+.delfin .df-plat-arrow::after { top: auto; bottom: 0; }
+.delfin .df-plat-services { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--line); }
+.delfin .df-svc { background: #fff; padding: 22px 16px; text-align: center; font-weight: 700; font-size: 15px; display: flex; flex-direction: column; gap: 8px; }
+.delfin .df-svc em { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+.delfin .df-svc.on { background: #fff; }
+.delfin .df-svc.on em { color: var(--accent); }
+.delfin .df-svc.on { box-shadow: inset 0 3px 0 var(--accent); }
+
+/* ---------- 04 · MY ROLE ---------- */
+.delfin .df-role { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 40px; }
+.delfin .df-role-item { background: #fff; padding: 28px 26px; }
+.delfin .df-role-k { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: 12px; }
+.delfin .df-role-item p { color: var(--muted); font-size: 15px; line-height: 1.55; }
+
+/* ---------- 05 · PATTERNS ---------- */
+.delfin .df-patterns { margin-top: 40px; }
+.delfin .df-pat-head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); margin-bottom: 18px; }
+.delfin .df-pat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.delfin .df-pat-grid blockquote { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 14px; padding: 22px 24px; font-size: clamp(16px, 1.8vw, 20px); font-weight: 500; line-height: 1.45; color: var(--ink); }
+
+/* ---------- 06 · EXPERIENCE CHALLENGE (dark) ---------- */
+.delfin .df-underneath { margin-top: 44px; }
+.delfin .df-under-label, .delfin .df-model-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); margin-bottom: 16px; }
+.delfin .df-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.delfin .df-flow span { background: #1e1e1e; border: 1px solid #2e2e2e; color: #eee; font-size: 13.5px; font-weight: 600; padding: 9px 14px; border-radius: 10px; }
+.delfin .df-flow i { color: var(--accent); font-style: normal; font-weight: 700; }
+.delfin .df-hidden { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.delfin .df-hidden span { font-size: 12px; color: #6a6a6a; border: 1px dashed #3a3a3a; border-radius: 8px; padding: 6px 12px; }
+.delfin .df-model { margin-top: 40px; padding-top: 32px; border-top: 1px solid #2a2a2a; }
+.delfin .df-model-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.delfin .df-model-row > div { text-align: center; padding: 22px 12px; border: 1px solid #2e2e2e; border-radius: 14px; color: #fff; font-weight: 700; font-size: 15px; background: linear-gradient(180deg, #191919, #141414); }
+
+/* ---------- 07/08/09 · PRINCIPLE HEADS ---------- */
+.delfin .df-principle-head { max-width: 66ch; }
+.delfin .df-pn { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 14px; }
+.delfin .df-dark .df-pn { color: var(--accent); }
+
+/* principle 01 split */
+.delfin .df-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 44px; }
+.delfin .df-stage-list { display: flex; flex-direction: column; gap: 10px; }
+.delfin .df-stage { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; font-weight: 600; font-size: 15px; color: var(--muted); background: #fff; }
+.delfin .df-stage span { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--faint); }
+.delfin .df-stage.done { color: var(--ink); }
+.delfin .df-stage.done span { background: var(--ink); color: #fff; border-color: var(--ink); }
+.delfin .df-stage.now { color: var(--ink); border-color: var(--accent); box-shadow: 0 8px 24px rgba(255,45,45,.12); }
+.delfin .df-stage.now span { background: var(--accent); color: #fff; border-color: var(--accent); }
+.delfin .df-phones-2 { display: flex; gap: 18px; justify-content: center; }
+.delfin .df-phones-2 .df-phone { width: 200px; }
+.delfin .df-anno { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
+.delfin .df-anno p { position: relative; padding-left: 20px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+.delfin .df-anno p::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+/* principle 02 banks */
+.delfin .df-banks { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 44px; }
+.delfin .df-bank { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: #fff; }
+.delfin .df-bank-name { font-size: 17px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: baseline; gap: 10px; }
+.delfin .df-bank-name em { font-style: normal; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); }
+.delfin .df-bank-rows { display: flex; flex-direction: column; gap: 10px; }
+.delfin .df-bank-row { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--bg-soft); border-radius: 12px; }
+.delfin .df-bank-row span { font-weight: 600; }
+.delfin .df-bank-row i { font-style: normal; color: var(--faint); font-size: 13px; }
+.delfin .df-bank-row b { margin-left: auto; color: var(--accent); }
+.delfin .df-bank-pool { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.delfin .df-pool { width: 100%; text-align: center; padding: 18px; background: var(--ink); color: #fff; border-radius: 12px; font-weight: 700; }
+.delfin .df-pool b { display: block; color: #fff; margin-top: 4px; font-size: 20px; }
+.delfin .df-pool-arrow { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); }
+.delfin .df-pool-veh { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; width: 100%; }
+.delfin .df-pool-veh span { text-align: center; padding: 12px 8px; background: var(--bg-soft); border-radius: 12px; font-weight: 600; font-size: 14px; }
+.delfin .df-normalise { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 36px; }
+.delfin .df-normalise-copy p { color: var(--muted); font-size: 16px; line-height: 1.6; }
+.delfin .df-keyline { margin-top: 20px; font-size: clamp(19px, 2.2vw, 26px); font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+
+/* principle 03 states */
+.delfin .df-states { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 44px; }
+.delfin .df-state { border: 1px solid var(--line); border-radius: 14px; padding: 18px; font-weight: 700; font-size: 15px; background: #fff; }
+.delfin .df-state-tag { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 10px; }
+.delfin .df-recover { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+.delfin .df-recover > div { text-align: center; padding: 24px; border-radius: 16px; background: var(--bg-soft); }
+.delfin .df-recover b { display: block; font-size: 18px; }
+.delfin .df-recover span { font-size: 13px; color: var(--muted); }
+
+/* ---------- 10 · HOME ---------- */
+.delfin .df-home { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; margin-top: 44px; }
+.delfin .df-home-phone { display: flex; justify-content: center; }
+.delfin .df-home-phone .df-phone { width: 280px; }
+.delfin .df-home-phone .df-ph-scr { aspect-ratio: 300/620; }
+.delfin .df-home-layers { display: flex; flex-direction: column; gap: 14px; }
+.delfin .df-layer { position: relative; padding: 22px 24px 22px 62px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.delfin .df-layer-n { position: absolute; left: 22px; top: 22px; font-size: 13px; font-weight: 800; color: var(--accent); }
+.delfin .df-layer b { font-size: 16px; }
+.delfin .df-layer p { color: var(--muted); font-size: 14.5px; margin-top: 4px; line-height: 1.5; }
+
+/* ---------- 11 · WALLET ---------- */
+.delfin .df-wallet { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 44px; }
+.delfin .df-wallet-diagram { display: flex; flex-direction: column; align-items: center; }
+.delfin .df-wl-node { width: 100%; max-width: 360px; text-align: center; padding: 18px; border-radius: 14px; font-weight: 700; }
+.delfin .df-wl-node.top { background: var(--bg-soft); border: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.delfin .df-wl-node.core { background: var(--ink); color: #fff; font-size: 18px; }
+.delfin .df-wl-node.core em { display: block; font-style: normal; font-size: 11px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+.delfin .df-wl-pipe { width: 2px; height: 26px; background: var(--line); }
+.delfin .df-wl-fan { display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; justify-content: center; }
+.delfin .df-wl-fan span { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--faint); }
+.delfin .df-wl-fan span.on { color: var(--ink); border-color: var(--ink); }
+
+/* ---------- 12 · GPS (dark) ---------- */
+.delfin .df-transition { font-size: clamp(20px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; color: #fff; max-width: 26ch; margin-bottom: 40px; }
+.delfin .df-gps-flow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 40px; }
+.delfin .df-gps-step { background: #1c1c1c; border: 1px solid #2c2c2c; border-radius: 12px; padding: 16px 10px; text-align: center; color: #eee; font-size: 12.5px; font-weight: 600; }
+.delfin .df-gps-step span { display: block; font-size: 11px; font-weight: 800; color: var(--accent); margin-bottom: 8px; }
+.delfin .df-resume { margin-top: 40px; }
+.delfin .df-resume-label { color: rgba(255,255,255,.72); font-size: 15px; max-width: 70ch; margin-bottom: 24px; }
+.delfin .df-resume-track { position: relative; height: 6px; background: #2a2a2a; border-radius: 6px; margin: 40px 0 60px; }
+.delfin .df-resume-fill { position: absolute; left: 0; top: 0; height: 100%; width: var(--p); background: var(--accent); border-radius: 6px; }
+.delfin .df-resume-marks span { position: absolute; top: 16px; left: var(--at); transform: translateX(-50%); font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; }
+.delfin .df-resume-marks span::before { content: ""; position: absolute; top: -22px; left: 50%; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; transform: translateX(-50%); }
+.delfin .df-gps-phones { margin-top: 20px; }
+.delfin .df-dark .df-phone { box-shadow: 0 26px 60px rgba(0,0,0,.5); }
+
+/* ---------- 13 · TIMELINE ---------- */
+.delfin .df-timeline { display: grid; grid-template-columns: 1fr 1fr 0.7fr; gap: 20px; margin-top: 44px; }
+.delfin .df-tl-col { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; background: #fff; }
+.delfin .df-tl-month { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.delfin .df-tl-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.delfin .df-tl-col li { position: relative; padding-left: 18px; font-size: 14.5px; color: var(--muted); }
+.delfin .df-tl-col li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+.delfin .df-tl-launch { background: var(--ink); }
+.delfin .df-tl-launch .df-tl-month { color: #fff; border-color: #333; }
+.delfin .df-tl-launch li { color: #fff; font-weight: 600; }
+.delfin .df-tl-launch li::before { background: var(--accent); }
+
+/* ---------- 14 · EARLY SIGNALS ---------- */
+.delfin .df-signals { grid-template-columns: repeat(3, 1fr); }
+.delfin .df-signals .n { font-size: clamp(34px, 4vw, 52px); }
+.delfin .df-of { font-size: .5em; color: var(--faint); font-weight: 600; }
+.delfin .df-reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.delfin .df-review { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.delfin .df-review p { font-size: 17px; font-weight: 600; line-height: 1.45; }
+.delfin .df-review cite { display: block; margin-top: 14px; font-style: normal; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); }
+
+/* ---------- 15 · ROADMAP ---------- */
+.delfin .df-roadmap { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 18px; align-items: stretch; margin-top: 44px; }
+.delfin .df-rm-col { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; background: #fff; }
+.delfin .df-rm-col.today { border-color: var(--accent); box-shadow: 0 12px 34px rgba(255,45,45,.1); }
+.delfin .df-rm-k { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); margin-bottom: 16px; }
+.delfin .df-rm-col.today .df-rm-k { color: var(--accent); }
+.delfin .df-rm-item { padding: 14px 16px; border-radius: 12px; background: var(--bg-soft); font-weight: 700; margin-bottom: 10px; color: var(--faint); }
+.delfin .df-rm-item.on { background: var(--ink); color: #fff; }
+.delfin .df-rm-arrow { align-self: center; width: 26px; height: 2px; background: var(--line); position: relative; }
+.delfin .df-rm-arrow::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); border-left: 6px solid var(--line); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+
+/* ---------- 16 · REFLECTION (dark impact) ---------- */
+.delfin .df-reflect { background: var(--bg-dark); padding: 84px 0; }
+.delfin .df-lessons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+.delfin .df-lesson { border: 1px solid #2a2a2a; border-radius: var(--radius); padding: 28px; background: linear-gradient(180deg,#181818,#141414); }
+.delfin .df-lesson-n { display: block; font-size: 26px; font-weight: 800; color: var(--accent); margin-bottom: 14px; letter-spacing: -0.02em; }
+.delfin .df-lesson b { display: block; color: #fff; font-size: 18px; line-height: 1.3; }
+.delfin .df-lesson p { margin-top: 10px; color: rgba(255,255,255,.62); font-size: 14.5px; line-height: 1.6; }
+.delfin .df-reflect-q { margin-top: 44px; border-left: 3px solid var(--accent); }
+.delfin .df-reflect-q .q { color: #fff; font-size: clamp(20px, 2.4vw, 30px); font-weight: 600; line-height: 1.4; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1000px) {
+  .delfin .df-hero-top { grid-template-columns: 1fr; gap: 40px; }
+  .delfin .df-hero-stage { height: 400px; }
+  .delfin .df-meta, .delfin .df-meta-2 { grid-template-columns: repeat(2, 1fr); }
+  .delfin .df-role { grid-template-columns: repeat(2, 1fr); }
+  .delfin .df-split, .delfin .df-banks, .delfin .df-normalise, .delfin .df-home, .delfin .df-wallet { grid-template-columns: 1fr; gap: 32px; }
+  .delfin .df-home-phone .df-phone { width: 240px; }
+  .delfin .df-states { grid-template-columns: repeat(2, 1fr); }
+  .delfin .df-plat-services { grid-template-columns: repeat(2, 1fr); }
+  .delfin .df-svc.on { box-shadow: inset 3px 0 0 var(--accent); }
+  .delfin .df-model-row { grid-template-columns: repeat(2, 1fr); }
+  .delfin .df-gps-flow { grid-template-columns: repeat(2, 1fr); }
+  .delfin .df-timeline { grid-template-columns: 1fr; }
+  .delfin .df-reviews { grid-template-columns: 1fr; }
+  .delfin .df-lessons { grid-template-columns: 1fr; }
+  .delfin .df-roadmap { grid-template-columns: 1fr; }
+  .delfin .df-rm-arrow { display: none; }
+}
+@media (max-width: 640px) {
+  .delfin .block { padding: 60px 0; }
+  .delfin .df-pat-grid, .delfin .df-anno, .delfin .df-recover, .delfin .df-signals, .delfin .df-role, .delfin .df-states { grid-template-columns: 1fr; }
+  .delfin .df-eco { height: auto; max-width: none; display: flex; flex-direction: column; gap: 12px; }
+  .delfin .df-eco-center, .delfin .df-eco-node { position: static; transform: none; width: 100%; }
+  .delfin .df-eco-center { border-radius: 16px; height: auto; padding: 20px; }
+  .delfin .df-flow { gap: 6px; }
+  .delfin .df-flow span { font-size: 12px; padding: 7px 10px; }
+  .delfin .df-phones-2 { flex-wrap: wrap; }
+  .delfin .df-resume-marks span { font-size: 9px; }
+  .delfin .df-hero-stage .df-phone { width: 180px; }
+  .delfin .df-phone-back-l { transform: translate(-34%, 8%) rotate(-8deg) scale(.86); }
+  .delfin .df-phone-back-r { transform: translate(34%, 8%) rotate(8deg) scale(.86); }
+}

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DelFin — Delhivery's 0→1 fleet-services platform · Abhishek Thakur</title>
+    <meta name="description" content="DelFin: building Delhivery's 0→1 financial & fleet-services platform — from FASTag management to a scalable ecosystem for GPS, fuel, insurance and financial services." />
+    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/case-study-v2.css?v=56" rel="stylesheet" />
+    <link href="./css/delfin.css?v=1" rel="stylesheet" />
+  </head>
+
+  <body class="csv2 delfin">
+    <!-- Top bar -->
+    <div class="topbar">
+      <div class="wrap">
+        <div class="back" onclick="history.back()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Back
+        </div>
+        <a class="brand" href="./index.html">ATDESIGN</a>
+        <a class="cta" href="./resume.pdf" download>Resume</a>
+      </div>
+    </div>
+
+    <!-- ============ 01 · HERO ============ -->
+    <header class="hero df-hero">
+      <div class="wrap">
+        <div class="df-hero-top">
+          <div class="hero-copy">
+            <div class="eyebrow">DelFin by Delhivery · 0→1 Platform</div>
+            <h1>Building Delhivery's <span class="hl">0→1</span> financial &amp; fleet-services platform.</h1>
+            <p class="sub">
+              How we turned a business opportunity inside Delhivery's fleet ecosystem
+              into a dedicated platform for FASTag, GPS and future financial services —
+              designed and shipped from scratch in roughly eight weeks.
+            </p>
+          </div>
+
+          <!-- device composition (real screens go here) -->
+          <div class="df-hero-stage" aria-label="DelFin product screens">
+            <div class="df-phone df-phone-back-l">
+              <div class="df-ph-scr ph"><span>Home / control centre</span></div>
+            </div>
+            <div class="df-phone df-phone-back-r">
+              <div class="df-ph-scr ph"><span>Wallet</span></div>
+            </div>
+            <div class="df-phone df-phone-front">
+              <div class="df-ph-scr ph"><span>FASTag management</span></div>
+            </div>
+            <div class="df-badge"><b>0→1</b><span>Launched · Android</span></div>
+          </div>
+        </div>
+
+        <!-- metadata -->
+        <div class="meta df-meta">
+          <div><div class="label">Role</div><div class="val">Design Lead</div></div>
+          <div><div class="label">Timeline</div><div class="val">Jul – Aug 2026 · ~8 weeks</div></div>
+          <div><div class="label">Type</div><div class="val">0→1 Product · Android</div></div>
+          <div><div class="label">Status</div><div class="val">Launched</div></div>
+        </div>
+        <div class="meta df-meta df-meta-2">
+          <div><div class="label">Team</div><div class="val">Product + Engineering + 2 Product Designers</div></div>
+          <div><div class="label">Designers I guided</div><div class="val">Juhi Garg · Abhijeet Purandare</div></div>
+          <div class="df-meta-wide"><div class="label">My contribution</div><div class="val">Product strategy · Experience strategy · UX architecture · Design direction · Technical feasibility · Stakeholder alignment · Execution leadership</div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ 02 · THE OPPORTUNITY ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">The opportunity</span></div>
+        <h2 class="sec-title">The relationship with a truck doesn't end with a delivery.</h2>
+        <p class="lead">
+          A fleet owner spends money and effort on their vehicles every single day —
+          long after a shipment is delivered. Delhivery already had a relationship with
+          India's trucking ecosystem. The opportunity was to extend that relationship into
+          the recurring services that keep a fleet running.
+        </p>
+
+        <!-- ecosystem diagram -->
+        <div class="df-eco" aria-label="Delhivery fleet ecosystem">
+          <div class="df-eco-center"><b>Delhivery</b><span>Fleet ecosystem</span></div>
+          <div class="df-eco-node n1"><span class="tag launched">Launched</span>FASTag</div>
+          <div class="df-eco-node n2"><span class="tag launched">Launched</span>GPS</div>
+          <div class="df-eco-node n3"><span class="tag future">Future</span>Fuel Card</div>
+          <div class="df-eco-node n4"><span class="tag future">Future</span>Insurance</div>
+          <div class="df-eco-node n5"><span class="tag future">Future</span>Lending</div>
+        </div>
+
+        <div class="df-hmw">
+          <span class="df-hmw-k">The strategic question</span>
+          <p>"How might Delhivery build a trusted service layer around the everyday financial and operational needs of fleet owners?"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 · FROM FEATURE TO PLATFORM ============ -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">02</span><span class="sec-label">From feature to platform</span></div>
+        <h2 class="sec-title">We weren't designing a FASTag feature. We were laying the foundation for a new business.</h2>
+        <p class="lead">
+          FASTag was the first deep use case — but to become a business, the product needed
+          an architecture that could carry many services on a single, shared foundation.
+        </p>
+
+        <!-- platform layer model -->
+        <div class="df-platform">
+          <div class="df-plat-top">
+            <span class="df-plat-label">User / Fleet owner</span>
+            <div class="df-plat-chips">
+              <span>Identity</span><span>Vehicles</span><span>Documents</span><span>Wallet</span><span>Payments</span>
+            </div>
+          </div>
+          <div class="df-plat-arrow">shared platform layer</div>
+          <div class="df-plat-services">
+            <div class="df-svc on">FASTag<em>Launched</em></div>
+            <div class="df-svc on">GPS<em>Launched</em></div>
+            <div class="df-svc">Fuel<em>Future</em></div>
+            <div class="df-svc">Insurance<em>Future</em></div>
+            <div class="df-svc">Financial services<em>Future</em></div>
+          </div>
+        </div>
+        <p class="df-note">A shared identity, vehicle and wallet layer is what turns a single feature into a platform. FASTag proved the layer; every future service reuses it.</p>
+      </div>
+    </section>
+
+    <!-- ============ 04 · MY ROLE ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label">My role</span></div>
+        <h2 class="sec-title">Designing the product while defining what the product should become.</h2>
+        <p class="lead">
+          As Design Lead I operated across business, product, design and technology —
+          and led the experience strategy and design direction while Juhi and Abhijeet
+          supported the detailed execution of key journeys.
+        </p>
+
+        <div class="df-role">
+          <div class="df-role-item"><span class="df-role-k">Business</span><p>Understood the new financial-services opportunity and shaped it into clear product requirements.</p></div>
+          <div class="df-role-item"><span class="df-role-k">Product</span><p>Translated requirements into journeys, priorities and an extensible product structure.</p></div>
+          <div class="df-role-item"><span class="df-role-k">Design</span><p>Defined the UX direction and reviewed execution across the whole product.</p></div>
+          <div class="df-role-item"><span class="df-role-k">Technology</span><p>Worked with engineering on feasibility, integrations, constraints and what could realistically ship.</p></div>
+          <div class="df-role-item"><span class="df-role-k">Team</span><p>Guided two Product Designers — Juhi Garg &amp; Abhijeet Purandare — across execution and edge cases.</p></div>
+          <div class="df-role-item"><span class="df-role-k">Timeline</span><p>Moved the core experience from concept to release in ~8 weeks.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · WORKING WITH CONSTRAINT ============ -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">Working with constraint</span></div>
+        <h2 class="sec-title">Discovery and delivery had to happen together.</h2>
+        <p class="lead">
+          There was no room for a long, standalone research phase. Understanding came from
+          conversations with fleet owners and drivers, product and business inputs, Delhivery's
+          existing knowledge of fleet operations, technical discussions, and rapid validation during execution.
+        </p>
+
+        <div class="df-patterns">
+          <div class="df-pat-head">Patterns we designed around</div>
+          <div class="df-pat-grid">
+            <blockquote>"Tell me what needs attention before my truck gets affected."</blockquote>
+            <blockquote>"Don't make me understand how every bank works."</blockquote>
+            <blockquote>"Let me continue where I left off."</blockquote>
+            <blockquote>"Give me one place to manage services across my vehicles."</blockquote>
+          </div>
+          <p class="df-note">These are synthesised needs, not survey statistics — the signals we consistently heard and designed toward under a compressed timeline.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · THE EXPERIENCE CHALLENGE ============ -->
+    <section class="block df-dark">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">The experience challenge</span></div>
+        <h2 class="sec-title" style="color:#fff">Make financial infrastructure feel simple to a fleet owner.</h2>
+        <p class="lead" style="color:rgba(255,255,255,.72)">
+          A FASTag hides a lot of machinery. The user should never have to understand it.
+        </p>
+
+        <div class="df-underneath">
+          <div class="df-under-label">What sits underneath one FASTag</div>
+          <div class="df-flow">
+            <span>Vehicle</span><i>→</i><span>Verification</span><i>→</i><span>KYC</span><i>→</i><span>Payment</span><i>→</i><span>Tag collection</span><i>→</i><span>Activation</span><i>→</i><span>Recharge</span><i>→</i><span>Transactions</span><i>→</i><span>Disputes</span>
+          </div>
+          <div class="df-hidden">
+            <span>Bank APIs</span><span>Verification systems</span><span>Wallet architecture</span><span>Partner systems</span><span>NPCI / IHMCL</span>
+          </div>
+        </div>
+
+        <div class="df-model">
+          <div class="df-model-label">The only mental model the user should keep</div>
+          <div class="df-model-row">
+            <div>My vehicle</div><div>My FASTag</div><div>My balance</div><div>What needs attention</div><div>What's next</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · PRINCIPLE 01 — MAKE PROGRESS VISIBLE ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="df-principle-head">
+          <span class="df-pn">Design principle 01</span>
+          <h2 class="sec-title">Long journeys feel shorter when users always know what's next.</h2>
+          <p class="lead">
+            FASTag activation crosses digital tasks, external verification, payment, a physical tag
+            handover and activation. Instead of one giant form, the design exposes progress and the
+            actions still waiting for you.
+          </p>
+        </div>
+
+        <div class="df-split">
+          <div class="df-stage-list">
+            <div class="df-stage done"><span>01</span>Vehicle verification</div>
+            <div class="df-stage done"><span>02</span>KYC</div>
+            <div class="df-stage done"><span>03</span>Payment</div>
+            <div class="df-stage now"><span>04</span>Tag handover</div>
+            <div class="df-stage"><span>05</span>FASTag activation</div>
+            <div class="df-stage"><span>06</span>Know Your Vehicle</div>
+          </div>
+          <div class="df-phones-2">
+            <div class="df-phone"><div class="df-ph-scr ph"><span>Activation progress</span></div></div>
+            <div class="df-phone"><div class="df-ph-scr ph"><span>Pending actions</span></div></div>
+          </div>
+        </div>
+        <div class="df-anno">
+          <p>Persistent progress reduces uncertainty across a multi-stage process.</p>
+          <p>Pending actions give users a clear way back into an incomplete journey.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 08 · PRINCIPLE 02 — ONE EXPERIENCE, DIFFERENT BANK LOGIC ============ -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="df-principle-head">
+          <span class="df-pn">Design principle 02</span>
+          <h2 class="sec-title">Two banks. Two wallet models. One mental model for the fleet owner.</h2>
+          <p class="lead">
+            IDFC FIRST keeps a balance on each individual FASTag. Axis runs multiple FASTags through
+            one shared wallet. The interface had to support both architectures without asking fleet
+            owners to understand the difference.
+          </p>
+        </div>
+
+        <div class="df-banks">
+          <div class="df-bank">
+            <div class="df-bank-name">IDFC FIRST <em>Balance per FASTag</em></div>
+            <div class="df-bank-rows">
+              <div class="df-bank-row"><span>Vehicle A</span><i>→ FASTag</i><b>₹ balance</b></div>
+              <div class="df-bank-row"><span>Vehicle B</span><i>→ FASTag</i><b>₹ balance</b></div>
+              <div class="df-bank-row"><span>Vehicle C</span><i>→ FASTag</i><b>₹ balance</b></div>
+            </div>
+          </div>
+          <div class="df-bank">
+            <div class="df-bank-name">Axis <em>Shared wallet</em></div>
+            <div class="df-bank-pool">
+              <div class="df-pool">Shared FASTag wallet<b>₹ balance</b></div>
+              <div class="df-pool-arrow">powers</div>
+              <div class="df-pool-veh"><span>Vehicle A</span><span>Vehicle B</span><span>Vehicle C</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="df-normalise">
+          <div class="df-phones-2">
+            <div class="df-phone"><div class="df-ph-scr ph"><span>FASTag listing</span></div></div>
+            <div class="df-phone"><div class="df-ph-scr ph"><span>Bank switch · balances</span></div></div>
+          </div>
+          <div class="df-normalise-copy">
+            <p>DelFin normalises both into one FASTag management experience — bank switching, individual vs pooled balances, and the states that matter: active, inactive, hotlisted, low balance, plus recharge and resolution actions.</p>
+            <div class="df-keyline">"The architecture changed. The user's mental model shouldn't have to."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 09 · PRINCIPLE 03 — DESIGN FOR EXCEPTIONS ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="df-principle-head">
+          <span class="df-pn">Design principle 03</span>
+          <h2 class="sec-title">In fintech, the edge case is often the real experience.</h2>
+          <p class="lead">
+            Financial products depend on banks, identity systems, verification services and physical
+            operations. When something fails, the experience has to help the user understand what
+            happened, recover, and continue without losing context.
+          </p>
+        </div>
+
+        <div class="df-states">
+          <div class="df-state"><span class="df-state-tag">KYC</span>KYC failure</div>
+          <div class="df-state"><span class="df-state-tag">Identity</span>PAN mismatch</div>
+          <div class="df-state"><span class="df-state-tag">Auth</span>OTP failure</div>
+          <div class="df-state"><span class="df-state-tag">Auth</span>Biometric failure</div>
+          <div class="df-state"><span class="df-state-tag">Payment</span>Payment failure</div>
+          <div class="df-state"><span class="df-state-tag">Wallet</span>Recharge failure</div>
+          <div class="df-state"><span class="df-state-tag">Tag</span>Hotlisted FASTag</div>
+          <div class="df-state"><span class="df-state-tag">Tag</span>Low balance</div>
+        </div>
+        <div class="df-recover">
+          <div><b>Understand</b><span>what happened</span></div>
+          <div><b>Recover</b><span>what they can do</span></div>
+          <div><b>Continue</b><span>without losing context</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10 · HOME AS CONTROL CENTRE ============ -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">Home as a control centre</span></div>
+        <h2 class="sec-title">The home screen evolved from navigation into an operational control centre.</h2>
+        <p class="lead">
+          High-frequency operational tasks surface before discovery. A fleet owner opens DelFin to
+          see what needs attention — not to browse a menu.
+        </p>
+
+        <div class="df-home">
+          <div class="df-home-phone"><div class="df-ph-scr ph tall"><span>DelFin home</span></div></div>
+          <div class="df-home-layers">
+            <div class="df-layer"><span class="df-layer-n">01</span><b>Pending actions</b><p>3 FASTags need attention · low balance · hotlisted · activation pending · GPS installation pending.</p></div>
+            <div class="df-layer"><span class="df-layer-n">02</span><b>Services</b><p>FASTag and GPS today — with room for the services to come.</p></div>
+            <div class="df-layer"><span class="df-layer-n">03</span><b>Wallets</b><p>DelFin wallet and bank-specific wallet, always in reach.</p></div>
+            <div class="df-layer"><span class="df-layer-n">04</span><b>Fleet services</b><p>Trucks, loads and related fleet capabilities.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11 · WALLET AS INFRASTRUCTURE ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">07</span><span class="sec-label">Wallet as infrastructure</span></div>
+        <h2 class="sec-title">One financial layer underneath multiple fleet services.</h2>
+        <p class="lead">
+          The wallet wasn't just another feature. It was designed as reusable payment infrastructure —
+          a foundation the expanding service ecosystem can build on.
+        </p>
+
+        <div class="df-wallet">
+          <div class="df-wallet-diagram">
+            <div class="df-wl-node top">Bank · UPI · Payment gateway</div>
+            <div class="df-wl-pipe"></div>
+            <div class="df-wl-node core">DelFin Wallet<em>reusable foundation</em></div>
+            <div class="df-wl-pipe"></div>
+            <div class="df-wl-fan">
+              <span class="on">FASTag</span><span class="on">GPS</span><span>Future services</span>
+            </div>
+          </div>
+          <div class="df-phones-2">
+            <div class="df-phone"><div class="df-ph-scr ph"><span>DelFin wallet</span></div></div>
+            <div class="df-phone"><div class="df-ph-scr ph"><span>Transactions</span></div></div>
+          </div>
+        </div>
+        <p class="df-note">Designed as a reusable foundation for the expanding service ecosystem — not a payment behaviour claimed as already launched.</p>
+      </div>
+    </section>
+
+    <!-- ============ 12 · EXTENDING TO GPS ============ -->
+    <section class="block df-dark">
+      <div class="wrap">
+        <div class="df-transition">Then we tested whether the foundation could support something completely different.</div>
+        <div class="sec-head"><span class="sec-num">08</span><span class="sec-label" style="color:var(--faint)">Extending the foundation</span></div>
+        <h2 class="sec-title" style="color:#fff">From financial transaction to physical installation.</h2>
+        <p class="lead" style="color:rgba(255,255,255,.72)">
+          FASTag is a financial and verification journey. GPS added hardware, plan selection, vehicle
+          binding, an address, payment, device linking, a technician and a physical installation.
+        </p>
+
+        <div class="df-gps-flow">
+          <div class="df-gps-step"><span>01</span>Plan selection</div>
+          <div class="df-gps-step"><span>02</span>Vehicle</div>
+          <div class="df-gps-step"><span>03</span>Installation address</div>
+          <div class="df-gps-step"><span>04</span>Payment</div>
+          <div class="df-gps-step"><span>05</span>Device linking</div>
+          <div class="df-gps-step"><span>06</span>Technician installation</div>
+          <div class="df-gps-step"><span>07</span>Activation</div>
+        </div>
+
+        <div class="df-resume">
+          <div class="df-resume-label">Because a GPS order spans multiple sessions and physical activities, progress persisted so users could resume — not restart.</div>
+          <div class="df-resume-track">
+            <div class="df-resume-fill" style="--p:100%"></div>
+            <div class="df-resume-marks">
+              <span style="--at:25%">Address · 25%</span>
+              <span style="--at:50%">Payment · 50%</span>
+              <span style="--at:75%">Device linked · 75%</span>
+              <span style="--at:100%">Installation · 100%</span>
+            </div>
+          </div>
+          <div class="df-phones-2 df-gps-phones">
+            <div class="df-phone"><div class="df-ph-scr ph"><span>GPS plan &amp; vehicle</span></div></div>
+            <div class="df-phone"><div class="df-ph-scr ph"><span>Installation milestones</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 13 · SHIPPING A 0→1 PRODUCT ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">09</span><span class="sec-label">Shipping a 0→1 product</span></div>
+        <h2 class="sec-title">From strategy to launch in ~8 weeks.</h2>
+
+        <div class="df-timeline">
+          <div class="df-tl-col">
+            <div class="df-tl-month">July</div>
+            <ul>
+              <li>Business requirements</li>
+              <li>Product understanding</li>
+              <li>Experience architecture</li>
+              <li>FASTag journeys</li>
+              <li>Engineering feasibility</li>
+              <li>Design execution begins</li>
+            </ul>
+          </div>
+          <div class="df-tl-col">
+            <div class="df-tl-month">August</div>
+            <ul>
+              <li>Bank-specific flows</li>
+              <li>KYC · payment · failure states</li>
+              <li>Homepage + wallet</li>
+              <li>Design refinement</li>
+              <li>Edge cases + QA support</li>
+              <li>Launch readiness</li>
+            </ul>
+          </div>
+          <div class="df-tl-col df-tl-launch">
+            <div class="df-tl-month">Launch</div>
+            <ul><li>DelFin available to customers</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 14 · EARLY SIGNALS ============ -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">10</span><span class="sec-label">Early signals</span></div>
+        <h2 class="sec-title">What happened after launch.</h2>
+        <p class="lead">
+          Because the product had only recently launched, long-term behavioural and business metrics
+          were still emerging. These are the early signals from the Play Store.
+        </p>
+
+        <div class="statgrid df-signals">
+          <div class="statcard"><div class="n">1K+</div><div class="l">Google Play downloads</div></div>
+          <div class="statcard"><div class="n">4.9<span class="df-of">/5</span></div><div class="l">Early rating</div></div>
+          <div class="statcard"><div class="n">21</div><div class="l">Ratings &amp; reviews captured</div></div>
+        </div>
+
+        <div class="df-reviews">
+          <blockquote class="df-review"><p>"Super easy to use."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Simple, fast and easy to use."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Great app for truck owners."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Most user friendly FASTag app."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Good app for transport business and fleet owner."</p><cite>Play Store</cite></blockquote>
+        </div>
+        <p class="df-note">Early signals — not long-term business results.</p>
+      </div>
+    </section>
+
+    <!-- ============ 15 · WHAT THIS ENABLES ============ -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">11</span><span class="sec-label">What this enables</span></div>
+        <h2 class="sec-title">FASTag was the first product. The larger opportunity is the platform.</h2>
+
+        <div class="df-roadmap">
+          <div class="df-rm-col today">
+            <div class="df-rm-k">Today</div>
+            <div class="df-rm-item on">FASTag</div>
+            <div class="df-rm-item on">GPS</div>
+          </div>
+          <div class="df-rm-arrow"></div>
+          <div class="df-rm-col next">
+            <div class="df-rm-k">Next</div>
+            <div class="df-rm-item">Fuel Card</div>
+            <div class="df-rm-item">Insurance</div>
+          </div>
+          <div class="df-rm-arrow"></div>
+          <div class="df-rm-col future">
+            <div class="df-rm-k">Future opportunity</div>
+            <div class="df-rm-item">Lending</div>
+            <div class="df-rm-item">Other financial services</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 16 · REFLECTION ============ -->
+    <section class="block impact df-reflect">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num" style="color:var(--accent)">12</span><span class="sec-label" style="color:var(--faint)">Reflection</span></div>
+        <h2 class="sec-title" style="color:#fff">What I learned building a new business line from zero.</h2>
+
+        <div class="df-lessons">
+          <div class="df-lesson"><span class="df-lesson-n">01</span><b>Design the system, not only the first feature.</b><p>FASTag was the immediate requirement, but shared identity, vehicles, wallets and pending actions are what make future services possible.</p></div>
+          <div class="df-lesson"><span class="df-lesson-n">02</span><b>Simplify the user's model, not the backend.</b><p>Bank integrations can behave differently without forcing that complexity onto fleet owners.</p></div>
+          <div class="df-lesson"><span class="df-lesson-n">03</span><b>Speed requires better decisions, not less design.</b><p>A compressed timeline meant prioritising critical journeys, collaborating closely with engineering, and validating continuously instead of running a long sequential process.</p></div>
+        </div>
+
+        <div class="reflection df-reflect-q">
+          <div class="q">"DelFin taught me that designing a 0→1 product is as much about deciding what the product should become as it is about designing how it works."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <section class="next">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">More work</span></div>
+        <div class="nextgrid">
+          <a class="nextcard" href="./jio-checkout.html">
+            <div class="nextthumb"><img src="./images/stream-study/stream-case-study-order-success-page.png" alt="JioMart checkout preview" loading="lazy" /></div>
+            <div class="nextinfo"><div class="l">Case study</div><h4>Streamlining Checkout</h4><p>Cart to payment across JioMart's checkout journey.</p></div>
+          </a>
+          <a class="nextcard" href="./jiomart-discovery.html">
+            <div class="nextthumb"><img src="./images/enhanceProduct/heaser-top-right-img.png" alt="JioMart product discovery preview" loading="lazy" /></div>
+            <div class="nextinfo"><div class="l">Case study</div><h4>Optimizing Product Discovery</h4><p>Making browsing effortless across homepage, PLP and PDP.</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wrap foot">
+      <div>© 2025 <a href="./index.html">Abhishek Thakur Design</a></div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
+        <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>
+        <a href="https://dribbble.com/abhishek_thakur_" target="_blank">Dribbble</a>
+        <a href="mailto:abhi.thakur1010@gmail.com">Email</a>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll-reveal
+      (function () {
+        var sel = ".block .sec-head, .block .sec-title, .block .lead, .df-eco, .df-hmw, .df-platform, .df-note, .df-role-item, .df-patterns, .df-underneath, .df-model, .df-split, .df-anno, .df-banks, .df-normalise, .df-states .df-state, .df-recover > div, .df-home, .df-wallet, .df-gps-flow, .df-resume, .df-timeline .df-tl-col, .df-signals .statcard, .df-review, .df-roadmap > div, .df-lesson, .reflection, .nextcard, .df-meta";
+        var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
+        if (!targets.length) return;
+        targets.forEach(function (el) { el.classList.add("reveal"); });
+        if (!("IntersectionObserver" in window)) { targets.forEach(function (el) { el.classList.add("in"); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        targets.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+    <script src="./js/case-study-lightbox.js?v=3" defer></script>
+  </body>
+</html>
