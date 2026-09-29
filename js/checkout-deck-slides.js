@@ -93,8 +93,8 @@ window.DECK = {
     /* 04 — HOW WE INVESTIGATED */
     {
       section: "discovery", type: "toolkit",
-      eyebrow: "Research & process",
-      headline: ["Grounded in real behavior."],
+      eyebrow: "How we investigated",
+      headline: ["First, evidence."],
       sub: "Before touching a screen, I benchmarked the best flows, mapped the shopper's emotional journey, and audited the experience against usability heuristics.",
       tiles: [
         { t: "The approach", img: "stream-case-study-defining.png", crop: 0.2 },
@@ -103,8 +103,8 @@ window.DECK = {
         { t: "Heuristic evaluation", img: "stream-case-study-behavior-heuristic.png", crop: 0.2 },
         { t: "User interviews", img: "stream-case-study-behavior-sample-interview.png", crop: 0.3 },
         { t: "Friction points", img: "stream-case-study-behavior-friction-points-01.png", crop: 0.3 },
-        { t: "Analysis", img: "stream-case-study-analysis.png", crop: 0.25 },
-        { t: "Key performance", img: "stream-case-study-key-performance.png", crop: 0.25 }
+        { t: "Usability testing", img: "stream-usability-test.png", crop: 0.15 },
+        { t: "Team brainstorming", img: "stream-brainstorming.png", crop: 0.3 }
       ],
       statement: "Different methods. The same friction kept surfacing across cart, payment and mindset."
     },
