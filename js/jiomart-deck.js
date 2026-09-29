@@ -313,7 +313,7 @@
       var award = sc.award.pending
         ? "<div class='award ph'><span>🏆</span><span class='ph-note'>" + esc(sc.award.caption) + "</span></div>"
         : "<figure class='award'><span class='award-frame zoomable' title='Click to enlarge'><img src='" + img(sc.award.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
-          "<figcaption class='award-cap'>" + esc(sc.award.caption) + "</figcaption></figure>";
+          "<figcaption class='award-cap'>" + (sc.award.title ? "<span class='award-title'>" + esc(sc.award.title) + "</span>" : "") + esc(sc.award.caption) + "</figcaption></figure>";
       var ctas = sc.cta.map(function (c) { return "<a class='btn " + (c.primary ? "primary" : "ghost") + "' href='" + c.href + "'>" + esc(c.label) + "</a>"; }).join("");
       return "<div class='sl split recognition'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
         "<div class='reflection'>" + sc.reflection.map(function (r, i) { return "<p class='reveal' data-step='" + (i === 2 ? 2 : 1) + "'>" + esc(r) + "</p>"; }).join("") + "</div>" +

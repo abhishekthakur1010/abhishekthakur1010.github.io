@@ -276,7 +276,7 @@ window.DECK = {
       eyebrow: "Reflection",
       headline: ["Where intent becomes purchase."],
       sub: "Checkout is where a shopping trip either completes or is abandoned.",
-      award: { img: "stream-case-study-order-success-page.png", caption: "Order placed — the reward moment that closes the loop and invites the next trip." },
+      award: { img: "stream-team-award.png", title: "Best Team Award · Q3 — Team JioMart", caption: "Recognised by the Jio Central UI/UX team at the company townhall for the checkout & discovery redesign." },
       reflection: [
         "Checkout is where intent turns into purchase — or abandonment.",
         "Every frustration you remove is a leak in trust you seal.",
