@@ -81,7 +81,7 @@
       case "pdp-questions": return sc.questions.length + 1;
       case "pdp-scroll": return sc.layers.length - 1;
       case "impact": return Math.max(sc.experience.length, sc.metrics.length + 2) + 1;
-      case "uxfunnel": return sc.stages.length + 1;
+      case "uxfunnel": return sc.metrics.length;
       case "voice": return sc.quotes.length;
       case "recognition": return 2;
       default: return 0;
@@ -301,32 +301,26 @@
     },
 
     uxfunnel: function (sc) {
-      // vertical funnel: each stage narrows, carries a behavioral lift
-      var n = sc.stages.length;
-      var funnel = sc.stages.map(function (s, i) {
-        var w = 100 - (i * (46 / Math.max(1, n - 1))); // taper from 100% to ~54%
-        var down = /^[-\u2212]/.test(String(s.delta));
-        return "<div class='uxf-stage reveal' data-step='" + (i + 1) + "' style='--w:" + w.toFixed(1) + "%'>" +
-          "<div class='uxf-bar'>" +
-          "<span class='uxf-stage-name'>" + esc(s.name) + "</span>" +
-          "<span class='uxf-stage-delta " + (down ? "down" : "up") + "'>" + esc(s.delta) + "</span>" +
-          "</div>" +
-          "<div class='uxf-stage-metric'>" + esc(s.metric) + "</div>" +
-          (i < n - 1 ? "<span class='uxf-arrow'>\u2193</span>" : "") +
-          "</div>";
-      }).join("");
-      var rows = sc.table.map(function (r) {
+      // pre -> post comparison bars. Each row shows the Pre and Post bar
+      // (normalised to the row's own max) plus the delta. No funnel taper.
+      var rows = sc.metrics.map(function (r, i) {
         var down = /^[-\u2212]/.test(String(r.chg));
-        return "<tr><td class='uxt-m'>" + esc(r.m) + "</td><td>" + esc(r.pre) + "</td><td>" + esc(r.post) + "</td>" +
-          "<td class='uxt-chg " + (down ? "down" : "up") + "'>" + esc(r.chg) + "</td></tr>";
+        var mx = Math.max(r.preN, r.postN) || 1;
+        var preW = Math.max(6, (r.preN / mx) * 100);
+        var postW = Math.max(6, (r.postN / mx) * 100);
+        return "<div class='uxc-row reveal' data-step='" + (i + 1) + "'>" +
+          "<div class='uxc-head'><span class='uxc-label'>" + esc(r.m) + "</span>" +
+          "<span class='uxc-chg " + (down ? "down" : "up") + "'>" + esc(r.chg) + "</span></div>" +
+          "<div class='uxc-bars'>" +
+          "<div class='uxc-track'><span class='uxc-fill pre' style='--w:" + preW.toFixed(1) + "%'></span><em class='uxc-val'>" + esc(r.pre) + "</em><b class='uxc-tag'>Pre</b></div>" +
+          "<div class='uxc-track'><span class='uxc-fill post" + (down ? " down" : "") + "' style='--w:" + postW.toFixed(1) + "%'></span><em class='uxc-val'>" + esc(r.post) + "</em><b class='uxc-tag'>Post</b></div>" +
+          "</div></div>";
       }).join("");
-      var last = n + 1;
-      return "<div class='sl split uxfunnel-slide'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
+      return "<div class='sl split uxcompare-slide'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
         "<ul class='uxf-takeaways'>" + (sc.takeaways || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
         evidencePill(sc.evidence) + "</div>" +
-        "<div class='c-visual'><div class='uxf' aria-label='UX improvement funnel'>" + funnel + "</div>" +
-        "<div class='tier-label reveal' data-step='" + last + "'>" + esc(sc.tableLabel) + "</div>" +
-        "<table class='uxt reveal' data-step='" + last + "'><thead><tr><th>Metric</th><th>Pre</th><th>Post</th><th>Δ</th></tr></thead><tbody>" + rows + "</tbody></table>" +
+        "<div class='c-visual'><div class='uxc-head-label'>" + esc(sc.tableLabel) + "</div>" +
+        "<div class='uxc'>" + rows + "</div>" +
         (sc.disclaimer ? "<p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" : "") + "</div></div>";
     },
 
