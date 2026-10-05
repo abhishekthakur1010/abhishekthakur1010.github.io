@@ -244,6 +244,44 @@ window.DECK = {
       disclaimer: "Platform-level indicators (Sep 22 – Mar 23) — reflecting broader JioMart improvements alongside this redesign."
     },
 
+    /* 13b — UX IMPROVEMENT FUNNEL (behavioral evidence, pre vs post) */
+    {
+      section: "impact", type: "uxfunnel",
+      eyebrow: "How behaviour changed",
+      headline: ["Discovery that", "compounds into intent."],
+      sub: "The redesign didn't just lift top-line numbers — it changed how people moved through the funnel, stage by stage.",
+      takeaways: [
+        "People browsed more and stayed longer on each visit.",
+        "More sessions turned browsing into add-to-cart.",
+        "Search-led journeys converted to cart far more often."
+      ],
+      stages: [
+        { name: "Browse", metric: "6.84 pages / user", delta: "+18%" },
+        { name: "Engage", metric: "4m 56s avg. engagement / active user", delta: "+19%" },
+        { name: "Add to cart", metric: "11.48% of sessions add to cart", delta: "+107 bps" },
+        { name: "Convert", metric: "44.33% search-assisted ATC conversion", delta: "+293 bps" }
+      ],
+      tableLabel: "Behavioural metrics · pre vs post redesign (GA)",
+      table: [
+        { m: "Pages per user", pre: "5.81", post: "6.84", chg: "+18%" },
+        { m: "Avg. engagement / active user", pre: "4m 14s", post: "4m 56s", chg: "+19%" },
+        { m: "Avg. engagement / session", pre: "1m 40s", post: "2m 00s", chg: "+15%" },
+        { m: "Engaged-session rate", pre: "80.51%", post: "80.93%", chg: "+14 bps" },
+        { m: "% sessions with add-to-cart", pre: "10.49%", post: "11.48%", chg: "+107 bps" },
+        { m: "Search-assisted ATC conversion", pre: "41.40%", post: "44.33%", chg: "+293 bps" },
+        { m: "Avg. page download time", pre: "0.17s", post: "0.12s", chg: "−29.26%" },
+        { m: "Avg. redirection time", pre: "0.13s", post: "0.11s", chg: "−11.93%" }
+      ],
+      evidence: {
+        method: "GA behavioural analytics · pre vs post",
+        img: "enhance-improvement-metrics.png", crop: 0.15,
+        observed: "Pages/user, engagement time, add-to-cart rate and search-assisted conversion all rose, while page-load and redirection times dropped.",
+        takeaway: "Clearer discovery pushed more sessions deeper into the funnel — and converted search intent into carts.",
+        implication: "Discovery UX is a conversion lever, not just an engagement one."
+      },
+      disclaimer: "Google Analytics behavioural metrics, pre vs post discovery redesign. bps = basis points (0.01%)."
+    },
+
     /* 14 — CUSTOMER VOICE */
     {
       section: "impact", type: "voice",

@@ -81,6 +81,7 @@
       case "pdp-questions": return sc.questions.length + 1;
       case "pdp-scroll": return sc.layers.length - 1;
       case "impact": return Math.max(sc.experience.length, sc.metrics.length + 2) + 1;
+      case "uxfunnel": return sc.stages.length + 1;
       case "voice": return sc.quotes.length;
       case "recognition": return 2;
       default: return 0;
@@ -297,6 +298,36 @@
         "<div class='c-visual'><div class='tier-label reveal' data-step='2'>" + esc(sc.metricsLabel) + "</div>" +
         "<div class='metrics'>" + m + "</div>" +
         "<p class='disclaimer reveal' data-step='" + last + "'>" + esc(sc.disclaimer) + "</p></div></div>";
+    },
+
+    uxfunnel: function (sc) {
+      // vertical funnel: each stage narrows, carries a behavioral lift
+      var n = sc.stages.length;
+      var funnel = sc.stages.map(function (s, i) {
+        var w = 100 - (i * (46 / Math.max(1, n - 1))); // taper from 100% to ~54%
+        var down = /^[-\u2212]/.test(String(s.delta));
+        return "<div class='uxf-stage reveal' data-step='" + (i + 1) + "' style='--w:" + w.toFixed(1) + "%'>" +
+          "<div class='uxf-bar'>" +
+          "<span class='uxf-stage-name'>" + esc(s.name) + "</span>" +
+          "<span class='uxf-stage-delta " + (down ? "down" : "up") + "'>" + esc(s.delta) + "</span>" +
+          "</div>" +
+          "<div class='uxf-stage-metric'>" + esc(s.metric) + "</div>" +
+          (i < n - 1 ? "<span class='uxf-arrow'>\u2193</span>" : "") +
+          "</div>";
+      }).join("");
+      var rows = sc.table.map(function (r) {
+        var down = /^[-\u2212]/.test(String(r.chg));
+        return "<tr><td class='uxt-m'>" + esc(r.m) + "</td><td>" + esc(r.pre) + "</td><td>" + esc(r.post) + "</td>" +
+          "<td class='uxt-chg " + (down ? "down" : "up") + "'>" + esc(r.chg) + "</td></tr>";
+      }).join("");
+      var last = n + 1;
+      return "<div class='sl split uxfunnel-slide'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
+        "<ul class='uxf-takeaways'>" + (sc.takeaways || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
+        evidencePill(sc.evidence) + "</div>" +
+        "<div class='c-visual'><div class='uxf' aria-label='UX improvement funnel'>" + funnel + "</div>" +
+        "<div class='tier-label reveal' data-step='" + last + "'>" + esc(sc.tableLabel) + "</div>" +
+        "<table class='uxt reveal' data-step='" + last + "'><thead><tr><th>Metric</th><th>Pre</th><th>Post</th><th>Δ</th></tr></thead><tbody>" + rows + "</tbody></table>" +
+        (sc.disclaimer ? "<p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" : "") + "</div></div>";
     },
 
     voice: function (sc) {

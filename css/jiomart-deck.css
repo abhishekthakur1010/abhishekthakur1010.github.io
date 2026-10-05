@@ -370,6 +370,32 @@ body.deck[data-theme="light"] .theme-toggle .ic-moon { display: block; }
 .metric .ml { font-size: 12.5px; color: var(--dim); margin-top: 6px; line-height: 1.35; }
 .disclaimer { font-size: 12px; color: var(--dim); font-style: italic; margin-top: 16px; line-height: 1.5; }
 
+/* ---------- UX improvement funnel ---------- */
+.uxfunnel-slide .uxf-takeaways { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 22px 0 0; }
+.uxfunnel-slide .uxf-takeaways li { position: relative; padding-left: 22px; font-size: 14.5px; color: var(--soft); line-height: 1.45; }
+.uxfunnel-slide .uxf-takeaways li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.uxfunnel-slide .c-visual { width: 100%; gap: 20px; }
+.uxf { width: 100%; max-width: 460px; display: flex; flex-direction: column; align-items: center; gap: 0; }
+.uxf-stage { width: var(--w, 100%); display: flex; flex-direction: column; align-items: stretch; transition: width 0.4s var(--ease); }
+.uxf-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 18px; border-radius: 12px; background: linear-gradient(180deg, rgba(34,197,94,0.1), var(--card)); border: 1px solid rgba(34,197,94,0.3); }
+.uxf-stage-name { font-size: 15px; font-weight: 700; color: var(--ink); }
+.uxf-stage-delta { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.uxf-stage-delta.up { color: var(--good); }
+.uxf-stage-delta.down { color: var(--accent); }
+.uxf-stage-metric { font-size: 12px; color: var(--dim); text-align: center; margin: 6px 0 0; line-height: 1.35; }
+.uxf-arrow { display: block; text-align: center; color: var(--faint); font-size: 15px; line-height: 1; margin: 7px 0; }
+.uxf-stage:last-child .uxf-bar { background: linear-gradient(180deg, rgba(255,59,48,0.12), var(--card)); border-color: rgba(255,59,48,0.34); }
+/* pre → post evidence table */
+.uxt { width: 100%; max-width: 560px; border-collapse: collapse; font-size: 12.5px; border: 1px solid var(--panel-line); border-radius: 12px; overflow: hidden; }
+.uxt thead th { text-align: right; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); padding: 10px 12px; background: var(--panel); border-bottom: 1px solid var(--panel-line); }
+.uxt thead th:first-child { text-align: left; }
+.uxt td { padding: 9px 12px; text-align: right; color: var(--soft); font-variant-numeric: tabular-nums; border-bottom: 1px solid var(--line); }
+.uxt tbody tr:last-child td { border-bottom: none; }
+.uxt .uxt-m { text-align: left; color: var(--ink); font-weight: 600; }
+.uxt .uxt-chg { font-weight: 800; }
+.uxt .uxt-chg.up { color: var(--good); }
+.uxt .uxt-chg.down { color: var(--accent); }
+
 /* ---------- voice ---------- */
 .vq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 22px; }
 .vq { padding: 18px 20px; border-radius: 16px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 10px; }
