@@ -244,35 +244,27 @@ window.DECK = {
       disclaimer: "Platform-level indicators (Sep 22 – Mar 23) — reflecting broader JioMart improvements alongside this redesign."
     },
 
-    /* 13b — UX IMPROVEMENT: pre vs post behavioural evidence */
+    /* 13b — UX IMPROVEMENT: pre vs post behavioural evidence (real table) */
     {
       section: "impact", type: "uxfunnel",
       eyebrow: "How behaviour changed",
       headline: ["Not just more traffic —", "better behaviour."],
-      sub: "Measured the same behavioural metrics before and after the discovery redesign. Every one moved the right way.",
+      sub: "Measured the same metrics before and after the discovery redesign, grouped into performance, engagement and conversion. Every one moved the right way.",
       takeaways: [
-        "People browsed more and stayed longer each visit.",
-        "More sessions turned browsing into add-to-cart.",
-        "Search-led journeys converted to cart far more often.",
-        "Pages loaded faster, so discovery felt effortless."
+        "Performance: pages loaded ~29% faster, redirection ~11% faster.",
+        "Engagement: time per active user +16%, page views per user +11%.",
+        "Conversion: add-to-cart +107 bps, search-assisted A2C +293 bps."
       ],
       tableLabel: "Pre vs post redesign · Google Analytics",
-      metrics: [
-        { m: "Pages per user", pre: "5.81", post: "6.84", preN: 5.81, postN: 6.84, chg: "+18%" },
-        { m: "Engagement / active user", pre: "4m 14s", post: "4m 56s", preN: 254, postN: 296, chg: "+19%" },
-        { m: "Engagement / session", pre: "1m 40s", post: "2m 00s", preN: 100, postN: 120, chg: "+15%" },
-        { m: "Sessions with add-to-cart", pre: "10.49%", post: "11.48%", preN: 10.49, postN: 11.48, chg: "+107 bps" },
-        { m: "Search-assisted ATC conversion", pre: "41.40%", post: "44.33%", preN: 41.40, postN: 44.33, chg: "+293 bps" },
-        { m: "Page download time", pre: "0.17s", post: "0.12s", preN: 0.17, postN: 0.12, chg: "−29%" }
-      ],
+      img: "enhance-impact-table.png",
       evidence: {
-        method: "GA behavioural analytics · pre vs post",
-        img: "enhance-improvement-metrics.png", crop: 0.15,
-        observed: "Pages/user, engagement time, add-to-cart rate and search-assisted conversion all rose, while page-load time dropped.",
-        takeaway: "Clearer discovery pushed more sessions deeper toward purchase — and converted search intent into carts.",
+        method: "GA improvement report · pre vs post",
+        img: "enhance-impact-table.png", crop: 0.1,
+        observed: "Performance, engagement and conversion metrics measured pre vs post redesign — load times fell, engagement rose, and add-to-cart & search-assisted conversion both improved.",
+        takeaway: "Clearer discovery made the experience faster, deeper and more likely to convert.",
         implication: "Discovery UX is a conversion lever, not just an engagement one."
       },
-      disclaimer: "Google Analytics, pre vs post discovery redesign. bps = basis points (0.01%)."
+      disclaimer: "Google Analytics improvement report, pre vs post discovery redesign. bps = basis points (0.01%)."
     },
 
     /* 14 — CUSTOMER VOICE */

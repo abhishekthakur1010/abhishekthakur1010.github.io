@@ -81,7 +81,7 @@
       case "pdp-questions": return sc.questions.length + 1;
       case "pdp-scroll": return sc.layers.length - 1;
       case "impact": return Math.max(sc.experience.length, sc.metrics.length + 2) + 1;
-      case "uxfunnel": return sc.metrics.length;
+      case "uxfunnel": return 1;
       case "voice": return sc.quotes.length;
       case "recognition": return 2;
       default: return 0;
@@ -301,26 +301,12 @@
     },
 
     uxfunnel: function (sc) {
-      // pre -> post comparison bars. Each row shows the Pre and Post bar
-      // (normalised to the row's own max) plus the delta. No funnel taper.
-      var rows = sc.metrics.map(function (r, i) {
-        var down = /^[-\u2212]/.test(String(r.chg));
-        var mx = Math.max(r.preN, r.postN) || 1;
-        var preW = Math.max(6, (r.preN / mx) * 100);
-        var postW = Math.max(6, (r.postN / mx) * 100);
-        return "<div class='uxc-row reveal' data-step='" + (i + 1) + "'>" +
-          "<div class='uxc-head'><span class='uxc-label'>" + esc(r.m) + "</span>" +
-          "<span class='uxc-chg " + (down ? "down" : "up") + "'>" + esc(r.chg) + "</span></div>" +
-          "<div class='uxc-bars'>" +
-          "<div class='uxc-track'><span class='uxc-fill pre' style='--w:" + preW.toFixed(1) + "%'></span><em class='uxc-val'>" + esc(r.pre) + "</em><b class='uxc-tag'>Pre</b></div>" +
-          "<div class='uxc-track'><span class='uxc-fill post" + (down ? " down" : "") + "' style='--w:" + postW.toFixed(1) + "%'></span><em class='uxc-val'>" + esc(r.post) + "</em><b class='uxc-tag'>Post</b></div>" +
-          "</div></div>";
-      }).join("");
+      // evidence slide: real pre/post improvement table as a zoomable artifact
       return "<div class='sl split uxcompare-slide'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
         "<ul class='uxf-takeaways'>" + (sc.takeaways || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
         evidencePill(sc.evidence) + "</div>" +
         "<div class='c-visual'><div class='uxc-head-label'>" + esc(sc.tableLabel) + "</div>" +
-        "<div class='uxc'>" + rows + "</div>" +
+        "<figure class='uxc-artifact zoomable' title='Click to enlarge'><img src='" + img(sc.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></figure>" +
         (sc.disclaimer ? "<p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" : "") + "</div></div>";
     },
 

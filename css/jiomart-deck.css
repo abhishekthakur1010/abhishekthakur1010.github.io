@@ -370,28 +370,23 @@ body.deck[data-theme="light"] .theme-toggle .ic-moon { display: block; }
 .metric .ml { font-size: 12.5px; color: var(--dim); margin-top: 6px; line-height: 1.35; }
 .disclaimer { font-size: 12px; color: var(--dim); font-style: italic; margin-top: 16px; line-height: 1.5; }
 
-/* ---------- UX improvement: pre vs post comparison bars ---------- */
+/* ---------- UX improvement: pre vs post evidence (table artifact) ---------- */
 .uxcompare-slide .uxf-takeaways { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 22px 0 0; }
 .uxcompare-slide .uxf-takeaways li { position: relative; padding-left: 22px; font-size: 14px; color: var(--soft); line-height: 1.45; }
 .uxcompare-slide .uxf-takeaways li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.uxcompare-slide .c-visual { width: 100%; align-items: stretch; gap: 14px; }
+.uxcompare-slide .c-visual { width: 100%; align-items: stretch; gap: 12px; }
 .uxc-head-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); }
-.uxc { width: 100%; display: flex; flex-direction: column; gap: 16px; }
-.uxc-row { display: flex; flex-direction: column; gap: 7px; }
-.uxc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.uxc-label { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-.uxc-chg { font-size: 13.5px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.uxc-chg.up { color: var(--good); }
-.uxc-chg.down { color: var(--accent); }
-.uxc-bars { display: flex; flex-direction: column; gap: 5px; }
-.uxc-track { position: relative; display: flex; align-items: center; height: 22px; }
-.uxc-fill { height: 100%; border-radius: 6px; width: var(--w, 10%); transition: width 0.6s var(--ease); }
-.uxc-fill.pre { background: var(--line2); }
-.uxc-fill.post { background: var(--good); }
-.uxc-fill.post.down { background: var(--accent); }
-.uxc-val { position: absolute; left: 10px; font-size: 11.5px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; mix-blend-mode: normal; }
-.uxc-tag { position: absolute; right: 0; font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); }
-.uxcompare-slide .disclaimer { margin-top: 14px; }
+.uxc-artifact { width: 100%; border-radius: 14px; overflow: hidden; border: 1px solid var(--panel-line); background: #fff; cursor: zoom-in; position: relative; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); }
+.uxc-artifact:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+.uxc-artifact img { width: 100%; height: auto; display: block; }
+.uxc-artifact::after { content: "⤢"; position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 14px; border-radius: 8px; background: rgba(0,0,0,0.55); color: #fff; opacity: 0; transition: opacity 0.2s; }
+.uxc-artifact:hover::after { opacity: 1; }
+.uxc-artifact.failed { min-height: 200px; background: repeating-linear-gradient(45deg, var(--card), var(--card) 10px, var(--bg2) 10px, var(--bg2) 20px); }
+.uxc-artifact.failed img { display: none; }
+.uxc-artifact.zoom { position: fixed; inset: 5vh 6vw; z-index: 75; cursor: zoom-out; display: flex; align-items: center; justify-content: center; padding: 16px; background: #fff; box-shadow: 0 40px 120px rgba(0,0,0,0.6); border-radius: 14px; }
+.uxc-artifact.zoom::after { display: none; }
+.uxc-artifact.zoom img { width: auto; max-width: 100%; max-height: 88vh; object-fit: contain; }
+.uxcompare-slide .disclaimer { margin-top: 12px; }
 
 /* ---------- voice ---------- */
 .vq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 22px; }
