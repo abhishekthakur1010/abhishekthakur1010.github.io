@@ -31,32 +31,187 @@
     <link href="./css/hero-enhance.css" rel="stylesheet" />
     <link href="./css/home-responsive.css?v=51" rel="stylesheet" />
     <link href="./css/typography.css?v=3" rel="stylesheet" />
+    <!-- FINAL: improved hero (scoped override, hero only) -->
+    <style>
+      :root { --f-accent:#ff2d2d; --f-good:#16a34a; --f-line:#ececec; --f-soft:#52585f; --f-dim:#8b9099; --f-ease:cubic-bezier(.22,1,.36,1); }
+      /* portrait: animated ring + available badge */
+      .userSection .userPic {
+        position: relative; width: 196px; height: 196px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; overflow: visible;
+      }
+      .userSection .userPic::before {
+        content: ""; position: absolute; inset: -11px; border-radius: 50%; z-index: 0;
+        background: conic-gradient(from 210deg, var(--f-accent), #ff7a3d, #ffd4c2, var(--f-accent));
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+        animation: fSpin 16s linear infinite;
+      }
+      @keyframes fSpin { to { transform: rotate(360deg); } }
+      .userSection .userPic > img {
+        position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%;
+        object-fit: cover; filter: grayscale(1) contrast(1.03);
+        border: 5px solid #fff; box-shadow: 0 14px 36px rgba(16,21,27,0.16);
+      }
+      .userSection .userPic .hoverUserPic { z-index: 2; border-radius: 50%; }
+      .fAvail {
+        position: absolute; bottom: 6px; right: -4px; z-index: 4;
+        display: inline-flex; align-items: center; gap: 7px; background: #fff;
+        border: 1px solid var(--f-line); padding: 6px 12px; border-radius: 999px;
+        font-size: 12px; font-weight: 600; color: #121212; box-shadow: 0 8px 20px rgba(16,21,27,0.12);
+      }
+      .fAvail .d { width: 8px; height: 8px; border-radius: 50%; background: var(--f-good); position: relative; }
+      .fAvail .d::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(22,163,74,0.4); animation: fPing 1.8s var(--f-ease) infinite; }
+      @keyframes fPing { 0% { transform: scale(.8); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+      /* name sub */
+      .fNameSub { font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--f-dim); margin-top: 12px; text-align: center; }
+      /* badges: smaller, quieter metadata */
+      .userSection .userExpDetails { gap: 10px !important; margin-top: 18px !important; }
+      .userSection .userExp, .userSection .userPositionBox {
+        font-size: 13px !important; font-weight: 500 !important; padding: 7px 14px !important;
+        border-radius: 999px !important; transition: transform .22s var(--f-ease), box-shadow .22s;
+      }
+      .userSection .userExp { background: var(--f-soft-bg, #f6f7f8) !important; border: 1px solid var(--f-line) !important; color: #52585f !important; }
+      .userSection .userExp img { width: 15px !important; height: 15px !important; margin-right: 7px !important; }
+      .userSection .userPositionBox { font-size: 13px !important; font-weight: 500 !important; padding: 7px 14px !important; color: var(--f-good) !important; }
+      .userSection .userPosition { border: 1px solid rgba(22,163,74,0.28) !important; background: rgba(22,163,74,0.06) !important; border-radius: 999px !important; }
+      .userSection .userPosition .greenDot { width: 7px !important; height: 7px !important; margin-right: 8px !important; }
+      /* usp links — no underline, subtle hover */
+      .userSection .userSummery a { border-bottom: none !important; text-decoration: none !important; transition: color .2s; }
+      .userSection .userSummery a:hover { color: var(--f-accent) !important; }
+      /* hero actions */
+      .fHeroActions { display: flex; gap: 12px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+      .fBtn { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 999px; transition: transform .2s, background .2s; cursor: pointer; }
+      .fBtn.primary { background: #121212; color: #fff; }
+      .fBtn.primary:hover { background: #000; transform: translateY(-2px); }
+      .fBtn.ghost { background: #fff; border: 1px solid var(--f-line); color: #121212; }
+      .fBtn.ghost:hover { border-color: #121212; transform: translateY(-2px); }
+      /* credentials micro-row */
+      .fCreds { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 30px; margin: 34px auto 0; padding-top: 26px; border-top: 1px solid var(--f-line); width: min(680px, 92%); }
+      .fCred { display: flex; flex-direction: column; align-items: center; }
+      .fCred .cl { font-size: 11px; color: var(--f-dim); font-weight: 500; }
+      .fCred .cv { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: #121212; }
+      /* hero awards row */
+      .heroAwardRow { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+      .heroAwardLabel { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--f-dim); }
+      .heroAwardList { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+      .heroAwardItem { display: flex; align-items: center; justify-content: center; padding: 6px 10px; border-radius: 12px; background: #fff; border: 1px solid var(--f-line); box-shadow: 0 4px 14px rgba(16,21,27,0.05); transition: transform .25s var(--f-ease), box-shadow .25s; }
+      .heroAwardItem:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(16,21,27,0.12); }
+      .heroAwardItem img { height: 40px; width: auto; display: block; }
+      @media (max-width: 600px) { .heroAwardItem img { height: 32px; } .fCreds { gap: 10px 18px; } }
+      /* fix: summary + fixed-sidebar profile pics must be perfect circles */
+      .userSummPic, .userFixedPicInfo { border-radius: 50% !important; overflow: hidden !important; flex: 0 0 auto; }
+      .userSummPic img, .userFixedPicInfo img { width: 100% !important; height: 100% !important; object-fit: cover !important; border-radius: 50% !important; display: block; }
+
+      /* ===== dot grid: ripple → rotate → shutter open ===== */
+      .tvIntro {
+        position: fixed !important; inset: 0 !important; z-index: 9999 !important;
+        background: transparent !important; display: block !important;
+        overflow: hidden !important; transform: none !important; opacity: 1 !important;
+      }
+      /* rotor holds the grid and spins slightly during wake (ABOVE the shutters) */
+      .tvRotor {
+        position: absolute; inset: -20%; z-index: 5; display: flex; align-items: center; justify-content: center;
+        transform: rotate(0deg) scale(1); transform-origin: 50% 50%;
+      }
+      .tvIntro.show .tvRotor { animation: rotorSpin 1.4s cubic-bezier(.5,0,.2,1) forwards; }
+      @keyframes rotorSpin {
+        0%   { transform: rotate(-8deg) scale(1.06); }
+        100% { transform: rotate(6deg) scale(1); }
+      }
+      .tvGrid { display: grid; width: 100%; height: 100%; gap: 0; }
+      .tvCell { display: flex; align-items: center; justify-content: center; }
+      .tvCell i { width: 2.5px; height: 2.5px; border-radius: 50%; background: #fff; opacity: 0; transform: scale(0.6); }
+      .tvIntro.show .tvCell i { animation: dotWake 0.7s ease forwards; animation-delay: var(--d, 0s); }
+      @keyframes dotWake {
+        0%   { opacity: 0; transform: scale(0.6); }
+        40%  { opacity: 1; transform: scale(1.6); box-shadow: 0 0 6px 1px rgba(255,255,255,0.5); }
+        100% { opacity: 0.2; transform: scale(1); box-shadow: none; }
+      }
+      /* two black panels (above grid) that split from the mid-line like a shutter/eyelid */
+      .tvShutter { position: absolute; left: 0; right: 0; height: 50%; background: #070708; z-index: 4; transform: translateY(0); }
+      .tvShutter.top { top: 0; }
+      .tvShutter.bottom { bottom: 0; }
+      /* keep the base bg black only while showing; make it transparent on exit so sliding shutters reveal the page */
+      .tvIntro.hidden { background: transparent !important; }
+      /* exit: grid fades, shutters open from center, revealing page */
+      .tvIntro.hidden .tvShutter.top { animation: shutUp 0.65s cubic-bezier(.76,0,.24,1) 0.1s forwards; }
+      .tvIntro.hidden .tvShutter.bottom { animation: shutDown 0.65s cubic-bezier(.76,0,.24,1) 0.1s forwards; }
+      .tvIntro.hidden .tvRotor { animation: rotorOut 0.35s ease forwards; }
+      @keyframes shutUp { to { transform: translateY(-100%); } }
+      @keyframes shutDown { to { transform: translateY(100%); } }
+      @keyframes rotorOut { to { opacity: 0; transform: scale(1.1); } }
+      .tvIntro.hide { display: none !important; }
+
+      /* no underlines in header navigation */
+      .headerRow a, .headerRow a:hover, .headerRow a:visited,
+      .navAboutLink, .navAboutLink:hover, .btnResume, .btnResume:hover { text-decoration: none !important; border-bottom: none !important; }
+
+      /* unified ATDESIGN wordmark logo — no hover change */
+      .atLogo, .atLogo:hover, .atLogo:focus, .atLogo:active, .atLogo:visited {
+        font-family: "Poppins", sans-serif; font-weight: 800; font-size: 24px;
+        letter-spacing: -0.01em; color: #121212 !important; text-decoration: none !important;
+        line-height: 1; display: inline-flex; align-items: baseline; transition: none !important;
+      }
+      .atLogo span, .atLogo:hover span { color: #ff2d2d !important; }
+      .atLogo--light, .atLogo--light:hover, .atLogo--light:focus, .atLogo--light:visited { color: #fff !important; }
+      .menuLogo .atLogo { font-size: 26px; }
+
+      /* ===== improved footer ===== */
+      .footerV2 { background: #0b0b0c !important; color: #fff; padding: 0 !important; margin-top: 0; }
+      .footerV2 * { box-sizing: border-box; }
+      /* no underlines anywhere in the footer */
+      .footerV2 a, .footerV2 a:hover, .footerV2 a:visited { text-decoration: none !important; border-bottom: none !important; }
+      .footerV2-inner { max-width: 1180px; margin: 0 auto; padding: 72px 32px 28px; }
+      .fv2-cta { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .fv2-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+      .fv2-dot { width: 8px; height: 8px; border-radius: 50%; background: #3dd68c; position: relative; }
+      .fv2-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(61,214,140,0.4); animation: fv2Ping 1.8s cubic-bezier(.22,1,.36,1) infinite; }
+      @keyframes fv2Ping { 0%{transform:scale(.8);opacity:.9;} 100%{transform:scale(1.9);opacity:0;} }
+      .fv2-cta-copy h2 { font-family: "Poppins", sans-serif; font-size: clamp(28px, 4vw, 48px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; color: #fff; margin: 0; }
+      .fv2-mail {
+        display: inline-flex; align-items: center; gap: 12px; flex: 0 0 auto;
+        font-size: clamp(15px, 1.5vw, 18px); font-weight: 600; color: #0b0b0c;
+        background: #fff; padding: 15px 26px; border-radius: 999px; transition: transform .2s, background .2s;
+      }
+      .fv2-mail:hover { transform: translateY(-2px); background: #ff2d2d; color: #fff; }
+      .fv2-mail svg { width: 18px; height: 18px; }
+      .fv2-grid { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; padding: 48px 0; flex-wrap: wrap; }
+      .fv2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 96px); flex: 0 0 auto; }
+      .fv2-logo { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+      .fv2-logo span { color: #ff2d2d; }
+      .fv2-brand { flex: 1 1 300px; min-width: 260px; }
+      .fv2-brand p { margin-top: 14px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.56); max-width: 42ch; }
+      .fv2-col { display: flex; flex-direction: column; gap: 12px; }
+      .fv2-h { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+      .fv2-col a { font-size: 14.5px; color: rgba(255,255,255,0.78); transition: color .2s; width: fit-content; }
+      .fv2-col a:hover { color: #ff2d2d; }
+      .fv2-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); }
+      @media (max-width: 760px) {
+        .footerV2-inner { padding: 54px 24px 24px; }
+        .fv2-grid { flex-direction: column; gap: 32px; }
+        .fv2-cols { width: 100%; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .fv2-cta { align-items: flex-start; }
+      }
+    </style>
   </head>
 
   <body>
     <div class="topSection">
-      <div class="namaskaramIntro" id="introScreen">
-        <div class="introSection">
-          <div class="introTitle">Namaste 🙏</div>
-          <div class="introWelcome">
-            Welcome to
-            <div class="introImage">
-              <img src="./images/abhishek-folio.svg" />
-            </div>
-          </div>
-        </div>
+      <div class="namaskaramIntro tvIntro" id="introScreen">
+        <div class="tvRotor" id="tvRotor"><div class="tvGrid" id="tvGrid"></div></div>
+        <div class="tvShutter top"></div>
+        <div class="tvShutter bottom"></div>
       </div>
       <div class="dotBgInfo"></div>
       <header>
         <div class="headerRow headerSticky">
           <div class="logoArea">
-            <img class="mainLogo" src="./images/logo.svg" alt="logo" />
-            <img class="hoverLogo" src="./images/logo-name.svg" alt="logo" />
+            <a class="atLogo" href="./index.html">ATDESIGN<span>.</span></a>
           </div>
           <div class="rightSection">
             <a class="navAboutLink" href="./about-us.html">About Me</a>
             <span class="navDivider"></span>
-            <a href="./resume.pdf" class="btnResume" download>
+            <a href="./resume.pdf?v=2" class="btnResume" download>
               <svg class="btnArrowIcon" viewBox="0 0 16 14" fill="none">
                 <path
                   d="M8.98384 0.372498L7.45529 1.90104L11.4735 5.91921L0.390625 5.91921L0.390625 8.08136L11.4735 8.08136L7.45529 12.0985L8.98384 13.6276L15.6101 7.00129L8.98384 0.372498Z"
@@ -89,13 +244,13 @@
           <div class="userInfo">
             <div class="userPic">
               <img src="./images/userPic.png?v=3" alt="Abhishek Thakur" />
-
               <a class="hoverUserPic" href="./about-us.html">About Me</a>
+              <span class="fAvail"><span class="d"></span> Open to talk</span>
             </div>
             <div class="userName">Abhishek Thakur</div>
             <div class="userExpDetails">
               <div class="userExp">
-                <img src="./images/user-exp-icon.png" alt="" /> 10+ Years<span
+                <img src="./images/user-exp-icon.png" alt="" /> 8+ Years<span
                   class="userExpDesign"
                   >, Design Expertise</span
                 >
@@ -108,12 +263,11 @@
               </div>
             </div>
             <div class="userSummery">
-              Designing for <span style="font-weight:700;">100M+ users</span> across 
-              <a href="https://www.jio.com/" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Jio</a>, 
-              <a href="https://www.delhivery.com/" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Delhivery</a>, 
-              <a href="https://timesinternet.in/products" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Times Internet</a> & 
-              <a href="https://www.swiggy.com/dineout" target="_blank" style="color:#000; font-weight:700; text-decoration: underline;">Swiggy Dineout</a>
-              — scalable design systems for B2B & B2C at scale.
+              I turn complex, high-stakes journeys into <span style="font-weight:700;">fast, clear, scalable experiences</span> — designing for <span style="font-weight:700;">100M+ users</span> across 
+              <a href="https://www.jio.com/" target="_blank" style="color:#000; font-weight:700;">Jio</a>, 
+              <a href="https://www.delhivery.com/" target="_blank" style="color:#000; font-weight:700;">Delhivery</a>, 
+              <a href="https://timesinternet.in/products" target="_blank" style="color:#000; font-weight:700;">Times Internet</a> & 
+              <a href="https://www.swiggy.com/dineout" target="_blank" style="color:#000; font-weight:700;">Swiggy Dineout</a>.
             </div>
           </div>
         </div>
@@ -215,7 +369,7 @@
           <div class="userName">Abhishek Thakur</div>
           <div class="userExpDetails">
             <div class="userExp">
-              <img src="./images/user-exp-icon.png" alt="" /> 10+ Years<span
+              <img src="./images/user-exp-icon.png" alt="" /> 8+ Years<span
                 class="userExpDesign"
                 >, Design Expertise</span
               >
@@ -2848,7 +3002,7 @@
             <div class="d-flex flex-column">
               <p class="enh-positioning-lead">
                 I turn complex systems into clear, scalable experiences. 
-                10+ years across logistics, commerce, healthcare, and telecom — 
+                8+ years across logistics, commerce, healthcare, and telecom — 
                 leading teams, building design systems, and shipping products used by millions.
               </p>
               <div class="enh-positioning-points">
@@ -2899,7 +3053,7 @@
             <div class="userSummaryExp">
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Experience</div>
-                <div class="userSummaryExpTitle">10+ Year, UX</div>
+                <div class="userSummaryExpTitle">8+ Year, UX</div>
               </div>
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Lead Exp</div>
@@ -3226,7 +3380,7 @@
                           data-bs-parent="#accordionRecruiters"
                         >
                           <div class="accordion-body">
-                            10+ years in design, with 3+ years in leadership
+                            8+ years in design, with 3+ years in leadership
                             roles
                           </div>
                         </div>
@@ -4049,63 +4203,48 @@
     </div>
 
     <!-- /footer -->
-    <footer class="footerSection">
-      <div class="wrapperContainer">
-        <div class="footerInfo">
-          <div class="footerCopyText">
-            © 2025 <a href="./index.html">Abhishek Thakur Design</a>
+    <footer class="footerSection footerV2">
+      <div class="footerV2-inner">
+        <!-- CTA row -->
+        <div class="fv2-cta">
+          <div class="fv2-cta-copy">
+            <span class="fv2-eyebrow"><span class="fv2-dot"></span> Open to new opportunities</span>
+            <h2>Let's build something<br />people love to use.</h2>
           </div>
-          <div class="footerSocialLink">
-            <a href="./about-us.html"
-              >About Me
-              <svg viewBox="0 0 13 12" fill="none">
-                <path
-                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/abhishekthakur1010/"
-              target="_blank"
-              >Linkedin
-              <svg viewBox="0 0 13 12" fill="none">
-                <path
-                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://www.behance.net/abhishekthakur1010/"
-              target="_blank"
-              >Behance
-              <svg viewBox="0 0 13 12" fill="none">
-                <path
-                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
-            <a href="https://dribbble.com/abhishek_thakur_" target="_blank"
-              >Dribbble
-              <svg viewBox="0 0 13 12" fill="none">
-                <path
-                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
-            <a href="mailto:abhi.thakur1010@gmail.com" target="_blank"
-              >Email
-              <svg viewBox="0 0 13 12" fill="none">
-                <path
-                  d="M0.966361 2.03459H9.42134L0.421875 10.5453L1.9872 12L10.7566 3.69786V11.0682H13.0008V0H0.966361V2.03459Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+          <a class="fv2-mail" href="mailto:abhi.thakur1010@gmail.com">
+            abhi.thakur1010@gmail.com
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <!-- links grid -->
+        <div class="fv2-grid">
+          <div class="fv2-brand">
+            <div class="fv2-logo">ATDESIGN<span>.</span></div>
+            <p>Lead Product Designer · designing at the scale of millions across commerce, logistics &amp; fintech.</p>
           </div>
+          <div class="fv2-cols">
+            <div class="fv2-col">
+              <div class="fv2-h">Explore</div>
+              <a href="./jiomart-discovery.html">Product Discovery</a>
+              <a href="./jio-checkout.html">Checkout XP</a>
+              <a href="./delfin.html">DelFin · 0→1</a>
+              <a href="./about-us.html">About Me</a>
+            </div>
+            <div class="fv2-col">
+              <div class="fv2-h">Connect</div>
+              <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a href="https://www.behance.net/abhishekthakur1010/" target="_blank" rel="noopener">Behance ↗</a>
+              <a href="https://dribbble.com/abhishek_thakur_" target="_blank" rel="noopener">Dribbble ↗</a>
+              <a href="https://cal.com/abhishek-thakur-adhbch/30min" target="_blank" rel="noopener">Book a call ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- bottom bar -->
+        <div class="fv2-bottom">
+          <div>© 2026 Abhishek Thakur · Lead Product Designer</div>
+          <div class="fv2-loc">Delhi NCR, India</div>
         </div>
       </div>
     </footer>
@@ -4240,7 +4379,7 @@
         <div class="menuTopSection">
           <div class="menuHeader headerSticky">
             <div class="menuLogo">
-              <img src="./images/white-logo.png" alt="" />
+              <a class="atLogo atLogo--light" href="./index.html">ATDESIGN<span>.</span></a>
             </div>
             <div class="menuCloseInfo" onclick="closeTopMenu()">
               <img src="./images/mobile-close-icon.png" />
@@ -4250,7 +4389,7 @@
             <ul class="menuLinkList">
               <li><a href="./index.html">Home</a></li>
               <li>
-                <a href="./resume.pdf" download>
+                <a href="./resume.pdf?v=2" download>
                   Resume
                   <svg viewBox="0 0 19 19" fill="none">
                     <path
@@ -4300,7 +4439,7 @@
             <div class="menuUserSummaryExpData">
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Experience</div>
-                <div class="userSummaryExpTitle">10+ Year, UX</div>
+                <div class="userSummaryExpTitle">8+ Year, UX</div>
               </div>
               <div class="userSummaryExpItem">
                 <div class="userSummaryExpHeading">Lead Exp</div>
@@ -4601,36 +4740,52 @@
     <script>
       window.addEventListener("DOMContentLoaded", function () {
         const loader = document.querySelector(".namaskaramIntro");
-        const headingText = document.querySelector(".introTitle");
-        const welcomeText = document.querySelector(".introWelcome");
-
         const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
 
-        console.log("hasSeenIntro", hasSeenIntro);
-
-        if (!hasSeenIntro) {
+        if (!hasSeenIntro && loader) {
           document.body.classList.add("overflow-hidden");
 
-          // Show loader animation
-          setTimeout(() => {
-            loader.classList.add("show");
-          }, 100);
+          // build dot grid with radial (center-out) delays
+          (function buildGrid() {
+            var grid = document.getElementById("tvGrid");
+            if (!grid) return;
+            var cell = 28; // px per cell (denser, finer dots)
+            var cols = Math.max(6, Math.ceil(window.innerWidth / cell));
+            var rows = Math.max(5, Math.ceil(window.innerHeight / cell));
+            grid.style.gridTemplateColumns = "repeat(" + cols + ", 1fr)";
+            grid.style.gridTemplateRows = "repeat(" + rows + ", 1fr)";
+            var cx = (cols - 1) / 2, cy = (rows - 1) / 2;
+            var maxD = Math.sqrt(cx * cx + cy * cy) || 1;
+            var frag = document.createDocumentFragment();
+            for (var r = 0; r < rows; r++) {
+              for (var c = 0; c < cols; c++) {
+                var dist = Math.sqrt((c - cx) * (c - cx) + (r - cy) * (r - cy));
+                var delay = (dist / maxD) * 0.5; // 0 → 0.5s outward wave
+                var el = document.createElement("div");
+                el.className = "tvCell";
+                var dot = document.createElement("i");
+                dot.style.setProperty("--d", delay.toFixed(3) + "s");
+                el.appendChild(dot);
+                frag.appendChild(el);
+              }
+            }
+            grid.appendChild(frag);
+          })();
 
-          setTimeout(() => {
-            headingText.classList.add("reveal");
-            welcomeText.classList.add("reveal");
-          }, 2000);
+          // start the ripple
+          setTimeout(() => { loader.classList.add("show"); }, 60);
 
+          // after ripple settles, fade out + reveal page
           setTimeout(() => {
             loader.classList.remove("show");
             loader.classList.add("hidden");
             document.body.classList.remove("overflow-hidden");
-
-            // ✅ Mark as seen
             sessionStorage.setItem("hasSeenIntro", "true");
-          }, 3000);
-        } else {
-          //Skip animation
+          }, 1700);
+
+          // fully remove from flow after shutter opens
+          setTimeout(() => { loader.classList.add("hide"); }, 2500);
+        } else if (loader) {
           loader.classList.add("hide");
         }
       });
