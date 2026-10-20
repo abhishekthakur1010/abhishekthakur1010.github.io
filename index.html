@@ -102,45 +102,53 @@
       .userSummPic, .userFixedPicInfo { border-radius: 50% !important; overflow: hidden !important; flex: 0 0 auto; }
       .userSummPic img, .userFixedPicInfo img { width: 100% !important; height: 100% !important; object-fit: cover !important; border-radius: 50% !important; display: block; }
 
-      /* ===== dot grid: ripple → rotate → shutter open ===== */
-      .tvIntro {
+      /* ===== Skiper8-style words preloader: cycling greetings → curved slide-up ===== */
+      .wordsIntro {
         position: fixed !important; inset: 0 !important; z-index: 9999 !important;
-        background: transparent !important; display: block !important;
-        overflow: hidden !important; transform: none !important; opacity: 1 !important;
+        background: #0a0a0a; display: flex; align-items: center; justify-content: center;
+        overflow: hidden;
+        /* curved bottom edge via radial clip; flat while entering */
+        will-change: transform, clip-path;
+        transform: translateY(0);
       }
-      /* rotor holds the grid and spins slightly during wake (ABOVE the shutters) */
-      .tvRotor {
-        position: absolute; inset: -20%; z-index: 5; display: flex; align-items: center; justify-content: center;
-        transform: rotate(0deg) scale(1); transform-origin: 50% 50%;
+      .wordsIntroInner {
+        display: flex; align-items: center; gap: 16px;
+        font-family: "Poppins", sans-serif; color: #fff;
+        font-size: clamp(32px, 6vw, 72px); font-weight: 600; line-height: 1;
       }
-      .tvIntro.show .tvRotor { animation: rotorSpin 1.4s cubic-bezier(.5,0,.2,1) forwards; }
-      @keyframes rotorSpin {
-        0%   { transform: rotate(-8deg) scale(1.06); }
-        100% { transform: rotate(6deg) scale(1); }
+      .wiDot {
+        width: 12px; height: 12px; border-radius: 50%; background: #fff;
+        opacity: 0; transform: scale(0);
+        animation: wiDotIn 0.5s ease forwards;
       }
-      .tvGrid { display: grid; width: 100%; height: 100%; gap: 0; }
-      .tvCell { display: flex; align-items: center; justify-content: center; }
-      .tvCell i { width: 2.5px; height: 2.5px; border-radius: 50%; background: #fff; opacity: 0; transform: scale(0.6); }
-      .tvIntro.show .tvCell i { animation: dotWake 0.7s ease forwards; animation-delay: var(--d, 0s); }
-      @keyframes dotWake {
-        0%   { opacity: 0; transform: scale(0.6); }
-        40%  { opacity: 1; transform: scale(1.6); box-shadow: 0 0 6px 1px rgba(255,255,255,0.5); }
-        100% { opacity: 0.2; transform: scale(1); box-shadow: none; }
+      @keyframes wiDotIn { to { opacity: 1; transform: scale(1); } }
+      .wiWord {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.18s ease, transform 0.18s ease;
       }
-      /* two black panels (above grid) that split from the mid-line like a shutter/eyelid */
-      .tvShutter { position: absolute; left: 0; right: 0; height: 50%; background: #070708; z-index: 4; transform: translateY(0); }
-      .tvShutter.top { top: 0; }
-      .tvShutter.bottom { bottom: 0; }
-      /* keep the base bg black only while showing; make it transparent on exit so sliding shutters reveal the page */
-      .tvIntro.hidden { background: transparent !important; }
-      /* exit: grid fades, shutters open from center, revealing page */
-      .tvIntro.hidden .tvShutter.top { animation: shutUp 0.65s cubic-bezier(.76,0,.24,1) 0.1s forwards; }
-      .tvIntro.hidden .tvShutter.bottom { animation: shutDown 0.65s cubic-bezier(.76,0,.24,1) 0.1s forwards; }
-      .tvIntro.hidden .tvRotor { animation: rotorOut 0.35s ease forwards; }
-      @keyframes shutUp { to { transform: translateY(-100%); } }
-      @keyframes shutDown { to { transform: translateY(100%); } }
-      @keyframes rotorOut { to { opacity: 0; transform: scale(1.1); } }
-      .tvIntro.hide { display: none !important; }
+      .wiWord.in  { opacity: 1; transform: translateY(0); }
+      .wiWord.out { opacity: 0; transform: translateY(-18px); }
+
+      /* exit: whole overlay slides up; curved leading edge carved by clip-path */
+      .wordsIntro.hidden {
+        animation: wordsCurveUp 0.7s cubic-bezier(.76,0,.24,1) forwards;
+      }
+      @keyframes wordsCurveUp {
+        0%   { clip-path: ellipse(140% 100% at 50% 0%);   transform: translateY(0); }
+        40%  { clip-path: ellipse(140% 100% at 50% -6%);  transform: translateY(0); }
+        100% { clip-path: ellipse(140% 0% at 50% 0%);     transform: translateY(-100%); }
+      }
+      .wordsIntro.hidden .wordsIntroInner {
+        animation: wiContentOut 0.4s ease forwards;
+      }
+      @keyframes wiContentOut { to { opacity: 0; transform: translateY(-30px); } }
+      .wordsIntro.hide { display: none !important; }
+      @media (prefers-reduced-motion: reduce) {
+        .wiWord, .wiDot { transition: none; animation: none; opacity: 1; transform: none; }
+        .wordsIntro.hidden { animation: none; transform: translateY(-100%); }
+      }
 
       /* no underlines in header navigation */
       .headerRow a, .headerRow a:hover, .headerRow a:visited,
@@ -197,10 +205,11 @@
 
   <body>
     <div class="topSection">
-      <div class="namaskaramIntro tvIntro" id="introScreen">
-        <div class="tvRotor" id="tvRotor"><div class="tvGrid" id="tvGrid"></div></div>
-        <div class="tvShutter top"></div>
-        <div class="tvShutter bottom"></div>
+      <div class="wordsIntro" id="introScreen">
+        <div class="wordsIntroInner">
+          <span class="wiDot"></span>
+          <span class="wiWord" id="wiWord"></span>
+        </div>
       </div>
       <div class="dotBgInfo"></div>
       <header>
@@ -4739,52 +4748,52 @@
 
     <script>
       window.addEventListener("DOMContentLoaded", function () {
-        const loader = document.querySelector(".namaskaramIntro");
+        const loader = document.getElementById("introScreen");
         const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
 
         if (!hasSeenIntro && loader) {
           document.body.classList.add("overflow-hidden");
 
-          // build dot grid with radial (center-out) delays
-          (function buildGrid() {
-            var grid = document.getElementById("tvGrid");
-            if (!grid) return;
-            var cell = 28; // px per cell (denser, finer dots)
-            var cols = Math.max(6, Math.ceil(window.innerWidth / cell));
-            var rows = Math.max(5, Math.ceil(window.innerHeight / cell));
-            grid.style.gridTemplateColumns = "repeat(" + cols + ", 1fr)";
-            grid.style.gridTemplateRows = "repeat(" + rows + ", 1fr)";
-            var cx = (cols - 1) / 2, cy = (rows - 1) / 2;
-            var maxD = Math.sqrt(cx * cx + cy * cy) || 1;
-            var frag = document.createDocumentFragment();
-            for (var r = 0; r < rows; r++) {
-              for (var c = 0; c < cols; c++) {
-                var dist = Math.sqrt((c - cx) * (c - cx) + (r - cy) * (r - cy));
-                var delay = (dist / maxD) * 0.5; // 0 → 0.5s outward wave
-                var el = document.createElement("div");
-                el.className = "tvCell";
-                var dot = document.createElement("i");
-                dot.style.setProperty("--d", delay.toFixed(3) + "s");
-                el.appendChild(dot);
-                frag.appendChild(el);
+          var wordEl = document.getElementById("wiWord");
+          // multilingual greetings — Namaste leads (keeps the site's identity)
+          var words = [
+            "Namaste", "Hello", "Bonjour", "Hola",
+            "こんにちは", "안녕하세요", "Ciao", "Olá", "नमस्ते"
+          ];
+          var HOLD = 180;   // ms each word stays fully visible
+          var GAP = 20;     // ms between out and next in
+
+          var i = 0;
+          function showWord() {
+            if (!wordEl) return;
+            wordEl.textContent = words[i];
+            // reflow so the transition replays
+            void wordEl.offsetWidth;
+            wordEl.classList.remove("out");
+            wordEl.classList.add("in");
+
+            setTimeout(function () {
+              if (i === words.length - 1) {
+                finish();
+                return;
               }
-            }
-            grid.appendChild(frag);
-          })();
+              wordEl.classList.remove("in");
+              wordEl.classList.add("out");
+              i++;
+              setTimeout(showWord, GAP);
+            }, HOLD);
+          }
 
-          // start the ripple
-          setTimeout(() => { loader.classList.add("show"); }, 60);
-
-          // after ripple settles, fade out + reveal page
-          setTimeout(() => {
-            loader.classList.remove("show");
+          function finish() {
             loader.classList.add("hidden");
             document.body.classList.remove("overflow-hidden");
             sessionStorage.setItem("hasSeenIntro", "true");
-          }, 1700);
+            // fully remove from flow once the curve-up finishes
+            setTimeout(function () { loader.classList.add("hide"); }, 750);
+          }
 
-          // fully remove from flow after shutter opens
-          setTimeout(() => { loader.classList.add("hide"); }, 2500);
+          // kick off the word cycle
+          setTimeout(showWord, 150);
         } else if (loader) {
           loader.classList.add("hide");
         }
