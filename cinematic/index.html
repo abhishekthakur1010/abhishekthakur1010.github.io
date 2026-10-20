@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>From the Mountains to Millions — Abhishek Thakur</title>
+    <meta name="description" content="A cinematic, scroll-controlled story. Chapter 01 — It started in the mountains." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #0e1726; --paper: #0b0f17; --mist: #c9d2e4; --warm: #f3d9a8;
+        --font-d: "Fraunces", Georgia, serif;
+        --font-b: "Inter", system-ui, sans-serif;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body { background: #05070c; color: #eef2f8; font-family: var(--font-b); -webkit-font-smoothing: antialiased; }
+
+      /* top nav — minimal, non-intrusive */
+      .c-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; mix-blend-mode: difference; }
+      .c-nav a { color: #fff; text-decoration: none; }
+      .c-brand { font-family: var(--font-d); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; }
+      .c-links { display: flex; gap: 22px; font-size: 13px; }
+      .c-links a { opacity: .8; } .c-links a:hover { opacity: 1; }
+      @media (max-width: 640px) { .c-links { display: none; } }
+
+      /* pinned stage */
+      .chapter { position: relative; width: 100%; }
+      .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #05070c; }
+      .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+      /* fallback / placeholder art behind canvas so empty frames never look broken */
+      .stage__placeholder { position: absolute; inset: 0; z-index: 0;
+        background:
+          radial-gradient(120% 80% at 70% 18%, #ffdfa6 0%, rgba(255,223,166,0) 42%),
+          linear-gradient(180deg, #1a2740 0%, #2c4063 36%, #5a6f98 66%, #b9c4db 100%);
+      }
+      .stage__placeholder::after { content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(5,7,12,0) 55%, rgba(5,7,12,.5) 100%); }
+
+      /* loading + missing-assets message */
+      .notice { position: absolute; z-index: 5; left: 50%; bottom: 8vh; transform: translateX(-50%); text-align: center; max-width: 640px; padding: 0 24px; }
+      .notice .bar { width: 220px; height: 3px; background: rgba(255,255,255,.18); border-radius: 3px; margin: 0 auto 16px; overflow: hidden; }
+      .notice .bar i { display: block; height: 100%; width: 0%; background: var(--warm); transition: width .25s var(--ease); }
+      .notice .msg { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.82); }
+      .notice .msg code { font-family: ui-monospace, Menlo, monospace; font-size: 12px; background: rgba(255,255,255,.1); padding: 2px 6px; border-radius: 5px; }
+      .notice.hide { opacity: 0; pointer-events: none; transition: opacity .5s ease; }
+
+      /* narrative text overlays */
+      .beats { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+      .beat { position: absolute; left: 0; right: 0; bottom: 16vh; text-align: center; padding: 0 28px; opacity: 0; transform: translateY(18px); }
+      .beat .kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--warm); margin-bottom: 16px; }
+      .beat .line { font-family: var(--font-d); font-weight: 500; font-style: italic; font-size: clamp(26px, 4.6vw, 58px); line-height: 1.1; letter-spacing: -0.01em; white-space: pre-line; text-shadow: 0 2px 30px rgba(0,0,0,.5); }
+      @media (max-width: 640px) { .beat { bottom: 22vh; } }
+
+      /* progress + scroll cue */
+      .hud { position: fixed; z-index: 40; left: 28px; bottom: 24px; display: flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .14em; color: rgba(255,255,255,.7); mix-blend-mode: difference; }
+      .hud .track { width: 120px; height: 2px; background: rgba(255,255,255,.25); border-radius: 2px; overflow: hidden; }
+      .hud .track i { display: block; height: 100%; width: 0%; background: #fff; }
+      .scrollcue { position: fixed; z-index: 40; right: 28px; bottom: 24px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.7); mix-blend-mode: difference; display: flex; align-items: center; gap: 9px; }
+      .scrollcue .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: cue 1.6s var(--ease) infinite; }
+      @keyframes cue { 0%,100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(5px); opacity: 1; } }
+      .scrollcue.hide { opacity: 0; transition: opacity .4s; }
+
+      /* reduced-motion toggle */
+      .rm-toggle { position: fixed; z-index: 41; top: 18px; right: 50%; transform: translateX(50%); font-size: 11px; color: rgba(255,255,255,.6); background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 6px 12px; cursor: pointer; mix-blend-mode: difference; }
+
+      /* end slate (after the pinned chapter) */
+      .endslate { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 22px; padding: 80px 24px; background: linear-gradient(180deg, #05070c, #0b1018); }
+      .endslate h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.02em; }
+      .endslate p { color: rgba(255,255,255,.6); max-width: 46ch; line-height: 1.6; }
+      .endslate .next { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--warm); }
+    </style>
+  </head>
+  <body>
+    <nav class="c-nav">
+      <a class="c-brand" href="../index.html">Abhishek Thakur</a>
+      <div class="c-links">
+        <a href="#">About</a><a href="#">Journey</a><a href="../index.html#work">Work</a><a href="mailto:abhi.thakur1010@gmail.com">Contact</a>
+      </div>
+    </nav>
+
+    <button class="rm-toggle" id="rmToggle" aria-pressed="false">Reduced motion: off</button>
+
+    <!-- CHAPTER 01 -->
+    <section class="chapter" id="chapter-01">
+      <div class="stage" id="stage01">
+        <div class="stage__placeholder" aria-hidden="true"></div>
+        <canvas id="canvas01" aria-label="Chapter 01: a boy leaving his mountain home at sunrise"></canvas>
+        <div class="beats" id="beats01"></div>
+        <div class="notice" id="notice01">
+          <div class="bar"><i id="noticeBar"></i></div>
+          <p class="msg" id="noticeMsg">Loading the mountains…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="endslate">
+      <div class="next">End of Chapter 01 proof-of-concept</div>
+      <h2>The journey continues.</h2>
+      <p>This is the validated opening scene. Once the Himalayan frames are supplied, the sequence plays smoothly under scroll — ready to extend into Chapters 02–07.</p>
+    </section>
+
+    <!-- progress HUD + scroll cue -->
+    <div class="hud"><span id="hudChapter">01 / 07</span><span class="track"><i id="hudBar"></i></span></div>
+    <div class="scrollcue" id="scrollcue"><span class="dot"></span> Scroll to explore</div>
+
+    <!-- GSAP (CDN) with native fallback handled in engine.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./config.js"></script>
+    <script src="./engine.js"></script>
+  </body>
+</html>
