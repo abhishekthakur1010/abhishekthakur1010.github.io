@@ -1,0 +1,61 @@
+/* ============================================================
+   Skiper16-style sticky card stack for the Featured Work cards
+   Cards pin to the top of the viewport and scale down as the next
+   card scrolls over them, creating a layered "deck" effect.
+   Scoped to desktop + the active tab panel. Driven by a tiny JS
+   controller (see index.html) that sets --stack-scale per card.
+   ============================================================ */
+
+@media (min-width: 992px) {
+  /* Turn the active panel's card list into the stack context.
+     Each card sticks; a CSS var drives its scale as you scroll. */
+  .stackOn .tabContentDetails > .contentItem {
+    position: sticky;
+    top: var(--stack-top, 90px);
+    /* stagger the pin point slightly per card so stacked edges peek out */
+    top: calc(var(--stack-top, 90px) + var(--stack-i, 0) * 14px);
+    transform-origin: 50% 0%;
+    transform: scale(var(--stack-scale, 1));
+    transition: transform 0.12s linear;
+    will-change: transform;
+  }
+
+  /* While stacking is active, suppress the hover lift so it doesn't
+     fight the scroll-driven scale transform. */
+  .stackOn .tabContentDetails > .contentItem:hover {
+    transform: scale(var(--stack-scale, 1));
+  }
+
+  /* The last VISIBLE card (tagged by JS) has nothing to stack over — let
+     it sit in normal flow so it doesn't pin over the view-more / show-less
+     button sitting just below the list. */
+  .stackOn .tabContentDetails > .contentItem.stackLast {
+    position: static;
+    transform: none;
+    margin-bottom: 28px;
+  }
+
+  /* Give the list breathing room so each card has scroll distance to
+     pin and reveal the next one. The spacing sits BETWEEN cards only,
+     so there is no trailing gap after the final card. */
+  .stackOn .tabContentDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .stackOn .tabContentDetails > .contentItem {
+    margin-bottom: 0;
+  }
+  .stackOn .tabContentDetails > .contentItem:not(:last-child) {
+    margin-bottom: 6vh;
+  }
+}
+
+/* Honor reduced-motion: no sticky, no scaling — plain stacked list. */
+@media (prefers-reduced-motion: reduce) {
+  .stackOn .tabContentDetails > .contentItem {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 40px !important;
+  }
+}

@@ -31,6 +31,7 @@
     <link href="./css/hero-enhance.css" rel="stylesheet" />
     <link href="./css/home-responsive.css?v=51" rel="stylesheet" />
     <link href="./css/typography.css?v=3" rel="stylesheet" />
+    <link href="./css/case-stack.css?v=6" rel="stylesheet" />
     <!-- FINAL: improved hero (scoped override, hero only) -->
     <style>
       :root { --f-accent:#ff2d2d; --f-good:#16a34a; --f-line:#ececec; --f-soft:#52585f; --f-dim:#8b9099; --f-ease:cubic-bezier(.22,1,.36,1); }
@@ -4926,5 +4927,134 @@
       })();
     </script>
     <script src="./js/whatsapp-widget.js" defer></script>
+    <script>
+      /* ===== Skiper16-style sticky card-stack for Featured Work ===== */
+      (function () {
+        var MQ = window.matchMedia("(min-width: 992px)");
+        var RM = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var section = document.querySelector(".featureSection");
+        if (!section) return;
+
+        var MIN_SCALE = 0.86;   // how small a fully-covered card gets
+        var raf = null;
+        var enabled = false;
+
+        function activePanel() {
+          return section.querySelector(".tab-content.active");
+        }
+        function visibleCards(panel) {
+          var all = panel.querySelectorAll(
+            ".tabContentDetails > .contentItem"
+          );
+          // skip cards hidden by the view-more clamp
+          return Array.prototype.filter.call(all, function (c) {
+            return (
+              !c.classList.contains("collapsibleHidden") &&
+              c.offsetParent !== null
+            );
+          });
+        }
+
+        function update() {
+          raf = null;
+          var panel = activePanel();
+          if (!panel) return;
+          var cards = visibleCards(panel);
+          var vh = window.innerHeight;
+          for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            card.style.setProperty("--stack-i", i);
+            var next = cards[i + 1];
+            // mark the last VISIBLE card so CSS can un-stick it (prevents
+            // it pinning over the view-more / show-less button below)
+            card.classList.toggle("stackLast", !next);
+            if (!next) {
+              card.style.setProperty("--stack-scale", 1);
+              continue;
+            }
+            // progress = how far the next card's top has risen toward the
+            // pinned card's top (0 = far below, 1 = fully overlapping)
+            var cardTop = card.getBoundingClientRect().top;
+            var nextTop = next.getBoundingClientRect().top;
+            var dist = nextTop - cardTop;
+            var p = 1 - Math.min(Math.max(dist / (vh * 0.2), 0), 1);
+            var scale = 1 - (1 - MIN_SCALE) * p;
+            card.style.setProperty("--stack-scale", scale.toFixed(4));
+          }
+        }
+
+        function onScroll() {
+          if (raf == null) raf = requestAnimationFrame(update);
+        }
+
+        function clearStyles() {
+          var panels = section.querySelectorAll(".tab-content");
+          Array.prototype.forEach.call(panels, function (p) {
+            p.classList.remove("stackOn");
+            var cards = p.querySelectorAll(".contentItem");
+            Array.prototype.forEach.call(cards, function (c) {
+              c.style.removeProperty("--stack-scale");
+              c.style.removeProperty("--stack-i");
+              c.classList.remove("stackLast");
+            });
+          });
+        }
+
+        function enable() {
+          if (enabled) return;
+          enabled = true;
+          var panel = activePanel();
+          if (panel) panel.classList.add("stackOn");
+          window.addEventListener("scroll", onScroll, { passive: true });
+          window.addEventListener("resize", onScroll, { passive: true });
+          update();
+        }
+        function disable() {
+          if (!enabled) return;
+          enabled = false;
+          window.removeEventListener("scroll", onScroll);
+          window.removeEventListener("resize", onScroll);
+          clearStyles();
+        }
+
+        function apply() {
+          if (MQ.matches && !RM.matches) enable();
+          else disable();
+        }
+
+        // Re-sync when the user switches tabs (class toggle on .tab-content)
+        // or expands a card list via "view more".
+        function resync() {
+          if (!enabled) return;
+          clearStyles();
+          var panel = activePanel();
+          if (panel) panel.classList.add("stackOn");
+          onScroll();
+        }
+
+        section.addEventListener("click", function (e) {
+          if (
+            e.target.closest(".navTabBar button") ||
+            e.target.closest(".viewMoreBtn")
+          ) {
+            // let the existing handlers run first, then re-measure
+            setTimeout(resync, 60);
+          }
+        });
+
+        (MQ.addEventListener
+          ? MQ.addEventListener("change", apply)
+          : MQ.addListener(apply));
+        (RM.addEventListener
+          ? RM.addEventListener("change", apply)
+          : RM.addListener(apply));
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", apply);
+        } else {
+          apply();
+        }
+      })();
+    </script>
   </body>
 </html>
