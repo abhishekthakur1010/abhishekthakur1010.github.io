@@ -134,11 +134,13 @@ const drawHuman = (g, W, H) => {
 };
 
 /* ---------- scene ---------- */
-export function createLayers(canvas, { layers: meta, mobile, reduced, tipEl, hintEl }) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
+export function createLayers(canvas, { layers: meta, mobile, reduced, tipEl, hintEl, renderer: shared }) {
+  // v0.3 shares the stage renderer; standalone use still creates its own
+  const renderer = shared || new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  if (!shared) renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
   const scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x070c16, 4, 9);
+  scene.background = new THREE.Color(0x0a1222);
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 50);
   camera.position.set(0, 0, 4.4);
 
@@ -153,6 +155,7 @@ export function createLayers(canvas, { layers: meta, mobile, reduced, tipEl, hin
   const edgeGeo = new THREE.EdgesGeometry(geo);
   const planes = meta.map((m, i) => {
     const mat = new THREE.MeshBasicMaterial({
+      toneMapped: false,
       map: paint(res, res * (PAGE_H / PAGE_W), painters[i]),
       transparent: true, side: THREE.DoubleSide, depthWrite: i < 2,
       blending: i === 3 ? THREE.AdditiveBlending : THREE.NormalBlending,
@@ -174,7 +177,7 @@ export function createLayers(canvas, { layers: meta, mobile, reduced, tipEl, hin
   let p = 0, w = 1, h = 1;
   const drag = { on: false, x: 0, y: 0, yaw: 0, pitch: 0, vYaw: 0, vPitch: 0 };
   const pointer = new THREE.Vector2(9, 9), tilt = new THREE.Vector2();
-  let hovered = -1, interactive = false;
+  let hovered = -1, interactive = false, active = true;
   // keep the stack readable: never turn it edge-on
   const clampYaw = (y) => Math.max(-0.95, Math.min(0.5, y));
   const ray = new THREE.Raycaster();
@@ -200,8 +203,8 @@ export function createLayers(canvas, { layers: meta, mobile, reduced, tipEl, hin
 
   function setProgress(v) {
     p = v;
-    interactive = p > 0.05;
-    hintEl.classList.toggle("is-on", p > 0.1 && p < 0.98);
+    interactive = active && p > 0.05;
+    hintEl.classList.toggle("is-on", active && p > 0.1 && p < 0.98);
   }
 
   function showTip(i, x, y) {
@@ -275,5 +278,11 @@ export function createLayers(canvas, { layers: meta, mobile, reduced, tipEl, hin
   }
 
   resize();
-  return { setProgress, render, resize };
+  // the shared canvas also hosts other chapters: only react to the pointer while on screen
+  function setActive(a) {
+    if (a === active) return;
+    active = a;
+    if (!a) { interactive = false; hovered = -1; showTip(-1); hintEl.classList.remove("is-on"); drag.on = false; }
+  }
+  return { setProgress, render, resize, setActive };
 }

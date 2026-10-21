@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>From the Mountains to Millions — Abhishek Thakur</title>
-    <meta name="description" content="A scroll story about Abhishek Thakur's path from the Himalayas to product design at scale. Prototype." />
+    <meta name="description" content="Abhishek Thakur, Lead Product Designer: a six-chapter story from the Himalayas to products used by millions — Dineout, Jio Platforms, Delhivery." />
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content="#070c16" />
     <link rel="icon" href="../images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,140 +16,80 @@
     />
     <link rel="stylesheet" href="./story.css" />
     <script type="importmap">
-      { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
     </script>
   </head>
   <body>
-    <!-- Fixed real-time globe, shared by the opening and the Chapter 02 transition -->
-    <canvas id="globe" class="globe" aria-hidden="true"></canvas>
-    <div class="mist" aria-hidden="true"></div>
+    <!-- ===== fixed visual layers (back to front) ===== -->
+    <canvas id="globe" class="layer layer--globe" aria-hidden="true"></canvas>
+    <div class="layer kf" id="kf" aria-hidden="true">
+      <img data-kf="5" alt="" />
+      <img data-kf="6" alt="" />
+      <img data-kf="7" alt="" />
+      <img data-kf="8" alt="" />
+      <p class="kf__note">Keyframe stills · final motion pending</p>
+    </div>
+    <div class="layer plate" id="campus" aria-hidden="true">
+      <div class="plate__inner">
+        <p class="plate__coord">25.43° N · 81.77° E</p>
+        <p class="plate__name">Indian Institute of Information Technology, Allahabad</p>
+        <p class="plate__fact" id="campusFact"></p>
+        <p class="plate__note">Campus footage pending — placeholder plate</p>
+      </div>
+    </div>
+    <figure class="layer print" id="laptop" aria-hidden="true">
+      <img src="../images/about/curiosity/curiosity-03.png" alt="" />
+      <figcaption>Archive photograph</figcaption>
+    </figure>
+    <canvas id="stage" class="layer layer--stage" aria-label="Interactive 3D scene for the current chapter"></canvas>
+    <canvas id="clouds" class="layer layer--clouds" aria-hidden="true"></canvas>
+    <div class="layer-tip" id="layerTip" hidden><b></b><span></span></div>
+    <p class="hint" id="layersHint">Drag to turn · hover a layer</p>
     <div class="grain" aria-hidden="true"></div>
 
+    <!-- ===== chapter overlays (text + evidence), filled from config ===== -->
+    <div class="overlays" id="overlays"></div>
+
+    <!-- ===== chrome ===== -->
     <header class="topbar">
-      <a class="brand" href="../index.html" aria-label="Back to portfolio home">Abhishek Thakur</a>
-      <div class="topbar__right">
-        <button class="chip" id="protoToggle" aria-expanded="false" aria-controls="protoPanel">
-          <span class="chip__dot"></span>Prototype v0.2
-        </button>
-        <a class="skip" href="#scene-arc">Skip to Chapter 02</a>
-      </div>
+      <a class="brand" href="../index.html">Abhishek Thakur</a>
+      <nav class="jump" aria-label="Jump to chapter">
+        <button type="button" class="jump__skip" data-jump="dineout">Skip intro</button>
+        <span class="jump__links" id="jumpLinks"></span>
+        <div class="work">
+          <button type="button" class="work__btn" id="workBtn" aria-expanded="false" aria-controls="workMenu">Work</button>
+          <div class="work__menu" id="workMenu" hidden></div>
+        </div>
+      </nav>
     </header>
 
-    <aside class="proto" id="protoPanel" hidden>
-      <h2>What's real, what's pending</h2>
-      <ul>
-        <li><b class="ok">New</b> Photoreal Earth: NASA day, night, cloud and relief maps, atmospheric scattering, sun-lit oceans, cloud shadows</li>
-        <li><b class="ok">New</b> Continuous descent onto real Himalayan terrain (elevation data + Sentinel-2 imagery, 3× vertical scale)</li>
-        <li><b class="ok">Live</b> Himalayas → Allahabad arc for Chapter 02</li>
-        <li><b class="ok">Live</b> Chapter 02 interactive 3D scene (drag / hover the layers)</li>
-        <li><b class="ok">Live</b> Scroll engine, text beats, progress nav, mobile + reduced motion</li>
-        <li><b class="wait">Pending</b> Chapter 01 rendered sequence (Himalayas → village → boy) — 0 / 120 frames. Shown as a labelled previs card until renders land in <code>cinematic/assets/chapter-01/</code></li>
-        <li><b class="wait">Pending</b> Chapters 03–06 scenes; their metrics are unverified</li>
-      </ul>
-      <p class="proto__credits">
-        Earth imagery: NASA Visible Earth — Blue Marble Next Generation, Black Marble 2016, clouds, GEBCO relief (public domain).
-        Terrain: Sentinel-2 cloudless 2016 by EOX IT Services GmbH, s2maps.eu (CC BY 4.0; contains modified Copernicus Sentinel data 2016).
-        Elevation: Terrain Tiles on AWS Open Data (SRTM, GMTED2010, ETOPO1 and others).
-      </p>
-    </aside>
-
-    <div class="progress__bar" aria-hidden="true"><span id="progressFill"></span></div>
-    <nav class="progress" aria-label="Chapters">
-      <ol id="chapterNav"></ol>
-      <p class="progress__now" aria-live="polite"><span id="nowNum">00</span><span id="nowTitle">Prologue</span></p>
+    <nav class="rail" aria-label="Story progress">
+      <ol id="rail"></ol>
+      <p class="rail__now" aria-live="polite"><span id="nowNum">01</span><span id="nowTitle">From the Mountains</span></p>
     </nav>
+    <div class="topline" aria-hidden="true"><span id="topline"></span></div>
 
-    <main id="story">
-      <!-- Prologue -->
-      <section class="scene scene--clear" id="scene-intro" data-scene="intro">
-        <div class="stage">
-          <div class="intro">
-            <p class="eyebrow">A story in six chapters</p>
-            <h1 class="intro__title">From the Mountains<br /><em>to Millions</em></h1>
-            <p class="intro__by">Abhishek Thakur — Product Designer</p>
-          </div>
-          <div class="cue" aria-hidden="true"><span></span>Scroll</div>
-        </div>
-      </section>
+    <main id="story"></main>
 
-      <!-- Ch01 · real-time: Earth → India → Himalayas -->
-      <section class="scene scene--clear" id="scene-dive" data-scene="dive" data-chapter="0">
-        <div class="stage">
-          <div class="beats" data-beats="dive"></div>
-          <div class="geo-label" id="homeLabel"><i></i><span></span></div>
-        </div>
-      </section>
-
-      <!-- Ch01 · pre-rendered: Himalayas → village → boy -->
-      <section class="scene" id="scene-sequence" data-scene="sequence" data-chapter="0">
-        <div class="stage stage--seq">
-          <canvas class="seq" id="seqCanvas" aria-hidden="true"></canvas>
-          <div class="previs" id="previs" hidden>
-            <p class="previs__tag">Previs · render pending</p>
-            <p class="previs__shot" id="previsShot"></p>
-            <p class="previs__note" id="previsNote"></p>
-            <div class="previs__strip" id="previsStrip"></div>
-            <p class="previs__frame" id="previsFrame"></p>
-          </div>
-          <div class="beats" data-beats="sequence"></div>
-        </div>
-      </section>
-
-      <!-- Ch01 · archive photo -->
-      <section class="scene" id="scene-photo" data-scene="photo" data-chapter="0">
-        <div class="stage stage--photo">
-          <figure class="print" id="print">
-            <img src="../images/about/curiosity/curiosity-01.png" alt="Abhishek as a young student, with a backpack, in a hill town" />
-            <figcaption>Archive photograph</figcaption>
-          </figure>
-          <div class="beats beats--side" data-beats="photo"></div>
-        </div>
-      </section>
-
-      <!-- Ch02 · real-time: Himalayas → Allahabad -->
-      <section class="scene scene--clear" id="scene-arc" data-scene="arc" data-chapter="1">
-        <div class="stage">
-          <div class="beats beats--low" data-beats="arc"></div>
-          <div class="geo-label geo-label--warm" id="collegeLabel"><i></i><span></span></div>
-        </div>
-      </section>
-
-      <!-- Ch02 · real-time interactive: the anatomy of a website -->
-      <section class="scene" id="scene-layers" data-scene="layers" data-chapter="1">
-        <div class="stage stage--layers">
-          <canvas class="layers" id="layersCanvas" aria-label="Interactive 3D model of a web page separated into four layers: code, structure, interface and human attention"></canvas>
-          <figure class="print print--ch2" id="print2">
-            <img src="../images/about/curiosity/curiosity-03.png" alt="Abhishek as a student, cross-legged on the floor, working on a laptop" />
-            <figcaption>Archive photograph</figcaption>
-          </figure>
-          <div class="layer-tip" id="layerTip" hidden><b></b><span></span></div>
-          <p class="hint" id="layersHint">Drag to turn · hover a layer</p>
-          <div class="beats beats--left" data-beats="layers"></div>
-        </div>
-      </section>
-
-      <!-- Ch03–06 · not built yet -->
-      <section class="upcoming" id="upcoming" data-chapter="2">
-        <header class="upcoming__head">
-          <p class="eyebrow">Still in production</p>
-          <h2>The rest of the road</h2>
-          <p>Chapters 03–06 are planned, not built. Shown here so the full arc can be reviewed.</p>
-        </header>
-        <div id="upcomingList"></div>
-      </section>
-
-      <footer class="end">
-        <p class="eyebrow">Fin — for now</p>
-        <h2>Let's build the next chapter.</h2>
-        <p><a class="cta" id="contactLink" href="#">Get in touch</a> <a class="ghost" href="../index.html">Classic portfolio</a></p>
-      </footer>
-    </main>
-
-    <noscript><p class="nojs">This story needs JavaScript. <a href="../index.html">Open the classic portfolio.</a></p></noscript>
+    <noscript>
+      <div class="nojs">
+        <h1>From the Mountains to Millions</h1>
+        <p>This story needs JavaScript. Case studies:
+          <a href="../jiomart-discovery.html">JioMart discovery</a>,
+          <a href="../jio-checkout.html">JioMart checkout</a>,
+          <a href="../delfin.html">DelFin</a>,
+          <a href="../delhivery-case-study-v2.html">Last Mile Express</a>,
+          <a href="../index.html">full portfolio</a> · abhi.thakur1010@gmail.com</p>
+      </div>
+    </noscript>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="./config.js"></script>
     <script type="module" src="./js/main.js"></script>
   </body>
