@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>From the Mountains to Millions — Abhishek Thakur</title>
+    <meta name="description" content="A scroll story about Abhishek Thakur's path from the Himalayas to product design at scale. Prototype." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="icon" href="../images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./story.css" />
+    <script type="importmap">
+      { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+    </script>
+  </head>
+  <body>
+    <!-- Fixed real-time globe, shared by the opening and the Chapter 02 transition -->
+    <canvas id="globe" class="globe" aria-hidden="true"></canvas>
+    <div class="mist" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="../index.html" aria-label="Back to portfolio home">Abhishek Thakur</a>
+      <div class="topbar__right">
+        <button class="chip" id="protoToggle" aria-expanded="false" aria-controls="protoPanel">
+          <span class="chip__dot"></span>Prototype v0.1
+        </button>
+        <a class="skip" href="#scene-arc">Skip to Chapter 02</a>
+      </div>
+    </header>
+
+    <aside class="proto" id="protoPanel" hidden>
+      <h2>What's real, what's pending</h2>
+      <ul>
+        <li><b class="ok">Live</b> Real-time 3D globe (Earth → India → Himalayas, Himalayas → Allahabad)</li>
+        <li><b class="ok">Live</b> Chapter 02 interactive 3D scene (drag / hover the layers)</li>
+        <li><b class="ok">Live</b> Scroll engine, text beats, progress nav, mobile + reduced motion</li>
+        <li><b class="wait">Pending</b> Chapter 01 rendered sequence (Himalayas → village → boy) — 0 / 120 frames. Shown as a labelled previs card until renders land in <code>cinematic/assets/chapter-01/</code></li>
+        <li><b class="wait">Pending</b> Chapters 03–06 scenes; their metrics are unverified</li>
+      </ul>
+    </aside>
+
+    <div class="progress__bar" aria-hidden="true"><span id="progressFill"></span></div>
+    <nav class="progress" aria-label="Chapters">
+      <ol id="chapterNav"></ol>
+      <p class="progress__now" aria-live="polite"><span id="nowNum">00</span><span id="nowTitle">Prologue</span></p>
+    </nav>
+
+    <main id="story">
+      <!-- Prologue -->
+      <section class="scene scene--clear" id="scene-intro" data-scene="intro">
+        <div class="stage">
+          <div class="intro">
+            <p class="eyebrow">A story in six chapters</p>
+            <h1 class="intro__title">From the Mountains<br /><em>to Millions</em></h1>
+            <p class="intro__by">Abhishek Thakur — Product Designer</p>
+          </div>
+          <div class="cue" aria-hidden="true"><span></span>Scroll</div>
+        </div>
+      </section>
+
+      <!-- Ch01 · real-time: Earth → India → Himalayas -->
+      <section class="scene scene--clear" id="scene-dive" data-scene="dive" data-chapter="0">
+        <div class="stage">
+          <div class="beats" data-beats="dive"></div>
+          <div class="geo-label" id="homeLabel"><i></i><span></span></div>
+        </div>
+      </section>
+
+      <!-- Ch01 · pre-rendered: Himalayas → village → boy -->
+      <section class="scene" id="scene-sequence" data-scene="sequence" data-chapter="0">
+        <div class="stage stage--seq">
+          <canvas class="seq" id="seqCanvas" aria-hidden="true"></canvas>
+          <div class="previs" id="previs" hidden>
+            <p class="previs__tag">Previs · render pending</p>
+            <p class="previs__shot" id="previsShot"></p>
+            <p class="previs__note" id="previsNote"></p>
+            <div class="previs__strip" id="previsStrip"></div>
+            <p class="previs__frame" id="previsFrame"></p>
+          </div>
+          <div class="beats" data-beats="sequence"></div>
+        </div>
+      </section>
+
+      <!-- Ch01 · archive photo -->
+      <section class="scene" id="scene-photo" data-scene="photo" data-chapter="0">
+        <div class="stage stage--photo">
+          <figure class="print" id="print">
+            <img src="../images/about/curiosity/curiosity-01.png" alt="Abhishek as a young student, with a backpack, in a hill town" />
+            <figcaption>Archive photograph</figcaption>
+          </figure>
+          <div class="beats beats--side" data-beats="photo"></div>
+        </div>
+      </section>
+
+      <!-- Ch02 · real-time: Himalayas → Allahabad -->
+      <section class="scene scene--clear" id="scene-arc" data-scene="arc" data-chapter="1">
+        <div class="stage">
+          <div class="beats beats--low" data-beats="arc"></div>
+          <div class="geo-label geo-label--warm" id="collegeLabel"><i></i><span></span></div>
+        </div>
+      </section>
+
+      <!-- Ch02 · real-time interactive: the anatomy of a website -->
+      <section class="scene" id="scene-layers" data-scene="layers" data-chapter="1">
+        <div class="stage stage--layers">
+          <canvas class="layers" id="layersCanvas" aria-label="Interactive 3D model of a web page separated into four layers: code, structure, interface and human attention"></canvas>
+          <figure class="print print--ch2" id="print2">
+            <img src="../images/about/curiosity/curiosity-03.png" alt="Abhishek as a student, cross-legged on the floor, working on a laptop" />
+            <figcaption>Archive photograph</figcaption>
+          </figure>
+          <div class="layer-tip" id="layerTip" hidden><b></b><span></span></div>
+          <p class="hint" id="layersHint">Drag to turn · hover a layer</p>
+          <div class="beats beats--left" data-beats="layers"></div>
+        </div>
+      </section>
+
+      <!-- Ch03–06 · not built yet -->
+      <section class="upcoming" id="upcoming" data-chapter="2">
+        <header class="upcoming__head">
+          <p class="eyebrow">Still in production</p>
+          <h2>The rest of the road</h2>
+          <p>Chapters 03–06 are planned, not built. Shown here so the full arc can be reviewed.</p>
+        </header>
+        <div id="upcomingList"></div>
+      </section>
+
+      <footer class="end">
+        <p class="eyebrow">Fin — for now</p>
+        <h2>Let's build the next chapter.</h2>
+        <p><a class="cta" id="contactLink" href="#">Get in touch</a> <a class="ghost" href="../index.html">Classic portfolio</a></p>
+      </footer>
+    </main>
+
+    <noscript><p class="nojs">This story needs JavaScript. <a href="../index.html">Open the classic portfolio.</a></p></noscript>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./config.js"></script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
