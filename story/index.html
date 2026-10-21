@@ -29,7 +29,7 @@
       <a class="brand" href="../index.html" aria-label="Back to portfolio home">Abhishek Thakur</a>
       <div class="topbar__right">
         <button class="chip" id="protoToggle" aria-expanded="false" aria-controls="protoPanel">
-          <span class="chip__dot"></span>Prototype v0.1
+          <span class="chip__dot"></span>Prototype v0.2
         </button>
         <a class="skip" href="#scene-arc">Skip to Chapter 02</a>
       </div>
@@ -38,12 +38,19 @@
     <aside class="proto" id="protoPanel" hidden>
       <h2>What's real, what's pending</h2>
       <ul>
-        <li><b class="ok">Live</b> Real-time 3D globe (Earth → India → Himalayas, Himalayas → Allahabad)</li>
+        <li><b class="ok">New</b> Photoreal Earth: NASA day, night, cloud and relief maps, atmospheric scattering, sun-lit oceans, cloud shadows</li>
+        <li><b class="ok">New</b> Continuous descent onto real Himalayan terrain (elevation data + Sentinel-2 imagery, 3× vertical scale)</li>
+        <li><b class="ok">Live</b> Himalayas → Allahabad arc for Chapter 02</li>
         <li><b class="ok">Live</b> Chapter 02 interactive 3D scene (drag / hover the layers)</li>
         <li><b class="ok">Live</b> Scroll engine, text beats, progress nav, mobile + reduced motion</li>
         <li><b class="wait">Pending</b> Chapter 01 rendered sequence (Himalayas → village → boy) — 0 / 120 frames. Shown as a labelled previs card until renders land in <code>cinematic/assets/chapter-01/</code></li>
         <li><b class="wait">Pending</b> Chapters 03–06 scenes; their metrics are unverified</li>
       </ul>
+      <p class="proto__credits">
+        Earth imagery: NASA Visible Earth — Blue Marble Next Generation, Black Marble 2016, clouds, GEBCO relief (public domain).
+        Terrain: Sentinel-2 cloudless 2016 by EOX IT Services GmbH, s2maps.eu (CC BY 4.0; contains modified Copernicus Sentinel data 2016).
+        Elevation: Terrain Tiles on AWS Open Data (SRTM, GMTED2010, ETOPO1 and others).
+      </p>
     </aside>
 
     <div class="progress__bar" aria-hidden="true"><span id="progressFill"></span></div>

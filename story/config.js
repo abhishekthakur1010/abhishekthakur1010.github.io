@@ -36,7 +36,7 @@ window.STORY = {
   // Scroll lengths (in viewport heights) per pinned scene. Mobile uses `* mobileScale`.
   scenes: {
     intro: 100,
-    dive: 320,
+    dive: 420,
     sequence: 480,
     photo: 220,
     arc: 300,

@@ -97,7 +97,8 @@ const scrollToY = (y) => (lenis ? lenis.scrollTo(y, { duration: 2.2 }) : window.
 /* ---------- scenes ---------- */
 const globeCanvas = $("#globe");
 const mist = $(".mist");
-const globe = createGlobe(globeCanvas, { places: S.places, mobile, onReady: () => globeCanvas.classList.add("is-ready") });
+let globeReadyAt = 0;
+const globe = createGlobe(globeCanvas, { places: S.places, mobile, reduced, onReady: () => { globeReadyAt = performance.now(); } });
 
 const seq = createSequence($("#seqCanvas"), S.sequence, {
   mobile,
@@ -229,8 +230,10 @@ function tick(_, dtMs) {
   const q = (x) => (reduced ? Math.round(x * 2) / 2 : x);
   const diveVis = 1 - st.sequence.cur.fin;
   const arcVis = st.arc.cur.fin * (1 - st.layers.cur.fin);
+  // the planet fades up once its textures have arrived, instead of popping in
+  const ready = globeReadyAt ? (reduced ? 1 : smooth(0, 1400, performance.now() - globeReadyAt)) : 0;
   const gVis = Math.max(diveVis, arcVis);
-  globeCanvas.style.opacity = gVis;
+  globeCanvas.style.opacity = gVis * ready;
   if (gVis > 0.002) {
     if (arcVis > diveVis) {
       globe.setArc(q(P("arc")));
