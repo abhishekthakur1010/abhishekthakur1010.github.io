@@ -98,6 +98,8 @@
       case "pdp-scroll": return sc.layers.length - 1;
       case "impact": return Math.max(sc.experience.length, sc.metrics.length + 2) + 1;
       case "uxfunnel": return 1;
+      case "discovery-funnel": return (sc.funnel ? sc.funnel.length : 0) + 1;
+      case "opportunity": return (sc.objectives ? sc.objectives.length : 0) + 1;
       case "voice": return sc.quotes.length;
       case "recognition": return 2;
       default: return 0;
@@ -383,6 +385,63 @@
         "<div class='c-visual'><div class='uxc-head-label'>" + esc(sc.tableLabel) + "</div>" +
         "<figure class='uxc-artifact zoomable' title='Click to enlarge'><img src='" + img(sc.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></figure>" +
         (sc.disclaimer ? "<p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" : "") + "</div></div>";
+    },
+
+    /* ---- data-driven discovery funnel (where were we losing shoppers) ---- */
+    "discovery-funnel": function (sc) {
+      var maxN = sc.funnel[0].n;
+      var bars = sc.funnel.map(function (f, i) {
+        var w = Math.max(6, Math.round((f.n / maxN) * 100));
+        var drop = f.drop != null
+          ? "<span class='df-drop'><b>\u2212" + f.drop + "%</b> drop-off</span>" : "";
+        return "<div class='df-row reveal' data-step='" + (i + 1) + "'>" +
+          "<div class='df-stage'>" + esc(f.stage) + "</div>" +
+          "<div class='df-barwrap'>" +
+          "<div class='df-bar' style='--w:" + w + "%'>" +
+          "<span class='df-count'>" + esc(f.label) + "</span></div>" +
+          "<span class='df-pct'>" + f.pct + "%</span></div>" +
+          drop + "</div>";
+      }).join("");
+      var hyps = (sc.hypotheses || []).map(function (h) {
+        return "<div class='df-hyp'><div class='df-hyp-top'><span class='df-hyp-stage'>" + esc(h.stage) +
+          "</span><span class='df-hyp-drop'>\u2212" + h.drop + "%</span></div>" +
+          "<div class='df-hyp-q'>" + esc(h.hypothesis) + "</div></div>";
+      }).join("");
+      return "<div class='sl discovery-funnel-slide'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" +
+        L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='df-grid'>" +
+        "<div class='df-funnel'>" + bars +
+        "<div class='df-key reveal' data-step='" + (sc.funnel.length + 1) + "'>" + esc(sc.key) + "</div>" +
+        (sc.disclaimer ? "<p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" : "") + "</div>" +
+        "<div class='df-hyps'><div class='df-hyps-label'>Where users left \u2192 what might be wrong</div>" + hyps +
+        "<p class='df-caveat'>Funnel analytics show <b>where</b> users leave, not <b>why</b>. These are hypotheses, not confirmed findings.</p></div>" +
+        "</div></div>";
+    },
+
+    /* ---- opportunity: HMW + scannable objective cards (number-led) ---- */
+    opportunity: function (sc) {
+      var objs = (sc.objectives || []).map(function (o, i) {
+        return "<div class='op-card reveal' data-step='" + (i + 1) + "'>" +
+          "<div class='op-head'>" +
+          "<span class='op-drop'>\u2212" + o.drop + "%</span>" +
+          "<span class='op-stage'>" + esc(o.stage) + "</span>" +
+          "</div>" +
+          "<div class='op-hyp'>" + esc(o.hypothesis) + "</div>" +
+          "<div class='op-fix'><span class='op-l'>Fix</span>" + esc(o.decision) + "</div>" +
+          "<div class='op-measure'><span class='op-l'>Measure</span>" + esc(o.metric) + "</div>" +
+          "</div>";
+      }).join("");
+      var rows = (sc.metricsTable || []).map(function (m) {
+        return "<span class='opt-chip'><b>" + esc(m.metric) + "</b>" +
+          "<span class='opt-move'>" + esc(m.base) + " <i>\u2192</i> <em>" + esc(m.target) + "</em></span></span>";
+      }).join("");
+      var table = rows ? "<div class='op-strip reveal' data-step='" + ((sc.objectives||[]).length + 1) + "'>" +
+        "<span class='op-strip-label'>" + esc(sc.tableLabel || "Targets") + "</span>" + rows + "</div>" +
+        (sc.tableNote ? "<p class='disclaimer op-note'>" + esc(sc.tableNote) + "</p>" : "") : "";
+      return "<div class='sl opportunity-slide'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" +
+        L(sc.headline, "h2") +
+        (sc.hmw ? "<p class='op-hmw'>\u201C" + esc(sc.hmw) + "\u201D</p>" : "") + "</div>" +
+        "<div class='op-cards'>" + objs + "</div>" + table + "</div>";
     },
 
     voice: function (sc) {

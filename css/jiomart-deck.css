@@ -383,6 +383,59 @@ body.deck[data-theme="light"] .theme-toggle .ic-moon { display: block; }
 .metric .ml { font-size: 12.5px; color: var(--dim); margin-top: 6px; line-height: 1.35; }
 .disclaimer { font-size: 12px; color: var(--dim); font-style: italic; margin-top: 16px; line-height: 1.5; }
 
+/* ---------- discovery funnel (data-driven problem) ---------- */
+.df-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.df-funnel { display: flex; flex-direction: column; gap: 14px; }
+.df-row { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 14px; position: relative; }
+.df-stage { font-size: 13px; font-weight: 600; color: var(--soft); text-align: right; }
+.df-barwrap { position: relative; display: flex; align-items: center; gap: 12px; }
+.df-bar { height: 44px; width: var(--w, 10%); border-radius: 10px; display: flex; align-items: center; padding: 0 14px;
+  background: linear-gradient(90deg, var(--accent), #ff7a5a); box-shadow: 0 6px 18px rgba(255,59,48,0.25); transition: width .6s var(--ease); }
+.df-count { font-size: 14px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.df-pct { font-size: 13px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.df-drop { position: absolute; right: 0; top: -14px; font-size: 11px; color: var(--dim); }
+.df-drop b { color: var(--accent); font-weight: 800; }
+.df-key { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--ink); font-weight: 600; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--panel-line); background: var(--card); }
+.df-hyps { display: flex; flex-direction: column; gap: 12px; }
+.df-hyps-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); }
+.df-hyp { padding: 14px 16px; border-radius: 12px; border: 1px solid var(--panel-line); background: var(--card); }
+.df-hyp-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.df-hyp-stage { font-size: 12px; font-weight: 700; color: var(--ink); }
+.df-hyp-drop { font-size: 12px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.df-hyp-q { font-size: 13px; line-height: 1.5; color: var(--soft); }
+.df-caveat { font-size: 11.5px; color: var(--dim); line-height: 1.5; font-style: italic; margin-top: 2px; }
+.df-caveat b { color: var(--soft); font-style: normal; }
+
+/* ---------- opportunity (HMW + scannable number-led cards + chip strip) ---------- */
+.op-hmw { font-size: clamp(16px, 1.7vw, 20px); font-weight: 600; color: var(--ink); line-height: 1.4; margin: 14px 0 0; max-width: 62ch; }
+.op-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 30px 0 0; }
+.op-card { position: relative; display: flex; flex-direction: column; padding: 20px 20px 18px; border-radius: 16px; border: 1px solid var(--panel-line); background: var(--card); overflow: hidden; }
+.op-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--accent); }
+.op-head { display: flex; align-items: baseline; gap: 10px; }
+.op-drop { font-size: 30px; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.op-stage { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); }
+.op-hyp { font-size: 15.5px; font-weight: 600; color: var(--ink); line-height: 1.35; margin: 14px 0 16px; }
+.op-fix, .op-measure { font-size: 13px; line-height: 1.4; color: var(--soft); padding-top: 12px; border-top: 1px solid var(--line); margin-top: auto; }
+.op-measure { margin-top: 10px; }
+.op-measure { color: var(--ink); font-weight: 600; }
+.op-l { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); margin-right: 8px; }
+/* compact targets strip (replaces the heavy table) */
+.op-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 24px; }
+.op-strip-label { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); margin-right: 4px; }
+.opt-chip { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--panel-line); background: var(--card); }
+.opt-chip b { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.opt-move { font-size: 12.5px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.opt-move i { font-style: normal; color: var(--faint); margin: 0 2px; }
+.opt-move em { font-style: normal; font-weight: 800; color: var(--good); }
+.op-note { margin-top: 12px; }
+@media (max-width: 1000px) {
+  .df-grid { grid-template-columns: 1fr; gap: 28px; }
+  .op-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .df-row { grid-template-columns: 70px 1fr; }
+}
+
 /* ---------- UX improvement: pre vs post evidence (table artifact) ---------- */
 .uxcompare-slide .uxf-takeaways { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 22px 0 0; }
 .uxcompare-slide .uxf-takeaways li { position: relative; padding-left: 22px; font-size: 14px; color: var(--soft); line-height: 1.45; }
