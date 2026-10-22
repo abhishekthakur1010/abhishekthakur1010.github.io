@@ -1,7 +1,8 @@
 /* ============================================================
-   JioMart Discovery — 16-slide interview deck engine
+   JioMart Discovery — interview deck engine
    Reads window.DECK. Scene + beat model, section navigator,
-   BEFORE→V1→V2 evolution, evidence overlay.
+   BEFORE→V1→V2 evolution, decision rationale chain,
+   evidence overlay, presenter notes (N).
    ============================================================ */
 (function () {
   "use strict";
@@ -44,6 +45,17 @@
       return "<span class='sig " + s.dir + "'>" + esc(s.t) + " " + (s.dir === "up" ? "↑" : "↓") + "</span>";
     }).join("");
   }
+  // Saw → Learned → Bet → Built → Result (evidence → insight → hypothesis → decision → impact)
+  function rationale(r) {
+    if (!r) return "";
+    var rows = [["Saw", r.evidence, "saw"], ["Learned", r.insight, "learned"], ["Bet", r.hypothesis, "bet"], ["Built", r.decision, "built"]];
+    return "<div class='rat'>" + rows.map(function (x) {
+      return x[1] ? "<div class='rat-row rat-" + x[2] + "'><span class='rat-k'>" + x[0] + "</span><span class='rat-v'>" + esc(x[1]) + "</span></div>" : "";
+    }).join("") +
+      (r.observed || r.metric ? "<div class='rat-row rat-measure'><span class='rat-k'>Result</span><span class='rat-v'>" +
+        (r.observed ? "<b>" + esc(r.observed) + "</b>" : "") +
+        (r.metric ? "<em>Goal metric · " + esc(r.metric) + "</em>" : "") + "</span></div>" : "") + "</div>";
+  }
   function evidencePill(ev) {
     if (!ev) return "";
     return "<button class='ev-pill' data-ev='1'><span>Evidence · " + esc(ev.method) + "</span>" +
@@ -71,6 +83,10 @@
       case "opening": return 0;
       case "categories": return 2;
       case "problem-flow": return sc.problems.length + sc.chain.length;
+      case "funnel": return sc.stages.length + 1;
+      case "framing": return sc.lenses.length + 1;
+      case "columns": return sc.cols.length;
+      case "alternatives": return sc.rows.length;
       case "toolkit": return sc.tiles.length;
       case "personas": return sc.personas.length;
       case "findings": return sc.findings.length + 1;
@@ -93,7 +109,7 @@
      ============================================================ */
   var T = {
     opening: function (sc) {
-      // headline can be a plain array, or use `highlight` to accent one word in red
+      // headline can be a plain array, or use `highlight` to lift one word to full contrast
       var head;
       if (sc.highlight) {
         head = "<h1>" + (sc.headline || []).map(function (part) {
@@ -163,6 +179,63 @@
         "<div class='c-visual'><div class='pf-screens'>" + screens + "</div></div></div>";
     },
 
+    funnel: function (sc) {
+      // discovery funnel: measured bars solid, illustrative bars dashed + tagged
+      var max = sc.stages[0].v || 100;
+      var rows = sc.stages.map(function (st, i) {
+        var drop = st.drop ? "<div class='fn-drop reveal' data-step='" + (i + 1) + "'>" +
+          "<span class='fn-pct'>" + (sc.stages[i - 1] ? "−" + Math.round((1 - st.v / sc.stages[i - 1].v) * 100) + "%" : "") + "</span>" +
+          "<span class='fn-q'>“" + esc(st.drop.q) + "”</span><span class='fn-c'>" + esc(st.drop.c) + "</span></div>" : "";
+        return drop + "<div class='fn-row reveal' data-step='" + (i + 1) + "'>" +
+          "<div class='fn-stage'><b>" + esc(st.k) + "</b><span>" + esc(st.s) + "</span></div>" +
+          "<div class='fn-track'><div class='fn-bar " + (st.illus ? "illus" : "measured") + "' style='--w:" + Math.max(st.v / max * 100, 3) + "%'></div>" +
+          "<span class='fn-val'>" + esc(st.label || st.v) + (st.illus ? "<i>illustrative</i>" : "") + "</span></div></div>";
+      }).join("");
+      var last = sc.stages.length + 1;
+      var cmp = (sc.compare || []).map(function (c, i) {
+        return "<div class='fn-cmp-i" + (i === 0 ? " hi" : "") + "'><b>" + esc(c.n) + "</b><span>" + esc(c.l) + "</span></div>";
+      }).join("<span class='fn-vs'>vs</span>");
+      return "<div class='sl split funnel-slide'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
+        "<div class='fn-insight reveal' data-step='" + last + "'><div class='fn-cmp'>" + cmp + "</div>" +
+        "<p class='fn-read'>" + esc(sc.read) + "</p></div>" +
+        (sc.source ? "<p class='disclaimer'>" + esc(sc.source) + "</p>" : "") + "</div>" +
+        "<div class='c-visual'><div class='fn'>" + rows + "</div>" +
+        "<div class='fn-legend'><span><i class='sw measured'></i>" + esc(sc.legend.measured) + "</span><span><i class='sw illus'></i>" + esc(sc.legend.illus) + "</span>" +
+        (sc.legend.drop ? "<span><i class='sw drop'></i>" + esc(sc.legend.drop) + "</span>" : "") + "</div></div></div>";
+    },
+
+    framing: function (sc) {
+      var cards = sc.lenses.map(function (l, i) {
+        return "<div class='fr-card tone-" + l.tone + " reveal' data-step='" + (i + 1) + "'><span class='fr-k'>" + esc(l.k) + "</span>" +
+          "<b class='fr-t'>" + esc(l.t) + "</b><p class='fr-d'>" + esc(l.d) + "</p></div>";
+      }).join("");
+      var last = sc.lenses.length + 1;
+      var why = (sc.why || []).map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='fr-grid'>" + cards + "</div>" +
+        "<div class='fr-foot reveal' data-step='" + last + "'><div class='fr-why'><span class='tier-label'>Why it was worth solving</span><ul>" + why + "</ul></div>" +
+        "<blockquote class='fr-hmw'><span class='tier-label'>How might we</span>" + esc(sc.hmw) + "</blockquote></div></div>";
+    },
+
+    columns: function (sc) {
+      var cols = sc.cols.map(function (c, i) {
+        return "<div class='col-card tone-" + (c.tone || "neutral") + " reveal' data-step='" + (i + 1) + "'><span class='col-k'>" + esc(c.k) + "</span><ul>" +
+          c.items.map(function (it) { return "<li>" + esc(it) + "</li>"; }).join("") + "</ul></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='col-grid'>" + cols + "</div></div>";
+    },
+
+    alternatives: function (sc) {
+      var head = "<div class='alt-row alt-head'><span>Surface</span><span>Considered</span><span>Chose</span><span>Why</span></div>";
+      var rows = sc.rows.map(function (r, i) {
+        return "<div class='alt-row reveal' data-step='" + (i + 1) + "'><b class='alt-s'>" + esc(r.s) + "</b>" +
+          "<span class='alt-no'>" + esc(r.no) + "</span><span class='alt-yes'>" + esc(r.yes) + "</span><span class='alt-why'>" + esc(r.why) + "</span></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='alt-table'>" + head + rows + "</div></div>";
+    },
+
     toolkit: function (sc) {
       var tiles = sc.tiles.map(function (t, i) {
         return "<button class='tile reveal' data-step='" + (i + 1) + "' data-img='" + img(t.img) + "' data-crop='" + Math.round((t.crop || 0.3) * 100) + "'>" +
@@ -220,10 +293,11 @@
       // LEFT = heading + sub + evidence + signals.  RIGHT = the three phones (label above, notes below).
       return "<div class='sl evo-slide'>" +
         "<div class='evo-left'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
+        rationale(sc.rationale) +
         evidencePill(sc.evidence) +
         (sc.punch ? "<div class='punch reveal' data-step='3'>" + esc(sc.punch) + "</div>" : "") +
         (sc.flowLine ? "<div class='flow-line'>" + esc(sc.flowLine) + "</div>" : "") +
-        "<div class='evo-signals reveal' data-step='3'>" + sig(sc.signal) + "</div></div>" +
+        (sc.rationale ? "" : "<div class='evo-signals reveal' data-step='3'>" + sig(sc.signal) + "</div>") + "</div>" +
         "<div class='evo-stage'>" +
         phone("Before", sc.before, 1, "before") +
         phone("V1 · DS 2.0", sc.v1, 2, "v1") +
@@ -253,8 +327,9 @@
       };
       return "<div class='sl evo-slide'>" +
         "<div class='evo-left'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
-        "<div class='pdpq-questions'>" + qs + "</div>" +
-        "<div class='evo-signals reveal' data-step='3'>" + sig(sc.signal) + "</div></div>" +
+        "<div class='pdpq-questions" + (sc.rationale ? " compact" : "") + "'>" + qs + "</div>" +
+        rationale(sc.rationale) +
+        (sc.rationale ? "" : "<div class='evo-signals reveal' data-step='3'>" + sig(sc.signal) + "</div>") + "</div>" +
         "<div class='evo-stage'>" +
         phone("Before", device(sc.before.img, sc.before.focus, "big"), "before", 1, sc.before.notes) +
         phone("V1 · DS 2.0", device(sc.v1.img, sc.v1.focus, "big"), "v1", 2, sc.v1.notes) +
@@ -411,6 +486,9 @@
       applyStep();
     });
     renderRail(slides[i].section);
+    renderNotes();
+    // keep the slide in the URL so a reload (or a shared link) lands on it
+    try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
     if (nowEl) nowEl.textContent = pad(i + 1);
     if (prevBtn) prevBtn.disabled = i === 0 && step === 0;
     if (nextBtn) nextBtn.disabled = i === TOTAL - 1 && step === stepsOnSlide;
@@ -450,6 +528,17 @@
     if (e.target.closest(".ev-close") || e.target.classList.contains("ev-backdrop")) closeEvidence();
     if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) e.target.closest(".ev-img").classList.toggle("zoom");
   });
+
+  /* ---------- presenter notes (N to toggle) ---------- */
+  var notesEl = document.createElement("aside");
+  notesEl.className = "notes-panel";
+  notesEl.setAttribute("aria-live", "polite");
+  document.body.appendChild(notesEl);
+  function renderNotes() {
+    var n = slides[index] && slides[index].notes;
+    notesEl.innerHTML = "<span class='np-l'>Presenter notes · " + pad(index + 1) + "</span>" + (n ? esc(n) : "<em>No notes for this slide.</em>");
+  }
+  function toggleNotes() { notesEl.classList.toggle("open"); }
 
   /* ---------- centered image lightbox (middle-of-screen popup) ---------- */
   var lb = document.createElement("div");
@@ -492,6 +581,7 @@
     if (evidenceOpen()) { if (e.key === "Escape") closeEvidence(); return; }
     if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); next(); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+    else if (e.key === "n" || e.key === "N") toggleNotes();
     else if (e.key === "Home") go(0);
     else if (e.key === "End") go(TOTAL - 1);
   });
@@ -518,7 +608,8 @@
   (function () {
     var t = document.getElementById("themeToggle");
     var saved; try { saved = localStorage.getItem("deckTheme"); } catch (e) {}
-    document.body.setAttribute("data-theme", saved || "dark");
+    var forced = (location.search.match(/[?&]theme=(dark|light)/) || [])[1];   // ?theme=light to share a fixed theme
+    document.body.setAttribute("data-theme", forced || saved || "dark");
     if (t) t.addEventListener("click", function () {
       var nt = document.body.getAttribute("data-theme") === "light" ? "dark" : "light";
       document.body.setAttribute("data-theme", nt);
@@ -526,5 +617,8 @@
     });
   })();
 
-  go(0);
+  // #N deep-link → open slide N with all of its beats revealed
+  var startAt = parseInt((location.hash || "").slice(1), 10);
+  if (startAt > 1 && startAt <= TOTAL) { go(startAt - 1); step = stepsOnSlide; applyStep(); }
+  else go(0);
 })();

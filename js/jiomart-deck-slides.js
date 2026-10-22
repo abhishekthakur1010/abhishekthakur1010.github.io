@@ -1,314 +1,295 @@
 /* ============================================================
-   JioMart Discovery — 15-slide interview deck
-   5 verticals · beat-based · BEFORE → V1 → V2 evolution
+   JioMart Discovery — interview deck (12 slides, plain language)
+   Story: Context → Problem → Research → Decisions → Results → Learnings
    Content only. Rendering in jiomart-deck.js.
-   Headings kept short + simple; `sub` explains in one plain line.
-   Left-aligned throughout. No fabricated metrics.
+   Data rules:
+   · Real numbers come from project artifacts (GA report, usability
+     test, heuristic audit, FY22–23 dashboard).
+   · `illus: true` = example shape only, labelled on the slide.
+   · `notes` = presenter talk-track (press N in the deck).
    ============================================================ */
 window.DECK = {
   imgBase: "./images/enhanceProduct/",
   sections: [
-    { id: "intro", n: "01", label: "Introduction" },
-    { id: "discovery", n: "02", label: "Discovery" },
-    { id: "evolution", n: "03", label: "Design evolution" },
-    { id: "impact", n: "04", label: "Impact" },
-    { id: "recognition", n: "05", label: "Recognition" }
+    { id: "context", n: "01", label: "Context" },
+    { id: "problem", n: "02", label: "Problem" },
+    { id: "research", n: "03", label: "Research" },
+    { id: "decisions", n: "04", label: "Decisions" },
+    { id: "results", n: "05", label: "Results" },
+    { id: "learnings", n: "06", label: "Learnings" }
   ],
   slides: [
-    /* ============ VERTICAL 01 — INTRODUCTION ============ */
+    /* ============ 01 — CONTEXT ============ */
 
-    /* 01 — OPENING (matches jiomart-discovery.html hero) */
     {
-      section: "intro", type: "opening",
-      eyebrow: "JioMart · Product Discovery · DS 2.0",
-      headline: ["Making ", "discovery", " feel personal across Home, PLP & PDP"],
-      highlight: "discovery",
-      body: "Refining content structure, navigation, and widgets across JioMart's homepage, listing, and product pages — turning aimless browsing into confident decisions for millions of shoppers.",
+      section: "context", type: "opening",
+      eyebrow: "JioMart · Product Discovery",
+      headline: ["Helping shoppers ", "choose", " with confidence"],
+      highlight: "choose",
+      body: "People came to buy, but got lost while browsing. I redesigned Home, listing and product pages so choosing felt easy.",
       hero: "enhance-v2-pdp-main.png",
       backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
-      badge: { n: "+65%", l: "Monthly active users" },
+      badge: { n: "10.4 → 11.5%", l: "Visits with add-to-cart" },
       meta: [
-        { l: "My role", v: "Design Lead — Discovery · Jio central design team" },
-        { l: "Timeline", v: "Aug 2023 – Oct 2023 · During DS 2.0 rollout" },
-        { l: "Surfaces", v: "Homepage · PLP · PDP · Search · Scan · Voice" },
-        { l: "Headline impact", v: "MAU +65% · Revenue +38% · Repeat users +64%" }
+        { l: "My role", v: "Design Lead, Discovery" },
+        { l: "Timeline", v: "Aug – Oct 2023" },
+        { l: "Screens", v: "Home · Listing · Product page" },
+        { l: "Result", v: "More add-to-cart, better search" }
       ],
-      cta: "Press → to begin"
+      cta: "Press → to begin",
+      notes: "Shoppers had intent, browsing lost them. I fixed that. I'll show what broke, how I proved it, what I chose, and what changed."
     },
 
-    /* 02 — WHAT IS JIOMART */
     {
-      section: "intro", type: "categories",
-      eyebrow: "The product",
-      headline: ["One app.", "Many kinds of shopping."],
-      sub: "People buy groceries and TVs in the same app. One design had to work for both.",
-      cats: ["Grocery", "Mobiles", "Electronics", "Fashion", "Beauty", "Home & Living", "Furniture", "Medicine"],
-      snapshot: [
-        { store: "App Store", img: "enhance-store-appstore.png", rating: "4.6", stat: "No. 16 · Shopping", sub: "213K ratings" },
-        { store: "Play Store", img: "enhance-store-playstore-v2.png", rating: "4.0", stat: "10Cr+ downloads", sub: "25.3L reviews" }
+      section: "context", type: "columns",
+      eyebrow: "My role",
+      headline: ["What I owned"],
+      sub: "Design lead for discovery — from research to sign-off.",
+      cols: [
+        { k: "I led", tone: "info", items: [
+          "Research and usability tests",
+          "Problem framing and roadmap",
+          "Home, listing and product page design"
+        ] },
+        { k: "I worked with", tone: "pos", items: [
+          "Product team",
+          "Engineers",
+          "Design system team (Europe)"
+        ] },
+        { k: "My key calls", tone: "warn", items: [
+          "Clear first, personal later",
+          "Quick wins first",
+          "Fix the system, not one screen"
+        ] }
       ],
-      reasons: ["Delivery", "Assortment", "Value", "Quality", "Payment", "Support"]
+      notes: "Be clear on 'I' vs 'we'. I owned research, framing and design. Product, engineering and the design-system team shaped what we shipped."
     },
 
-    /* 03 — THE PROBLEM */
+    /* ============ 02 — PROBLEM ============ */
+
     {
-      section: "intro", type: "problem-flow",
+      section: "problem", type: "funnel",
       eyebrow: "The problem",
-      headline: ["Finding was easy.", "Deciding was hard."],
-      sub: "Shoppers could find products. They struggled to feel sure about buying them.",
-      flow: ["Home", "Search", "PLP", "PDP"],
-      problems: [
-        "Navigation felt inconsistent",
-        "Products were hard to scan",
-        "Info lacked context",
-        "Ratings & reviews were hidden",
-        "Delivery & trust cues were missing"
+      headline: ["People wanted to buy.", "Browsing lost them."],
+      sub: "Search worked. Browsing leaked at every step.",
+      stages: [
+        { k: "Home", s: "Visits", v: 100, illus: true },
+        { k: "Listing", s: "Opened a list", v: 46, illus: true,
+          drop: { q: "Where do I start?", c: "Confusing icons" } },
+        { k: "Product", s: "Opened a product", v: 24, illus: true,
+          drop: { q: "Which one?", c: "All cards looked the same" } },
+        { k: "Cart", s: "Added to cart", v: 10.4, label: "10.4%",
+          drop: { q: "Can I trust it?", c: "Key info hidden" } }
       ],
-      screens: [
-        { label: "Home", img: "enhance-problem-home.png" },
-        { label: "PLP", img: "enhance-problem-plp.png" },
-        { label: "PDP", img: "enhance-problem-pdp.png", tall: true }
+      compare: [
+        { n: "41.4%", l: "Searchers who added to cart" },
+        { n: "10.4%", l: "All visits that added to cart" }
       ],
-      chain: ["Hard to discover", "Too much thinking", "Doubt", "Low trust"],
-      end: "So the real job wasn't finding products. It was helping people believe in their choice."
+      read: "Searchers bought 4× more. Browsing was the gap.",
+      legend: { measured: "Real data (Google Analytics)", illus: "Example shape — not real data", drop: "Where people dropped off" },
+      source: "Rough comparison — the two numbers use different bases.",
+      notes: "Two numbers are real: 10.4% of visits added to cart, and 41.4% of search visits did. The middle bars are an example shape — say that out loud."
     },
 
-    /* ============ VERTICAL 02 — DISCOVERY ============ */
-
-    /* 04 — HOW WE INVESTIGATED (toolkit) */
     {
-      section: "discovery", type: "toolkit",
-      eyebrow: "How we investigated",
-      headline: ["First, evidence."],
-      sub: "Before touching a screen, I gathered proof of what was really going wrong.",
-      tiles: [
-        { t: "Flow pipeline audit", img: "enhance-flow-pipeline.png", crop: 0.15 },
-        { t: "Research strategy", img: "enhance-research-strategy.png", crop: 0.2 },
-        { t: "Heuristic evaluation", img: "enhance-heuristic-table.png", crop: 0.2 },
-        { t: "Benchmarking", img: "enhance-benchmarking.png", crop: 0.15 },
-        { t: "User interviews", img: "enhance-user-interview.png", crop: 0.3 },
-        { t: "Usability testing", img: "enhance-usability-test-plp.png", crop: 0.4 },
-        { t: "Team brainstorming", img: "enhance-brainstorming.png", crop: 0.3 },
-        { t: "Design review · Europe", img: "enhance-europe-review.png", crop: 0.3 },
-        { t: "Impact / effort", img: "enhance-impact-effort-matrix.png", crop: 0.35 }
+      section: "problem", type: "framing",
+      eyebrow: "Why it mattered",
+      headline: ["One problem, three sides"],
+      sub: "",
+      lenses: [
+        { k: "Business", tone: "warn", t: "Visits weren't turning into sales.",
+          d: "Only 10.4% of visits added to cart." },
+        { k: "Shoppers", tone: "neg", t: "Choosing was hard work.",
+          d: "In tests, 59% of taps hit the wrong place." },
+        { k: "Design", tone: "pos", t: "Answer one question per screen.",
+          d: "Where do I start? Which one? Can I trust it?" }
       ],
-      statement: "Different methods. The same problems kept showing up."
+      why: [
+        "Most shopping time is spent browsing",
+        "Search proved people wanted to buy",
+        "The new design system was the right moment"
+      ],
+      hmw: "How might we help shoppers choose with confidence — faster?",
+      notes: "Keep the three sides apart: what the business lost, what shoppers felt, what design could change."
     },
 
-    /* 05 — WHO WE DESIGNED FOR (personas) */
+    /* ============ 03 — RESEARCH ============ */
+
     {
-      section: "discovery", type: "personas",
-      eyebrow: "Who we designed for",
-      headline: ["Different shoppers.", "Same wish."],
-      sub: "I spoke with real shoppers. Their missions differed, but their needs matched.",
-      personas: [
-        { name: "Priya", type: "Busy repeat shopper", need: "Find familiar items fast", friction: "Too much to figure out" },
-        { name: "Value seeker", type: "Deal-driven", need: "Compare price & ratings", friction: "Signals scattered" },
-        { name: "Considered buyer", type: "Researches first", need: "Reassurance before buying", friction: "Not enough proof" }
+      section: "research", type: "findings",
+      eyebrow: "Research",
+      headline: ["Four methods.", "One answer."],
+      sub: "Every method pointed to the same thing.",
+      findings: [
+        { k: "Expert review", d: "23 issues found. The product page was the worst." },
+        { k: "Usability test", d: "9 of 12 finished — but 59% of taps were wrong." },
+        { k: "Analytics", d: "Searchers added to cart 4× more than browsers." },
+        { k: "Interviews", d: "People wanted clarity, proof and control." }
       ],
-      evidence: {
-        method: "User interviews",
-        img: "enhance-user-interview.png", crop: 0.3,
-        observed: "I sat with real shoppers and watched how they browse, compare and decide.",
-        takeaway: "Across every mission, people wanted the same three things.",
-        implication: "Design around clarity, proof and control — not individual features."
-      },
-      end: "All of them wanted clarity, proof and control."
+      equation: ["Clarity", "Proof", "Control"],
+      equationResult: "Confidence",
+      notes: "Each method alone is weak; together they agree. Clarity + proof + control became the rule for every design choice."
     },
 
-    /* 06 — PRIORITISATION */
+    /* ============ 04 — DECISIONS ============ */
+
     {
-      section: "discovery", type: "prioritise",
-      eyebrow: "What to fix first",
-      headline: ["Too much to fix at once."],
-      sub: "There were more problems than time. So I ranked them by impact and effort.",
-      reveal: "So I prioritised.",
-      img: "enhance-impact-effort-matrix.png", crop: 0.35,
-      tiers: [
-        { k: "High impact · low effort", d: "Quick wins" },
-        { k: "High impact · high effort", d: "Big bets" },
-        { k: "Low impact", d: "Later" }
+      section: "decisions", type: "alternatives",
+      eyebrow: "Options I weighed",
+      headline: ["What I chose, and why"],
+      sub: "",
+      rows: [
+        { s: "Home", no: "Personalised feed", yes: "Clear category layout", why: "Fix confusion first. Personalise later." },
+        { s: "Listing", no: "More products per screen", yes: "Bigger cards with price & rating", why: "People couldn't tell products apart." },
+        { s: "Product", no: "Info hidden in tabs", yes: "Key info on the first screen", why: "No extra taps to decide." },
+        { s: "Launch", no: "One big launch", yes: "Small steps", why: "Less risk, faster learning." }
       ],
-      roadmap: [
-        { s: "Home", d: "Orient" },
-        { s: "PLP", d: "Compare" }, { s: "PDP", d: "Believe" }
-      ],
-      end: "This became the redesign roadmap."
+      notes: "For each row: the tempting option, and the proof that ruled it out."
     },
 
-    /* ============ VERTICAL 03 — DESIGN EVOLUTION ============ */
-
-    /* 07b — STAKEHOLDER REVIEW → SIGN-OFF */
     {
-      section: "evolution", type: "review",
-      eyebrow: "Review & sign-off",
-      headline: ["Aligned before we built."],
-      sub: "Before development, I walked every design through a review with senior stakeholders and the design-system team — resolving open issues live. Once they signed off, it was ready to build.",
-      img: "enhance-europe-presentation.png",
-      points: [
-        { k: "Walkthrough", d: "Presented the new flows and DS decisions screen by screen." },
-        { k: "Open issues", d: "Mapped DS gaps live — image slots, badges, offers, star widgets, reusable components." },
-        { k: "Sign-off", d: "Once seniors approved, designs moved straight into development." }
-      ],
-      caption: "Design review · \u201CFew Issues with New DS\u201D walkthrough with the team",
-      end: "Approval wasn't a formality. It was how design and engineering stayed in sync."
-    },
-
-    /* 08 — HOMEPAGE */
-    {
-      section: "evolution", type: "evolution",
-      eyebrow: "Home · 01",
+      section: "decisions", type: "evolution",
+      eyebrow: "Decision 1 · Home",
       headline: ["Where do I start?"],
-      sub: "The homepage's one job: help people know where to begin.",
-      before: { img: "enhance-problem-home.png", focus: 0.05, notes: ["Messy categories", "Noisy layout"] },
-      v1: { img: "enhance-v1-home.png", focus: 0.05, notes: ["Clear categories", "Simple hierarchy"] },
-      v2: { img: "enhance-v2-home.png", focus: 0.05, video: "enhance-v2-home.mp4", poster: "enhance-v2-home.png", notes: ["Live version", "Cleaner & calmer"] },
+      sub: "",
+      rationale: {
+        evidence: "Icons and banners were confusing.",
+        insight: "People didn't know where to begin.",
+        hypothesis: "Clear categories → more people reach a list.",
+        decision: "One icon style, calmer layout, search on top.",
+        metric: "Home → listing clicks",
+        observed: "Pages per visit 5.8 → 6.5"
+      },
+      before: { img: "enhance-problem-home.png", focus: 0.05, notes: ["Messy categories"] },
+      v1: { img: "enhance-v1-home.png", focus: 0.05, notes: ["Clear categories"] },
+      v2: { img: "enhance-v2-home.png", focus: 0.05, video: "enhance-v2-home.mp4", poster: "enhance-v2-home.png", notes: ["Live today"] },
       evidence: {
-        method: "Heuristic evaluation · UX audit",
+        method: "Expert review (heuristics)",
         img: "enhance-heuristic-table.png", crop: 0.15,
-        observed: "I scored 23 problem areas against Nielsen's heuristics, rating severity (S0–S3) and ease of fixing (E0–E3).",
-        takeaway: "The same heuristics broke everywhere — consistency, recognition, error prevention.",
-        implication: "Make common actions predictable, and fix by severity vs. effort."
+        observed: "I scored 23 problem areas by how bad they were and how easy they were to fix.",
+        takeaway: "The same issues showed up everywhere: inconsistency and things that were hard to recognise.",
+        implication: "Make common actions predictable. Fix the worst, easiest ones first."
       },
-      signal: [{ t: "Easier to start", dir: "up" }, { t: "Mental effort", dir: "down" }]
+      notes: "Read the chain top to bottom, then show Before → V1 → Live. Pages per visit is a proxy; the real target is Home → listing clicks."
     },
 
-    /* 09 — PLP */
     {
-      section: "evolution", type: "evolution",
-      eyebrow: "Listing · 02",
+      section: "decisions", type: "evolution",
+      eyebrow: "Decision 2 · Listing",
       headline: ["Which one do I pick?"],
-      sub: "Finding products wasn't enough. People needed help choosing between them.",
-      before: { img: "enhance-problem-plp.png", focus: 0.05, notes: ["Cards look equal", "Ratings hidden"] },
-      v1: { img: "enhance-v1-plp.png", focus: 0.05, notes: ["Bigger images", "Clear price & rating"] },
-      v2: { img: "enhance-v2-plp-grid.png", focus: 0.25, video: "enhance-v2-plp.mp4", poster: "enhance-v2-plp-grid.png", altImg: "enhance-v2-plp-list.png", notes: ["Live grid & list", "Key cues first"] },
-      evidence: {
-        method: "Design review · Europe",
-        img: "enhance-europe-presentation.png", crop: 0.25,
-        observed: "I reviewed the PLP designs with a Europe-based design team, mapping issues in the new design system — image slots, badges, offers and reusable components.",
-        takeaway: "The card had to show the deciding cues first — and the system had to support that.",
-        implication: "Decide what deserves attention first, then fix the system beneath it."
+      sub: "",
+      rationale: {
+        evidence: "9 of 12 finished the test, but 59% of taps were wrong.",
+        insight: "Every product card looked the same.",
+        hypothesis: "Price & rating on the card → more product clicks.",
+        decision: "Bigger images, price and rating first, grid or list view.",
+        metric: "Listing → product clicks",
+        observed: "Search add-to-cart 41.4% → 44.3%"
       },
-      signal: [{ t: "Easier to scan", dir: "up" }, { t: "Effort to compare", dir: "down" }]
+      before: { img: "enhance-problem-plp.png", focus: 0.05, notes: ["Cards look equal"] },
+      v1: { img: "enhance-v1-plp.png", focus: 0.05, notes: ["Price & rating clear"] },
+      v2: { img: "enhance-v2-plp-grid.png", focus: 0.25, video: "enhance-v2-plp.mp4", poster: "enhance-v2-plp-grid.png", altImg: "enhance-v2-plp-list.png", notes: ["Live today"] },
+      evidence: {
+        method: "Usability test · listing",
+        img: "enhance-usability-test-plp.png", crop: 0.4,
+        observed: "9 of 12 people finished the task. Average 17.6s, with 59.1% wrong taps.",
+        takeaway: "People got there — but with effort.",
+        implication: "Show the deciding info first on every card."
+      },
+      notes: "Lead with the 59% wrong taps. Grid for groceries, list for electronics."
     },
 
-    /* 10 — PDP FIRST DECISION */
     {
-      section: "evolution", type: "pdp-questions",
-      eyebrow: "Product page · 03",
+      section: "decisions", type: "pdp-questions",
+      eyebrow: "Decision 3 · Product page",
       headline: ["Can I trust this?"],
-      sub: "The product page is where browsing turns into a real decision.",
+      sub: "",
       img: "enhance-problem-pdp.png", focus: 0.05,
-      questions: [
-        "Right variant?",
-        "Good price?",
-        "When does it arrive?",
-        "Can I trust it?",
-        "What do others say?"
-      ],
+      questions: ["Right size?", "Good price?", "When will it arrive?", "What do others say?"],
+      rationale: {
+        evidence: "The product page was the worst-rated area.",
+        insight: "Key details were too far down.",
+        hypothesis: "Key info up top → more add-to-cart.",
+        decision: "Price, size, delivery and reviews on the first screen.",
+        metric: "Product page → cart",
+        observed: "Add-to-cart 10.4% → 11.5%"
+      },
       before: { img: "enhance-problem-pdp.png", focus: 0.05 },
       v1: { img: "enhance-v1-pdp.png", focus: 0.05 },
       v2: { video: "enhance-v2-pdp.mp4", poster: "enhance-v2-pdp-main.png" },
-      firstFold: ["Images", "Brand", "Ratings", "Price", "Variants", "Delivery", "Wishlist", "Clear CTA"],
-      signal: [{ t: "Understanding", dir: "up" }, { t: "Confidence", dir: "up" }]
+      notes: "Each shopper question became one element on the first screen."
     },
 
-    /* ============ VERTICAL 04 — IMPACT ============ */
+    /* ============ 05 — RESULTS ============ */
 
-    /* 13 — IMPACT */
     {
-      section: "impact", type: "impact",
-      eyebrow: "Impact",
-      headline: ["What got better?"],
-      sub: "When the experience improved, the way people shopped improved too.",
-      experience: [
-        "Clearer navigation", "Easier to scan", "Simpler comparison",
-        "Visible trust info", "Reviews up front", "More confidence"
+      section: "results", type: "uxfunnel",
+      eyebrow: "Did it work?",
+      headline: ["Yes — people bought more"],
+      sub: "Before vs after, from Google Analytics.",
+      takeaways: [
+        "Add-to-cart: 10.4% → 11.5%",
+        "Search add-to-cart: 41.4% → 44.3%",
+        "Pages per visit: 5.8 → 6.5",
+        "Pages loaded 29% faster"
       ],
-      metricsLabel: "Performance · FY 22–23",
+      tableLabel: "Before vs after · Google Analytics",
+      img: "enhance-impact-table.png",
+      evidence: {
+        method: "Google Analytics · before vs after",
+        img: "enhance-impact-table.png", crop: 0.1,
+        observed: "Speed, engagement and add-to-cart were measured before and after the redesign.",
+        takeaway: "Pages got faster, people looked at more, and more of them added to cart.",
+        implication: "Better browsing is a sales lever, not just a nicer look."
+      },
+      disclaimer: "Before vs after, not an A/B test — a strong signal, not proof.",
+      notes: "Link each line to its decision. Say the caveat before they ask."
+    },
+
+    {
+      section: "results", type: "impact",
+      eyebrow: "The bigger picture",
+      headline: ["The whole app grew"],
+      sub: "Same period, across JioMart.",
+      experience: ["Clearer navigation", "Easier to compare", "Reviews up front", "More confidence"],
+      metricsLabel: "App-wide · FY 22–23",
       metrics: [
-        { n: "+65%", l: "Monthly active users" },
+        { n: "+65%", l: "Monthly users" },
         { n: "+64%", l: "Repeat users" },
         { n: "+38%", l: "Revenue" },
-        { n: "+51%", l: "App downloads" },
-        { n: "+31%", l: "Avg. daily orders" },
-        { n: "−36%", l: "Customer-support calls" }
+        { n: "+51%", l: "Downloads" },
+        { n: "+31%", l: "Daily orders" },
+        { n: "−36%", l: "Support calls (Help & Support)" }
       ],
       evidence: {
         method: "Performance dashboard · FY 22–23",
         img: "enhance-improvement-metrics.png", crop: 0.15,
-        observed: "App downloads +51%, MAU +65%, repeat users +64%, avg. order value +4.7%, daily orders +31%, revenue +38%, and a 36% reduction in CS calls.",
-        takeaway: "Engagement +26%, page views per user +22%, conversion +20.54% — while redirection, page-load and server-response times all dropped.",
-        implication: "A clearer, more trustworthy experience moved the numbers that matter."
+        observed: "Downloads +51%, monthly users +65%, repeat users +64%, daily orders +31%, revenue +38%. Support calls −36% came from Help & Support work.",
+        takeaway: "Many teams contributed to these numbers.",
+        implication: "Discovery was one part of a bigger push."
       },
-      disclaimer: "Platform-level indicators (Sep 22 – Mar 23) — reflecting broader JioMart improvements alongside this redesign."
+      disclaimer: "App-wide numbers — many teams contributed, including this redesign.",
+      notes: "Context, not credit. The previous slide is what I can link directly to my work."
     },
 
-    /* 13b — UX IMPROVEMENT: pre vs post behavioural evidence (real table) */
-    {
-      section: "impact", type: "uxfunnel",
-      eyebrow: "How behaviour changed",
-      headline: ["Not just more traffic —", "better behaviour."],
-      sub: "Measured the same metrics before and after the discovery redesign, grouped into performance, engagement and conversion. Every one moved the right way.",
-      takeaways: [
-        "Performance: pages loaded ~29% faster, redirection ~11% faster.",
-        "Engagement: time per active user +16%, page views per user +11%.",
-        "Conversion: add-to-cart +107 bps, search-assisted A2C +293 bps."
-      ],
-      tableLabel: "Pre vs post redesign · Google Analytics",
-      img: "enhance-impact-table.png",
-      evidence: {
-        method: "GA improvement report · pre vs post",
-        img: "enhance-impact-table.png", crop: 0.1,
-        observed: "Performance, engagement and conversion metrics measured pre vs post redesign — load times fell, engagement rose, and add-to-cart & search-assisted conversion both improved.",
-        takeaway: "Clearer discovery made the experience faster, deeper and more likely to convert.",
-        implication: "Discovery UX is a conversion lever, not just an engagement one."
-      },
-      disclaimer: "Google Analytics improvement report, pre vs post discovery redesign. bps = basis points (0.01%)."
-    },
+    /* ============ 06 — LEARNINGS ============ */
 
-    /* 14 — CUSTOMER VOICE */
     {
-      section: "impact", type: "voice",
-      eyebrow: "Customer voice",
-      headline: ["Shoppers said it best."],
-      sub: "The strongest proof came straight from the people using the app.",
-      quotes: [
-        { q: "After the latest update the app is totally changed — much faster, well designed and easy to use. I'll give it 5/5.", src: "Play Store · Redmi Note 8 · ★★★★★" },
-        { q: "Really good app. Best service experience and user experience.", src: "Dhruv Chhabra · realme 8 5G · ★★★★★" },
-        { q: "New update is far better than before — it's smooth, better and stable.", src: "Play Store · Galaxy F41 · ★★★★★" },
-        { q: "Improved, and the new UI looks better than earlier.", src: "Play Store · Galaxy S10 Lite · ★★★★" },
-        { q: "Excellent shopping experience online.", src: "Ritesh Ka. Patel · Redmi 5A · ★★★★★" },
-        { q: "Very good app experience.", src: "Sachin Katole · Galaxy A20s · ★★★★★" }
-      ],
-      evidence: {
-        method: "Play Store reviews · Feb 2023",
-        img: "enhance-trust-reviews.png", crop: 0.2,
-        observed: "Multiple verified shoppers praised the redesign — faster, cleaner, easier to use — often citing the update directly.",
-        takeaway: "Real users noticed the change and rated it 4–5 stars.",
-        implication: "The experience improvements landed with the people who matter most."
-      },
-      end: "Numbers show what changed. People show how it felt."
-    },
-
-    /* ============ VERTICAL 05 — RECOGNITION ============ */
-
-    /* 15 — AWARD + REFLECTION */
-    {
-      section: "recognition", type: "recognition",
-      eyebrow: "Recognition",
-      headline: ["The work got noticed."],
-      sub: "A discovery redesign that grew into a lesson about trust.",
-      award: { img: "enhance-award.png", caption: "Jio Spotlight Award · Certificate of Recognition — presented to Abhishek Thakur by Anish Shah, President (Q4 2022–23)." },
+      section: "learnings", type: "recognition",
+      eyebrow: "What I learned",
+      headline: ["Fewer doubts, more buys"],
+      sub: "Recognised with the Jio Spotlight Award.",
+      award: { img: "enhance-award.png", caption: "Jio Spotlight Award — presented by Anish Shah, President (Q4 2022–23)." },
       reflection: [
-        "It began as a discovery redesign.",
-        "It became something bigger:",
-        "People trust an app when every step gives them fewer reasons to doubt."
+        "Next time: A/B test each step, and track clicks per screen from day one.",
+        "Next up: a personal homepage and better search results.",
+        "People buy when every screen removes a doubt."
       ],
       cta: [
-        { label: "Explore full case study", href: "./jiomart-discovery.html", primary: true },
+        { label: "Full case study", href: "./jiomart-discovery.html", primary: true },
         { label: "Next project →", href: "./index.html" }
-      ]
+      ],
+      notes: "Own the measurement gap, say what's next, then close on the principle."
     }
   ]
 };
