@@ -370,6 +370,57 @@ body.deck[data-theme="light"] .theme-toggle .ic-moon { display: block; }
 .metric .ml { font-size: 12.5px; color: var(--dim); margin-top: 6px; line-height: 1.35; }
 .disclaimer { font-size: 12px; color: var(--dim); font-style: italic; margin-top: 16px; line-height: 1.5; }
 
+/* ---------- discovery funnel (data-driven problem) ---------- */
+.df-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.df-funnel { display: flex; flex-direction: column; gap: 14px; }
+.df-row { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 14px; position: relative; }
+.df-stage { font-size: 13px; font-weight: 600; color: var(--soft); text-align: right; }
+.df-barwrap { position: relative; display: flex; align-items: center; gap: 12px; }
+.df-bar { height: 44px; width: var(--w, 10%); border-radius: 10px; display: flex; align-items: center; padding: 0 14px;
+  background: linear-gradient(90deg, var(--accent), #ff7a5a); box-shadow: 0 6px 18px rgba(255,59,48,0.25); transition: width .6s var(--ease); }
+.df-count { font-size: 14px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.df-pct { font-size: 13px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.df-drop { position: absolute; right: 0; top: -14px; font-size: 11px; color: var(--dim); }
+.df-drop b { color: var(--accent); font-weight: 800; }
+.df-key { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--ink); font-weight: 600; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--panel-line); background: var(--card); }
+.df-hyps { display: flex; flex-direction: column; gap: 12px; }
+.df-hyps-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); }
+.df-hyp { padding: 14px 16px; border-radius: 12px; border: 1px solid var(--panel-line); background: var(--card); }
+.df-hyp-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.df-hyp-stage { font-size: 12px; font-weight: 700; color: var(--ink); }
+.df-hyp-drop { font-size: 12px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.df-hyp-q { font-size: 13px; line-height: 1.5; color: var(--soft); }
+.df-caveat { font-size: 11.5px; color: var(--dim); line-height: 1.5; font-style: italic; margin-top: 2px; }
+.df-caveat b { color: var(--soft); font-style: normal; }
+
+/* ---------- opportunity (HMW + obs→metric cards + table) ---------- */
+.op-hmw { font-size: clamp(16px, 1.8vw, 21px); font-weight: 600; color: var(--ink); line-height: 1.4; margin: 14px 0 0; max-width: 60ch; }
+.opportunity-slide .sub { margin-top: 12px; }
+.op-cards { display: flex; flex-direction: column; gap: 12px; margin: 26px 0 0; }
+.op-card { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--panel-line); background: var(--card); }
+.op-n { font-family: inherit; font-size: 13px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; margin-top: 2px; }
+.op-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.op-cell { font-size: 13px; line-height: 1.45; color: var(--soft); }
+.op-l { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); margin-bottom: 5px; }
+.op-metric { color: var(--ink); font-weight: 600; }
+.op-table-wrap { margin-top: 24px; max-width: 560px; }
+.op-table-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
+.op-table { width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid var(--panel-line); border-radius: 12px; overflow: hidden; }
+.op-table th { text-align: right; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); padding: 10px 14px; background: var(--panel); }
+.op-table th:first-child { text-align: left; }
+.op-table td { padding: 10px 14px; text-align: right; color: var(--soft); font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); }
+.op-table .opt-m { text-align: left; color: var(--ink); font-weight: 600; }
+.op-table .opt-t { color: var(--good); font-weight: 800; }
+@media (max-width: 1000px) {
+  .df-grid { grid-template-columns: 1fr; gap: 28px; }
+  .op-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+@media (max-width: 640px) {
+  .df-row { grid-template-columns: 70px 1fr; }
+  .op-grid { grid-template-columns: 1fr; }
+  .op-card { grid-template-columns: 28px 1fr; }
+}
+
 /* ---------- UX improvement: pre vs post evidence (table artifact) ---------- */
 .uxcompare-slide .uxf-takeaways { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 22px 0 0; }
 .uxcompare-slide .uxf-takeaways li { position: relative; padding-left: 22px; font-size: 14px; color: var(--soft); line-height: 1.45; }

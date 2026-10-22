@@ -73,6 +73,49 @@ window.DECK = {
       end: "So the real job wasn't finding products. It was helping people believe in their choice."
     },
 
+    /* 03b — THE PROBLEM, QUANTIFIED (data-driven funnel) */
+    {
+      section: "intro", type: "discovery-funnel",
+      eyebrow: "The problem · quantified",
+      headline: ["Shoppers were browsing,", "but not progressing to purchase."],
+      sub: "Across the discovery journey, each step shed users — most sharply the closer they got to a decision.",
+      funnel: [
+        { stage: "Homepage",    n: 1000000, label: "1,000,000", pct: 100, drop: null },
+        { stage: "PLP",         n: 620000,  label: "620,000",   pct: 62,  drop: 38 },
+        { stage: "PDP",         n: 310000,  label: "310,000",   pct: 50,  drop: 50 },
+        { stage: "Add to cart", n: 93000,   label: "93,000",    pct: 30,  drop: 70 }
+      ],
+      key: "Only 9.3% of homepage sessions reached add-to-cart — the biggest losses came late, where confidence matters most.",
+      hypotheses: [
+        { stage: "Homepage", drop: 38, hypothesis: "Users may struggle to identify the right starting point for discovery — weak category discoverability and inconsistent navigation." },
+        { stage: "PLP", drop: 50, hypothesis: "Users may struggle to shortlist relevant products — weak information hierarchy, filtering and sorting." },
+        { stage: "PDP", drop: 70, hypothesis: "Users may lack the information or reassurance to add to cart — unclear variants, pricing, availability and trust cues." }
+      ],
+      disclaimer: "Illustrative data — not verified JioMart analytics. Used to frame the problem, not to report results."
+    },
+
+    /* 03c — THE OPPORTUNITY (HMW + objectives + obs→metric) */
+    {
+      section: "intro", type: "opportunity",
+      eyebrow: "The opportunity",
+      headline: ["From friction", "to forward motion."],
+      hmw: "How might we help shoppers discover relevant products faster, evaluate options with confidence, and progress more seamlessly toward purchase?",
+      sub: "Each drop-off became a design objective — tied to an observation, a hypothesis, and a metric that would show improvement.",
+      objectives: [
+        { observation: "38% illustrative drop-off at the homepage.", hypothesis: "Users can't find a confident starting point.", decision: "Clearer category structure, consistent navigation, relevant widgets up front.", metric: "Homepage bounce / Home → PLP progression" },
+        { observation: "50% illustrative drop-off between PLP and PDP.", hypothesis: "Users can't shortlist relevant products.", decision: "Stronger product-card hierarchy, better filtering and sorting.", metric: "PLP → PDP progression rate" },
+        { observation: "70% illustrative drop-off between PDP and add-to-cart.", hypothesis: "Users lack the proof to decide.", decision: "Surface ratings, variants, pricing, delivery and trust cues on the PDP.", metric: "PDP → Add-to-cart rate" }
+      ],
+      metricsTable: [
+        { metric: "Homepage bounce rate", base: "38%", target: "28%" },
+        { metric: "PLP → PDP progression", base: "50%", target: "60%" },
+        { metric: "PDP → Add-to-cart", base: "30%", target: "39%" },
+        { metric: "Home → Add-to-cart", base: "9.3%", target: "~14%" }
+      ],
+      tableLabel: "Illustrative success metrics · baseline → target",
+      tableNote: "Illustrative targets, not achieved results. Overall assumes Home → PLP holds at 62%: 62% × 60% × 39% ≈ 14.5%."
+    },
+
     /* ============ VERTICAL 02 — DISCOVERY ============ */
 
     /* 04 — HOW WE INVESTIGATED (toolkit) */
