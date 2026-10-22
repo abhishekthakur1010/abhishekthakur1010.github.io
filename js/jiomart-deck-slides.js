@@ -99,21 +99,20 @@ window.DECK = {
       section: "intro", type: "opportunity",
       eyebrow: "The opportunity",
       headline: ["From friction", "to forward motion."],
-      hmw: "How might we help shoppers discover relevant products faster, evaluate options with confidence, and progress more seamlessly toward purchase?",
-      sub: "Each drop-off became a design objective — tied to an observation, a hypothesis, and a metric that would show improvement.",
+      hmw: "How might we help shoppers discover relevant products faster, evaluate options with confidence, and progress toward purchase?",
       objectives: [
-        { observation: "38% illustrative drop-off at the homepage.", hypothesis: "Users can't find a confident starting point.", decision: "Clearer category structure, consistent navigation, relevant widgets up front.", metric: "Homepage bounce / Home → PLP progression" },
-        { observation: "50% illustrative drop-off between PLP and PDP.", hypothesis: "Users can't shortlist relevant products.", decision: "Stronger product-card hierarchy, better filtering and sorting.", metric: "PLP → PDP progression rate" },
-        { observation: "70% illustrative drop-off between PDP and add-to-cart.", hypothesis: "Users lack the proof to decide.", decision: "Surface ratings, variants, pricing, delivery and trust cues on the PDP.", metric: "PDP → Add-to-cart rate" }
+        { stage: "Homepage", drop: 38, hypothesis: "Users can't find a confident starting point.", decision: "Clearer categories, consistent nav, relevant widgets up front.", metric: "Home → PLP" },
+        { stage: "PLP", drop: 50, hypothesis: "Users can't shortlist relevant products.", decision: "Stronger product-card hierarchy, better filtering & sorting.", metric: "PLP → PDP" },
+        { stage: "PDP", drop: 70, hypothesis: "Users lack the proof to decide.", decision: "Surface ratings, variants, pricing, delivery & trust cues.", metric: "PDP → Add-to-cart" }
       ],
       metricsTable: [
-        { metric: "Homepage bounce rate", base: "38%", target: "28%" },
-        { metric: "PLP → PDP progression", base: "50%", target: "60%" },
-        { metric: "PDP → Add-to-cart", base: "30%", target: "39%" },
-        { metric: "Home → Add-to-cart", base: "9.3%", target: "~14%" }
+        { metric: "Home bounce", base: "38%", target: "28%" },
+        { metric: "PLP → PDP", base: "50%", target: "60%" },
+        { metric: "PDP → ATC", base: "30%", target: "39%" },
+        { metric: "Home → ATC", base: "9.3%", target: "~14%" }
       ],
-      tableLabel: "Illustrative success metrics · baseline → target",
-      tableNote: "Illustrative targets, not achieved results. Overall assumes Home → PLP holds at 62%: 62% × 60% × 39% ≈ 14.5%."
+      tableLabel: "Illustrative targets",
+      tableNote: "Illustrative targets, not results · 62% × 60% × 39% ≈ 14.5%."
     },
 
     /* ============ VERTICAL 02 — DISCOVERY ============ */

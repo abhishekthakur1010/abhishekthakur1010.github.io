@@ -343,27 +343,29 @@
         "</div></div>";
     },
 
-    /* ---- opportunity: HMW + objectives + observation→metric framework ---- */
+    /* ---- opportunity: HMW + scannable objective cards (number-led) ---- */
     opportunity: function (sc) {
       var objs = (sc.objectives || []).map(function (o, i) {
         return "<div class='op-card reveal' data-step='" + (i + 1) + "'>" +
-          "<div class='op-n'>" + pad(i + 1) + "</div>" +
-          "<div class='op-grid'>" +
-          "<div class='op-cell'><span class='op-l'>Observation</span>" + esc(o.observation) + "</div>" +
-          "<div class='op-cell'><span class='op-l'>Hypothesis</span>" + esc(o.hypothesis) + "</div>" +
-          "<div class='op-cell'><span class='op-l'>Design decision</span>" + esc(o.decision) + "</div>" +
-          "<div class='op-cell op-metric'><span class='op-l'>Success metric</span>" + esc(o.metric) + "</div>" +
-          "</div></div>";
+          "<div class='op-head'>" +
+          "<span class='op-drop'>\u2212" + o.drop + "%</span>" +
+          "<span class='op-stage'>" + esc(o.stage) + "</span>" +
+          "</div>" +
+          "<div class='op-hyp'>" + esc(o.hypothesis) + "</div>" +
+          "<div class='op-fix'><span class='op-l'>Fix</span>" + esc(o.decision) + "</div>" +
+          "<div class='op-measure'><span class='op-l'>Measure</span>" + esc(o.metric) + "</div>" +
+          "</div>";
       }).join("");
       var rows = (sc.metricsTable || []).map(function (m) {
-        return "<tr><td class='opt-m'>" + esc(m.metric) + "</td><td>" + esc(m.base) + "</td><td class='opt-t'>" + esc(m.target) + "</td></tr>";
+        return "<span class='opt-chip'><b>" + esc(m.metric) + "</b>" +
+          "<span class='opt-move'>" + esc(m.base) + " <i>\u2192</i> <em>" + esc(m.target) + "</em></span></span>";
       }).join("");
-      var table = rows ? "<div class='op-table-wrap'><div class='op-table-label'>" + esc(sc.tableLabel || "Illustrative success metrics") + "</div>" +
-        "<table class='op-table'><thead><tr><th>Metric</th><th>Baseline</th><th>Target</th></tr></thead><tbody>" + rows + "</tbody></table>" +
-        (sc.tableNote ? "<p class='disclaimer'>" + esc(sc.tableNote) + "</p>" : "") + "</div>" : "";
+      var table = rows ? "<div class='op-strip reveal' data-step='" + ((sc.objectives||[]).length + 1) + "'>" +
+        "<span class='op-strip-label'>" + esc(sc.tableLabel || "Targets") + "</span>" + rows + "</div>" +
+        (sc.tableNote ? "<p class='disclaimer op-note'>" + esc(sc.tableNote) + "</p>" : "") : "";
       return "<div class='sl opportunity-slide'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" +
         L(sc.headline, "h2") +
-        (sc.hmw ? "<p class='op-hmw'>\u201C" + esc(sc.hmw) + "\u201D</p>" : "") + sub(sc.sub) + "</div>" +
+        (sc.hmw ? "<p class='op-hmw'>\u201C" + esc(sc.hmw) + "\u201D</p>" : "") + "</div>" +
         "<div class='op-cards'>" + objs + "</div>" + table + "</div>";
     },
 
