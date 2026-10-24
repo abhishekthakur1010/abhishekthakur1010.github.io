@@ -1,0 +1,35 @@
+/* ---------- Splash: a bouncing ball knocks up DESIGNER, DEVELOPER, HUMAN, splats, and folds into the name ----------
+   Shown once per visit when the site opens on the categories (a script in <head> adds .splash-on).
+   js/splash.js draws every frame from time on a 1920x1080 stage scaled to the screen, then the
+   dark opens from the ball into the Diwali banner and js/categories.js raises the circles. */
+
+@property --sp-r { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+.splash { display: none; }
+html.splash-on { overflow: hidden; }
+html.splash-on .splash { display: block; position: fixed; inset: 0; z-index: 1000; overflow: hidden; background: #0B0B0E; cursor: default; }
+.sp-stage {
+  position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; margin: -540px 0 0 -960px;
+  transform-origin: 50% 50%;
+}
+.sp-stage .wrap { position: absolute; inset: 0; pointer-events: none; }
+.sp-stage .el { position: absolute; left: 0; top: 0; box-sizing: border-box; white-space: pre; font-family: Inter, system-ui, sans-serif; will-change: transform; }
+
+.sp-skip {
+  position: absolute; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+  font: 500 12px/1 Inter, system-ui, sans-serif; letter-spacing: .06em; color: rgba(255,255,255,.4);
+}
+
+/* The way out: a hole grows from the ball and the banner shows through */
+html.splash-out .splash {
+  pointer-events: none;
+  -webkit-mask: radial-gradient(circle at var(--fx, 50%) var(--fy, 42%), transparent var(--sp-r), #000 calc(var(--sp-r) + 2px));
+          mask: radial-gradient(circle at var(--fx, 50%) var(--fy, 42%), transparent var(--sp-r), #000 calc(var(--sp-r) + 2px));
+  animation: sp-open .8s cubic-bezier(.7,0,.2,1) forwards;
+}
+html.splash-out .sp-skip { opacity: 0; }
+@keyframes sp-open { from { --sp-r: 0px; } to { --sp-r: 160vmax; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.splash-out .splash { -webkit-mask: none; mask: none; animation: none; opacity: 0; transition: opacity .3s ease; }
+}

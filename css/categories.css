@@ -1,0 +1,233 @@
+/* ---------- Categories: the Diwali banner fills the screen with every way in ----------
+   States live on <html> so the first paint is already right (a tiny script in <head> sets cat-mode):
+   cat-mode    banner is full screen, the circles show, the page cannot scroll
+   cat-anim    transitions are on (only while a move plays, so nothing animates on load or resize)
+   cat-out     every circle except the picked one is hidden; the picked one's label too
+   cat-quiet   the profile content under the banner is faded and lowered
+   cat-measure everything snaps, for measuring where the avatar will be */
+
+.cats {
+  position: absolute; z-index: 4; top: 0; left: calc(50% - 50vw); width: 100vw; height: var(--cat-h, 100vh);
+  display: none; align-items: center; justify-content: center; pointer-events: none;
+}
+html.cat-mode .cats, html.cat-anim .cats, html.cat-measure .cats { display: flex; }
+html.cat-measure .cover, html.cat-measure .cat-pic, html.cat-measure .cat { transition: none !important; }
+html.cat-measure .cat .cat-pic { transform: none !important; }
+.cats { flex-direction: column; }
+/* Heading: a hint first (light the sparkler, then a cracker), then the greeting */
+.cats-head { text-align: center; color: #fff3d6; margin: 0 16px 34px; transition: opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1); }
+.ch-title {
+  margin: 0; font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-weight: 400;
+  font-size: clamp(30px, 3.2vw, 44px); line-height: 1.05; letter-spacing: -.01em; text-shadow: 0 0 28px rgba(255,170,70,.45);
+}
+.ch-title em { font-style: italic; color: #ffd98a; }
+.ch-sub { margin: 8px 0 0; font-size: 15px; line-height: 1.45; color: rgba(255,243,214,.86); text-shadow: 0 1px 10px rgba(90,20,40,.45); }
+.ch-swap { display: grid; justify-items: center; }
+.ch-swap > span { grid-area: 1 / 1; opacity: 0; transform: translateY(6px); transition: opacity .6s ease, transform .6s ease; }
+.ch-coarse { display: none; }
+@media (hover: none) and (pointer: coarse) { .ch-fine { display: none; } .ch-coarse { display: inline; } }
+html:not(.sky-peak) .ch-title > .ch-0, html.sky-peak .ch-title > .ch-1,
+html[data-ch="hint"] .ch-sub > [data-s="hint"], html[data-ch="catch"] .ch-sub > [data-s="catch"],
+html[data-ch="cracker"] .ch-sub > [data-s="cracker"], html[data-ch="wish"] .ch-sub > [data-s="wish"],
+html[data-ch="fade"] .ch-sub > [data-s="fade"], html[data-ch="again"] .ch-sub > [data-s="again"],
+html:not([data-ch]) .ch-sub > [data-s="hint"] { opacity: 1; transform: none; }
+html.sky-peak .ch-title > .ch-0 { transform: translateY(-6px); }
+html.cat-out .cats-head { opacity: 0; transform: translateY(-10px); }
+.cats-row {
+  list-style: none; margin: 0; padding: 0 16px; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 28px clamp(20px, 3.4vw, 52px); transform: translateY(18px);
+}
+.cats-row li { width: 152px; display: flex; justify-content: center; }
+.cat {
+  all: unset; box-sizing: border-box; pointer-events: auto; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.cat-pic {
+  position: relative; display: block; width: 152px; height: 152px; border-radius: 50%; overflow: hidden;
+  border: 4px solid #fff; background: #f3d9b8; box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(60,10,40,.35);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+  will-change: transform;
+}
+.cat-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cat-pic.add { display: grid; place-items: center; background: rgba(255,243,214,.16); border-color: rgba(255,243,214,.85); backdrop-filter: blur(6px); }
+.cat-pic.add svg { width: 30%; height: 30%; color: #fff3d6; }
+/* Gamified: a 3D controller on a soft glow that tilts and wiggles on hover */
+.cat-pic.cat-game {
+  background: radial-gradient(circle at 50% 38%, #fff7ec 0%, #f6e3f4 48%, #e2d4fa 100%);
+  display: grid; place-items: center;
+}
+.cat-pic.cat-game::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(rgba(122,128,234,.16) 1.2px, transparent 1.6px) 0 0 / 14px 14px;
+  -webkit-mask: radial-gradient(circle, transparent 38%, #000 80%); mask: radial-gradient(circle, transparent 38%, #000 80%);
+}
+.cat-pic.cat-game img {
+  position: relative; width: 74%; height: auto; object-fit: contain;
+  transform: rotate(-8deg); transition: transform .45s cubic-bezier(.2,.8,.2,1);
+}
+html:not(.cat-anim) .cat:hover .cat-game img, html:not(.cat-anim) .cat:focus-visible .cat-game img {
+  animation: pad-wiggle .9s cubic-bezier(.3,.7,.3,1) both;
+}
+@keyframes pad-wiggle {
+  0% { transform: rotate(-8deg); }
+  30% { transform: translateY(-5px) rotate(6deg) scale(1.08); }
+  55% { transform: translateY(-4px) rotate(-5deg) scale(1.08); }
+  78% { transform: translateY(-4px) rotate(2deg) scale(1.08); }
+  100% { transform: translateY(-4px) rotate(0deg) scale(1.08); }
+}
+/* Scrollytelling: the globe and courier on the page's own soft sky */
+.cat-pic.cat-globe { background: #f6f9ff; }
+.cat-name {
+  color: #fff3d6; font-size: 17px; font-weight: 600; letter-spacing: .01em;
+  text-shadow: 0 1px 2px rgba(90,20,40,.4), 0 1px 14px rgba(90,20,40,.5);
+}
+.cat-tag {
+  margin-top: -6px; padding: 3px 9px; border-radius: 999px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: #fff3d6; background: rgba(40,8,30,.38); border: 1px solid rgba(255,243,214,.35);
+}
+.cat-tag.cat-rec { background: #1b5fb8; border-color: #1b5fb8; color: #fff; }
+html:not(.cat-anim) .cat:hover .cat-pic, html:not(.cat-anim) .cat:focus-visible .cat-pic { transform: translateY(-6px) scale(1.04); box-shadow: 0 18px 40px rgba(60,10,40,.45), 0 0 0 6px rgba(255,217,138,.35); }
+.cat:focus-visible .cat-name { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Full-screen banner while choosing */
+html.cat-mode, html.cat-mode body { overflow: hidden; }
+html.cat-mode .card.profile .cover { height: var(--cat-h, 100vh); }
+html.cat-anim .card.profile .cover { transition: height var(--cat-move, .82s) cubic-bezier(.65,0,.3,1); }
+html.cat-mode .cover-lockup, html.cat-mode .cover-hint, html.cat-mode .cover-float-tip, html.cat-anim .cover-lockup { opacity: 0 !important; pointer-events: none; }
+html.cat-mode .toc { opacity: 0; pointer-events: none; }
+.toc { transition: opacity .3s ease; }
+
+/* Circles come and go one after another, rising a little as they appear */
+.cat { transition: opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1); }
+.cat-name, .cat-tag { transition: opacity .3s ease; }
+.cats-row li:nth-child(2) .cat { transition-delay: 60ms; }
+.cats-row li:nth-child(3) .cat { transition-delay: 120ms; }
+.cats-row li:nth-child(4) .cat { transition-delay: 180ms; }
+html.cat-out .cat:not(.picked) { opacity: 0; transform: translateY(18px) scale(.92); pointer-events: none; }
+html.cat-out .cat.picked .cat-name, html.cat-out .cat.picked .cat-tag { opacity: 0; }
+html.cat-out .cat.picked { transition-delay: 0s; }
+
+/* The chosen circle travels between the middle of the banner and the avatar */
+html.cat-anim .cat.picked .cat-pic { transition: transform var(--cat-move, .82s) cubic-bezier(.65,0,.3,1), box-shadow .4s ease; box-shadow: none; }
+html.cat-anim .avatar, html.cat-mode .avatar { visibility: hidden; }
+
+/* Profile content under the banner: faded and lowered while the categories show */
+html.cat-anim .profile-body > :not(.avatar), html.cat-anim .main > .card:not(.profile) {
+  transition: opacity .45s ease, transform .6s cubic-bezier(.2,.8,.2,1);
+}
+html.cat-mode .profile-body > :not(.avatar), html.cat-mode .main > .card:not(.profile),
+html.cat-quiet .profile-body > :not(.avatar), html.cat-quiet .main > .card:not(.profile) { opacity: 0; transform: translateY(28px); }
+
+/* Leaving for another page: the banner dims to night before the next page loads */
+.cat-curtain { position: fixed; inset: 0; z-index: 60; background: #120a1e; opacity: 0; pointer-events: none; transition: opacity .5s ease .15s; }
+html.cat-away .cat-curtain { opacity: 1; }
+html.cat-away .cat.picked .cat-pic { transform: scale(1.18); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+
+/* The bow invitation steps right so the corner fountain has room */
+@media (min-width: 721px) { html.cat-mode .cover-peek { left: 100px; } }
+
+/* Back to the categories: first in the contents list, above the sections */
+.toc-back { margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px solid var(--line-soft, #eeece8); }
+.toc-back a { display: flex !important; align-items: center; gap: 6px; font-weight: 600; color: var(--text, #1d1f23) !important; }
+.toc-back svg { width: 16px; height: 16px; flex: none; }
+
+/* Teaser and feedback dialogs opened from the circles */
+.cat-dialog {
+  width: min(520px, calc(100vw - 32px)); padding: 0; border: 0; border-radius: 14px; overflow: hidden;
+  background: #fff; color: var(--text, #1d1f23); box-shadow: 0 30px 80px rgba(30,10,40,.4);
+}
+.cat-dialog::backdrop { background: rgba(20,10,30,.55); backdrop-filter: blur(2px); }
+.cat-dialog[open] { animation: cd-in .38s cubic-bezier(.2,.8,.2,1); }
+.cat-dialog[open]::backdrop { animation: cd-fade .3s ease; }
+.cat-dialog.closing { animation: cd-out .22s ease forwards; }
+.cat-dialog.closing::backdrop { animation: cd-fade .22s ease reverse forwards; }
+@keyframes cd-in { from { opacity: 0; transform: translateY(18px) scale(.97); } }
+@keyframes cd-out { to { opacity: 0; transform: translateY(10px) scale(.98); } }
+@keyframes cd-fade { from { opacity: 0; } }
+.cd-body { padding: 20px 24px 24px; }
+.cat-dialog h2 { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+.cat-dialog p { margin: 0 0 16px; font-size: 15px; line-height: 1.55; color: var(--text-2, #5e6168); }
+.cd-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.cd-close {
+  position: absolute; top: 12px; right: 12px; z-index: 2; width: 34px; height: 34px; border-radius: 50%; border: 0;
+  background: rgba(255,255,255,.92); color: #1d1f23; display: grid; place-items: center; cursor: pointer;
+}
+.cd-close svg { width: 16px; height: 16px; }
+.cd-rate { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; border: 0; }
+.cd-rate label { cursor: pointer; }
+.cd-rate input { position: absolute; opacity: 0; pointer-events: none; }
+.cd-rate span { display: inline-flex; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line, #e3e1dc); font-size: 14px; }
+.cd-rate input:checked + span { background: var(--accent, #1b5fb8); border-color: var(--accent, #1b5fb8); color: #fff; }
+.cd-rate input:focus-visible + span { outline: 2px solid var(--accent, #1b5fb8); outline-offset: 2px; }
+.cd-field { display: block; margin-bottom: 14px; }
+.cd-field span { display: block; margin-bottom: 6px; font-size: 13px; color: var(--text-2, #5e6168); }
+.cd-field textarea, .cd-field input {
+  box-sizing: border-box; width: 100%; padding: 10px 12px; border: 1px solid var(--line, #e3e1dc); border-radius: 8px;
+  font-family: inherit; font-size: 15px; line-height: 1.45; color: inherit; background: #fff; resize: vertical;
+}
+.cd-field textarea:focus, .cd-field input:focus { outline: 2px solid var(--accent, #1b5fb8); outline-offset: -1px; border-color: transparent; }
+.cd-thanks { display: none; text-align: center; padding: 8px 0 0; }
+.cat-dialog.sent form { display: none; }
+.cat-dialog.sent .cd-thanks { display: block; }
+
+@media (max-width: 720px) {
+  .cats-row { gap: 22px 26px; max-width: 320px; transform: translateY(24px); }
+  .cats-head { margin-bottom: 18px; }
+  .ch-title { font-size: 32px; }
+  .ch-sub { font-size: 14px; max-width: 290px; }
+  .cats-row li { width: 112px; }
+  .cat { gap: 10px; }
+  .cat-pic { width: 104px; height: 104px; }
+  .cat-name { font-size: 15px; }
+  .cat-tag { font-size: 9.5px; padding: 3px 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover, .cat, .cat-name, .cat-tag, .cat-pic, .cat-curtain, .cats-head, .ch-swap > span, .cat-game img { transition: none !important; }
+  .cat:hover .cat-game img, .cat:hover .cat-scrolly img { animation: none !important; }
+  .cat-dialog[open], .cat-dialog.closing, .cat-dialog[open]::backdrop { animation: none !important; }
+}
+
+/* Work-in-progress dialog for Gamified and Scrollytelling */
+.cd-kicker { margin: 0 0 6px !important; font-size: 13px !important; font-weight: 600; color: #b4570f !important; letter-spacing: .02em; }
+#cat-wip .cd-body { padding-top: 26px; }
+#cat-wip .cd-actions { margin-top: 4px; }
+
+/* Scrollytelling thumbnail: a clay mountain on a soft sky, same size and hover wiggle as the Gamified controller */
+.cat-pic.cat-scrolly {
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 38%, #ffffff 0%, #eaf7ff 48%, #d3e9fb 100%);
+}
+.cat-pic.cat-scrolly::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(rgba(70,130,200,.14) 1.2px, transparent 1.6px) 0 0 / 14px 14px;
+  -webkit-mask: radial-gradient(circle, transparent 38%, #000 80%); mask: radial-gradient(circle, transparent 38%, #000 80%);
+}
+.cat-pic.cat-scrolly img {
+  position: relative; width: 74%; height: auto; object-fit: contain;
+  /* Upright and resting a touch low, so the peak sits at the circle's centre */
+  transform: translateY(4px); transition: transform .45s cubic-bezier(.2,.8,.2,1);
+  filter: drop-shadow(0 6px 6px rgba(30,70,40,.18));
+}
+html:not(.cat-anim) .cat:hover .cat-scrolly img, html:not(.cat-anim) .cat:focus-visible .cat-scrolly img {
+  animation: peak-wiggle .9s cubic-bezier(.3,.7,.3,1) both;
+}
+/* The controller's wiggle, but starting and ending upright */
+@keyframes peak-wiggle {
+  0% { transform: translateY(4px); }
+  30% { transform: translateY(-2px) rotate(5deg) scale(1.08); }
+  55% { transform: translateY(-1px) rotate(-4deg) scale(1.08); }
+  78% { transform: translateY(-1px) rotate(1.5deg) scale(1.08); }
+  100% { transform: translateY(-1px) rotate(0deg) scale(1.08); }
+}
+.wip-form .cd-field { margin-bottom: 6px; }
+.wip-error { min-height: 20px; margin: 0 0 10px !important; font-size: 13px !important; color: #c0392b !important; }
+.wip-form.wrong .cd-field input { border-color: #e0a29a; animation: wip-shake .32s ease; }
+.wip-ask { margin: 16px 0 0 !important; padding-top: 14px; border-top: 1px solid var(--line-soft, #efede9); font-size: 14px !important; }
+.wip-ask a { color: var(--accent, #1b5fb8); font-weight: 600; }
+@keyframes wip-shake { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+@media (prefers-reduced-motion: reduce) { .wip-form.wrong .cd-field input { animation: none; } }
+
+.cd-thanks a { color: #1b5fb8; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }

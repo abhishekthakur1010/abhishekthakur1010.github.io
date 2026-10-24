@@ -1,0 +1,25 @@
+/* Loading shimmer, shared by every page.
+   js/shimmer.js tags each image or video with .sk until it has loaded. */
+:where(:root) {
+  --sk-base: #ecebe8;
+  --sk-shine: #f7f6f4;
+}
+@keyframes sk-run {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}
+img.sk,
+video.sk,
+.sk-box,
+:where([class*="img"], [class*="thumb"], [class*="media"], [class*="pic"], [class*="logo"], [class*="avatar"], [class*="cover"], [class*="photo"], figure):has(> img.sk, > video.sk, > picture > img.sk) {
+  background-color: var(--sk-base) !important;
+  background-image: linear-gradient(100deg, transparent 30%, var(--sk-shine) 50%, transparent 70%) !important;
+  background-size: 200% 100% !important;
+  background-repeat: no-repeat !important;
+  animation: sk-run 1.4s linear infinite;
+}
+img.sk { color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  img.sk, video.sk, .sk-box,
+  :where([class*="img"], [class*="thumb"], [class*="media"], [class*="pic"], [class*="logo"], [class*="avatar"], [class*="cover"], [class*="photo"], figure):has(> img.sk, > video.sk, > picture > img.sk) { animation: none; }
+}

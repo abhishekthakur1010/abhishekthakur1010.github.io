@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abhishek Thakur · Product Design Lead</title>
+    <meta name="description" content="Abhishek Thakur, Product Design Lead at Delhivery. 8+ years designing for 100M+ users across logistics, e-commerce, telecom and healthcare at Delhivery, Jio and Swiggy Dineout." />
+    <meta name="author" content="Abhishek Thakur" />
+    <meta property="og:title" content="Abhishek Thakur · Product Design Lead at Delhivery" />
+    <meta property="og:description" content="8+ years designing for 100M+ users across Delhivery, Jio, Netmeds and Swiggy Dineout." />
+    <meta property="og:image" content="./images/profile-photo.jpg" />
+    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="./css/profile.css?v=59" rel="stylesheet" />
+    <link href="./css/categories.css?v=15" rel="stylesheet" />
+    <link href="./css/splash.css?v=5" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+    <script>
+      // Company theme: the default below, or ?for=<company> in the link (e.g. ?for=default).
+      (function () {
+        var DEFAULT_THEME = "default";
+        var t = DEFAULT_THEME;
+        try { t = new URLSearchParams(location.search).get("for") || t; } catch (e) {}
+        document.documentElement.setAttribute("data-theme", t.toLowerCase());
+      })();
+    </script>
+    <script>
+      // Opening on the categories: set the full-screen banner before the first paint, circles hidden
+      // until they rise in (js/categories.js), so the profile never flashes underneath.
+      if (location.hash === "#categories") document.documentElement.classList.add("cat-mode", "cat-out");
+    </script>
+    <script>
+      // Splash (js/splash.js): once per visit, when the site opens on the categories. ?splash=1 forces it.
+      (function () {
+        var seen = false, force = /[?&]splash=1/.test(location.search);
+        try { seen = sessionStorage.getItem("splash-seen") === "1"; } catch (e) {}
+        if (force || (location.hash === "#categories" && !seen)) document.documentElement.classList.add("splash-on");
+      })();
+    </script>
+  <link rel="stylesheet" href="./css/shimmer.css" />
+<script src="./js/shimmer.js"></script>
+</head>
+  <body>
+    <!-- Splash: a bouncing ball knocks up DESIGNER, DEVELOPER, HUMAN, splats, and folds into the name (css/splash.css, js/splash.js) -->
+    <div class="splash" id="splash" aria-hidden="true">
+      <div class="sp-stage" id="sp-stage"><svg width="0" height="0" style="position:absolute"><defs id="sp-fdefs"></defs></svg></div>
+      <span class="sp-skip">Tap to skip</span>
+    </div>
+    <script src="./js/splash.js?v=8"></script>
+    <nav class="toc" aria-label="Contents">
+      <a class="toc-home" href="#categories" aria-label="All categories" title="All categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7.5" cy="7.5" r="3.2"/><circle cx="16.5" cy="7.5" r="3.2"/><circle cx="7.5" cy="16.5" r="3.2"/><circle cx="16.5" cy="16.5" r="3.2"/></svg></a>
+      <button type="button" class="toc-rail" aria-expanded="false" aria-controls="toc-panel" aria-label="Contents"><span class="toc-ticks" aria-hidden="true"><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick is-end"></span></span></button>
+      <div class="toc-panel" id="toc-panel" hidden>
+        <p class="toc-title">Contents</p>
+        <ul class="toc-list">
+          <li class="toc-back"><a href="#categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>All categories</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#recommendations">Recommendations</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#interests">Beyond work</a></li>
+          <li class="toc-end"><a href="./about-us.html">My story</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="layout is-single" id="top">
+      <main class="main">
+        <!-- Intro -->
+        <section class="card profile" aria-label="Profile">
+          <div class="cover">
+            <div class="cover-lockup">
+              <h2 class="cl-title">Happy Diwali</h2>
+              <p class="cl-sub">Festival of lights</p>
+            </div>
+          </div>
+          <!-- Categories: shown full screen on the banner when the site opens (profile.html#categories) -->
+          <div class="cats" id="cats">
+            <!-- The heading hints how to light the sparkler; "Happy Diwali" shows while it peaks, with the skyrockets -->
+            <div class="cats-head">
+              <h2 class="ch-title ch-swap">
+                <span class="ch-0">Light up the <em>night</em></span>
+                <span class="ch-1">Happy <em>Diwali</em></span>
+              </h2>
+              <p class="ch-sub ch-swap" aria-live="polite">
+                <span data-s="hint"><span class="ch-fine">Touch a diya with your sparkler to light it.</span><span class="ch-coarse">Slide to a diya to light your sparkler.</span></span>
+                <span data-s="catch">It&rsquo;s catching. Hold on a moment&hellip;</span>
+                <span data-s="cracker">Now touch a cracker in the corner.</span>
+                <span data-s="wish">Wishing you light, joy and new beginnings.</span>
+                <span data-s="fade">Your sparkler is burning out.</span>
+                <span data-s="again">Touch a diya to light it again.</span>
+              </p>
+            </div>
+            <ul class="cats-row" aria-label="Choose how to explore">
+              <li><button type="button" class="cat" data-key="resume">
+                <span class="cat-pic"><img src="./images/profile-photo.jpg" alt="" /></span>
+                <span class="cat-name">Professional</span><span class="cat-tag cat-rec">Recommended</span>
+              </button></li>
+              <li><button type="button" class="cat" data-key="gamified" aria-haspopup="dialog">
+                <span class="cat-pic cat-game"><img src="./images/choose/gamepad.svg" alt="" /></span>
+                <span class="cat-name">Gamified</span><span class="cat-tag">WIP</span>
+              </button></li>
+              <li><button type="button" class="cat" data-key="scrolly" aria-haspopup="dialog">
+                <span class="cat-pic cat-scrolly"><img src="./images/choose/mountain.webp" alt="" /></span>
+                <span class="cat-name">Scrollytelling</span><span class="cat-tag">WIP</span>
+              </button></li>
+              <li><button type="button" class="cat" data-key="feedback" aria-haspopup="dialog">
+                <span class="cat-pic add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></span>
+                <span class="cat-name">Add feedback</span>
+              </button></li>
+            </ul>
+          </div>
+          <div class="profile-body">
+            <div class="avatar"><img src="./images/profile-photo.jpg" alt="Portrait of Abhishek Thakur" /></div>
+            <div class="profile-grid">
+              <div>
+                <h1 class="profile-name">Abhishek Thakur</h1>
+                <p class="headline">Product Design Lead · AI-first products at scale</p>
+                <div class="meta-strong"><a href="#experience">100M+ users impacted</a> · <a href="#featured">4 case studies</a> · <span class="visit-count"><span id="visit-num">1,011</span> visitors</span></div>
+                <div class="actions">
+                  <a class="btn btn-primary" href="https://cal.com/abhishek-thakur-adhbch/30min" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book a call</a>
+                  <a class="btn btn-outline" href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank" rel="noopener" aria-label="Message me on LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 3.5V17h0A1.5 1.5 0 0 1 4 15.5z"/></svg>Message</a>
+                  <a class="btn btn-ghost" href="./resume.pdf?v=2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Resume</a>
+                  <div class="more">
+                    <button class="more-btn" type="button" aria-label="More links" aria-haspopup="menu" aria-expanded="false" aria-controls="more-menu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="18.5" cy="12" r="1.8"/></svg></button>
+                    <div class="more-menu" id="more-menu" role="menu" hidden>
+                      <a role="menuitem" href="mailto:abhi.thakur1010@gmail.com"><svg class="brand-ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#EA4335"/><path d="M6 8.2h12v8.6H6z" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="m6.3 8.6 5.7 4.6 5.7-4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Email</span></a>
+                      <a role="menuitem" href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank" rel="noopener"><svg class="brand-ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#0A66C2"/><rect x="5.5" y="9.6" width="3" height="8.9" rx=".4" fill="#fff"/><circle cx="7" cy="6.6" r="1.75" fill="#fff"/><path d="M10.6 9.6h2.8v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3.2 1.6 3.2 4v5.1h-3v-4.5c0-1.1-.3-1.9-1.4-1.9-1.1 0-1.6.8-1.6 1.9v4.5h-3z" fill="#fff"/></svg><span>LinkedIn</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+                      <a role="menuitem" href="https://www.behance.net/abhishekthakur1010/" target="_blank" rel="noopener"><svg class="brand-ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#1769FF"/><text x="12" y="16.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="700" fill="#fff">Bē</text></svg><span>Behance</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+                      <a role="menuitem" href="https://dribbble.com/abhishek_thakur_" target="_blank" rel="noopener"><svg class="brand-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#EA4C89"/><g fill="none" stroke="#fff" stroke-width="1.3"><circle cx="12" cy="12" r="7"/><path d="M8.2 6.1c2.6 3 4.6 7 5.8 12.4M5.1 10.8c4.2.3 8.6-.6 11.9-3.1M8.3 18c1.8-3.2 4.9-4.7 10.6-3.6"/></g></svg><span>Dribbble</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="affil" aria-label="Education">
+                <li><img src="./images/iiit-logo.png" alt="" />IIIT Allahabad</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Highlights -->
+        <section class="card" id="products" aria-labelledby="h-products">
+          <div class="card-head">
+            <h2 class="card-title" id="h-products">Products I've shaped</h2>
+            <div class="rail-nav">
+              <button type="button" data-rail="apps-rail" data-dir="-1" aria-label="Previous products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+              <button type="button" data-rail="apps-rail" data-dir="1" aria-label="Next products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <p class="card-sub">Live apps used by millions, as rated on the stores.</p>
+          <ul class="app-rail" id="apps-rail">
+            <li class="app-card" style="--brand:#0a2885">
+              <div class="app-head">
+                <img class="app-logo" src="./images/brandLogo/jio-blue.png" alt="" loading="lazy" />
+                <div><h3>MyJio</h3><p>Jio Platforms</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">App Store</p><p class="store-rating">4.7<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">30K ratings · Productivity</p></div><div class="store"><p class="store-label">Play Store</p><p class="store-rating">4.5<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">500M+ downloads · 27.4M reviews</p></div></div>
+            </li>
+            <li class="app-card" style="--brand:#d4302b">
+              <div class="app-head">
+                <img class="app-logo" src="./images/brandLogo/jiomart-red.svg" alt="" loading="lazy" />
+                <div><h3>JioMart</h3><p>Jio Platforms</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">App Store</p><p class="store-rating">4.6<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">218K ratings · No. 19 in Shopping</p></div><div class="store"><p class="store-label">Play Store</p><p class="store-rating">4.1<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">100M+ downloads · 2.56M reviews</p></div></div>
+            </li>
+            <li class="app-card" style="--brand:#6fa83a">
+              <div class="app-head">
+                <img class="app-logo" src="./images/apps/netmeds.png" alt="" loading="lazy" />
+                <div><h3>Netmeds</h3><p>Reliance Retail</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">App Store</p><p class="store-rating">4.3<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">26K ratings · No. 13 in Medical</p></div><div class="store"><p class="store-label">Play Store</p><p class="store-rating">4.4<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">10M+ downloads · 817K reviews</p></div></div>
+            </li>
+            <li class="app-card" style="--brand:#ec6131">
+              <div class="app-head">
+                <img class="app-logo" src="./images/brandLogo/swiggy-dineout-app.png" alt="" loading="lazy" />
+                <div><h3>Swiggy Dineout</h3><p>Swiggy</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">App Store</p><p class="store-rating">4.1<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">3.2K ratings · No. 39 in Food &amp; Drink</p></div><div class="store"><p class="store-label">Play Store</p><p class="store-rating">4.7<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">5M+ downloads · 128K reviews</p></div></div>
+            </li>
+            <li class="app-card" style="--brand:#1f1f1f">
+              <div class="app-head">
+                <img class="app-logo" src="./images/apps/delhivery.png" alt="" loading="lazy" />
+                <div><h3>Delhivery: Courier App</h3><p>Delhivery Ltd</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">App Store</p><p class="store-rating">3.9<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">101K ratings · No. 8 in Utilities</p></div><div class="store"><p class="store-label">Play Store</p><p class="store-rating">4.1<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">10M+ downloads · 446K reviews</p></div></div>
+            </li>
+            <li class="app-card" style="--brand:#e3342b">
+              <div class="app-head">
+                <img class="app-logo" src="./images/apps/delhivery-partner.png" alt="" loading="lazy" />
+                <div><h3>Delhivery Partner</h3><p>Delhivery Ltd</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">Play Store</p><p class="store-rating">3.8<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">1M+ downloads · 5.69K reviews</p></div></div>
+            </li>
+            <li class="app-card" style="--brand:#e0703a">
+              <div class="app-head">
+                <img class="app-logo" src="./images/apps/urban-ladder.png" alt="" loading="lazy" />
+                <div><h3>Urban Ladder</h3><p>Reliance Retail</p></div>
+              </div>
+              <div class="app-stores"><div class="store"><p class="store-label">App Store</p><p class="store-rating">3.3<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">2K ratings · Shopping</p></div><div class="store"><p class="store-label">Play Store</p><p class="store-rating">3.5<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></p><p class="store-detail">5M+ downloads · 38.1K reviews</p></div></div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- About + awards -->
+        <section class="card" id="about" aria-labelledby="h-about">
+          <div class="card-head">
+            <h2 class="card-title" id="h-about">Engineer by degree. Designer by instinct.</h2>
+            <div class="rail-nav">
+              <button type="button" data-rail="awards-rail" data-dir="-1" aria-label="Previous awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+              <button type="button" data-rail="awards-rail" data-dir="1" aria-label="Next awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <p class="card-sub" id="awards">From the mountains to millions: 10 years in design, and a few wins along the way.</p>
+          <ul class="award-rail" id="awards-rail">
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/spotlight-full.jpg" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/spotlight.jpg?v=2" alt="" loading="lazy" /></span>
+                <span class="award-title">Spotlight Award</span>
+                <span class="award-meta">Jio Platforms · Q4 2022–23</span>
+                <span class="award-desc">Awarded for a result-driven mindset, seamless collaboration and selfless team support.</span>
+              </button>
+            </li>
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/design-nerds-full.jpg" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/design-nerds.jpg?v=2" alt="" loading="lazy" /></span>
+                <span class="award-title">Design Nerds Hackathon</span>
+                <span class="award-meta">Jio Platforms · Sep 2022</span>
+                <span class="award-desc">Won Reliance Jio&#x27;s Design Nerds contest, a quarterly platform for creativity and cross-team innovation.</span>
+              </button>
+            </li>
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/best-team-full.jpg" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/best-team.jpg?v=2" alt="" loading="lazy" /></span>
+                <span class="award-title">JioMart Best Team Award</span>
+                <span class="award-meta">Jio Platforms · Q3</span>
+                <span class="award-desc">For consistently delivering high-impact solutions that solved real user problems and drove business outcomes.</span>
+              </button>
+            </li>
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/mega-mind-full.jpg" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/mega-mind.jpg?v=2" alt="" loading="lazy" /></span>
+                <span class="award-title">Mega Mind Award</span>
+                <span class="award-meta">Swiggy Dineout · Jul 2017</span>
+                <span class="award-desc">Awarded for driving innovation and introducing impactful ideas.</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Featured -->
+        <section class="card" id="featured" aria-labelledby="h-featured">
+          <div class="card-head"><h2 class="card-title" id="h-featured">Featured</h2></div>
+          <div class="featured">
+          <a class="feat" href="./jiomart-discovery.html">
+            <div class="feat-img"><img src="./images/feature-project-02.webp" alt="Optimizing product discovery case study cover" loading="lazy" /></div>
+            <div class="feat-body">
+              <div class="feat-title">Optimizing product discovery</div>
+              <div class="feat-meta">JioMart · +51% installs</div>
+            </div>
+          </a>
+          <a class="feat" href="./jio-checkout.html">
+            <div class="feat-img"><img src="./images/feature-project-01.webp" alt="Streamlining the checkout experience case study cover" loading="lazy" /></div>
+            <div class="feat-body">
+              <div class="feat-title">Streamlining the checkout experience</div>
+              <div class="feat-meta">JioMart · +20.54% conversion</div>
+            </div>
+          </a>
+          <a class="feat" href="./delfin.html">
+            <div class="feat-img"><img src="./images/delfin/delfin-cover.png" alt="DelFin: a 0→1 financial services platform case study cover" loading="lazy" /></div>
+            <div class="feat-body">
+              <div class="feat-title">DelFin: a 0→1 financial services platform</div>
+              <div class="feat-meta">Delhivery · ~8 weeks to launch</div>
+            </div>
+          </a>
+          <a class="feat" href="./delhivery-case-study-v2.html">
+            <div class="feat-img"><img src="./images/feature-project-04.webp" alt="Last Mile Express case study cover" loading="lazy" /></div>
+            <div class="feat-body">
+              <div class="feat-title">Last Mile Express</div>
+              <div class="feat-meta">Delhivery · +32% digital payments</div>
+            </div>
+          </a>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="card" id="experience" aria-labelledby="h-experience">
+          <h2 class="card-title" id="h-experience">Experience</h2>
+          <ul class="xp-list">
+            <li class="xp">
+              <div class="xp-logo"><img src="./images/brandLogo/delhivery.svg" alt="" /></div>
+              <div>
+                <h3 class="xp-role">Product Design Lead</h3>
+                <p class="xp-org">Delhivery Ltd</p>
+              </div>
+              <p class="row-year">2023 – Present</p>
+            </li>
+            <li class="xp">
+              <div class="xp-logo"><img src="./images/brandLogo/jio-blue.png" alt="" /></div>
+              <div>
+                <h3 class="xp-role">Senior UX Manager</h3>
+                <p class="xp-org">Jio Platforms (Reliance)</p>
+              </div>
+              <p class="row-year">2022 – 2023</p>
+            </li>
+            <li class="xp">
+              <div class="xp-logo"><img src="./images/brandLogo/trava-cation.svg" alt="" /></div>
+              <div>
+                <h3 class="xp-role">Design Strategy</h3>
+                <p class="xp-org">Travacations</p>
+              </div>
+              <p class="row-year">2019 – 2022</p>
+            </li>
+            <li class="xp">
+              <div class="xp-logo"><img src="./images/brandLogo/swiggy-dineout-app.png" alt="" /></div>
+              <div>
+                <h3 class="xp-role">Senior UX Designer, Manager II</h3>
+                <p class="xp-org">Swiggy Dineout</p>
+              </div>
+              <p class="row-year">2016 – 2019</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Projects -->
+        <section class="card" id="projects" aria-labelledby="h-projects">
+          <h2 class="card-title" id="h-projects">Projects</h2>
+          <p class="card-sub">Write-ups coming soon</p>
+          <ul class="list" id="project-list">
+            <li class="proj">
+              <div class="proj-thumb"><img src="./images/feature-project-12.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">One payment, many journeys</h3>
+                <p class="proj-org">MyJio</p>
+              </div>
+              <p class="row-year">2022 – 23</p>
+            </li>
+            <li class="proj">
+              <div class="proj-thumb"><img src="./images/feature-project-06.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Powering the engine of fulfilment</h3>
+                <p class="proj-org">Delhivery</p>
+              </div>
+              <p class="row-year">2023 – 25</p>
+            </li>
+            <li class="proj">
+              <div class="proj-thumb"><img src="./images/feature-project-09.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Making mid-mile smarter</h3>
+                <p class="proj-org">Delhivery</p>
+              </div>
+              <p class="row-year">2023 – 25</p>
+            </li>
+            <li class="proj">
+              <div class="proj-thumb"><img src="./images/feature-project-11.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Healing by design</h3>
+                <p class="proj-org">Netmeds</p>
+              </div>
+              <p class="row-year">2022 – 23</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-07.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Building for speed</h3>
+                <p class="proj-org">Delhivery</p>
+              </div>
+              <p class="row-year">2023 – 25</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-08.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">First impressions matter</h3>
+                <p class="proj-org">Delhivery</p>
+              </div>
+              <p class="row-year">2023 – 25</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-03.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Designing the post-order experience</h3>
+                <p class="proj-org">JioMart</p>
+              </div>
+              <p class="row-year">2022 – 23</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-10.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Post-order, not post-care</h3>
+                <p class="proj-org">JioMart</p>
+              </div>
+              <p class="row-year">2022 – 23</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-13.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Trust you can scroll</h3>
+                <p class="proj-org">JioMart</p>
+              </div>
+              <p class="row-year">2022 – 23</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-17.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Booking without friction</h3>
+                <p class="proj-org">Swiggy Dineout</p>
+              </div>
+              <p class="row-year">2016 – 19</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-16.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Reimagining browsing for foodies</h3>
+                <p class="proj-org">Swiggy Dineout</p>
+              </div>
+              <p class="row-year">2016 – 19</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-05.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">From 10K to 10M: scaling delight</h3>
+                <p class="proj-org">Dineout</p>
+              </div>
+              <p class="row-year">2016 – 19</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-14.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Game on: IPL meets design</h3>
+                <p class="proj-org">Dineout</p>
+              </div>
+              <p class="row-year">2016 – 19</p>
+            </li>
+            <li class="proj is-hidden" data-extra>
+              <div class="proj-thumb"><img src="./images/feature-project-15.webp" alt="" loading="lazy" /></div>
+              <div>
+                <h3 class="proj-title">Dining, refined</h3>
+                <p class="proj-org">Dineout</p>
+              </div>
+              <p class="row-year">2016 – 19</p>
+            </li>
+          </ul>
+          <div class="card-foot"><button type="button" data-show-all="project-list" aria-expanded="false"><span>Show all 14 projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+        </section>
+
+        <!-- Recommendations -->
+        <section class="card" id="recommendations" aria-labelledby="h-recs">
+          <h2 class="card-title" id="h-recs">Recommendations</h2>
+          <ul class="list" id="rec-list">
+            <li class="rec">
+              <div class="rec-pic"><img src="./images/recommend-img-01.png" alt="Santanu Shyam" loading="lazy" /></div>
+              <div>
+                <p class="rec-name">Santanu Shyam</p>
+                <p class="rec-title">Product Leader | IIM IIT</p>
+                <p class="rec-head">“Collaborative, skilled and impact driven”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>I had the pleasure of working with Abhishek on multiple projects at Dineout, Times Internet. I was thoroughly impressed with his exceptional skills and passion for UX Design. Abhishek has a natural ability to understand users&#x27; needs and problems, which allows him to create user experiences that are both intuitive and enjoyable. In addition to his technical knowledge, Abhishek approaches every project with a positive and enthusiastic attitude, inspiring the entire team to strive for excellence.</p><p>I recall that Abhishek exhibited excellent leadership qualities while leading long-term projects such as Predict and Win, GIRF, GP Integration, etc. His ability to motivate and inspire the team, while fostering a collaborative environment, was truly commendable. He has a unique talent for bringing out the best in his team members, empowering them to grow both personally and professionally.</p><p>I am confident that Abhishek will continue to excel as a UX Designer. His dedication, talent, and flexibility make him an invaluable asset to any organization. If you are seeking a UX Designer who can improve your product and create exceptional user experiences, I wholeheartedly recommend Abhishek.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-01.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec">
+              <div class="rec-pic"><img src="./images/recommend-img-02.png" alt="Nirmal Biswas" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/nirmalbiswas/" target="_blank" rel="noopener">Nirmal Biswas</a></p>
+                <p class="rec-title">Associate Design Director</p>
+                <p class="rec-head">“Award-winning, conversion-focused UX expert”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>It’s been a pleasure to work with Abhishek at Jio Platforms Ltd. He has been impeccable at his role as Sr. UX designer working for projects such as JioMart and Netmeds. Abhishek received Star performer award for his dedication and ownership mindset at Jio. He has been a good team player, always eager to pick up new projects and deliver them on time. The UX team at Jio was able to unlock a number of KPIs on increasing conversions, engagement, retention and reducing drop offs due to the relentless efforts of Abhishek. He has immense growth potential as the next design leader and I wish him all the best for his future endeavours.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-02.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec">
+              <div class="rec-pic"><img src="./images/recommend-img-03.png" alt="Anirban Borah" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/anirban-borah/" target="_blank" rel="noopener">Anirban Borah</a></p>
+                <p class="rec-title">Lead UX Designer</p>
+                <p class="rec-head">“Supportive mentor with sharp problem-solving”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>Abhishek was a mentor, teacher and a senior while he was at Times Internet. He had a creative yet methodical approach to difficult problems; especially skilled at analyzing and articulating complex ideas, kind and patient as he included others in the process. He was always available when I needed guidance, I felt supported and truly valued working for him.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-03.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-04.png" alt="Isha Srivastava" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/ishasri/" target="_blank" rel="noopener">Isha Srivastava</a></p>
+                <p class="rec-title">Senior Product Designer</p>
+                <p class="rec-head">“Passionate, tireless, full-stack designer”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>Abhishek is one of the most passionate designers I have had a chance to work with.</p><p>He works tirelessly to find elegant solutions to a problem. A full-stack designer with a growth mindset &amp; willingness to learn. He would definitely elevate the user experience of any product he works on.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-04.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-05.png" alt="Brajendra Nandan Panda" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/brajendra-nandan-panda/" target="_blank" rel="noopener">Brajendra Nandan Panda</a></p>
+                <p class="rec-title">Principal Designer</p>
+                <p class="rec-head">“Driven, data-backed, fearless designer”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>Abhishek has a tremendous passion to learn and the energy to drive his colleagues to do the same. With a no-nonsense approach to his deliverables, he made sure that his design suggestions were well backed up with data, examples and design theory. This helped in getting the stakeholders on board and move the discussions forward to the next phase of implementation.</p><p>Abhishek never backs down from a challenge. I remember him volunteering to take up the design activity for the DineOut Great Indian Restaurant Festival 2018.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-05.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-06.png" alt="Shashank Choubey" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/shashanklinkedin88/" target="_blank" rel="noopener">Shashank Choubey</a></p>
+                <p class="rec-title">Lead Motion Designer</p>
+                <p class="rec-head">“Supportive mentor with sharp problem-solving”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>All i can say is, he has vast knowledge in User Experience designing. The quality of work he delivers is commendable. He believes in learning new things each day along side which is the reason of his fast growth in this industry.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-06.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-07.png" alt="Sawai Singh" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/sawaistar/" target="_blank" rel="noopener">Sawai Singh</a></p>
+                <p class="rec-title">Senior Mobile Developer</p>
+                <p class="rec-head">“Gifted designer with team spirit”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>I worked alongside Abhishek at Dineout (TimesInternet) and he never failed to impress us. Abhishek has a natural gift for design, user experience, and client workflows. He is also an excellent team player, quickly shifting focus from one department if needed. His attention to detail and general UI creativity made a huge impact on DINEOUT App. And on top of all of this, I consider him a friend, always had a great attitude, and possess all the skillsets that you would want in a highly productive team member.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-07.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-08.png" alt="Kunal Eapen" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/kunaleapen/" target="_blank" rel="noopener">Kunal Eapen</a></p>
+                <p class="rec-title">Senior UX Researcher</p>
+                <p class="rec-head">“Empathetic designer and strong mentor”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>Abhishek has a keen eye and passion for digital user experience &amp; design. He has always been a big proponent of user research and empathizing with his customers in order to identify and address their problems. I&#x27;ve learned a few things from him myself in our internship days and he&#x27;s always eager to collaborate, mentor and learn!</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-08.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-10.png" alt="Pradnya Malandkar" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/pradnyamalandkar/" target="_blank" rel="noopener">Pradnya Malandkar</a></p>
+                <p class="rec-title">Manage UX Designer</p>
+                <p class="rec-head">“Smart, empathetic and reliable designer”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>It was a pleasure working with Abhishek, a team player with great understanding of design and research methodologies. He knows well how to create solutions that meet the user needs and the business wants.</p><p>A brilliant UX designer who collaborates well with all stakeholders while keeping the team motivated, I highly recommend him, he would be a great asset to anyone he chooses to work with.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-02.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-12.png" alt="Lalitya Krishnan" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/lalityakrishnan/" target="_blank" rel="noopener">Lalitya Krishnan</a></p>
+                <p class="rec-title">Senior UX Designer</p>
+                <p class="rec-head">“User-focused, detail-oriented, highly collaborative”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>Abhishek is an exceptional Designer with a sharp eye for detail, user-centric approach, and proficiency in design tools and methodologies.</p><p>He excels in creative problem-solving and collaborates effectively with stakeholders and developers. He also manages things really well. His passion for UX design and dedication to excellence make him a valuable asset to any team</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-12.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-13.png" alt="Sneha Subramaniam" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/sneha-subramaniam-010723199/" target="_blank" rel="noopener">Sneha Subramaniam</a></p>
+                <p class="rec-title">Product Designer and Researcher</p>
+                <p class="rec-head">“Solves complex problems with ease”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>I had the pleasure of working with Abhishek at Jio Platforms Ltd. I got the opportunity to work with him for Netmeds Wholesale where his user-focused approach consistently transformed complex challenges into elegant design solutions. Beyond his design skills, he was a chill, supportive and a great team player. I highly recommend Abhishek for any future opportunities.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-02.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+            <li class="rec is-hidden" data-extra>
+              <div class="rec-pic"><img src="./images/recommend-img-14.png" alt="Aashima Vinayak" loading="lazy" /></div>
+              <div>
+                <p class="rec-name"><a href="https://www.linkedin.com/in/aashima-vinayak-897a0083/" target="_blank" rel="noopener">Aashima Vinayak</a></p>
+                <p class="rec-title">Senior Product Designer</p>
+                <p class="rec-head">“Smart, detailed, and design-driven”</p>
+                <div class="rec-text"><div class="clamp "><div class="clamp-body"><p>Abhishek is a hard working person and has a good knowledge of his work. He always did an amazing job striking the right balance between the big picture thinking and attention to all the details. He loves solving problem in creative ways. I highly recommend him in user experience and design.</p></div><button class="see-more" type="button">…see more</button></div></div>
+              </div>
+              <div class="rec-logo"><img src="./images/recommend-logo-14.svg?v=2" alt="" loading="lazy" /></div>
+            </li>
+          </ul>
+          <div class="card-foot"><button type="button" data-show-all="rec-list" aria-expanded="false"><span>Show all 12 recommendations</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+        </section>
+
+        <!-- Education -->
+        <section class="card" id="education" aria-labelledby="h-education">
+          <h2 class="card-title" id="h-education">Education</h2>
+          <ul class="list">
+            <li class="xp">
+              <div class="xp-logo"><img src="./images/iiit-logo.png" alt="IIIT Allahabad logo" /></div>
+              <div>
+                <h3 class="xp-role">IIIT Allahabad</h3>
+                <p class="xp-org">B.Tech, Information Technology</p>
+              </div>
+              <p class="row-year">2012 – 2016</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Interests -->
+        <section class="card" id="interests" aria-labelledby="h-interests">
+          <h2 class="card-title" id="h-interests">Beyond work</h2>
+          <div class="interests">
+            <div class="interest"><span class="ico" aria-hidden="true">✈️</span><div><b>Travel</b><span>6–7 countries so far.</span></div></div>
+            <div class="interest"><span class="ico" aria-hidden="true">🚴</span><div><b>Cycling</b><span>Solo Gurgaon–Dehradun ride, cyclothons.</span></div></div>
+            <div class="interest"><span class="ico" aria-hidden="true">❤️</span><div><b>Giving back</b><span>CRY Foundation, Robin Hood Army.</span></div></div>
+            <div class="interest"><span class="ico" aria-hidden="true">🌿</span><div><b>Outdoors</b><span>Usually with Luna &amp; Bruno.</span></div></div>
+          </div>
+          <div class="card-foot"><a href="./about-us.html">Read my full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </section>
+      </main>
+
+    </div>
+
+    <dialog class="media-modal" id="media-modal" aria-labelledby="media-title">
+      <div class="media-head">
+        <span>Media</span>
+        <button type="button" class="media-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="media-body">
+        <div class="media-img"><img alt="" /></div>
+        <div class="media-text">
+          <h2 id="media-title"></h2>
+          <p class="media-meta"></p>
+          <p class="media-desc"></p>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="footer">
+      <p class="foot-copy">© 2026 Abhishek Thakur Design</p>
+      <nav aria-label="Footer">
+        <a href="./resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/abhishekthakur1010/" target="_blank" rel="noopener">Behance</a>
+        <a href="https://dribbble.com/abhishek_thakur_" target="_blank" rel="noopener">Dribbble</a>
+        <a href="mailto:abhi.thakur1010@gmail.com">Email</a>
+      </nav>
+    </footer>
+
+    <script src="./js/profile.js?v=9"></script>
+    <script src="./js/cover-game.js?v=35"></script>
+
+    <!-- Feedback, opened from the + circle -->
+    <dialog class="cat-dialog" id="cat-wip" aria-labelledby="cat-wip-title">
+      <button class="cd-close" type="button" aria-label="Close" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <div class="cd-body">
+        <p class="cd-kicker">🚧 Work in progress</p>
+        <h2 id="cat-wip-title"><span data-wip-name>This one</span> is still being built</h2>
+        <p>Abhishek is working on it right now. It's password protected while it takes shape. Have a password? Enter it below.</p>
+        <form class="wip-form" novalidate>
+          <label class="cd-field"><span>Password</span>
+            <input name="pass" type="password" autocomplete="off" placeholder="Enter the password" required />
+          </label>
+          <p class="wip-error" aria-live="polite"></p>
+          <div class="cd-actions">
+            <button class="btn btn-primary" type="submit">Unlock</button>
+            <button class="btn btn-ghost" type="button" data-close>Maybe later</button>
+          </div>
+        </form>
+        <p class="wip-ask">Don't have one? <a data-wip-mail href="mailto:abhi.thakur1010@gmail.com">Request a password</a></p>
+      </div>
+    </dialog>
+
+    <dialog class="cat-dialog" id="cat-feedback" aria-labelledby="cat-fb-title">
+      <button class="cd-close" type="button" aria-label="Close" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <div class="cd-body">
+        <form>
+          <h2 id="cat-fb-title">Add feedback</h2>
+          <p>Seen something you liked, or something I should fix? It goes straight to my inbox.</p>
+          <fieldset class="cd-rate" aria-label="How was it?">
+            <label><input type="radio" name="mood" value="Loved it" /><span>😍 Loved it</span></label>
+            <label><input type="radio" name="mood" value="Liked it" checked /><span>👍 Liked it</span></label>
+            <label><input type="radio" name="mood" value="Needs work" /><span>🛠️ Needs work</span></label>
+          </fieldset>
+          <label class="cd-field"><span>Your feedback</span><textarea name="note" rows="4" required placeholder="What stood out, what felt off..."></textarea></label>
+          <label class="cd-field"><span>Name or email (optional)</span><input name="from" type="text" autocomplete="email" placeholder="So I can reply" /></label>
+          <div class="cd-actions">
+            <button class="btn btn-primary" type="submit">Send feedback</button>
+            <button class="btn btn-ghost" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+        <div class="cd-thanks" aria-live="polite">
+          <h2>Thank you!</h2>
+          <p data-thanks-msg>Your note is on its way to my inbox. I read every one.</p>
+          <div class="cd-actions" style="justify-content:center"><button class="btn btn-outline" type="button" data-close>Close</button></div>
+        </div>
+      </div>
+    </dialog>
+    <script src="./js/categories.js?v=19"></script>
+  </body>
+</html>

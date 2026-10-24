@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scrollytelling · Abhishek Thakur</title>
+  <meta name="description" content="A little world to turn: drag the globe and watch the courier find his way." />
+  <link rel="icon" type="image/png" href="../images/favicon.png?v=2" />
+  <style>
+    html, body { margin: 0; height: 100%; background: #f6f9ff; }
+    body { overflow: hidden; font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    #orbit { position: fixed; inset: 0; }
+    /* Back to the categories, styled like the profile's back pill */
+    .back {
+      position: fixed; z-index: 10; top: 18px; left: 18px;
+      display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px 0 10px; border-radius: 999px;
+      border: 1px solid #dce5fa; background: rgba(255,255,255,.85); backdrop-filter: blur(6px);
+      color: #4d5a83; font-size: 13px; font-weight: 600; text-decoration: none;
+    }
+    .back:hover { color: #080e2b; border-color: #a9bbe6; }
+    .back svg { width: 16px; height: 16px; }
+    /* Arriving from the categories: the night curtain lifts */
+    .curtain { position: fixed; inset: 0; z-index: 20; background: #120a1e; pointer-events: none; animation: lift .7s ease .1s forwards; }
+    @keyframes lift { to { opacity: 0; visibility: hidden; } }
+    @media (prefers-reduced-motion: reduce) { .curtain { display: none; } }
+  </style>
+</head>
+<body>
+  <a class="back" href="../profile.html#categories"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>All categories</a>
+  <div id="orbit"></div>
+  <div class="curtain" aria-hidden="true"></div>
+  <!-- Orbit Delivery hero (React + three.js), bundled from the component; only the globe and the courier are kept.
+       The models and the Draco decoder are served from ./models and ./draco; see src/BUILD.md. -->
+  <script src="./orbit.js"></script>
+</body>
+</html>

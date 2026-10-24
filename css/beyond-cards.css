@@ -1,0 +1,49 @@
+/* Beyond work: feature cards. A soft colour glow, a big number, the picture in the middle and
+   a frosted label at the bottom; on hover the card lifts and the picture grows and rises. */
+.bw-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.bw-card {
+  --c: hsl(35, 91%, 55%); --c-light: hsl(41, 100%, 85%); --c-pale: hsl(24, 98%, 96%);
+  position: relative; display: flex; flex-direction: column; height: 260px; padding: 16px;
+  overflow: hidden; border: 1px solid var(--line, #e3e1dc); border-radius: 16px; background: var(--card, #fff);
+  box-shadow: 0 1px 2px rgba(20,20,30,.05);
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+}
+.bw-card::before {
+  content: ""; position: absolute; inset: 0; opacity: .55; pointer-events: none;
+  background: radial-gradient(circle at 50% 32%, var(--c-light) 0%, transparent 70%);
+}
+.bw-purple { --c: hsl(262, 85%, 60%); --c-light: hsl(261, 100%, 87%); --c-pale: hsl(264, 100%, 97%); }
+.bw-pink { --c: hsl(340, 80%, 55%); --c-light: hsl(345, 100%, 88%); --c-pale: hsl(340, 100%, 97%); }
+.bw-green { --c: hsl(150, 60%, 36%); --c-light: hsl(140, 60%, 82%); --c-pale: hsl(140, 60%, 96%); }
+.bw-index {
+  position: absolute; top: 14px; left: 16px; z-index: 1;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; color: var(--text-2, #5e6168);
+}
+.bw-art {
+  position: relative; flex: 1; min-height: 0; display: grid; place-items: center; padding-top: 18px; z-index: 1;
+  font-size: 76px; line-height: 1; filter: drop-shadow(0 10px 14px rgba(30,20,40,.18));
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.bw-body {
+  position: relative; z-index: 2; padding: 12px 14px; border: 1px solid var(--line, #e3e1dc); border-radius: 10px;
+  background: rgba(255,255,255,.8); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.bw-tag {
+  display: inline-block; margin-bottom: 6px; padding: 3px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--c-pale); color: var(--c);
+}
+.bw-body p { margin: 0; font-size: 14px; line-height: 1.45; color: var(--text, #1d1f23); }
+@media (hover: hover) {
+  .bw-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04); }
+  .bw-card:hover .bw-art { transform: translateY(-14px) scale(1.25); }
+}
+@media (max-width: 720px) {
+  .bw-cards { gap: 12px; }
+  .bw-card { height: 236px; padding: 10px; border-radius: 14px; }
+  .bw-index { top: 10px; left: 12px; font-size: 13px; }
+  .bw-art { font-size: 56px; padding-top: 14px; }
+  .bw-body { padding: 9px 10px; }
+  .bw-body p { font-size: 12.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .bw-card, .bw-art { transition: none; } }

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>From the Mountains to Millions — Abhishek Thakur</title>
+    <meta name="description" content="Abhishek Thakur, Lead Product Designer: a six-chapter story from the Himalayas to products used by millions — Dineout, Jio Platforms, Delhivery." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#070c16" />
+    <link rel="icon" href="../images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./story.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+  <link rel="stylesheet" href="../css/shimmer.css" />
+<script src="../js/shimmer.js"></script>
+</head>
+  <body>
+    <!-- ===== fixed visual layers (back to front) ===== -->
+    <canvas id="globe" class="layer layer--globe" aria-hidden="true"></canvas>
+    <div class="layer kf" id="kf" aria-hidden="true">
+      <img data-kf="5" alt="" />
+      <img data-kf="6" alt="" />
+      <img data-kf="7" alt="" />
+      <img data-kf="8" alt="" />
+      <p class="kf__note">Keyframe stills · final motion pending</p>
+    </div>
+    <div class="layer plate" id="campus" aria-hidden="true">
+      <div class="plate__inner">
+        <p class="plate__coord">25.43° N · 81.77° E</p>
+        <p class="plate__name">Indian Institute of Information Technology, Allahabad</p>
+        <p class="plate__fact" id="campusFact"></p>
+        <p class="plate__note">Campus footage pending — placeholder plate</p>
+      </div>
+    </div>
+    <figure class="layer print" id="laptop" aria-hidden="true">
+      <img src="../images/about/curiosity/curiosity-03.png" alt="" />
+      <figcaption>Archive photograph</figcaption>
+    </figure>
+    <canvas id="stage" class="layer layer--stage" aria-label="Interactive 3D scene for the current chapter"></canvas>
+    <canvas id="clouds" class="layer layer--clouds" aria-hidden="true"></canvas>
+    <div class="layer-tip" id="layerTip" hidden><b></b><span></span></div>
+    <p class="hint" id="layersHint">Drag to turn · hover a layer</p>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ===== chapter overlays (text + evidence), filled from config ===== -->
+    <div class="overlays" id="overlays"></div>
+
+    <!-- ===== chrome ===== -->
+    <header class="topbar">
+      <a class="brand" href="../index.html">Abhishek Thakur</a>
+      <nav class="jump" aria-label="Jump to chapter">
+        <button type="button" class="jump__skip" data-jump="dineout">Skip intro</button>
+        <span class="jump__links" id="jumpLinks"></span>
+        <div class="work">
+          <button type="button" class="work__btn" id="workBtn" aria-expanded="false" aria-controls="workMenu">Work</button>
+          <div class="work__menu" id="workMenu" hidden></div>
+        </div>
+      </nav>
+    </header>
+
+    <nav class="rail" aria-label="Story progress">
+      <ol id="rail"></ol>
+      <p class="rail__now" aria-live="polite"><span id="nowNum">01</span><span id="nowTitle">From the Mountains</span></p>
+    </nav>
+    <div class="topline" aria-hidden="true"><span id="topline"></span></div>
+
+    <main id="story"></main>
+
+    <noscript>
+      <div class="nojs">
+        <h1>From the Mountains to Millions</h1>
+        <p>This story needs JavaScript. Case studies:
+          <a href="../jiomart-discovery.html">JioMart discovery</a>,
+          <a href="../jio-checkout.html">JioMart checkout</a>,
+          <a href="../delfin.html">DelFin</a>,
+          <a href="../delhivery-case-study-v2.html">Last Mile Express</a>,
+          <a href="../profile.html">full portfolio</a> · abhi.thakur1010@gmail.com</p>
+      </div>
+    </noscript>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./config.js"></script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

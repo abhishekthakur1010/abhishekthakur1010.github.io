@@ -11,18 +11,20 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=56" rel="stylesheet" />
-  </head>
+    <link href="./css/case-study-v2.css?v=57" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/shimmer.css" />
+<script src="./js/shimmer.js"></script>
+</head>
 
   <body class="csv2">
     <!-- Top bar -->
     <div class="topbar">
       <div class="wrap">
-        <div class="back" onclick="history.back()">
+        <div class="back" role="button" tabindex="0" onclick="if(document.referrer.indexOf(location.host)>-1){history.back()}else{location.href='./profile.html'}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
           Back
         </div>
-        <a class="brand" href="./index.html">ATDESIGN</a>
+        <a class="brand" href="./profile.html" aria-label="Abhishek Thakur, profile"><span class="brand-mark">AT</span>Abhishek Thakur</a>
         <a class="cta" href="./resume.pdf" download>Resume</a>
       </div>
     </div>
@@ -676,7 +678,7 @@
               <p>Making browsing effortless across homepage, PLP, and PDP at JioMart.</p>
             </div>
           </a>
-          <a class="nextcard" href="./delhivery-express.html">
+          <a class="nextcard" href="./delhivery-case-study-v2.html">
             <div class="nextthumb">
               <img src="./images/feature-project-04.webp" alt="Delhivery last mile preview" />
             </div>
@@ -692,7 +694,7 @@
 
     <!-- Footer -->
     <footer class="wrap foot">
-      <div>© 2025 <a href="./index.html">Abhishek Thakur Design</a></div>
+      <div>© 2025 <a href="./profile.html">Abhishek Thakur Design</a> · <a href="./index.html">Start screen</a></div>
       <div class="social">
         <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
         <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>

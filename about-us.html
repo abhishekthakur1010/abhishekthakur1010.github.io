@@ -1,335 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — Abhishek Thakur</title>
-    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link href="./css/case-study-v2.css?v=42" rel="stylesheet" />
-  </head>
-
-  <body class="csv2 about">
-    <!-- Reusable laurel wreath (real vector lifted from award SVG assets; right half mirrored via CSS) -->
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My story · Abhishek Thakur</title>
+  <meta name="description" content="From the mountains to millions: how an engineer became a product design lead, in Abhishek Thakur's own words." />
+  <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+  <link href="./css/story.css?v=7" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/shimmer.css" />
+  <script src="./js/shimmer.js"></script>
+</head>
+<body class="csv2 about story">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <g id="laurel-left">
         <path fill="#111" d="M29.2202 53.9352C28.8372 52.4601 27.992 51.2915 26.9909 50.6669C26.9 50.6119 26.746 50.6315 26.7362 50.7297C26.5624 52.0065 26.0075 53.1908 26.3906 54.6678C26.7737 56.1429 27.6188 57.3116 28.62 57.9362C28.7108 57.9912 28.8293 57.9637 28.8747 57.8733C29.4394 56.8402 29.6033 55.4005 29.2202 53.9352ZM25.2078 55.8169C23.7525 55.3651 22.5322 55.8621 21.2408 55.9799C21.1401 55.9897 21.1125 56.1429 21.1599 56.2333C21.7423 57.2566 22.8797 58.1425 24.3449 58.5962C25.8002 59.0479 27.2575 58.9497 28.3119 58.4331C28.4028 58.388 28.4403 58.2701 28.3929 58.1797C27.8104 57.1663 26.6631 56.2706 25.2078 55.8169ZM24.2442 53.7722C24.3173 53.8449 24.4259 53.8351 24.499 53.7624C25.2177 52.9119 25.6541 51.6077 25.5732 50.17C25.5001 48.7302 24.9354 47.4732 24.1258 46.7033C24.0527 46.6306 23.9066 46.6227 23.871 46.7131C23.4623 47.8719 22.7159 48.8678 22.7968 50.3055C22.8699 51.7452 23.4327 53.0023 24.2442 53.7722ZM23.8513 54.1788C23.952 54.1513 24.0053 54.0511 23.9698 53.9608C23.6242 52.9021 22.7317 51.8513 21.468 51.154C20.1943 50.4568 18.9661 50.6924 17.7458 50.5471C17.6451 50.5373 17.5918 50.6748 17.6273 50.7651C17.9729 51.8238 18.8654 52.8746 20.1291 53.5719C21.4047 54.2613 22.7692 54.4499 23.8513 54.1788ZM21.0948 48.8755C22.0583 48.3688 22.9154 47.3553 23.3695 46.0236C23.8237 44.7017 23.7782 43.3621 23.334 42.3859C23.2984 42.2956 23.1701 42.2327 23.1069 42.3054C22.3249 43.201 21.2863 43.8256 20.8321 45.1574C20.378 46.4792 20.4234 47.8188 20.8677 48.795C20.9032 48.8834 21.0138 48.9207 21.0948 48.8755ZM20.5577 48.8755C20.6307 47.7992 20.2121 46.5303 19.3294 45.4442C18.4369 44.358 17.2462 44.1223 16.1997 43.5527C16.1187 43.5075 16.018 43.6077 16.0082 43.7059C15.9351 44.7822 16.3537 46.0511 17.2364 47.1373C18.1289 48.2235 19.2919 48.8834 20.3661 49.0287C20.4668 49.0385 20.5498 48.9737 20.5577 48.8755ZM19.6928 43.164C19.7106 43.2543 19.8014 43.3093 19.8922 43.2818C20.8835 43.0108 21.8945 42.2408 22.5955 41.0997C23.2965 39.9585 23.5235 38.7191 23.3143 37.7154C23.2965 37.6251 23.1859 37.5426 23.1148 37.5976C22.2045 38.2673 21.1126 38.6386 20.4116 39.7797C19.7126 40.9111 19.4835 42.1583 19.6928 43.164ZM19.1834 43.272C19.2643 43.2995 19.365 43.2543 19.3927 43.1718C19.6829 42.1858 19.5566 40.9268 18.9563 39.7405C18.356 38.5541 17.2996 38.0926 16.4445 37.3501C16.3715 37.2872 16.2629 37.3678 16.2352 37.4503C15.945 38.4362 16.0713 39.6953 16.6716 40.8816C17.2739 42.068 18.2197 42.9204 19.1834 43.272ZM23.3518 36.3934C24.2344 35.4879 24.7083 34.3742 24.7261 33.4059C24.7261 33.3156 24.6452 33.2154 24.5721 33.2527C23.5887 33.6868 22.4968 33.8047 21.6141 34.7101C20.7315 35.6156 20.2576 36.7292 20.2398 37.6976C20.2398 37.7879 20.3128 37.8508 20.3938 37.8508C21.3771 37.8056 22.4691 37.2988 23.3518 36.3934ZM19.7481 37.6976C19.8212 37.7428 19.9219 37.7153 19.9574 37.6426C20.4313 36.7921 20.5755 35.5979 20.2674 34.3743C19.9574 33.1428 19.0747 32.5004 18.4389 31.6323C18.3836 31.5597 18.2652 31.6146 18.2296 31.6873C17.7557 32.5378 17.6115 33.732 17.9196 34.9557C18.2296 36.1852 18.9208 37.1712 19.7481 37.6976ZM26.1912 28.6367C25.2355 29.008 24.1988 29.0708 23.3241 29.8958C22.4513 30.7187 21.9497 31.7519 21.8964 32.675C21.8866 32.7555 21.9596 32.8282 22.0425 32.8282C22.9706 32.8282 24.0349 32.3941 24.9097 31.5692C25.7825 30.7462 26.284 29.7131 26.3373 28.7899C26.3354 28.6996 26.2643 28.5994 26.1912 28.6367ZM21.4225 32.6554C21.4857 32.7006 21.5864 32.6829 21.622 32.6102C22.1136 31.8226 22.2953 30.6913 22.0583 29.5148C21.8214 28.3481 21.0118 27.6959 20.4392 26.8455C20.3938 26.7728 20.2753 26.818 20.2397 26.8906C19.7481 27.6783 19.5565 28.7998 19.8034 29.9763C20.0482 31.1528 20.6682 32.1212 21.4225 32.6554ZM22.9608 29.2063C23.9796 29.0708 25.0716 28.4364 25.9088 27.4052C26.746 26.374 27.1272 25.17 27.0561 24.1565C27.0462 24.0662 26.9554 23.966 26.8744 24.0112C25.8832 24.5533 24.7635 24.7811 23.9263 25.8123C23.0891 26.8533 22.708 28.0475 22.7889 29.0709C22.787 29.1612 22.8699 29.224 22.9608 29.2063ZM36.5542 60.234C36.4811 60.2438 36.4001 60.2517 36.3271 60.2615C36.2461 60.2713 36.1731 60.2792 36.0901 60.2792C35.9262 60.289 35.7623 60.289 35.5985 60.2969C35.4346 60.2969 35.2707 60.2969 35.1068 60.287C34.9429 60.2772 34.779 60.2694 34.6151 60.2517C33.9595 60.1888 33.3039 60.0788 32.6582 59.9158C32.4944 59.8805 32.3403 59.8255 32.1764 59.7803L31.9395 59.7076C31.8585 59.6801 31.7855 59.6526 31.7025 59.6271L31.2286 59.464L30.7646 59.2735C30.4467 59.1557 30.1545 58.9926 29.8464 58.8571C29.5463 58.7039 29.254 58.5311 28.9539 58.3779C29.2363 58.5684 29.5088 58.7668 29.7911 58.9475C30.0814 59.1203 30.3637 59.3089 30.6738 59.4542L31.1279 59.6899L31.592 59.8981C31.6729 59.9335 31.746 59.9708 31.8289 60.0061L32.0659 60.0965C32.2298 60.1593 32.3838 60.2242 32.5477 60.2772C33.1933 60.5031 33.8588 60.6838 34.54 60.8114C34.7138 60.8468 34.8777 60.8743 35.0495 60.892C35.2233 60.9195 35.395 60.9371 35.5688 60.9548C35.7426 60.9646 35.9143 60.9823 36.096 60.9902C36.1869 60.9902 36.2698 61 36.3606 61C36.4515 61 36.5344 61 36.643 60.9902H36.6785C36.8878 60.9548 37.0241 60.7643 36.9964 60.5561C36.955 60.342 36.7556 60.1986 36.5542 60.234Z"/>
       </g>
     </svg>
-    <!-- Top bar -->
-    <div class="topbar">
-      <div class="wrap">
-        <div class="back" onclick="history.back()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-          Back
-        </div>
-        <a class="brand" href="./index.html">ATDESIGN</a>
-        <a class="cta" href="./resume.pdf" download>Resume</a>
-      </div>
+  <header class="st-bar">
+    <div class="st-bar-in">
+      <a class="st-back" href="./profile.html" onclick="if(document.referrer.indexOf(location.host)>-1){event.preventDefault();history.back()}" aria-label="Back to profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      </a>
+      <a class="st-brand" href="./profile.html"><img src="./images/profile-photo.jpg" alt="" /><span>Abhishek Thakur<small>Product Design Lead · AI-first products at scale</small></span></a>
+      <a class="st-btn st-btn-outline" href="./resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
     </div>
+    <div class="st-progress" aria-hidden="true"><span></span></div>
+  </header>
 
-    <!-- Hero -->
-    <header class="hero">
-      <div class="wrap">
-        <div class="hero-top">
-          <div class="hero-copy">
-            <div class="eyebrow">About · Abhishek Thakur</div>
-            <h1>
-              I bring clarity to <span class="hl">complex systems</span> — so
-              millions can use them with confidence
-            </h1>
-            <p class="sub">
-              Lead Product Designer at Delhivery, with 10+ years across B2C,
-              B2B, and platform-first companies — Jio, Swiggy Dineout, Times
-              Internet, and a few startups. <b>Design is impact</b>: it connects
-              people, scales products, and drives growth.
-            </p>
-          </div>
-          <div class="hero-grid">
-            <img src="./images/about/i6.png" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i3.png" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i16.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i18.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i7.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i12.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i24.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i22.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i17.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i15.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i26.jpg" alt="Abhishek Thakur" loading="lazy" />
-            <img src="./images/about/i21.JPG" alt="Abhishek Thakur" loading="lazy" />
-          </div>
-        </div>
-
-        <div class="about-stats">
-          <div class="s"><div class="n">100M<span class="accent">+</span></div><div class="l">Users impacted</div></div>
-          <div class="s"><div class="n">10<span class="accent">+</span></div><div class="l">Years in design</div></div>
-          <div class="s"><div class="n">6</div><div class="l">Industries</div></div>
-          <div class="s"><div class="n">3<span class="accent">+</span></div><div class="l">Years leading</div></div>
-          <div class="s"><div class="n">5</div><div class="l">Awards</div></div>
-        </div>
-      </div>
+  <main class="st">
+    <header class="st-hero">
+      <p class="st-kicker">My story · 6 min read</p>
+      <h1 class="st-title">From the mountains to <span class="hl">millions</span>.</h1>
+      <p class="st-lede">How an engineer from the hills learned to design for <b>100M+ people</b>, one slow, curious chapter at a time.</p>
+      <div class="st-collage hero-grid"><img src="./images/about/i3.png" alt="Abhishek Thakur" /><img src="./images/about/i6.png" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i16.jpg" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i18.jpg" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i7.jpg" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i24.jpg" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i22.jpg" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i17.jpg" alt="Abhishek Thakur" loading="lazy" /><img src="./images/about/i15.jpg" alt="Abhishek Thakur" loading="lazy" /></div>
     </header>
 
-    <!-- The journey -->
-    <section class="block">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="sec-num">·</span>
-          <span class="sec-label">The journey</span>
-        </div>
-        <h2 class="sec-title">From curiosity to leading with intent.</h2>
-
-        <div class="timeline" style="margin-top:44px">
-          <div class="tl-item">
-            <div class="tl-copy">
-              <div class="tl-era">Before 2012 · Seeds of Curiosity</div>
-              <h3>Learning to pay attention</h3>
-              <div class="tl-quote">"You really experience things when you take them slow. Even tech, when rare, felt magical."</div>
-              <p>Life felt slower and simpler. With limited access to tech, I became deeply observant — curious about things I couldn't afford but always tried to understand. That habit of paying attention still shapes how I solve problems.</p>
-            </div>
-            <div class="tl-gallery">
-              <img src="./images/about/curiosity/curiosity-01.png" alt="Early curiosity" loading="lazy" />
-              <img src="./images/about/curiosity/curiosity-02.png" alt="Early curiosity" loading="lazy" />
-              <img src="./images/about/curiosity/curiosity-03.png" alt="Early curiosity" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-copy">
-              <div class="tl-era">2012–16 · From Code to Design</div>
-              <h3>Design found me at IIIT Allahabad</h3>
-              <div class="tl-quote">"Design began with people — not tools. What stayed wasn't just the code but the collaboration. Good design is never solo."</div>
-              <p>At IIIT Allahabad I led the design &amp; marketing wing of our tech society and worked on front-end projects. I started noticing design in everything — teamwork, conversations, problem-solving. That's when design found me.</p>
-            </div>
-            <div class="tl-gallery">
-              <img src="./images/about/codetodesign/code-to-design-02.png" alt="Code to design" loading="lazy" />
-              <img src="./images/about/codetodesign/code-to-design-03.png" alt="Code to design" loading="lazy" />
-              <img src="./images/about/codetodesign/code-to-design-04.png" alt="Code to design" loading="lazy" />
-              <img src="./images/about/codetodesign/code-to-design-05.png" alt="Code to design" loading="lazy" />
-              <img src="./images/about/codetodesign/code-to-design-06.png" alt="Code to design" loading="lazy" />
-              <img src="./images/about/codetodesign/code-to-design-07.png" alt="Code to design" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-copy">
-              <div class="tl-era">2016–19 · India's Mobile Revolution</div>
-              <h3>Designing at scale, mobile-first</h3>
-              <div class="tl-quote">"The challenge wasn't just to build fast, but to make fast feel effortless."</div>
-              <p>India's startup boom brought urgency. At Times Internet I moved fully into product design — solving for scale, speed, and real-time users — and represented our team at Facebook's product event alongside Amazon, Flipkart, and MMT. Design became data-driven and mobile-first.</p>
-            </div>
-            <div class="tl-gallery">
-              <img src="./images/about/2016-19-designing/designing-01.png" alt="Designing era" loading="lazy" />
-              <img src="./images/about/2016-19-designing/designing-02.png" alt="Designing era" loading="lazy" />
-              <img src="./images/about/2016-19-designing/designing-03.png" alt="Designing era" loading="lazy" />
-              <img src="./images/about/2016-19-designing/designing-04.png" alt="Designing era" loading="lazy" />
-              <img src="./images/about/2016-19-designing/designing-05.png" alt="Designing era" loading="lazy" />
-              <img src="./images/about/2016-19-designing/designing-06.png" alt="Designing era" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-copy">
-              <div class="tl-era">2019–22 · Pause, Purpose &amp; Perspective</div>
-              <h3>The pandemic &amp; an inner shift</h3>
-              <div class="tl-quote">"Stillness revealed what speed never could — clarity, discipline, and a different kind of design: within."</div>
-              <p>Covid slowed the world, and so did I. I stepped away to prepare for the Civil Services and reflect on people, systems, and purpose — while shaping design strategy for a travel-tech startup. I didn't clear the exam, but the clarity stays with me.</p>
-            </div>
-            <div class="tl-gallery g2">
-              <img src="./images/about/2019-22-pandemic/pandemic-01.png" alt="Pandemic era" loading="lazy" />
-              <img src="./images/about/2019-22-pandemic/pandemic-02.png" alt="Pandemic era" loading="lazy" />
-              <img src="./images/about/2019-22-pandemic/pandemic-03.png" alt="Pandemic era" loading="lazy" />
-              <img src="./images/about/2019-22-pandemic/pandemic-04.png" alt="Pandemic era" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="tl-item">
-            <div class="tl-copy">
-              <div class="tl-era">2022–Now · Leading with Intent</div>
-              <h3>Back to build, forward to lead</h3>
-              <div class="tl-quote">"Returning wasn't stepping back — it was showing up with more clarity and purpose. Now I build with both eyes wide open."</div>
-              <p>Returning felt intentional. I joined Jio, and now lead product design at Delhivery across high-impact logistics and supply-chain verticals. The systems thinking from my Civil Services journey now guides how I lead teams and scale impact.</p>
-            </div>
-            <div class="tl-gallery">
-              <img src="./images/about/2022-back-to-build/back-to-build-01.png" alt="Leading with intent" loading="lazy" />
-              <img src="./images/about/2022-back-to-build/back-to-build-02.png" alt="Leading with intent" loading="lazy" />
-              <img src="./images/about/2022-back-to-build/back-to-build-03.png" alt="Leading with intent" loading="lazy" />
-              <img src="./images/about/2022-back-to-build/back-to-build-04.png" alt="Leading with intent" loading="lazy" />
-              <img src="./images/about/2022-back-to-build/back-to-build-05.png" alt="Leading with intent" loading="lazy" />
-              <img src="./images/about/2022-back-to-build/back-to-build-06.png" alt="Leading with intent" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="st-intro">
+      <p class="st-big">I bring clarity to complex systems, so millions can use them with confidence.</p>
+      <p>I'm a Lead Product Designer at Delhivery, with 10+ years across B2C, B2B and platform-first companies: Jio, Swiggy Dineout, Times Internet and a few startups. I believe <b>design is impact</b>. It connects people, scales products and drives growth.</p>
+      <ul class="st-stats">
+        <li><b>100M<i>+</i></b><span>users impacted</span></li>
+        <li><b>10<i>+</i></b><span>years in design</span></li>
+        <li><b>6</b><span>industries</span></li>
+        <li><b>3<i>+</i></b><span>years leading</span></li>
+        <li><b>5</b><span>awards</span></li>
+      </ul>
     </section>
 
-    <!-- Achievements -->
-    <section class="block soft">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="sec-num">·</span>
-          <span class="sec-label">Achievement records</span>
-        </div>
-        <h2 class="sec-title">Small wins, real impact.</h2>
-        <p class="lead">
-          Highlights that shaped my journey — small wins, real impact, and the
-          values I bring to work and life.
-        </p>
-        <div class="award-row">
-          <div class="laurel">
-            <svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-            <span class="lt">Mega Mind</span>
-            <svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-          </div>
-          <div class="laurel">
-            <svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-            <span class="lt">Star Performer</span>
-            <svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-          </div>
-          <div class="laurel">
-            <svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-            <span class="lt">Jio's Best Team</span>
-            <svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-          </div>
-          <div class="laurel">
-            <svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-            <span class="lt">Spotlight Star</span>
-            <svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-          </div>
-          <div class="laurel">
-            <svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-            <span class="lt">Design Nerd</span>
-            <svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg>
-          </div>
-        </div>
+    <nav class="st-chapters" aria-label="Chapters">
+      <p class="st-label">Five chapters</p>
+      <ol><li><a href="#c1"><b>01</b>Curiosity</a></li><li><a href="#c2"><b>02</b>Code to design</a></li><li><a href="#c3"><b>03</b>Mobile-first</a></li><li><a href="#c4"><b>04</b>The pause</a></li><li><a href="#c5"><b>05</b>Leading</a></li></ol>
+    </nav>
 
-      </div>
+    <div class="st-journey">
+      <section class="ch" id="c1" aria-labelledby="c1-h">
+        <div class="ch-rail" aria-hidden="true"><span class="ch-no">01</span><span class="ch-yr">Before 2012</span></div>
+        <div class="ch-body">
+          <p class="ch-era"><span class="ch-yr-inline">Before 2012 · </span>Seeds of curiosity</p>
+          <h2 id="c1-h">Learning to pay attention</h2>
+          <p>Life felt slower and simpler. With limited access to tech, I became deeply observant — curious about things I couldn't afford but always tried to understand. That habit of paying attention still shapes how I solve problems.</p>
+          <blockquote>You really experience things when you take them slow. Even tech, when rare, felt magical.</blockquote>
+          <figure class="ch-fig"><div class="tl-gallery n3"><img src="./images/about/curiosity/curiosity-01.png" alt="Early curiosity" loading="lazy" /><img src="./images/about/curiosity/curiosity-02.png" alt="Early curiosity" loading="lazy" /><img src="./images/about/curiosity/curiosity-03.png" alt="Early curiosity" loading="lazy" /></div><figcaption>Growing up in the hills.</figcaption></figure>
+        </div>
+      </section>
+      <section class="ch" id="c2" aria-labelledby="c2-h">
+        <div class="ch-rail" aria-hidden="true"><span class="ch-no">02</span><span class="ch-yr">2012–16</span></div>
+        <div class="ch-body">
+          <p class="ch-era"><span class="ch-yr-inline">2012–16 · </span>From code to design</p>
+          <h2 id="c2-h">Design found me at IIIT Allahabad</h2>
+          <p>At IIIT Allahabad I led the design &amp; marketing wing of our tech society and worked on front-end projects. I started noticing design in everything — teamwork, conversations, problem-solving. That's when design found me.</p>
+          <blockquote>Design began with people — not tools. What stayed wasn't just the code but the collaboration. Good design is never solo.</blockquote>
+          <figure class="ch-fig"><div class="tl-gallery n6"><img src="./images/about/codetodesign/code-to-design-02.png" alt="Code to design" loading="lazy" /><img src="./images/about/codetodesign/code-to-design-03.png" alt="Code to design" loading="lazy" /><img src="./images/about/codetodesign/code-to-design-04.png" alt="Code to design" loading="lazy" /><img src="./images/about/codetodesign/code-to-design-05.png" alt="Code to design" loading="lazy" /><img src="./images/about/codetodesign/code-to-design-06.png" alt="Code to design" loading="lazy" /><img src="./images/about/codetodesign/code-to-design-07.png" alt="Code to design" loading="lazy" /></div><figcaption>College years at IIIT Allahabad.</figcaption></figure>
+        </div>
+      </section>
+      <section class="ch" id="c3" aria-labelledby="c3-h">
+        <div class="ch-rail" aria-hidden="true"><span class="ch-no">03</span><span class="ch-yr">2016–19</span></div>
+        <div class="ch-body">
+          <p class="ch-era"><span class="ch-yr-inline">2016–19 · </span>India's mobile revolution</p>
+          <h2 id="c3-h">Designing at scale, mobile-first</h2>
+          <p>India's startup boom brought urgency. At Times Internet I moved fully into product design — solving for scale, speed, and real-time users — and represented our team at Facebook's product event alongside Amazon, Flipkart, and MMT. Design became data-driven and mobile-first.</p>
+          <blockquote>The challenge wasn't just to build fast, but to make fast feel effortless.</blockquote>
+          <figure class="ch-fig"><div class="tl-gallery n6"><img src="./images/about/2016-19-designing/designing-01.png" alt="Designing era" loading="lazy" /><img src="./images/about/2016-19-designing/designing-02.png" alt="Designing era" loading="lazy" /><img src="./images/about/2016-19-designing/designing-03.png" alt="Designing era" loading="lazy" /><img src="./images/about/2016-19-designing/designing-04.png" alt="Designing era" loading="lazy" /><img src="./images/about/2016-19-designing/designing-05.png" alt="Designing era" loading="lazy" /><img src="./images/about/2016-19-designing/designing-06.png" alt="Designing era" loading="lazy" /></div><figcaption>Times Internet and the Facebook product event.</figcaption></figure>
+        </div>
+      </section>
+      <section class="ch" id="c4" aria-labelledby="c4-h">
+        <div class="ch-rail" aria-hidden="true"><span class="ch-no">04</span><span class="ch-yr">2019–22</span></div>
+        <div class="ch-body">
+          <p class="ch-era"><span class="ch-yr-inline">2019–22 · </span>Pause, purpose &amp; perspective</p>
+          <h2 id="c4-h">The pandemic &amp; an inner shift</h2>
+          <p>Covid slowed the world, and so did I. I stepped away to prepare for the Civil Services and reflect on people, systems, and purpose — while shaping design strategy for a travel-tech startup. I didn't clear the exam, but the clarity stays with me.</p>
+          <blockquote>Stillness revealed what speed never could — clarity, discipline, and a different kind of design: within.</blockquote>
+          <figure class="ch-fig"><div class="tl-gallery n4"><img src="./images/about/2019-22-pandemic/pandemic-01.png" alt="Pandemic era" loading="lazy" /><img src="./images/about/2019-22-pandemic/pandemic-02.png" alt="Pandemic era" loading="lazy" /><img src="./images/about/2019-22-pandemic/pandemic-03.png" alt="Pandemic era" loading="lazy" /><img src="./images/about/2019-22-pandemic/pandemic-04.png" alt="Pandemic era" loading="lazy" /></div><figcaption>The pause years.</figcaption></figure>
+        </div>
+      </section>
+      <section class="ch" id="c5" aria-labelledby="c5-h">
+        <div class="ch-rail" aria-hidden="true"><span class="ch-no">05</span><span class="ch-yr">2022–now</span></div>
+        <div class="ch-body">
+          <p class="ch-era"><span class="ch-yr-inline">2022–now · </span>Leading with intent</p>
+          <h2 id="c5-h">Back to build, forward to lead</h2>
+          <p>Returning felt intentional. I joined Jio, and now lead product design at Delhivery across high-impact logistics and supply-chain verticals. The systems thinking from my Civil Services journey now guides how I lead teams and scale impact.</p>
+          <blockquote>Returning wasn't stepping back — it was showing up with more clarity and purpose. Now I build with both eyes wide open.</blockquote>
+          <figure class="ch-fig"><div class="tl-gallery n6"><img src="./images/about/2022-back-to-build/back-to-build-01.png" alt="Leading with intent" loading="lazy" /><img src="./images/about/2022-back-to-build/back-to-build-02.png" alt="Leading with intent" loading="lazy" /><img src="./images/about/2022-back-to-build/back-to-build-03.png" alt="Leading with intent" loading="lazy" /><img src="./images/about/2022-back-to-build/back-to-build-04.png" alt="Leading with intent" loading="lazy" /><img src="./images/about/2022-back-to-build/back-to-build-05.png" alt="Leading with intent" loading="lazy" /><img src="./images/about/2022-back-to-build/back-to-build-06.png" alt="Leading with intent" loading="lazy" /></div><figcaption>Jio and Delhivery.</figcaption></figure>
+        </div>
+      </section>
+    </div>
+
+    <section class="st-sec st-wins" aria-labelledby="wins-h">
+      <p class="st-label">Recognition</p>
+      <h2 id="wins-h">Small wins, real impact.</h2>
+      <p class="st-sub">Highlights that shaped my journey, and the values I bring to work and life.</p>
+      <ul class="st-awards"><li><svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg><span>Mega Mind</span><svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg></li><li><svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg><span>Star Performer</span><svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg></li><li><svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg><span>Jio's Best Team</span><svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg></li><li><svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg><span>Spotlight Star</span><svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg></li><li><svg class="lw" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg><span>Design Nerd</span><svg class="lw flip" viewBox="15 23 23 39" aria-hidden="true"><use href="#laurel-left"/></svg></li></ul>
     </section>
 
-    <!-- Beyond work -->
-    <section class="block">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="sec-num">·</span>
-          <span class="sec-label">Beyond work</span>
-        </div>
-        <h2 class="sec-title">Life is not merely breathing.</h2>
-        <p class="lead">
-          It's about moving, giving, and being present — through travel, long
-          rides, shared impact, and quiet moments with nature.
-        </p>
-
-        <div class="beyond-grid">
-          <div class="beyond">
-            <div class="b-ico">✈️</div>
+    <section class="st-sec beyond" aria-labelledby="bw-h">
+      <p class="st-label">Beyond work</p>
+      <h2 id="bw-h">Life is not merely breathing.</h2>
+      <p class="st-sub">It's about moving, giving and being present, through travel, long rides, shared impact and quiet moments with nature.</p>
+      <div class="bw-grid">
+          <article class="bw">
+            <div class="b-gallery n5"><img src="./images/about/travel/travel-01.png" alt="Travel" loading="lazy" /><img src="./images/about/travel/travel-02.png" alt="Travel" loading="lazy" /><img src="./images/about/travel/travel-03.png" alt="Travel" loading="lazy" /><img src="./images/about/travel/travel-04.png" alt="Travel" loading="lazy" /><img src="./images/about/travel/travel-05.png" alt="Travel" loading="lazy" /></div>
             <h3>Travel</h3>
             <p>I've explored 6–7 countries to understand how people live and create — shaping how I see culture, storytelling, and design as contextual.</p>
-            <div class="b-gallery">
-              <img src="./images/about/travel/travel-01.png" alt="Travel" loading="lazy" />
-              <img src="./images/about/travel/travel-02.png" alt="Travel" loading="lazy" />
-              <img src="./images/about/travel/travel-03.png" alt="Travel" loading="lazy" />
-              <img src="./images/about/travel/travel-04.png" alt="Travel" loading="lazy" />
-              <img src="./images/about/travel/travel-05.png" alt="Travel" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="beyond">
-            <div class="b-ico">🚴</div>
-            <h3>Cycling &amp; Discipline</h3>
+          </article>
+          <article class="bw">
+            <div class="b-gallery n6"><img src="./images/about/cycling/cycling-01.png" alt="Cycling" loading="lazy" /><img src="./images/about/cycling/cycling-02.png" alt="Cycling" loading="lazy" /><img src="./images/about/cycling/cycling-03.png" alt="Cycling" loading="lazy" /><img src="./images/about/cycling/cycling-04.png" alt="Cycling" loading="lazy" /><img src="./images/about/cycling/cycling-05.png" alt="Cycling" loading="lazy" /><img src="./images/about/cycling/cycling-06.png" alt="Cycling" loading="lazy" /></div>
+            <h3>Cycling &amp; discipline</h3>
             <p>From a solo Gurgaon–Dehradun ride to club events and health-awareness cyclothons — cycling is where I find rhythm. It keeps me grounded and present.</p>
-            <div class="b-gallery">
-              <img src="./images/about/cycling/cycling-01.png" alt="Cycling" loading="lazy" />
-              <img src="./images/about/cycling/cycling-02.png" alt="Cycling" loading="lazy" />
-              <img src="./images/about/cycling/cycling-03.png" alt="Cycling" loading="lazy" />
-              <img src="./images/about/cycling/cycling-04.png" alt="Cycling" loading="lazy" />
-              <img src="./images/about/cycling/cycling-05.png" alt="Cycling" loading="lazy" />
-              <img src="./images/about/cycling/cycling-06.png" alt="Cycling" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="beyond">
-            <div class="b-ico">❤️</div>
-            <h3>Giving Back</h3>
+          </article>
+          <article class="bw">
+            <div class="b-gallery n6"><img src="./images/about/giving-back/giving-back-01.png" alt="Giving back" loading="lazy" /><img src="./images/about/giving-back/giving-back-02.png" alt="Giving back" loading="lazy" /><img src="./images/about/giving-back/giving-back-03.png" alt="Giving back" loading="lazy" /><img src="./images/about/giving-back/giving-back-04.png" alt="Giving back" loading="lazy" /><img src="./images/about/giving-back/giving-back-05.png" alt="Giving back" loading="lazy" /><img src="./images/about/giving-back/giving-back-06.png" alt="Giving back" loading="lazy" /></div>
+            <h3>Giving back</h3>
             <p>With NGOs like CRY Foundation and Robin Hood Army, I've supported education, food drives, and community outreach. Impact starts close to the ground.</p>
-            <div class="b-gallery">
-              <img src="./images/about/giving-back/giving-back-01.png" alt="Giving back" loading="lazy" />
-              <img src="./images/about/giving-back/giving-back-02.png" alt="Giving back" loading="lazy" />
-              <img src="./images/about/giving-back/giving-back-03.png" alt="Giving back" loading="lazy" />
-              <img src="./images/about/giving-back/giving-back-04.png" alt="Giving back" loading="lazy" />
-              <img src="./images/about/giving-back/giving-back-05.png" alt="Giving back" loading="lazy" />
-              <img src="./images/about/giving-back/giving-back-06.png" alt="Giving back" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="beyond">
-            <div class="b-ico">🌿</div>
-            <h3>Nature &amp; Companionship</h3>
+          </article>
+          <article class="bw">
+            <div class="b-gallery n3"><img src="./images/about/companionship/companionship-01.png" alt="Companionship" loading="lazy" /><img src="./images/about/companionship/companionship-02.png" alt="Companionship" loading="lazy" /><img src="./images/about/companionship/companionship-03.png" alt="Companionship" loading="lazy" /></div>
+            <h3>Nature &amp; companionship</h3>
             <p>My best thinking happens in nature or with Luna &amp; Bruno, my occasional life coaches. I believe in simple living, deep observation, and presence.</p>
-            <div class="b-gallery">
-              <img src="./images/about/companionship/companionship-01.png" alt="Companionship" loading="lazy" />
-              <img src="./images/about/companionship/companionship-02.png" alt="Companionship" loading="lazy" />
-              <img src="./images/about/companionship/companionship-03.png" alt="Companionship" loading="lazy" />
-            </div>
-          </div>
-        </div>
+          </article>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="impact outcome">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="sec-num">→</span>
-          <span class="sec-label">Let's connect</span>
-        </div>
-        <h2 class="sec-title" style="color:#fff">Let's craft brilliance together.</h2>
-        <p class="lead">
-          Whether it's a complex system to untangle or a product to scale — I'd
-          love to hear what you're building.
-        </p>
-        <div style="margin-top:28px">
-          <a class="cta" href="mailto:abhi.thakur1010@gmail.com">Let's connect</a>
-        </div>
-      </div>
-    </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="wrap foot">
-      <div>© 2025 <a href="./index.html">Abhishek Thakur Design</a></div>
-      <div class="social">
-        <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
-        <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>
-        <a href="https://dribbble.com/abhishek_thakur_" target="_blank">Dribbble</a>
-        <a href="mailto:abhi.thakur1010@gmail.com">Email</a>
-      </div>
-    </footer>
+  <footer class="footer">
+    <p class="foot-copy">© 2026 Abhishek Thakur Design</p>
+    <nav aria-label="Footer">
+      <a href="./resume.pdf?v=2" target="_blank" rel="noopener">Resume</a>
+      <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/abhishekthakur1010/" target="_blank" rel="noopener">Behance</a>
+      <a href="https://dribbble.com/abhishek_thakur_" target="_blank" rel="noopener">Dribbble</a>
+      <a href="mailto:abhi.thakur1010@gmail.com">Email</a>
+    </nav>
+  </footer>
 
-    <script>
-      (function () {
-        var sel =
-          ".block .sec-head, .block .sec-title, .block .lead, .tl-item, .about-stats .s, .beyond, .hero-grid, .award-row .laurel";
-        // extra: fade the timeline galleries + beyond galleries in too
-        var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
-        if (!targets.length) return;
-        targets.forEach(function (el) { el.classList.add("reveal"); });
-        if (!("IntersectionObserver" in window)) {
-          targets.forEach(function (el) { el.classList.add("in"); });
-          return;
-        }
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-        targets.forEach(function (el) { io.observe(el); });
-      })();
-    </script>
-    <script src="./js/case-study-lightbox.js" defer></script>
-  </body>
+  <script>
+    (function () {
+      var bar = document.querySelector('.st-progress span');
+      var links = [].slice.call(document.querySelectorAll('.st-chapters a'));
+      var chs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+      function onScroll() {
+        var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+      }
+      addEventListener('scroll', onScroll, { passive: true }); onScroll();
+      // fade content up as it scrolls in
+      var els = document.querySelectorAll('.st-intro, .st-chapters, .ch, .st-wins, .bw');
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.documentElement.classList.add('st-anim');
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+  <script src="./js/case-study-lightbox.js" defer></script>
+</body>
 </html>
