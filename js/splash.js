@@ -80,7 +80,7 @@
       rect({ id: 'ball', cx: CX, cy: lerp(WTOP - BD / 2, CY, s), w: d * (1 + .55 * sq), h: d * (1 - .42 * sq), r: 999, fill: DUSK, z: 20 });
     }
     // The floor, drawn out from the first impact; the words stand on it.
-    if (t >= 0.5 && t < 4.0) rect({ id: 'floor', cx: CX, cy: FLOOR + 2, w: 1600 * eo(P(t, 0.5, .5)), h: 4, r: 2, fill: WHT, z: 3 });
+    if (t >= 0.5 && t < 4.0) rect({ id: 'floor', cx: CX, cy: FLOOR + 2, w: (VW + 8) * eo(P(t, 0.5, .5)), h: 4, r: 2, fill: WHT, z: 3 });
     var kclip = { t: 0, r: W, b: FLOOR, l: 0 };
     function knock(L) { return 14 * Math.exp(-Math.pow((t - L) / .06, 2)); }
     if (t >= 1.5 && t < 2.2) word('w1', 'DESIGNER', WS, FLOOR, { color: WHT, clip: kclip },
@@ -92,7 +92,7 @@
     // The saffron screen folds into a line, the name rises, then the line shrinks back into the ball.
     if (t >= 4.0) {
       var p = eio(P(t, 4.0, .3)), c = eio(P(t, 4.6, .4));
-      var h = lerp(lerp(VH, 4, p), BD, c), w = lerp(lerp(VW, 1600, p), BD, c);
+      var h = lerp(lerp(VH, 4, p), BD, c), w = lerp(VW + 8, BD, c);
       rect({ id: 'line', cx: CX, cy: lerp(lerp(CY, 640, p), APEX - BD / 2, c), w: w, h: h, r: c > 0 ? h / 2 : 2 * p, fill: c > 0 ? dusk(1 - c) : dusk(p), z: 30 });
     }
     if (t >= 4.08 && t < 4.85) word('title', 'ABHISHEK THAKUR', NS, 612, { color: WHT, clip: { t: 0, r: W, b: 636, l: 0 }, z: 31 },
