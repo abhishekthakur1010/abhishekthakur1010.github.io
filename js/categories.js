@@ -9,7 +9,8 @@
 //   Story
 //   +             the feedback dialog fades and lifts in, and fades out when closed.
 // Opened with profile.html#categories (the home page redirects there); a script in
-// <head> sets the first state so the profile never flashes before the circles.
+// <head> sets the first state so the profile never flashes before the circles, then shows
+// clean addresses: the circles at the site root ("/") and the profile at "/profile".
 (function () {
   var root = document.documentElement;
   var cover = document.querySelector('.card.profile .cover');
@@ -114,15 +115,19 @@
     root.style.setProperty('--cat-h', Math.max(420, window.innerHeight - top) + 'px');
   }
   // The profile gets its own history entry, so the browser's back button returns to the circles
-  // (the hashchange below plays the way back) and forward opens the profile again.
+  // (the popstate below plays the way back) and forward opens the profile again.
+  // GitHub Pages serves profile.html at /profile; elsewhere (local previews) keep the extension.
+  var BASE = location.pathname.replace(/[^\/]*$/, '');
+  var PAGE = /github\.io$/.test(location.hostname) ? 'profile' : 'profile.html';
+  function atRoot() { return location.pathname === BASE && (!location.hash || location.hash === '#categories'); }
   var pushed = false;
   function leaveHash(fromHistory) {
-    if (fromHistory || location.hash !== '#categories' || !history.pushState) return;
-    history.pushState(null, '', location.pathname + location.search);
+    if (fromHistory || !atRoot() || !history.pushState) return;
+    history.pushState(null, '', BASE + PAGE + location.search);
     pushed = true;
   }
   function markHash() {
-    if (location.hash !== '#categories' && history.replaceState) history.replaceState(null, '', location.pathname + location.search + '#categories');
+    if (!atRoot() && history.replaceState) history.replaceState(null, '', BASE + location.search);
   }
 
   // Where the avatar sits at the banner's normal height, relative to the circle in the middle.
@@ -379,15 +384,17 @@
     var panel = document.getElementById('toc-panel'), rail = document.querySelector('.toc-rail');
     if (panel && !panel.hidden && rail) rail.click();
     // Step back through the profile's own history entry when there is one, so back and
-    // forward keep matching what is on screen; hashchange then plays the way back.
+    // forward keep matching what is on screen; popstate then plays the way back.
     if (pushed && !location.hash) history.back();
     else toCategories(true);
   });
   window.addEventListener('resize', function () { if (has('cat-mode') && !busy) fitHeight(); });
-  window.addEventListener('hashchange', function () {
-    if (location.hash === '#categories' && !has('cat-mode')) { pushed = false; toCategories(true); }
-    else if (!location.hash && has('cat-mode')) { pushed = true; toProfile(true); }
-  });
+  function route() {
+    if (atRoot() && !has('cat-mode')) { pushed = false; toCategories(true); }
+    else if (!atRoot() && has('cat-mode')) { pushed = true; toProfile(true); }
+  }
+  window.addEventListener('popstate', route);
+  window.addEventListener('hashchange', route);
 
   // First visit: the banner is already full screen (set in <head>); the circles rise in.
   if (location.hash === '#categories' || has('cat-mode')) {

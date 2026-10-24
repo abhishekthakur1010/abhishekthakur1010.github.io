@@ -38,6 +38,16 @@
         if (force || (location.hash === "#categories" && !seen)) document.documentElement.classList.add("splash-on");
       })();
     </script>
+    <script>
+      // Clean address, once the scripts above have read the hash: the circles show at the site root ("/")
+      // and the profile at "/profile" (GitHub Pages serves profile.html there; local previews keep .html).
+      (function () {
+        if (!history.replaceState) return;
+        var cat = document.documentElement.classList.contains("cat-mode"), base = location.pathname.replace(/[^\/]*$/, "");
+        var page = /github\.io$/.test(location.hostname) ? "profile" : "profile.html";
+        history.replaceState(null, "", base + (cat ? "" : page) + location.search + (cat ? "" : location.hash));
+      })();
+    </script>
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
 </head>
@@ -79,7 +89,7 @@
               <p class="cl-sub">Festival of lights</p>
             </div>
           </div>
-          <!-- Categories: shown full screen on the banner when the site opens (profile.html#categories) -->
+          <!-- Categories: shown full screen on the banner when the site opens (at "/", via index.html) -->
           <div class="cats" id="cats">
             <!-- The heading hints how to light the sparkler; "Happy Diwali" shows while it peaks, with the skyrockets -->
             <div class="cats-head">
@@ -681,6 +691,6 @@
         </div>
       </div>
     </dialog>
-    <script src="./js/categories.js?v=19"></script>
+    <script src="./js/categories.js?v=20"></script>
   </body>
 </html>
