@@ -7,9 +7,9 @@
   --text: #1d1f23;
   --text-2: #5e6168;
   --text-3: #8a8d93;
-  --accent: #1b5fb8;
-  --accent-hover: #144a91;
-  --accent-soft: #e8f0fb;
+  --accent: #0a66c2;
+  --accent-hover: #004182;
+  --accent-soft: #e8f1fa;
   --good: #1f8a4c;
   --hl-bg: #fbf6ea;
   --hl-ink: #6b4e0e;
@@ -1012,7 +1012,7 @@ html, body { overflow-x: clip; }
 .card.profile { padding-bottom: 4px; }
 .card-title, .card-head .card-title { font-size: 18px; font-weight: 650; letter-spacing: -.005em; }
 .card-title { margin-bottom: 12px; }
-.card-title + .card-sub, .card-head + .card-sub { margin: -6px 0 14px; font-size: 13.5px; }
+.card-title + .card-sub, .card-head + .card-sub { margin: -6px 0 14px; font-size: 15.5px; line-height: 1.5; }
 .rec { padding: 16px 0; }
 @media (max-width: 720px) { :root { --sec-y: 22px; } .card-title, .card-head .card-title { font-size: 17px; } .rec { padding: 14px 0; } }
 
@@ -1021,7 +1021,10 @@ html, body { overflow-x: clip; }
   font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: #75736d;
 }
 .card-title + .card-sub, .card-head + .card-sub { margin-top: -4px; }
-@media (max-width: 720px) { .card-title, .card-head .card-title { font-size: 11.5px; } }
+@media (max-width: 720px) {
+  .card-title, .card-head .card-title { font-size: 11.5px; }
+  .card-title + .card-sub, .card-head + .card-sub { font-size: 14.5px; }
+}
 
 /* No section dividers: spacing alone separates sections */
 .card + .card { border-top: 0; }
@@ -1042,7 +1045,7 @@ html, body { overflow-x: clip; }
 .intro .intro-lead { margin: 0 0 14px; font-size: 15px; font-weight: 600; color: var(--text); }
 .intro p { margin: 0 0 10px; color: var(--text-2); line-height: 1.6; max-width: 68ch; }
 .intro p:last-child { margin-bottom: 0; }
-.intro .intro-cta { color: var(--accent, #1a5fb4); font-weight: 600; white-space: nowrap; }
+.intro .intro-cta { color: var(--accent, #0a66c2); font-weight: 600; white-space: nowrap; }
 .intro .intro-cta span { display: inline-block; transition: transform .15s; }
 .intro .intro-cta:hover span { transform: translateX(3px); }
 @media (max-width: 720px) { .intro .intro-title { font-size: 20px; } }
@@ -1086,3 +1089,42 @@ html, body { overflow-x: clip; }
 /* Logo tiles sit flush with the card's clipped edge: draw the hairline inside so it isn't cut off */
 .xp-logo { box-shadow: inset 0 0 0 1px var(--line); border-radius: 8px; }
 .xp-logo img { width: 32px; height: 32px; border-radius: 4px; }
+
+/* One corner radius, 8px, for every card, box, thumbnail and logo tile (round buttons, pills and avatars stay round) */
+.feat-img, .proj-thumb, .award-img, .award-open:focus-visible,
+.app-card, .store, .interest, .top-skills, .logo-grid div,
+.app-logo, .rec-logo, .xp-logo, .xp-logo img, .affil img, .affil .mono, .prod-logo,
+.toc-rail, .toc-panel, .toc-list a, .more-menu, .media-modal, #highlights { border-radius: 8px; }
+
+/* Every section header (a heading, or a heading with its line) sits the same 22px above its content,
+   and a heading's line stays tucked 4px under it */
+.card > .card-title, .card > .card-head { margin-bottom: 22px; }
+.card .card-title + .card-sub, .card .card-head + .card-sub { margin: -18px 0 20px; }
+
+/* Section subheading line: a softer grey than body text, still readable */
+.card .card-sub { color: #72757b; }
+
+/* Beyond work: four soft-tinted tiles in a row (2 × 2 on smaller screens), emoji on a white chip, title and one line under it */
+.interests { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.interest {
+  flex-direction: column; gap: 14px; padding: 18px 16px 20px; border: 0; border-radius: 8px;
+  background: var(--tint, var(--line-soft)); transition: transform .2s ease, box-shadow .2s ease;
+}
+.interest:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29, 31, 35, .07); }
+.interest.is-sky { --tint: #edf3fa; }
+.interest.is-sun { --tint: #fbf1e4; }
+.interest.is-rose { --tint: #fbeeee; }
+.interest.is-leaf { --tint: #ebf4ec; }
+.interest .ico { width: 44px; height: 44px; border-radius: 8px; background: #fff; font-size: 22px; box-shadow: 0 1px 2px rgba(29, 31, 35, .06); }
+.interest b { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.interest span { font-size: 13.5px; line-height: 1.5; }
+@media (max-width: 900px) { .interests { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) {
+  .interests { gap: 10px; }
+  .interest { padding: 14px 12px 16px; gap: 12px; }
+  .interest .ico { width: 38px; height: 38px; font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) { .interest, .interest:hover { transition: none; transform: none; } }
+
+/* Award thumbnails take the certificates' own 3:2-ish shape, so they sit edge to edge with nothing cropped */
+.award-img { aspect-ratio: 1.46; }

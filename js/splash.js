@@ -28,9 +28,9 @@
   function eio(p) { return p <= 0 ? 0 : p >= 1 ? 1 : p < .5 ? Math.pow(2, 20 * p - 10) / 2 : (2 - Math.pow(2, -20 * p + 10)) / 2; }
 
   // ---------- type metrics ----------
-  var CAP = 0.7275, BASE = 0.864;
+  var CAP = 0.698, BASE = 0.85;
   var cv = document.createElement('canvas').getContext('2d');
-  function cw(ch, size, weight) { cv.font = weight + ' ' + size + 'px Inter, system-ui, sans-serif'; return cv.measureText(ch).width; }
+  function cw(ch, size, weight) { cv.font = weight + ' ' + size + 'px Poppins, system-ui, sans-serif'; return cv.measureText(ch).width; }
   function textW(str, size, weight, ls) { var w = 0; for (var i = 0; i < str.length; i++) w += cw(str[i], size, weight); return w + (ls || 0) * (str.length - 1); }
   function fit(str, weight, maxW, maxSize) { return Math.min(maxSize, Math.floor(100 * maxW / textW(str, 100, weight, -2))); }
   function layout(str, size, weight, x, ls) {
@@ -127,7 +127,7 @@
       s.left = (d.cx - d.w / 2) + 'px'; s.top = (d.cy - d.h / 2) + 'px'; s.width = Math.max(0, d.w) + 'px'; s.height = Math.max(0, d.h) + 'px';
       s.borderRadius = Math.min(d.r, d.w / 2, d.h / 2) + 'px'; s.background = d.fill;
     } else {
-      s.left = d.x + 'px'; s.top = (d.y - BASE * d.size) + 'px'; s.font = d.weight + ' ' + d.size + 'px/' + d.size + 'px Inter, system-ui, sans-serif';
+      s.left = d.x + 'px'; s.top = (d.y - BASE * d.size) + 'px'; s.font = d.weight + ' ' + d.size + 'px/' + d.size + 'px Poppins, system-ui, sans-serif';
       var grad = d.color.indexOf('gradient') > -1;
       s.color = grad ? 'transparent' : d.color; s.backgroundImage = grad ? d.color : 'none';
       s.webkitBackgroundClip = s.backgroundClip = grad ? 'text' : 'border-box';
@@ -183,8 +183,8 @@
       if (t >= DUR) end(); else requestAnimationFrame(tick);
     })(t0);
   }
-  // Inter comes from Google Fonts; wait for it briefly so the words are measured right, then play.
-  var fontsReady = document.fonts && document.fonts.load ? Promise.all(['800', '600'].map(function (w) { return document.fonts.load(w + ' 100px Inter'); })) : Promise.resolve();
+  // Poppins comes from Google Fonts; wait for it briefly so the words are measured right, then play.
+  var fontsReady = document.fonts && document.fonts.load ? Promise.all(['800', '600'].map(function (w) { return document.fonts.load(w + ' 100px Poppins'); })) : Promise.resolve();
   Promise.race([fontsReady, new Promise(function (r) { setTimeout(r, 1200); })]).then(function () { requestAnimationFrame(play); });
 
   // A tap or key skips ahead.

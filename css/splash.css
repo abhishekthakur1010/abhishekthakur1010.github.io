@@ -13,11 +13,11 @@ html.splash-on .splash { display: block; position: fixed; inset: 0; z-index: 100
   transform-origin: 50% 50%;
 }
 .sp-stage .wrap { position: absolute; inset: 0; pointer-events: none; }
-.sp-stage .el { position: absolute; left: 0; top: 0; box-sizing: border-box; white-space: pre; font-family: Inter, system-ui, sans-serif; will-change: transform; }
+.sp-stage .el { position: absolute; left: 0; top: 0; box-sizing: border-box; white-space: pre; font-family: Poppins, system-ui, sans-serif; will-change: transform; }
 
 .sp-skip {
   position: absolute; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
-  font: 500 12px/1 Inter, system-ui, sans-serif; letter-spacing: .06em; color: rgba(255,255,255,.4);
+  font: 500 12px/1 Poppins, system-ui, sans-serif; letter-spacing: .06em; color: rgba(255,255,255,.4);
 }
 
 /* The way out: a hole grows from the ball and the banner shows through */

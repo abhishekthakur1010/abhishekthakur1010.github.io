@@ -12,22 +12,31 @@
       rel="stylesheet"
     />
     <link href="./css/case-study-v2.css?v=57" rel="stylesheet" />
+    <link href="./css/st-bar.css?v=5" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
 </head>
 
   <body class="csv2">
-    <!-- Top bar -->
-    <div class="topbar">
-      <div class="wrap">
-        <div class="back" role="button" tabindex="0" onclick="if(document.referrer.indexOf(location.host)>-1){history.back()}else{location.href='./profile.html'}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-          Back
-        </div>
-        <a class="brand" href="./profile.html" aria-label="Abhishek Thakur, profile"><span class="brand-mark">AT</span>Abhishek Thakur</a>
-        <a class="cta" href="./resume.pdf" download>Resume</a>
+    <!-- Top bar: same as My story (css/st-bar.css) -->
+    <header class="st-bar">
+      <div class="st-bar-in">
+        <a class="st-back" href="./profile.html" onclick="if(document.referrer.indexOf(location.host)>-1){event.preventDefault();history.back()}" aria-label="Back to profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        </a>
+        <a class="st-brand" href="./profile.html"><img src="./images/profile-photo.jpg" alt="" /><span>Abhishek Thakur<small>AI Product Design Leader | Design Trusted by Millions</small></span></a>
+        <a class="st-btn" href="./resume.pdf?v=3" target="_blank" rel="noopener">Resume</a>
       </div>
-    </div>
+      <div class="st-progress" aria-hidden="true"><span></span></div>
+    </header>
+    <script>
+      // reading progress under the bar
+      (function () {
+        var bar = document.querySelector('.st-progress span');
+        function onScroll() { var h = document.documentElement, max = h.scrollHeight - h.clientHeight; bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')'; }
+        addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+      })();
+    </script>
 
     <!-- Hero -->
     <header class="hero">
