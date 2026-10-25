@@ -148,9 +148,9 @@
     }
   }
 
-  // Visitor count: 1,011 plus each browser counted once by the public counter service.
-  var visitNum = document.getElementById('visit-num');
-  if (visitNum && window.fetch) {
+  // Visitor count: 1,011 plus each browser counted once by the public counter service (shown in the intro and on the banner strip).
+  var visitNums = document.querySelectorAll('[data-visit-num]');
+  if (visitNums.length && window.fetch) {
     var BASE = 1011, COUNTER = 'https://api.counterapi.dev/v1/abhishekthakur1010-portfolio/profile-visitors';
     var seen = false;
     try { seen = localStorage.getItem('at-visit-counted') === '1'; } catch (e) {}
@@ -159,7 +159,8 @@
       .then(function (d) {
         var n = d && (d.count != null ? d.count : d.value);
         if (typeof n !== 'number') return;
-        visitNum.textContent = (BASE + n).toLocaleString('en-IN');
+        var shown = (BASE + n).toLocaleString('en-IN');
+        visitNums.forEach(function (el) { el.textContent = shown; });
         if (!seen) { try { localStorage.setItem('at-visit-counted', '1'); } catch (e) {} }
       })
       .catch(function () { /* keep the starting number */ });

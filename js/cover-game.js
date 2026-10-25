@@ -727,8 +727,8 @@
     var isBest = score > 0 && (!best || score > best);
     if (isBest) { best = score; try { localStorage.setItem('at-archery-best', String(score)); } catch (e) {} }
     if (score >= 24) burst(W * 0.6, H * 0.4, 120);
-    var verdict = score >= 24 ? 'Right on target, like the work.' : score >= 12 ? 'Solid aim. One more round?' : 'Takes practice. Good design does too.';
-    hudText.textContent = msg + ' Final score ' + score + '/30' + (isBest ? ' (your best)' : best ? ' · best ' + best : '') + '. ' + verdict;
+    var verdict = score >= 24 ? 'Right on target, like the work.' : score >= 12 ? 'Solid aim. One more round?' : '';
+    hudText.textContent = msg + ' Final score ' + score + '/30' + (isBest ? ' (your best)' : best ? ' · best ' + best : '') + '.' + (verdict ? ' ' + verdict : '');
   }
 
   function status(msg) {

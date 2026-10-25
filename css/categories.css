@@ -231,3 +231,43 @@ html:not(.cat-anim) .cat:hover .cat-scrolly img, html:not(.cat-anim) .cat:focus-
 @media (prefers-reduced-motion: reduce) { .wip-form.wrong .cd-field input { animation: none; } }
 
 .cd-thanks a { color: #0a66c2; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Live strip at the foot of the banner: visitors · city · weather · local time */
+.cats-live {
+  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 3; margin: 0;
+  display: flex; align-items: center; gap: 4px; padding: 7px 8px; border-radius: 999px; white-space: nowrap;
+  background: rgba(40, 14, 40, .28); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .9); font: 500 13px/1 var(--font); font-variant-numeric: tabular-nums;
+}
+.cats-live .cl-item { display: inline-flex; align-items: center; gap: 6px; padding: 0 8px; }
+.cats-live .cl-item + .cl-item:not([hidden]) { border-left: 1px solid rgba(255, 255, 255, .22); }
+.cats-live .cl-item[hidden] { display: none; }
+.cats-live svg { width: 14px; height: 14px; flex: none; opacity: .85; }
+.cats-live b { font-weight: 600; color: #fff; }
+.cats-live time { min-width: 8.6ch; }
+@media (max-width: 720px) {
+  .cats-live { bottom: 74px; font-size: 11.5px; padding: 6px 4px; }
+  .cats-live .cl-item { padding: 0 6px; gap: 5px; }
+  .cats-live svg { width: 12px; height: 12px; }
+  .cats-live time { min-width: 0; }
+}
+/* Quieter: no pill, smaller and softer text, faint dividers */
+.cats-live { background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; padding: 0; font-size: 12px; font-weight: 400; color: rgba(255, 255, 255, .72); letter-spacing: .01em; }
+.cats-live b { font-weight: 500; color: rgba(255, 255, 255, .85); }
+.cats-live svg { width: 12px; height: 12px; opacity: .7; }
+.cats-live .cl-item + .cl-item:not([hidden]) { border-left-color: rgba(255, 255, 255, .18); }
+.cats-live [data-live-icon] { font-size: 11px; opacity: .85; }
+@media (max-width: 720px) { .cats-live { font-size: 11px; } }
+/* A soft, edgeless darker glow on the orange behind the strip, so the text reads without a visible pill */
+.cats-live::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; width: calc(100% + 60px); height: 48px; transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(200, 126, 62, .5), rgba(200, 126, 62, .24) 60%, rgba(200, 126, 62, 0)); pointer-events: none;
+}
+.cats-live { isolation: isolate; text-shadow: 0 1px 1px rgba(150, 90, 40, .15); }
+/* The strip leaves with the heading and comes back last, after the circles have settled */
+.cats-live { transition: opacity .45s ease .35s; }
+html.cat-out .cats-live { opacity: 0; transition-delay: 0s; }
+@media (prefers-reduced-motion: reduce) { .cats-live { transition: none; } }
+/* Out of the way while the archery game is on, so its score line has the space */
+.card.profile:has(.cover.is-playing) .cats-live { opacity: 0; pointer-events: none; transition-delay: 0s; }
