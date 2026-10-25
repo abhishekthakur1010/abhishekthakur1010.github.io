@@ -1,4 +1,4 @@
-// Splash: a dusk-gradient ball bounces on the beat and knocks up DESIGNER, DEVELOPER and HUMAN, splats across
+// Splash: a dusk-gradient ball bounces on the beat and knocks up DESIGNER, DEVELOPER and HUMAN + AI, splats across
 // the screen, folds into "Abhishek Thakur", then the dark opens from the ball into the Diwali banner.
 // Every frame is a pure function of time (seek), drawn on a 1920x1080 stage scaled to the screen.
 // window.splashDone resolves as the banner starts to show, so js/categories.js raises the circles then.
@@ -14,7 +14,7 @@
   var SAF = '#F28B30', BLK = '#0B0B0E', WHT = '#FFFFFF';
   // The ball wears the Diwali banner's dusk gradient, so it opens straight into the banner.
   var DUSK = 'linear-gradient(180deg, #4a2378, #8e2f7c 45%, #d4513f 78%, #ef8a3c)';
-  // HUMAN takes the warm end of the banner sky.
+  // HUMAN + AI takes the warm end of the banner sky.
   var GLOW = 'linear-gradient(180deg, #D3784F, #DE8E54 50%, #E8A45A)';
   function dusk(white) { white = clamp(white); return white <= 0 ? DUSK : white >= 1 ? WHT : 'linear-gradient(rgba(255,255,255,' + white.toFixed(3) + '), rgba(255,255,255,' + white.toFixed(3) + ')), ' + DUSK; }
   var VW = W, VH = H;   // the screen, in stage units (set by fitStage)
@@ -43,7 +43,7 @@
   var FLOOR = 700, BD = 72, WS, WTOP, NS, APEX = FLOOR - 320;
   var HOPS;
   function measure() {
-    WS = Math.min(fit('DEVELOPER', 800, 1080, 210), 210); WTOP = FLOOR - CAP * WS; NS = fit('ABHISHEK THAKUR', 800, 1120, 120);
+    WS = Math.min(fit('DEVELOPER', 800, 1080, 210), fit('HUMAN + AI', 800, 1080, 210), 210); WTOP = FLOOR - CAP * WS; NS = fit('ABHISHEK THAKUR', 800, 1120, 120);
     // Each hop: [land time, surface at the end, arc height]. The ball lands on every beat (120 BPM).
     HOPS = [[0.5, FLOOR, 0], [1.0, FLOOR, 200], [1.5, FLOOR, 120], [2.0, WTOP, 250], [2.5, WTOP, 150], [3.0, WTOP, 150], [3.5, WTOP, 340]];
   }
@@ -87,7 +87,7 @@
       function (i) { return WS * (1 - eo(P(t, 1.5 + i * .015, .28))) + knock(2.0) + WS * ei(P(t, 2.0 + i * .006, .16)); });
     if (t >= 2.1 && t < 2.7) word('w2', 'DEVELOPER', WS, FLOOR, { color: WHT, clip: kclip },
       function (i) { return WS * (1 - eo(P(t, 2.1 + i * .012, .26))) + knock(2.5) + WS * ei(P(t, 2.5 + i * .006, .16)); });
-    if (t >= 2.64 && t < 3.85) word('w3', 'HUMAN', WS, FLOOR, { color: GLOW, clip: kclip },
+    if (t >= 2.64 && t < 3.85) word('w3', 'HUMAN + AI', WS, FLOOR, { color: GLOW, clip: kclip },
       function (i) { return WS * (1 - eo(P(t, 2.64 + i * .02, .26))) + knock(3.0) + WS * ei(P(t, 3.52 + i * .015, .26)); });
     // The saffron screen folds into a line, the name rises, then the line shrinks back into the ball.
     if (t >= 4.0) {

@@ -428,8 +428,8 @@ button { font: inherit; cursor: pointer; }
 .cl-eyebrow [lang="hi"] { letter-spacing: .02em; font-size: 13px; text-transform: none; }
 .cl-sep { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: .7; }
 .cl-title {
-  margin: 0; font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-weight: 400;
-  font-size: 54px; line-height: 1; letter-spacing: -.01em; color: #fff3d6;
+  margin: 0; font-family: var(--font); font-weight: 700;
+  font-size: 44px; line-height: 1.05; letter-spacing: -.025em; color: #fff3d6;
   text-shadow: 0 0 28px rgba(255,170,70,.45);
 }
 .cl-title em { font-style: italic; color: #ffd98a; }

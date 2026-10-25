@@ -17,10 +17,10 @@ html.cat-measure .cat .cat-pic { transform: none !important; }
 /* Heading: a hint first (light the sparkler, then a cracker), then the greeting */
 .cats-head { text-align: center; color: #fff3d6; margin: 0 16px 34px; transition: opacity .42s ease, transform .55s cubic-bezier(.2,.8,.2,1); }
 .ch-title {
-  margin: 0; font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-weight: 400;
-  font-size: clamp(30px, 3.2vw, 44px); line-height: 1.05; letter-spacing: -.01em; text-shadow: 0 0 28px rgba(255,170,70,.45);
+  margin: 0; font-family: var(--font); font-weight: 700;
+  font-size: clamp(28px, 2.8vw, 40px); line-height: 1.1; letter-spacing: -.025em; text-shadow: 0 0 28px rgba(255,170,70,.45);
 }
-.ch-title em { font-style: italic; color: #ffd98a; }
+.ch-title em { font-style: normal; color: #ffd98a; }
 .ch-sub { margin: 8px 0 0; font-size: 15px; line-height: 1.45; color: rgba(255,243,214,.86); text-shadow: 0 1px 10px rgba(90,20,40,.45); }
 .ch-swap { display: grid; justify-items: center; }
 .ch-swap > span { grid-area: 1 / 1; opacity: 0; transform: translateY(6px); transition: opacity .6s ease, transform .6s ease; }
