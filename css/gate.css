@@ -39,7 +39,18 @@ html.gate-on .st-locked:not(.open) .st-locked-body {
 .st-gate-li:hover { background: #004182; color: #fff; text-decoration: none; }
 .st-gate-li svg { width: 18px; height: 18px; }
 .st-gate .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* Whole-page lock for the live decks: the card floats over the blurred deck */
+.st-gate-page {
+  position: fixed; inset: 0; z-index: 9999; align-items: center; padding: 24px 16px; overflow-y: auto;
+  background: rgba(10, 11, 14, .55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.st-gate-page .st-gate-card { padding: 36px 32px 28px; border-radius: 20px; background: #fff; box-shadow: 0 30px 80px rgba(0, 0, 0, .35); font-family: Poppins, system-ui, sans-serif; }
+.st-gate-page .st-gate-card h2 { margin-top: 18px; }
+body.opening .st-gate-page { opacity: 0; }
+.st-gate-back { display: inline-block; margin-top: 16px; font-size: 14px; color: #5e6168; text-decoration: underline; text-underline-offset: 3px; }
+.st-gate-back:hover { color: #1d1f23; }
 @media (max-width: 720px) {
+  .st-gate-page .st-gate-card { padding: 28px 20px 22px; }
   html.gate-on .st-locked:not(.open) .st-locked-body { max-height: 300px; }
   .st-gate-card h2 { font-size: 26px; }
   .st-gate-sub { font-size: 16px; }

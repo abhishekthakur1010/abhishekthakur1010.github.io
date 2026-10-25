@@ -13,10 +13,11 @@
     />
     <link href="./css/deck.css?v=5" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
+  <link href="./css/gate.css?v=2" rel="stylesheet" />
 <script src="./js/shimmer.js"></script>
 </head>
 
-  <body class="deck">
+  <body class="deck" data-gate-page data-gate-back="./jio-checkout.html" data-gate-pill="Private presentation" data-gate-title="This presentation is private." data-gate-sub="Enter the password to view the live deck.">
     <!-- Progress bar -->
     <div class="deck-progress"><span id="deckBar"></span></div>
 
@@ -195,5 +196,6 @@
     <nav class="deck-dots" id="deckDots" aria-label="Slide navigation"></nav>
 
     <script src="./js/deck.js" defer></script>
+    <script src="./js/gate.js?v=2"></script>
   </body>
 </html>

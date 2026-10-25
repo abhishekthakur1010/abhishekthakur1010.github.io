@@ -1,16 +1,19 @@
 // Content gate for the story and the case studies (css/gate.css). Each page wraps its private part in
 //   <div class="st-locked" data-gate-pill="…" data-gate-title="…" data-gate-sub="…"><div class="st-locked-body">…</div></div>
 // and this script adds the unlock block under it. One unlock opens every gated page in that browser.
+// A whole page (the live decks) locks with <body data-gate-page data-gate-back="…" data-gate-…>: the card sits over a blurred page.
 // A light gate only: the text is still in the page source. Same preview password as the categories.
 (function () {
   var PASS_HASH = 'e2855c23afcb9cdde9a6bbb315fc71376be098e28e4f8a5b8576cddc9179e3f0', KEY = 'story-unlocked';
   var LINKEDIN = 'https://www.linkedin.com/in/abhishekthakur1010/';
+  var page = document.body.hasAttribute('data-gate-page') ? document.body : null;
   var locks = [].slice.call(document.querySelectorAll('.st-locked'));
-  if (!locks.length) return;
+  if (!locks.length && !page) return;
   var unlocked = false;
   try { unlocked = localStorage.getItem(KEY) === '1'; } catch (e) {}
   if (unlocked) { locks.forEach(function (l) { l.classList.add('open'); }); return; }
   document.documentElement.classList.add('gate-on');
+  if (page) locks = [page];
 
   var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>';
   var LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>';
@@ -26,17 +29,20 @@
     try { localStorage.setItem(KEY, '1'); } catch (e) {}
     document.querySelectorAll('.st-locked-body').forEach(function (b) { b.removeAttribute('inert'); });
     locks.forEach(function (l) { l.classList.add('opening'); });
+    if (page) [].forEach.call(page.children, function (c) { c.removeAttribute('inert'); });
     setTimeout(function () {
       document.documentElement.classList.remove('gate-on');
+      if (page) page.querySelector('.st-gate').remove();
       locks.forEach(function (l) { l.classList.add('open'); l.classList.remove('opening'); });
     }, 400);
   }
 
   locks.forEach(function (lock, n) {
-    var body = lock.querySelector('.st-locked-body'), d = lock.dataset, id = 'gate-' + n;
-    body.setAttribute('inert', '');
+    var body = page ? null : lock.querySelector('.st-locked-body'), d = lock.dataset, id = 'gate-' + n;
+    if (page) [].forEach.call(page.children, function (c) { if (c.tagName !== 'SCRIPT') c.setAttribute('inert', ''); });
+    else body.setAttribute('inert', '');
     var gate = document.createElement('div');
-    gate.className = 'st-gate'; gate.setAttribute('role', 'region'); gate.setAttribute('aria-labelledby', id + '-h');
+    gate.className = page ? 'st-gate st-gate-page' : 'st-gate'; gate.setAttribute('role', page ? 'dialog' : 'region'); gate.setAttribute('aria-labelledby', id + '-h');
     gate.innerHTML =
       '<div class="st-gate-card">' +
         '<span class="st-gate-pill">' + LOCK + esc(d.gatePill || 'Private') + '</span>' +
@@ -49,6 +55,7 @@
         '<p class="st-gate-err" role="alert"></p>' +
         '<div class="st-gate-or"><span>or</span></div>' +
         '<a class="st-gate-li" href="' + LINKEDIN + '" target="_blank" rel="noopener">' + LI + 'Connect on LinkedIn</a>' +
+        (d.gateBack ? '<a class="st-gate-back" href="' + esc(d.gateBack) + '">Back to the case study</a>' : '') +
       '</div>';
     lock.appendChild(gate);
     var form = gate.querySelector('form'), err = gate.querySelector('.st-gate-err');
@@ -66,6 +73,14 @@
         err.textContent = ''; openAll();
       });
     });
+    if (page) {
+      // keep the deck's arrow keys and swipes from moving slides behind the card (typing still works: only the deck's listeners are skipped)
+      ['keydown', 'wheel', 'touchmove'].forEach(function (ev) {
+        window.addEventListener(ev, function (e) { if (!page.classList.contains('open') && (ev === 'keydown' || !gate.contains(e.target))) e.stopPropagation(); }, { capture: true, passive: true });
+      });
+      setTimeout(function () { form.pass.focus({ preventScroll: true }); }, 100);
+      return;
+    }
     // in-page links that point into the locked part go to the password box until it's open
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       var t = a.getAttribute('href').length > 1 && document.querySelector(a.getAttribute('href'));
