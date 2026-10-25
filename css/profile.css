@@ -1128,3 +1128,33 @@ html, body { overflow-x: clip; }
 
 /* Award thumbnails take the certificates' own 3:2-ish shape, so they sit edge to edge with nothing cropped */
 .award-img { aspect-ratio: 1.46; }
+
+/* More projects: one slim row under Selected work; opens to the same list as before */
+.card.card-more { padding-top: 0; border-top: 0; }
+.more-proj > summary {
+  list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer;
+  padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; transition: background .2s, border-color .2s;
+}
+.more-proj > summary::-webkit-details-marker { display: none; }
+.more-proj > summary:hover { background: var(--line-soft); }
+.more-proj > summary:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.more-proj-label { margin: 0; font-size: 15px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; letter-spacing: 0; text-transform: none; }
+.more-proj-count { font-size: 12px; font-weight: 600; line-height: 1; padding: 4px 8px; border-radius: 999px; background: var(--line-soft); color: var(--text-2); }
+.more-proj > summary:hover .more-proj-count { background: #fff; }
+.more-chev { width: 20px; height: 20px; flex: none; color: var(--text-2); transition: transform .25s ease; }
+.more-proj[open] .more-chev { transform: rotate(180deg); }
+.card .more-proj .more-proj-sub { margin: 16px 0 14px; }
+@media (prefers-reduced-motion: reduce) { .more-chev { transition: none; } }
+
+/* More projects as a quiet text link with a hairline divider running to the edge */
+.more-proj > summary { justify-content: flex-start; gap: 6px; padding: 4px 0; border: 0; border-radius: 0; background: none; }
+.more-proj > summary:hover { background: none; }
+.more-proj > summary::after { content: ""; flex: 1; height: 1px; margin-left: 10px; background: var(--line); }
+.more-proj-label { font-size: 14.5px; font-weight: 600; }
+.more-proj > summary:hover .more-proj-label { text-decoration: underline; text-underline-offset: 3px; }
+.more-proj-label .more-opened, .more-proj[open] .more-proj-label .more-closed { display: none; }
+.more-proj[open] .more-proj-label .more-opened { display: inline; }
+.more-chev { width: 18px; height: 18px; color: var(--text); }
+.more-proj-label { font-weight: 400; color: var(--text-2); }
+.more-proj > summary .more-chev { color: var(--text-2); }
+.more-proj > summary:hover .more-proj-label, .more-proj > summary:hover .more-chev { color: var(--text); }

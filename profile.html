@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="./css/profile.css?v=74" rel="stylesheet" />
+    <link href="./css/profile.css?v=78" rel="stylesheet" />
     <link href="./css/categories.css?v=21" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -66,11 +66,11 @@
         <ul class="toc-list">
           <li class="toc-back"><a href="#categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>All categories</a></li>
           <li><a href="#products">Products</a></li>
-          <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#education">Education</a></li>
-          <li><a href="#featured">Featured</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#featured">Selected work</a></li>
+          <li><a href="#projects">More projects</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#recommendations">Recommendations</a></li>
           <li><a href="#interests">Beyond work</a></li>
           <li class="toc-end"><a href="./about-us.html">My story</a></li>
@@ -217,52 +217,6 @@
           </ul>
         </section>
 
-        <!-- About + awards -->
-        <section class="card" id="about" aria-labelledby="h-about">
-          <div class="card-head">
-            <h2 class="card-title" id="h-about">Engineer by degree. Designer by instinct.</h2>
-            <div class="rail-nav">
-              <button type="button" data-rail="awards-rail" data-dir="-1" aria-label="Previous awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
-              <button type="button" data-rail="awards-rail" data-dir="1" aria-label="Next awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
-            </div>
-          </div>
-          <p class="card-sub" id="awards">From the mountains to millions: 10 years in design, and a few wins along the way.</p>
-          <ul class="award-rail" id="awards-rail">
-            <li class="award-card">
-              <button type="button" class="award-open" data-media="./images/awards/spotlight-full.jpg?v=4" aria-haspopup="dialog">
-                <span class="award-img"><img src="./images/awards/spotlight.jpg?v=5" alt="" loading="lazy" /></span>
-                <span class="award-title">Spotlight Award</span>
-                <span class="award-meta">Jio Platforms · Q4 2022–23</span>
-                <span class="award-desc">Awarded for a result-driven mindset, seamless collaboration and selfless team support.</span>
-              </button>
-            </li>
-            <li class="award-card">
-              <button type="button" class="award-open" data-media="./images/awards/design-nerds-full.jpg?v=5" aria-haspopup="dialog">
-                <span class="award-img"><img src="./images/awards/design-nerds.jpg?v=6" alt="" loading="lazy" /></span>
-                <span class="award-title">Design Nerds Hackathon</span>
-                <span class="award-meta">Jio Platforms · Sep 2022</span>
-                <span class="award-desc">Won Reliance Jio&#x27;s Design Nerds contest, a quarterly platform for creativity and cross-team innovation.</span>
-              </button>
-            </li>
-            <li class="award-card">
-              <button type="button" class="award-open" data-media="./images/awards/best-team-full.jpg?v=2" aria-haspopup="dialog">
-                <span class="award-img"><img src="./images/awards/best-team.jpg?v=4" alt="" loading="lazy" /></span>
-                <span class="award-title">JioMart Best Team Award</span>
-                <span class="award-meta">Jio Platforms · Q3</span>
-                <span class="award-desc">For consistently delivering high-impact solutions that solved real user problems and drove business outcomes.</span>
-              </button>
-            </li>
-            <li class="award-card">
-              <button type="button" class="award-open" data-media="./images/awards/mega-mind-full.jpg" aria-haspopup="dialog">
-                <span class="award-img"><img src="./images/awards/mega-mind.jpg?v=3" alt="" loading="lazy" /></span>
-                <span class="award-title">Mega Mind Award</span>
-                <span class="award-meta">Swiggy Dineout · Jul 2017</span>
-                <span class="award-desc">Awarded for driving innovation and introducing impactful ideas.</span>
-              </button>
-            </li>
-          </ul>
-        </section>
-
         <!-- Experience -->
         <section class="card" id="experience" aria-labelledby="h-experience">
           <h2 class="card-title" id="h-experience">Experience</h2>
@@ -317,9 +271,10 @@
           </ul>
         </section>
 
-        <!-- Featured -->
+        <!-- Selected work -->
         <section class="card" id="featured" aria-labelledby="h-featured">
-          <div class="card-head"><h2 class="card-title" id="h-featured">Featured</h2></div>
+          <div class="card-head"><h2 class="card-title" id="h-featured">Selected work</h2></div>
+          <p class="card-sub">Four case studies and the outcomes they drove.</p>
           <div class="featured">
           <a class="feat" href="./jiomart-discovery.html">
             <div class="feat-img"><img src="./images/feature-project-02.webp" alt="Optimizing product discovery case study cover" loading="lazy" /></div>
@@ -352,10 +307,14 @@
           </div>
         </section>
 
-        <!-- Projects -->
-        <section class="card" id="projects" aria-labelledby="h-projects">
-          <h2 class="card-title" id="h-projects">Projects</h2>
-          <p class="card-sub">Write-ups coming soon</p>
+        <!-- More projects: closed until opened, then the same list as before -->
+        <section class="card card-more" id="projects" aria-labelledby="h-projects">
+          <details class="more-proj">
+            <summary>
+              <h2 class="more-proj-label" id="h-projects"><span class="more-closed">See 14 more projects</span><span class="more-opened">Hide more projects</span></h2>
+              <svg class="more-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="card-sub more-proj-sub">Write-ups in progress. Happy to walk you through any of these on a call.</p>
           <ul class="list" id="project-list">
             <li class="proj">
               <div class="proj-thumb"><img src="./images/feature-project-12.webp" alt="" loading="lazy" /></div>
@@ -471,6 +430,53 @@
             </li>
           </ul>
           <div class="card-foot"><button type="button" data-show-all="project-list" aria-expanded="false"><span>Show all 14 projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+          </details>
+        </section>
+
+        <!-- About + awards -->
+        <section class="card" id="about" aria-labelledby="h-about">
+          <div class="card-head">
+            <h2 class="card-title" id="h-about">Engineer by degree. Designer by instinct.</h2>
+            <div class="rail-nav">
+              <button type="button" data-rail="awards-rail" data-dir="-1" aria-label="Previous awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+              <button type="button" data-rail="awards-rail" data-dir="1" aria-label="Next awards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <p class="card-sub" id="awards">From the mountains to millions: 10 years in design, and a few wins along the way.</p>
+          <ul class="award-rail" id="awards-rail">
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/spotlight-full.jpg?v=4" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/spotlight.jpg?v=5" alt="" loading="lazy" /></span>
+                <span class="award-title">Spotlight Award</span>
+                <span class="award-meta">Jio Platforms · Q4 2022–23</span>
+                <span class="award-desc">Awarded for a result-driven mindset, seamless collaboration and selfless team support.</span>
+              </button>
+            </li>
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/design-nerds-full.jpg?v=5" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/design-nerds.jpg?v=6" alt="" loading="lazy" /></span>
+                <span class="award-title">Design Nerds Hackathon</span>
+                <span class="award-meta">Jio Platforms · Sep 2022</span>
+                <span class="award-desc">Won Reliance Jio&#x27;s Design Nerds contest, a quarterly platform for creativity and cross-team innovation.</span>
+              </button>
+            </li>
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/best-team-full.jpg?v=2" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/best-team.jpg?v=4" alt="" loading="lazy" /></span>
+                <span class="award-title">JioMart Best Team Award</span>
+                <span class="award-meta">Jio Platforms · Q3</span>
+                <span class="award-desc">For consistently delivering high-impact solutions that solved real user problems and drove business outcomes.</span>
+              </button>
+            </li>
+            <li class="award-card">
+              <button type="button" class="award-open" data-media="./images/awards/mega-mind-full.jpg" aria-haspopup="dialog">
+                <span class="award-img"><img src="./images/awards/mega-mind.jpg?v=3" alt="" loading="lazy" /></span>
+                <span class="award-title">Mega Mind Award</span>
+                <span class="award-meta">Swiggy Dineout · Jul 2017</span>
+                <span class="award-desc">Awarded for driving innovation and introducing impactful ideas.</span>
+              </button>
+            </li>
+          </ul>
         </section>
 
         <!-- Recommendations -->
