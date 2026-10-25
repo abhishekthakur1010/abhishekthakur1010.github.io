@@ -27,7 +27,7 @@
   var ROUTES = { gamified: './ghar/index.html', scrolly: './scrolly/index.html' };
   // SHA-256 of the shared preview password. A light gate only: the pages themselves stay public.
   var PASS_HASH = 'e2855c23afcb9cdde9a6bbb315fc71376be098e28e4f8a5b8576cddc9179e3f0';
-  var EMAIL = 'abhi.thakur1010@gmail.com';
+  var EMAIL = 'abhishekiit2k12@gmail.com';
   var resume = cats.querySelector('[data-key="resume"]');
   var pic = resume.querySelector('.cat-pic');
   var busy = false;

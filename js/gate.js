@@ -78,6 +78,14 @@
       ['keydown', 'wheel', 'touchmove'].forEach(function (ev) {
         window.addEventListener(ev, function (e) { if (!page.classList.contains('open') && (ev === 'keydown' || !gate.contains(e.target))) e.stopPropagation(); }, { capture: true, passive: true });
       });
+      var back = gate.querySelector('.st-gate-back');
+      // going back to the case study steps back in history when that's where the visitor came from, so back never loops
+      if (back) back.addEventListener('click', function (e) {
+        try {
+          var r = new URL(document.referrer), k = function (s) { return s.replace(/\.html$/, ''); };
+          if (r.host === location.host && k(r.pathname) === k(back.pathname)) { e.preventDefault(); history.back(); }
+        } catch (err) {}
+      });
       setTimeout(function () { form.pass.focus({ preventScroll: true }); }, 100);
       return;
     }

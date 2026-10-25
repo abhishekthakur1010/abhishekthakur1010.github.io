@@ -8,7 +8,7 @@ window.STORY = {
   title: "From the Mountains to Millions",
   author: "Abhishek Thakur",
   role: "Lead Product Designer",
-  email: "abhi.thakur1010@gmail.com",
+  email: "abhishekiit2k12@gmail.com",
 
   // Total storytelling scroll, in viewport heights, and how it splits per chapter.
   // Change the weights to re-pace the story; scenes retime themselves.
@@ -132,7 +132,7 @@ window.STORY = {
   ctas: [
     { label: "Explore my work", href: "../profile.html#featured" },
     { label: "View case studies", href: "#work-menu" },
-    { label: "Get in touch", href: "mailto:abhi.thakur1010@gmail.com" },
+    { label: "Get in touch", href: "mailto:abhishekiit2k12@gmail.com" },
     { label: "Download resume", href: "../resume.pdf" },
   ],
 

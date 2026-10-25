@@ -21,7 +21,7 @@
     <!-- Top bar: same as My story (css/st-bar.css) -->
     <header class="st-bar">
       <div class="st-bar-in">
-        <a class="st-back" href="./profile.html" onclick="if(document.referrer.indexOf(location.host)>-1){event.preventDefault();history.back()}" aria-label="Back to profile">
+        <a class="st-back" href="./profile.html" onclick="try{var r=new window.URL(document.referrer),k=function(s){return s.replace(/\.html$/,'').replace(/\/(index)?$/,'/profile')};if(r.host===location.host&&k(r.pathname)===k(this.pathname)){event.preventDefault();history.back()}}catch(e){}" aria-label="Back to profile">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
         </a>
         <a class="st-brand" href="./profile.html"><img src="./images/profile-photo.jpg" alt="" /><span>Abhishek Thakur<small>AI Product Design Leader | Design Trusted by Millions</small></span></a>
@@ -685,7 +685,7 @@
         <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
         <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>
         <a href="https://dribbble.com/abhishek_thakur_" target="_blank">Dribbble</a>
-        <a href="mailto:abhi.thakur1010@gmail.com">Email</a>
+        <a href="mailto:abhishekiit2k12@gmail.com">Email</a>
       </div>
     </footer>
 

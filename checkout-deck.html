@@ -19,7 +19,7 @@
   <body class="deck" data-gate-page data-gate-back="./jio-checkout.html" data-gate-pill="Private presentation" data-gate-title="This presentation is private." data-gate-sub="Enter the password to view the live deck." data-theme="dark">
     <!-- top bar -->
     <header class="topbar">
-      <a class="brand" href="./jio-checkout.html">
+      <a class="brand" href="./jio-checkout.html" onclick="try{var r=new window.URL(document.referrer),k=function(s){return s.replace(/\.html$/,'').replace(/\/(index)?$/,'/profile')};if(r.host===location.host&&k(r.pathname)===k(this.pathname)){event.preventDefault();history.back()}}catch(e){}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
         Case study
       </a>
@@ -61,6 +61,6 @@
 
     <script src="js/checkout-deck-slides.js?v=8"></script>
     <script src="js/jiomart-deck.js?v=25"></script>
-    <script src="./js/gate.js?v=2"></script>
+    <script src="./js/gate.js?v=3"></script>
   </body>
 </html>
