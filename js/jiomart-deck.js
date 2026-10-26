@@ -119,6 +119,7 @@
       case "showcase": return sc.pairs.length;
       case "versions": return sc.stages.length - 1;
       case "kpis": return sc.groups.length + 1;
+      case "results": return 2;
       case "close": return 2;
       case "qa": return sc.qs.length + 1;
       case "contextinfo": return sc.flow.length + 1;
@@ -692,6 +693,28 @@
         (sc.checks ? "<div class='kp-checks'>" + sc.checks.map(function (c) { return "<span class='kp-check'><b>" + esc(c.n) + "</b>" + (c.est ? "<i>est.</i>" : "") + "<span>" + esc(c.l) + "</span></span>"; }).join("") + "</div>" : "") +
         "<div class='kp-grid'>" + groups + "</div>" +
         "<div class='kp-foot reveal' data-step='" + last + "'><p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" + (sc.context ? "<p class='disclaimer'>" + esc(sc.context) + "</p>" : "") + "</div></div>";
+    },
+
+    /* impact: four headline results, then what validated it and what else moved */
+    results: function (sc) {
+      var hero = sc.hero.map(function (h) {
+        var max = Math.max(h.pre, h.post);
+        return "<div class='im-card'><span class='im-k'>" + esc(h.k) + "</span>" +
+          "<span class='im-d'>" + esc(h.d) + "</span><span class='im-sub'>" + esc(h.sub) + "</span>" +
+          "<div class='im-bars'><div class='im-bar pre'><i style='--w:" + (h.pre / max * 100).toFixed(1) + "%'></i><span>Before</span><b>" + esc(h.pt) + "</b></div>" +
+          "<div class='im-bar post'><i style='--w:" + (h.post / max * 100).toFixed(1) + "%'></i><span>After</span><b>" + esc(h.qt) + "</b></div></div></div>";
+      }).join("");
+      var checks = sc.checks.map(function (c) {
+        return "<div class='im-check'><b>" + esc(c.n) + "</b><span>" + esc(c.l) + (c.est ? " <i>est.</i>" : "") + "</span></div>";
+      }).join("");
+      var more = sc.more.map(function (m) {
+        return "<div class='im-row'><span class='im-l'>" + esc(m.l) + "</span><span class='im-pt'>" + esc(m.pt) + "</span><span class='im-ar'>→</span><span class='im-qt'>" + esc(m.qt) + "</span><span class='im-rd'>" + esc(m.d) + "</span></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='im-hero'>" + hero + "</div>" +
+        "<div class='im-low reveal' data-step='1'><div class='im-panel'><div class='tier-label'>" + esc(sc.checksTitle) + "</div><div class='im-checks'>" + checks + "</div></div>" +
+        "<div class='im-panel'><div class='tier-label'>" + esc(sc.moreTitle) + "</div>" + more + "</div></div>" +
+        "<p class='disclaimer im-foot reveal' data-step='2'>" + esc(sc.disclaimer) + "</p></div>";
     },
 
     /* business context as an infographic: who → ask → north star, then ground reality */

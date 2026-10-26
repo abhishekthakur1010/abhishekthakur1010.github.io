@@ -385,28 +385,26 @@ window.DECK = {
     },
 
     {
-      section: "results", type: "kpis",
+      section: "results", type: "results",
       eyebrow: "Validation & impact",
       headline: ["Tested, refined, and it moved the numbers"],
+      hero: [
+        { k: "Sessions with add-to-cart", pre: 10.41, post: 13.35, pt: "10.41%", qt: "13.35%", d: "{{+28%|carts}}", sub: "+294 bps" },
+        { k: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, pt: "41.40%", qt: "50.20%", d: "{{+21%|search}}", sub: "+880 bps" },
+        { k: "Time per active user", pre: 254, post: 315, pt: "4m 14s", qt: "5m 15s", d: "{{+24%|time}}", sub: "more browsing" },
+        { k: "Page download time", pre: 0.17, post: 0.12, pt: "0.17s", qt: "0.12s", d: "{{−29%|speed}}", sub: "faster, lower is better" }
+      ],
+      checksTitle: "Validated before launch",
       checks: [
         { n: "{{9 / 12|usability}}", l: "completed the usability test" },
         { n: "{{3|iterations}}", l: "design iterations", est: true },
         { n: "{{6|iterations}}", l: "design review rounds", est: true }
       ],
-      groups: [
-        { k: "Conversion", rows: [
-          { l: "Sessions with add-to-cart", pre: 10.41, post: 13.35, unit: "%", d: "{{+294 bps|carts}}", rel: "+28.2%" },
-          { l: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, unit: "%", d: "{{+880 bps|search}}", rel: "+21.3%" }
-        ] },
-        { k: "Engagement", rows: [
-          { l: "Time per active user", pre: 254, post: 315, unit: "s", fmt: "ms", d: "{{+24.0%|time}}" },
-          { l: "Time per session", pre: 106, post: 133, unit: "s", fmt: "ms", d: "{{+25.5%|time}}" },
-          { l: "Page views per user", pre: 5.81, post: 7.04, unit: "", d: "{{+21.2%|pages}}" }
-        ] },
-        { k: "Speed", rows: [
-          { l: "Page download time", pre: 0.17, post: 0.12, unit: "s", d: "{{−29.4%|speed}}", lowerBetter: true },
-          { l: "Server response time", pre: 0.47, post: 0.37, unit: "s", d: "{{−21.3%|speed}}", lowerBetter: true }
-        ] }
+      moreTitle: "Also improved",
+      more: [
+        { l: "Time per session", pt: "1m 46s", qt: "2m 13s", d: "{{+25.5%|time}}" },
+        { l: "Page views per user", pt: "5.81", qt: "7.04", d: "{{+21.2%|pages}}" },
+        { l: "Server response time", pt: "0.47s", qt: "0.37s", d: "{{−21.3%|speed}}" }
       ],
       disclaimer: "Google Analytics, before launch vs after launch (report evaluated Aug 2023). Iteration and review counts are illustrative (est.).",
       notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results from the Aug 2023 report: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
