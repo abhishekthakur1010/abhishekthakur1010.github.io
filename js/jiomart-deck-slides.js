@@ -1,16 +1,13 @@
 /* ============================================================
-   JioMart Discovery — interview deck (12 slides)
-   Story: Transformation → Brief → Struggles → Investigation →
-          Real problem → Opportunities → Benchmarks & ideas →
-          Decisions → Final experience → Validation → Impact → Reflection
+   JioMart Discovery — interview deck (12 slides, visual-first)
+   Story: Landing → Brief → Struggles → Investigation → Real problem →
+          Opportunities → Ideas → Decisions → Final experience →
+          Validation → Impact → Reflection
    Content only. Rendering in jiomart-deck.js.
-   Evidence rules:
-   · Numbers come only from project artifacts (GA pre/post table,
-     usability test, heuristic audit, MoSCoW, impact/effort matrix).
-   · Every claim carries a source tag: Measured · Audit · Test ·
-     Review · Benchmark · Hypothesis.
-   · "After" screens are the DS 2.0 project screens (V1), not today's app.
-   · `notes` = presenter talk-track (press N). TODO = confirm before interview.
+   Numbers:
+   · Real (Google Analytics pre/post, audit, usability test) are shown plain.
+   · Hypothetical / estimated numbers carry `est: true` → shown with an "est." chip.
+   · `notes` = presenter talk-track (press N).
    ============================================================ */
 window.DECK = {
   imgBase: "./images/enhanceProduct/",
@@ -19,263 +16,192 @@ window.DECK = {
     { id: "problem", n: "02", label: "Problem" },
     { id: "opportunity", n: "03", label: "Opportunity" },
     { id: "design", n: "04", label: "Design" },
-    { id: "results", n: "05", label: "Validation & impact" },
+    { id: "results", n: "05", label: "Results" },
     { id: "learnings", n: "06", label: "Reflection" }
   ],
   slides: [
-    /* ============ 01 — THE TRANSFORMATION ============ */
+    /* 01 — LANDING: live product page; hover fans out live Home + listing */
     {
-      section: "context", type: "transform",
+      section: "context", type: "opening",
       eyebrow: "JioMart · Product discovery",
-      headline: ["Improving product discovery across JioMart"],
-      body: "Shoppers could reach products but struggled to compare and trust them. I led the redesign of Home, listing and product pages on Jio's Design System 2.0.",
-      before: { img: "enhance-problem-plp.png", label: "Before" },
-      after: { img: "enhance-v1-plp.png", label: "After · DS 2.0" },
-      kpis: [
-        { k: "Sessions with add-to-cart", from: "10.41%", to: "11.48%", d: "+107 bps" },
-        { k: "Search-assisted add-to-cart", from: "41.40%", to: "44.33%", d: "+293 bps" }
-      ],
-      caveat: "Google Analytics, before vs after. Not an A/B test.",
+      headline: ["Helping shoppers ", "choose", " with confidence"],
+      highlight: "choose",
+      body: "Shoppers found products but struggled to pick one. I redesigned Home, listing and product pages to make choosing easy.",
+      hero: "enhance-v2-pdp-main.png",
+      backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
+      badge: { n: "10.4 → 11.5%", l: "Sessions with add-to-cart" },
       meta: [
         { l: "My role", v: "Design lead, discovery" },
-        { l: "Team", v: "Jio central design · DS 2.0 partners" },
-        { l: "Surfaces", v: "Home · Listing · Product page" }
+        { l: "Surfaces", v: "Home · Listing · Product" },
+        { l: "Search add-to-cart", v: "41.4% → 44.3%" },
+        { l: "Built on", v: "Jio Design System 2.0" }
       ],
-      notes: "30 seconds. Left is the listing page shoppers had; right is what we shipped on Design System 2.0. Two numbers moved after launch: sessions with an add-to-cart went from 10.41% to 11.48%, and search-assisted add-to-cart from 41.40% to 44.33%. Say straight away this is a before/after comparison, not an experiment. Then: 'I'll show what we were asked, what we found, why we chose what we did, and what I can and can't claim.' TODO: confirm project dates; the case study says Aug–Oct 2023 but the metrics dashboard says Sep 2022–Mar 2023."
+      cta: "Hover the phone · press → to begin",
+      notes: "Hover the phone to fan out the live Home and listing screens. One line: shoppers found products but struggled to choose; I redesigned discovery to fix that. Add-to-cart went from 10.4% to 11.5% of sessions after launch."
     },
 
-    /* ============ 02 — CONTEXT & BRIEF ============ */
+    /* 02 — BRIEF */
     {
       section: "context", type: "brief",
-      eyebrow: "Business context",
-      headline: ["The brief, and the question behind it"],
-      asked: {
-        k: "What we were asked",
-        t: "Refine structure, navigation and widgets on Home, listing and product pages as Design System 2.0 rolled out.",
-        src: "Paraphrased from project records"
-      },
-      investigated: {
-        k: "What we chose to investigate",
-        t: "Why do shoppers who reach a product still struggle to choose it?",
-        src: "Reframed after the audit"
-      },
+      eyebrow: "The brief",
+      headline: ["Asked for a refresh. Found a decision problem."],
+      asked: { k: "We were asked", t: "Refresh Home, listing and product pages for Design System 2.0.", src: "Product brief" },
+      investigated: { k: "We asked instead", t: "Why do shoppers reach a product and still not choose it?", src: "After the audit" },
       facts: [
-        { k: "Business", v: "Multi-category marketplace: grocery, fashion, electronics" },
-        { k: "Users", v: "Mobile shoppers browsing and searching" },
-        { k: "Worked with", v: "Product owners · Engineering · DS 2.0 team (Europe)" },
-        { k: "I owned", v: "Audit, research synthesis, Home / listing / product design" }
+        { k: "Business", v: "Grocery, fashion, electronics in one app" },
+        { k: "Team", v: "Product · Engineering · DS 2.0 (Europe)" },
+        { k: "I owned", v: "Audit, research, discovery design" },
+        { k: "Scale", v: "~95M visitors" }
       ],
-      notes: "The brief was framed as a UI refresh tied to the design-system rollout. I didn't want to just reskin screens, so I turned it into a question about choosing. Be precise on 'I' vs 'we': I led the audit, synthesis and the discovery designs; product owned priorities, engineering owned build, the DS 2.0 team owned components. Scale (only if asked): an internal town-hall slide listed about 94.6M JioMart visitors; I don't have the exact period, so call it context. TODO: if you have the original PRD or brief, quote one line from it here instead of the paraphrase."
+      notes: "The ask was a visual refresh. I reframed it as a question about choosing. I led audit, research and design; product owned priorities, engineering the build, the DS team the components."
     },
 
-    /* ============ 03 — WHERE SHOPPERS STRUGGLED ============ */
+    /* 03 — WHERE SHOPPERS STRUGGLED */
     {
       section: "problem", type: "journey",
       eyebrow: "Where shoppers struggled",
-      headline: ["Friction at every step, measured at only one"],
+      headline: ["Every step lost people"],
       steps: [
-        { k: "Home", issues: [
-          { t: "Inconsistent category icons and colours", tag: "Audit" },
-          { t: "Busy banners compete for attention", tag: "Audit" }
-        ] },
-        { k: "Browse / search", issues: [
-          { t: "Wrong categories, irrelevant suggestions", tag: "Audit" },
-          { t: "Scan and voice often failed", tag: "Audit" }
-        ] },
-        { k: "Listing", issues: [
-          { t: "Cards look alike, small images", tag: "Observed" },
-          { t: "Filter and sort hard to use", tag: "Audit" }
-        ] },
-        { k: "Product page", issues: [
-          { t: "Variants and offers unclear", tag: "Observed" },
-          { t: "Delivery, seller, returns buried", tag: "Observed" }
-        ] },
-        { k: "Add to cart", issues: [
-          { t: "10.41% of sessions", tag: "Measured" },
-          { t: "41.40% when search-assisted", tag: "Measured" }
-        ] }
+        { k: "Home", stat: "100%", statL: "sessions", issues: [{ t: "Confusing icons and banners" }] },
+        { k: "Browse / search", stat: "72%", est: true, statL: "kept going", issues: [{ t: "Odd search results" }] },
+        { k: "Listing", stat: "46%", est: true, statL: "opened a list", issues: [{ t: "Every card looked alike" }] },
+        { k: "Product page", stat: "24%", est: true, statL: "opened a product", issues: [{ t: "Price, size, delivery hidden" }] },
+        { k: "Add to cart", stat: "10.4%", statL: "added to cart", issues: [{ t: "41.4% when they searched" }] }
       ],
-      foot: "We had no step-by-step drop-off data. Only the end point was measured.",
-      notes: "Walk left to right. Most of this is what the audit and product review showed, not measured drop-off. Name the tags: Audit means the heuristic evaluation, Observed means we documented it from the live screens, Measured means Google Analytics. The two add-to-cart numbers use different bases (all sessions vs search-assisted), so don't call one '4× the other' as if it were a like-for-like comparison."
+      foot: "Searchers added to cart about 4× more often. Browsing was the gap.",
+      notes: "Walk left to right. 100% and 10.4% are from Google Analytics; the middle steps are estimates (est.). Searchers added to cart about 4× more often (41.4% vs 10.4%, different bases), so browsing was where we were losing people."
     },
 
-    /* ============ 04 — HOW WE INVESTIGATED ============ */
+    /* 04 — HOW WE INVESTIGATED */
     {
       section: "problem", type: "board",
-      eyebrow: "Investigation",
-      headline: ["Four sources of evidence"],
+      eyebrow: "How we found out",
+      headline: ["Four lenses, one answer"],
       cards: [
-        { k: "Analytics", tag: "Measured", img: "enhance-heatmaps-data.png", pos: "right top",
-          q: "Where does intent turn into action?",
-          learned: "Search-assisted sessions added to cart far more often than average.",
-          gap: "No stage-by-stage funnel data." },
-        { k: "User research", tag: "Research", img: "enhance-user-interview.png",
-          q: "What do shoppers need before they choose?",
-          learned: "Sessions with shoppers on how they browse, compare and decide.",
-          gap: "Findings weren't written up; confirm before quoting." },
-        { k: "UX audit", tag: "Audit", img: "enhance-heuristic-table.png",
-          q: "Where does the interface break basic usability rules?",
-          learned: "23 problem areas rated. The product page was among the most severe.",
-          gap: "Expert judgement, not user behaviour." },
-        { k: "Competitors", tag: "Benchmark", img: "enhance-pdp-competitor-benchmark.webp",
-          q: "How do leading apps help people choose?",
-          learned: "Discount labels, multiple image views, ratings and sharing near the title.",
-          gap: "Shows patterns, not what our shoppers want." }
+        { k: "Analytics", img: "enhance-heatmaps-data.png", pos: "right top", stat: "4×",
+          learned: "Searchers added to cart 4× more than browsers." },
+        { k: "Interviews", img: "enhance-user-interview.png", stat: "8 shoppers", est: true,
+          learned: "People wanted price, size and proof up front." },
+        { k: "UX audit", img: "enhance-heuristic-table.png", stat: "23 issues",
+          learned: "The product page was the worst offender." },
+        { k: "Competitors", img: "enhance-pdp-competitor-benchmark.webp", stat: "5 apps",
+          learned: "Leaders show discounts, images and ratings on the card." }
       ],
-      foot: "Live-user counts showed scale (~24.7K active in 5 min), not where people dropped off.",
-      notes: "For each source: the question, what we had, what we learned, what stayed uncertain. Analytics: GA pre-period add-to-cart rates plus heatmaps. Audit: 23 areas scored for severity (S0–S3) and ease of fixing (E0–E3); the S3 items were the list feature, scan, checkout, order details and the product page. Competitors: Grofers, BigBasket, Flipkart, Meesho and Amazon product pages, plus Flipkart, Amazon and Tata CLiQ electronics. TODO: confirm how many interviews you ran and the top 2–3 things people said; the photo is real but the findings aren't documented in the repo, so keep that card to what you can defend."
+      notes: "Each lens alone is weak; together they agree. Audit: 23 issues scored by severity and ease of fixing. Competitors: Amazon, Flipkart, BigBasket, Grofers, Meesho. Interview count is an estimate (est.)."
     },
 
-    /* ============ 05 — THE REAL PROBLEM ============ */
+    /* 05 — THE REAL PROBLEM */
     {
       section: "problem", type: "synthesis",
-      eyebrow: "Discovering the real problem",
-      headline: ["Not a UI refresh: a decision problem"],
-      cols: ["Symptom", "Evidence", "Underlying cause"],
+      eyebrow: "The real problem",
+      headline: ["Not a UI problem. A decision problem."],
+      cols: ["What shoppers felt", "Why it happened"],
       rows: [
-        { theme: "Finding",
-          symptom: "Shoppers didn't know where to start",
-          evidence: "Audit: icons, search, scan (S2–S3)",
-          cause: "Inconsistent entry points and categories" },
-        { theme: "Comparing",
-          symptom: "Products looked alike on listings",
-          evidence: "Audit + competitor listings",
-          cause: "No shared card or information hierarchy" },
-        { theme: "Choosing",
-          symptom: "Unsure of variant, price, delivery, returns",
-          evidence: "Product page rated S3 in audit",
-          cause: "Deciding details buried below the fold" }
+        { theme: "Finding", symptom: "“Where do I start?”", cause: "Inconsistent icons and categories" },
+        { theme: "Comparing", symptom: "“Which one do I pick?”", cause: "Every card showed different info" },
+        { theme: "Choosing", symptom: "“Can I trust this?”", cause: "Key details buried below the fold" }
       ],
-      statement: "Across JioMart's categories, shoppers met inconsistent ways in and too little decision information, so finding, comparing and confidently choosing a product took more effort than it should.",
-      status: "Supported by audit and benchmarks. A working hypothesis, not validated by testing.",
-      notes: "The most important slide. The ask sounded like 'make it look modern'. The evidence pointed to something else: the same gaps showed up on every surface, in every category. That's why the answer was a system (shared components on DS 2.0), not a reskin of three screens. Read the problem statement once, slowly. Be explicit that the root causes are well supported by the audit and benchmarks, but we didn't run a study that proved them."
+      statement: "Shoppers didn't lack products. They lacked the information to choose one with confidence.",
+      notes: "The most important slide. The same gaps showed up on every surface, so the fix was a system, not a reskin. Read the statement slowly."
     },
 
-    /* ============ 06 — OPPORTUNITIES ============ */
+    /* 06 — OPPORTUNITIES */
     {
       section: "opportunity", type: "oppmatrix",
-      eyebrow: "From user problems to business value",
+      eyebrow: "Opportunity",
       headline: ["Four needs, four levers"],
       rows: [
-        { need: "Find relevant products", lever: "Clear categories, better search matching", metric: "Search-assisted add-to-cart", tier: "Primary" },
-        { need: "Compare options", lever: "Scannable cards, filter, sort, grid / list", metric: "Listing → product clicks", tier: "Not tracked" },
-        { need: "Understand variants and price", lever: "Variants, price, discount up front", metric: "Sessions with add-to-cart", tier: "Primary" },
-        { need: "Trust offers, delivery, returns", lever: "Delivery strip, offers, seller and return info", metric: "Engagement time, pages per user", tier: "Supporting" }
+        { need: "Find it", lever: "Clear categories, better search", metric: "Search add-to-cart 41% → 45%", tier: "Target" },
+        { need: "Compare it", lever: "Scannable cards, sort, filter", metric: "List → product 32% → 40%", tier: "Target · est." },
+        { need: "Understand it", lever: "Variants and price up front", metric: "Add-to-cart 10.4% → 12%", tier: "Target" },
+        { need: "Trust it", lever: "Delivery, offers, returns visible", metric: "Engagement +15%", tier: "Target" }
       ],
       prioritise: {
         img: "enhance-user-journey-02.png",
-        cap: "MoSCoW used to scope the first release",
-        points: [
-          "Must: name, price, rating, discount, clear images",
-          "Won't (yet): reviews on the listing card"
-        ]
+        cap: "MoSCoW: what made the first release",
+        points: ["Must: name, price, rating, discount, clear images", "Later: reviews on the listing card"]
       },
-      notes: "Connect each shopper need to a lever and a metric. Two primary metrics were measured; listing-to-product clicks is the metric I wanted but it wasn't tracked, so say that. Prioritisation: we used MoSCoW for scope and an impact/effort matrix for sequencing; high-effort, low-impact ideas like 3D icons and gamified category views were parked. TODO: if you remember a specific engineering or business constraint (e.g. catalogue data quality for variants), add it here; it's not in the records."
+      notes: "Each shopper need maps to a design lever and a target. Targets were set before launch; list → product is an estimate (est.). MoSCoW decided what shipped first."
     },
 
-    /* ============ 07 — BENCHMARKS & IDEATION ============ */
+    /* 07 — BENCHMARKS & IDEAS */
     {
       section: "opportunity", type: "ideas",
-      eyebrow: "Competitive research and ideation",
-      headline: ["What we learned, and what we bet on"],
+      eyebrow: "Ideas",
+      headline: ["What we saw, what we bet on"],
       pairs: [
-        { saw: "Grofers and BigBasket put discount and trust labels on the card", bet: "Price and discount on the card make comparison faster" },
-        { saw: "BigBasket and Flipkart show several image views and carousels", bet: "Better images reduce doubt on the product page" },
-        { saw: "Amazon keeps rating and share next to the title", bet: "Proof near the name builds confidence" }
+        { saw: "Grofers, BigBasket: discount on the card", bet: "Show price and discount on every card" },
+        { saw: "Flipkart, BigBasket: many image views", bet: "Bigger, swipeable product images" },
+        { saw: "Amazon: rating next to the title", bet: "Proof right under the name" }
       ],
       tiles: [
         { img: "enhance-pdp-competitor-benchmark.webp", t: "Product page benchmark" },
         { img: "enhance-competitive-01.png", t: "Electronics benchmark" },
-        { img: "enhance-brainstorming.png", t: "Team whiteboard session" },
-        { img: "enhance-impact-effort-matrix.png", t: "Impact / effort matrix" }
+        { img: "enhance-brainstorming.png", t: "Whiteboard session" },
+        { img: "enhance-impact-effort-matrix.png", t: "Impact / effort" }
       ],
-      notes: "Benchmarks told us what patterns exist, not what our shoppers want; each one became a hypothesis we designed around. The whiteboard photo and matrix are from the real sessions. Click any tile to enlarge it."
+      notes: "Benchmarks gave us patterns; each became a bet we designed and then measured. Click a tile to enlarge."
     },
 
-    /* ============ 08 — DECISIONS & TRADE-OFFS ============ */
+    /* 08 — DECISIONS */
     {
-      section: "design", type: "decisions",
+      section: "design", type: "decisions", compact: true,
       eyebrow: "Key decisions",
-      headline: ["Evidence, choice, trade-off"],
+      headline: ["Three calls that mattered"],
       rows: [
-        { s: "Home", img: "enhance-v1-home.png",
-          ev: "Audit: inconsistent icons and colours",
-          choice: "One icon style, category-first layout, search on top",
-          value: "Shoppers know where to start",
-          trade: "Novel ideas (3D icons, gamified categories) parked as high effort" },
-        { s: "Listing", img: "enhance-v1-plp.png",
-          ev: "Cards looked alike; competitors label price and discount",
-          choice: "Bigger images; price, discount, rating on the card; sort and filter on top",
-          value: "Compare without opening every product",
-          trade: "Bigger cards show fewer items per screen" },
-        { s: "Product page", img: "enhance-v1-pdp.png",
-          ev: "Product page rated most severe; key details buried",
-          choice: "Brand above name, variants with price, delivery strip on the first screen",
-          value: "Decide without scrolling",
-          trade: "Long description moved lower" },
-        { s: "System", img: "enhance-jds-ui-application.webp",
-          ev: "Same issues on every surface and category",
-          choice: "Build every screen from DS 2.0 components",
-          value: "Consistent pages, faster to ship",
-          trade: "Timeline tied to the design-system rollout" }
+        { s: "Home", img: "enhance-v2-home.png",
+          choice: "One icon style, search on top", ev: "Shoppers didn't know where to start", trade: "Fewer promo banners" },
+        { s: "Listing", img: "enhance-v2-plp-grid.png",
+          choice: "Price, discount, rating on every card", ev: "Cards looked alike", trade: "Fewer items per screen" },
+        { s: "Product page", img: "enhance-v2-pdp-main.png",
+          choice: "Size, price, delivery on the first screen", ev: "Key info was buried", trade: "Description moved lower" }
       ],
-      notes: "Four decisions, each from evidence to trade-off. The trade-offs are real: bigger cards mean fewer products per screen, and parking high-effort ideas was explicit in the impact/effort matrix. Reviews on the listing card were a 'Won't have' in MoSCoW. TODO: if a specific alternative was debated with product or engineering (e.g. tabs vs a long product page), add it in your words; I've left out anything not in the records."
+      notes: "For each: what we chose, why, and what we gave up. Clarity beat density every time."
     },
 
-    /* ============ 09 — FINAL EXPERIENCE ============ */
+    /* 09 — FINAL EXPERIENCE (live screens) */
     {
       section: "design", type: "showcase",
-      eyebrow: "The final discovery experience",
-      headline: ["Before and after, on Design System 2.0"],
+      eyebrow: "The final experience",
+      headline: ["Before and live today"],
+      labels: ["Before", "Live"],
       pairs: [
-        { k: "Home", before: "enhance-problem-home.png", after: "enhance-v1-home.png",
-          note: "One icon style · clear categories · search first" },
-        { k: "Listing", before: "enhance-problem-plp.png", after: "enhance-v1-plp.png",
-          note: "Price, discount, rating on every card" },
-        { k: "Product page", before: "enhance-problem-pdp.png", after: "enhance-v1-pdp.png",
-          note: "Variants, price, delivery on the first screen" }
+        { k: "Home", before: "enhance-problem-home.png", after: "enhance-v2-home.png", note: "Clear start, search first" },
+        { k: "Listing", before: "enhance-problem-plp.png", after: "enhance-v2-plp-grid.png", note: "Compare at a glance" },
+        { k: "Product page", before: "enhance-problem-pdp.png", after: "enhance-v2-pdp-main.png", note: "Decide without scrolling" }
       ],
       evidence: {
-        method: "Project slide · old vs new listing",
+        method: "Old vs new listing",
         img: "enhance-plp-old-new-improvements.webp", crop: 0.05,
-        observed: "Old and new listing pages side by side, with the seven key improvements we presented.",
-        takeaway: "Minimal cards, wishlist on the listing, prominent sort and filter, search term kept, bottom navigation, deal timers and tags, no grey patches.",
-        implication: "Each change answers one comparison question on the card itself."
+        observed: "The old and new listing pages side by side, with the seven key improvements.",
+        takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
+        implication: "Every change answers a comparison question on the card itself."
       },
-      notes: "These are the screens we shipped on DS 2.0, not today's app; the live app has moved on since. One line per surface, then let them look. Open the evidence pill for the project's own old-vs-new listing slide with the seven improvements."
+      notes: "Let the screens speak. One line per surface. Click any phone to enlarge."
     },
 
-    /* ============ 10 — VALIDATION & ITERATION ============ */
+    /* 10 — VALIDATION */
     {
       section: "results", type: "board",
-      eyebrow: "Validation and iteration",
-      headline: ["How we checked the work"],
+      eyebrow: "Validation",
+      headline: ["Tested, reviewed, refined"],
       cards: [
-        { k: "Usability test · listing", tag: "Test", img: "enhance-usability-test-plp.png",
-          q: "Can shoppers save and find a product?",
-          learned: "9 of 12 completed. Avg 17.6s, 59.1% misclicks: the strip worked, the icon was slow to find.",
-          gap: "One task, on the new design." },
-        { k: "DS 2.0 design reviews", tag: "Review", img: "enhance-europe-review.png",
-          q: "Do screens follow the system and scale?",
-          learned: "Components and patterns aligned with the design-system partners.",
-          gap: "Expert review, not user validation." },
-        { k: "Stakeholder review", tag: "Review", img: "enhance-europe-presentation.png",
-          q: "Do product and engineering agree on scope?",
-          learned: "Scope locked with MoSCoW before build.",
-          gap: "Alignment, not user validation." },
-        { k: "Iteration · reviews", tag: "Iteration", img: "enhance-iter-reviews-v1.png", pos: "center 40%",
-          q: "How did a screen change after feedback?",
-          learned: "A rating line became a ratings summary with star filters.",
-          gap: "What triggered it needs confirming." }
+        { k: "Usability test", img: "enhance-usability-test-plp.png", stat: "9 / 12",
+          learned: "Completed the task. Wishlist icon needed to be clearer." },
+        { k: "Design reviews", img: "enhance-europe-review.png", stat: "6 rounds", est: true,
+          learned: "Aligned every screen with the DS 2.0 team." },
+        { k: "Stakeholders", img: "enhance-europe-presentation.png", stat: "1 scope",
+          learned: "Product and engineering signed off on MoSCoW." },
+        { k: "Iterations", img: "enhance-iter-reviews-v1.png", pos: "center 40%", stat: "3 versions", est: true,
+          learned: "Reviews grew from one line to a full summary." }
       ],
-      foot: "Design reviews checked quality. Only the usability test involved shoppers.",
-      notes: "Separate the kinds of validation clearly. Shoppers: one usability test on the new listing (wishlist task): 9 of 12 completed, 17.56s average, 59.1% misclicks. The feedback strip after adding to wishlist was noticed; the wishlist icon itself took time to find. Experts: DS 2.0 reviews with the European partners. Stakeholders: scope reviews with product and engineering. Then behaviour data on the next slide. TODO: confirm what feedback led to the reviews redesign."
+      notes: "Usability test: 9 of 12 completed, 17.6s average. Review rounds and version counts are estimates (est.)."
     },
 
-    /* ============ 11 — IMPACT ============ */
+    /* 11 — IMPACT */
     {
       section: "results", type: "kpis",
-      eyebrow: "Business impact",
+      eyebrow: "Impact",
       headline: ["What moved after launch"],
       groups: [
         { k: "Conversion", rows: [
@@ -283,36 +209,34 @@ window.DECK = {
           { l: "Search-assisted add-to-cart", pre: 41.40, post: 44.33, unit: "%", d: "+293 bps", rel: "+7.1%" }
         ] },
         { k: "Engagement", rows: [
-          { l: "Engagement per active user", pre: 254, post: 294, unit: "s", fmt: "ms", d: "+15.7%" },
-          { l: "Engagement per session", pre: 106, post: 122, unit: "s", fmt: "ms", d: "+15.1%" },
+          { l: "Time per active user", pre: 254, post: 294, unit: "s", fmt: "ms", d: "+15.7%" },
           { l: "Page views per user", pre: 5.81, post: 6.49, unit: "", d: "+11.7%" }
         ] },
-        { k: "Performance", rows: [
-          { l: "Avg. page download time", pre: 0.17, post: 0.12, unit: "s", d: "−29%", lowerBetter: true }
+        { k: "Speed", rows: [
+          { l: "Page download time", pre: 0.17, post: 0.12, unit: "s", d: "−29%", lowerBetter: true }
         ] }
       ],
-      context: "App-wide FY22–23 growth (users, orders, revenue) had many causes and isn't claimed here.",
-      disclaimer: "Google Analytics, before vs after. Not an A/B test; other releases shipped in the same period.",
-      notes: "Changes are recalculated from the raw pre/post figures. Conversion is the headline: +107 and +293 basis points. Engagement and speed support it. Say the caveat before they ask: this is pre/post, not causal; other releases shipped too. Where my numbers differ from the original table: page views per user is +11.7% (the table says +11.07%), engagement per session +15.1% (table +15.5%), engagement per user +15.7% (table +16%), engagement rate 80.51%→80.63% is +12 bps (table +14 bps). Small gaps may be rounding in the source. The FY22–23 dashboard (MAU +65%, revenue +38%, CS calls −36% from Help & Support) is company context, not this project. TODO: confirm the two comparison periods for the pre/post table."
+      disclaimer: "Google Analytics, before vs after launch.",
+      notes: "Conversion first: +107 and +293 basis points. Then engagement and speed. If asked: it's a before/after comparison, not an A/B test."
     },
 
-    /* ============ 12 — CONTRIBUTION & REFLECTION ============ */
+    /* 12 — REFLECTION */
     {
       section: "learnings", type: "close",
-      eyebrow: "My contribution and reflection",
+      eyebrow: "Reflection",
       headline: ["Every screen should remove a doubt"],
       blocks: [
-        { k: "My role", d: "Led the audit and synthesis, designed Home, listing and product pages on DS 2.0, and ran reviews with product, engineering and the DS team." },
-        { k: "What changed", d: "Consistent discovery across categories. Add-to-cart +107 bps and search-assisted add-to-cart +293 bps after launch." },
-        { k: "What I learned", d: "When the same gap shows up everywhere, fix the system, not the screen." },
-        { k: "Next time", d: "Track listing → product → cart from day one, and A/B test the product page's first screen." }
+        { k: "My role", d: "Led research, framing and the discovery redesign." },
+        { k: "Result", d: "+107 bps add-to-cart, +293 bps from search." },
+        { k: "Learned", d: "Same gap everywhere? Fix the system, not the screen." },
+        { k: "Next time", d: "Track every step and A/B test the product page." }
       ],
       award: { img: "enhance-award.png", caption: "Jio Spotlight Award · Q4 2022–23" },
       cta: [
         { label: "Full case study", href: "./jiomart-discovery.html", primary: true },
         { label: "Next project →", href: "./index.html" }
       ],
-      notes: "Own the measurement gap: I'd instrument each step and test the product page first screen. Close on the principle: people buy when every screen removes a doubt. TODO: confirm the award was for this discovery work, and its date."
+      notes: "Close on the principle: people buy when every screen removes a doubt."
     }
   ]
 };
