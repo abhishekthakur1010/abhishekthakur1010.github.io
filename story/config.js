@@ -89,7 +89,7 @@ window.STORY = {
         metrics: ["GP redemption 54%", "GP offer usage 58%", "Premium NPS +21 pts"], link: null },
     ],
     jio: [
-      { brand: "JioMart", title: "Optimizing Product Discovery", sub: "Homepage, PLP and PDP", img: "../images/feature-project-02.webp",
+      { brand: "JioMart", title: "Making Product Discovery Seamless", sub: "Homepage, PLP and PDP", img: "../images/feature-project-02.webp",
         screens: ["../images/enhanceProduct/enhance-final-new-home-page.png", "../images/enhanceProduct/enhance-final-new-plp-page.png", "../images/enhanceProduct/enhance-final-new-pdp-1st-fold.png"],
         metrics: ["Installs 51%", "MAU 65%", "Revenue 38%"], link: "../jiomart-discovery.html" },
       { brand: "JioMart", title: "Streamlining Checkout", sub: "Cart → Offer → Review → Payment", img: "../images/feature-project-01.webp",
