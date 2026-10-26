@@ -164,13 +164,8 @@ window.DECK = {
       ],
       reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
       stats: [
-        { n: "{{~95M|visitors}}", l: "visitors" },
         { n: "{{11|categories}}", l: "categories, from grocery to jewellery" },
         { n: "{{41%|search}}", l: "add-to-cart when shoppers searched" }
-      ],
-      bounds: [
-        { k: "Constraint", v: "Live app, no release freeze" },
-        { k: "Expected", v: "Higher add-to-cart and engagement" }
       ],
       notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers didn't trust what they saw: unclear price, size, delivery and no reviews up front. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
     },

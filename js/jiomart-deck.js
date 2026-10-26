@@ -675,7 +675,7 @@
       var r = sc.reality, dots = "";
       for (var d = 0; d < r.dots; d++) dots += "<span class='ci-dot" + (d < r.hit ? " hit" : "") + "'>" + svg("cart") + "</span>";
       var stats = sc.stats.map(function (x) { return "<div class='ci-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("");
-      var bounds = sc.bounds.map(function (x) { return "<span class='sc-chip'><b>" + esc(x.k) + "</b>" + esc(x.v) + "</span>"; }).join("");
+      var bounds = (sc.bounds || []).map(function (x) { return "<span class='sc-chip'><b>" + esc(x.k) + "</b>" + esc(x.v) + "</span>"; }).join("");
       var last = sc.flow.length + 1;
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         (sc.define ? "<div class='ci-define'><span class='ci-def-k'>" + esc(sc.define.k) + "</span><div class='ci-path'>" +
@@ -693,7 +693,7 @@
         "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
         "<div class='ci-row'><div class='ci-big'><b>" + esc(r.big) + "</b><span>" + esc(r.l) + "</span><div class='ci-dots'>" + dots + "</div></div>" +
         "<div class='ci-stats'>" + stats + "</div></div>" +
-        "<div class='ci-bounds'>" + bounds + "</div></div></div>";
+        (sc.bounds ? "<div class='ci-bounds'>" + bounds + "</div>" : "") + "</div></div>";
     },
 
     /* questions we asked of the brief → what we agreed */
