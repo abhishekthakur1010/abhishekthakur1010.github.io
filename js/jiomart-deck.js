@@ -884,7 +884,10 @@
   var gal = null; // { list: [{src, cap}], i }
   document.body.appendChild(lb);
   function openLightbox(src, caption, tall) {
-    lb.querySelector("img").src = src;
+    var li = lb.querySelector("img");
+    lb.classList.remove("fit");
+    li.onload = function () { lb.classList.toggle("fit", !!tall && li.naturalHeight / li.naturalWidth <= 2.4); };
+    li.src = src;
     lb.querySelector(".lb-cap").textContent = caption || "";
     lb.classList.toggle("tall", !!tall);
     lb.classList.toggle("gallery", !!gal);

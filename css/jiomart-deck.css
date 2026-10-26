@@ -1163,3 +1163,6 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 @keyframes evHl { 0% { opacity: 0; transform: scaleX(0.96); } 40% { opacity: 1; transform: none; } 70% { background: rgba(255, 196, 0, 0.38); } 100% { background: rgba(255, 196, 0, 0.22); } }
 .type-contextinfo .sl-head .sub { margin-top: 8px; max-width: none; }
 @media (max-height: 820px) { .type-contextinfo .sl-head .sub { margin-top: 4px; font-size: 14px; } .type-contextinfo .sl-head h2 { font-size: 30px; } }
+/* screen viewer: phone-proportioned screenshots fit whole (bottom nav visible); long pages scroll */
+.lightbox.tall.fit .lb-imgwrap { overflow: hidden; align-items: stretch; }
+.lightbox.tall.fit .lb-imgwrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
