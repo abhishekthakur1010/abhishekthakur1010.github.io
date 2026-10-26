@@ -114,6 +114,7 @@
       case "kpis": return sc.groups.length + 1;
       case "close": return 2;
       case "qa": return sc.qs.length + 1;
+      case "contextinfo": return sc.flow.length + 1;
       default: return 0;
     }
   }
@@ -649,6 +650,33 @@
         (sc.checks ? "<div class='kp-checks'>" + sc.checks.map(function (c) { return "<span class='kp-check'><b>" + esc(c.n) + "</b>" + (c.est ? "<i>est.</i>" : "") + "<span>" + esc(c.l) + "</span></span>"; }).join("") + "</div>" : "") +
         "<div class='kp-grid'>" + groups + "</div>" +
         "<div class='kp-foot reveal' data-step='" + last + "'><p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" + (sc.context ? "<p class='disclaimer'>" + esc(sc.context) + "</p>" : "") + "</div></div>";
+    },
+
+    /* business context as an infographic: who → ask → north star, then ground reality */
+    contextinfo: function (sc) {
+      var ic = {
+        people: "<path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75'/>",
+        brief: "<path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><path d='M14 2v6h6M16 13H8M16 17H8M10 9H8'/>",
+        star: "<polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/>",
+        cart: "<circle cx='9' cy='21' r='1'/><circle cx='20' cy='21' r='1'/><path d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/>"
+      };
+      var svg = function (k) { return "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'>" + (ic[k] || "") + "</svg>"; };
+      var flow = sc.flow.map(function (f, i) {
+        return (i ? "<span class='ci-arrow reveal' data-step='" + (i + 1) + "'>→</span>" : "") +
+          "<div class='ci-step tone-" + (f.tone || "neutral") + " reveal' data-step='" + (i + 1) + "'><span class='ci-ic'>" + svg(f.icon) + "</span>" +
+          "<span class='ci-k'>" + esc(f.k) + "</span><p class='ci-t'>" + esc(f.t) + "</p></div>";
+      }).join("");
+      var r = sc.reality, dots = "";
+      for (var d = 0; d < r.dots; d++) dots += "<span class='ci-dot" + (d < r.hit ? " hit" : "") + "'>" + svg("cart") + "</span>";
+      var stats = sc.stats.map(function (x) { return "<div class='ci-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("");
+      var bounds = sc.bounds.map(function (x) { return "<span class='sc-chip'><b>" + esc(x.k) + "</b>" + esc(x.v) + "</span>"; }).join("");
+      var last = sc.flow.length + 1;
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='ci-flow'>" + flow + "</div>" +
+        "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
+        "<div class='ci-row'><div class='ci-big'><b>" + esc(r.big) + "</b><span>" + esc(r.l) + "</span><div class='ci-dots'>" + dots + "</div></div>" +
+        "<div class='ci-stats'>" + stats + "</div></div>" +
+        "<div class='ci-bounds'>" + bounds + "</div></div></div>";
     },
 
     /* questions we asked of the brief → what we agreed */

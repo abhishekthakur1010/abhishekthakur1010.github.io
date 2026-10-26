@@ -39,20 +39,27 @@ window.DECK = {
       notes: "Open with the outcome: add-to-cart sessions rose from 10.4% to 11.5%, about 10% more, and search add-to-cart from 41.4% to 44.3%. Hover the phone to show the live Home and listing. I led discovery design from research to handoff over about 10 weeks."
     },
 
-    /* 02 — BUSINESS CONTEXT */
+    /* 02 — BUSINESS CONTEXT (infographic) */
     {
-      section: "context", type: "brief",
+      section: "context", type: "contextinfo",
       eyebrow: "Where it all started",
-      headline: ["A product team under pressure to convert browsers"],
-      asked: { k: "The request · Product & business", t: "“Refresh Home, listing and product pages as Design System 2.0 rolls out.”", src: "Initiated by the PM with business stakeholders" },
-      investigated: { k: "The North Star", t: "More sessions ending in an add-to-cart.", src: "Business vision for discovery" },
-      facts: [
-        { k: "Situation", v: "Live app, ~95M visitors, grocery to electronics" },
-        { k: "Pain", v: "Only 1 in 10 sessions added to cart" },
-        { k: "Constraint", v: "Ship inside the DS 2.0 rollout, no app freeze" },
+      headline: ["Traffic was high. Carts were not."],
+      flow: [
+        { k: "Who asked", t: "Product Manager and business stakeholders", icon: "people" },
+        { k: "The ask", t: "Refresh Home, listing and product pages for DS 2.0", icon: "brief" },
+        { k: "North Star", t: "More sessions ending in an add-to-cart", icon: "star", tone: "pos" }
+      ],
+      reality: { big: "1 in 10", l: "sessions added to cart", dots: 10, hit: 1 },
+      stats: [
+        { n: "~95M", l: "visitors" },
+        { n: "3", l: "big categories: grocery, fashion, electronics" },
+        { n: "41%", l: "add-to-cart when shoppers searched" }
+      ],
+      bounds: [
+        { k: "Constraint", v: "Ship inside the DS 2.0 rollout" },
         { k: "Expected", v: "Higher add-to-cart and engagement" }
       ],
-      notes: "The PM brought the request with business stakeholders: a visual refresh timed with Design System 2.0. Ground reality: a live app at huge scale where only about 1 in 10 sessions ended in an add-to-cart. We had to ship within the rollout without freezing releases."
+      notes: "Left to right: the PM and business stakeholders asked for a DS 2.0 refresh; the North Star was more sessions ending in add-to-cart. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship inside the DS 2.0 rollout."
     },
 
     /* 03 — ASKING THE RIGHT QUESTIONS */
