@@ -113,6 +113,7 @@
       case "showcase": return sc.pairs.length;
       case "kpis": return sc.groups.length + 1;
       case "close": return 2;
+      case "qa": return sc.qs.length + 1;
       default: return 0;
     }
   }
@@ -558,15 +559,18 @@
       var last = sc.rows.length + 1;
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
         "<div class='sy-table" + (sc.cols.length === 2 ? " two" : "") + "'>" + head + rows + "</div>" +
+        (sc.from ? "<div class='sy-from reveal' data-step='" + last + "'><span class='sy-was'>" + esc(sc.from) + "</span><span class='sy-arrow'>→</span><span class='sy-now'>" + esc(sc.to || "") + "</span></div>" : "") +
         "<blockquote class='sy-statement reveal' data-step='" + last + "'><span class='tier-label'>Refined problem</span>" + esc(sc.statement) +
+        (sc.goals ? "<span class='sy-goals'>" + sc.goals.map(function (g) { return "<span class='sy-goal'><b>" + esc(g.k) + "</b>" + esc(g.v) + "</span>"; }).join("") + "</span>" : "") +
         (sc.status ? "<span class='sy-status'><span class='tag warn'>Hypothesis</span>" + esc(sc.status) + "</span>" : "") + "</blockquote></div>";
     },
 
     /* 06 · need → lever → metric, with the real prioritisation artifact */
     oppmatrix: function (sc) {
-      var head = "<div class='om-row om-head'><span>Shopper need</span><span>Design lever</span><span>Success metric</span></div>";
+      var hd = sc.heads || ["Shopper need", "Design lever", "Success metric"];
+      var head = "<div class='om-row om-head'><span>" + esc(hd[0]) + "</span><span>" + esc(hd[1]) + "</span><span>" + esc(hd[2]) + "</span></div>";
       var rows = sc.rows.map(function (r, i) {
-        var tone = /^(Primary|Target)/.test(r.tier) ? "pos" : r.tier === "Supporting" ? "info" : "neutral";
+        var tone = /^(Primary|Target|High)/.test(r.tier) ? "pos" : /^(Supporting|Medium)/.test(r.tier) ? "info" : "neutral";
         return "<div class='om-row reveal' data-step='" + (i + 1) + "'><b>" + esc(r.need) + "</b><span>" + esc(r.lever) + "</span>" +
           "<span class='om-metric'>" + esc(r.metric) + "<span class='tag " + tone + "'>" + esc(r.tier) + "</span></span></div>";
       }).join("");
@@ -581,8 +585,9 @@
     /* 07 · benchmark observation → design bet, with real artifacts */
     ideas: function (sc) {
       var pairs = sc.pairs.map(function (p, i) {
-        return "<div class='id-pair reveal' data-step='" + (i + 1) + "'><p class='id-saw'><span class='tag neutral'>Saw</span>" + esc(p.saw) + "</p>" +
-          "<p class='id-bet'><span class='tag info'>Bet</span>" + esc(p.bet) + "</p></div>";
+        var pl = sc.pairLabels || ["Saw", "Bet"];
+        return "<div class='id-pair reveal' data-step='" + (i + 1) + "'><p class='id-saw'><span class='tag neutral'>" + esc(pl[0]) + "</span>" + esc(p.saw) + "</p>" +
+          "<p class='id-bet'><span class='tag info'>" + esc(pl[1]) + "</span>" + esc(p.bet) + "</p></div>";
       }).join("");
       var tiles = sc.tiles.map(function (t) {
         return "<button class='tile' data-img='" + img(t.img) + "'><span class='tile-img' style='--crop:20%'><img src='" + img(t.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
@@ -618,7 +623,8 @@
           "<p class='sc-note'>" + esc(p.note) + "</p></div>";
       }).join("");
       return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" + evidencePill(sc.evidence) + "</div>" +
-        "<div class='sc-grid'>" + pairs + "</div></div>";
+        "<div class='sc-grid'>" + pairs + "</div>" +
+        (sc.chips ? "<div class='sc-chips'>" + sc.chips.map(function (c) { return "<span class='sc-chip'><b>" + esc(c.k) + "</b>" + esc(c.v) + "</span>"; }).join("") + "</div>" : "") + "</div>";
     },
 
     /* 11 · accurately scaled pre/post bars, grouped */
@@ -640,8 +646,19 @@
       var last = sc.groups.length + 1;
       return "<div class='sl'><div class='sl-head kp-headrow'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
         "<div class='kp-legend'><span><i class='sw pre'></i>Before</span><span><i class='sw post'></i>After</span></div></div>" +
+        (sc.checks ? "<div class='kp-checks'>" + sc.checks.map(function (c) { return "<span class='kp-check'><b>" + esc(c.n) + "</b>" + (c.est ? "<i>est.</i>" : "") + "<span>" + esc(c.l) + "</span></span>"; }).join("") + "</div>" : "") +
         "<div class='kp-grid'>" + groups + "</div>" +
         "<div class='kp-foot reveal' data-step='" + last + "'><p class='disclaimer'>" + esc(sc.disclaimer) + "</p>" + (sc.context ? "<p class='disclaimer'>" + esc(sc.context) + "</p>" : "") + "</div></div>";
+    },
+
+    /* questions we asked of the brief → what we agreed */
+    qa: function (sc) {
+      var cards = sc.qs.map(function (x, i) {
+        return "<div class='qa-card reveal' data-step='" + (i + 1) + "'><p class='qa-q'>" + esc(x.q) + "</p><p class='qa-a'>" + esc(x.a) + "</p></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='qa-grid'>" + cards + "</div>" +
+        (sc.foot ? "<p class='qa-foot reveal' data-step='" + (sc.qs.length + 1) + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
     /* 12 · contribution, learning, next time + award */
@@ -661,7 +678,7 @@
   // evidence-source tag → semantic tone
   function tagTone(t) {
     return ({ Measured: "pos", Test: "pos", Research: "info", Audit: "warn", Observed: "warn",
-      Benchmark: "neutral", Review: "neutral", Iteration: "info", Hypothesis: "warn" })[t] || "neutral";
+      Benchmark: "neutral", Review: "neutral", Iteration: "info", Hypothesis: "warn", Validated: "pos", Assumption: "warn", Input: "info" })[t] || "neutral";
   }
 
   /* ============================================================
