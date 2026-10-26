@@ -1438,7 +1438,7 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .vs-col.live .vs-chip { color: var(--pos); border-color: var(--pos-line); }
 .vs-when { font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
 .vs-col.live .vs-when { color: var(--pos); font-weight: 600; }
-.device.vs { --w: min(16vw, calc((100vh - 430px) * 0.45)); border-radius: 22px; padding: 6px; cursor: zoom-in; }
+.device.vs { --w: min(16vw, calc((100vh - 440px) * 0.45)); border-radius: 22px; padding: 6px; cursor: zoom-in; }
 .device.vs .ds { border-radius: 17px; }
 .device.vs .dn { height: 12px; top: 8px; }
 .vs-col.before .device { opacity: 0.85; }
