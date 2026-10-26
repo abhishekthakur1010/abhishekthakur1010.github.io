@@ -18,25 +18,119 @@ window.DECK = {
     { id: "design", n: "04", label: "Design" },
     { id: "results", n: "05", label: "Impact" }
   ],
+  proofs: {
+    carts: {
+      method: "Sessions with add-to-cart", tag: "Google Analytics · measured",
+      img: "enhance-impact-table.png", crop: 0.75,
+      calc: [["Before launch", "10.41%"], ["After launch", "11.48%"], ["Change", "+1.07 points (+107 bps)"], ["Relative lift", "+10.3%", 1]],
+      observed: "Share of all sessions where a shopper added at least one product to cart.",
+      takeaway: "About 1 in 10 visits ended in a cart before; closer to 1 in 9 after."
+    },
+    search: {
+      method: "Search-assisted add-to-cart", tag: "Google Analytics · measured",
+      img: "enhance-impact-table.png", crop: 0.85,
+      calc: [["Before launch", "41.40%"], ["After launch", "44.33%"], ["Change", "+2.93 points (+293 bps)"], ["Relative lift", "+7.1%", 1]],
+      observed: "Share of search sessions that ended with an add-to-cart.",
+      takeaway: "44 of every 100 searchers now add to cart, up from 41."
+    },
+    searchers: {
+      method: "Search vs all sessions", tag: "Google Analytics · measured",
+      img: "enhance-impact-table.png", crop: 0.85,
+      calc: [["Search sessions → cart", "41.40%"], ["All sessions → cart", "10.41%"], ["Ratio", "≈ 4×", 1]],
+      observed: "Shoppers who searched added to cart about four times as often as the average session.",
+      takeaway: "Intent was there. Browsing was where people got lost.",
+      implicationL: "Note", implication: "Different bases (search sessions vs all sessions), so treat 4× as a direction, not an exact ratio."
+    },
+    pages: {
+      method: "Page views per user", tag: "Google Analytics · measured",
+      img: "enhance-impact-table.png", crop: 0.5,
+      calc: [["Before launch", "5.81"], ["After launch", "6.49"], ["Change", "+11.7%", 1]],
+      observed: "Average pages each shopper viewed: Home, listings and product pages.",
+      takeaway: "Rose together with add-to-cart, so shoppers explored more and decided more, not got lost."
+    },
+    time: {
+      method: "Engagement time per active user", tag: "Google Analytics · measured",
+      img: "enhance-impact-table.png", crop: 0.45,
+      calc: [["Before launch", "4m 14s"], ["After launch", "4m 54s"], ["Change", "+40s (+15.7%)", 1]],
+      observed: "Average active time per shopper.",
+      takeaway: "Read with add-to-cart: more time plus more carts means exploration, not friction."
+    },
+    speed: {
+      method: "Average page download time", tag: "Google Analytics · measured",
+      img: "enhance-impact-table.png", crop: 0.2,
+      calc: [["Before launch", "0.17s"], ["After launch", "0.12s"], ["Change", "−29% (faster)", 1]],
+      observed: "Average time for a page to download.",
+      takeaway: "Lighter, consistent components made pages load faster."
+    },
+    volume: {
+      method: "Extra carts per quarter", tag: "Estimate from real data", est: true,
+      calc: [["Lift in add-to-cart sessions", "+1.07 points"], ["Visits per quarter (GA)", "~334M"], ["1.07% × 334M", "≈ 3.5M more carts", 1]],
+      observed: "Multiplies the measured add-to-cart lift by JioMart's quarterly visit volume from the Google Analytics sheet.",
+      takeaway: "An order-of-magnitude estimate, not a measured count. Say \u201croughly 3 to 4 million a quarter\u201d."
+    },
+    visitors: {
+      method: "JioMart visitors", tag: "Internal town hall",
+      img: "enhance-townhall-visitors.jpg", crop: 0.4,
+      observed: "Jio's town hall listed 94.6M visitors for JioMart, alongside MyJio and Jio.com.",
+      takeaway: "Scale context: small percentage gains mean millions of shoppers."
+    },
+    audit: {
+      method: "Heuristic evaluation", tag: "UX audit",
+      img: "enhance-heuristic-table.png", crop: 0.2,
+      calc: [["Problem areas rated", "23"], ["Most severe (S3)", "List, scan, checkout, order details, product page", 1]],
+      observed: "Each area scored for severity (S0–S3) and ease of fixing (E0–E3) against Nielsen's heuristics.",
+      takeaway: "Inconsistency and recognition problems repeated across every surface."
+    },
+    usability: {
+      method: "Usability test · listing page", tag: "Usability test",
+      img: "enhance-usability-test-plp.png", crop: 0.4,
+      calc: [["Completed the task", "9 of 12"], ["Average time", "17.56s"], ["Misclicks", "59.1%", 1]],
+      observed: "Shoppers saved a product to their wishlist on the new listing page.",
+      takeaway: "The feedback strip worked; the wishlist icon itself needed to be easier to spot, so we iterated."
+    },
+    funnel: {
+      method: "Journey step estimates", tag: "Illustrative estimate", est: true,
+      calc: [["Home", "100%"], ["Kept browsing", "~72% est."], ["Opened a list", "~46% est."], ["Opened a product", "~24% est."], ["Added to cart (measured)", "10.4%", 1]],
+      observed: "Only the start and end points were measured. Middle steps show the shape of the drop-off.",
+      takeaway: "Use them to explain where people leave, not as exact figures."
+    },
+    interviews: {
+      method: "Shopper interviews", tag: "Illustrative estimate", est: true,
+      img: "enhance-design-team-04.png", crop: 0.3,
+      observed: "In-person sessions with shoppers on how they browse, compare and decide.",
+      takeaway: "Interview count is an estimate."
+    },
+    iterations: {
+      method: "Iterations and review rounds", tag: "Illustrative estimate", est: true,
+      img: "enhance-design-team-02.png", crop: 0.3,
+      observed: "Design reviews with the wider design team and iterations after the usability test.",
+      takeaway: "Counts are estimates."
+    },
+    decide: {
+      method: "Time-to-decide target", tag: "Illustrative target", est: true,
+      observed: "A target we set for how quickly shoppers move from listing to add-to-cart.",
+      takeaway: "Not measured after launch; shown as the goal."
+    }
+  },
   slides: [
     /* 01 — PROJECT OVERVIEW & OUTCOME (mockups + hover unchanged) */
     {
       section: "context", type: "opening",
       eyebrow: "JioMart · Product discovery redesign",
-      headline: ["Simpler discovery. ", "Add-to-cart up 10%."],
-      highlight: "Add-to-cart up 10%.",
-      body: "Discovery is how shoppers find and pick a product, from Home to search, listing and product page. They found products but struggled to choose. I redesigned that journey so choosing felt easy.",
+      headline: ["Making ", "product discovery", " seamless"],
+      highlight: "product discovery",
+      body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
       hero: "enhance-v2-pdp-main.png",
       backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
-      badge: { n: "+10%", l: "More visits end in add-to-cart" },
+      badge: { n: "{{~3.5M|volume}}", l: "More carts every quarter · est." },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
         { l: "Timeline", v: "Aug – Oct 2023 · 10 weeks" },
         { l: "Team", v: "PM · Engineering · Analytics" },
-        { l: "Search add-to-cart", v: "41.4% → 44.3%" }
+        { l: "After launch", v: "{{+10%|carts}} carts · {{+12%|pages}} pages · {{29%|speed}} faster" }
       ],
       cta: "Hover the phone · press → to begin",
-      notes: "Open with the outcome: add-to-cart sessions rose from 10.4% to 11.5%, about 10% more, and search add-to-cart from 41.4% to 44.3%. Hover the phone to show the live Home and listing. I led discovery design from research to handoff over about 10 weeks."
+      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. ~3.5M carts a quarter is an estimate: +1.07 points of add-to-cart sessions × ~334M visits a quarter."
     },
 
     /* 02 — BUSINESS CONTEXT (infographic) */
@@ -61,11 +155,11 @@ window.DECK = {
         { k: "The ask", t: "Refresh Home, listing and product pages", icon: "brief" },
         { k: "North Star", t: "More sessions ending in an add-to-cart", icon: "star", tone: "pos" }
       ],
-      reality: { big: "1 in 10", l: "sessions added to cart", dots: 10, hit: 1 },
+      reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
       stats: [
-        { n: "~95M", l: "visitors" },
+        { n: "{{~95M|visitors}}", l: "visitors" },
         { n: "3", l: "big categories: grocery, fashion, electronics" },
-        { n: "41%", l: "add-to-cart when shoppers searched" }
+        { n: "{{41%|search}}", l: "add-to-cart when shoppers searched" }
       ],
       bounds: [
         { k: "Constraint", v: "Live app, no release freeze" },
@@ -80,7 +174,7 @@ window.DECK = {
       eyebrow: "Asking the right questions",
       headline: ["Before designing, we questioned the brief"],
       qs: [
-        { q: "Why solve this?", a: "Browsing sessions rarely ended in a cart. Search did 4× better." },
+        { q: "Why solve this?", a: "Browsing sessions rarely ended in a cart. Search did {{4×|searchers}} better." },
         { q: "Why now?", a: "Traffic was growing fast; every lost cart cost more." },
         { q: "What is the business after?", a: "More add-to-carts from the same traffic." },
         { q: "What do users struggle with?", a: "Comparing products and trusting the details." },
@@ -98,12 +192,12 @@ window.DECK = {
       headline: ["Shoppers dropped at every step"],
       steps: [
         { k: "Home", stat: "100%", statL: "sessions", issues: [{ t: "Inconsistent icons, busy banners", tag: "Audit" }] },
-        { k: "Browse / search", stat: "72%", est: true, statL: "kept going", issues: [{ t: "Irrelevant search results", tag: "Audit" }] },
-        { k: "Listing", stat: "46%", est: true, statL: "opened a list", issues: [{ t: "Every card looked alike", tag: "Audit" }] },
-        { k: "Product page", stat: "24%", est: true, statL: "opened a product", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }] },
-        { k: "Add to cart", stat: "10.4%", statL: "added to cart", issues: [{ t: "41.4% when searching", tag: "Measured" }] }
+        { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", issues: [{ t: "Irrelevant search results", tag: "Audit" }] },
+        { k: "Listing", stat: "{{46%|funnel}}", est: true, statL: "opened a list", issues: [{ t: "Every card looked alike", tag: "Audit" }] },
+        { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }] },
+        { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }] }
       ],
-      foot: "23 heuristic issues found. The product page scored worst.",
+      foot: "{{23 heuristic issues|audit}} found. The product page scored worst.",
       notes: "Walk the journey left to right. 100% and 10.4% are from analytics; middle steps are illustrative (est.). The heuristic audit found 23 issues, and the product page was the most severe."
     },
 
@@ -113,11 +207,11 @@ window.DECK = {
       eyebrow: "Research",
       headline: ["Data first, then people"],
       cards: [
-        { k: "Analytics", tag: "Validated", img: "enhance-heatmaps-data.png", pos: "right top", stat: "4×",
+        { k: "Analytics", tag: "Validated", img: "enhance-heatmaps-data.png", pos: "right top", stat: "{{4×|searchers}}",
           learned: "Searchers added to cart 4× more than browsers." },
-        { k: "Journey audit", tag: "Validated", img: "enhance-flow-pipeline.png", stat: "23 issues",
+        { k: "Journey audit", tag: "Validated", img: "enhance-flow-pipeline.png", stat: "{{23 issues|audit}}",
           learned: "Every screen mapped. Product page worst." },
-        { k: "User interviews", tag: "Validated", img: "enhance-design-team-04.png", stat: "8 shoppers", est: true,
+        { k: "User interviews", tag: "Validated", img: "enhance-design-team-04.png", stat: "{{8 shoppers|interviews}}", est: true,
           learned: "“I can't tell which one to buy.”" },
         { k: "Our hypothesis", tag: "Assumption", img: "enhance-research-strategy.png", stat: "H1",
           learned: "Show price, size and proof earlier → more add-to-cart." }
@@ -135,7 +229,7 @@ window.DECK = {
         { need: "Know where to start", lever: "More sessions reach a list", metric: "Clear category entry", tier: "High" },
         { need: "Compare quickly", lever: "More list → product clicks", metric: "Decision info on cards", tier: "High" },
         { need: "Trust the choice", lever: "More add-to-cart", metric: "Key details up front", tier: "High" },
-        { need: "Find it by search", lever: "Protect the 41% channel", metric: "Better result matching", tier: "Medium" }
+        { need: "Find it by search", lever: "Protect the {{41%|search}} channel", metric: "Better result matching", tier: "Medium" }
       ],
       prioritise: {
         img: "enhance-impact-effort-matrix.png",
@@ -180,9 +274,9 @@ window.DECK = {
       to: "Help shoppers decide with confidence",
       statement: "Shoppers didn't lack products. They lacked the information to choose one with confidence.",
       goals: [
-        { k: "Add-to-cart", v: "10.4% → 12%" },
-        { k: "Search add-to-cart", v: "41% → 45%" },
-        { k: "Time to decide", v: "−20% est." }
+        { k: "Add-to-cart", v: "{{10.4%|carts}} → 12% target" },
+        { k: "Search add-to-cart", v: "{{41%|search}} → 45% target" },
+        { k: "Time to decide", v: "{{−20%|decide}} est." }
       ],
       notes: "The key milestone. Show the shift from 'refresh the UI' to 'help shoppers decide'. Then the statement and the success metrics we set. Time-to-decide is illustrative (est.)."
     },
@@ -240,21 +334,21 @@ window.DECK = {
       eyebrow: "Validation & impact",
       headline: ["Tested, refined, and it moved the numbers"],
       checks: [
-        { n: "9 / 12", l: "completed the usability test" },
-        { n: "3", l: "design iterations", est: true },
-        { n: "6", l: "design review rounds", est: true }
+        { n: "{{9 / 12|usability}}", l: "completed the usability test" },
+        { n: "{{3|iterations}}", l: "design iterations", est: true },
+        { n: "{{6|iterations}}", l: "design review rounds", est: true }
       ],
       groups: [
         { k: "Conversion", rows: [
-          { l: "Sessions with add-to-cart", pre: 10.41, post: 11.48, unit: "%", d: "+107 bps", rel: "+10.3%" },
-          { l: "Search-assisted add-to-cart", pre: 41.40, post: 44.33, unit: "%", d: "+293 bps", rel: "+7.1%" }
+          { l: "Sessions with add-to-cart", pre: 10.41, post: 11.48, unit: "%", d: "{{+107 bps|carts}}", rel: "+10.3%" },
+          { l: "Search-assisted add-to-cart", pre: 41.40, post: 44.33, unit: "%", d: "{{+293 bps|search}}", rel: "+7.1%" }
         ] },
         { k: "Engagement", rows: [
-          { l: "Time per active user", pre: 254, post: 294, unit: "s", fmt: "ms", d: "+15.7%" },
-          { l: "Page views per user", pre: 5.81, post: 6.49, unit: "", d: "+11.7%" }
+          { l: "Time per active user", pre: 254, post: 294, unit: "s", fmt: "ms", d: "{{+15.7%|time}}" },
+          { l: "Page views per user", pre: 5.81, post: 6.49, unit: "", d: "{{+11.7%|pages}}" }
         ] },
         { k: "Speed", rows: [
-          { l: "Page download time", pre: 0.17, post: 0.12, unit: "s", d: "−29%", lowerBetter: true }
+          { l: "Page download time", pre: 0.17, post: 0.12, unit: "s", d: "{{−29%|speed}}", lowerBetter: true }
         ] }
       ],
       disclaimer: "Google Analytics, before vs after launch. Iteration and review counts are illustrative (est.).",
@@ -270,7 +364,7 @@ window.DECK = {
         { k: "Problem solved", d: "Shoppers can now find, compare and trust a product fast." },
         { k: "My contribution", d: "Reframed the brief, led research and designed discovery end to end." },
         { k: "For users", d: "Decision info up front on every screen." },
-        { k: "For the business", d: "+10% add-to-cart sessions, +7% from search." },
+        { k: "For the business", d: "{{+10%|carts}} add-to-cart sessions, {{+7%|search}} from search." },
         { k: "What I learned", d: "Same gap everywhere? Fix the system, not the screen." },
         { k: "Next time", d: "Track every step and A/B test from day one." }
       ],

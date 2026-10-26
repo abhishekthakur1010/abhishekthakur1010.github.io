@@ -25,7 +25,12 @@
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function img(n) { return n ? IMG + n : ""; }
-  function esc(s) { return s == null ? "" : String(s); }
+  function esc(s) {
+    return s == null ? "" : String(s).replace(/\{\{([^|}]+)\|([^}]+)\}\}/g, function (m, t, k) {
+      return "<button type='button' class='ev-link' data-proof='" + k + "' title='See evidence'>" + t + "</button>";
+    });
+  }
+  var PROOFS = D.proofs || {};
   function ph(s) { return /^\[ADD/.test(String(s)); } // is a placeholder token
   function L(arr, tag) { tag = tag || "h1"; return "<" + tag + ">" + (arr || []).map(esc).join("<br>") + "</" + tag + ">"; }
   function sub(s) { return s ? "<p class='sub'>" + esc(s) + "</p>" : ""; }
@@ -823,15 +828,19 @@
   }
   function openEvidence(ev) {
     if (!panel) return;
+    var calc = ev.calc ? "<div class='ev-calc'>" + ev.calc.map(function (r) {
+      return "<div class='ev-calc-row" + (r[2] ? " hi" : "") + "'><span>" + esc(r[0]) + "</span><b>" + esc(r[1]) + "</b></div>";
+    }).join("") + "</div>" : "";
     panel.querySelector(".ev-body").innerHTML =
-      "<div class='ev-tag'>Real project artifact</div>" +
+      "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
       "<div class='ev-method'>" + esc(ev.method) + "</div>" +
-      "<div class='ev-img" + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
-      "<img src='" + img(ev.img) + "' onerror=\"this.parentElement.classList.add('failed')\">" +
-      (ev.pending ? "<span class='ev-pending'>Artifact image to be added</span>" : "") + "</div>" +
-      "<div class='ev-block'><span class='ev-l'>What we observed</span>" + esc(ev.observed) + "</div>" +
-      "<div class='ev-block'><span class='ev-l'>One takeaway</span>" + esc(ev.takeaway) + "</div>" +
-      "<div class='ev-block impl'><span class='ev-l'>Design implication</span>" + esc(ev.implication) + "</div>";
+      (ev.img ? "<div class='ev-img" + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
+        "<img src='" + img(ev.img) + "' onerror=\"this.parentElement.classList.add('failed')\">" +
+        (ev.pending ? "<span class='ev-pending'>Artifact image to be added</span>" : "") + "</div>" : "") +
+      calc +
+      (ev.observed ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.observedL || "What we observed") + "</span>" + esc(ev.observed) + "</div>" : "") +
+      (ev.takeaway ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.takeawayL || "One takeaway") + "</span>" + esc(ev.takeaway) + "</div>" : "") +
+      (ev.implication ? "<div class='ev-block impl'><span class='ev-l'>" + esc(ev.implicationL || "Design implication") + "</span>" + esc(ev.implication) + "</div>" : "");
     panel.classList.add("open");
   }
   function closeEvidence() { if (panel) panel.classList.remove("open"); }
@@ -840,6 +849,14 @@
     if (e.target.closest(".ev-close") || e.target.classList.contains("ev-backdrop")) closeEvidence();
     if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) e.target.closest(".ev-img").classList.toggle("zoom");
   });
+
+  document.addEventListener("click", function (e) {
+    var l = e.target.closest && e.target.closest(".ev-link");
+    if (!l) return;
+    e.preventDefault(); e.stopPropagation();
+    var pr = PROOFS[l.getAttribute("data-proof")];
+    if (pr) openEvidence(pr);
+  }, true);
 
   /* ---------- presenter notes (N to toggle) ---------- */
   var notesEl = document.createElement("aside");

@@ -1120,3 +1120,15 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
   .lightbox.tall .lb-cap { white-space: normal; flex-wrap: wrap; justify-content: center; border-radius: 16px; }
 }
 @media (max-width: 720px) { .lb-p { width: 100%; text-align: center; } .lb-p::before { display: none; } }
+
+/* ---------- evidence links: thin light underline, opens right panel ---------- */
+.ev-link { display: inline; padding: 0; margin: 0; border: 0; background: none; font: inherit; color: inherit; letter-spacing: inherit; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); transition: text-decoration-color 0.2s; }
+.ev-link:hover { text-decoration-color: currentColor; }
+.ev-link:focus-visible { outline: 2px solid var(--info); outline-offset: 2px; border-radius: 3px; }
+.ev-tag.est { color: var(--warn); border-color: var(--warn-line); }
+.ev-calc { display: flex; flex-direction: column; margin-bottom: 20px; border-radius: 12px; border: 1px solid var(--panel-line); overflow: hidden; }
+.ev-calc-row { display: flex; justify-content: space-between; gap: 16px; padding: 11px 14px; font-size: 13.5px; color: var(--soft); border-top: 1px solid var(--line); }
+.ev-calc-row:first-child { border-top: none; }
+.ev-calc-row b { color: var(--ink); font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+.ev-calc-row.hi { background: var(--pos-soft); }
+.ev-calc-row.hi b { color: var(--pos); }
