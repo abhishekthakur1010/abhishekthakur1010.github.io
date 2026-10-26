@@ -1354,3 +1354,16 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .om-table { gap: 12px; }
 .om-row:not(.om-head) { padding: 20px 18px; min-height: 68px; }
 @media (max-height: 760px) { .om-row:not(.om-head) { padding: 14px 16px; min-height: 56px; } .om-table { gap: 8px; } }
+/* slide 5: 6 research cards, 3 x 2, image on top */
+.bd-tall .bd-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.bd-tall .bd-card { flex-direction: column; }
+.bd-tall .bd-img { width: 100%; min-height: 0; height: clamp(90px, calc((100vh - 560px) / 2), 170px); border-right: none; border-bottom: 1px solid var(--panel-line); }
+.bd-tall .bd-body { padding: 10px 14px 12px; gap: 4px; }
+.bd-tall .bd-stat b { font-size: clamp(20px, 2vw, 26px); }
+.bd-tall .bd-l { font-size: 12.5px; }
+@media (max-width: 1180px) { .bd-tall .bd-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) { .bd-tall .bd-grid { grid-template-columns: 1fr; } }
+.bd-tall .bd-img { height: clamp(80px, calc((100vh - 600px) / 2), 160px); }
+.bd-tall .sl-head { margin-bottom: 12px; }
+.bd-tall .sl-head .sub { margin-top: 4px; }
+.bd-tall .bd-top b { font-size: 13px; }

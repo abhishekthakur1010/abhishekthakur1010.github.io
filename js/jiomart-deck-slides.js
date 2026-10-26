@@ -239,12 +239,16 @@ window.DECK = {
           learned: "Benchmark, analyse the journey, map emotions, define the ideal." },
         { k: "Google Analytics", tag: "Validated", img: "enhance-ga-pre-conversion.png", fit: "contain", stat: "{{41%|search}} vs {{10%|carts}}",
           learned: "Searchers added to cart {{4× more|searchers}} than the average visit." },
+        { k: "Journey map", tag: "Validated", img: "enhance-flow-pipeline.png", pos: "center top", stat: "End to end",
+          learned: "Mapped every screen from Home to checkout to spot drop points." },
+        { k: "Competitive benchmark", tag: "Benchmark", img: "enhance-pdp-competitor-benchmark.webp", pos: "left top", stat: "5 apps",
+          learned: "Amazon, Flipkart, BigBasket, Grofers, Meesho put decision info up front." },
         { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}",
           learned: "5 critical, led by scan, list and the product page." },
         { k: "User interviews", tag: "Validated", img: "enhance-design-team-04.png", stat: "{{8 shoppers|interviews}}", est: true,
           learned: "\u201cI can\u2019t tell which one to buy.\u201d" }
       ],
-      notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
+      notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. Six sources, in order: plan, analytics, journey map, competitors, audit, interviews. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
     },
 
     /* 06 — ANALYSIS & SYNTHESIS */
