@@ -1282,3 +1282,41 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ev-find p { font-size: 13px; color: var(--soft); line-height: 1.45; }
 .ev-find.noimg { grid-template-columns: 1fr; }
 .ev-sev.s4 { color: #fff; border-color: var(--neg); background: var(--neg); }
+/* ---------- slide 4: vertical journey + screen viewer ---------- */
+.fv-slide { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
+.fv-left .sub { margin-top: 6px; }
+.fv-list { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; position: relative; }
+.fv-step { display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; align-items: center; width: 100%; text-align: left; padding: 11px 16px; border-radius: 14px; border: 1px solid var(--panel-line); background: var(--card); color: inherit; font-family: inherit; cursor: pointer; transition: border-color 0.25s, background 0.25s, transform 0.25s var(--ease); }
+.fv-step:hover { transform: translateX(3px); border-color: var(--info-line); }
+.fv-step.on { border-color: var(--info); background: var(--info-soft); box-shadow: 0 0 0 1px var(--info) inset; }
+.fv-step.last.on { border-color: var(--pos); background: var(--pos-soft); box-shadow: 0 0 0 1px var(--pos) inset; }
+.fv-n { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700; color: var(--dim); border: 1px solid var(--line2); background: var(--bg); }
+.fv-step.on .fv-n { color: #fff; background: var(--info); border-color: var(--info); }
+.fv-step.last.on .fv-n { background: var(--pos); border-color: var(--pos); }
+.fv-main { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.fv-k { font-size: 15px; font-weight: 700; }
+.fv-issue { font-size: 12.5px; color: var(--soft); display: flex; align-items: center; gap: 6px; }
+.fv-issue .tag { margin: 0; }
+.fv-stat { display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
+.fv-stat b { font-size: 24px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+.fv-step.last .fv-stat b { color: var(--pos); }
+.fv-stat i { font-style: normal; font-size: 9.5px; font-weight: 700; text-transform: uppercase; color: var(--dim); border: 1px solid var(--line2); border-radius: 999px; padding: 0 6px; }
+.fv-stat span { font-size: 11px; color: var(--dim); }
+.fv-right { position: relative; display: grid; place-items: center; min-height: 0; }
+.fv-screen { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; transform: translateY(10px) scale(0.98); transition: opacity 0.35s var(--ease), transform 0.35s var(--ease); pointer-events: none; }
+.fv-screen.on { opacity: 1; transform: none; pointer-events: auto; }
+.fv-cap { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line2); background: var(--card); }
+.device.fv { --w: clamp(170px, calc((100vh - 300px) / 2.3), 260px); }
+.fv-pain { font-size: 13px; color: var(--neg); text-align: center; max-width: 260px; }
+.fv-left .note { margin-top: 14px; }
+@media (max-height: 820px) { .fv-step { padding: 8px 14px; } .fv-stat b { font-size: 20px; } .fv-list { margin-top: 12px; gap: 6px; } }
+@media (max-width: 1180px) { .fv-slide { grid-template-columns: 1fr; } .fv-right { margin-top: 10px; } }
+@media (max-width: 720px) { .fv-step { grid-template-columns: 28px 1fr; } .fv-stat { grid-column: 2; align-items: flex-start; flex-direction: row; gap: 6px; align-items: baseline; } }
+.fv-stat { display: grid; grid-template-columns: auto auto; justify-content: end; justify-items: end; align-items: baseline; column-gap: 6px; }
+.fv-stat b { grid-column: 2; grid-row: 1; }
+.fv-stat i { grid-column: 1; grid-row: 1; }
+.fv-stat span { grid-column: 1 / -1; }
+.fv-slide { grid-template-columns: 1.5fr 1fr; }
+.fv-slide h2 { white-space: nowrap; }
+@media (max-height: 760px) { .fv-slide h2 { font-size: 30px; } .fv-left .sub { font-size: 14px; } .fv-step { padding: 6px 12px; } .fv-n { width: 26px; height: 26px; } }
+@media (max-width: 1180px) { .fv-slide h2 { white-space: normal; } }

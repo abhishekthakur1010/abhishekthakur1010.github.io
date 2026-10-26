@@ -213,18 +213,19 @@ window.DECK = {
 
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
-      section: "discover", type: "journey",
+      section: "discover", type: "flowview",
       eyebrow: "The existing experience",
       headline: ["Shoppers dropped at every step"],
+      sub: "Click a step to see the screen shoppers saw.",
       steps: [
-        { k: "Home", stat: "100%", statL: "sessions", issues: [{ t: "Inconsistent icons, busy banners", tag: "Audit" }] },
-        { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", issues: [{ t: "Irrelevant search results", tag: "Audit" }] },
-        { k: "Listing", stat: "{{46%|funnel}}", est: true, statL: "opened a list", issues: [{ t: "Every card looked alike", tag: "Audit" }] },
-        { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }] },
-        { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }] }
+        { k: "Home", stat: "100%", statL: "sessions", img: "enhance-problem-home.png", issues: [{ t: "Inconsistent icons, busy banners", tag: "Audit" }], pain: "Busy banners and mixed icon styles" },
+        { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", img: "enhance-iter-search-before.png", issues: [{ t: "Irrelevant search results", tag: "Audit" }], pain: "Generic suggestions, wrong categories" },
+        { k: "Listing", stat: "{{46%|funnel}}", est: true, statL: "opened a list", img: "enhance-problem-plp.png", issues: [{ t: "Every card looked alike", tag: "Audit" }], pain: "No rating, discount or variant on the card" },
+        { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", img: "enhance-problem-pdp.png", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }], pain: "Key details below the fold" },
+        { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", img: "enhance-problem-pdp.png", focus: 1, issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }], pain: "Few reasons to trust before tapping Add" }
       ],
-      foot: "{{23 heuristic issues|audit}} found. The product page scored worst.",
-      notes: "Walk the journey left to right. 100% and 10.4% are from analytics; middle steps are illustrative (est.). The heuristic audit found 23 issues, and the product page was the most severe."
+      foot: "{{23 heuristic issues|audit}} found. The product page was the weakest part of discovery.",
+      notes: "Press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
     },
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */

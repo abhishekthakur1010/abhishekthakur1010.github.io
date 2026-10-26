@@ -120,6 +120,7 @@
       case "close": return 2;
       case "qa": return sc.qs.length + 1;
       case "contextinfo": return sc.flow.length + 1;
+      case "flowview": return sc.steps.length - 1;
       default: return 0;
     }
   }
@@ -696,6 +697,27 @@
         (sc.bounds ? "<div class='ci-bounds'>" + bounds + "</div>" : "") + "</div>") + "</div>";
     },
 
+    /* vertical journey on the left, selected step's screen on the right */
+    flowview: function (sc) {
+      var list = sc.steps.map(function (s, i) {
+        var iss = (s.issues || []).map(function (x) {
+          return "<span class='fv-issue'>" + (x.tag ? "<span class='tag " + tagTone(x.tag) + "'>" + esc(x.tag) + "</span>" : "") + esc(x.t) + "</span>";
+        }).join("");
+        return "<div role='button' tabindex='0' class='fv-step" + (i === 0 ? " on" : "") + (i === sc.steps.length - 1 ? " last" : "") + "' data-fv='" + i + "'>" +
+          "<span class='fv-n'>" + pad(i + 1) + "</span>" +
+          "<span class='fv-main'><span class='fv-k'>" + esc(s.k) + "</span>" + iss + "</span>" +
+          "<span class='fv-stat'><b>" + esc(s.stat) + "</b>" + (s.est ? "<i>est.</i>" : "") + "<span>" + esc(s.statL || "") + "</span></span></div>";
+      }).join("");
+      var screens = sc.steps.map(function (s, i) {
+        return "<div class='fv-screen" + (i === 0 ? " on" : "") + "' data-fv='" + i + "'><span class='fv-cap'>Before · " + esc(s.k) + "</span>" +
+          "<span class='evo-media zoomable' title='Click to enlarge'>" + device(s.img, s.focus || 0, "fv") + "</span>" +
+          (s.pain ? "<span class='fv-pain'>" + esc(s.pain) + "</span>" : "") + "</div>";
+      }).join("");
+      return "<div class='sl fv-slide'><div class='fv-left'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
+        "<div class='fv-list'>" + list + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>" +
+        "<div class='fv-right'>" + screens + "</div></div>";
+    },
+
     /* questions we asked of the brief → what we agreed */
     qa: function (sc) {
       var cards = sc.qs.map(function (x, i) {
@@ -783,6 +805,12 @@
     if (sc.type === "pdp-scroll") {
       var im = slideEl.querySelector(".ds img");
       if (im && sc.layers[step]) setTimeout(function () { setFocus(im, sc.layers[step].focus); }, 0);
+    }
+    if (sc.type === "flowview") {
+      Array.prototype.forEach.call(slideEl.querySelectorAll("[data-fv]"), function (n) {
+        n.classList.toggle("on", parseInt(n.getAttribute("data-fv"), 10) === step);
+      });
+      setTimeout(function () { focusImgs(slideEl); }, 30);
     }
     // play V2 video when its reveal is reached; pause otherwise
     var vids = slideEl.querySelectorAll("video");
@@ -981,12 +1009,14 @@
   });
   stage.addEventListener("click", function (e) {
     if (evidenceOpen() || lightboxOpen()) return;
-    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop")) return;
+    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop, .fv-step")) return;
     var x = e.clientX / window.innerWidth;
     if (x < 0.24) prev(); else next();
   });
   // click artifact/matrix to zoom
   stage.addEventListener("click", function (e) {
+    var fv = e.target.closest(".fv-step");
+    if (fv) { step = parseInt(fv.getAttribute("data-fv"), 10); applyStep(); return; }
     var shot = e.target.closest(".ci-shot");
     if (shot) {
       var sh = (slides[index].define || {}).shots || [];
