@@ -333,11 +333,14 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution · Home",
       headline: ["Where do I start?"],
-      labels: ["Before", "V1", "V2 · Live"],
+      labels: ["Before", "V1 · Quick test", "Live · Full design"],
+      when: ["Until Dec 2022", "Jan – Mar 2023", "After V1"],
+      jump: "Full launch",
+      sub: "V1 tested the approach fast. The full design launched after.",
       stages: [
         { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
         { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
-        { img: "enhance-v2-home.png", n: "Search first, Quick and ShopAll" }
+        { img: "enhance-live-home.jpg", video: "enhance-live-home.mp4", n: "Search first, Quick and ShopAll" }
       ],
       notes: "Home answers: where do I start? Before, banners pushed search and categories down. V1 moved them to the top with one icon style. V2, live today, keeps search first."
     },
@@ -346,11 +349,14 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution · Listing",
       headline: ["Which one should I pick?"],
-      labels: ["Before", "V1", "V2 · Live"],
+      labels: ["Before", "V1 · Quick test", "Live · Full design"],
+      when: ["Until Dec 2022", "Jan – Mar 2023", "After V1"],
+      jump: "Full launch",
+      sub: "V1 tested the approach fast. The full design launched after.",
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
         { img: "enhance-v1-plp.png", n: "Rating, discount, wishlist, sub-categories" },
-        { img: "enhance-v2-plp-grid.png", n: "Grid to compare at a glance" }
+        { img: "enhance-live-plp.jpg", video: "enhance-live-plp.mp4", n: "Grid to compare at a glance" }
       ],
       evidence: {
         method: "Old vs new listing",
@@ -366,11 +372,14 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution · Product",
       headline: ["Can I trust it?"],
-      labels: ["Before", "V1", "V2 · Live"],
+      labels: ["Before", "V1 · Quick test", "Live · Full design"],
+      when: ["Until Dec 2022", "Jan – Mar 2023", "After V1"],
+      jump: "Full launch",
+      sub: "V1 tested the approach fast. The full design launched after.",
       stages: [
         { img: "enhance-problem-pdp.png", n: "Long page, key details buried" },
         { img: "enhance-v1-pdp.png", n: "Rating, size and offers moved up" },
-        { img: "enhance-v2-pdp-main.png", n: "Big image, offers, sticky Add to cart" }
+        { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
       ],
       notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. V1 pulled them up; V2 keeps price, size and Add to cart on the first screen."
     },

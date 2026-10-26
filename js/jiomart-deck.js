@@ -653,16 +653,21 @@
     /* one screen from Before through each version to Live */
     versions: function (sc) {
       var n = sc.stages.length;
-      var cols = sc.stages.map(function (s, i) {
+      var fig = function (s, i) {
         var cls = i === 0 ? "before" : (i === n - 1 ? "live" : "mid");
-        return (i ? "<span class='vs-arrow reveal' data-step='" + i + "'>→</span>" : "") +
-          "<figure class='vs-col " + cls + (i ? " reveal' data-step='" + i + "'" : "'") + ">" +
-          "<figcaption>" + esc(sc.labels[i]) + "</figcaption>" +
-          "<span class='evo-media zoomable' title='Click to enlarge'>" + device(s.img, 0, "vs") + "</span>" +
+        return "<figure class='vs-col " + cls + (i ? " reveal' data-step='" + i + "'" : "'") + ">" +
+          "<figcaption><span class='vs-chip'>" + esc(sc.labels[i]) + "</span><span class='vs-when'>" + esc((sc.when || [])[i] || "") + "</span></figcaption>" +
+          "<span class='evo-media zoomable' title='Click to enlarge'>" + (s.video ? videoDevice(s.video, s.img, "vs") : device(s.img, 0, "vs")) + "</span>" +
           "<p class='vs-note'>" + esc(s.n) + "</p></figure>";
+      };
+      // Before and the quick-test versions sit together; the full launch stands apart
+      var early = sc.stages.slice(0, n - 1).map(function (s, i) {
+        return (i ? "<span class='vs-arrow reveal' data-step='" + i + "'>→</span>" : "") + fig(s, i);
       }).join("");
-      return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" + evidencePill(sc.evidence) + "</div>" +
-        "<div class='vs-row'>" + cols + "</div></div>";
+      var jump = "<div class='vs-jump reveal' data-step='" + (n - 1) + "'><span class='vs-jump-l'>" + esc(sc.jump || "") + "</span><span class='vs-jump-a'></span></div>";
+      return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") + "</div>" + evidencePill(sc.evidence) + "</div>" +
+        "<div class='vs-row'><div class='vs-group'>" + early + "</div>" + jump + fig(sc.stages[n - 1], n - 1) + "</div></div>";
     },
 
     /* 11 · accurately scaled pre/post bars, grouped */
