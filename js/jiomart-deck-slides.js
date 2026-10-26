@@ -152,9 +152,9 @@ window.DECK = {
         ]
       },
       flow: [
-        { k: "Business wanted", t: "More carts from the same traffic", icon: "star" },
-        { k: "Product asked for", t: "A refresh of Home, listing and product pages", icon: "brief" },
-        { k: "UX saw", t: "Shoppers found products but couldn't choose", icon: "people", tone: "pos" }
+        { k: "Business", t: "Sell more", icon: "star" },
+        { k: "Product", t: "Make the pages look better", icon: "brief" },
+        { k: "UX", t: "Help shoppers pick", icon: "people", tone: "pos" }
       ],
       reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
       stats: [
