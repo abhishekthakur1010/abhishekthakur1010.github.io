@@ -835,7 +835,10 @@
       "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
       "<div class='ev-method'>" + esc(ev.method) + "</div>" +
       (ev.img ? "<div class='ev-img" + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
-        "<img src='" + img(ev.img) + "' onerror=\"this.parentElement.classList.add('failed')\">" +
+        "<span class='ev-imgbox'><img src='" + img(ev.img) + "' onerror=\"this.closest('.ev-img').classList.add('failed')\">" +
+        (ev.hl ? ev.hl.map(function (r) {
+          return "<span class='ev-hl' style='top:" + (r[0] / ev.hlH * 100).toFixed(2) + "%;height:" + ((r[1] - r[0]) / ev.hlH * 100).toFixed(2) + "%'></span>";
+        }).join("") : "") + "</span>" +
         (ev.pending ? "<span class='ev-pending'>Artifact image to be added</span>" : "") + "</div>" : "") +
       calc +
       (ev.observed ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.observedL || "What we observed") + "</span>" + esc(ev.observed) + "</div>" : "") +
