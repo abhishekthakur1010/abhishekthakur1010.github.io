@@ -672,6 +672,9 @@
       var bounds = sc.bounds.map(function (x) { return "<span class='sc-chip'><b>" + esc(x.k) + "</b>" + esc(x.v) + "</span>"; }).join("");
       var last = sc.flow.length + 1;
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        (sc.define ? "<div class='ci-define'><span class='ci-def-k'>" + esc(sc.define.k) + "</span><div class='ci-path'>" +
+          sc.define.steps.map(function (st, i) { return (i ? "<span class='ci-path-arrow'>→</span>" : "") + "<span class='ci-path-step" + (i === sc.define.steps.length - 1 ? " end" : "") + "'>" + esc(st) + "</span>"; }).join("") +
+          "</div>" + (sc.define.note ? "<span class='ci-def-note'>" + esc(sc.define.note) + "</span>" : "") + "</div>" : "") +
         "<div class='ci-flow'>" + flow + "</div>" +
         "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
         "<div class='ci-row'><div class='ci-big'><b>" + esc(r.big) + "</b><span>" + esc(r.l) + "</span><div class='ci-dots'>" + dots + "</div></div>" +

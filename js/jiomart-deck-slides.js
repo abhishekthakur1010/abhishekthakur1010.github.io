@@ -25,7 +25,7 @@ window.DECK = {
       eyebrow: "JioMart · Product discovery redesign",
       headline: ["Simpler discovery. ", "Add-to-cart up 10%."],
       highlight: "Add-to-cart up 10%.",
-      body: "Shoppers found products but struggled to choose. I redesigned Home, listing and product pages so choosing felt easy.",
+      body: "Discovery is how shoppers find and pick a product, from Home to search, listing and product page. They found products but struggled to choose. I redesigned that journey so choosing felt easy.",
       hero: "enhance-v2-pdp-main.png",
       backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
       badge: { n: "+10%", l: "More visits end in add-to-cart" },
@@ -44,6 +44,11 @@ window.DECK = {
       section: "context", type: "contextinfo",
       eyebrow: "Where it all started",
       headline: ["Traffic was high. Carts were not."],
+      define: {
+        k: "Discovery at JioMart",
+        steps: ["Home", "Search / browse", "Listing", "Product page", "Add to cart"],
+        note: "Where most of a shopping session is spent"
+      },
       flow: [
         { k: "Who asked", t: "Product Manager and business stakeholders", icon: "people" },
         { k: "The ask", t: "Refresh Home, listing and product pages", icon: "brief" },
@@ -59,7 +64,7 @@ window.DECK = {
         { k: "Constraint", v: "Live app, no release freeze" },
         { k: "Expected", v: "Higher add-to-cart and engagement" }
       ],
-      notes: "Left to right: the PM and business stakeholders asked for a refresh of discovery; the North Star was more sessions ending in add-to-cart. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
+      notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then left to right: the PM and business stakeholders asked for a refresh of discovery; the North Star was more sessions ending in add-to-cart. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
     },
 
     /* 03 — ASKING THE RIGHT QUESTIONS */
