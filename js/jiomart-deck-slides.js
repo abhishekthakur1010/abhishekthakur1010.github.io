@@ -83,10 +83,30 @@ window.DECK = {
     },
     audit: {
       method: "Heuristic evaluation", tag: "UX audit",
-      img: "enhance-heuristic-table.png", crop: 0.2,
-      calc: [["Problem areas rated", "23"], ["Most severe (S3)", "List, scan, checkout, order details, product page", 1]],
-      observed: "Each area scored for severity (S0–S3) and ease of fixing (E0–E3) against Nielsen's heuristics.",
-      takeaway: "Inconsistency and recognition problems repeated across every surface."
+      img: "enhance-heuristic-table.png", crop: 0,
+      calc: [["Problem areas rated", "23"], ["Severity scale", "S0 cosmetic → S4 critical"], ["Ease scale", "E0 easy → E3 hard"], ["Most severe", "Help & support (S4), product page, scan, list, My List (S3)", 1]],
+      findingsL: "Key findings · click a page to open it",
+      findings: [
+        { k: "Scan / QR search", img: "enhance-heur-scan.webp", s: "S3", e: "E3", h: ["#5 Error prevention", "#6 Recognition", "#9 Help & docs"], issue: "Scanner unclear and broken: photo scan returned a blank screen." },
+        { k: "List feature", img: "enhance-heur-list.webp", s: "S3", e: "E2", h: ["#2 Match real world", "#3 User control"], issue: "Only the first item in a pasted list was searched, and the list couldn't be edited." },
+        { k: "Voice search", img: "enhance-heur-voice.webp", s: "S2", e: "E2", h: ["#7 Flexibility", "#10 Help & docs"], issue: "Couldn't add to cart by voice; everyday items like onion came back \u201cnot found\u201d." },
+        { k: "Search page", img: "enhance-heur-search.webp", s: "S1", e: "E1", h: ["#3 User control", "#6 Recognition"], issue: "Wrong categories (orange in Fashion) and monotonous, text-only suggestions." },
+        { k: "Category icons", img: "enhance-heur-home-icons.webp", s: "S0", e: "E0", h: ["#4 Consistency", "#6 Recognition"], issue: "Icons and colours inconsistent and dull across the category tray." },
+        { k: "List & scan icons", img: "enhance-heur-home-icons.webp", s: "S0", e: "E0", h: ["#6 Recognition"], issue: "Hard for non-tech-savvy shoppers to tell what the icons do." },
+        { k: "Help & support", s: "S4", e: "E3", h: ["#4 Consistency", "#10 Help & docs"], issue: "FAQs add mental load; the complaint option is hard to find." },
+        { k: "Product page", s: "S3", e: "E2", h: ["#3 User control", "#4 Consistency", "#5 Error prevention"], issue: "Brand not highlighted, EMI not clickable, delivery date needs a pincode, seller info and clear CTAs missing." },
+        { k: "My List", s: "S3", e: "E2", h: ["#2 Match real world", "#4 Consistency"], issue: "Related features (orders, wishlist, buy again) not grouped; empty states have no action." },
+        { k: "Listing page", s: "S2", e: "E2", h: ["#5 Error prevention"], issue: "The + button silently stops at max quantity, with no message." },
+        { k: "Top deals", s: "S2", e: "E1", h: ["#5 Error prevention"], issue: "No feedback when quantity can't increase; price, discount and quantity hierarchy unclear." },
+        { k: "Banners", s: "S2", e: "E2", h: ["#4 Consistency", "#8 Minimalist design"], issue: "Random fonts and colours, no break between banners and products, 7+ carousel cards." },
+        { k: "Filter & sort", s: "S2", e: "E2", h: ["#9 Recover from errors"], issue: "Selected filters barely visible; the red dot is ambiguous." },
+        { k: "Menu & categories", s: "S2", e: "E1", h: ["#2 Real world", "#4 Consistency", "#6 Recognition", "#8 Minimalist"], issue: "Category hierarchy differs by entry point; fashion and medicine missing; old icons." },
+        { k: "Category showcase", s: "S2", e: "E1", h: ["#7 Flexibility"], issue: "Category widgets make the page long and look inconsistent." },
+        { k: "Address", s: "S2", e: "E1", h: ["#6 Recognition"], issue: "Pincode-only location and no GPS auto-detect in the app." },
+        { k: "Profile & account", s: "S2", e: "E2", h: ["#4 Consistency"], issue: "Profile and My Account show the same content under different names." },
+        { k: "Top categories", s: "S0", e: "E0", h: ["#4 Consistency", "#8 Minimalist design"], issue: "Tile styles vary across the top-categories grid." }
+      ],
+      takeaway: "Inconsistency and recognition problems repeated across every surface. The product page, scan and list features were among the most severe."
     },
     usability: {
       method: "Usability test · listing page", tag: "Usability test",

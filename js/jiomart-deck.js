@@ -861,6 +861,13 @@
         }).join("") : "") + "</span>" +
         (ev.pending ? "<span class='ev-pending'>Artifact image to be added</span>" : "") + "</div>" : "") +
       calc +
+      (ev.findings ? "<div class='ev-finds'><span class='ev-l'>" + esc(ev.findingsL || "Findings") + "</span>" + ev.findings.slice().sort(function (x, y) { return parseInt(y.s.slice(1), 10) - parseInt(x.s.slice(1), 10); }).map(function (f) {
+        var sv = parseInt(String(f.s).replace(/\D/g, ""), 10);
+        return "<div class='ev-find" + (f.img ? "" : " noimg") + "'>" + (f.img ? "<span class='ev-find-img' title='Click to view the full page'><img src='" + img(f.img) + "' alt=''></span>" : "") + "<div class='ev-find-b'>" +
+          "<div class='ev-find-top'><b>" + esc(f.k) + "</b><span class='ev-sev s" + sv + "'>" + esc(f.s) + "</span><span class='ev-ease'>" + esc(f.e) + "</span></div>" +
+          "<div class='ev-heu'>" + f.h.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>" +
+          "<p>" + esc(f.issue) + "</p></div></div>";
+      }).join("") + "</div>" : "") +
       (ev.observed ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.observedL || "What we observed") + "</span>" + esc(ev.observed) + "</div>" : "") +
       (ev.takeaway ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.takeawayL || "One takeaway") + "</span>" + esc(ev.takeaway) + "</div>" : "") +
       (ev.implication ? "<div class='ev-block impl'><span class='ev-l'>" + esc(ev.implicationL || "Design implication") + "</span>" + esc(ev.implication) + "</div>" : "");
@@ -870,6 +877,7 @@
   function evidenceOpen() { return panel && panel.classList.contains("open"); }
   if (panel) panel.addEventListener("click", function (e) {
     if (e.target.closest(".ev-close") || e.target.classList.contains("ev-backdrop")) closeEvidence();
+    if (e.target.tagName === "IMG" && e.target.closest(".ev-find-img")) { openLightbox(e.target.src, ""); return; }
     if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) openLightbox(e.target.src, (panel.querySelector(".ev-method") || {}).textContent || "");
   });
 
