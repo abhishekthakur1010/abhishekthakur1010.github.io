@@ -1350,3 +1350,7 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .om-metric { flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; }
 .om-row b, .om-row > span { white-space: nowrap; }
 @media (max-width: 1180px) { .om-slide h2, .om-row b, .om-row > span { white-space: normal; } }
+/* slide 6: taller rows */
+.om-table { gap: 12px; }
+.om-row:not(.om-head) { padding: 20px 18px; min-height: 68px; }
+@media (max-height: 760px) { .om-row:not(.om-head) { padding: 14px 16px; min-height: 56px; } .om-table { gap: 8px; } }
