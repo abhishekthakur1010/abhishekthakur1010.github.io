@@ -123,14 +123,14 @@ window.DECK = {
       body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
       hero: "enhance-v2-pdp-main.png",
       backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
-      badge: { n: "{{~10M|volume}}", l: "More carts every quarter · est." },
+      badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
         { l: "Timeline", v: "Jan – Mar 2023 · results Aug 2023" },
         { l: "Team", v: "PM · Engineering · Analytics" },
-        { l: "After launch", v: "{{+28%|carts}} carts · {{+21%|pages}} pages · {{29%|speed}} faster" }
+        { l: "After launch", v: "{{50%|search}} search → cart · {{29%|speed}} faster" }
       ],
-      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. ~10M carts a quarter is an estimate: +2.94 points of add-to-cart sessions × ~334M visits a quarter. Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
+      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
     /* 02 — BUSINESS CONTEXT (infographic) */
