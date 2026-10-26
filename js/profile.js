@@ -151,17 +151,17 @@
   // Visitor count: 1,011 plus each browser counted once by the public counter service (shown in the intro and on the banner strip).
   var visitNums = document.querySelectorAll('[data-visit-num]');
   if (visitNums.length && window.fetch) {
-    var BASE = 1011, COUNTER = 'https://api.counterapi.dev/v1/abhishekthakur1010-portfolio/profile-visitors';
+    var BASE = 1011, COUNTER = 'https://abacus.jasoncameron.dev';  // free, keyless (counterapi.dev v1 was shut down)
     var seen = false;
-    try { seen = localStorage.getItem('at-visit-counted') === '1'; } catch (e) {}
-    fetch(COUNTER + (seen ? '/' : '/up'), { cache: 'no-store' })
+    try { seen = localStorage.getItem('at-visit-counted-v2') === '1'; } catch (e) {}
+    fetch(COUNTER + (seen ? '/get/' : '/hit/') + 'abhishekthakur1010-portfolio/profile-visitors', { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) {
         var n = d && (d.count != null ? d.count : d.value);
         if (typeof n !== 'number') return;
         var shown = (BASE + n).toLocaleString('en-IN');
         visitNums.forEach(function (el) { el.textContent = shown; });
-        if (!seen) { try { localStorage.setItem('at-visit-counted', '1'); } catch (e) {} }
+        if (!seen) { try { localStorage.setItem('at-visit-counted-v2', '1'); } catch (e) {} }
       })
       .catch(function () { /* keep the starting number */ });
   }
