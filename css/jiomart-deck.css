@@ -1265,3 +1265,4 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ci-drop-head { margin-bottom: 8px; }
 .ci-shot { padding: 8px 8px 10px; gap: 6px; }
 .ci-shot .device.sc { --w: clamp(78px, calc((100vh - 520px) / 2.3), 170px); }
+.ci-pts li b { min-width: 46px; }
