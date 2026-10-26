@@ -162,11 +162,13 @@ window.DECK = {
         { k: "Product frustration", t: "Pages looked dated and messy", icon: "brief", pts: [["Requirement", "Refresh Home, listing and product page"], ["Goal", "One consistent look in all 11 categories"]] },
         { k: "Shopper frustration", t: "\u201cCan I trust this product?\u201d", icon: "people", tone: "pos", pts: [["Need", "Price, size and delivery up front"], ["Goal", "Choose with confidence"]] }
       ],
-      reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
-      stats: [
-        { n: "{{11|categories}}", l: "categories, from grocery to jewellery" },
-        { n: "{{41%|search}}", l: "add-to-cart when shoppers searched" }
-      ],
+      paths: {
+        rows: [
+          { k: "Search", flow: "Search → Product → Cart", lit: 4, v: "{{41%|search}}", l: "add to cart", tone: "good" },
+          { k: "Browse", flow: "Home → Listing → Product → Cart", lit: 1, v: "{{10%|carts}}", l: "add to cart", tone: "bad" }
+        ],
+        big: "{{4×|searchers}}", bigL: "Shoppers who search add to cart 4× more. Browsing was the gap."
+      },
       notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers didn't trust what they saw: unclear price, size, delivery and no reviews up front. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
     },
 
@@ -184,13 +186,6 @@ window.DECK = {
         { tag: "Shopper", q: "Where do they get stuck?", a: "Browsing: listing and product page." },
         { tag: "Scope", q: "What's not included?", a: "Checkout, payments and personalisation." }
       ],
-      paths: {
-        rows: [
-          { k: "Search", flow: "Search → Product → Cart", lit: 4, v: "{{41%|search}}", l: "add to cart", tone: "good" },
-          { k: "Browse", flow: "Home → Listing → Product → Cart", lit: 1, v: "{{10%|carts}}", l: "add to cart", tone: "bad" }
-        ],
-        big: "{{4×|searchers}}", bigL: "Shoppers who search add to cart 4× more. Browsing was the gap."
-      },
       fromL: "The brief", from: "Make the pages look better",
       toL: "What it became", to: "Help shoppers choose with confidence",
       notes: "Business questions first, then shopper questions, then scope. Each answer came from talking to the PM, analytics or engineering. The shift at the bottom is the point: a facelift request became a problem about helping people choose."

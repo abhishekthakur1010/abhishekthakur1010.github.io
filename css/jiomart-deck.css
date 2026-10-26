@@ -1249,3 +1249,13 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
   .pv-big b { font-size: 40px; }
 }
 @media (max-height: 760px) { .type-qa .qa-q { padding-right: 84px; } }
+/* slide 2: search vs browse card + breathing room */
+.type-contextinfo .sl-head { margin-bottom: 26px; }
+.type-contextinfo .ci-define { margin-bottom: 24px; }
+.type-contextinfo .pv { margin-top: 24px; padding: 18px 22px; }
+.type-contextinfo .pv-rows { gap: 14px; }
+@media (max-height: 820px) { .type-contextinfo .sl-head { margin-bottom: 16px; } .type-contextinfo .ci-define { margin-bottom: 16px; } .type-contextinfo .pv { margin-top: 16px; padding: 12px 18px; } .type-contextinfo .pv-rows { gap: 8px; } }
+/* slide 3 gets room back */
+.type-qa .qa-shift { margin-top: 24px; }
+/* keep search/browse rows horizontal on mid-width screens */
+@media (max-width: 1180px) and (min-width: 721px) { .pv { grid-template-columns: 1fr auto; } .pv-row { grid-template-columns: 170px auto 1fr; gap: 12px; } .pv-big { border-left: 1px solid var(--line2); padding-left: 16px; } .pv-dots .ci-dot { width: 22px; height: 22px; } }

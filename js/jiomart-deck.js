@@ -326,7 +326,7 @@
     },
 
     usability: function (sc) {
-      var stats = sc.stats.map(function (s) { return "<div class='ustat'><div class='un'>" + esc(s.n) + "</div><div class='ul'>" + esc(s.l) + "</div></div>"; }).join("");
+      var stats = (sc.stats || []).map(function (s) { return "<div class='ustat'><div class='un'>" + esc(s.n) + "</div><div class='ul'>" + esc(s.l) + "</div></div>"; }).join("");
       var chain = sc.chain.map(function (c, i) { return "<div class='uchain reveal' data-step='" + (i + 1) + "'><b>" + esc(c.k) + "</b><span>" + esc(c.d) + "</span></div>"; }).join("");
       return "<div class='sl split'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
         "<div class='ustats'>" + stats + "</div>" +
@@ -672,9 +672,9 @@
           "<span class='ci-k'>" + esc(f.k) + "</span><p class='ci-t'>" + esc(f.t) + "</p>" +
           (f.pts ? "<ul class='ci-pts'>" + f.pts.map(function (x) { return "<li><b>" + esc(x[0]) + "</b>" + esc(x[1]) + "</li>"; }).join("") + "</ul>" : "") + "</div>";
       }).join("");
-      var r = sc.reality, dots = "";
+      var r = sc.reality || { dots: 0 }, dots = "";
       for (var d = 0; d < r.dots; d++) dots += "<span class='ci-dot" + (d < r.hit ? " hit" : "") + "'>" + svg("cart") + "</span>";
-      var stats = sc.stats.map(function (x) { return "<div class='ci-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("");
+      var stats = (sc.stats || []).map(function (x) { return "<div class='ci-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("");
       var bounds = (sc.bounds || []).map(function (x) { return "<span class='sc-chip'><b>" + esc(x.k) + "</b>" + esc(x.v) + "</span>"; }).join("");
       var last = sc.flow.length + 1;
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
@@ -690,10 +690,10 @@
                 (sh.pain ? "<span class='ci-pain'>" + esc(sh.pain) + "</span>" : "") + "</button>";
             }).join("") + "</div></div>" : "") + "</div>" : "") +
         "<div class='ci-flow'>" + flow + "</div>" +
-        "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
+        (sc.paths ? pathsViz(sc, last) : "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
         "<div class='ci-row'><div class='ci-big'><b>" + esc(r.big) + "</b><span>" + esc(r.l) + "</span><div class='ci-dots'>" + dots + "</div></div>" +
         "<div class='ci-stats'>" + stats + "</div></div>" +
-        (sc.bounds ? "<div class='ci-bounds'>" + bounds + "</div>" : "") + "</div></div>";
+        (sc.bounds ? "<div class='ci-bounds'>" + bounds + "</div>" : "") + "</div>") + "</div>";
     },
 
     /* questions we asked of the brief → what we agreed */
@@ -705,16 +705,7 @@
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='qa-grid'>" + cards + "</div>" +
-        (sc.paths ? (function () {
-          var cart = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='21' r='1'/><circle cx='20' cy='21' r='1'/><path d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/></svg>";
-          var rows = sc.paths.rows.map(function (r) {
-            var d = ""; for (var k = 0; k < 10; k++) d += "<span class='ci-dot" + (k < r.lit ? " hit" : "") + "'>" + cart + "</span>";
-            return "<div class='pv-row " + (r.tone || "") + "'><div class='pv-k'><b>" + esc(r.k) + "</b><span>" + esc(r.flow) + "</span></div>" +
-              "<div class='pv-dots'>" + d + "</div><div class='pv-v'><b>" + esc(r.v) + "</b><span>" + esc(r.l) + "</span></div></div>";
-          }).join("");
-          return "<div class='pv reveal' data-step='" + (sc.qs.length + 1) + "'><div class='pv-rows'>" + rows + "</div>" +
-            "<div class='pv-big'><b>" + esc(sc.paths.big) + "</b><span>" + esc(sc.paths.bigL) + "</span></div></div>";
-        })() : "") +
+        pathsViz(sc, sc.qs.length + 1) +
         (sc.from ? "<div class='qa-shift reveal' data-step='" + (sc.qs.length + 1) + "'><div class='qa-was'><span class='tier-label'>" + esc(sc.fromL || "The brief") + "</span><span class='qa-strike'>" + esc(sc.from) + "</span></div>" +
           "<span class='qa-arrow'>→</span><div class='qa-now'><span class='tier-label'>" + esc(sc.toL || "What it became") + "</span>" + esc(sc.to) + "</div></div>" : "") +
         (sc.foot ? "<p class='qa-foot reveal' data-step='" + (sc.qs.length + 1) + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
@@ -733,6 +724,20 @@
         "<figcaption class='award-cap'>" + esc(sc.award.caption) + "</figcaption></figure></div></div>";
     }
   };
+
+  function pathsViz(sc, stepN) {
+    if (!sc.paths) return "";
+    return (function () {
+          var cart = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='21' r='1'/><circle cx='20' cy='21' r='1'/><path d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/></svg>";
+          var rows = sc.paths.rows.map(function (r) {
+            var d = ""; for (var k = 0; k < 10; k++) d += "<span class='ci-dot" + (k < r.lit ? " hit" : "") + "'>" + cart + "</span>";
+            return "<div class='pv-row " + (r.tone || "") + "'><div class='pv-k'><b>" + esc(r.k) + "</b><span>" + esc(r.flow) + "</span></div>" +
+              "<div class='pv-dots'>" + d + "</div><div class='pv-v'><b>" + esc(r.v) + "</b><span>" + esc(r.l) + "</span></div></div>";
+          }).join("");
+          return "<div class='pv reveal' data-step='" + stepN + "'><div class='pv-rows'>" + rows + "</div>" +
+            "<div class='pv-big'><b>" + esc(sc.paths.big) + "</b><span>" + esc(sc.paths.bigL) + "</span></div></div>";
+    })();
+  }
 
   // evidence-source tag → semantic tone
   function tagTone(t) {
