@@ -232,13 +232,13 @@ window.DECK = {
     {
       section: "discover", type: "board", tall: true,
       eyebrow: "Research",
-      headline: ["Data first, then people"],
-      sub: "A live app and little time, so we started with analytics, then checked it with shoppers.",
+      headline: ["How we found the real problem"],
+      sub: "A plan, then data, then shoppers.",
       cards: [
         { k: "Research strategy", tag: "Plan", img: "enhance-research-strategy.png", pos: "left center", stat: "4 steps",
           learned: "Benchmark, analyse the journey, map emotions, define the ideal." },
-        { k: "Analytics", tag: "Validated", img: "enhance-ga-search-vs-all.png", fit: "contain", stat: "{{4×|searchers}}",
-          learned: "Searchers added to cart at {{41.4%|search}} vs {{10.4%|carts}} overall." },
+        { k: "Google Analytics", tag: "Validated", img: "enhance-ga-pre-conversion.png", fit: "contain", stat: "{{41%|search}} vs {{10%|carts}}",
+          learned: "Searchers added to cart {{4× more|searchers}} than the average visit." },
         { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}",
           learned: "5 critical, led by scan, list and the product page." },
         { k: "User interviews", tag: "Validated", img: "enhance-design-team-04.png", stat: "{{8 shoppers|interviews}}", est: true,

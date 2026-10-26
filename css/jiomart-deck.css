@@ -1343,3 +1343,4 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .bd-tall .bd-img:hover img { transform: scale(1.06); }
 .bd-tall .bd-img { background: #fff; }
 .bd-tall .bd-img.fit img { object-fit: contain; padding: 10px !important; transform: none; }
+.bd-tall .sl-head h2 { white-space: nowrap; } @media (max-width: 1180px) { .bd-tall .sl-head h2 { white-space: normal; } }
