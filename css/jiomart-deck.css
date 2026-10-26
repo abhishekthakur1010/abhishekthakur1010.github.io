@@ -1161,3 +1161,5 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ev-imgbox img { display: block; width: 100%; }
 .ev-hl { position: absolute; left: -2px; right: -2px; border-radius: 6px; background: rgba(255, 196, 0, 0.22); box-shadow: inset 0 0 0 2px rgba(240, 160, 0, 0.9); pointer-events: none; animation: evHl 1.2s var(--ease) 0.35s both; }
 @keyframes evHl { 0% { opacity: 0; transform: scaleX(0.96); } 40% { opacity: 1; transform: none; } 70% { background: rgba(255, 196, 0, 0.38); } 100% { background: rgba(255, 196, 0, 0.22); } }
+.type-contextinfo .sl-head .sub { margin-top: 8px; max-width: none; }
+@media (max-height: 820px) { .type-contextinfo .sl-head .sub { margin-top: 4px; font-size: 14px; } .type-contextinfo .sl-head h2 { font-size: 30px; } }

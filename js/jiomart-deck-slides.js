@@ -138,6 +138,7 @@ window.DECK = {
       section: "context", type: "contextinfo",
       eyebrow: "Where it all started",
       headline: ["Traffic was high. Carts were not."],
+      sub: "{{~95M visitors|visitors}} came to JioMart, but only {{1 in 10 sessions|carts}} ended with something in the cart.",
       define: {
         k: "Discovery at JioMart",
         steps: ["Home", "Search / browse", "Listing", "Product page", "Add to cart"],
