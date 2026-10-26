@@ -855,9 +855,12 @@
   /* ---------- centered image lightbox (middle-of-screen popup) ---------- */
   var lb = document.createElement("div");
   lb.className = "lightbox";
-  lb.innerHTML = "<div class='lb-backdrop'></div><figure class='lb-card'><button class='lb-close' aria-label='Close'>×</button>" +
-    "<button class='lb-nav lb-prev' aria-label='Previous screen'>‹</button><div class='lb-imgwrap'><img alt=''></div><button class='lb-nav lb-next' aria-label='Next screen'>›</button>" +
-    "<figcaption class='lb-cap'></figcaption></figure>";
+  var IC = function (d) { return "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='" + d + "'/></svg>"; };
+  lb.innerHTML = "<div class='lb-backdrop'></div>" +
+    "<button class='lb-x' aria-label='Close'>" + IC("M18 6L6 18M6 6l12 12") + "<span>Esc</span></button>" +
+    "<figure class='lb-card'><button class='lb-close' aria-label='Close'>×</button>" +
+    "<button class='lb-nav lb-prev' aria-label='Previous screen'>" + IC("M15 18l-6-6 6-6") + "</button><div class='lb-imgwrap'><img alt=''></div><button class='lb-nav lb-next' aria-label='Next screen'>" + IC("M9 18l6-6-6-6") + "</button>" +
+    "<figcaption class='lb-cap'></figcaption><div class='lb-dots'></div></figure>";
   var gal = null; // { list: [{src, cap}], i }
   document.body.appendChild(lb);
   function openLightbox(src, caption, tall) {
@@ -872,12 +875,20 @@
     if (!gal) return;
     gal.i = (i + gal.list.length) % gal.list.length;
     var it = gal.list[gal.i];
-    openLightbox(it.src, it.cap + "   ·   " + (gal.i + 1) + " / " + gal.list.length, true);
+    openLightbox(it.src, "", true);
+    lb.querySelector(".lb-cap").innerHTML = "<span class='lb-n'>" + pad(gal.i + 1) + " / " + pad(gal.list.length) + "</span>" +
+      "<span class='lb-t'>" + esc(it.title || it.cap) + "</span>" + (it.pain ? "<span class='lb-p'>" + esc(it.pain) + "</span>" : "");
+    lb.querySelector(".lb-dots").innerHTML = gal.list.map(function (x, k) {
+      return "<button class='lb-dot" + (k === gal.i ? " on" : "") + "' data-k='" + k + "' aria-label='Screen " + (k + 1) + "'></button>";
+    }).join("");
   }
   function openGallery(list, i) { gal = { list: list, i: 0 }; showGal(i); }
   function closeLightbox() { lb.classList.remove("open"); gal = null; }
   function lightboxOpen() { return lb.classList.contains("open"); }
   lb.addEventListener("click", function (e) {
+    var dot = e.target.closest(".lb-dot");
+    if (dot) { showGal(parseInt(dot.getAttribute("data-k"), 10)); return; }
+    if (e.target.closest(".lb-x")) { closeLightbox(); return; }
     if (e.target.closest(".lb-prev")) { showGal(gal ? gal.i - 1 : 0); return; }
     if (e.target.closest(".lb-next")) { showGal(gal ? gal.i + 1 : 0); return; }
     if (e.target.closest(".lb-close") || e.target.classList.contains("lb-backdrop") || (!lb.classList.contains("tall") && e.target.classList.contains("lb-imgwrap"))) closeLightbox();
@@ -928,7 +939,7 @@
     var shot = e.target.closest(".ci-shot");
     if (shot) {
       var sh = (slides[index].define || {}).shots || [];
-      openGallery(sh.map(function (x) { return { src: img(x.img), cap: x.k + " · " + (x.pain || "") }; }), parseInt(shot.getAttribute("data-shot"), 10) || 0);
+      openGallery(sh.map(function (x) { return { src: img(x.img), cap: x.k, title: x.k, pain: x.pain }; }), parseInt(shot.getAttribute("data-shot"), 10) || 0);
       return;
     }
     var rv = e.target.closest(".rv-shot, .bd-img, .dc-thumb");
