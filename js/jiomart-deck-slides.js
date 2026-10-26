@@ -69,6 +69,12 @@ window.DECK = {
       observed: "Multiplies the measured add-to-cart lift by JioMart's quarterly visit volume from the Google Analytics sheet.",
       takeaway: "An order-of-magnitude estimate, not a measured count. Say \u201croughly 10 million more carts a quarter\u201d."
     },
+    categories: {
+      method: "JioMart categories", tag: "JioMart",
+      img: "enhance-categories-11.webp", crop: 0,
+      observed: "Grocery, Mobiles, Home & Living, Fruits, Electronics, Fashion, Beauty, Handloom, Medicines, Furniture and Jewellery.",
+      takeaway: "Every category had different product info, so one consistent way to compare mattered across all 11."
+    },
     visitors: {
       method: "JioMart visitors", tag: "Internal town hall",
       img: "enhance-townhall-visitors.jpg", crop: 0.4,
@@ -159,7 +165,7 @@ window.DECK = {
       reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
       stats: [
         { n: "{{~95M|visitors}}", l: "visitors" },
-        { n: "3", l: "big categories: grocery, fashion, electronics" },
+        { n: "{{11|categories}}", l: "categories, from grocery to jewellery" },
         { n: "{{41%|search}}", l: "add-to-cart when shoppers searched" }
       ],
       bounds: [
