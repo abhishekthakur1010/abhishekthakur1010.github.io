@@ -32,7 +32,7 @@ window.DECK = {
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
         { l: "Timeline", v: "Aug – Oct 2023 · 10 weeks" },
-        { l: "Team", v: "PM · Engineering · Analytics · DS 2.0" },
+        { l: "Team", v: "PM · Engineering · Analytics" },
         { l: "Search add-to-cart", v: "41.4% → 44.3%" }
       ],
       cta: "Hover the phone · press → to begin",
@@ -46,7 +46,7 @@ window.DECK = {
       headline: ["Traffic was high. Carts were not."],
       flow: [
         { k: "Who asked", t: "Product Manager and business stakeholders", icon: "people" },
-        { k: "The ask", t: "Refresh Home, listing and product pages for DS 2.0", icon: "brief" },
+        { k: "The ask", t: "Refresh Home, listing and product pages", icon: "brief" },
         { k: "North Star", t: "More sessions ending in an add-to-cart", icon: "star", tone: "pos" }
       ],
       reality: { big: "1 in 10", l: "sessions added to cart", dots: 10, hit: 1 },
@@ -56,10 +56,10 @@ window.DECK = {
         { n: "41%", l: "add-to-cart when shoppers searched" }
       ],
       bounds: [
-        { k: "Constraint", v: "Ship inside the DS 2.0 rollout" },
+        { k: "Constraint", v: "Live app, no release freeze" },
         { k: "Expected", v: "Higher add-to-cart and engagement" }
       ],
-      notes: "Left to right: the PM and business stakeholders asked for a DS 2.0 refresh; the North Star was more sessions ending in add-to-cart. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship inside the DS 2.0 rollout."
+      notes: "Left to right: the PM and business stakeholders asked for a refresh of discovery; the North Star was more sessions ending in add-to-cart. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
     },
 
     /* 03 — ASKING THE RIGHT QUESTIONS */
@@ -69,7 +69,7 @@ window.DECK = {
       headline: ["Before designing, we questioned the brief"],
       qs: [
         { q: "Why solve this?", a: "Browsing sessions rarely ended in a cart. Search did 4× better." },
-        { q: "Why now?", a: "DS 2.0 meant every screen was being rebuilt anyway." },
+        { q: "Why now?", a: "Traffic was growing fast; every lost cart cost more." },
         { q: "What is the business after?", a: "More add-to-carts from the same traffic." },
         { q: "What do users struggle with?", a: "Comparing products and trusting the details." },
         { q: "What does success look like?", a: "Add-to-cart up, time to decide down." },
@@ -183,16 +183,16 @@ window.DECK = {
       pairLabels: ["Step", "Outcome"],
       pairs: [
         { saw: "Whiteboard workshop with PM and engineers", bet: "3 concepts for listing and product page" },
-        { saw: "Critiques with the DS 2.0 team in Europe", bet: "Patterns locked to shared components" },
+        { saw: "Design critiques with the wider design team", bet: "One consistent pattern for every surface" },
         { saw: "Feasibility review with engineering", bet: "Chose the direction we could ship in phases" }
       ],
       tiles: [
         { img: "enhance-design-team-01.png", t: "Whiteboard workshop" },
-        { img: "enhance-design-team-02.png", t: "DS 2.0 critique, Europe" },
+        { img: "enhance-design-team-02.png", t: "Design critique" },
         { img: "enhance-design-team-03.png", t: "Screen review with new DS" },
         { img: "enhance-user-journey-02.png", t: "MoSCoW: what shipped first" }
       ],
-      notes: "Every decision was made with the team. We explored three concepts, critiqued them with the DS 2.0 team, and picked the one engineering could ship in phases. MoSCoW decided the first release."
+      notes: "Every decision was made with the team. We explored three concepts, critiqued them with the wider design team, and picked the one engineering could ship in phases. MoSCoW decided the first release."
     },
 
     /* 10 — SOLUTION & DESIGN EXECUTION (mockups unchanged) */
@@ -207,7 +207,7 @@ window.DECK = {
         { k: "Product · Can I trust it?", before: "enhance-problem-pdp.png", after: "enhance-v2-pdp-main.png", note: "Size, price, delivery on the first screen" }
       ],
       chips: [
-        { k: "Design system", v: "Built from JDS 2.0 components" },
+        { k: "Consistency", v: "One card and icon style across categories" },
         { k: "Accessibility", v: "4.5:1 contrast, 44px tap targets" },
         { k: "Edge cases", v: "Out of stock, no reviews, long names" },
         { k: "Handoff", v: "Specs and states in Figma" }
@@ -219,7 +219,7 @@ window.DECK = {
         takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
         implication: "Every change answers a comparison question on the card itself."
       },
-      notes: "One shopper question per screen. Click any phone to enlarge. Then the chips: built on JDS components, accessibility checks, edge cases, and a clean Figma handoff."
+      notes: "One shopper question per screen. Click any phone to enlarge. Then the chips: one consistent style, accessibility checks, edge cases, and a clean Figma handoff."
     },
 
     /* 11 — VALIDATION, ITERATION & IMPACT */
@@ -230,7 +230,7 @@ window.DECK = {
       checks: [
         { n: "9 / 12", l: "completed the usability test" },
         { n: "3", l: "design iterations", est: true },
-        { n: "6", l: "review rounds with DS team", est: true }
+        { n: "6", l: "design review rounds", est: true }
       ],
       groups: [
         { k: "Conversion", rows: [
