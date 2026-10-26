@@ -114,6 +114,7 @@
       case "synthesis": return sc.rows.length + 1;
       case "oppmatrix": return sc.rows.length + 1;
       case "ideas": return sc.pairs.length;
+      case "collab": return sc.steps.length;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
       case "kpis": return sc.groups.length + 1;
@@ -604,6 +605,19 @@
       return "<div class='sl split'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
         "<div class='id-pairs'>" + pairs + "</div></div>" +
         "<div class='c-visual'><div class='tile-grid id-tiles'>" + tiles + "</div></div></div>";
+    },
+
+    /* team sessions as a photo-led timeline */
+    collab: function (sc) {
+      var steps = sc.steps.map(function (s, i) {
+        return "<div class='cb-step reveal' data-step='" + (i + 1) + "'>" +
+          "<button class='tile cb-photo" + (s.fit === "contain" ? " contain" : "") + "' data-img='" + img(s.img) + "' title='Click to enlarge'>" +
+          "<img src='" + img(s.img) + "' onerror=\"this.parentElement.classList.add('failed')\"><span class='tile-t'>" + esc(s.t) + "</span></button>" +
+          "<div class='cb-meta'><span class='cb-n'>" + pad(i + 1) + "</span><b>" + esc(s.t) + "</b><span class='cb-who'>" + esc(s.who) + "</span>" +
+          "<p class='cb-out'>" + esc(s.out) + "</p></div></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") + "</div><div class='cb-row'>" + steps + "</div></div>";
     },
 
     /* 08 · evidence → choice → value → trade-off */

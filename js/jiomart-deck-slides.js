@@ -315,22 +315,17 @@ window.DECK = {
 
     /* 09 — IDEATION & COLLABORATION */
     {
-      section: "design", type: "ideas",
+      section: "design", type: "collab",
       eyebrow: "Ideation & collaboration",
-      headline: ["Built with the team, not handed to it"],
-      pairLabels: ["Step", "Outcome"],
-      pairs: [
-        { saw: "Whiteboard workshop with PM and engineers", bet: "3 concepts for listing and product page" },
-        { saw: "Design critiques with the wider design team", bet: "One consistent pattern for every surface" },
-        { saw: "Feasibility review with engineering", bet: "Chose the direction we could ship in phases" }
+      headline: ["Built with the team"],
+      sub: "Four working sessions took us from ideas to a plan we could ship.",
+      steps: [
+        { img: "enhance-design-team-01.png", t: "Whiteboard workshop", who: "PM + engineers", out: "3 concepts for listing and product page" },
+        { img: "enhance-design-team-02.png", t: "Design critique", who: "Wider design team", out: "One pattern for every screen" },
+        { img: "enhance-design-team-03.png", t: "Screen review", who: "Engineering", out: "Gaps fixed before build" },
+        { img: "enhance-user-journey-02.png", t: "MoSCoW", who: "PM + design + engineering", out: "Price, rating, discount shipped first", fit: "contain" }
       ],
-      tiles: [
-        { img: "enhance-design-team-01.png", t: "Whiteboard workshop" },
-        { img: "enhance-design-team-02.png", t: "Design critique" },
-        { img: "enhance-design-team-03.png", t: "Screen review with new DS" },
-        { img: "enhance-user-journey-02.png", t: "MoSCoW: what shipped first" }
-      ],
-      notes: "Every decision was made with the team. We explored three concepts, critiqued them with the wider design team, and picked the one engineering could ship in phases. MoSCoW decided the first release."
+      notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and used MoSCoW to decide what shipped first: name, price, rating and discount were Musts."
     },
 
     /* 10 — SOLUTION & DESIGN EXECUTION (mockups unchanged) */
