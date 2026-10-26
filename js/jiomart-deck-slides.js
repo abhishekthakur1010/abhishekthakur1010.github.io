@@ -328,22 +328,29 @@ window.DECK = {
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and used MoSCoW to decide what shipped first: name, price, rating and discount were Musts."
     },
 
-    /* 10 — SOLUTION & DESIGN EXECUTION (mockups unchanged) */
+    /* 10–12 — SOLUTION: each screen from Before to Live */
     {
-      section: "design", type: "showcase",
-      eyebrow: "The solution",
-      headline: ["Every screen answers one shopper question"],
-      labels: ["Before", "Live"],
-      pairs: [
-        { k: "Home · Where do I start?", before: "enhance-problem-home.png", after: "enhance-v2-home.png", note: "One icon style, search first" },
-        { k: "Listing · Which one?", before: "enhance-problem-plp.png", after: "enhance-v2-plp-grid.png", note: "Price, discount, rating on every card" },
-        { k: "Product · Can I trust it?", before: "enhance-problem-pdp.png", after: "enhance-v2-pdp-main.png", note: "Size, price, delivery on the first screen" }
+      section: "design", type: "versions",
+      eyebrow: "The solution · Home",
+      headline: ["Where do I start?"],
+      labels: ["Before", "V1", "V2 · Live"],
+      stages: [
+        { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
+        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
+        { img: "enhance-v2-home.png", n: "Search first, Quick and ShopAll" }
       ],
-      chips: [
-        { k: "Consistency", v: "One card and icon style across categories" },
-        { k: "Accessibility", v: "4.5:1 contrast, 44px tap targets" },
-        { k: "Edge cases", v: "Out of stock, no reviews, long names" },
-        { k: "Handoff", v: "Specs and states in Figma" }
+      notes: "Home answers: where do I start? Before, banners pushed search and categories down. V1 moved them to the top with one icon style. V2, live today, keeps search first."
+    },
+
+    {
+      section: "design", type: "versions",
+      eyebrow: "The solution · Listing",
+      headline: ["Which one should I pick?"],
+      labels: ["Before", "V1", "V2 · Live"],
+      stages: [
+        { img: "enhance-problem-plp.png", n: "Name and price only" },
+        { img: "enhance-v1-plp.png", n: "Rating, discount, wishlist, sub-categories" },
+        { img: "enhance-v2-plp-grid.png", n: "Grid to compare at a glance" }
       ],
       evidence: {
         method: "Old vs new listing",
@@ -352,10 +359,22 @@ window.DECK = {
         takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
         implication: "Every change answers a comparison question on the card itself."
       },
-      notes: "One shopper question per screen. Click any phone to enlarge. Then the chips: one consistent style, accessibility checks, edge cases, and a clean Figma handoff."
+      notes: "Listing answers: which one? Before, cards showed only name and price. Each version put more of the decision on the card: rating, discount, wishlist, then a compact grid in V2."
     },
 
-    /* 11 — VALIDATION, ITERATION & IMPACT */
+    {
+      section: "design", type: "versions",
+      eyebrow: "The solution · Product",
+      headline: ["Can I trust it?"],
+      labels: ["Before", "V1", "V2 · Live"],
+      stages: [
+        { img: "enhance-problem-pdp.png", n: "Long page, key details buried" },
+        { img: "enhance-v1-pdp.png", n: "Rating, size and offers moved up" },
+        { img: "enhance-v2-pdp-main.png", n: "Big image, offers, sticky Add to cart" }
+      ],
+      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. V1 pulled them up; V2 keeps price, size and Add to cart on the first screen."
+    },
+
     {
       section: "results", type: "kpis",
       eyebrow: "Validation & impact",
@@ -407,6 +426,34 @@ window.DECK = {
   ],
   /* parked slides (not shown): kept for later use */
   parked: [
+    /* 10 — SOLUTION & DESIGN EXECUTION (mockups unchanged) */
+    {
+      section: "design", type: "showcase",
+      eyebrow: "The solution",
+      headline: ["Every screen answers one shopper question"],
+      labels: ["Before", "Live"],
+      pairs: [
+        { k: "Home · Where do I start?", before: "enhance-problem-home.png", after: "enhance-v2-home.png", note: "One icon style, search first" },
+        { k: "Listing · Which one?", before: "enhance-problem-plp.png", after: "enhance-v2-plp-grid.png", note: "Price, discount, rating on every card" },
+        { k: "Product · Can I trust it?", before: "enhance-problem-pdp.png", after: "enhance-v2-pdp-main.png", note: "Size, price, delivery on the first screen" }
+      ],
+      chips: [
+        { k: "Consistency", v: "One card and icon style across categories" },
+        { k: "Accessibility", v: "4.5:1 contrast, 44px tap targets" },
+        { k: "Edge cases", v: "Out of stock, no reviews, long names" },
+        { k: "Handoff", v: "Specs and states in Figma" }
+      ],
+      evidence: {
+        method: "Old vs new listing",
+        img: "enhance-plp-old-new-improvements.webp", crop: 0.05,
+        observed: "The old and new listing pages side by side, with the seven key improvements.",
+        takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
+        implication: "Every change answers a comparison question on the card itself."
+      },
+      notes: "One shopper question per screen. Click any phone to enlarge. Then the chips: one consistent style, accessibility checks, edge cases, and a clean Figma handoff."
+    },
+
+    /* 11 — VALIDATION, ITERATION & IMPACT */,
     /* 07 — COMPETITIVE ANALYSIS */
     {
       section: "discover", type: "ideas",

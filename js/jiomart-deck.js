@@ -117,6 +117,7 @@
       case "collab": return sc.steps.length;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
+      case "versions": return sc.stages.length - 1;
       case "kpis": return sc.groups.length + 1;
       case "close": return 2;
       case "qa": return sc.qs.length + 1;
@@ -647,6 +648,21 @@
       return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" + evidencePill(sc.evidence) + "</div>" +
         "<div class='sc-grid'>" + pairs + "</div>" +
         (sc.chips ? "<div class='sc-chips'>" + sc.chips.map(function (c) { return "<span class='sc-chip'><b>" + esc(c.k) + "</b>" + esc(c.v) + "</span>"; }).join("") + "</div>" : "") + "</div>";
+    },
+
+    /* one screen from Before through each version to Live */
+    versions: function (sc) {
+      var n = sc.stages.length;
+      var cols = sc.stages.map(function (s, i) {
+        var cls = i === 0 ? "before" : (i === n - 1 ? "live" : "mid");
+        return (i ? "<span class='vs-arrow reveal' data-step='" + i + "'>→</span>" : "") +
+          "<figure class='vs-col " + cls + (i ? " reveal' data-step='" + i + "'" : "'") + ">" +
+          "<figcaption>" + esc(sc.labels[i]) + "</figcaption>" +
+          "<span class='evo-media zoomable' title='Click to enlarge'>" + device(s.img, 0, "vs") + "</span>" +
+          "<p class='vs-note'>" + esc(s.n) + "</p></figure>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" + evidencePill(sc.evidence) + "</div>" +
+        "<div class='vs-row'>" + cols + "</div></div>";
     },
 
     /* 11 · accurately scaled pre/post bars, grouped */

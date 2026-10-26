@@ -1427,3 +1427,18 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .cb-out::before { content: "→ "; color: var(--info); }
 @media (max-height: 760px) { .cb-photo { height: 30vh; } .cb-row { margin-top: 16px; } }
 @media (max-width: 900px) { .cb-row { grid-template-columns: 1fr 1fr; } .cb-photo { height: 160px; } }
+
+/* versions · one screen, Before → V1 → V2 → Live */
+.vs-row { display: flex; align-items: flex-start; justify-content: center; gap: clamp(14px, 3vw, 48px); margin-top: clamp(8px, 2vh, 22px); }
+.vs-col { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 0; flex: 0 1 auto; }
+.vs-col figcaption { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); padding: 5px 14px; border-radius: 999px; border: 1px solid var(--line2); background: var(--card); }
+.vs-col.mid figcaption { color: var(--info); border-color: var(--info-line); }
+.vs-col.live figcaption { color: var(--pos); border-color: var(--pos-line); }
+.device.vs { --w: min(17vw, calc((100vh - 385px) * 0.45)); border-radius: 22px; padding: 6px; cursor: zoom-in; }
+.device.vs .ds { border-radius: 17px; }
+.device.vs .dn { height: 12px; top: 8px; }
+.vs-col.before .device { opacity: 0.85; }
+.vs-note { font-size: 13.5px; line-height: 1.4; color: var(--soft); text-align: center; max-width: 26ch; margin: 0; }
+.vs-col.live .vs-note { color: var(--ink); font-weight: 500; }
+.vs-arrow { align-self: center; margin-top: -40px; font-size: 22px; color: var(--dim); }
+@media (max-width: 900px) { .vs-row { flex-wrap: wrap; } .vs-arrow { display: none; } .device.vs { --w: 40vw; } }
