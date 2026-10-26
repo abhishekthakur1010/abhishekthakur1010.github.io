@@ -1338,3 +1338,8 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 @media (max-width: 1180px) { .bd-tall .bd-grid { grid-template-columns: 1fr; } }
 @media (max-width: 720px) { .bd-tall .bd-card { flex-direction: column; } .bd-tall .bd-img { width: 100%; min-height: 180px; border-right: none; border-bottom: 1px solid var(--panel-line); } }
 .bd-stat b { white-space: nowrap; } .bd-tall .bd-stat { flex-wrap: wrap; }
+/* slide 5 thumbnails: fill the frame, zoomed on the key area */
+.bd-tall .bd-img img { object-fit: cover; padding: 0 !important; transform: scale(1.02); transition: transform 0.4s var(--ease); }
+.bd-tall .bd-img:hover img { transform: scale(1.06); }
+.bd-tall .bd-img { background: #fff; }
+.bd-tall .bd-img.fit img { object-fit: contain; padding: 10px !important; transform: none; }

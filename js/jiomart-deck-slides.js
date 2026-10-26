@@ -235,16 +235,16 @@ window.DECK = {
       headline: ["Data first, then people"],
       sub: "A live app and little time, so we started with analytics, then checked it with shoppers.",
       cards: [
+        { k: "Research strategy", tag: "Plan", img: "enhance-research-strategy.png", pos: "left center", stat: "4 steps",
+          learned: "Benchmark, analyse the journey, map emotions, define the ideal." },
         { k: "Analytics", tag: "Validated", img: "enhance-ga-search-vs-all.png", fit: "contain", stat: "{{4×|searchers}}",
           learned: "Searchers added to cart at {{41.4%|search}} vs {{10.4%|carts}} overall." },
-        { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", fit: "contain", stat: "{{23 issues|audit}}",
+        { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}",
           learned: "5 critical, led by scan, list and the product page." },
         { k: "User interviews", tag: "Validated", img: "enhance-design-team-04.png", stat: "{{8 shoppers|interviews}}", est: true,
-          learned: "\u201cI can\u2019t tell which one to buy.\u201d" },
-        { k: "Our hypothesis", tag: "Assumption", img: "enhance-research-strategy-zoom.png", fit: "contain", stat: "H1",
-          learned: "Show price, size and proof earlier \u2192 more add-to-cart." }
+          learned: "\u201cI can\u2019t tell which one to buy.\u201d" }
       ],
-      notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. The first three are findings; H1 was the assumption we designed to test. Interview count is illustrative (est.). Click any image to open it full size."
+      notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
     },
 
     /* 06 — ANALYSIS & SYNTHESIS */
