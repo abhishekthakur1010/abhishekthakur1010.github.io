@@ -23,12 +23,12 @@ window.DECK = {
     {
       section: "context", type: "opening",
       eyebrow: "JioMart · Product discovery redesign",
-      headline: ["Clearer discovery, ", "10% more", " shoppers adding to cart"],
-      highlight: "10% more",
+      headline: ["Simpler discovery. ", "Add-to-cart up 10%."],
+      highlight: "Add-to-cart up 10%.",
       body: "Shoppers found products but struggled to choose. I redesigned Home, listing and product pages so choosing felt easy.",
       hero: "enhance-v2-pdp-main.png",
       backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
-      badge: { n: "10.4 → 11.5%", l: "Sessions with add-to-cart" },
+      badge: { n: "+10%", l: "More visits end in add-to-cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
         { l: "Timeline", v: "Aug – Oct 2023 · 10 weeks" },
