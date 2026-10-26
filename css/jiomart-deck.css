@@ -1344,3 +1344,9 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .bd-tall .bd-img { background: #fff; }
 .bd-tall .bd-img.fit img { object-fit: contain; padding: 10px !important; transform: none; }
 .bd-tall .sl-head h2 { white-space: nowrap; } @media (max-width: 1180px) { .bd-tall .sl-head h2 { white-space: normal; } }
+/* slide 6: one-line headline and single-line rows */
+.om-slide h2 { white-space: nowrap; }
+.om-row { padding: 10px 14px; }
+.om-metric { flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; }
+.om-row b, .om-row > span { white-space: nowrap; }
+@media (max-width: 1180px) { .om-slide h2, .om-row b, .om-row > span { white-space: normal; } }

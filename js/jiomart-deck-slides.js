@@ -251,13 +251,13 @@ window.DECK = {
     {
       section: "discover", type: "oppmatrix",
       eyebrow: "Analysis & synthesis",
-      headline: ["Where user needs met business goals"],
+      headline: ["Where both sides win"],
       heads: ["User need", "Business goal", "Opportunity"],
       rows: [
-        { need: "Know where to start", lever: "More sessions reach a list", metric: "Clear category entry", tier: "High" },
-        { need: "Compare quickly", lever: "More list → product clicks", metric: "Decision info on cards", tier: "High" },
+        { need: "Know where to start", lever: "More visits reach a list", metric: "Clear category entry", tier: "High" },
+        { need: "Compare quickly", lever: "More product clicks", metric: "Decision info on cards", tier: "High" },
         { need: "Trust the choice", lever: "More add-to-cart", metric: "Key details up front", tier: "High" },
-        { need: "Find it by search", lever: "Protect the {{41%|search}} channel", metric: "Better result matching", tier: "Medium" }
+        { need: "Find it by search", lever: "Protect the {{41%|search}} channel", metric: "Better search results", tier: "Medium" }
       ],
       prioritise: {
         img: "enhance-impact-effort-matrix.png",
