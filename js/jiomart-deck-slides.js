@@ -222,7 +222,7 @@ window.DECK = {
         { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", img: "enhance-iter-search-before.png", issues: [{ t: "Irrelevant search results", tag: "Audit" }], pain: "Generic suggestions, wrong categories" },
         { k: "Listing", stat: "{{46%|funnel}}", est: true, statL: "opened a list", img: "enhance-problem-plp.png", issues: [{ t: "Every card looked alike", tag: "Audit" }], pain: "No rating, discount or variant on the card" },
         { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", img: "enhance-problem-pdp.png", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }], pain: "Key details below the fold" },
-        { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", img: "enhance-cart-before.webp", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }], pain: "Out-of-stock items only discovered in the cart" }
+        { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", img: "enhance-addtocart-before.webp", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }], pain: "Added from a list of near-identical cards, with no rating or detail to compare" }
       ],
       foot: "{{23 heuristic issues|audit}} found. The product page was the weakest part of discovery.",
       notes: "Press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
