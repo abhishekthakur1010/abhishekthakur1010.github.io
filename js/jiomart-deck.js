@@ -156,7 +156,7 @@
         "<div class='op-top'>" +
         "<div class='op-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + head +
         "<p class='body'>" + esc(sc.body) + "</p>" +
-        "<div class='cta-hint'>" + esc(sc.cta) + "</div></div>" +
+        (sc.cta ? "<div class='cta-hint'>" + esc(sc.cta) + "</div>" : "") + "</div>" +
         visual + "</div>" +
         meta + "</div>";
     },

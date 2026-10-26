@@ -129,7 +129,6 @@ window.DECK = {
         { l: "Team", v: "PM · Engineering · Analytics" },
         { l: "After launch", v: "{{+10%|carts}} carts · {{+12%|pages}} pages · {{29%|speed}} faster" }
       ],
-      cta: "Hover the phone · press → to begin",
       notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. ~3.5M carts a quarter is an estimate: +1.07 points of add-to-cart sessions × ~334M visits a quarter."
     },
 
