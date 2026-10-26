@@ -1259,3 +1259,9 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .type-qa .qa-shift { margin-top: 24px; }
 /* keep search/browse rows horizontal on mid-width screens */
 @media (max-width: 1180px) and (min-width: 721px) { .pv { grid-template-columns: 1fr auto; } .pv-row { grid-template-columns: 170px auto 1fr; gap: 12px; } .pv-big { border-left: 1px solid var(--line2); padding-left: 16px; } .pv-dots .ci-dot { width: 22px; height: 22px; } }
+/* before-screens panel: size phones by available height so the panel never runs past the slide */
+.ci-shot .device.sc { --w: clamp(78px, calc((100vh - 600px) / 2.25), 160px); }
+.ci-drop { padding: 12px 18px 14px; }
+.ci-drop-head { margin-bottom: 8px; }
+.ci-shot { padding: 8px 8px 10px; gap: 6px; }
+.ci-shot .device.sc { --w: clamp(78px, calc((100vh - 520px) / 2.3), 170px); }
