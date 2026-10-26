@@ -1320,3 +1320,21 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .fv-slide h2 { white-space: nowrap; }
 @media (max-height: 760px) { .fv-slide h2 { font-size: 30px; } .fv-left .sub { font-size: 14px; } .fv-step { padding: 6px 12px; } .fv-n { width: 26px; height: 26px; } }
 @media (max-width: 1180px) { .fv-slide h2 { white-space: normal; } }
+/* slide 5: bigger, fully visible artifacts */
+.bd-tall .bd-img { height: clamp(150px, calc(100vh - 560px), 300px); position: relative; }
+.bd-img.fit img { object-fit: contain; object-position: center; padding: 8px; background: #fff; }
+.bd-img::after { content: "⤢"; position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 13px; border-radius: 7px; background: rgba(0,0,0,0.55); color: #fff; opacity: 0; transition: opacity 0.2s; }
+.bd-img:hover::after { opacity: 1; }
+.bd-img { position: relative; }
+.bd-tall .bd-body { padding: 12px 14px 14px; gap: 6px; }
+.bd-tall .sl-head { margin-bottom: 18px; }
+/* slide 5: 2x2, image beside text so artifacts render large */
+.bd-tall .bd-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+.bd-tall .bd-card { flex-direction: row; }
+.bd-tall .bd-img { width: 56%; flex: none; height: auto; min-height: clamp(150px, calc((100vh - 420px) / 2), 230px); border-bottom: none; border-right: 1px solid var(--panel-line); }
+.bd-tall .bd-img img { position: absolute; inset: 0; }
+.bd-tall .bd-img.fit img { padding: 6px; }
+.bd-tall .bd-body { justify-content: center; }
+@media (max-width: 1180px) { .bd-tall .bd-grid { grid-template-columns: 1fr; } }
+@media (max-width: 720px) { .bd-tall .bd-card { flex-direction: column; } .bd-tall .bd-img { width: 100%; min-height: 180px; border-right: none; border-bottom: 1px solid var(--panel-line); } }
+.bd-stat b { white-space: nowrap; } .bd-tall .bd-stat { flex-wrap: wrap; }

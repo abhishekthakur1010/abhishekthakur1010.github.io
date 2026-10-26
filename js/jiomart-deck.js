@@ -544,14 +544,14 @@
     board: function (sc) {
       var cards = sc.cards.map(function (c, i) {
         return "<div class='bd-card reveal' data-step='" + (i + 1) + "'>" +
-          "<span class='bd-img zoomable' title='Click to enlarge'><img src='" + img(c.img) + "'" + (c.pos ? " style='object-position:" + c.pos + "'" : "") + " onerror=\"this.parentElement.classList.add('failed')\"></span>" +
+          "<span class='bd-img zoomable" + (c.fit ? " fit" : "") + "' title='Click to enlarge'><img src='" + img(c.img) + "'" + (c.pos ? " style='object-position:" + c.pos + "'" : "") + " onerror=\"this.parentElement.classList.add('failed')\"></span>" +
           "<div class='bd-body'><div class='bd-top'><b>" + esc(c.k) + "</b>" + (c.tag ? "<span class='tag " + tagTone(c.tag) + "'>" + esc(c.tag) + "</span>" : "") + "</div>" +
           (c.stat ? "<div class='bd-stat'><b>" + esc(c.stat) + "</b>" + (c.est ? "<i>est.</i>" : "") + "</div>" : "") +
           (c.q ? "<p class='bd-q'>" + esc(c.q) + "</p>" : "") +
           "<p class='bd-l'>" + esc(c.learned) + "</p>" +
           (c.gap ? "<p class='bd-gap'><span>Uncertain</span>" + esc(c.gap) + "</p>" : "") + "</div></div>";
       }).join("");
-      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+      return "<div class='sl" + (sc.tall ? " bd-tall" : "") + "'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='bd-grid'>" + cards + "</div>" +
         (sc.foot ? "<p class='note reveal' data-step='" + (sc.cards.length + 1) + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
