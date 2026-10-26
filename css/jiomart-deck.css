@@ -1152,3 +1152,7 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ev-img { cursor: zoom-in; }
 .ev-img::after { content: "⤢"; position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 13px; border-radius: 7px; background: rgba(0,0,0,0.55); color: #fff; opacity: 0; transition: opacity 0.2s; }
 .ev-img:hover::after { opacity: 1; }
+/* evidence panel: wider, full uncropped artifact */
+.ev-card { width: min(720px, 96vw); }
+.ev-img { padding: 6px; }
+.ev-img img { max-height: none; }
