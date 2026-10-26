@@ -160,7 +160,7 @@ window.DECK = {
       flow: [
         { k: "Business frustration", t: "Lots of visits, too few carts", icon: "star" },
         { k: "Product frustration", t: "Pages looked dated and messy", icon: "brief" },
-        { k: "Shopper frustration", t: "\u201cI can\u2019t tell which one to buy\u201d", icon: "people", tone: "pos" }
+        { k: "Shopper frustration", t: "\u201cCan I trust this product?\u201d", icon: "people", tone: "pos" }
       ],
       reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
       stats: [
@@ -172,7 +172,7 @@ window.DECK = {
         { k: "Constraint", v: "Live app, no release freeze" },
         { k: "Expected", v: "Higher add-to-cart and engagement" }
       ],
-      notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers couldn't tell which product to buy. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
+      notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers didn't trust what they saw: unclear price, size, delivery and no reviews up front. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
     },
 
     /* 03 — ASKING THE RIGHT QUESTIONS */
