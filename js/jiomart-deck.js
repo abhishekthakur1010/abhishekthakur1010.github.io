@@ -674,7 +674,12 @@
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
         (sc.define ? "<div class='ci-define'><span class='ci-def-k'>" + esc(sc.define.k) + "</span><div class='ci-path'>" +
           sc.define.steps.map(function (st, i) { return (i ? "<span class='ci-path-arrow'>→</span>" : "") + "<span class='ci-path-step" + (i === sc.define.steps.length - 1 ? " end" : "") + "'>" + esc(st) + "</span>"; }).join("") +
-          "</div>" + (sc.define.note ? "<span class='ci-def-note'>" + esc(sc.define.note) + "</span>" : "") + "</div>" : "") +
+          "</div>" + (sc.define.note ? "<span class='ci-def-note'>" + esc(sc.define.note) + "</span>" : "") +
+          (sc.define.shots ? "<button type='button' class='ci-drop-btn' onclick=\"this.closest('.ci-define').classList.toggle('open')\">" + esc(sc.define.btn || "See before screens") + "<span class='ci-caret'>▾</span></button>" +
+            "<div class='ci-drop'>" + sc.define.shots.map(function (sh) {
+              return "<figure class='ci-shot'><figcaption>" + esc(sh.k) + "</figcaption><span class='evo-media zoomable' title='Click to enlarge'>" + device(sh.img, 0, "sc") + "</span>" +
+                (sh.pain ? "<span class='ci-pain'>" + esc(sh.pain) + "</span>" : "") + "</figure>";
+            }).join("") + "</div>" : "") + "</div>" : "") +
         "<div class='ci-flow'>" + flow + "</div>" +
         "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
         "<div class='ci-row'><div class='ci-big'><b>" + esc(r.big) + "</b><span>" + esc(r.l) + "</span><div class='ci-dots'>" + dots + "</div></div>" +
@@ -891,7 +896,7 @@
   });
   stage.addEventListener("click", function (e) {
     if (evidenceOpen() || lightboxOpen()) return;
-    if (e.target.closest("a, button, video, .zoomable, .device, .tile")) return;
+    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop")) return;
     var x = e.clientX / window.innerWidth;
     if (x < 0.24) prev(); else next();
   });

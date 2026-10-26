@@ -47,7 +47,15 @@ window.DECK = {
       define: {
         k: "Discovery at JioMart",
         steps: ["Home", "Search / browse", "Listing", "Product page", "Add to cart"],
-        note: "Where most of a shopping session is spent"
+        note: "Where most of a shopping session is spent",
+        btn: "See before screens",
+        shots: [
+          { k: "Home", img: "enhance-problem-home.png", pain: "Busy banners, mixed icons" },
+          { k: "Search / browse", img: "enhance-iter-search-before.png", pain: "Generic suggestions" },
+          { k: "Listing", img: "enhance-problem-plp.png", pain: "Cards look alike" },
+          { k: "Product page", img: "enhance-problem-pdp.png", pain: "Key details buried" },
+          { k: "Add to cart", img: "enhance-ba-pdp-reviews-before.png", pain: "Little proof to decide" }
+        ]
       },
       flow: [
         { k: "Who asked", t: "Product Manager and business stakeholders", icon: "people" },

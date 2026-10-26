@@ -1016,3 +1016,34 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ci-path-arrow { color: var(--faint); font-size: 13px; }
 .ci-def-note { font-size: 12.5px; color: var(--soft); font-style: italic; margin-left: auto; }
 @media (max-width: 1180px) { .ci-def-note { margin-left: 0; width: 100%; } }
+/* slide 2: before-screens dropdown */
+.ci-define { position: relative; }
+.ci-drop-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--info-line); background: var(--card-hi); color: var(--info); font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.ci-drop-btn:hover { background: var(--info-soft); }
+.ci-caret { display: inline-block; transition: transform 0.3s var(--ease); }
+.ci-define.open .ci-caret { transform: rotate(180deg); }
+.ci-drop { position: absolute; left: -1px; right: -1px; top: calc(100% + 8px); z-index: 30; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 18px; border-radius: var(--r-card); border: 1px solid var(--info-line); background: var(--bg2); box-shadow: var(--shadow); opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
+.ci-define.open .ci-drop { opacity: 1; transform: none; pointer-events: auto; }
+.ci-shot { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.ci-shot figcaption { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line2); background: var(--card); white-space: nowrap; }
+.ci-shot .device.sc { --w: clamp(104px, 15vh, 150px); }
+.ci-pain { font-size: 12px; color: var(--neg); text-align: center; line-height: 1.35; }
+@media (max-width: 1180px) { .ci-drop { position: static; margin-top: 12px; width: 100%; display: none; grid-template-columns: repeat(3, 1fr); opacity: 1; transform: none; } .ci-define.open .ci-drop { display: grid; } }
+@media (max-width: 720px) { .ci-drop { grid-template-columns: repeat(2, 1fr); } }
+.ci-drop-btn { order: 2; }
+.ci-def-note { order: 3; }
+@media (min-width: 1181px) { .ci-def-note { display: none; } .ci-drop-btn { margin-left: auto; } }
+@media (max-height: 820px) {
+  .type-contextinfo .sl-head { margin-bottom: 14px; }
+  .type-contextinfo .eyebrow { margin-bottom: 8px; }
+  .ci-define { margin: 0 0 12px; padding: 8px 14px; }
+  .ci-step { padding: 14px 18px; gap: 6px; }
+  .ci-ic { width: 32px; height: 32px; }
+  .ci-t { font-size: 15px; }
+  .ci-reality { margin-top: 12px; padding: 14px 18px; }
+  .ci-big > b { font-size: 44px; }
+  .ci-dot { width: 28px; height: 28px; }
+  .ci-stat { padding-bottom: 6px; }
+  .ci-stat b { font-size: 20px; }
+  .ci-bounds { margin-top: 10px; }
+}
