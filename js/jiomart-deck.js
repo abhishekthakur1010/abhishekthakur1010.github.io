@@ -561,11 +561,12 @@
       var head = "<div class='sy-row sy-head'><span></span>" + sc.cols.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div>";
       var rows = sc.rows.map(function (r, i) {
         return "<div class='sy-row reveal' data-step='" + (i + 1) + "'><b class='sy-theme'>" + esc(r.theme) + "</b>" +
-          "<span class='sy-sym'>" + esc(r.symptom) + "</span>" + (r.evidence ? "<span class='sy-ev'>" + esc(r.evidence) + "</span>" : "") + "<span class='sy-cause'>" + esc(r.cause) + "</span></div>";
+          "<span class='sy-sym'>" + esc(r.symptom) + "</span>" + (r.evidence ? "<span class='sy-ev'>" + esc(r.evidence) + "</span>" : "") + "<span class='sy-cause'>" + esc(r.cause) + "</span>" +
+          (r.how ? "<span class='sy-how'>" + r.how.map(function (h) { return "<span class='sy-how-i'><span class='tag " + tagTone(h[0]) + "'>" + esc(h[0]) + "</span><span>" + esc(h[1]) + "</span></span>"; }).join("") + "</span>" : "") + "</div>";
       }).join("");
       var last = sc.rows.length + 1;
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
-        "<div class='sy-table" + (sc.cols.length === 2 ? " two" : "") + "'>" + head + rows + "</div>" +
+        "<div class='sy-table" + (sc.cols.length === 2 ? " two" : "") + (sc.rows[0].how ? " how" : "") + "'>" + head + rows + "</div>" +
         (sc.from ? "<div class='sy-from reveal' data-step='" + last + "'><span class='sy-was'>" + esc(sc.from) + "</span><span class='sy-arrow'>→</span><span class='sy-now'>" + esc(sc.to || "") + "</span></div>" : "") +
         "<blockquote class='sy-statement reveal' data-step='" + last + "'><span class='tier-label'>Refined problem</span>" + esc(sc.statement) +
         (sc.goals ? "<span class='sy-goals'>" + sc.goals.map(function (g) { return "<span class='sy-goal'><b>" + esc(g.k) + "</b>" + esc(g.v) + "</span>"; }).join("") + "</span>" : "") +

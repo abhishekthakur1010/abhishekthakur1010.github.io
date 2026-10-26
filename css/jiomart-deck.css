@@ -1392,3 +1392,18 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .lightbox:not(.tall) .lb-cap { color: rgba(255,255,255,0.7); text-transform: none; letter-spacing: 0; font-weight: 500; }
 .lightbox:not(.tall) .lb-cap:empty::before { content: "Click image to zoom in"; }
 .lightbox.zoomed .lb-cap:empty::before { content: "Scroll to move around · click to zoom out"; }
+/* slide 7: what / why / how */
+.sy-table.how .sy-row { grid-template-columns: 96px 0.9fr 1fr 1.35fr; gap: 10px; }
+.sy-table.how .sy-row > span, .sy-table.how .sy-row > b { padding: 12px 14px; font-size: 14px; }
+.sy-table.how .sy-head > span { padding: 0 14px; font-size: 11px; }
+.sy-table.how .sy-cause { position: relative; }
+.sy-table.how .sy-row:not(.sy-head) .sy-cause::after { content: "→"; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--faint); font-size: 13px; }
+.sy-how { display: flex; flex-direction: column; gap: 5px; background: var(--pos-soft); border: 1px solid var(--pos-line); color: var(--ink); }
+.sy-how-i { display: flex; align-items: baseline; gap: 8px; font-size: 12.5px; line-height: 1.35; color: var(--soft); }
+.sy-how-i .tag { margin: 0; flex: none; min-width: 74px; justify-content: center; }
+.sy-table.how .sy-row:not(.sy-head) > span.sy-how { padding: 9px 12px; }
+.type-synthesis .sy-head > span:last-child { color: var(--pos); }
+@media (max-height: 820px) { .type-synthesis .sl-head { margin-bottom: 14px; } .sy-table.how .sy-row > span, .sy-table.how .sy-row > b { padding: 9px 12px; } .sy-statement { padding: 14px 18px; } }
+@media (max-width: 1180px) { .sy-table.how .sy-row { grid-template-columns: 1fr 1fr; } .sy-table.how .sy-theme { grid-column: 1 / -1; } .sy-table.how .sy-how { grid-column: 1 / -1; } .sy-table.how .sy-head { display: none; } }
+.sy-table.how .sy-sym, .sy-table.how .sy-cause { display: flex; align-items: center; }
+@media (max-height: 760px) { .type-synthesis h2 { font-size: 30px; } .sy-table.how .sy-row > span, .sy-table.how .sy-row > b { padding: 7px 12px; font-size: 13px; } .sy-how-i { font-size: 12px; } .sy-from { margin-top: 10px; } .sy-statement { margin-top: 8px; padding: 12px 16px; font-size: 16px; } .sy-goals { margin-top: 8px; } }
