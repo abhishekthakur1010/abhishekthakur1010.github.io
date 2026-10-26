@@ -64,6 +64,7 @@ window.DECK = {
     },
     volume: {
       method: "Extra carts per quarter", tag: "Estimate from real data", est: true,
+      img: "enhance-impact-table.png", crop: 0.8,
       calc: [["Lift in add-to-cart sessions", "+1.07 points"], ["Visits per quarter (GA)", "~334M"], ["1.07% × 334M", "≈ 3.5M more carts", 1]],
       observed: "Multiplies the measured add-to-cart lift by JioMart's quarterly visit volume from the Google Analytics sheet.",
       takeaway: "An order-of-magnitude estimate, not a measured count. Say \u201croughly 3 to 4 million a quarter\u201d."
