@@ -102,6 +102,17 @@
       case "opportunity": return (sc.objectives ? sc.objectives.length : 0) + 1;
       case "voice": return sc.quotes.length;
       case "recognition": return 2;
+      case "transform": return 0;
+      case "brief": return 2;
+      case "journey": return sc.steps.length + 1;
+      case "board": return sc.cards.length + (sc.foot ? 1 : 0);
+      case "synthesis": return sc.rows.length + 1;
+      case "oppmatrix": return sc.rows.length + 1;
+      case "ideas": return sc.pairs.length;
+      case "decisions": return sc.rows.length;
+      case "showcase": return sc.pairs.length;
+      case "kpis": return sc.groups.length + 1;
+      case "close": return 2;
       default: return 0;
     }
   }
@@ -464,8 +475,189 @@
         "<div class='reflection'>" + sc.reflection.map(function (r, i) { return "<p class='reveal' data-step='" + (i === 2 ? 2 : 1) + "'>" + esc(r) + "</p>"; }).join("") + "</div>" +
         "<div class='close-cta reveal' data-step='2'>" + ctas + "</div></div>" +
         "<div class='c-visual'>" + award + "</div></div>";
+    },
+
+    /* ============================================================
+       Interview deck v3 templates — evidence-tagged storytelling
+       ============================================================ */
+
+    /* 01 · authentic before → after with the two measured KPIs */
+    transform: function (sc) {
+      var kpis = sc.kpis.map(function (k) {
+        return "<div class='tf-kpi'><span class='tf-k'>" + esc(k.k) + "</span>" +
+          "<span class='tf-v'>" + esc(k.from) + "<i>→</i><b>" + esc(k.to) + "</b></span>" +
+          "<span class='tf-d'>" + esc(k.d) + "</span></div>";
+      }).join("");
+      var meta = "<div class='op-meta'>" + sc.meta.map(function (m) {
+        return "<div><span class='ml'>" + esc(m.l) + "</span><span class='mv'>" + esc(m.v) + "</span></div>";
+      }).join("") + "</div>";
+      var phone = function (o, tone) {
+        return "<figure class='tf-col " + tone + "'><figcaption>" + esc(o.label) + "</figcaption>" +
+          "<span class='evo-media zoomable' title='Click to enlarge'>" + device(o.img, 0, "big") + "</span></figure>";
+      };
+      return "<div class='sl transform'><div class='tf-top'>" +
+        "<div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline) +
+        "<p class='body'>" + esc(sc.body) + "</p>" +
+        "<div class='tf-kpis'>" + kpis + "</div>" +
+        "<p class='disclaimer'>" + esc(sc.caveat) + "</p></div>" +
+        "<div class='tf-stage'>" + phone(sc.before, "before") + "<span class='tf-arrow'>→</span>" + phone(sc.after, "v1") + "</div>" +
+        "</div>" + meta + "</div>";
+    },
+
+    /* 02 · original brief vs reframed question + context facts */
+    brief: function (sc) {
+      var card = function (o, tone, st) {
+        return "<div class='bf-card tone-" + tone + " reveal' data-step='" + st + "'><span class='col-k'>" + esc(o.k) + "</span>" +
+          "<p class='bf-t'>" + esc(o.t) + "</p><span class='src'>" + esc(o.src) + "</span></div>";
+      };
+      var facts = sc.facts.map(function (f) {
+        return "<div class='bf-fact'><span class='ml'>" + esc(f.k) + "</span><span class='mv'>" + esc(f.v) + "</span></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='bf-pair'>" + card(sc.asked, "neutral", 0) + "<span class='bf-arrow'>→</span>" + card(sc.investigated, "info", 1) + "</div>" +
+        "<div class='bf-facts reveal' data-step='2'>" + facts + "</div></div>";
+    },
+
+    /* 03 · discovery journey with source-tagged friction */
+    journey: function (sc) {
+      var cols = sc.steps.map(function (s, i) {
+        var iss = s.issues.map(function (x) {
+          return "<li><span class='tag " + tagTone(x.tag) + "'>" + esc(x.tag) + "</span>" + esc(x.t) + "</li>";
+        }).join("");
+        return "<div class='jr-step reveal' data-step='" + (i + 1) + "'><div class='jr-node'><span>" + pad(i + 1) + "</span>" + esc(s.k) + "</div><ul>" + iss + "</ul></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='jr'>" + cols + "</div>" +
+        "<p class='note reveal' data-step='" + (sc.steps.length + 1) + "'>" + esc(sc.foot) + "</p></div>";
+    },
+
+    /* 04 / 10 · evidence board: question · learned · still uncertain */
+    board: function (sc) {
+      var cards = sc.cards.map(function (c, i) {
+        return "<div class='bd-card reveal' data-step='" + (i + 1) + "'>" +
+          "<span class='bd-img zoomable' title='Click to enlarge'><img src='" + img(c.img) + "'" + (c.pos ? " style='object-position:" + c.pos + "'" : "") + " onerror=\"this.parentElement.classList.add('failed')\"></span>" +
+          "<div class='bd-body'><div class='bd-top'><b>" + esc(c.k) + "</b><span class='tag " + tagTone(c.tag) + "'>" + esc(c.tag) + "</span></div>" +
+          "<p class='bd-q'>" + esc(c.q) + "</p>" +
+          "<p class='bd-l'>" + esc(c.learned) + "</p>" +
+          "<p class='bd-gap'><span>Uncertain</span>" + esc(c.gap) + "</p></div></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='bd-grid'>" + cards + "</div>" +
+        (sc.foot ? "<p class='note reveal' data-step='" + (sc.cards.length + 1) + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
+    },
+
+    /* 05 · symptom → evidence → cause → problem statement */
+    synthesis: function (sc) {
+      var head = "<div class='sy-row sy-head'><span></span>" + sc.cols.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div>";
+      var rows = sc.rows.map(function (r, i) {
+        return "<div class='sy-row reveal' data-step='" + (i + 1) + "'><b class='sy-theme'>" + esc(r.theme) + "</b>" +
+          "<span class='sy-sym'>" + esc(r.symptom) + "</span><span class='sy-ev'>" + esc(r.evidence) + "</span><span class='sy-cause'>" + esc(r.cause) + "</span></div>";
+      }).join("");
+      var last = sc.rows.length + 1;
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='sy-table'>" + head + rows + "</div>" +
+        "<blockquote class='sy-statement reveal' data-step='" + last + "'><span class='tier-label'>Refined problem</span>" + esc(sc.statement) +
+        "<span class='sy-status'><span class='tag warn'>Hypothesis</span>" + esc(sc.status) + "</span></blockquote></div>";
+    },
+
+    /* 06 · need → lever → metric, with the real prioritisation artifact */
+    oppmatrix: function (sc) {
+      var head = "<div class='om-row om-head'><span>Shopper need</span><span>Design lever</span><span>Success metric</span></div>";
+      var rows = sc.rows.map(function (r, i) {
+        var tone = r.tier === "Primary" ? "pos" : r.tier === "Supporting" ? "info" : "neutral";
+        return "<div class='om-row reveal' data-step='" + (i + 1) + "'><b>" + esc(r.need) + "</b><span>" + esc(r.lever) + "</span>" +
+          "<span class='om-metric'>" + esc(r.metric) + "<span class='tag " + tone + "'>" + esc(r.tier) + "</span></span></div>";
+      }).join("");
+      var p = sc.prioritise;
+      var pts = p.points.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
+      return "<div class='sl split om-slide'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        "<div class='om-table'>" + head + rows + "</div></div>" +
+        "<div class='c-visual reveal' data-step='" + (sc.rows.length + 1) + "'><figure class='rv-shot zoomable' title='Click to enlarge'><img src='" + img(p.img) + "' onerror=\"this.parentElement.classList.add('failed')\"><figcaption>" + esc(p.cap) + "</figcaption></figure>" +
+        "<ul class='om-points'>" + pts + "</ul></div></div>";
+    },
+
+    /* 07 · benchmark observation → design bet, with real artifacts */
+    ideas: function (sc) {
+      var pairs = sc.pairs.map(function (p, i) {
+        return "<div class='id-pair reveal' data-step='" + (i + 1) + "'><p class='id-saw'><span class='tag neutral'>Saw</span>" + esc(p.saw) + "</p>" +
+          "<p class='id-bet'><span class='tag info'>Bet</span>" + esc(p.bet) + "</p></div>";
+      }).join("");
+      var tiles = sc.tiles.map(function (t) {
+        return "<button class='tile' data-img='" + img(t.img) + "'><span class='tile-img' style='--crop:20%'><img src='" + img(t.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
+          "<span class='tile-t'>" + esc(t.t) + "</span></button>";
+      }).join("");
+      return "<div class='sl split'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        "<div class='id-pairs'>" + pairs + "</div></div>" +
+        "<div class='c-visual'><div class='tile-grid id-tiles'>" + tiles + "</div></div></div>";
+    },
+
+    /* 08 · evidence → choice → value → trade-off */
+    decisions: function (sc) {
+      var head = "<div class='dc-row dc-head'><span></span><span>Evidence</span><span>Design choice</span><span>Shopper value</span><span>Trade-off</span></div>";
+      var rows = sc.rows.map(function (r, i) {
+        return "<div class='dc-row reveal' data-step='" + (i + 1) + "'>" +
+          "<div class='dc-s'><span class='dc-thumb zoomable' title='Click to enlarge'><img src='" + img(r.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span><b>" + esc(r.s) + "</b></div>" +
+          "<span class='dc-ev'>" + esc(r.ev) + "</span><span class='dc-ch'>" + esc(r.choice) + "</span>" +
+          "<span class='dc-val'>" + esc(r.value) + "</span><span class='dc-tr'>" + esc(r.trade) + "</span></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='dc-table'>" + head + rows + "</div></div>";
+    },
+
+    /* 09 · three before/after pairs of the shipped DS 2.0 screens */
+    showcase: function (sc) {
+      var pairs = sc.pairs.map(function (p, i) {
+        return "<div class='sc-pair reveal' data-step='" + (i + 1) + "'><div class='sc-k'>" + esc(p.k) + "</div>" +
+          "<div class='sc-phones'><figure class='before'><figcaption>Before</figcaption><span class='evo-media zoomable'>" + device(p.before, 0, "sc") + "</span></figure>" +
+          "<figure class='v1'><figcaption>After</figcaption><span class='evo-media zoomable'>" + device(p.after, 0, "sc") + "</span></figure></div>" +
+          "<p class='sc-note'>" + esc(p.note) + "</p></div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" + evidencePill(sc.evidence) + "</div>" +
+        "<div class='sc-grid'>" + pairs + "</div></div>";
+    },
+
+    /* 11 · accurately scaled pre/post bars, grouped */
+    kpis: function (sc) {
+      var fmt = function (v, r) {
+        if (r.fmt === "ms") { var m = Math.floor(v / 60), s = Math.round(v % 60); return m + "m " + (s < 10 ? "0" : "") + s + "s"; }
+        return (r.unit === "%" ? v.toFixed(2) : String(v)) + (r.unit === "s" ? "s" : r.unit);
+      };
+      var groups = sc.groups.map(function (g, gi) {
+        var rows = g.rows.map(function (r) {
+          var max = Math.max(r.pre, r.post);
+          return "<div class='kp-row'><span class='kp-l'>" + esc(r.l) + "</span>" +
+            "<div class='kp-bars'><div class='kp-bar pre' style='--w:" + (r.pre / max * 100).toFixed(1) + "%'><span>" + fmt(r.pre, r) + "</span></div>" +
+            "<div class='kp-bar post' style='--w:" + (r.post / max * 100).toFixed(1) + "%'><span>" + fmt(r.post, r) + "</span></div></div>" +
+            "<span class='kp-d'><b>" + esc(r.d) + "</b>" + (r.rel ? "<i>" + esc(r.rel) + " relative</i>" : (r.lowerBetter ? "<i>lower is better</i>" : "")) + "</span></div>";
+        }).join("");
+        return "<div class='kp-group reveal' data-step='" + (gi + 1) + "'><div class='tier-label'>" + esc(g.k) + "</div>" + rows + "</div>";
+      }).join("");
+      var last = sc.groups.length + 1;
+      return "<div class='sl'><div class='sl-head kp-headrow'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + "</div>" +
+        "<div class='kp-legend'><span><i class='sw pre'></i>Before</span><span><i class='sw post'></i>After</span></div></div>" +
+        "<div class='kp-grid'>" + groups + "</div>" +
+        "<div class='kp-foot reveal' data-step='" + last + "'><p class='disclaimer'>" + esc(sc.disclaimer) + "</p><p class='disclaimer'>" + esc(sc.context) + "</p></div></div>";
+    },
+
+    /* 12 · contribution, learning, next time + award */
+    close: function (sc) {
+      var blocks = sc.blocks.map(function (b, i) {
+        return "<div class='cl-block reveal' data-step='" + (i < 2 ? 0 : 1) + "'><span class='col-k'>" + esc(b.k) + "</span><p>" + esc(b.d) + "</p></div>";
+      }).join("");
+      var ctas = sc.cta.map(function (c) { return "<a class='btn " + (c.primary ? "primary" : "ghost") + "' href='" + c.href + "'>" + esc(c.label) + "</a>"; }).join("");
+      return "<div class='sl split recognition'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        "<div class='cl-grid'>" + blocks + "</div>" +
+        "<div class='close-cta reveal' data-step='2'>" + ctas + "</div></div>" +
+        "<div class='c-visual'><figure class='award'><span class='award-frame zoomable' title='Click to enlarge'><img src='" + img(sc.award.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
+        "<figcaption class='award-cap'>" + esc(sc.award.caption) + "</figcaption></figure></div></div>";
     }
   };
+
+  // evidence-source tag → semantic tone
+  function tagTone(t) {
+    return ({ Measured: "pos", Test: "pos", Research: "info", Audit: "warn", Observed: "warn",
+      Benchmark: "neutral", Review: "neutral", Iteration: "info", Hypothesis: "warn" })[t] || "neutral";
+  }
 
   /* ============================================================
      RENDER
@@ -652,7 +844,7 @@
   });
   // click artifact/matrix to zoom
   stage.addEventListener("click", function (e) {
-    var rv = e.target.closest(".rv-shot");
+    var rv = e.target.closest(".rv-shot, .bd-img, .dc-thumb");
     if (rv && rv.querySelector("img")) {
       var cap = rv.querySelector("figcaption");
       openLightbox(rv.querySelector("img").src, cap ? cap.textContent : "");
