@@ -1185,3 +1185,26 @@ html, body { overflow-x: clip; }
 .media-modal.is-gallery .media-nav { display: grid; }
 .media-modal.is-gallery .media-body { grid-template-columns: minmax(0, 1fr); }
 .media-modal.is-gallery .media-text { display: none; }
+
+/* gallery mode: full-screen dark see-through overlay, image floats in the middle */
+.media-modal.is-gallery { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; border-radius: 0; background: rgba(8,8,10,.88); box-shadow: none; color: #fff; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.media-modal.is-gallery::backdrop { background: transparent; }
+.media-modal.is-gallery .media-head { position: absolute; inset: 0 0 auto 0; z-index: 2; border: 0; padding: 16px 20px 16px 28px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,.75); }
+.media-modal.is-gallery .media-close { color: #fff; background: rgba(255,255,255,.12); }
+.media-modal.is-gallery .media-close:hover { background: rgba(255,255,255,.22); }
+.media-modal.is-gallery .media-close:focus { outline: none; }
+.media-modal.is-gallery .media-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.media-modal.is-gallery .media-body { height: 100vh; max-height: none; }
+.media-modal.is-gallery .media-img { background: transparent; padding: 68px 84px; }
+.media-modal.is-gallery .media-img img { max-height: calc(100vh - 136px); }
+.media-modal.is-gallery .media-nav { width: 48px; height: 48px; background: rgba(255,255,255,.12); color: #fff; box-shadow: none; }
+.media-modal.is-gallery .media-nav:hover { background: rgba(255,255,255,.24); }
+.media-modal.is-gallery .media-nav.prev { left: 20px; }
+.media-modal.is-gallery .media-nav.next { right: 20px; }
+@media (max-width: 720px) {
+  .media-modal.is-gallery .media-img { padding: 64px 12px 84px; }
+  .media-modal.is-gallery .media-img img { max-height: calc(100vh - 150px); }
+  .media-modal.is-gallery .media-nav { top: auto; bottom: 18px; transform: none; }
+  .media-modal.is-gallery .media-nav.prev { left: calc(50% - 58px); }
+  .media-modal.is-gallery .media-nav.next { right: calc(50% - 58px); }
+}
