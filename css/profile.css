@@ -1158,3 +1158,30 @@ html, body { overflow-x: clip; }
 .more-proj-label { font-weight: 400; color: var(--text-2); }
 .more-proj > summary .more-chev { color: var(--text-2); }
 .more-proj > summary:hover .more-proj-label, .more-proj > summary:hover .more-chev { color: var(--text); }
+
+/* UI & visual design: dense grid of past work, first rows shown */
+.ui-grid { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 150px; grid-auto-flow: dense; gap: 10px; }
+.ui-item { min-width: 0; }
+.ui-item.is-wide { grid-column: span 2; }
+.ui-item.is-tall { grid-row: span 2; }
+.ui-item[data-extra] { display: none; }
+.ui-grid.is-open .ui-item[data-extra] { display: block; }
+.ui-open { display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 8px; overflow: hidden; background: #f1efeb; cursor: zoom-in; }
+.ui-open img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .3s ease; }
+.ui-open:hover img { transform: scale(1.03); }
+.ui-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ui-more { display: block; margin: 14px auto 0; font: inherit; font-size: 14px; font-weight: 600; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--text); cursor: pointer; }
+.ui-more:hover { border-color: var(--text); }
+.ui-more .more-opened, .ui-more[aria-expanded="true"] .more-closed { display: none; }
+.ui-more[aria-expanded="true"] .more-opened { display: inline; }
+@media (max-width: 640px) { .ui-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 120px; } }
+
+/* image-only viewer for the UI grid */
+.media-img { position: relative; }
+.media-nav { display: none; position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: #111; cursor: pointer; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.media-nav svg { width: 20px; height: 20px; }
+.media-nav.prev { left: 14px; }
+.media-nav.next { right: 14px; }
+.media-modal.is-gallery .media-nav { display: grid; }
+.media-modal.is-gallery .media-body { grid-template-columns: minmax(0, 1fr); }
+.media-modal.is-gallery .media-text { display: none; }

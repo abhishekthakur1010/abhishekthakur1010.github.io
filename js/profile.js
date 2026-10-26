@@ -102,6 +102,17 @@
     sync();
   });
 
+  // UI & visual grid: show the first rows, expand to all on demand.
+  var uiMore = document.getElementById('ui-more');
+  if (uiMore) {
+    uiMore.addEventListener('click', function () {
+      var open = uiMore.getAttribute('aria-expanded') !== 'true';
+      uiMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.getElementById('ui-grid').classList.toggle('is-open', open);
+      if (!open) document.getElementById('ui-visual').scrollIntoView({ block: 'start' });
+    });
+  }
+
   // Award cards open a media viewer with the full image and description.
   var modal = document.getElementById('media-modal');
   if (modal && typeof modal.showModal === 'function') {
@@ -113,8 +124,30 @@
         modal.querySelector('#media-title').textContent = btn.querySelector('.award-title').textContent;
         modal.querySelector('.media-meta').textContent = btn.querySelector('.award-meta').textContent;
         modal.querySelector('.media-desc').textContent = btn.querySelector('.award-desc').textContent;
+        modal.classList.remove('is-gallery');
+        modal.querySelector('.media-head span').textContent = 'Media';
         modal.showModal();
       });
+    });
+
+    // UI & visual grid: image-only viewer with previous / next and arrow keys.
+    var uiBtns = Array.prototype.slice.call(document.querySelectorAll('.ui-open'));
+    var uiAt = 0;
+    function showUi(i) {
+      uiAt = (i + uiBtns.length) % uiBtns.length;
+      mImg.src = uiBtns[uiAt].getAttribute('data-media');
+      mImg.alt = 'UI design ' + (uiAt + 1);
+      modal.querySelector('.media-head span').textContent = 'UI & visual design · ' + (uiAt + 1) + ' / ' + uiBtns.length;
+    }
+    uiBtns.forEach(function (btn, i) {
+      btn.addEventListener('click', function () { modal.classList.add('is-gallery'); showUi(i); modal.showModal(); });
+    });
+    modal.querySelector('.media-nav.prev').addEventListener('click', function () { showUi(uiAt - 1); });
+    modal.querySelector('.media-nav.next').addEventListener('click', function () { showUi(uiAt + 1); });
+    modal.addEventListener('keydown', function (ev) {
+      if (!modal.classList.contains('is-gallery')) return;
+      if (ev.key === 'ArrowLeft') showUi(uiAt - 1);
+      if (ev.key === 'ArrowRight') showUi(uiAt + 1);
     });
     modal.querySelector('.media-close').addEventListener('click', function () { modal.close(); });
     modal.addEventListener('click', function (ev) { if (ev.target === modal) modal.close(); });
