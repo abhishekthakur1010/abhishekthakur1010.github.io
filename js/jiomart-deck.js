@@ -549,7 +549,6 @@
           (c.stat ? "<div class='bd-stat'><b>" + esc(c.stat) + "</b>" + (c.est ? "<i>est.</i>" : "") + "</div>" : "") +
           (c.q ? "<p class='bd-q'>" + esc(c.q) + "</p>" : "") +
           "<p class='bd-l'>" + esc(c.learned) + "</p>" +
-          (c.proof ? "<span class='bd-more'>View benchmark →</span>" : "") +
           (c.gap ? "<p class='bd-gap'><span>Uncertain</span>" + esc(c.gap) + "</p>" : "") + "</div></div>";
       }).join("");
       return "<div class='sl" + (sc.tall ? " bd-tall" : "") + "'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
