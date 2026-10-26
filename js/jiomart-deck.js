@@ -543,12 +543,13 @@
     /* 04 / 10 · evidence board: question · learned · still uncertain */
     board: function (sc) {
       var cards = sc.cards.map(function (c, i) {
-        return "<div class='bd-card reveal' data-step='" + (i + 1) + "'>" +
+        return "<div class='bd-card reveal" + (c.proof ? " has-proof" : "") + "' data-step='" + (i + 1) + "'" + (c.proof ? " data-card-proof='" + c.proof + "'" : "") + ">" +
           "<span class='bd-img zoomable" + (c.fit ? " fit" : "") + "' title='Click to enlarge'><img src='" + img(c.img) + "'" + (c.pos ? " style='object-position:" + c.pos + "'" : "") + " onerror=\"this.parentElement.classList.add('failed')\"></span>" +
           "<div class='bd-body'><div class='bd-top'><b>" + esc(c.k) + "</b>" + (c.tag ? "<span class='tag " + tagTone(c.tag) + "'>" + esc(c.tag) + "</span>" : "") + "</div>" +
           (c.stat ? "<div class='bd-stat'><b>" + esc(c.stat) + "</b>" + (c.est ? "<i>est.</i>" : "") + "</div>" : "") +
           (c.q ? "<p class='bd-q'>" + esc(c.q) + "</p>" : "") +
           "<p class='bd-l'>" + esc(c.learned) + "</p>" +
+          (c.proof ? "<span class='bd-more'>View benchmark →</span>" : "") +
           (c.gap ? "<p class='bd-gap'><span>Uncertain</span>" + esc(c.gap) + "</p>" : "") + "</div></div>";
       }).join("");
       return "<div class='sl" + (sc.tall ? " bd-tall" : "") + "'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
@@ -889,6 +890,12 @@
         }).join("") : "") + "</span>" +
         (ev.pending ? "<span class='ev-pending'>Artifact image to be added</span>" : "") + "</div>" : "") +
       calc +
+      (ev.pairs ? "<div class='ev-finds'><span class='ev-l'>" + esc(ev.pairsL || "") + "</span>" + ev.pairs.map(function (p) {
+        return "<div class='ev-pair'><p><span class='tag neutral'>They do</span>" + esc(p[0]) + "</p><p class='so'><span class='tag info'>So we</span>" + esc(p[1]) + "</p></div>";
+      }).join("") + "</div>" : "") +
+      (ev.gallery ? "<div class='ev-finds'><span class='ev-l'>" + esc(ev.galleryL || "") + "</span><div class='ev-gal'>" + ev.gallery.map(function (g) {
+        return "<figure class='ev-gal-i'><span class='ev-find-img'><img src='" + img(g[0]) + "' alt=''></span><figcaption>" + esc(g[1]) + "</figcaption></figure>";
+      }).join("") + "</div></div>" : "") +
       (ev.findings ? "<div class='ev-finds'><span class='ev-l'>" + esc(ev.findingsL || "Findings") + "</span>" + ev.findings.slice().sort(function (x, y) { return parseInt(y.s.slice(1), 10) - parseInt(x.s.slice(1), 10); }).map(function (f) {
         var sv = parseInt(String(f.s).replace(/\D/g, ""), 10);
         return "<div class='ev-find" + (f.img ? "" : " noimg") + "'>" + (f.img ? "<span class='ev-find-img' title='Click to view the full page'><img src='" + img(f.img) + "' alt=''></span>" : "") + "<div class='ev-find-b'>" +
@@ -910,6 +917,8 @@
   });
 
   document.addEventListener("click", function (e) {
+    var cp = e.target.closest && e.target.closest("[data-card-proof]");
+    if (cp && !e.target.closest(".bd-img, .ev-link")) { e.preventDefault(); e.stopPropagation(); var pc = PROOFS[cp.getAttribute("data-card-proof")]; if (pc) openEvidence(pc); return; }
     var l = e.target.closest && e.target.closest(".ev-link");
     if (!l) return;
     e.preventDefault(); e.stopPropagation();

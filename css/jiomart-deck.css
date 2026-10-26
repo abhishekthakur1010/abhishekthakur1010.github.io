@@ -1367,3 +1367,15 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .bd-tall .sl-head { margin-bottom: 12px; }
 .bd-tall .sl-head .sub { margin-top: 4px; }
 .bd-tall .bd-top b { font-size: 13px; }
+/* competitor evidence panel + clickable research card */
+.ev-pair { padding: 12px 14px; margin-bottom: 8px; border-radius: 12px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 6px; }
+.ev-pair p { font-size: 13.5px; color: var(--soft); display: flex; align-items: baseline; gap: 8px; }
+.ev-pair p.so { color: var(--ink); font-weight: 600; }
+.ev-pair .tag { margin: 0; }
+.ev-gal { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ev-gal-i { display: flex; flex-direction: column; gap: 6px; }
+.ev-gal-i .ev-find-img { height: 130px; }
+.ev-gal-i figcaption { font-size: 12.5px; font-weight: 600; color: var(--soft); }
+.bd-card.has-proof { cursor: pointer; transition: border-color 0.2s, transform 0.2s var(--ease); }
+.bd-card.has-proof:hover { border-color: var(--info-line); transform: translateY(-2px); }
+.bd-more { font-size: 12px; font-weight: 600; color: var(--info); margin-top: 2px; }

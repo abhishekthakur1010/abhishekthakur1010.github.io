@@ -75,6 +75,23 @@ window.DECK = {
       observed: "Grocery, Mobiles, Home & Living, Fruits, Electronics, Fashion, Beauty, Handloom, Medicines, Furniture and Jewellery.",
       takeaway: "Every category had different product info, so one consistent way to compare mattered across all 11."
     },
+    competitors: {
+      method: "Competitive benchmark", tag: "Benchmark",
+      calc: [["Apps studied", "Amazon, Flipkart, BigBasket, Grofers, Meesho"], ["Also for electronics", "Amazon, Flipkart, Tata CLiQ"], ["Finding", "Leaders make the decision obvious", 1]],
+      pairsL: "What they do → what we did",
+      pairs: [
+        ["Grofers, BigBasket: discount on every card", "Put price and discount on the card"],
+        ["Flipkart, BigBasket: many image views", "Bigger, swipeable product images"],
+        ["Amazon: rating next to the title", "Proof right under the name"]
+      ],
+      galleryL: "Benchmark boards · click to open",
+      gallery: [
+        ["enhance-pdp-competitor-benchmark.webp", "Product page benchmark"],
+        ["enhance-competitive-01.png", "Electronics benchmark"],
+        ["enhance-competitive-03.png", "Category screens audit"],
+        ["enhance-competitive-02.png", "Feature gaps"]
+      ]
+    },
     visitors: {
       method: "JioMart visitors", tag: "Internal town hall",
       img: "enhance-townhall-visitors.jpg", crop: 0.4,
@@ -241,7 +258,7 @@ window.DECK = {
           learned: "Searchers added to cart {{4× more|searchers}} than the average visit." },
         { k: "Journey map", tag: "Validated", img: "enhance-flow-pipeline.png", pos: "center top", stat: "End to end",
           learned: "Mapped every screen from Home to checkout to spot drop points." },
-        { k: "Competitive benchmark", tag: "Benchmark", img: "enhance-pdp-competitor-benchmark.webp", pos: "left top", stat: "5 apps",
+        { k: "Competitive benchmark", tag: "Benchmark", proof: "competitors", img: "enhance-pdp-competitor-benchmark.webp", pos: "left top", stat: "{{5 apps|competitors}}",
           learned: "Amazon, Flipkart, BigBasket, Grofers, Meesho put decision info up front." },
         { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}",
           learned: "5 critical, led by scan, list and the product page." },
@@ -269,26 +286,6 @@ window.DECK = {
         points: ["Quick wins first: discount tags, category clarity", "Parked: 3D icons, gamified categories"]
       },
       notes: "We clustered pain points and plotted them on impact vs effort. The top three opportunities sat where user needs and business goals overlapped."
-    },
-
-    /* 07 — COMPETITIVE ANALYSIS */
-    {
-      section: "discover", type: "ideas",
-      eyebrow: "Competitive analysis",
-      headline: ["Leaders make the decision obvious"],
-      pairLabels: ["They do", "So we"],
-      pairs: [
-        { saw: "Grofers, BigBasket: discount on every card", bet: "Put price and discount on the card" },
-        { saw: "Flipkart, BigBasket: many image views", bet: "Bigger, swipeable product images" },
-        { saw: "Amazon: rating next to the title", bet: "Proof right under the name" }
-      ],
-      tiles: [
-        { img: "enhance-pdp-competitor-benchmark.webp", t: "Product page benchmark" },
-        { img: "enhance-competitive-01.png", t: "Electronics benchmark" },
-        { img: "enhance-competitive-03.png", t: "Category screens audit" },
-        { img: "enhance-competitive-02.png", t: "Feature gaps" }
-      ],
-      notes: "Five apps: Amazon, Flipkart, BigBasket, Grofers, Meesho. The gap: JioMart hid what competitors showed on the card."
     },
 
     /* 08 — DEFINING THE PROBLEM */
@@ -408,6 +405,28 @@ window.DECK = {
         { label: "Next project →", href: "./index.html" }
       ],
       notes: "Close on the principle: people buy when every screen removes a doubt."
+    }
+  ],
+  /* parked slides (not shown): kept for later use */
+  parked: [
+    /* 07 — COMPETITIVE ANALYSIS */
+    {
+      section: "discover", type: "ideas",
+      eyebrow: "Competitive analysis",
+      headline: ["Leaders make the decision obvious"],
+      pairLabels: ["They do", "So we"],
+      pairs: [
+        { saw: "Grofers, BigBasket: discount on every card", bet: "Put price and discount on the card" },
+        { saw: "Flipkart, BigBasket: many image views", bet: "Bigger, swipeable product images" },
+        { saw: "Amazon: rating next to the title", bet: "Proof right under the name" }
+      ],
+      tiles: [
+        { img: "enhance-pdp-competitor-benchmark.webp", t: "Product page benchmark" },
+        { img: "enhance-competitive-01.png", t: "Electronics benchmark" },
+        { img: "enhance-competitive-03.png", t: "Category screens audit" },
+        { img: "enhance-competitive-02.png", t: "Feature gaps" }
+      ],
+      notes: "Five apps: Amazon, Flipkart, BigBasket, Grofers, Meesho. The gap: JioMart hid what competitors showed on the card."
     }
   ]
 };
