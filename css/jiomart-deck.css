@@ -1211,3 +1211,41 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ci-drop { display: none !important; }
 .ci-define.open .ci-drop { display: block !important; animation: ciDrop 0.3s var(--ease); }
 @keyframes ciDrop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+/* slide 3: compact cards + search vs browse infographic */
+.type-qa .qa-card { padding: 12px 16px; gap: 2px; }
+.type-qa .qa-top { margin-bottom: 0; }
+.type-qa .qa-q { font-size: clamp(15px, 1.3vw, 17px); }
+.type-qa .qa-a { font-size: 13px; }
+.type-qa .sl-head { margin-bottom: 14px; }
+.pv { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-top: 12px; padding: 14px 20px; border-radius: var(--r-card); border: 1px solid var(--panel-line); background: var(--card); }
+.pv-rows { display: flex; flex-direction: column; gap: 10px; }
+.pv-row { display: grid; grid-template-columns: 200px auto 1fr; gap: 16px; align-items: center; }
+.pv-k b { display: block; font-size: 14px; }
+.pv-k span { font-size: 11.5px; color: var(--dim); }
+.pv-dots { display: flex; gap: 6px; }
+.pv-dots .ci-dot { width: 26px; height: 26px; border-radius: 8px; }
+.pv-dots .ci-dot svg { width: 14px; height: 14px; }
+.pv-row.bad .ci-dot.hit { color: var(--neg); border-color: var(--neg-line); background: var(--neg-soft); }
+.pv-v { display: flex; align-items: baseline; gap: 6px; }
+.pv-v b { font-size: 22px; font-weight: 800; }
+.pv-row.good .pv-v b { color: var(--pos); }
+.pv-row.bad .pv-v b { color: var(--neg); }
+.pv-v span { font-size: 12px; color: var(--dim); }
+.pv-big { max-width: 230px; padding-left: 20px; border-left: 1px solid var(--line2); }
+.pv-big b { display: block; font-size: clamp(40px, 4.4vw, 56px); font-weight: 800; line-height: 1; color: var(--pos); letter-spacing: -0.03em; }
+.pv-big span { display: block; margin-top: 6px; font-size: 12.5px; color: var(--soft); line-height: 1.4; }
+.type-qa .qa-shift { margin-top: 12px; }
+.type-qa .qa-was, .type-qa .qa-now { padding: 10px 16px; }
+@media (max-width: 1180px) { .pv { grid-template-columns: 1fr; } .pv-row { grid-template-columns: 1fr; gap: 6px; } .pv-big { border-left: none; padding-left: 0; } }
+@media (max-height: 760px) {
+  .type-qa .sl-head h2 { font-size: 30px; }
+  .type-qa .sl-head .sub { margin-top: 4px; font-size: 14px; }
+  .type-qa .qa-card { padding: 9px 14px; }
+  .type-qa .qa-n { display: none; }
+  .type-qa .qa-top { position: absolute; right: 12px; top: 10px; }
+  .type-qa .qa-card { position: relative; }
+  .pv { padding: 10px 16px; margin-top: 10px; }
+  .pv-rows { gap: 6px; }
+  .pv-big b { font-size: 40px; }
+}
+@media (max-height: 760px) { .type-qa .qa-q { padding-right: 84px; } }

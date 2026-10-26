@@ -181,9 +181,16 @@ window.DECK = {
         { tag: "Business", q: "Why now?", a: "Traffic kept growing, so every lost cart cost more." },
         { tag: "Business", q: "What does success look like?", a: "More carts from browsing and search." },
         { tag: "Shopper", q: "What stops shoppers?", a: "They can't compare products or trust the details." },
-        { tag: "Shopper", q: "Where do they get stuck?", a: "Listing and product page. Searchers did {{4× better|searchers}}" },
+        { tag: "Shopper", q: "Where do they get stuck?", a: "Browsing: listing and product page." },
         { tag: "Scope", q: "What's not included?", a: "Checkout, payments and personalisation." }
       ],
+      paths: {
+        rows: [
+          { k: "Search", flow: "Search → Product → Cart", lit: 4, v: "{{41%|search}}", l: "add to cart", tone: "good" },
+          { k: "Browse", flow: "Home → Listing → Product → Cart", lit: 1, v: "{{10%|carts}}", l: "add to cart", tone: "bad" }
+        ],
+        big: "{{4×|searchers}}", bigL: "Shoppers who search add to cart 4× more. Browsing was the gap."
+      },
       fromL: "The brief", from: "Make the pages look better",
       toL: "What it became", to: "Help shoppers choose with confidence",
       notes: "Business questions first, then shopper questions, then scope. Each answer came from talking to the PM, analytics or engineering. The shift at the bottom is the point: a facelift request became a problem about helping people choose."

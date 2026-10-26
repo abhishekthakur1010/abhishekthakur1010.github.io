@@ -705,6 +705,16 @@
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='qa-grid'>" + cards + "</div>" +
+        (sc.paths ? (function () {
+          var cart = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='9' cy='21' r='1'/><circle cx='20' cy='21' r='1'/><path d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/></svg>";
+          var rows = sc.paths.rows.map(function (r) {
+            var d = ""; for (var k = 0; k < 10; k++) d += "<span class='ci-dot" + (k < r.lit ? " hit" : "") + "'>" + cart + "</span>";
+            return "<div class='pv-row " + (r.tone || "") + "'><div class='pv-k'><b>" + esc(r.k) + "</b><span>" + esc(r.flow) + "</span></div>" +
+              "<div class='pv-dots'>" + d + "</div><div class='pv-v'><b>" + esc(r.v) + "</b><span>" + esc(r.l) + "</span></div></div>";
+          }).join("");
+          return "<div class='pv reveal' data-step='" + (sc.qs.length + 1) + "'><div class='pv-rows'>" + rows + "</div>" +
+            "<div class='pv-big'><b>" + esc(sc.paths.big) + "</b><span>" + esc(sc.paths.bigL) + "</span></div></div>";
+        })() : "") +
         (sc.from ? "<div class='qa-shift reveal' data-step='" + (sc.qs.length + 1) + "'><div class='qa-was'><span class='tier-label'>" + esc(sc.fromL || "The brief") + "</span><span class='qa-strike'>" + esc(sc.from) + "</span></div>" +
           "<span class='qa-arrow'>→</span><div class='qa-now'><span class='tier-label'>" + esc(sc.toL || "What it became") + "</span>" + esc(sc.to) + "</div></div>" : "") +
         (sc.foot ? "<p class='qa-foot reveal' data-step='" + (sc.qs.length + 1) + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
