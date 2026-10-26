@@ -323,7 +323,7 @@ window.DECK = {
         { img: "enhance-design-team-01.png", t: "Whiteboard workshop", who: "PM + Design + Engineering", out: "3 concepts for listing and product page" },
         { img: "enhance-design-team-02.png", t: "Design critique", who: "Wider design team", out: "One pattern for every screen" },
         { img: "enhance-design-team-03.png", t: "Screen review", who: "Senior stakeholders: HoD + HoP", out: "Gaps fixed before build" },
-        { img: "enhance-user-journey-02.png", t: "MoSCoW", who: "PM + design + engineering", out: "Price, rating, discount shipped first", fit: "contain" }
+        { img: "enhance-user-journey-02.png", t: "MoSCoW", who: "PM + Design + Engineering", out: "Price, rating, discount shipped first", fit: "contain" }
       ],
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and used MoSCoW to decide what shipped first: name, price, rating and discount were Musts."
     },
