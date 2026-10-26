@@ -35,8 +35,8 @@ window.DECK = {
     },
     searchers: {
       method: "Search vs all sessions", tag: "Google Analytics · measured",
-      img: "enhance-impact-table.png", crop: 0.85,
-      calc: [["Search sessions → cart", "41.40%"], ["All sessions → cart", "10.41%"], ["Ratio", "≈ 4×", 1]],
+      img: "enhance-impact-longterm.png", crop: 0, hlH: 896, hl: [[150, 279]],
+      calc: [["Search sessions → cart (before launch)", "41.40%"], ["All sessions → cart (before launch)", "10.41%"], ["Ratio", "≈ 4×", 1]],
       observed: "Shoppers who searched added to cart about four times as often as the average session.",
       takeaway: "Intent was there. Browsing was where people got lost.",
       implicationL: "Note", implication: "Different bases (search sessions vs all sessions), so treat 4× as a direction, not an exact ratio."
