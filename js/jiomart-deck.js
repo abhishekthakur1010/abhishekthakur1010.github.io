@@ -675,11 +675,14 @@
         (sc.define ? "<div class='ci-define'><span class='ci-def-k'>" + esc(sc.define.k) + "</span><div class='ci-path'>" +
           sc.define.steps.map(function (st, i) { return (i ? "<span class='ci-path-arrow'>→</span>" : "") + "<span class='ci-path-step" + (i === sc.define.steps.length - 1 ? " end" : "") + "'>" + esc(st) + "</span>"; }).join("") +
           "</div>" + (sc.define.note ? "<span class='ci-def-note'>" + esc(sc.define.note) + "</span>" : "") +
-          (sc.define.shots ? "<button type='button' class='ci-drop-btn' onclick=\"this.closest('.ci-define').classList.toggle('open')\">" + esc(sc.define.btn || "See before screens") + "<span class='ci-caret'>▾</span></button>" +
-            "<div class='ci-drop'>" + sc.define.shots.map(function (sh) {
-              return "<figure class='ci-shot'><figcaption>" + esc(sh.k) + "</figcaption><span class='evo-media zoomable' title='Click to enlarge'>" + device(sh.img, 0, "sc") + "</span>" +
-                (sh.pain ? "<span class='ci-pain'>" + esc(sh.pain) + "</span>" : "") + "</figure>";
-            }).join("") + "</div>" : "") + "</div>" : "") +
+          (sc.define.shots ? "<button type='button' class='ci-chev' aria-label='Show before screens' title='Before screens' onclick=\"this.closest('.ci-define').classList.toggle('open')\">" +
+            "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg></button>" +
+            "<div class='ci-drop'><div class='ci-drop-head'><span class='tier-label'>Before the redesign</span><span class='ci-drop-hint'>Click a screen to view it in full</span></div><div class='ci-drop-grid'>" +
+            sc.define.shots.map(function (sh, i) {
+              return "<button type='button' class='ci-shot' data-shot='" + i + "'><span class='ci-shot-k'>" + pad(i + 1) + " · " + esc(sh.k) + "</span>" +
+                "<span class='ci-shot-media'>" + device(sh.img, 0, "sc") + "<span class='ci-shot-zoom'>View full screen</span></span>" +
+                (sh.pain ? "<span class='ci-pain'>" + esc(sh.pain) + "</span>" : "") + "</button>";
+            }).join("") + "</div></div>" : "") + "</div>" : "") +
         "<div class='ci-flow'>" + flow + "</div>" +
         "<div class='ci-reality reveal' data-step='" + last + "'><span class='tier-label'>Ground reality</span>" +
         "<div class='ci-row'><div class='ci-big'><b>" + esc(r.big) + "</b><span>" + esc(r.l) + "</span><div class='ci-dots'>" + dots + "</div></div>" +
@@ -852,17 +855,32 @@
   /* ---------- centered image lightbox (middle-of-screen popup) ---------- */
   var lb = document.createElement("div");
   lb.className = "lightbox";
-  lb.innerHTML = "<div class='lb-backdrop'></div><figure class='lb-card'><button class='lb-close' aria-label='Close'>×</button><div class='lb-imgwrap'><img alt=''></div><figcaption class='lb-cap'></figcaption></figure>";
+  lb.innerHTML = "<div class='lb-backdrop'></div><figure class='lb-card'><button class='lb-close' aria-label='Close'>×</button>" +
+    "<button class='lb-nav lb-prev' aria-label='Previous screen'>‹</button><div class='lb-imgwrap'><img alt=''></div><button class='lb-nav lb-next' aria-label='Next screen'>›</button>" +
+    "<figcaption class='lb-cap'></figcaption></figure>";
+  var gal = null; // { list: [{src, cap}], i }
   document.body.appendChild(lb);
-  function openLightbox(src, caption) {
+  function openLightbox(src, caption, tall) {
     lb.querySelector("img").src = src;
     lb.querySelector(".lb-cap").textContent = caption || "";
+    lb.classList.toggle("tall", !!tall);
+    lb.classList.toggle("gallery", !!gal);
+    var w = lb.querySelector(".lb-imgwrap"); if (w) w.scrollTop = 0;
     lb.classList.add("open");
   }
-  function closeLightbox() { lb.classList.remove("open"); }
+  function showGal(i) {
+    if (!gal) return;
+    gal.i = (i + gal.list.length) % gal.list.length;
+    var it = gal.list[gal.i];
+    openLightbox(it.src, it.cap + "   ·   " + (gal.i + 1) + " / " + gal.list.length, true);
+  }
+  function openGallery(list, i) { gal = { list: list, i: 0 }; showGal(i); }
+  function closeLightbox() { lb.classList.remove("open"); gal = null; }
   function lightboxOpen() { return lb.classList.contains("open"); }
   lb.addEventListener("click", function (e) {
-    if (e.target.closest(".lb-close") || e.target.classList.contains("lb-backdrop") || e.target.classList.contains("lb-imgwrap")) closeLightbox();
+    if (e.target.closest(".lb-prev")) { showGal(gal ? gal.i - 1 : 0); return; }
+    if (e.target.closest(".lb-next")) { showGal(gal ? gal.i + 1 : 0); return; }
+    if (e.target.closest(".lb-close") || e.target.classList.contains("lb-backdrop") || (!lb.classList.contains("tall") && e.target.classList.contains("lb-imgwrap"))) closeLightbox();
   });
 
   /* ---------- toolkit tiles → enlarge in centered popup ---------- */
@@ -886,7 +904,12 @@
     if (idx >= 0) go(idx);
   });
   document.addEventListener("keydown", function (e) {
-    if (lightboxOpen()) { if (e.key === "Escape") closeLightbox(); return; }
+    if (lightboxOpen()) {
+      if (e.key === "Escape") closeLightbox();
+      else if (gal && e.key === "ArrowRight") { e.preventDefault(); showGal(gal.i + 1); }
+      else if (gal && e.key === "ArrowLeft") { e.preventDefault(); showGal(gal.i - 1); }
+      return;
+    }
     if (evidenceOpen()) { if (e.key === "Escape") closeEvidence(); return; }
     if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); next(); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
@@ -902,6 +925,12 @@
   });
   // click artifact/matrix to zoom
   stage.addEventListener("click", function (e) {
+    var shot = e.target.closest(".ci-shot");
+    if (shot) {
+      var sh = (slides[index].define || {}).shots || [];
+      openGallery(sh.map(function (x) { return { src: img(x.img), cap: x.k + " · " + (x.pain || "") }; }), parseInt(shot.getAttribute("data-shot"), 10) || 0);
+      return;
+    }
     var rv = e.target.closest(".rv-shot, .bd-img, .dc-thumb");
     if (rv && rv.querySelector("img")) {
       var cap = rv.querySelector("figcaption");
