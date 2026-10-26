@@ -1488,3 +1488,20 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 @media (max-width: 1100px) { .im-hero { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 760px) { .im-hero, .im-low, .im-checks { grid-template-columns: 1fr; } }
 body.deck[data-theme="light"] .im-bar.post span { color: #fff; }
+
+/* close · two wins, three short rows, award */
+.sl.cl2 { grid-template-columns: 1.15fr 0.85fr; }
+.cl2 h2 { white-space: nowrap; font-size: clamp(28px, 2.6vw, 46px); }
+.cl-wins { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: clamp(18px, 3vh, 30px); }
+.cl-win { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: var(--r-card); border: 1px solid var(--pos-line); background: var(--pos-soft); }
+.cl-win b { font-size: clamp(34px, 5vh, 48px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: var(--pos); }
+.cl-win b .ev-link { color: inherit; font: inherit; letter-spacing: inherit; }
+.cl-win span { font-size: 13px; color: var(--soft); }
+.cl-rows { margin-top: clamp(14px, 2.4vh, 24px); }
+.cl-row { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); }
+.cl-row:last-child { border-bottom: 1px solid var(--line); }
+.cl-k { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); }
+.cl-row p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.cl2 .close-cta { margin-top: clamp(16px, 2.6vh, 26px); }
+.cl2 .award-frame { max-width: 100%; }
+@media (max-width: 900px) { .sl.cl2 { grid-template-columns: 1fr; } .cl2 h2 { white-space: normal; } }

@@ -144,6 +144,12 @@ window.DECK = {
       observed: "In-person sessions with shoppers on how they browse, compare and decide.",
       takeaway: "Interview count is an estimate."
     },
+    reviews: {
+      method: "Design review rounds", tag: "Illustrative estimate", est: true,
+      img: "enhance-design-team-03.png", crop: 0,
+      observed: "Screen reviews with senior stakeholders, the Head of Design and Head of Product, before build.",
+      takeaway: "Each round flagged gaps we fixed before launch. The count is an estimate."
+    },
     iterations: {
       method: "Iterations and review rounds", tag: "Illustrative estimate", est: true,
       img: "enhance-design-team-02.png", crop: 0.3,
@@ -398,7 +404,7 @@ window.DECK = {
       checks: [
         { n: "{{9 / 12|usability}}", l: "completed the usability test" },
         { n: "{{3|iterations}}", l: "design iterations", est: true },
-        { n: "{{6|iterations}}", l: "design review rounds", est: true }
+        { n: "{{6|reviews}}", l: "design review rounds", est: true }
       ],
       moreTitle: "Also improved",
       more: [
@@ -414,13 +420,14 @@ window.DECK = {
     {
       section: "results", type: "close",
       eyebrow: "Key takeaways",
-      headline: ["Every screen should remove a doubt"],
-      blocks: [
-        { k: "Problem solved", d: "Shoppers can now find, compare and trust a product fast." },
-        { k: "My contribution", d: "Reframed the brief, led research and designed discovery end to end." },
-        { k: "For users", d: "Decision info up front on every screen." },
-        { k: "For the business", d: "{{+28%|carts}} add-to-cart sessions, {{+21%|search}} from search." },
-        { k: "What I learned", d: "Same gap everywhere? Fix the system, not the screen." },
+      headline: ["Remove a doubt on every screen"],
+      wins: [
+        { n: "{{+28%|carts}}", l: "add-to-cart sessions" },
+        { n: "{{+21%|search}}", l: "add-to-cart from search" }
+      ],
+      rows: [
+        { k: "My role", d: "Reframed the brief, led research, designed end to end." },
+        { k: "Learned", d: "Same gap everywhere? Fix the system, not the screen." },
         { k: "Next time", d: "Track every step and A/B test from day one." }
       ],
       award: { img: "enhance-award.png", caption: "Jio Spotlight Award · Q4 2022–23" },

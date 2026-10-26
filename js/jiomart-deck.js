@@ -794,12 +794,12 @@
 
     /* 12 · contribution, learning, next time + award */
     close: function (sc) {
-      var blocks = sc.blocks.map(function (b, i) {
-        return "<div class='cl-block reveal' data-step='" + (i < 2 ? 0 : 1) + "'><span class='col-k'>" + esc(b.k) + "</span><p>" + esc(b.d) + "</p></div>";
-      }).join("");
+      var wins = sc.wins.map(function (w) { return "<div class='cl-win'><b>" + esc(w.n) + "</b><span>" + esc(w.l) + "</span></div>"; }).join("");
+      var rows = sc.rows.map(function (r) { return "<div class='cl-row'><span class='cl-k'>" + esc(r.k) + "</span><p>" + esc(r.d) + "</p></div>"; }).join("");
       var ctas = sc.cta.map(function (c) { return "<a class='btn " + (c.primary ? "primary" : "ghost") + "' href='" + c.href + "'>" + esc(c.label) + "</a>"; }).join("");
-      return "<div class='sl split recognition'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
-        "<div class='cl-grid'>" + blocks + "</div>" +
+      return "<div class='sl split recognition cl2'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        "<div class='cl-wins'>" + wins + "</div>" +
+        "<div class='cl-rows reveal' data-step='1'>" + rows + "</div>" +
         "<div class='close-cta reveal' data-step='2'>" + ctas + "</div></div>" +
         "<div class='c-visual'><figure class='award'><span class='award-frame zoomable' title='Click to enlarge'><img src='" + img(sc.award.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
         "<figcaption class='award-cap'>" + esc(sc.award.caption) + "</figcaption></figure></div></div>";
