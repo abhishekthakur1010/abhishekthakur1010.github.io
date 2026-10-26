@@ -1623,3 +1623,8 @@ body.csv2 {
   width: 34px; height: 34px; border-radius: 6px; background: var(--ink); color: #fff;
   display: grid; place-items: center; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
 }
+
+/* blue accent variant (Discovery case study) */
+.csv2.accent-blue { --accent: #0a66c2; }
+.csv2.accent-blue .impact .cta:hover,
+.csv2.accent-blue .cta-btn:hover { box-shadow: 0 14px 30px rgba(10, 102, 194, 0.32); }
