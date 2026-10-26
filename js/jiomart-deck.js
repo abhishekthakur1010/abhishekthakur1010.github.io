@@ -847,7 +847,7 @@
   function evidenceOpen() { return panel && panel.classList.contains("open"); }
   if (panel) panel.addEventListener("click", function (e) {
     if (e.target.closest(".ev-close") || e.target.classList.contains("ev-backdrop")) closeEvidence();
-    if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) e.target.closest(".ev-img").classList.toggle("zoom");
+    if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) openLightbox(e.target.src, (panel.querySelector(".ev-method") || {}).textContent || "");
   });
 
   document.addEventListener("click", function (e) {

@@ -21,15 +21,15 @@ window.DECK = {
   proofs: {
     carts: {
       method: "Sessions with add-to-cart", tag: "Google Analytics · measured",
-      img: "enhance-impact-longterm.png", crop: 0.12,
-      calc: [["Before launch", "10.41%"], ["First read after launch", "11.48%"], ["Longer period after launch", "13.35%"], ["Change", "+2.94 points (+294 bps)"], ["Relative lift", "+28.2%", 1]],
+      img: "enhance-ga-carts.png", crop: 0,
+      calc: [["Before launch", "10.41%"], ["First read after launch", "11.48%"], ["Nov – Jan 2023 (after launch)", "13.35%"], ["Change", "+2.94 points (+294 bps)"], ["Relative lift", "+28.2%", 1]],
       observed: "Share of all sessions where a shopper added at least one product to cart.",
-      takeaway: "About 1 in 10 visits ended in a cart before; about 1 in 7.5 over the longer period. The lift kept growing after launch."
+      takeaway: "About 1 in 10 visits ended in a cart before; about 1 in 7.5 by Nov – Jan 2023. The lift kept growing after launch."
     },
     search: {
       method: "Search-assisted add-to-cart", tag: "Google Analytics · measured",
-      img: "enhance-impact-longterm.png", crop: 0.2,
-      calc: [["Before launch", "41.40%"], ["First read after launch", "44.33%"], ["Longer period after launch", "50.20%"], ["Change", "+8.8 points (+880 bps)"], ["Relative lift", "+21.3%", 1]],
+      img: "enhance-ga-search.png", crop: 0,
+      calc: [["Before launch", "41.40%"], ["First read after launch", "44.33%"], ["Nov – Jan 2023 (after launch)", "50.20%"], ["Change", "+8.8 points (+880 bps)"], ["Relative lift", "+21.3%", 1]],
       observed: "Share of search sessions that ended with an add-to-cart.",
       takeaway: "Half of all searchers now add to cart, up from 41 in 100."
     },
@@ -43,28 +43,28 @@ window.DECK = {
     },
     pages: {
       method: "Page views per user", tag: "Google Analytics · measured",
-      img: "enhance-impact-longterm.png", crop: 0.55,
-      calc: [["Before launch", "5.81"], ["First read after launch", "6.49"], ["Longer period after launch", "7.04"], ["Change", "+21.2%", 1]],
+      img: "enhance-ga-pages.png", crop: 0,
+      calc: [["Before launch", "5.81"], ["First read after launch", "6.49"], ["Nov – Jan 2023 (after launch)", "7.04"], ["Change", "+21.2%", 1]],
       observed: "Average pages each shopper viewed: Home, listings and product pages.",
       takeaway: "Rose together with add-to-cart, so shoppers explored more and decided more, not got lost."
     },
     time: {
       method: "Engagement time", tag: "Google Analytics · measured",
-      img: "enhance-impact-longterm.png", crop: 0.45,
+      img: "enhance-ga-time.png", crop: 0,
       calc: [["Per active user", "4m 14s → 5m 15s"], ["Per session", "1m 46s → 2m 13s"], ["Engagement rate", "80.51% → 84.21%"], ["Change per user", "+24.0%", 1]],
-      observed: "Average active time, before launch vs the longer period after launch.",
+      observed: "Average active time, before launch vs Nov – Jan 2023.",
       takeaway: "Read with add-to-cart: more time plus more carts means exploration, not friction."
     },
     speed: {
       method: "Page speed", tag: "Google Analytics · measured",
-      img: "enhance-impact-longterm.png", crop: 0.95,
+      img: "enhance-ga-speed.png", crop: 0,
       calc: [["Page download time", "0.17s → 0.12s"], ["Server response time", "0.47s → 0.37s"], ["Redirection time", "0.13s → 0.09s"], ["Page download change", "−29.4% (faster)", 1]],
-      observed: "Average load times before launch vs the longer period after launch.",
+      observed: "Average load times before launch vs Nov – Jan 2023.",
       takeaway: "Lighter, consistent components made pages load faster."
     },
     volume: {
       method: "Extra carts per quarter", tag: "Estimate from real data", est: true,
-      img: "enhance-impact-longterm.png", crop: 0.12,
+      img: "enhance-ga-carts.png", crop: 0,
       calc: [["Lift in add-to-cart sessions", "+2.94 points"], ["Visits per quarter (GA)", "~334M"], ["2.94% × 334M", "≈ 10M more carts", 1]],
       observed: "Multiplies the measured add-to-cart lift by JioMart's quarterly visit volume from the Google Analytics sheet.",
       takeaway: "An order-of-magnitude estimate, not a measured count. Say \u201croughly 10 million more carts a quarter\u201d."
@@ -130,7 +130,7 @@ window.DECK = {
         { l: "Team", v: "PM · Engineering · Analytics" },
         { l: "After launch", v: "{{+28%|carts}} carts · {{+21%|pages}} pages · {{29%|speed}} faster" }
       ],
-      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. ~10M carts a quarter is an estimate: +2.94 points of add-to-cart sessions × ~334M visits a quarter. Results are from the longer period after launch; the first read was smaller (+1.07 points), and the gains kept growing."
+      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. ~10M carts a quarter is an estimate: +2.94 points of add-to-cart sessions × ~334M visits a quarter. Results compare before launch with Nov – Jan 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
     /* 02 — BUSINESS CONTEXT (infographic) */
@@ -353,8 +353,8 @@ window.DECK = {
           { l: "Server response time", pre: 0.47, post: 0.37, unit: "s", d: "{{−21.3%|speed}}", lowerBetter: true }
         ] }
       ],
-      disclaimer: "Google Analytics, before launch vs a longer period after launch. Iteration and review counts are illustrative (est.).",
-      notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results over the longer period: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
+      disclaimer: "Google Analytics, before launch vs Nov – Jan 2023. Iteration and review counts are illustrative (est.).",
+      notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results for Nov – Jan 2023: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
     },
 
     /* 12 — KEY TAKEAWAYS */
