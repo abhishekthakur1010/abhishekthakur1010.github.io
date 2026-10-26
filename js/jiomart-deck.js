@@ -698,10 +698,14 @@
     /* questions we asked of the brief → what we agreed */
     qa: function (sc) {
       var cards = sc.qs.map(function (x, i) {
-        return "<div class='qa-card reveal' data-step='" + (i + 1) + "'><p class='qa-q'>" + esc(x.q) + "</p><p class='qa-a'>" + esc(x.a) + "</p></div>";
+        return "<div class='qa-card reveal' data-step='" + (i + 1) + "'><div class='qa-top'><span class='qa-n'>" + pad(i + 1) + "</span>" +
+          (x.tag ? "<span class='tag " + ({ Business: "info", Shopper: "pos", Scope: "neutral" }[x.tag] || "neutral") + "'>" + esc(x.tag) + "</span>" : "") + "</div>" +
+          "<p class='qa-q'>" + esc(x.q) + "</p><p class='qa-a'>" + esc(x.a) + "</p></div>";
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='qa-grid'>" + cards + "</div>" +
+        (sc.from ? "<div class='qa-shift reveal' data-step='" + (sc.qs.length + 1) + "'><div class='qa-was'><span class='tier-label'>" + esc(sc.fromL || "The brief") + "</span><span class='qa-strike'>" + esc(sc.from) + "</span></div>" +
+          "<span class='qa-arrow'>→</span><div class='qa-now'><span class='tier-label'>" + esc(sc.toL || "What it became") + "</span>" + esc(sc.to) + "</div></div>" : "") +
         (sc.foot ? "<p class='qa-foot reveal' data-step='" + (sc.qs.length + 1) + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
