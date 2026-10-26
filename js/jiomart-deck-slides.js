@@ -53,8 +53,7 @@ window.DECK = {
           { k: "Home", img: "enhance-problem-home.png", pain: "Busy banners, mixed icons" },
           { k: "Search / browse", img: "enhance-iter-search-before.png", pain: "Generic suggestions" },
           { k: "Listing", img: "enhance-problem-plp.png", pain: "Cards look alike" },
-          { k: "Product page", img: "enhance-problem-pdp.png", pain: "Key details buried" },
-          { k: "Add to cart", img: "enhance-ba-pdp-reviews-before.png", pain: "Little proof to decide" }
+          { k: "Product page", img: "enhance-problem-pdp.png", pain: "Key details buried" }
         ]
       },
       flow: [

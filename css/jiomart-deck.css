@@ -1078,3 +1078,12 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .lightbox.tall .lb-cap { text-transform: none; letter-spacing: 0.02em; font-size: 14px; }
 @media (max-width: 1180px) { .ci-drop { display: none; } .ci-define.open .ci-drop { display: block; } .ci-drop-grid { grid-template-columns: repeat(3, 1fr); } .ci-define.open { border-radius: 12px; } }
 @media (max-width: 720px) { .ci-drop-grid { grid-template-columns: repeat(2, 1fr); } .lb-prev { left: 4px; } .lb-next { right: 4px; } .ci-drop-hint { display: none; } }
+/* before-screens: 4 cards; viewer sized like a real phone */
+.ci-drop-grid { grid-template-columns: repeat(4, 1fr); }
+.lightbox.tall .lb-imgwrap { width: min(340px, 78vw); max-width: none; aspect-ratio: 9 / 19.5; height: auto; max-height: 82vh; border: 10px solid #000; border-radius: 40px; box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08); scrollbar-width: none; }
+.lightbox.tall .lb-imgwrap::-webkit-scrollbar { display: none; }
+.lightbox.tall .lb-imgwrap img { width: 100%; }
+.lightbox.tall .lb-prev { left: -60px; } .lightbox.tall .lb-next { right: -60px; }
+.lightbox.tall .lb-close { top: -16px; right: -16px; }
+@media (max-width: 1180px) { .ci-drop-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) { .lightbox.tall .lb-prev { left: -6px; } .lightbox.tall .lb-next { right: -6px; } }
