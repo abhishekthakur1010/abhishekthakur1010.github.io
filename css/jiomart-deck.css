@@ -1183,3 +1183,8 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .qa-was { text-decoration: none; }
 .qa-strike { text-decoration: line-through; text-decoration-color: var(--neg); text-decoration-thickness: 2px; }
 .qa-was .tier-label { color: var(--dim); }
+.ci-pts { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line2); }
+.ci-pts li { font-size: 13px; color: var(--soft); line-height: 1.4; display: flex; gap: 8px; }
+.ci-pts li b { flex: none; min-width: 84px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); padding-top: 1px; }
+.ci-step.tone-pos .ci-pts { border-top-color: var(--pos-line); }
+@media (max-height: 820px) { .ci-ic { display: none; } .ci-k { margin-top: 0; } .ci-pts { margin-top: 4px; padding-top: 6px; gap: 3px; } .ci-pts li { font-size: 12px; } .ci-big > b { font-size: 38px; } .ci-dot { width: 24px; height: 24px; } .ci-dot svg { width: 14px; height: 14px; } }

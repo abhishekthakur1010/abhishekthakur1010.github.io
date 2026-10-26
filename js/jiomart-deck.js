@@ -669,7 +669,8 @@
       var flow = sc.flow.map(function (f, i) {
         return (i ? "<span class='ci-arrow reveal' data-step='" + (i + 1) + "'>→</span>" : "") +
           "<div class='ci-step tone-" + (f.tone || "neutral") + " reveal' data-step='" + (i + 1) + "'><span class='ci-ic'>" + svg(f.icon) + "</span>" +
-          "<span class='ci-k'>" + esc(f.k) + "</span><p class='ci-t'>" + esc(f.t) + "</p></div>";
+          "<span class='ci-k'>" + esc(f.k) + "</span><p class='ci-t'>" + esc(f.t) + "</p>" +
+          (f.pts ? "<ul class='ci-pts'>" + f.pts.map(function (x) { return "<li><b>" + esc(x[0]) + "</b>" + esc(x[1]) + "</li>"; }).join("") + "</ul>" : "") + "</div>";
       }).join("");
       var r = sc.reality, dots = "";
       for (var d = 0; d < r.dots; d++) dots += "<span class='ci-dot" + (d < r.hit ? " hit" : "") + "'>" + svg("cart") + "</span>";

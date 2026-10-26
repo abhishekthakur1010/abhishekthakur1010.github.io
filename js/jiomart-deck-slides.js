@@ -158,9 +158,9 @@ window.DECK = {
         ]
       },
       flow: [
-        { k: "Business frustration", t: "Lots of visits, too few carts", icon: "star" },
-        { k: "Product frustration", t: "Pages looked dated and messy", icon: "brief" },
-        { k: "Shopper frustration", t: "\u201cCan I trust this product?\u201d", icon: "people", tone: "pos" }
+        { k: "Business frustration", t: "Lots of visits, too few carts", icon: "star", pts: [["Requirement", "Turn more visits into carts"], ["Goal", "Add-to-cart up across categories"]] },
+        { k: "Product frustration", t: "Pages looked dated and messy", icon: "brief", pts: [["Requirement", "Refresh Home, listing and product page"], ["Goal", "One consistent look in all 11 categories"]] },
+        { k: "Shopper frustration", t: "\u201cCan I trust this product?\u201d", icon: "people", tone: "pos", pts: [["Need", "Price, size and delivery up front"], ["Goal", "Choose with confidence"]] }
       ],
       reality: { big: "{{1 in 10|carts}}", l: "sessions added to cart", dots: 10, hit: 1 },
       stats: [
