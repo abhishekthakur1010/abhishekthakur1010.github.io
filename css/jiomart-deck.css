@@ -1132,3 +1132,15 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .ev-calc-row b { color: var(--ink); font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
 .ev-calc-row.hi { background: var(--pos-soft); }
 .ev-calc-row.hi b { color: var(--pos); }
+@media (max-height: 820px) {
+  .type-kpis .sl-head { margin-bottom: 10px; }
+  .type-kpis .eyebrow { margin-bottom: 6px; }
+  .kp-checks { margin-bottom: 10px; }
+  .kp-check { padding: 7px 12px; }
+  .kp-check b { font-size: 15px; }
+  .kp-group { padding: 12px 14px 2px; }
+  .kp-row { padding: 6px 0 8px; gap: 4px; }
+  .kp-bar { height: 16px; font-size: 10.5px; }
+  .kp-d b { font-size: 14px; }
+  .kp-foot .disclaimer { margin-top: 6px; }
+}
