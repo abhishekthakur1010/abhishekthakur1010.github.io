@@ -1379,3 +1379,16 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .bd-card.has-proof { cursor: pointer; transition: border-color 0.2s, transform 0.2s var(--ease); }
 .bd-card.has-proof:hover { border-color: var(--info-line); transform: translateY(-2px); }
 .bd-more { font-size: 12px; font-weight: 600; color: var(--info); margin-top: 2px; }
+/* artifact lightbox: larger, glass close, click-to-zoom with pan */
+.lightbox:not(.tall) .lb-backdrop { background: rgba(6,6,8,0.88); backdrop-filter: blur(10px); }
+.lightbox:not(.tall) .lb-close { display: none; }
+.lightbox:not(.tall) .lb-x { display: inline-flex; position: fixed; top: 22px; right: 24px; z-index: 3; align-items: center; gap: 8px; height: 42px; padding: 0 14px 0 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.08); color: #fff; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; backdrop-filter: blur(12px); }
+.lightbox:not(.tall) .lb-x svg { width: 18px; height: 18px; }
+.lightbox:not(.tall) .lb-x span { opacity: 0.6; }
+.lightbox:not(.tall) .lb-imgwrap { max-width: 94vw; max-height: 86vh; background: #fff; border-radius: 12px; }
+.lightbox:not(.tall) .lb-imgwrap img { max-width: 94vw; max-height: 86vh; cursor: zoom-in; }
+.lightbox.zoomed .lb-imgwrap { width: 94vw; height: 86vh; overflow: auto; display: block; overscroll-behavior: contain; }
+.lightbox.zoomed .lb-imgwrap img { max-width: none; max-height: none; cursor: zoom-out; }
+.lightbox:not(.tall) .lb-cap { color: rgba(255,255,255,0.7); text-transform: none; letter-spacing: 0; font-weight: 500; }
+.lightbox:not(.tall) .lb-cap:empty::before { content: "Click image to zoom in"; }
+.lightbox.zoomed .lb-cap:empty::before { content: "Scroll to move around · click to zoom out"; }

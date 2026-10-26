@@ -950,7 +950,8 @@
   document.body.appendChild(lb);
   function openLightbox(src, caption, tall) {
     var li = lb.querySelector("img");
-    lb.classList.remove("fit");
+    lb.classList.remove("fit", "zoomed");
+    li.style.width = "";
     li.onload = function () { lb.classList.toggle("fit", !!tall && li.naturalHeight / li.naturalWidth <= 2.4); };
     li.src = src;
     lb.querySelector(".lb-cap").textContent = caption || "";
@@ -977,6 +978,16 @@
     var dot = e.target.closest(".lb-dot");
     if (dot) { showGal(parseInt(dot.getAttribute("data-k"), 10)); return; }
     if (e.target.closest(".lb-x")) { closeLightbox(); return; }
+    // artifacts: click the image to zoom in at that point, click again to fit
+    if (!lb.classList.contains("tall") && e.target.tagName === "IMG" && e.target.closest(".lb-imgwrap")) {
+      var im = e.target, wrap = im.closest(".lb-imgwrap");
+      if (lb.classList.contains("zoomed")) { lb.classList.remove("zoomed"); im.style.width = ""; return; }
+      var r = im.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+      var w = Math.max(im.naturalWidth, r.width * 2.2);
+      lb.classList.add("zoomed"); im.style.width = w + "px";
+      requestAnimationFrame(function () { wrap.scrollLeft = fx * im.offsetWidth - wrap.clientWidth / 2; wrap.scrollTop = fy * im.offsetHeight - wrap.clientHeight / 2; });
+      return;
+    }
     if (e.target.closest(".lb-prev")) { showGal(gal ? gal.i - 1 : 0); return; }
     if (e.target.closest(".lb-next")) { showGal(gal ? gal.i + 1 : 0); return; }
     if (e.target.closest(".lb-close") || e.target.classList.contains("lb-backdrop") || (!lb.classList.contains("tall") && e.target.classList.contains("lb-imgwrap"))) closeLightbox();
