@@ -1167,8 +1167,15 @@ html, body { overflow-x: clip; }
 .ui-open img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .3s ease; }
 .ui-open:hover img { transform: scale(1.03); }
 .ui-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.ui-more { display: block; margin: 14px auto 0; font: inherit; font-size: 14px; font-weight: 600; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--text); cursor: pointer; }
-.ui-more:hover { border-color: var(--text); }
+/* same text + chevron + rule as "See 14 more projects" */
+.ui-more { display: flex; align-items: center; gap: 6px; width: 100%; margin: 18px 0 0; padding: 4px 0; border: 0; background: none; font: inherit; cursor: pointer; color: var(--text-2); text-align: left; }
+.ui-more::after { content: ""; flex: 1; height: 1px; margin-left: 10px; background: var(--line); }
+.ui-more-label { font-size: 14.5px; font-weight: 400; }
+.ui-more .more-chev { width: 18px; height: 18px; flex: none; transition: transform .2s; }
+.ui-more[aria-expanded="true"] .more-chev { transform: rotate(180deg); }
+.ui-more:hover { color: var(--text); }
+.ui-more:hover .ui-more-label { text-decoration: underline; text-underline-offset: 3px; }
+.ui-more:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 .ui-more .more-opened, .ui-more[aria-expanded="true"] .more-closed { display: none; }
 .ui-more[aria-expanded="true"] .more-opened { display: inline; }
 @media (max-width: 640px) {
