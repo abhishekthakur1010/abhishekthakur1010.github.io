@@ -170,8 +170,8 @@ window.DECK = {
       headline: ["Making ", "product discovery", " seamless"],
       highlight: "product discovery",
       body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
-      hero: "enhance-v2-pdp-main.png",
-      backShots: ["enhance-v2-home.png", "enhance-v2-plp-grid.png"],
+      hero: "enhance-v1-pdp.png",
+      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
@@ -179,7 +179,7 @@ window.DECK = {
         { l: "Team", v: "PM · Engineering · Analytics" },
         { l: "After launch", v: "{{50%|search}} search → cart · {{29%|speed}} faster" }
       ],
-      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for the live Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
+      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
     /* 02 — BUSINESS CONTEXT (infographic) */
@@ -339,26 +339,26 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution · Home",
       headline: ["Where do I start?"],
-      labels: ["Before", "V1 · Quick test", "Live · Full design"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "After V1"],
-      jump: "Full launch",
-      sub: "V1 tested the approach fast. The full design launched after.",
+      labels: ["Before", "V1 · My design", "Live · Latest UI"],
+      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
+      jump: "UI refresh",
+      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
         { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
         { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
         { img: "enhance-live-home.jpg", video: "enhance-live-home.mp4", n: "Search first, Quick and ShopAll" }
       ],
-      notes: "Home answers: where do I start? Before, banners pushed search and categories down. V1 moved them to the top with one icon style. V2, live today, keeps search first."
+      notes: "Home answers: where do I start? Before, banners pushed search and categories down. My V1 moved them to the top with one icon style. Live is the latest UI refresh on the same IA: search still comes first."
     },
 
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Listing",
       headline: ["Which one should I pick?"],
-      labels: ["Before", "V1 · Quick test", "Live · Full design"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "After V1"],
-      jump: "Full launch",
-      sub: "V1 tested the approach fast. The full design launched after.",
+      labels: ["Before", "V1 · My design", "Live · Latest UI"],
+      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
+      jump: "UI refresh",
+      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
         { img: "enhance-v1-plp.png", n: "Rating, discount, wishlist, sub-categories" },
@@ -371,23 +371,23 @@ window.DECK = {
         takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
         implication: "Every change answers a comparison question on the card itself."
       },
-      notes: "Listing answers: which one? Before, cards showed only name and price. Each version put more of the decision on the card: rating, discount, wishlist, then a compact grid in V2."
+      notes: "Listing answers: which one? Before, cards showed only name and price. My V1 put the decision on the card: rating, discount, wishlist. Live is the latest UI refresh on the same IA, now as a compact grid."
     },
 
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Product",
       headline: ["Can I trust it?"],
-      labels: ["Before", "V1 · Quick test", "Live · Full design"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "After V1"],
-      jump: "Full launch",
-      sub: "V1 tested the approach fast. The full design launched after.",
+      labels: ["Before", "V1 · My design", "Live · Latest UI"],
+      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
+      jump: "UI refresh",
+      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
         { img: "enhance-problem-pdp.png", n: "Long page, key details buried" },
         { img: "enhance-v1-pdp.png", n: "Rating, size and offers moved up" },
         { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
       ],
-      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. V1 pulled them up; V2 keeps price, size and Add to cart on the first screen."
+      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
     },
 
     {
