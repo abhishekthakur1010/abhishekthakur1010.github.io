@@ -390,7 +390,7 @@ body.deck[data-theme="light"] .theme-toggle .ic-moon { display: block; }
 .df-stage { font-size: 13px; font-weight: 600; color: var(--soft); text-align: right; }
 .df-barwrap { position: relative; display: flex; align-items: center; gap: 12px; }
 .df-bar { height: 44px; width: var(--w, 10%); border-radius: 10px; display: flex; align-items: center; padding: 0 14px;
-  background: linear-gradient(90deg, var(--accent), #ff7a5a); box-shadow: 0 6px 18px rgba(255,59,48,0.25); transition: width .6s var(--ease); }
+  background: linear-gradient(90deg, var(--accent), var(--pos)); box-shadow: 0 6px 18px rgba(0,120,173,0.22); transition: width .6s var(--ease); }
 .df-count { font-size: 14px; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .df-pct { font-size: 13px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .df-drop { position: absolute; right: 0; top: -14px; font-size: 11px; color: var(--dim); }
@@ -1515,3 +1515,20 @@ body.deck[data-theme="light"] .im-bar.post span { color: #fff; }
 .device.scrolls .ds-hint { position: absolute; left: 50%; bottom: 19%; transform: translateX(-50%); z-index: 3; font-size: 9px; font-weight: 700; letter-spacing: .04em; color: #fff; background: rgba(0,0,0,.55); padding: 3px 9px; border-radius: 999px; pointer-events: none; transition: opacity .3s; }
 .device.scrolls:hover .ds-hint { opacity: 0; }
 .evo-media.zoom .device.scrolls .ds-scroll img { height: auto; }
+
+/* ===== JioMart palette: blue = action, red = problem, green = win ===== */
+body.deck[data-theme="light"] {
+  --accent: #0078ad;
+  --info: #0078ad; --neg: #e30513; --pos: #00873f;
+  --info-soft: #e5f1f7; --neg-soft: #fde8ea; --pos-soft: #e2f6ec;
+  --info-line: rgba(0,120,173,0.4); --neg-line: rgba(227,5,19,0.35); --pos-line: rgba(0,178,89,0.45);
+}
+body.deck[data-theme="dark"] {
+  --accent: #3fa9dd;
+  --info: #3fa9dd; --neg: #ff4d5a; --pos: #00c46a;
+  --info-soft: rgba(63,169,221,0.14); --neg-soft: rgba(255,77,90,0.13); --pos-soft: rgba(0,196,106,0.13);
+  --info-line: rgba(63,169,221,0.45); --neg-line: rgba(255,77,90,0.45); --pos-line: rgba(0,196,106,0.45);
+}
+.opening h1 .hl { color: var(--info); }
+/* green fills carry white text */
+body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-bar.post i { background: #00b259; }
