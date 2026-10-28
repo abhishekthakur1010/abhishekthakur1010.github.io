@@ -1628,3 +1628,13 @@ body.csv2 {
 .csv2.accent-blue { --accent: #0a66c2; }
 .csv2.accent-blue .impact .cta:hover,
 .csv2.accent-blue .cta-btn:hover { box-shadow: 0 14px 30px rgba(10, 102, 194, 0.32); }
+
+/* V1 PDP: static Add to Cart bar pinned to the bottom of the phone screen */
+.csv2 .pdp-cta { position: absolute; z-index: 5; display: block; height: auto; pointer-events: none; }
+.csv2 .pdp-cta[hidden] { display: none; }
+.csv2 .ba .shot.mock .pdp-cta { left: 10px; right: 10px; bottom: 10px; width: calc(100% - 20px); border-radius: 0 0 22px 22px; }
+.csv2 .mockf .pdp-cta { left: 6px; right: 6px; bottom: 6px; width: calc(100% - 12px); border-radius: 0 0 13px 13px; }
+.csv2 .ba .shot.mock.has-cta::after { bottom: calc(18px + 16%); }
+.csv2 .mockf:has(.pdp-cta:not([hidden])).is-scrollable::after { bottom: calc(10px + 16%); }
+.csv2 .ba .shot.mock.has-cta .mock-scroll img,
+.csv2 .mockf:has(.pdp-cta:not([hidden])) .mockf-scroll img { margin-bottom: 16%; }
