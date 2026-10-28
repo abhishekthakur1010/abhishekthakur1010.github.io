@@ -38,6 +38,11 @@
     return "<div class='device " + (extra || "") + "'><div class='dn'></div><div class='ds'>" +
       "<img src='" + img(src) + "' data-focus='" + (focus || 0) + "'></div></div>";
   }
+  // a long screen that scrolls inside the phone, with an optional sticky bottom bar
+  function scrollDevice(s) {
+    return "<div class='device vs scrolls'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(s.scroll) + "' alt=''></div>" +
+      (s.cta ? "<img class='ds-cta' src='" + img(s.cta) + "' alt=''>" : "") + "<span class='ds-hint'>scroll</span></div></div>";
+  }
   function videoDevice(src, poster, extra) {
     return "<div class='device " + (extra || "") + "'><div class='dn'></div><div class='ds'>" +
       "<video src='" + img(src) + "' muted loop playsinline preload='metadata' poster='" + img(poster) + "'></video></div></div>";
@@ -658,7 +663,7 @@
         var cls = i === 0 ? "before" : (i === n - 1 ? "live" : "mid");
         return "<figure class='vs-col " + cls + (i ? " reveal' data-step='" + i + "'" : "'") + ">" +
           "<figcaption><span class='vs-chip'>" + esc(sc.labels[i]) + "</span><span class='vs-when'>" + esc((sc.when || [])[i] || "") + "</span></figcaption>" +
-          "<span class='evo-media zoomable' title='Click to enlarge'>" + (s.video ? videoDevice(s.video, s.img, "vs") : device(s.img, 0, "vs")) + "</span>" +
+          "<span class='evo-media zoomable' title='Click to enlarge'>" + (s.video ? videoDevice(s.video, s.img, "vs") : s.scroll ? scrollDevice(s) : device(s.img, 0, "vs")) + "</span>" +
           "<p class='vs-note'>" + esc(s.n) + "</p></figure>";
       };
       // Before and the quick-test versions sit together; the full launch stands apart
