@@ -8,6 +8,7 @@
   var cover = document.querySelector('.cover');
   if (!cover || !document.createElement('canvas').getContext) return;
 
+  var DIYA_S = 1.5; // diya size on the strings
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Categories heading: a hint until the sparkler peaks, then "Happy Diwali" with the skyrockets.
   // Without motion nothing can be lit, so it greets at once.
@@ -224,7 +225,7 @@
     // Each kandil hangs clear of the bunting: its top sits a little below the flags above it.
     scene.lanterns.forEach(function (L) { L.len = Math.max(L.len, (buntingBottom(L.x) + 6) / L.s) + 4 / L.s; });
     // Flame positions, used to light the sparkler.
-    scene.flames = scene.diyas.map(function (d) { return { x: d.x + 3.2, y: d.len + 3 }; });
+    scene.flames = scene.diyas.map(function (d) { return { x: d.x + 3 * DIYA_S, y: d.len + 4 - DIYA_S }; });
     var L = scene.lanterns[0];
     hint.style.left = (L.x - 28 * L.s) + 'px';
     hint.style.top = (L.len * L.s) + 'px';
@@ -288,7 +289,7 @@
     scene.diyas.forEach(function (d) {
       ctx.fillStyle = 'rgba(255,225,180,.38)';
       for (var y = 4; y < d.len; y += 5) { ctx.beginPath(); ctx.arc(d.x, y, 0.8, 0, 6.2832); ctx.fill(); }
-      diya(d.x, d.len + 4, 1.05, d.p);
+      diya(d.x, d.len + 4, DIYA_S, d.p);
     });
   }
 
