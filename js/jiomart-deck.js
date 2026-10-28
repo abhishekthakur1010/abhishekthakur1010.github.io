@@ -40,8 +40,8 @@
   }
   // a long screen that scrolls inside the phone, with an optional sticky bottom bar
   function scrollDevice(s) {
-    return "<div class='device vs scrolls'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(s.scroll) + "' alt=''></div>" +
-      (s.cta ? "<img class='ds-cta' src='" + img(s.cta) + "' alt=''>" : "") + "<span class='ds-hint'>scroll</span></div></div>";
+    return "<div class='device vs scrolls' style='--cta-h:" + (s.ctaH || "16%") + "'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(s.scroll) + "' alt=''></div>" +
+      (s.cta ? "<img class='ds-cta' src='" + img(s.cta) + "' alt=''>" : "") + "</div></div>";
   }
   function videoDevice(src, poster, extra) {
     return "<div class='device " + (extra || "") + "'><div class='dn'></div><div class='ds'>" +

@@ -1510,7 +1510,7 @@ body.deck[data-theme="light"] .im-bar.post span { color: #fff; }
 .device.scrolls .ds { position: relative; }
 .device.scrolls .ds-scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
 .device.scrolls .ds-scroll::-webkit-scrollbar { display: none; }
-.device.scrolls .ds-scroll img { display: block; width: 100%; height: auto; margin-bottom: 16%; }
+.device.scrolls .ds-scroll img { display: block; width: 100%; height: auto; margin-bottom: var(--cta-h, 16%); }
 .device.scrolls .ds-cta { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; z-index: 2; pointer-events: none; }
 .device.scrolls .ds-hint { position: absolute; left: 50%; bottom: 19%; transform: translateX(-50%); z-index: 3; font-size: 9px; font-weight: 700; letter-spacing: .04em; color: #fff; background: rgba(0,0,0,.55); padding: 3px 9px; border-radius: 999px; pointer-events: none; transition: opacity .3s; }
 .device.scrolls:hover .ds-hint { opacity: 0; }

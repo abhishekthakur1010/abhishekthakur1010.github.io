@@ -1638,3 +1638,8 @@ body.csv2 {
 .csv2 .mockf:has(.pdp-cta:not([hidden])).is-scrollable::after { bottom: calc(10px + 16%); }
 .csv2 .ba .shot.mock.has-cta .mock-scroll img,
 .csv2 .mockf:has(.pdp-cta:not([hidden])) .mockf-scroll img { margin-bottom: 16%; }
+
+/* old PDP bar is taller (bar + bottom nav); no scroll hints on these mocks */
+.csv2 .ba .shot.mock.tall:has(.old-bar) .mock-scroll img,
+.csv2 .mockf:has(.old-bar:not([hidden])) .mockf-scroll img { margin-bottom: 37%; }
+.csv2 .ba .shot.mock.tall::after, .csv2 .mockf.is-scrollable::after { display: none; }

@@ -383,7 +383,7 @@ window.DECK = {
       jump: "UI refresh",
       sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
-        { img: "enhance-problem-pdp.png", n: "Long page, key details buried" },
+        { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
         { img: "enhance-v1-pdp-fold.png", scroll: "enhance-v1-pdp.png", cta: "enhance-v1-pdp-cta.png", n: "Rating, size and offers moved up" },
         { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
       ],
