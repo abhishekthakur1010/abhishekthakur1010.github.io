@@ -337,18 +337,18 @@ window.DECK = {
     /* 10–12 — SOLUTION: each screen from Before to Live */
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Home",
-      headline: ["Where do I start?"],
+      eyebrow: "The solution · Product",
+      headline: ["Can I trust it?"],
       labels: ["Before", "V1 · My design", "Live · Latest UI"],
       when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
       jump: "UI refresh",
       sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
-        { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
-        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
-        { img: "enhance-live-home.jpg", video: "enhance-live-home.mp4", n: "Search first, Quick and ShopAll" }
+        { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
+        { img: "enhance-v1-pdp-fold.png", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png", n: "Rating, size and offers moved up" },
+        { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
       ],
-      notes: "Home answers: where do I start? Before, banners pushed search and categories down. My V1 moved them to the top with one icon style. Live is the latest UI refresh on the same IA: search still comes first."
+      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
     },
 
     {
@@ -376,18 +376,18 @@ window.DECK = {
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Product",
-      headline: ["Can I trust it?"],
+      eyebrow: "The solution · Home",
+      headline: ["Where do I start?"],
       labels: ["Before", "V1 · My design", "Live · Latest UI"],
       when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
       jump: "UI refresh",
       sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
-        { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png", n: "Rating, size and offers moved up" },
-        { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
+        { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
+        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
+        { img: "enhance-live-home.jpg", video: "enhance-live-home.mp4", n: "Search first, Quick and ShopAll" }
       ],
-      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
+      notes: "Home answers: where do I start? Before, banners pushed search and categories down. My V1 moved them to the top with one icon style. Live is the latest UI refresh on the same IA: search still comes first."
     },
 
     {
