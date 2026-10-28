@@ -1643,3 +1643,20 @@ body.csv2 {
 .csv2 .ba .shot.mock.tall:has(.old-bar) .mock-scroll img,
 .csv2 .mockf:has(.old-bar:not([hidden])) .mockf-scroll img { margin-bottom: 37%; }
 .csv2 .ba .shot.mock.tall::after, .csv2 .mockf.is-scrollable::after { display: none; }
+
+/* data loop: measure → audit → benchmark → test → re-measure */
+.csv2 .loop { list-style: none; counter-reset: lp; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 36px 0 0; padding: 0; }
+.csv2 .loop li { counter-increment: lp; position: relative; padding: 16px 16px 18px; border-radius: 14px; background: var(--bg-soft); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+.csv2 .loop li::before { content: "0" counter(lp); font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--accent); }
+.csv2 .loop b { font-size: 15px; font-weight: 600; }
+.csv2 .loop span { font-size: 13.5px; line-height: 1.5; color: var(--muted, #555); }
+.csv2 .loop li:not(:last-child)::after { content: "→"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%); color: var(--faint, #999); font-size: 14px; z-index: 1; }
+@media (max-width: 900px) { .csv2 .loop { grid-template-columns: 1fr 1fr; } .csv2 .loop li::after { display: none; } }
+@media (max-width: 560px) { .csv2 .loop { grid-template-columns: 1fr; } }
+
+/* shipped: ad film frames */
+.csv2 .adgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.csv2 .adgrid figure { margin: 0; border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 2000 / 970; }
+.csv2 .adgrid img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.csv2 .ad-note { margin-top: 14px; font-size: 13.5px; color: var(--faint, #888); }
+@media (max-width: 640px) { .csv2 .adgrid { grid-template-columns: 1fr; } }
