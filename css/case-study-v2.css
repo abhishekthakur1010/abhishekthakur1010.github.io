@@ -1677,3 +1677,26 @@ body.csv2 {
 .csv2.accent-blue section.block.showcase { padding-top: 96px; padding-bottom: 96px; }
 .csv2.accent-blue .showcase .iter { margin-top: 18px; }
 html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
+
+/* ===== JioMart palette: blue = action, red = problem, green = win ===== */
+.csv2.accent-blue {
+  --jm-blue: #0078ad; --jm-blue-20: #e5f1f7;
+  --jm-red: #e30513;  --jm-red-20: #fde8ea;
+  --jm-green: #00b259; --jm-green-20: #e2f6ec;
+  --accent: var(--jm-blue); --accent-soft: var(--jm-blue-20);
+}
+.csv2.accent-blue .impact .cta:hover, .csv2.accent-blue .cta-btn:hover { box-shadow: 0 14px 30px rgba(0,120,173,.3); }
+/* problems read red */
+.csv2.accent-blue .problem .idx { background: var(--jm-red-20); color: var(--jm-red); }
+/* wins read green: data + outcome numbers, hero badge, after labels, ratings */
+.csv2.accent-blue .impact .stat .num .accent,
+.csv2.accent-blue .device-badge b em { color: var(--jm-green); }
+.csv2.accent-blue .reflection { border-left-color: var(--jm-green); }
+.csv2.accent-blue .ba figure.after figcaption { color: var(--jm-green); }
+.csv2.accent-blue .rv-bar b { background: var(--jm-green); }
+.csv2.accent-blue .rv-stars, .csv2.accent-blue .rv-big .star, .csv2.accent-blue .pb-rate .star { color: var(--jm-green); }
+.csv2.accent-blue .iter-tab .dot { background: var(--jm-green); box-shadow: 0 0 0 3px rgba(0,178,89,.25); }
+/* avatars + loop numbers use the brand tints instead of solid blue */
+.csv2.accent-blue .rv-av { background: var(--jm-red-20); color: var(--jm-red); }
+.csv2.accent-blue .loop li::before { color: var(--jm-green); }
+.csv2.accent-blue .loop li:last-child { border-color: var(--jm-green); background: var(--jm-green-20); }
