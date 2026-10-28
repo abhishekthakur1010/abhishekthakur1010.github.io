@@ -1533,7 +1533,6 @@ body.deck[data-theme="dark"] {
 /* green fills carry white text */
 body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-bar.post i { background: #00b259; }
 
-/* opening: crisp ink headline, brand-blue focus words with a green marker */
+/* opening: crisp ink headline, brand-blue focus words */
 .opening h1 { color: var(--ink); }
-.opening h1 .hl { color: var(--info); background: linear-gradient(transparent 78%, var(--pos-soft) 78%, var(--pos-soft) 94%, transparent 94%); padding: 0 .04em; }
-body.deck[data-theme="light"] .opening h1 .hl { background: linear-gradient(transparent 80%, #c9f0dc 80%, #c9f0dc 94%, transparent 94%); }
+.opening h1 .hl { color: var(--info); }
