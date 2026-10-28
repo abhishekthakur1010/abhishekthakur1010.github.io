@@ -1700,3 +1700,11 @@ html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
 .csv2.accent-blue .rv-av { background: var(--jm-red-20); color: var(--jm-red); }
 .csv2.accent-blue .loop li::before { color: var(--jm-green); }
 .csv2.accent-blue .loop li:last-child { border-color: var(--jm-green); background: var(--jm-green-20); }
+
+/* recognition: award card at the end of the story */
+.csv2 .recog { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 48px; align-items: center; margin-top: 8px; }
+.csv2 .recog-img { margin: 0; border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(0,0,0,.08); }
+.csv2 .recog-img img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+.csv2 .recog-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--jm-green, #00b259); background: var(--jm-green-20, #e2f6ec); padding: 5px 12px; border-radius: 999px; }
+.csv2 .recog-text .sec-title { margin-top: 14px; }
+@media (max-width: 760px) { .csv2 .recog { grid-template-columns: 1fr; gap: 24px; } }
