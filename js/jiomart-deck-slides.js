@@ -384,7 +384,7 @@ window.DECK = {
       sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png", scroll: "enhance-v1-pdp.png", cta: "enhance-v1-pdp-cta.png", n: "Rating, size and offers moved up" },
+        { img: "enhance-v1-pdp-fold.png", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png", n: "Rating, size and offers moved up" },
         { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
       ],
       notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
