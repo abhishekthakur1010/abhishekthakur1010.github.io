@@ -1215,3 +1215,7 @@ html, body { overflow-x: clip; }
   .media-modal.is-gallery .media-nav.prev { left: calc(50% - 58px); }
   .media-modal.is-gallery .media-nav.next { right: calc(50% - 58px); }
 }
+
+/* newest case study leads the grid across both columns */
+.featured > .feat-wide { grid-column: 1 / -1; }
+@media (max-width: 720px) { .featured > .feat-wide { grid-column: auto; } }
