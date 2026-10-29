@@ -367,7 +367,6 @@
         nextRocket = rand(0.45, 0.9);
         rockets.push({ x: W * rand(0.18, 0.82), y: H + 4, vy: -rand(H * 1.3, H * 1.7), top: H * rand(0.14, 0.42),
           col: STAR_COLS[Math.floor(rand(0, STAR_COLS.length))] });
-        sfx.whistle();
       }
     }
     if (!rockets.length && !stars.length) return;
@@ -378,7 +377,6 @@
       ctx.strokeStyle = 'rgba(255,220,170,.55)'; ctx.lineWidth = 1.2;
       ctx.beginPath(); ctx.moveTo(r.x, r.y); ctx.lineTo(r.x, r.y + 14); ctx.stroke();
       if (r.y > r.top) return true;
-      sfx.boom();
       // Burst: a ring of stars, with a second colour mixed in.
       var n = Math.round(rand(50, 70)), alt = STAR_COLS[Math.floor(rand(0, STAR_COLS.length))], sp = rand(H * 0.7, H * 0.95);
       for (var i = 0; i < n; i++) {
