@@ -120,6 +120,7 @@
       case "oppmatrix": return sc.rows.length + 1;
       case "ideas": return sc.pairs.length;
       case "collab": return sc.steps.length;
+      case "pair": return 0;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
       case "versions": return sc.stages.length - 1;
@@ -619,6 +620,16 @@
       return "<div class='sl split'><div class='c-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
         "<div class='id-pairs'>" + pairs + "</div></div>" +
         "<div class='c-visual'><div class='tile-grid id-tiles'>" + tiles + "</div></div></div>";
+    },
+
+    /* two large images side by side, each with a caption */
+    pair: function (sc) {
+      var figs = sc.figs.map(function (f) {
+        return "<figure class='pr-fig" + (f.tone ? " " + f.tone : "") + "'><span class='pr-img zoomable' title='Click to enlarge'><img src='" + img(f.img) + "' alt=''></span>" +
+          "<figcaption>" + (f.tag ? "<span class='tag " + tagTone(f.tag) + "'>" + esc(f.tag) + "</span>" : "") + "<b>" + esc(f.t) + "</b>" + esc(f.d || "") + "</figcaption></figure>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='pr-row'>" + figs + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
     /* team sessions as a photo-led timeline */

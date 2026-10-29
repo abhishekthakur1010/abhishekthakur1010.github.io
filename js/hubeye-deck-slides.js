@@ -71,6 +71,19 @@ window.DECK = {
       notes: "HubEye is the control room for Delhivery's hubs. It was rich in data but passive. We turned it into a digital twin of the floor: grey is normal, red is act now, click anything for the why. Numbers are underlined; click to show the evidence."
     },
 
+    /* 02 — THE PHYSICAL HUB */
+    {
+      section: "context", type: "pair",
+      eyebrow: "The physical hub",
+      headline: ["A hub is a city of docks and sectors"],
+      sub: "Tauru Gateway near Gurgaon: trucks at docks on every side, sorting and staging sectors inside.",
+      figs: [
+        { img: "hub-aerial.webp", t: "From the air", d: "Docks wrap the building; trucks queue in the yard.", tag: "Illustrative" },
+        { img: "layout-tauru.webp", t: "The floor plan", d: "Docks on the edges, sector rows inside, staging areas hatched.", tag: "Layout" }
+      ],
+      notes: "Set the scene. A hub is huge: docks all round the building, sector rows inside. Supervisors think in this physical layout, which is why the old tables didn't work for them."
+    },
+
     /* 02 — ASKING THE RIGHT QUESTIONS */
     {
       section: "context", type: "qa",
@@ -88,6 +101,20 @@ window.DECK = {
       fromL: "The brief", from: "Refresh the HubEye dashboard",
       toL: "What it became", to: "Help supervisors act on issues in real time",
       notes: "Business first, then users, then scope. The key answer is the workaround: supervisors left HubEye for spreadsheets to decide anything. The brief shifted from a refresh to helping people act."
+    },
+
+    /* THE EXISTING HUBEYE */
+    {
+      section: "discover", type: "pair",
+      eyebrow: "The existing HubEye",
+      headline: ["Rich data, passive experience"],
+      sub: "Alerts, tiles and tables across 14 tabs. Plenty to read, nothing that said where to act.",
+      figs: [
+        { img: "old-overview.webp", t: "Overview tab", d: "Alert counts and tiles, with no location or priority.", tag: "Before" },
+        { img: "old-floorops.webp", t: "Floor ops tab", d: "Sector health as long tables to scan by hand.", tag: "Before" }
+      ],
+      foot: "Screens from the existing HubEye, via Ravinder Kumar's case study.",
+      notes: "This is what supervisors had. Every number was there, but as counts and tables. To find a problem they had to read, cross-check tabs, then export."
     },
 
     /* 03 — RESEARCH ON THE FLOOR */

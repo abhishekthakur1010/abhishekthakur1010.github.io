@@ -42,3 +42,14 @@ body.deck.hubeye[data-theme="dark"] .tag.pos, body.deck.hubeye[data-theme="dark"
 .op-wide .op-badge { position: absolute; left: -26px; bottom: -26px; background: #ed1c24; color: #fff; border: 0; }
 .op-wide .op-badge b, .op-wide .op-badge span, .op-wide .op-badge .ev-link { color: #fff; }
 .op-wide .op-badge span { opacity: .9; }
+
+/* pair: two big images with captions */
+.pr-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(14px, 3vh, 28px); align-items: start; }
+.pr-fig { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.pr-img { display: block; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--panel-line); box-shadow: 0 24px 60px rgba(0,0,0,.25); cursor: zoom-in; }
+.pr-img img { display: block; width: 100%; height: auto; max-height: calc(100vh - 500px); object-fit: contain; background: #fff; }
+.pr-fig figcaption { font-size: 14px; line-height: 1.45; color: var(--soft); }
+.pr-fig figcaption b { display: block; font-size: 17px; color: var(--ink); margin: 6px 0 2px; }
+.pr-fig figcaption .tag { margin-right: 6px; }
+@media (max-width: 900px) { .pr-row { grid-template-columns: 1fr; } }
+@media (max-height: 860px) { .pr-row { margin-top: 10px; } .pr-fig { gap: 8px; } .pr-fig figcaption b { font-size: 15px; } }
