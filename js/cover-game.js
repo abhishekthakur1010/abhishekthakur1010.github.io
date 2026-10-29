@@ -123,6 +123,21 @@
         noiseBurst(t, 0.06, 'lowpass', 1800, 300, 0.8, 0.2, 0.002);
         if (bull) { tone(t + 0.05, 0.5, 'sine', 1320, 1310, 0.06); tone(t + 0.12, 0.6, 'sine', 1760, 1750, 0.05); }
       },
+      // Skyrocket going up: a thin rising whistle with a little hiss.
+      whistle: function () {
+        if (!ctxOk()) return;
+        var t = ac.currentTime, d = 0.75 + Math.random() * 0.3;
+        tone(t, d, 'sine', 700 + Math.random() * 200, 2000 + Math.random() * 600, 0.025);
+        noiseBurst(t, d, 'bandpass', 2500, 5500, 5, 0.02, 0.25);
+      },
+      // Skyrocket bursting: a low boom, then a crackle as the stars fall.
+      boom: function () {
+        if (!ctxOk()) return;
+        var t = ac.currentTime;
+        tone(t, 0.55, 'sine', 120, 38, 0.3);
+        noiseBurst(t, 0.9, 'lowpass', 2400, 160, 0.7, 0.3, 0.004);
+        for (var i = 0; i < 7; i++) noiseBurst(t + 0.18 + Math.random() * 0.6, 0.04, 'highpass', 3500, 3500, 0.8, 0.03 + Math.random() * 0.03, 0.002);
+      },
       // A soft thud as the bow lands in place.
       land: function () {
         if (!ctxOk()) return;
@@ -130,6 +145,10 @@
       }
     };
   })();
+
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, function first() { sfx.unlock(); window.removeEventListener(ev, first, true); }, true);
+  });
 
   // The visible way in: a bow peeking up from the bottom left of the banner.
   var peek = document.createElement('button');
@@ -348,6 +367,7 @@
         nextRocket = rand(0.45, 0.9);
         rockets.push({ x: W * rand(0.18, 0.82), y: H + 4, vy: -rand(H * 1.3, H * 1.7), top: H * rand(0.14, 0.42),
           col: STAR_COLS[Math.floor(rand(0, STAR_COLS.length))] });
+        sfx.whistle();
       }
     }
     if (!rockets.length && !stars.length) return;
@@ -358,6 +378,7 @@
       ctx.strokeStyle = 'rgba(255,220,170,.55)'; ctx.lineWidth = 1.2;
       ctx.beginPath(); ctx.moveTo(r.x, r.y); ctx.lineTo(r.x, r.y + 14); ctx.stroke();
       if (r.y > r.top) return true;
+      sfx.boom();
       // Burst: a ring of stars, with a second colour mixed in.
       var n = Math.round(rand(50, 70)), alt = STAR_COLS[Math.floor(rand(0, STAR_COLS.length))], sp = rand(H * 0.7, H * 0.95);
       for (var i = 0; i < n; i++) {
