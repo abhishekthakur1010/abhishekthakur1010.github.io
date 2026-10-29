@@ -1,0 +1,31 @@
+/* HubEye deck: same layouts as the JioMart deck, Delhivery black and red only. */
+body.deck.hubeye, body.deck.hubeye[data-theme] {
+  --bg: #0b0b0c; --bg2: #121214; --ink: #f5f5f4;
+  --soft: #c2c2c6; --dim: #8a8a90; --faint: #4a4a50;
+  --line: #222226; --line2: #313137;
+  --panel: #141416; --panel-line: #26262b;
+  --nav: #161618; --nav-h: #222226;
+  --bezel: #000; --card: #141416; --card-hi: #1b1b1e;
+  --accent: #ed1c24; --info: #ff3b42; --warn: #ff3b42; --neg: #ff3b42; --pos: #ff3b42; --star: #ff3b42;
+  --info-soft: rgba(237,28,36,.12); --warn-soft: rgba(237,28,36,.12); --neg-soft: rgba(237,28,36,.12); --pos-soft: rgba(237,28,36,.12);
+  --info-line: rgba(237,28,36,.45); --warn-line: rgba(237,28,36,.45); --neg-line: rgba(237,28,36,.5); --pos-line: rgba(237,28,36,.45);
+}
+body.deck.hubeye .theme-toggle { display: none; }
+/* red fills carry white text */
+body.deck.hubeye .im-bar.post i, body.deck.hubeye .kp-bar.post { background: #ed1c24; }
+body.deck.hubeye .im-bar.post span, body.deck.hubeye .kp-bar.post { color: #fff; }
+body.deck.hubeye .tag { color: var(--soft); border-color: var(--line2); background: transparent; }
+body.deck.hubeye .tag.pos, body.deck.hubeye .tag.info { color: #ff3b42; border-color: rgba(237,28,36,.45); background: rgba(237,28,36,.1); }
+
+/* opening: desktop screen in a browser frame */
+.op-wide .op-top { grid-template-columns: .85fr 1.25fr; }
+.op-browser { position: relative; border-radius: 12px; background: #fff; box-shadow: 0 40px 90px rgba(0,0,0,.6); border: 1px solid #2a2a2f; }
+.op-browser > .zoomable { display: block; border-radius: 0 0 12px 12px; overflow: hidden; cursor: zoom-in; }
+.op-browser img { display: block; width: 100%; height: auto; }
+.op-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #1e1e21; border-radius: 12px 12px 0 0; }
+.op-bar i { width: 9px; height: 9px; border-radius: 50%; background: #444; }
+.op-bar i:nth-child(1) { background: #ff5f57; } .op-bar i:nth-child(2) { background: #febc2e; } .op-bar i:nth-child(3) { background: #28c840; }
+.op-bar em { margin-left: 10px; font-style: normal; font-size: 11px; color: #8a8a90; }
+.op-wide .op-badge { position: absolute; left: -26px; bottom: -26px; background: #ed1c24; color: #fff; border: 0; }
+.op-wide .op-badge b, .op-wide .op-badge span, .op-wide .op-badge .ev-link { color: #fff; }
+.op-wide .op-badge span { opacity: .9; }

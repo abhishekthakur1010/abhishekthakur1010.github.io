@@ -158,6 +158,13 @@
           return "<div class='op-back-" + i + "'>" + device(s, 0, "big") + "</div>";
         }).join("") + "</div>";
       }
+      // heroWide: a desktop screen in a browser frame instead of phones
+      if (sc.heroWide) return "<div class='sl opening op-wide'>" +
+        "<div class='op-top'>" +
+        "<div class='op-copy'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + head +
+        "<p class='body'>" + esc(sc.body) + "</p></div>" +
+        "<div class='op-browser'><span class='op-bar'><i></i><i></i><i></i><em>" + esc(sc.url || "") + "</em></span><span class='zoomable'><img src='" + img(sc.heroWide) + "' alt=''></span>" + badge + "</div></div>" +
+        meta + "</div>";
       var visual = sc.hero
         ? "<div class='op-hero'>" + back + "<div class='op-front'>" + device(sc.hero, 0, "big") + "</div>" + badge + "</div>"
         : "<div class='op-shots'>" + (sc.shots || []).map(function (s, i) { return device(s, 0, "sm shot-" + i); }).join("") + "</div>";
