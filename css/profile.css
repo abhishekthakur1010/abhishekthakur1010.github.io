@@ -1219,3 +1219,8 @@ html, body { overflow-x: clip; }
 /* newest case study leads the grid across both columns */
 .featured > .feat-wide { grid-column: 1 / -1; }
 @media (max-width: 720px) { .featured > .feat-wide { grid-column: auto; } }
+
+/* B2C / B2B tag on Selected work cards */
+.cs-type { display: inline-block; margin-right: 8px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .06em; vertical-align: 1px; border: 1px solid currentColor; }
+.cs-type.b2c { color: #0a66c2; background: #eaf2fb; }
+.cs-type.b2b { color: #1d1f23; background: #f1f1f0; }
