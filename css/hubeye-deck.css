@@ -53,3 +53,39 @@ body.deck.hubeye[data-theme="dark"] .tag.pos, body.deck.hubeye[data-theme="dark"
 .pr-fig figcaption .tag { margin-right: 6px; }
 @media (max-width: 900px) { .pr-row { grid-template-columns: 1fr; } }
 @media (max-height: 860px) { .pr-row { margin-top: 10px; } .pr-fig { gap: 8px; } .pr-fig figcaption b { font-size: 15px; } }
+
+/* hubmap: aerial with numbers + floor plan with legend */
+.hm-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(12px, 2.4vh, 24px); height: calc(100vh - 350px); min-height: 300px; max-height: 540px; }
+.hm-aerial { position: relative; margin: 0; border-radius: 16px; overflow: hidden; cursor: zoom-in; box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+.hm-aerial img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; display: block; transition: transform .6s var(--ease, ease); }
+.hm-aerial:hover img { transform: scale(1.03); }
+.hm-aerial figcaption { position: absolute; inset: auto 0 0 0; padding: 60px 20px 18px; background: linear-gradient(transparent, rgba(0,0,0,.82)); color: #fff; display: flex; flex-direction: column; gap: 12px; }
+.hm-place { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+.hm-place em { font-style: normal; font-size: 10px; letter-spacing: .08em; padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); opacity: .8; }
+.hm-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.hm-chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,.12); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18); font-size: 13px; }
+.hm-chip b { font-size: 22px; font-weight: 800; color: #fff; }
+.hm-chip:first-child { background: #ed1c24; border-color: #ed1c24; }
+.hm-plan { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--panel-line); min-height: 0; }
+.hm-plan-k { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.hm-plan-img { flex: 1; min-height: 0; display: grid; place-items: center; border-radius: 10px; background: #fff; overflow: hidden; cursor: zoom-in; }
+.hm-plan-img img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.hm-legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.hm-legend li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 13px; line-height: 1.4; color: var(--soft); }
+.hm-legend b { color: var(--ink); font-weight: 600; margin-right: 6px; }
+.hm-sw { width: 18px; height: 14px; border-radius: 3px; margin-top: 2px; }
+.hm-sw.dock { background: #fff; border: 2px solid #ed1c24; }
+.hm-sw.sector { background: #8f99aa; }
+.hm-sw.stg { background: repeating-linear-gradient(45deg, #c9c9cc 0 3px, #e9e9ea 3px 6px); border: 1px solid #b9b9bd; }
+@media (max-width: 900px) { .hm-grid { grid-template-columns: 1fr; height: auto; max-height: none; } .hm-aerial { height: 280px; } .hm-plan-img { height: 220px; } }
+
+/* laptop mock for the pair slide */
+.pr-laptop { display: block; padding: 0 4%; }
+.pr-lid { display: block; padding: 10px 10px 14px; border-radius: 16px 16px 4px 4px; background: #111214; border: 1px solid #2c2d31; box-shadow: 0 30px 60px rgba(0,0,0,.35); position: relative; }
+.pr-lid::before { content: ""; position: absolute; top: 4px; left: 50%; width: 5px; height: 5px; margin-left: -2px; border-radius: 50%; background: #2e3035; }
+.pr-laptop .pr-img { border-radius: 4px; border: 0; box-shadow: none; }
+.pr-laptop .pr-img img { max-height: calc(100vh - 540px); object-fit: cover; object-position: top left; }
+.pr-base { display: block; height: 14px; margin: 0 -6%; border-radius: 0 0 14px 14px; background: linear-gradient(#cfd0d4, #9a9ca2); position: relative; }
+.pr-base::before { content: ""; position: absolute; top: 0; left: 42%; right: 42%; height: 5px; border-radius: 0 0 6px 6px; background: #8a8c92; }
+body.deck.hubeye[data-theme="dark"] .pr-base { background: linear-gradient(#3a3b40, #222327); }
+body.deck.hubeye[data-theme="dark"] .pr-base::before { background: #1a1b1e; }

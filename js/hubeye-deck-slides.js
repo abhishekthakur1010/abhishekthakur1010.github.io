@@ -73,15 +73,20 @@ window.DECK = {
 
     /* 02 — THE PHYSICAL HUB */
     {
-      section: "context", type: "pair",
+      section: "context", type: "hubmap",
       eyebrow: "The physical hub",
       headline: ["A hub is a city of docks and sectors"],
-      sub: "Tauru Gateway near Gurgaon: trucks at docks on every side, sorting and staging sectors inside.",
-      figs: [
-        { img: "hub-aerial.webp", t: "From the air", d: "Docks wrap the building; trucks queue in the yard.", tag: "Illustrative" },
-        { img: "layout-tauru.webp", t: "The floor plan", d: "Docks on the edges, sector rows inside, staging areas hatched.", tag: "Layout" }
+      sub: "Supervisors think in this layout, not in tables.",
+      aerial: "hub-aerial.webp", aerialTag: "Illustrative", place: "Tauru Gateway · near Gurgaon",
+      stats: [{ n: "159", l: "docks" }, { n: "100+", l: "sectors" }, { n: "59K", l: "shipments inside" }],
+      planK: "The floor plan, as HubEye maps it",
+      plan: "layout-tauru.webp",
+      legend: [
+        { sw: "dock", k: "Docks", d: "On every edge. Trucks unload inbound and load outbound." },
+        { sw: "sector", k: "Sectors", d: "Rows inside. Bags are sorted and put away by destination." },
+        { sw: "stg", k: "Staging", d: "Hatched zones where bags wait for their vehicle." }
       ],
-      notes: "Set the scene. A hub is huge: docks all round the building, sector rows inside. Supervisors think in this physical layout, which is why the old tables didn't work for them."
+      notes: "Set the scene. 57 inbound and 102 outbound docks wrap Tauru Gateway; 100+ sectors inside; about 59K shipments in the building at any time. Press → to show the floor plan: this is the mental model supervisors already have, so we used it as the dashboard."
     },
 
     /* 02 — ASKING THE RIGHT QUESTIONS */
@@ -106,14 +111,13 @@ window.DECK = {
     /* THE EXISTING HUBEYE */
     {
       section: "discover", type: "pair",
-      eyebrow: "The existing HubEye",
+      eyebrow: "The existing HubEye", device: "laptop",
       headline: ["Rich data, passive experience"],
       sub: "Alerts, tiles and tables across 14 tabs. Plenty to read, nothing that said where to act.",
       figs: [
         { img: "old-overview.webp", t: "Overview tab", d: "Alert counts and tiles, with no location or priority.", tag: "Before" },
         { img: "old-floorops.webp", t: "Floor ops tab", d: "Sector health as long tables to scan by hand.", tag: "Before" }
       ],
-      foot: "Screens from the existing HubEye, via Ravinder Kumar's case study.",
       notes: "This is what supervisors had. Every number was there, but as counts and tables. To find a problem they had to read, cross-check tabs, then export."
     },
 

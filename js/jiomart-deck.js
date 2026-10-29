@@ -121,6 +121,7 @@
       case "ideas": return sc.pairs.length;
       case "collab": return sc.steps.length;
       case "pair": return 0;
+      case "hubmap": return 1;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
       case "versions": return sc.stages.length - 1;
@@ -622,10 +623,28 @@
         "<div class='c-visual'><div class='tile-grid id-tiles'>" + tiles + "</div></div></div>";
     },
 
+    /* the physical site: aerial photo with key numbers, then the floor plan with a legend */
+    hubmap: function (sc) {
+      var chips = sc.stats.map(function (t) { return "<span class='hm-chip'><b>" + esc(t.n) + "</b>" + esc(t.l) + "</span>"; }).join("");
+      var legend = sc.legend.map(function (g) {
+        return "<li><i class='hm-sw " + g.sw + "'></i><span><b>" + esc(g.k) + "</b>" + esc(g.d) + "</span></li>";
+      }).join("");
+      return "<div class='sl hm'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='hm-grid'>" +
+          "<figure class='hm-aerial zoomable' title='Click to enlarge'><img src='" + img(sc.aerial) + "' alt=''>" +
+            "<figcaption><span class='hm-place'>" + esc(sc.place) + (sc.aerialTag ? "<em>" + esc(sc.aerialTag) + "</em>" : "") + "</span><span class='hm-chips'>" + chips + "</span></figcaption></figure>" +
+          "<div class='hm-plan reveal' data-step='1'><span class='hm-plan-k'>" + esc(sc.planK) + "</span>" +
+            "<span class='hm-plan-img zoomable' title='Click to enlarge'><img src='" + img(sc.plan) + "' alt=''></span>" +
+            "<ul class='hm-legend'>" + legend + "</ul></div>" +
+        "</div></div>";
+    },
+
     /* two large images side by side, each with a caption */
     pair: function (sc) {
       var figs = sc.figs.map(function (f) {
-        return "<figure class='pr-fig" + (f.tone ? " " + f.tone : "") + "'><span class='pr-img zoomable' title='Click to enlarge'><img src='" + img(f.img) + "' alt=''></span>" +
+        var shot = "<span class='pr-img zoomable' title='Click to enlarge'><img src='" + img(f.img) + "' alt=''></span>";
+        if (sc.device === "laptop") shot = "<span class='pr-laptop'><span class='pr-lid'>" + shot + "</span><span class='pr-base'></span></span>";
+        return "<figure class='pr-fig" + (f.tone ? " " + f.tone : "") + "'>" + shot +
           "<figcaption>" + (f.tag ? "<span class='tag " + tagTone(f.tag) + "'>" + esc(f.tag) + "</span>" : "") + "<b>" + esc(f.t) + "</b>" + esc(f.d || "") + "</figcaption></figure>";
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
