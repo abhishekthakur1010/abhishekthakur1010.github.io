@@ -184,7 +184,7 @@
   var mode = 'idle'; // idle | aim | fly | done
   var bow, target = null, pull = null, arrow = null, stuck = [], left = ARROWS, score = 0, flash = 0, best = null;
   var keyAim = { angle: -0.18, power: 0.7 }, raf = 0, last = 0, landing = false, keyUsed = false;
-  var embers = [], sparks = [], trail = [], scene = null;
+  var embers = [], sparks = [], trail = [], scene = null, emberW = 0, emberH = 0;
   // Skyrockets in the background while the sparkler is at its peak.
   var rockets = [], stars = [], nextRocket = 0, peak = false;
   var STAR_COLS = ['#ffd27a', '#ff9a4d', '#ff6b5a', '#ffe9b8', '#ffb3c7', '#9fe3c9'];
@@ -251,8 +251,15 @@
     hint.style.width = (56 * L.s) + 'px';
     hint.style.height = (92 * L.s) + 'px';
     var n = Math.round((W * H) / (narrow ? 2600 : 4200));
-    embers = [];
-    for (var i = 0; i < n; i++) embers.push(newEmber(true));
+    // Keep the embers that are already floating: stretch them to the new size so they stay put
+    // when the banner resizes (e.g. opening a category), and only add or drop the difference.
+    if (embers.length && emberW && emberH) {
+      var sx = W / emberW, sy = H / emberH;
+      embers.forEach(function (e) { e.x *= sx; e.y *= sy; });
+    }
+    while (embers.length < n) embers.push(newEmber(true));
+    if (embers.length > n) embers.length = n;
+    emberW = W; emberH = H;
   }
   function newEmber(anywhere) {
     return {
