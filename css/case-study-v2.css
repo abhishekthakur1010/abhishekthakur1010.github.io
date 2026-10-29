@@ -1708,3 +1708,44 @@ html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
 .csv2 .recog-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--jm-green, #00b259); background: var(--jm-green-20, #e2f6ec); padding: 5px 12px; border-radius: 999px; }
 .csv2 .recog-text .sec-title { margin-top: 14px; }
 @media (max-width: 760px) { .csv2 .recog { grid-template-columns: 1fr; gap: 24px; } }
+
+/* ===== HubEye case study ===== */
+.csv2.hubeye .hx-hero { grid-template-columns: 1fr 1.25fr; align-items: center; }
+.csv2.hubeye .hx-hero-shot { position: relative; }
+.csv2.hubeye .hx-hero-shot .device-badge { left: -18px; bottom: -18px; }
+.csv2 .hx-shot { margin: 0; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.12); }
+.csv2 .hx-shot.wide { margin-top: 36px; }
+.csv2 .hx-shot + .hx-shot { margin-top: 24px; }
+.csv2 .hx-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #f2f2f0; border-bottom: 1px solid var(--line); }
+.csv2 .hx-bar i { width: 9px; height: 9px; border-radius: 50%; background: #d6d4cf; }
+.csv2 .hx-bar i:first-child { background: #ff5f57; } .csv2 .hx-bar i:nth-child(2) { background: #febc2e; } .csv2 .hx-bar i:nth-child(3) { background: #28c840; }
+.csv2 .hx-bar span { margin-left: 10px; font-size: 11px; color: var(--muted); background: #fff; padding: 3px 10px; border-radius: 6px; }
+.csv2 .hx-shot img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+.csv2 .hx-flow { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0 0; padding: 0; }
+.csv2 .hx-flow li { padding: 16px; border-radius: 14px; background: var(--bg-soft); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; position: relative; }
+.csv2 .hx-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%); color: var(--faint); }
+.csv2 .hx-flow b { font-size: 15px; font-weight: 600; }
+.csv2 .hx-flow span { font-size: 13px; color: var(--muted); }
+.csv2 .hx-flow li.bad { background: var(--accent); border-color: var(--accent); color: #fff; }
+.csv2 .hx-flow li.bad span { color: rgba(255,255,255,.85); }
+.csv2 .hx-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.csv2 .hx-principles > div { padding: 22px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+.csv2 .hx-k { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.csv2 .hx-principles h4 { margin: 8px 0 6px; font-size: 17px; }
+.csv2 .hx-principles p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.csv2 .hx-pops { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.csv2 .hx-pops figure { margin: 0; border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+.csv2 .hx-pops img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+.csv2 .hx-pops figcaption { padding: 14px 16px 16px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.csv2 .hx-pops figcaption b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 2px; }
+.csv2 .hx-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.csv2 .hx-list { margin: 22px 0 0; padding-left: 18px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.csv2 .hx-list li { margin-bottom: 8px; } .csv2 .hx-list b { color: var(--ink); }
+.csv2 .hx-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.csv2 .hx-panels img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(0,0,0,.08); cursor: zoom-in; }
+@media (max-width: 900px) {
+  .csv2.hubeye .hx-hero, .csv2 .hx-split { grid-template-columns: 1fr; }
+  .csv2 .hx-flow, .csv2 .hx-principles, .csv2 .hx-pops { grid-template-columns: 1fr; }
+  .csv2 .hx-flow li::after { display: none; }
+  .csv2.hubeye .hx-hero-shot .device-badge { left: 8px; bottom: -14px; }
+}

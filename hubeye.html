@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delhivery HubEye — Hub digital twin · Abhishek Thakur</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/case-study-v2.css?v=66" rel="stylesheet" />
+    <link href="./css/st-bar.css?v=5" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/shimmer.css" />
+<script src="./js/shimmer.js"></script>
+</head>
+
+  <body class="csv2 hubeye">
+    <!-- Top bar: same as My story (css/st-bar.css) -->
+    <header class="st-bar">
+      <div class="st-bar-in">
+        <a class="st-back" href="./profile.html" onclick="try{var r=new window.URL(document.referrer),k=function(s){return s.replace(/\.html$/,'').replace(/\/(index)?$/,'/profile')};if(r.host===location.host&&k(r.pathname)===k(this.pathname)){event.preventDefault();history.back()}}catch(e){}" aria-label="Back to profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        </a>
+        <a class="st-brand" href="./profile.html"><img src="./images/profile-photo.jpg" alt="" /><span>Abhishek Thakur<small>AI Product Design Leader | Design Trusted by Millions</small></span></a>
+        <a class="st-btn" href="./resume.pdf?v=3" target="_blank" rel="noopener">Resume</a>
+      </div>
+      <div class="st-progress" aria-hidden="true"><span></span></div>
+    </header>
+    <script>
+      // reading progress under the bar
+      (function () {
+        var bar = document.querySelector('.st-progress span');
+        function onScroll() { var h = document.documentElement, max = h.scrollHeight - h.clientHeight; bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')'; }
+        addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+      })();
+    </script>
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-cover" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero-top hx-hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Delhivery · Mid-mile · HubEye</div>
+            <h1>Turning HubEye into a <span class="hl">digital twin</span> of the hub</h1>
+            <p class="sub">
+              Supervisors could see every number but act on none of them. We mapped
+              live operations onto the real hub floor, so problems show up where
+              they happen and get fixed in the same shift.
+            </p>
+          </div>
+          <div class="hx-hero-shot">
+            <figure class="hx-shot"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/hub-map-panel.webp" alt="HubEye digital twin: Tauru Gateway floor map with live red alerts and the current snapshot panel" loading="lazy" /></figure>
+            <div class="device-badge"><b>72% <em>→</em> 79%</b><span>Put compliance</span></div>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div>
+            <div class="label">My Role</div>
+            <div class="val">Design Lead, Hubs &amp; Mid-mile<br />Direction, critique, stakeholders</div>
+          </div>
+          <div>
+            <div class="label">Timeline</div>
+            <div class="val">Q2 2025<br />Live in Delhivery hubs</div>
+          </div>
+          <div>
+            <div class="label">Users</div>
+            <div class="val">Hub managers · Supervisors<br />Central ops</div>
+          </div>
+          <div>
+            <div class="label">Headline impact</div>
+            <div class="val">Put compliance 72% → 79%<br />On-time departures 46% → 54%</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01 Overview -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">Overview</span></div>
+        <div class="acts">
+          <div class="act"><div class="k"><span class="n">01</span><span class="t">Context</span></div><h3>The hub's control room</h3><p>HubEye is how Delhivery supervisors watch 140+ hubs and gateways, each moving lakhs of shipments a day.</p></div>
+          <div class="act"><div class="k"><span class="n">02</span><span class="t">Problem</span></div><h3>Built to watch, not to act</h3><p>Rich data in tiles and tables. To act, supervisors exported to Excel, losing 6+ hours a shift.</p></div>
+          <div class="act"><div class="k"><span class="n">03</span><span class="t">Solution</span></div><h3>A digital twin of the floor</h3><p>The real hub layout, 1:1, with grey for normal and red for act now. Click anything for the why.</p></div>
+          <div class="act"><div class="k"><span class="n">04</span><span class="t">Outcome</span></div><h3>Faster fixes on the floor</h3><p>Put compliance 72% → 79%, on-time departures 46% → 54%, shipment ageing down 8%.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Context -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">02</span><span class="sec-label">Context</span></div>
+        <h2 class="sec-title">India's largest mid-mile network runs through these hubs.</h2>
+        <p class="lead">
+          Some facilities exceed 1.2 million square feet. Docks, inbound zones and
+          staging sectors each need decisions in minutes, around the clock.
+        </p>
+        <div class="statgrid">
+          <div class="statcard"><div class="n">140+</div><div class="l">Hubs &amp; gateways across India</div></div>
+          <div class="statcard"><div class="n">8M+</div><div class="l">Shipments processed every day</div></div>
+          <div class="statcard"><div class="n">100+</div><div class="l">Floor sectors per hub</div></div>
+          <div class="statcard"><div class="n">24/7</div><div class="l">Round-the-clock operations</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Problem -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label">Problem</span></div>
+        <h2 class="sec-title">A system built to watch, not to act.</h2>
+        <p class="lead">
+          The old HubEye was a read-only wall of tiles and sector tables across 14 tabs.
+          Rich in data, but entirely passive: no priority, no reason, no next step.
+        </p>
+        <div class="problems">
+          <div class="problem"><div class="idx">1</div><div><h4>Read-only monitoring</h4><p>Counts without context. A supervisor saw "155 unassigned" but not where, or why.</p></div></div>
+          <div class="problem"><div class="idx">2</div><div><h4>Constant tab switching</h4><p>Fleet, dock, floor, inbound and outbound lived in separate tabs, so no single view of the hub.</p></div></div>
+          <div class="problem"><div class="idx">3</div><div><h4>Tables to read, not see</h4><p>Sector health meant scanning long tables of bags, putaway and compliance by hand.</p></div></div>
+          <div class="problem"><div class="idx">4</div><div><h4>Insight outside the tool</h4><p>Export, clean in Excel, pivot, then spot the bottleneck: 6+ hours lost every shift.</p></div></div>
+        </div>
+        <ol class="hx-flow">
+          <li><b>Export data</b><span>~30 min</span></li>
+          <li><b>Excel &amp; pivots</b><span>+2 hrs</span></li>
+          <li><b>Derive insights</b><span>+3 hrs</span></li>
+          <li class="bad"><b>Delayed action</b><span>6+ hrs lost, shipment already stuck</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 Data band -->
+    <section class="impact">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">Where it hurt</span></div>
+        <div class="stats">
+          <div class="stat"><div class="num">68<span class="accent">%</span></div><div class="cap">Dock throughput: manpower unloading and loading</div></div>
+          <div class="stat"><div class="num">72<span class="accent">%</span></div><div class="cap">Put compliance: shipments placed in the right sector on time</div></div>
+          <div class="stat"><div class="num">3,400<span class="accent">+</span></div><div class="cap">Shipments ageing past 12 hours at a hub</div></div>
+        </div>
+        <div class="reflection"><div class="q">"How might we help hub managers spot and act on operational issues in real time, without leaving the dashboard?"</div></div>
+      </div>
+    </section>
+
+    <!-- 05 Solution -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">Solution</span></div>
+        <h2 class="sec-title">The hub, mapped 1:1. Problems show up where they happen.</h2>
+        <p class="lead">
+          We rebuilt HubEye as a digital twin of the physical facility. Every dock,
+          sector and yard lane sits where it is on the floor, so a supervisor can
+          look at the screen and walk straight to the issue.
+        </p>
+        <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/hub-map-full.webp" alt="Full-screen digital twin of Tauru Gateway with every dock and sector in place" loading="lazy" /></figure>
+        <div class="hx-principles">
+          <div><span class="hx-k">Principle 1</span><h4>Grey or red. Nothing else.</h4><p>Normal is grey, act now is red. A supervisor scanning 300+ sectors and docks finds every critical zone in seconds.</p></div>
+          <div><span class="hx-k">Principle 2</span><h4>Real layout, not a list</h4><p>Docks around the edge, sectors in their rows, areas outlined. Location is the first piece of information.</p></div>
+          <div><span class="hx-k">Principle 3</span><h4>One screen, one shift</h4><p>The map, the reason and the hub's vitals live together, so nobody exports to Excel to decide.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Detail on click -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">Detail on click</span></div>
+        <h2 class="sec-title">Click any sector. Get the why.</h2>
+        <p class="lead">
+          Every element opens a small card: bags in the centre, ETD, and only the
+          signals that matter. Red rows say what is wrong; green rows confirm what is fine.
+        </p>
+        <div class="hx-pops">
+          <figure><img src="./images/hubeye/pop-bangalore.webp" alt="Bangalore sector: put compliance 92.54% and 57 bags ageing over 48 hours, both flagged red" loading="lazy" /><figcaption><b>Two problems</b>Compliance below target and 57 bags ageing. Both flagged.</figcaption></figure>
+          <figure><img src="./images/hubeye/pop-varanasi.webp" alt="Varanasi sector: 29 bags ageing over 48 hours flagged red, compliance 97.95% green" loading="lazy" /><figcaption><b>One problem</b>Ageing is red; compliance is fine, so it stays green.</figcaption></figure>
+          <figure><img src="./images/hubeye/pop-gzb.webp" alt="GZB_DPC carting sector: 1 bag ageing, compliance 99.34%" loading="lazy" /><figcaption><b>Nearly clear</b>Carting lane with a single ageing bag to chase.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Side panel -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">07</span><span class="sec-label">Hub vitals</span></div>
+        <div class="hx-split">
+          <div>
+            <h2 class="sec-title">Every hub metric, one glance away.</h2>
+            <p class="lead">
+              A persistent snapshot panel sits beside the map: shipments in centre and
+              ageing, yard waiting, inbound and outbound docks, manpower, put compliance,
+              sorter rejection, PTL breaches and pallet stock.
+            </p>
+            <ul class="hx-list">
+              <li><b>Collapses</b> when the floor needs the full screen.</li>
+              <li><b>Turns red</b> only when a number needs action, like a 12% sorter rejection rate.</li>
+              <li><b>Quick links</b> jump to the CT, cost and manpower dashboards, or download pending putaway.</li>
+            </ul>
+          </div>
+          <div class="hx-panels">
+            <img src="./images/hubeye/panel-top.webp" alt="Snapshot panel: shipments, yard ageing, inbound and outbound docks, manpower, put compliance" loading="lazy" />
+            <img src="./images/hubeye/panel-bottom.webp" alt="Snapshot panel: sorter rejection, PTL breached, pallet compliance and quick links" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 Look ahead + see the floor -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">08</span><span class="sec-label">Plan ahead, see the floor</span></div>
+        <h2 class="sec-title">From "what's wrong now" to "what's coming next".</h2>
+        <p class="lead">
+          Expected Yard Waiting forecasts vehicles in the yard against planned docks,
+          hour by hour, with the overflow in red. Floor Images bring the real dock and
+          floor cameras into the same tool, so a red dock can be checked in one click.
+        </p>
+        <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/yard-waiting.webp" alt="Expected Yard Waiting: hourly vehicles in yard vs planned docks, overflow in red, with an ageing breakdown tooltip" loading="lazy" /></figure>
+        <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/floor-images.webp" alt="Floor Images: grid of live dock camera snapshots with timestamps" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <!-- 09 Outcome -->
+    <section class="impact outcome">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">09</span><span class="sec-label">Outcome</span></div>
+        <h2 class="sec-title" style="color:#fff">Turning observation into operation.</h2>
+        <p class="lead">Measured across hubs after rollout. The Ionad hub saw the biggest drop in ageing.</p>
+        <div class="stats">
+          <div class="stat"><div class="num">72→79<span class="accent">%</span></div><div class="cap">Put compliance</div></div>
+          <div class="stat"><div class="num">46→54<span class="accent">%</span></div><div class="cap">On-time vehicle departures (OBSL)</div></div>
+          <div class="stat"><div class="num">−8<span class="accent">%</span></div><div class="cap">Shipment ageing overall, −33% at the Ionad hub</div></div>
+        </div>
+        <div class="reflection"><div class="q">"A dashboard earns its place when the person reading it knows what to do next. Colour and location did more than any new chart."</div></div>
+      </div>
+    </section>
+
+    <!-- 10 Team -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">10</span><span class="sec-label">Team</span></div>
+        <h2 class="sec-title">Built with the team.</h2>
+        <p class="lead">
+          I led design direction, critique and stakeholder alignment with hub operations.
+          <b>Ravinder Kumar</b> was the Product Designer who designed and shipped the experience,
+          working with product, engineering and hub operations.
+        </p>
+      </div>
+    </section>
+
+    <section class="next">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-num">·</span>
+          <span class="sec-label">More work</span>
+        </div>
+        <div class="nextgrid">
+          <a class="nextcard" href="./jiomart-discovery.html">
+            <div class="nextthumb">
+              <img src="./images/enhanceProduct/heaser-top-right-img.png" alt="JioMart product discovery preview" />
+            </div>
+            <div class="nextinfo">
+              <div class="l">Case study</div>
+              <h4>Making Product Discovery Seamless</h4>
+              <p>Making browsing effortless across homepage, PLP, and PDP at JioMart.</p>
+            </div>
+          </a>
+          <a class="nextcard" href="./jio-checkout.html">
+            <div class="nextthumb">
+              <img src="./images/stream-header-img.png" alt="Jio checkout experience preview" />
+            </div>
+            <div class="nextinfo">
+              <div class="l">Case study</div>
+              <h4>Streamlining Checkout XP</h4>
+              <p>From cart to payment — a smoother checkout for millions.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wrap foot">
+      <div>© 2025 <a href="./profile.html">Abhishek Thakur Design</a> · <a href="./index.html">Start screen</a></div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
+        <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>
+        <a href="https://dribbble.com/abhishek_thakur_" target="_blank">Dribbble</a>
+        <a href="mailto:abhishekiit2k12@gmail.com">Email</a>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scroll-reveal for content as it enters the viewport
+      (function () {
+        var sel =
+          ".block .sec-head, .block .sec-title, .block .lead, .act, .statcard, .problem, .flow, .impact .stat, .nextcard, .reflection, .hero .meta, .hx-principles > div, .hx-pops figure";
+        var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
+        if (!targets.length) return;
+        targets.forEach(function (el) {
+          el.classList.add("reveal");
+        });
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
+    <script src="./js/case-study-lightbox.js?v=5" defer></script>
+  </body>
+</html>
