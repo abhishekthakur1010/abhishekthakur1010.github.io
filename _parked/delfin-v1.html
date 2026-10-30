@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DelFin — Delhivery's 0→1 financial services platform · Abhishek Thakur</title>
+    <meta name="description" content="DelFin: building Delhivery's 0→1 financial services platform — from FASTag management to a scalable ecosystem for GPS, fuel, insurance and financial services." />
+    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/case-study-v2.css?v=58" rel="stylesheet" />
+    <link href="./css/st-bar.css?v=5" rel="stylesheet" />
+    <link href="./css/delfin.css?v=11" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/shimmer.css" />
+<script src="./js/shimmer.js"></script>
+</head>
+
+  <body class="csv2 delfin">
+    <!-- Top bar: same as My story (css/st-bar.css) -->
+    <header class="st-bar">
+      <div class="st-bar-in">
+        <a class="st-back" href="./profile.html" onclick="try{var r=new window.URL(document.referrer),k=function(s){return s.replace(/\.html$/,'').replace(/\/(index)?$/,'/profile')};if(r.host===location.host&&k(r.pathname)===k(this.pathname)){event.preventDefault();history.back()}}catch(e){}" aria-label="Back to profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        </a>
+        <a class="st-brand" href="./profile.html"><img src="./images/profile-photo.jpg" alt="" /><span>Abhishek Thakur<small>AI Product Design Leader | Design Trusted by Millions</small></span></a>
+        <a class="st-btn" href="./resume.pdf?v=3" target="_blank" rel="noopener">Resume</a>
+      </div>
+      <div class="st-progress" aria-hidden="true"><span></span></div>
+    </header>
+    <script>
+      // reading progress under the bar
+      (function () {
+        var bar = document.querySelector('.st-progress span');
+        function onScroll() { var h = document.documentElement, max = h.scrollHeight - h.clientHeight; bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')'; }
+        addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+      })();
+    </script>
+
+    <!-- ============ 01 · HERO ============ -->
+    <header class="hero df-hero">
+      <div class="wrap">
+        <div class="df-hero-top">
+          <div class="hero-copy">
+            <div class="eyebrow">DelFin by Delhivery · 0→1 Platform<span class="cs-type b2b">B2B</span></div>
+            <h1>Building Delhivery's <span class="hl">0→1</span> financial services platform.</h1>
+            <p class="sub">
+              How we turned a business opportunity inside Delhivery's fleet ecosystem
+              into a dedicated platform for FASTag, GPS and future financial services —
+              designed and shipped from scratch in roughly eight weeks.
+            </p>
+          </div>
+
+          <!-- device composition — same mock + hover fan as the discovery case study -->
+          <div class="hero-device">
+            <div class="phone-fan">
+              <div class="phone phone-back phone-left" aria-hidden="true">
+                <div class="phone-screen">
+                  <img src="./images/delfin/delfin-wallet.png" alt="" />
+                </div>
+              </div>
+              <div class="phone phone-back phone-right" aria-hidden="true">
+                <div class="phone-screen">
+                  <img src="./images/delfin/delfin-gps-plan-select.png" alt="" />
+                </div>
+              </div>
+              <div class="phone phone-front">
+                <div class="phone-screen">
+                  <img src="./images/delfin/delfin-home.png" alt="DelFin home — operational control centre" />
+                </div>
+              </div>
+            </div>
+            <div class="device-badge">
+              <b>0→<em>1</em></b>
+              <span>Launched · Android</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- metadata -->
+        <div class="meta df-meta">
+          <div><div class="label">Role</div><div class="val">Design Lead</div></div>
+          <div><div class="label">Timeline</div><div class="val">Jul – Aug 2026 · ~8 weeks</div></div>
+          <div><div class="label">Type</div><div class="val">0→1 Product · Android</div></div>
+          <div><div class="label">Status</div><div class="val">Launched</div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- The work — product screens -->
+    <section class="showcase block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">The work</span></div>
+        <div class="iter df-iter">
+          <div class="iter-head">
+            <p class="iter-note">The DelFin app end to end — home as a control centre, a wallet built as infrastructure, and the FASTag &amp; GPS journeys built on top.</p>
+          </div>
+          <div class="iter-grid">
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
+              </span></span>
+              <figcaption>Home · control centre</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-wallet.png" alt="DelFin wallet" loading="lazy" />
+              </span></span>
+              <figcaption>DelFin wallet</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-axis-wallet.png" alt="Axis pool FASTag wallet" loading="lazy" />
+              </span></span>
+              <figcaption>Axis pool wallet</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-gps-plan-select.png" alt="GPS plan selection" loading="lazy" />
+              </span></span>
+              <figcaption>GPS · plan select</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-gps-address.png" alt="GPS installation address" loading="lazy" />
+              </span></span>
+              <figcaption>GPS · install address</figcaption>
+            </figure>
+            <figure class="iter-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-home-first.png" alt="First-time home" loading="lazy" />
+              </span></span>
+              <figcaption>First-time home</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- At a glance -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">At a glance</span></div>
+        <div class="acts">
+          <div class="act">
+            <div class="k"><span class="n">01</span><span class="t">Opportunity</span></div>
+            <h3>Beyond logistics</h3>
+            <p>Turn Delhivery's fleet relationship into everyday financial &amp; operational services — starting with FASTag.</p>
+          </div>
+          <div class="act">
+            <div class="k"><span class="n">02</span><span class="t">Bet</span></div>
+            <h3>A platform, not a feature</h3>
+            <p>Build a shared identity, vehicle and wallet layer so many services can ship on one foundation.</p>
+          </div>
+          <div class="act">
+            <div class="k"><span class="n">03</span><span class="t">Solution</span></div>
+            <h3>Simple over one truck</h3>
+            <p>Hide bank, KYC and payment complexity behind one clear model: my vehicle, my balance, what's next.</p>
+          </div>
+          <div class="act">
+            <div class="k"><span class="n">04</span><span class="t">Outcome</span></div>
+            <h3>Shipped in ~8 weeks</h3>
+            <p>FASTag + GPS launched on Android, with the platform set up to scale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact band -->
+    <section class="impact">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">→</span><span class="sec-label">Early signals</span></div>
+        <div class="stats">
+          <div class="stat"><div class="num">1K<span class="accent">+</span></div><div class="cap">Google Play downloads</div></div>
+          <div class="stat"><div class="num">4.9<span class="accent">/5</span></div><div class="cap">Early Play Store rating</div></div>
+          <div class="stat"><div class="num">~8<span class="accent">wk</span></div><div class="cap">Concept to launch</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 Opportunity -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">Opportunity</span></div>
+        <h2 class="sec-title">The relationship with a truck doesn't end with a delivery.</h2>
+        <p class="lead">
+          Fleet owners spend on tolls, fuel, tracking, insurance and financing every day.
+          Delhivery already had the relationship — the opportunity was to extend it into a
+          trusted service layer around those everyday needs.
+        </p>
+        <div class="df-eco" aria-label="Delhivery fleet ecosystem">
+          <div class="df-eco-center"><b>Delhivery</b><span>Fleet ecosystem</span></div>
+          <div class="df-eco-node n1"><span class="tag launched">Launched</span>FASTag</div>
+          <div class="df-eco-node n2"><span class="tag launched">Launched</span>GPS</div>
+          <div class="df-eco-node n3"><span class="tag future">Future</span>Fuel Card</div>
+          <div class="df-eco-node n4"><span class="tag future">Future</span>Insurance</div>
+          <div class="df-eco-node n5"><span class="tag future">Future</span>Lending</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 The platform bet -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">02</span><span class="sec-label">The platform bet</span></div>
+        <h2 class="sec-title">We weren't designing a FASTag feature — we were laying the foundation for a new business.</h2>
+        <p class="lead">
+          To become a business, the product needed one shared layer — identity, vehicles, wallet —
+          that every future service could reuse. FASTag proved the layer; GPS validated it.
+        </p>
+        <div class="df-platform">
+          <div class="df-plat-top">
+            <span class="df-plat-label">User / Fleet owner</span>
+            <div class="df-plat-chips">
+              <span>Identity</span><span>Vehicles</span><span>Documents</span><span>Wallet</span><span>Payments</span>
+            </div>
+          </div>
+          <div class="df-plat-arrow">shared platform layer</div>
+          <div class="df-plat-services">
+            <div class="df-svc on">FASTag<em>Launched</em></div>
+            <div class="df-svc on">GPS<em>Launched</em></div>
+            <div class="df-svc">Fuel<em>Future</em></div>
+            <div class="df-svc">Insurance<em>Future</em></div>
+            <div class="df-svc">Financial services<em>Future</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 The core decision -->
+    <section class="block df-dark">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label" style="color:var(--faint)">The core decision</span></div>
+        <h2 class="sec-title" style="color:#fff">Make financial infrastructure feel simple to a fleet owner.</h2>
+        <p class="lead" style="color:rgba(255,255,255,.72)">
+          A FASTag hides banks, KYC, wallets and NPCI rails. The user should only ever hold one
+          model: my vehicle, my balance, what needs attention, what's next.
+        </p>
+        <div class="df-model" style="margin-top:36px">
+          <div class="df-model-row">
+            <div>My vehicle</div><div>My FASTag</div><div>My balance</div><div>What needs attention</div><div>What's next</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Bank logic (the standout decision) -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">One experience, two banks</span></div>
+        <h2 class="sec-title">Two wallet models. One mental model for the fleet owner.</h2>
+        <p class="lead">
+          IDFC keeps a balance per FASTag; Axis pools many FASTags into one wallet. DelFin normalises
+          both into a single FASTag experience — without asking owners to understand the difference.
+        </p>
+        <div class="df-banks">
+          <div class="df-bank">
+            <div class="df-bank-name">IDFC FIRST <em>Balance per FASTag</em></div>
+            <div class="df-bank-rows">
+              <div class="df-bank-row"><span>Vehicle A</span><i>→ FASTag</i><b>₹ balance</b></div>
+              <div class="df-bank-row"><span>Vehicle B</span><i>→ FASTag</i><b>₹ balance</b></div>
+              <div class="df-bank-row"><span>Vehicle C</span><i>→ FASTag</i><b>₹ balance</b></div>
+            </div>
+          </div>
+          <div class="df-bank">
+            <div class="df-bank-name">Axis <em>Shared wallet</em></div>
+            <div class="df-bank-pool">
+              <div class="df-pool">Shared FASTag wallet<b>₹ balance</b></div>
+              <div class="df-pool-arrow">powers</div>
+              <div class="df-pool-veh"><span>Vehicle A</span><span>Vehicle B</span><span>Vehicle C</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="df-normalise">
+          <div class="df-phones-2">
+            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-home-wallet.png" alt="DelFin wallet and Axis pool wallet on home" loading="lazy" /></div></div>
+            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-axis-wallet.png" alt="Axis pool FASTag wallet" loading="lazy" /></div></div>
+          </div>
+          <div class="df-normalise-copy">
+            <div class="df-keyline">"The architecture changed. The user's mental model shouldn't have to."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 The product -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">The product</span></div>
+        <h2 class="sec-title">A home that acts as a control centre, on a wallet built as infrastructure.</h2>
+        <p class="lead">
+          The home surfaces what needs attention before anything to browse. Underneath, one wallet
+          became reusable payment infrastructure for FASTag, GPS and the services to come.
+        </p>
+        <div class="df-home">
+          <div class="df-home-phone">
+            <figure class="iter-mock df-home-mock">
+              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
+                <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
+              </span></span>
+            </figure>
+          </div>
+          <div class="df-home-layers">
+            <div class="df-layer"><span class="df-layer-n">01</span><b>Pending actions first</b><p>FASTags needing attention, low balance, hotlisted, activation and GPS installation pending.</p></div>
+            <div class="df-layer"><span class="df-layer-n">02</span><b>Services &amp; wallets</b><p>FASTag and GPS, with the DelFin wallet and bank-specific wallet always in reach.</p></div>
+            <div class="df-layer"><span class="df-layer-n">03</span><b>Wallet as infrastructure</b><p>Bank / UPI → DelFin Wallet → FASTag, GPS and future services — one reusable layer.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Extending to GPS -->
+    <section class="block df-dark">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label" style="color:var(--faint)">Extending the foundation</span></div>
+        <h2 class="sec-title" style="color:#fff">From a financial transaction to a physical installation.</h2>
+        <p class="lead" style="color:rgba(255,255,255,.72)">
+          GPS added hardware, plan selection, an address, a technician and a physical install. Progress
+          persisted across sessions so a multi-day order could resume — not restart.
+        </p>
+        <div class="df-resume">
+          <div class="df-resume-track">
+            <div class="df-resume-fill" style="--p:100%"></div>
+            <div class="df-resume-marks">
+              <span style="--at:25%">Address · 25%</span>
+              <span style="--at:50%">Payment · 50%</span>
+              <span style="--at:75%">Device linked · 75%</span>
+              <span style="--at:100%">Installed · 100%</span>
+            </div>
+          </div>
+          <div class="df-phones-2 df-gps-phones">
+            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-gps-plan-select.png" alt="GPS plan selection" loading="lazy" /></div></div>
+            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-gps-address.png" alt="GPS installation address" loading="lazy" /></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Outcome & reflection -->
+    <section class="block impact df-reflect">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num" style="color:var(--accent)">07</span><span class="sec-label" style="color:var(--faint)">Outcome &amp; reflection</span></div>
+        <h2 class="sec-title" style="color:#fff">What I learned building a new business line from zero.</h2>
+        <div class="df-lessons">
+          <div class="df-lesson"><span class="df-lesson-n">01</span><b>Design the system, not only the first feature.</b><p>Shared identity, vehicles and wallets are what make future services possible.</p></div>
+          <div class="df-lesson"><span class="df-lesson-n">02</span><b>Simplify the user's model, not the backend.</b><p>Banks can behave differently without pushing that complexity onto fleet owners.</p></div>
+          <div class="df-lesson"><span class="df-lesson-n">03</span><b>Speed requires better decisions, not less design.</b><p>A tight timeline meant prioritising critical journeys and validating continuously.</p></div>
+        </div>
+        <div class="reflection df-reflect-q">
+          <div class="q">"Designing a 0→1 product is as much about deciding what the product should become as it is about designing how it works."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer feedback -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">Customer feedback</span></div>
+        <h2 class="sec-title">What fleet owners said.</h2>
+        <p class="lead">Early Play Store reviews after launch. Long-term metrics were still emerging.</p>
+        <div class="df-reviews">
+          <blockquote class="df-review"><p>"Super easy to use."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Simple, fast and easy to use."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Great app for truck owners."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Most user friendly FASTag app."</p><cite>Play Store</cite></blockquote>
+          <blockquote class="df-review"><p>"Good app for transport business and fleet owner."</p><cite>Play Store</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <section class="next">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">More work</span></div>
+        <div class="nextgrid">
+          <a class="nextcard" href="./jio-checkout.html">
+            <div class="nextthumb"><img src="./images/stream-study/stream-case-study-order-success-page.png" alt="JioMart checkout preview" loading="lazy" /></div>
+            <div class="nextinfo"><div class="l">Case study</div><h4>Streamlining Checkout</h4><p>Cart to payment across JioMart's checkout journey.</p></div>
+          </a>
+          <a class="nextcard" href="./jiomart-discovery.html">
+            <div class="nextthumb"><img src="./images/enhanceProduct/heaser-top-right-img.png" alt="JioMart product discovery preview" loading="lazy" /></div>
+            <div class="nextinfo"><div class="l">Case study</div><h4>Making Product Discovery Seamless</h4><p>Making browsing effortless across homepage, PLP and PDP.</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wrap foot">
+      <div>© 2025 <a href="./profile.html">Abhishek Thakur Design</a> · <a href="./index.html">Start screen</a></div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
+        <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>
+        <a href="https://dribbble.com/abhishek_thakur_" target="_blank">Dribbble</a>
+        <a href="mailto:abhishekiit2k12@gmail.com">Email</a>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll-reveal
+      (function () {
+        var sel = ".block .sec-head, .block .sec-title, .block .lead, .iter-mock, .act, .stat, .df-eco, .df-platform, .df-model, .df-banks .df-bank, .df-normalise, .df-home, .df-resume, .df-lesson, .reflection, .df-review, .nextcard";
+        var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
+        if (!targets.length) return;
+        targets.forEach(function (el) { el.classList.add("reveal"); });
+        if (!("IntersectionObserver" in window)) { targets.forEach(function (el) { el.classList.add("in"); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        targets.forEach(function (el) { io.observe(el); });
+      })();
+
+      // The work — mark tall screens as scrollable (vertical scroll inside the black frame)
+      (function () {
+        var imgs = Array.prototype.slice.call(document.querySelectorAll(".df-iter .iter-mock img, .df-home-mock img"));
+        if (!imgs.length) return;
+        function checkScroll(im) {
+          var frame = im.closest(".mockf");
+          var scroll = im.closest(".mockf-scroll");
+          if (!frame || !scroll) return;
+          frame.classList.toggle("is-scrollable", im.offsetHeight > scroll.clientHeight + 2);
+        }
+        function checkAll() { imgs.forEach(checkScroll); }
+        imgs.forEach(function (im) {
+          if (im.complete) checkScroll(im); else im.addEventListener("load", function () { checkScroll(im); });
+        });
+        window.addEventListener("resize", checkAll);
+      })();
+    </script>
+    <script src="./js/case-study-lightbox.js?v=5" defer></script>
+  </body>
+</html>

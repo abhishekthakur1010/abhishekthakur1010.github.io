@@ -14,7 +14,7 @@
     />
     <link href="./css/case-study-v2.css?v=58" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
-    <link href="./css/delfin.css?v=11" rel="stylesheet" />
+    <link href="./css/delfin-v2.css?v=3" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
 </head>
@@ -40,338 +40,268 @@
       })();
     </script>
 
-    <!-- ============ 01 · HERO ============ -->
-    <header class="hero df-hero">
-      <div class="wrap">
-        <div class="df-hero-top">
-          <div class="hero-copy">
-            <div class="eyebrow">DelFin by Delhivery · 0→1 Platform<span class="cs-type b2b">B2B</span></div>
-            <h1>Building Delhivery's <span class="hl">0→1</span> financial services platform.</h1>
-            <p class="sub">
-              How we turned a business opportunity inside Delhivery's fleet ecosystem
-              into a dedicated platform for FASTag, GPS and future financial services —
-              designed and shipped from scratch in roughly eight weeks.
-            </p>
-          </div>
+    <main class="dv">
 
-          <!-- device composition — same mock + hover fan as the discovery case study -->
-          <div class="hero-device">
-            <div class="phone-fan">
-              <div class="phone phone-back phone-left" aria-hidden="true">
-                <div class="phone-screen">
-                  <img src="./images/delfin/delfin-wallet.png" alt="" />
-                </div>
-              </div>
-              <div class="phone phone-back phone-right" aria-hidden="true">
-                <div class="phone-screen">
-                  <img src="./images/delfin/delfin-gps-plan-select.png" alt="" />
-                </div>
-              </div>
-              <div class="phone phone-front">
-                <div class="phone-screen">
-                  <img src="./images/delfin/delfin-home.png" alt="DelFin home — operational control centre" />
-                </div>
-              </div>
-            </div>
-            <div class="device-badge">
-              <b>0→<em>1</em></b>
-              <span>Launched · Android</span>
-            </div>
-          </div>
+    <!-- ============ HERO ============ -->
+    <header class="dv-hero">
+      <div class="dv-wrap dv-hero-in">
+        <div class="dv-hero-copy">
+          <p class="dv-eyebrow">DelFin by Delhivery · 0→1 fintech<span class="cs-type b2b">B2B</span></p>
+          <h1>Fleet finance a truck owner can <em>run alone</em>.</h1>
+          <p class="dv-lede">FASTag and GPS used to mean sales calls, paper KYC and days of silence. I led design for DelFin, Delhivery's new app that makes it self-serve, from first tap to an active tag.</p>
+          <a class="dv-btn" href="./delfin-deck.html">View presentation <span aria-hidden="true">→</span></a>
         </div>
-
-        <!-- metadata -->
-        <div class="meta df-meta">
-          <div><div class="label">Role</div><div class="val">Design Lead</div></div>
-          <div><div class="label">Timeline</div><div class="val">Jul – Aug 2026 · ~8 weeks</div></div>
-          <div><div class="label">Type</div><div class="val">0→1 Product · Android</div></div>
-          <div><div class="label">Status</div><div class="val">Launched</div></div>
+        <div class="dv-hero-art" aria-hidden="true">
+          <div class="dv-ph dv-ph-back l"><img src="./images/delfin/v2/tut-drive.webp" alt="" /></div>
+          <div class="dv-ph dv-ph-back r"><img src="./images/delfin/v2/sheet-fastag.webp" alt="" /></div>
+          <div class="dv-ph dv-ph-front"><img src="./images/delfin/v2/home-refined.webp" alt="" /></div>
+          <div class="dv-chip"><b>80.4%</b><span>FASTag orders activated in-app</span></div>
         </div>
+      </div>
+      <div class="dv-wrap">
+        <dl class="dv-meta">
+          <div><dt>My role</dt><dd>Design Lead, 0→1</dd></div>
+          <div><dt>Timeline</dt><dd>Jul – Aug 2026 · 8 weeks</dd></div>
+          <div><dt>Users</dt><dd>Fleet owners · owner-drivers</dd></div>
+          <div><dt>Status</dt><dd>Live on Android</dd></div>
+        </dl>
       </div>
     </header>
 
-    <!-- The work — product screens -->
-    <section class="showcase block">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">The work</span></div>
-        <div class="iter df-iter">
-          <div class="iter-head">
-            <p class="iter-note">The DelFin app end to end — home as a control centre, a wallet built as infrastructure, and the FASTag &amp; GPS journeys built on top.</p>
+    <!-- ============ 01 SNAPSHOT ============ -->
+    <section class="dv-sec">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>01</span>Results at a glance</p>
+        <h2 class="dv-h2">Self-serve, and the numbers show people finish.</h2>
+        <div class="dv-stats">
+          <div class="dv-stat hot"><b>80.4<i>%</i></b><span>of FASTag orders reached an active tag, with no sales call</span></div>
+          <div class="dv-stat"><b>98.3<i>%</i></b><span>picked a role once the role screen was shown</span></div>
+          <div class="dv-stat"><b>71.9<i>%</i></b><span>completed a wallet top-up after tapping Add money</span></div>
+          <div class="dv-stat"><b>4.9<i>★</i></b><span>early Play Store rating, 1K+ downloads</span></div>
+        </div>
+        <p class="dv-src">Funnels from Google Analytics, 1–7 Oct 2026. <button type="button" class="dv-link" data-zoom="./images/delfin/v2/ga-fastag.webp">See the FASTag funnel</button></p>
+      </div>
+    </section>
+
+    <!-- ============ 02 CONTEXT ============ -->
+    <section class="dv-sec soft">
+      <div class="dv-wrap dv-split">
+        <div>
+          <p class="dv-k"><span>02</span>Context</p>
+          <h2 class="dv-h2">Every trip runs through a toll. Every toll needs a FASTag.</h2>
+          <p class="dv-p">Delhivery already works with thousands of truck owners. DelFin turns that relationship into everyday services, starting with FASTag and GPS, and built so fuel, insurance and credit can follow.</p>
+          <div class="dv-who">
+            <div><b>Fleet owner</b><span>Runs one or many trucks. Buys tags, tops up, tracks the fleet.</span></div>
+            <div><b>Owner-driver</b><span>Drives their own truck. Needs it fast, on the phone, between trips.</span></div>
           </div>
-          <div class="iter-grid">
-            <figure class="iter-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
-              </span></span>
-              <figcaption>Home · control centre</figcaption>
-            </figure>
-            <figure class="iter-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-wallet.png" alt="DelFin wallet" loading="lazy" />
-              </span></span>
-              <figcaption>DelFin wallet</figcaption>
-            </figure>
-            <figure class="iter-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-axis-wallet.png" alt="Axis pool FASTag wallet" loading="lazy" />
-              </span></span>
-              <figcaption>Axis pool wallet</figcaption>
-            </figure>
-            <figure class="iter-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-gps-plan-select.png" alt="GPS plan selection" loading="lazy" />
-              </span></span>
-              <figcaption>GPS · plan select</figcaption>
-            </figure>
-            <figure class="iter-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-gps-address.png" alt="GPS installation address" loading="lazy" />
-              </span></span>
-              <figcaption>GPS · install address</figcaption>
-            </figure>
-            <figure class="iter-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-home-first.png" alt="First-time home" loading="lazy" />
-              </span></span>
-              <figcaption>First-time home</figcaption>
-            </figure>
+        </div>
+        <figure class="dv-fig"><div class="dv-ph"><img src="./images/delfin/v2/role.webp" alt="Role selection: Owner or Driver" loading="lazy" /></div><figcaption>One app, two setups: role decides the path</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============ 03 PROBLEM ============ -->
+    <section class="dv-sec">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>03</span>The problem</p>
+        <h2 class="dv-h2">Buying a FASTag meant a phone call, paper and waiting.</h2>
+        <ol class="dv-old">
+          <li><b>Call sales</b><span>No way to start on your own</span></li>
+          <li><b>Paper KYC</b><span>Documents sent offline</span></li>
+          <li><b>Wait for days</b><span>No idea where the order is</span></li>
+          <li class="bad"><b>Fail at the toll</b><span>Low balance or blacklisted tag, found too late</span></li>
+        </ol>
+        <div class="dv-problems">
+          <div><i>1</i><h3>Unguided start</h3><p>Partners signed up without knowing what DelFin offered; owners and drivers got the same setup.</p></div>
+          <div><i>2</i><h3>No activation status</h3><p>Nobody could see where a tag was, or that it needed action, before reaching a toll.</p></div>
+          <div><i>3</i><h3>Money felt risky</h3><p>Wallet balance, fees and refunds were unclear, so owners hesitated to pay in-app.</p></div>
+          <div><i>4</i><h3>Support for everything</h3><p>Profile, GST details and invoices needed calls instead of a screen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 PLATFORM BET ============ -->
+    <section class="dv-sec dark">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>04</span>The platform bet</p>
+        <h2 class="dv-h2">Not a FASTag feature. The base layer for a new business.</h2>
+        <p class="dv-p">Identity, vehicles, documents and one wallet sit underneath every service. FASTag proved the layer; GPS reused it; the next services plug into it.</p>
+        <div class="dv-stack">
+          <div class="dv-svc"><span class="on">FASTag<em>Live</em></span><span class="on">GPS<em>Live</em></span><span>Fuel<em>Next</em></span><span>Insurance<em>Next</em></span><span>Credit<em>Next</em></span></div>
+          <div class="dv-layer">Identity · Vehicles · Documents · Wallet · Payments<em>Shared platform layer</em></div>
+          <div class="dv-user">Fleet owner</div>
+        </div>
+        <blockquote class="dv-quote">Two banks run FASTag wallets differently: IDFC keeps a balance per tag, Axis pools them. The owner only ever sees <b>my truck, my balance, what needs attention.</b></blockquote>
+      </div>
+    </section>
+
+    <!-- ============ 05 JOURNEY ============ -->
+    <section class="dv-sec">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>05</span>The journey</p>
+        <h2 class="dv-h2">From install to an active FASTag, in one sitting.</h2>
+        <p class="dv-p">Twelve screens, one straight path. Scroll sideways; click any screen to see it full size.</p>
+      </div>
+      <div class="dv-rail" tabindex="0" aria-label="DelFin journey screens">
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/tut-earn.webp" alt="" loading="lazy" /></div><figcaption><i>01</i><b>Benefits first</b>Why DelFin, in 3 lines</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/login.webp" alt="" loading="lazy" /></div><figcaption><i>02</i><b>Phone OTP</b>No password to remember</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/role.webp" alt="" loading="lazy" /></div><figcaption><i>03</i><b>Pick a role</b>Owner or driver</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/owner-details.webp" alt="" loading="lazy" /></div><figcaption><i>04</i><b>Three fields</b>Only what's needed now</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/home-first.webp" alt="" loading="lazy" /></div><figcaption><i>05</i><b>Home</b>Buy FASTag or GPS</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/doc-verify.webp" alt="" loading="lazy" /></div><figcaption><i>06</i><b>Upload RC, PAN</b>Step 1 of 4</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/kyc.webp" alt="" loading="lazy" /></div><figcaption><i>07</i><b>Digital KYC</b>Bank, OTP, Aadhaar, PAN</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/add-money.webp" alt="" loading="lazy" /></div><figcaption><i>08</i><b>Top up</b>Fees shown upfront</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/pay-summary.webp" alt="" loading="lazy" /></div><figcaption><i>09</i><b>Pay ₹599</b>Every line explained</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/scan-tag.webp" alt="" loading="lazy" /></div><figcaption><i>10</i><b>Scan the tag</b>Barcode, not typing</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/sample-image.webp" alt="" loading="lazy" /></div><figcaption><i>11</i><b>Know your vehicle</b>A sample shows what good looks like</figcaption></figure>
+        <figure><div class="dv-ph"><img src="./images/delfin/v2/sheet-fastag.webp" alt="" loading="lazy" /></div><figcaption><i>12</i><b>Track activation</b>Resume any time</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============ 06 KEY DECISIONS ============ -->
+    <section class="dv-sec soft">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>06</span>Key decisions</p>
+        <h2 class="dv-h2">Four decisions that made it feel simple.</h2>
+
+        <article class="dv-dec">
+          <div class="dv-dec-copy">
+            <span class="dv-tag">Decision 1</span>
+            <h3>Sell the benefit before asking for anything.</h3>
+            <p>Three swipeable cards say what owners get: lower charges, no toll surprises, cashback. Then a phone number, then a role. Nothing else until it's needed.</p>
+            <p class="dv-why"><b>Why:</b> partners were signing up without knowing what DelFin was for.</p>
+          </div>
+          <div class="dv-dec-art three">
+            <div class="dv-ph"><img src="./images/delfin/v2/tut-earn.webp" alt="" loading="lazy" /></div>
+            <div class="dv-ph"><img src="./images/delfin/v2/tut-drive.webp" alt="" loading="lazy" /></div>
+            <div class="dv-ph"><img src="./images/delfin/v2/login.webp" alt="" loading="lazy" /></div>
+          </div>
+        </article>
+
+        <article class="dv-dec flip">
+          <div class="dv-dec-copy">
+            <span class="dv-tag">Decision 2</span>
+            <h3>Home shows what needs attention, not what's for sale.</h3>
+            <p>Active counts on each service, then pending actions ("FASTag activation pending · 2 trucks"), then the wallet. New users see the buy cards; returning users see their trucks.</p>
+            <p class="dv-why"><b>Why:</b> owners came back to check status, not to browse.</p>
+          </div>
+          <div class="dv-dec-art two">
+            <figure><div class="dv-ph"><img src="./images/delfin/v2/home-first.webp" alt="" loading="lazy" /></div><figcaption>First visit</figcaption></figure>
+            <figure><div class="dv-ph"><img src="./images/delfin/v2/home-refined.webp" alt="" loading="lazy" /></div><figcaption>Returning owner</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="dv-dec">
+          <div class="dv-dec-copy">
+            <span class="dv-tag">Decision 3</span>
+            <h3>Progress you can see, and pick up later.</h3>
+            <p>Each truck gets a tracker: six steps for FASTag, four for GPS, with the current step marked. A day-long KYC or installation resumes where it stopped.</p>
+            <p class="dv-why"><b>Why:</b> handover and installation happen in the field, often hours later.</p>
+          </div>
+          <div class="dv-dec-art two">
+            <figure><div class="dv-ph"><img src="./images/delfin/v2/sheet-fastag.webp" alt="" loading="lazy" /></div><figcaption>FASTag · 6 steps</figcaption></figure>
+            <figure><div class="dv-ph"><img src="./images/delfin/v2/sheet-gps.webp" alt="" loading="lazy" /></div><figcaption>GPS · 4 steps</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="dv-dec flip">
+          <div class="dv-dec-copy">
+            <span class="dv-tag">Decision 4 · iterated</span>
+            <h3>When money is involved, say exactly what happens.</h3>
+            <p>Cancelling an activation first said "the amount will be refunded". The next version names the amount and where it goes, in a highlighted line: <b>₹599 back to your DelFin wallet.</b></p>
+            <p class="dv-why"><b>Why:</b> vague refund copy made owners call support to confirm.</p>
+          </div>
+          <div class="dv-dec-art two">
+            <figure><div class="dv-ph"><img src="./images/delfin/v2/delete-v1.webp" alt="" loading="lazy" /></div><figcaption class="was">Before</figcaption></figure>
+            <figure><div class="dv-ph"><img src="./images/delfin/v2/delete-v2.webp" alt="" loading="lazy" /></div><figcaption class="now">After</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 07 SELF-SERVE ACCOUNT ============ -->
+    <section class="dv-sec">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>07</span>Beyond the purchase</p>
+        <h2 class="dv-h2">Everything after buying, without a support call.</h2>
+        <div class="dv-grid4">
+          <figure><div class="dv-ph"><img src="./images/delfin/v2/account.webp" alt="" loading="lazy" /></div><figcaption><b>Account</b>Services, wallets, help in one menu</figcaption></figure>
+          <figure><div class="dv-ph"><img src="./images/delfin/v2/profile-business.webp" alt="" loading="lazy" /></div><figcaption><b>Business profile</b>GSTIN fills name and address</figcaption></figure>
+          <figure><div class="dv-ph"><img src="./images/delfin/v2/geofence-filled.webp" alt="" loading="lazy" /></div><figcaption><b>Geofences</b>Alerts when a truck leaves a zone</figcaption></figure>
+          <figure><div class="dv-ph"><img src="./images/delfin/v2/home-buy-menu.webp" alt="" loading="lazy" /></div><figcaption><b>Buy again</b>FASTag or GPS from anywhere</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 08 DATA ============ -->
+    <section class="dv-sec dark">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>08</span>Measuring it</p>
+        <h2 class="dv-h2">We tracked every step, so we know where people stop.</h2>
+        <div class="dv-funnels">
+          <div class="dv-funnel">
+            <h3>FASTag purchase <button type="button" class="dv-link" data-zoom="./images/delfin/v2/ga-fastag.webp">Source</button></h3>
+            <div class="dv-bar" style="--w:100%"><span>Order created</span><b>840</b></div>
+            <div class="dv-bar" style="--w:84.3%"><span>Payment done</span><b>708</b></div>
+            <div class="dv-bar" style="--w:83.5%"><span>Tag handed over</span><b>701</b></div>
+            <div class="dv-bar hot" style="--w:80.4%"><span>Tag activated</span><b>675 · 80.4%</b></div>
+          </div>
+          <div class="dv-funnel">
+            <h3>Onboarding <button type="button" class="dv-link" data-zoom="./images/delfin/v2/ga-onboarding.webp">Source</button></h3>
+            <div class="dv-bar" style="--w:100%"><span>Login shown</span><b>1,690</b></div>
+            <div class="dv-bar" style="--w:89%"><span>Logged in</span><b>1,504</b></div>
+            <div class="dv-bar warn" style="--w:55.9%"><span>Role screen shown</span><b>944 · −37%</b></div>
+            <div class="dv-bar" style="--w:54.9%"><span>Role picked</span><b>928</b></div>
+          </div>
+        </div>
+        <p class="dv-src light">Google Analytics funnels, 1–7 Oct 2026.</p>
+      </div>
+    </section>
+
+    <!-- ============ 09 WHAT'S NEXT ============ -->
+    <section class="dv-sec">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>09</span>What the data changed</p>
+        <h2 class="dv-h2">Where people stopped became the next quarter's work.</h2>
+        <div class="dv-next">
+          <div><span class="dv-tag warn">37% drop</span><h3>Login → role</h3><p>The biggest leak. Next: carry people from OTP straight into setup, without a gap.</p></div>
+          <div><span class="dv-tag warn">37% reach recharge</span><h3>FASTag list → recharge</h3><p>Only 359 of 964 who opened their tags reached recharge. Next: recharge in one tap from home.</p></div>
+          <div><span class="dv-tag">In design</span><h3>GST invoices</h3><p>GSTIN at payment with PAN auto-fetch, and bulk invoices, so owners claim 18% input credit.</p></div>
+          <div><span class="dv-tag">In design</span><h3>Wallet to bank</h3><p>Self-serve refunds in under two minutes, tracked from wallet history.</p></div>
+        </div>
+        <div class="dv-ai">
+          <div class="dv-ph"><img src="./images/delfin/v2/tut-ai.webp" alt="Let AI manage your FASTag" loading="lazy" /></div>
+          <div>
+            <span class="dv-tag">Exploring · AI</span>
+            <h3>Let AI watch the FASTag, so the owner doesn't have to.</h3>
+            <ul>
+              <li>Flag suspicious toll charges</li>
+              <li>Suggest the right recharge amount per truck</li>
+              <li>Predict a low balance before the next trip</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- At a glance -->
-    <section class="block">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">At a glance</span></div>
-        <div class="acts">
-          <div class="act">
-            <div class="k"><span class="n">01</span><span class="t">Opportunity</span></div>
-            <h3>Beyond logistics</h3>
-            <p>Turn Delhivery's fleet relationship into everyday financial &amp; operational services — starting with FASTag.</p>
-          </div>
-          <div class="act">
-            <div class="k"><span class="n">02</span><span class="t">Bet</span></div>
-            <h3>A platform, not a feature</h3>
-            <p>Build a shared identity, vehicle and wallet layer so many services can ship on one foundation.</p>
-          </div>
-          <div class="act">
-            <div class="k"><span class="n">03</span><span class="t">Solution</span></div>
-            <h3>Simple over one truck</h3>
-            <p>Hide bank, KYC and payment complexity behind one clear model: my vehicle, my balance, what's next.</p>
-          </div>
-          <div class="act">
-            <div class="k"><span class="n">04</span><span class="t">Outcome</span></div>
-            <h3>Shipped in ~8 weeks</h3>
-            <p>FASTag + GPS launched on Android, with the platform set up to scale.</p>
-          </div>
+    <!-- ============ 10 REFLECTION ============ -->
+    <section class="dv-sec soft">
+      <div class="dv-wrap">
+        <p class="dv-k"><span>10</span>Reflection</p>
+        <h2 class="dv-h2">What building a business line from zero taught me.</h2>
+        <div class="dv-learn">
+          <div><b>Design the system, not just the first feature.</b><p>Shared identity, vehicles and wallet are what let GPS ship faster than FASTag.</p></div>
+          <div><b>Simplify the owner's model, not the backend.</b><p>Two banks can work differently without the owner ever noticing.</p></div>
+          <div><b>Measure every step from day one.</b><p>The funnels told us exactly where to spend the next quarter.</p></div>
         </div>
+        <div class="dv-reviews">
+          <q>Super easy to use.</q><q>Simple, fast and easy to use.</q><q>Great app for truck owners.</q><q>Most user friendly FASTag app.</q>
+        </div>
+        <p class="dv-src">Early Play Store reviews after launch.</p>
       </div>
     </section>
 
-    <!-- Impact band -->
-    <section class="impact">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">→</span><span class="sec-label">Early signals</span></div>
-        <div class="stats">
-          <div class="stat"><div class="num">1K<span class="accent">+</span></div><div class="cap">Google Play downloads</div></div>
-          <div class="stat"><div class="num">4.9<span class="accent">/5</span></div><div class="cap">Early Play Store rating</div></div>
-          <div class="stat"><div class="num">~8<span class="accent">wk</span></div><div class="cap">Concept to launch</div></div>
-        </div>
-      </div>
-    </section>
+    </main>
 
-    <!-- 01 Opportunity -->
-    <section class="block">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">Opportunity</span></div>
-        <h2 class="sec-title">The relationship with a truck doesn't end with a delivery.</h2>
-        <p class="lead">
-          Fleet owners spend on tolls, fuel, tracking, insurance and financing every day.
-          Delhivery already had the relationship — the opportunity was to extend it into a
-          trusted service layer around those everyday needs.
-        </p>
-        <div class="df-eco" aria-label="Delhivery fleet ecosystem">
-          <div class="df-eco-center"><b>Delhivery</b><span>Fleet ecosystem</span></div>
-          <div class="df-eco-node n1"><span class="tag launched">Launched</span>FASTag</div>
-          <div class="df-eco-node n2"><span class="tag launched">Launched</span>GPS</div>
-          <div class="df-eco-node n3"><span class="tag future">Future</span>Fuel Card</div>
-          <div class="df-eco-node n4"><span class="tag future">Future</span>Insurance</div>
-          <div class="df-eco-node n5"><span class="tag future">Future</span>Lending</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 The platform bet -->
-    <section class="block soft">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">02</span><span class="sec-label">The platform bet</span></div>
-        <h2 class="sec-title">We weren't designing a FASTag feature — we were laying the foundation for a new business.</h2>
-        <p class="lead">
-          To become a business, the product needed one shared layer — identity, vehicles, wallet —
-          that every future service could reuse. FASTag proved the layer; GPS validated it.
-        </p>
-        <div class="df-platform">
-          <div class="df-plat-top">
-            <span class="df-plat-label">User / Fleet owner</span>
-            <div class="df-plat-chips">
-              <span>Identity</span><span>Vehicles</span><span>Documents</span><span>Wallet</span><span>Payments</span>
-            </div>
-          </div>
-          <div class="df-plat-arrow">shared platform layer</div>
-          <div class="df-plat-services">
-            <div class="df-svc on">FASTag<em>Launched</em></div>
-            <div class="df-svc on">GPS<em>Launched</em></div>
-            <div class="df-svc">Fuel<em>Future</em></div>
-            <div class="df-svc">Insurance<em>Future</em></div>
-            <div class="df-svc">Financial services<em>Future</em></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 The core decision -->
-    <section class="block df-dark">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label" style="color:var(--faint)">The core decision</span></div>
-        <h2 class="sec-title" style="color:#fff">Make financial infrastructure feel simple to a fleet owner.</h2>
-        <p class="lead" style="color:rgba(255,255,255,.72)">
-          A FASTag hides banks, KYC, wallets and NPCI rails. The user should only ever hold one
-          model: my vehicle, my balance, what needs attention, what's next.
-        </p>
-        <div class="df-model" style="margin-top:36px">
-          <div class="df-model-row">
-            <div>My vehicle</div><div>My FASTag</div><div>My balance</div><div>What needs attention</div><div>What's next</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 Bank logic (the standout decision) -->
-    <section class="block soft">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">One experience, two banks</span></div>
-        <h2 class="sec-title">Two wallet models. One mental model for the fleet owner.</h2>
-        <p class="lead">
-          IDFC keeps a balance per FASTag; Axis pools many FASTags into one wallet. DelFin normalises
-          both into a single FASTag experience — without asking owners to understand the difference.
-        </p>
-        <div class="df-banks">
-          <div class="df-bank">
-            <div class="df-bank-name">IDFC FIRST <em>Balance per FASTag</em></div>
-            <div class="df-bank-rows">
-              <div class="df-bank-row"><span>Vehicle A</span><i>→ FASTag</i><b>₹ balance</b></div>
-              <div class="df-bank-row"><span>Vehicle B</span><i>→ FASTag</i><b>₹ balance</b></div>
-              <div class="df-bank-row"><span>Vehicle C</span><i>→ FASTag</i><b>₹ balance</b></div>
-            </div>
-          </div>
-          <div class="df-bank">
-            <div class="df-bank-name">Axis <em>Shared wallet</em></div>
-            <div class="df-bank-pool">
-              <div class="df-pool">Shared FASTag wallet<b>₹ balance</b></div>
-              <div class="df-pool-arrow">powers</div>
-              <div class="df-pool-veh"><span>Vehicle A</span><span>Vehicle B</span><span>Vehicle C</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="df-normalise">
-          <div class="df-phones-2">
-            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-home-wallet.png" alt="DelFin wallet and Axis pool wallet on home" loading="lazy" /></div></div>
-            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-axis-wallet.png" alt="Axis pool FASTag wallet" loading="lazy" /></div></div>
-          </div>
-          <div class="df-normalise-copy">
-            <div class="df-keyline">"The architecture changed. The user's mental model shouldn't have to."</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 05 The product -->
-    <section class="block">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">The product</span></div>
-        <h2 class="sec-title">A home that acts as a control centre, on a wallet built as infrastructure.</h2>
-        <p class="lead">
-          The home surfaces what needs attention before anything to browse. Underneath, one wallet
-          became reusable payment infrastructure for FASTag, GPS and the services to come.
-        </p>
-        <div class="df-home">
-          <div class="df-home-phone">
-            <figure class="iter-mock df-home-mock">
-              <span class="mockf"><span class="mockf-notch"></span><span class="mockf-scroll">
-                <img src="./images/delfin/delfin-home.png" alt="DelFin home — control centre" loading="lazy" />
-              </span></span>
-            </figure>
-          </div>
-          <div class="df-home-layers">
-            <div class="df-layer"><span class="df-layer-n">01</span><b>Pending actions first</b><p>FASTags needing attention, low balance, hotlisted, activation and GPS installation pending.</p></div>
-            <div class="df-layer"><span class="df-layer-n">02</span><b>Services &amp; wallets</b><p>FASTag and GPS, with the DelFin wallet and bank-specific wallet always in reach.</p></div>
-            <div class="df-layer"><span class="df-layer-n">03</span><b>Wallet as infrastructure</b><p>Bank / UPI → DelFin Wallet → FASTag, GPS and future services — one reusable layer.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 Extending to GPS -->
-    <section class="block df-dark">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label" style="color:var(--faint)">Extending the foundation</span></div>
-        <h2 class="sec-title" style="color:#fff">From a financial transaction to a physical installation.</h2>
-        <p class="lead" style="color:rgba(255,255,255,.72)">
-          GPS added hardware, plan selection, an address, a technician and a physical install. Progress
-          persisted across sessions so a multi-day order could resume — not restart.
-        </p>
-        <div class="df-resume">
-          <div class="df-resume-track">
-            <div class="df-resume-fill" style="--p:100%"></div>
-            <div class="df-resume-marks">
-              <span style="--at:25%">Address · 25%</span>
-              <span style="--at:50%">Payment · 50%</span>
-              <span style="--at:75%">Device linked · 75%</span>
-              <span style="--at:100%">Installed · 100%</span>
-            </div>
-          </div>
-          <div class="df-phones-2 df-gps-phones">
-            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-gps-plan-select.png" alt="GPS plan selection" loading="lazy" /></div></div>
-            <div class="df-phone"><div class="df-ph-scr"><img src="./images/delfin/delfin-gps-address.png" alt="GPS installation address" loading="lazy" /></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 07 Outcome & reflection -->
-    <section class="block impact df-reflect">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num" style="color:var(--accent)">07</span><span class="sec-label" style="color:var(--faint)">Outcome &amp; reflection</span></div>
-        <h2 class="sec-title" style="color:#fff">What I learned building a new business line from zero.</h2>
-        <div class="df-lessons">
-          <div class="df-lesson"><span class="df-lesson-n">01</span><b>Design the system, not only the first feature.</b><p>Shared identity, vehicles and wallets are what make future services possible.</p></div>
-          <div class="df-lesson"><span class="df-lesson-n">02</span><b>Simplify the user's model, not the backend.</b><p>Banks can behave differently without pushing that complexity onto fleet owners.</p></div>
-          <div class="df-lesson"><span class="df-lesson-n">03</span><b>Speed requires better decisions, not less design.</b><p>A tight timeline meant prioritising critical journeys and validating continuously.</p></div>
-        </div>
-        <div class="reflection df-reflect-q">
-          <div class="q">"Designing a 0→1 product is as much about deciding what the product should become as it is about designing how it works."</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Customer feedback -->
-    <section class="block soft">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">Customer feedback</span></div>
-        <h2 class="sec-title">What fleet owners said.</h2>
-        <p class="lead">Early Play Store reviews after launch. Long-term metrics were still emerging.</p>
-        <div class="df-reviews">
-          <blockquote class="df-review"><p>"Super easy to use."</p><cite>Play Store</cite></blockquote>
-          <blockquote class="df-review"><p>"Simple, fast and easy to use."</p><cite>Play Store</cite></blockquote>
-          <blockquote class="df-review"><p>"Great app for truck owners."</p><cite>Play Store</cite></blockquote>
-          <blockquote class="df-review"><p>"Most user friendly FASTag app."</p><cite>Play Store</cite></blockquote>
-          <blockquote class="df-review"><p>"Good app for transport business and fleet owner."</p><cite>Play Store</cite></blockquote>
-        </div>
-      </div>
-    </section>
-
-    <!-- Next -->
     <section class="next">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">·</span><span class="sec-label">More work</span></div>
@@ -431,5 +361,18 @@
       })();
     </script>
     <script src="./js/case-study-lightbox.js?v=5" defer></script>
+    <div class="dv-lb" id="dv-lb" aria-hidden="true"><img alt="" /></div>
+    <script>
+      // click any screen or "Source" link to view it full size
+      (function () {
+        var lb = document.getElementById('dv-lb'), im = lb.querySelector('img');
+        document.addEventListener('click', function (e) {
+          var t = e.target.closest('.dv-ph img, [data-zoom]');
+          if (t && t.closest('.dv')) { im.src = t.getAttribute('data-zoom') || t.src; lb.classList.add('on'); return; }
+          if (e.target.closest('#dv-lb')) lb.classList.remove('on');
+        });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('on'); });
+      })();
+    </script>
   </body>
 </html>
