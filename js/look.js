@@ -77,10 +77,9 @@
         return radio("lk-accent", c, look.accent === c, "Accent " + c, '<span class="lk-sw" style="background:' + c + '"></span>', "lk-dot");
       }).join("");
     wrap.innerHTML =
-      '<button type="button" class="lk-btn" aria-expanded="false" aria-controls="lk-panel" aria-label="Customize this page">' +
+      '<button type="button" class="lk-btn" aria-expanded="false" aria-controls="lk-panel" aria-label="Customize this page" title="Customize">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.3 0-1 .8-1.9 1.9-1.9H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2" fill="currentColor" stroke="none"/><circle cx="10" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg>' +
-        '<span class="lk-btn-label">Customize</span></button>' +
-      '<p class="lk-nudge" hidden>Try the Instagram look, or dark mode <button type="button" aria-label="Dismiss">×</button></p>' +
+        '</button>' +
       '<div class="lk-panel" id="lk-panel" role="dialog" aria-labelledby="lk-title" hidden>' +
         '<div class="lk-head"><div><h2 id="lk-title">Make it yours</h2><p>Saved on this device.</p></div>' +
           '<button type="button" class="lk-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
@@ -92,21 +91,16 @@
       "</div>";
     document.body.appendChild(wrap);
 
-    var btn = wrap.querySelector(".lk-btn"), panel = wrap.querySelector(".lk-panel"), nudge = wrap.querySelector(".lk-nudge");
+    var btn = wrap.querySelector(".lk-btn"), panel = wrap.querySelector(".lk-panel");
     var share = wrap.querySelector(".lk-share span");
 
     function open(on) {
       panel.hidden = !on;
       btn.setAttribute("aria-expanded", on ? "true" : "false");
       if (on) {
-        hideNudge();
         var cur = panel.querySelector("input:checked");
         if (cur) cur.focus();
       }
-    }
-    function hideNudge() {
-      nudge.hidden = true;
-      try { localStorage.setItem(KEY + "-nudged", "1"); } catch (e) {}
     }
     function sync() {
       panel.querySelectorAll("input").forEach(function (i) {
@@ -153,17 +147,7 @@
     document.addEventListener("click", function (e) {
       if (!panel.hidden && !wrap.contains(e.target)) open(false);
     });
-    nudge.querySelector("button").addEventListener("click", hideNudge);
 
-    // one gentle hint per device, a few seconds after the profile shows
-    var nudged = false;
-    try { nudged = localStorage.getItem(KEY + "-nudged") === "1" || !!localStorage.getItem(KEY); } catch (e) {}
-    if (!nudged) setTimeout(function () {
-      if (panel.hidden && !root.classList.contains("cat-mode")) {
-        nudge.hidden = false;
-        setTimeout(function () { if (!nudge.hidden) nudge.hidden = true; }, 9000);
-      }
-    }, 5000);
   }
   /* ---------- Instagram tab bar: sticky, jumps to a section, lights up the one in view ---------- */
   var TABS = [

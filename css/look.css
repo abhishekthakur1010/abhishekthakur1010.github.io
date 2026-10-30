@@ -1,30 +1,18 @@
 /* Look: visitor-chosen style (data-skin), theme (data-mode) and accent, set on <html> by js/look.js.
    LinkedIn is the page as designed in profile.css; Instagram and dark mode are overrides here. */
 
-/* ---------- Customize button, hint and panel ---------- */
+/* ---------- Customize button and panel ---------- */
 .lk { position: fixed; right: 24px; bottom: 24px; z-index: 60; font: 14px/1.4 var(--font); color: var(--text); }
 .cat-mode .lk { display: none; }
 .lk-btn {
-  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px 0 14px; border: 0; border-radius: 999px;
-  background: var(--text); color: var(--bg); font-size: 14px; font-weight: 600; letter-spacing: .01em;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .18); transition: transform .15s ease, box-shadow .15s ease;
+  display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%;
+  background: var(--card); color: var(--text-2); box-shadow: 0 0 0 1px var(--line), 0 2px 8px rgba(0, 0, 0, .06);
+  opacity: .85; transition: color .15s, box-shadow .15s, opacity .15s;
 }
-.lk-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(0, 0, 0, .24); }
+.lk-btn:hover, .lk-btn[aria-expanded="true"] { opacity: 1; color: var(--text); box-shadow: 0 0 0 1px var(--text-2), 0 4px 14px rgba(0, 0, 0, .1); }
 .lk-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.lk-btn svg { width: 20px; height: 20px; flex: none; }
+.lk-btn svg { width: 19px; height: 19px; transition: transform .3s ease; }
 .lk-btn[aria-expanded="true"] svg { transform: rotate(-30deg); }
-.lk-btn svg { transition: transform .3s ease; }
-
-.lk-nudge {
-  position: absolute; right: 0; bottom: calc(100% + 12px); width: max-content; max-width: 240px; margin: 0;
-  display: flex; align-items: flex-start; gap: 8px; padding: 10px 10px 10px 14px; border-radius: 12px;
-  background: var(--card); color: var(--text); font-size: 13.5px; font-weight: 500; line-height: 1.4;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .14), 0 0 0 1px var(--line); animation: lk-rise .35s ease both;
-}
-.lk-nudge[hidden] { display: none; }
-.lk-nudge::after { content: ""; position: absolute; right: 30px; top: 100%; border: 7px solid transparent; border-top-color: var(--card); }
-.lk-nudge button { flex: none; width: 22px; height: 22px; margin: -2px -2px 0 0; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--text-2); font-size: 18px; line-height: 1; }
-.lk-nudge button:hover { background: var(--line-soft); color: var(--text); }
 
 .lk-panel {
   position: absolute; right: 0; bottom: calc(100% + 12px); width: 360px; max-height: calc(100vh - 100px); overflow: auto;
@@ -94,19 +82,12 @@
 
 @media (max-width: 899px) {
   /* the contents button sits bottom right; Customize sits just left of it */
-  .lk { right: 74px; bottom: 16px; }
-  .lk-btn { height: 46px; padding: 0 16px 0 13px; }
+  .lk { right: 72px; bottom: 19px; }
   .lk-panel { position: fixed; left: 12px; right: 12px; bottom: 74px; width: auto; max-height: calc(100vh - 96px); }
-  .lk-nudge { right: -50px; }
-  .lk-nudge::after { right: 80px; }
-}
-@media (max-width: 420px) {
-  .lk-btn-label { display: none; }
-  .lk-btn { width: 46px; padding: 0; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .lk-panel, .lk-nudge { animation: none; }
-  .lk-btn, .lk-btn svg { transition: none; }
+  .lk-panel { animation: none; }
+  .lk-btn svg { transition: none; }
 }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
 
@@ -146,7 +127,6 @@
 [data-mode="dark"] .media-close:hover { background: rgba(255, 255, 255, .08); }
 [data-mode="dark"] .xp-logo, [data-mode="dark"] .rec-logo, [data-mode="dark"] .affil img { box-shadow: none; }
 [data-mode="dark"] .lk-prev { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
-[data-mode="dark"] .lk-btn { box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
 
 /* the header stats carry their numbers in <b> for the Instagram look; LinkedIn keeps one weight */
 .meta-strong b { font-weight: inherit; }
