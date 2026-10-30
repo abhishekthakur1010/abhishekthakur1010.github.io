@@ -1,0 +1,63 @@
+/* DelFin deck: same layouts as the JioMart deck, DelFin red and black. */
+body.deck.delfin[data-theme="dark"] {
+  --bg: #0b0b0c; --bg2: #121214; --ink: #f5f5f4;
+  --soft: #c2c2c6; --dim: #8a8a90; --faint: #4a4a50;
+  --line: #222226; --line2: #313137;
+  --panel: #141416; --panel-line: #26262b;
+  --nav: #161618; --nav-h: #222226;
+  --bezel: #000; --card: #141416; --card-hi: #1b1b1e;
+  --accent: #e3202c; --info: #ff4a55; --warn: #ff4a55; --neg: #ff4a55; --pos: #ff4a55; --star: #ff4a55;
+  --info-soft: rgba(227,32,44,.12); --warn-soft: rgba(227,32,44,.12); --neg-soft: rgba(227,32,44,.12); --pos-soft: rgba(227,32,44,.12);
+  --info-line: rgba(227,32,44,.45); --warn-line: rgba(227,32,44,.45); --neg-line: rgba(227,32,44,.5); --pos-line: rgba(227,32,44,.45);
+}
+body.deck.delfin[data-theme="light"] {
+  --bg: #ffffff; --bg2: #f7f7f7; --ink: #0b0b0c;
+  --soft: #3a3a3e; --dim: #6b6b70; --faint: #c9c9cc;
+  --line: #ececec; --line2: #dcdcdc;
+  --panel: #f5f5f5; --panel-line: #e6e6e6;
+  --nav: #f2f2f2; --nav-h: #e8e8e8;
+  --bezel: #0b0b0c; --card: #f7f7f7; --card-hi: #ffffff;
+  --accent: #d01a26; --info: #d01a26; --warn: #d01a26; --neg: #d01a26; --pos: #d01a26; --star: #d01a26;
+  --info-soft: rgba(208,26,38,.08); --warn-soft: rgba(208,26,38,.08); --neg-soft: rgba(208,26,38,.08); --pos-soft: rgba(208,26,38,.08);
+  --info-line: rgba(208,26,38,.4); --warn-line: rgba(208,26,38,.4); --neg-line: rgba(208,26,38,.4); --pos-line: rgba(208,26,38,.4);
+}
+body.deck.delfin[data-theme="light"] .tag.pos, body.deck.delfin[data-theme="light"] .tag.info { color: #d01a26; border-color: rgba(208,26,38,.4); background: rgba(208,26,38,.06); }
+body.deck.delfin[data-theme="light"] .op-bar { background: #ececec; }
+body.deck.delfin[data-theme="light"] .op-browser { border-color: #ddd; box-shadow: 0 30px 70px rgba(0,0,0,.14); }
+/* red fills carry white text */
+body.deck.delfin .im-bar.post i, body.deck.delfin .kp-bar.post { background: #e3202c; }
+body.deck.delfin .im-bar.post span, body.deck.delfin .kp-bar.post { color: #fff; }
+body.deck.delfin .tag { color: var(--soft); border-color: var(--line2); background: transparent; }
+body.deck.delfin[data-theme="dark"] .tag.pos, body.deck.delfin[data-theme="dark"] .tag.info { color: #ff4a55; border-color: rgba(227,32,44,.45); background: rgba(227,32,44,.1); }
+
+
+/* stack: services on a shared platform layer */
+.sk { display: grid; gap: 12px; margin-top: clamp(16px, 3vh, 32px); }
+.sk-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.sk-svc { padding: clamp(14px, 2.4vh, 22px) 18px; border-radius: 14px; border: 1px dashed var(--line2); font-weight: 600; color: var(--dim); }
+.sk-svc.on { border: 1px solid var(--accent); background: var(--pos-soft); color: var(--ink); }
+.sk-svc em, .sk-layer em { display: block; margin-top: 4px; font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.sk-svc.on em { color: var(--accent); }
+.sk-layer { padding: clamp(16px, 2.6vh, 24px); border-radius: 14px; background: var(--card); border: 1px solid var(--panel-line); text-align: center; font-weight: 600; }
+.sk-user { padding: 14px; border-radius: 14px; background: var(--ink); color: var(--bg); text-align: center; font-weight: 700; }
+.sk-quote { margin: clamp(18px, 3.4vh, 36px) 0 0; padding-left: 20px; border-left: 3px solid var(--accent); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.5; color: var(--soft); max-width: 900px; }
+
+/* funnel panels */
+.fx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(16px, 3vh, 32px); }
+.fx-panel { padding: clamp(18px, 3vh, 28px); border-radius: 18px; background: var(--card); border: 1px solid var(--panel-line); }
+.fx-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; font-size: 17px; }
+.fx-bar { position: relative; display: flex; justify-content: space-between; align-items: center; height: clamp(34px, 5vh, 44px); margin-top: 8px; padding: 0 14px; border-radius: 10px; font-size: 14px; overflow: hidden; }
+.fx-bar::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 10px; background: var(--line2); }
+.fx-bar.hot::before { background: var(--accent); }
+.fx-bar.warn::before { background: rgba(217,119,6,.35); }
+.fx-bar span, .fx-bar b { position: relative; }
+.fx-bar.hot span { color: #fff; }
+.fx-bar b { font-variant-numeric: tabular-nums; }
+.fx-note { margin: 14px 0 0; font-size: 14px; color: var(--soft); }
+@media (max-width: 900px) { .fx-grid { grid-template-columns: 1fr; } .sk-row { grid-template-columns: repeat(2, 1fr); } }
+
+/* two-phone comparisons: phones sized to the screen height so they never spill */
+body.deck.delfin .device.vs { --w: min(15vw, calc((100vh - 470px) * 0.46)); }
+body.deck.delfin .award.is-phone { display: flex; flex-direction: column; align-items: center; }
+body.deck.delfin .award.is-phone .device { --w: min(17vw, calc((100vh - 330px) * 0.46)); }
+body.deck.delfin[data-theme] .device.vs { --w: min(15vw, calc((100vh - 500px) * 0.46)); }

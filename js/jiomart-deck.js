@@ -122,6 +122,8 @@
       case "collab": return sc.steps.length;
       case "pair": return 0;
       case "hubmap": return 1;
+      case "stack": return 1;
+      case "funnels": return sc.funnels.length;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
       case "versions": return sc.stages.length - 1;
@@ -623,6 +625,29 @@
         "<div class='c-visual'><div class='tile-grid id-tiles'>" + tiles + "</div></div></div>";
     },
 
+    /* services on a shared platform layer, then a quote */
+    stack: function (sc) {
+      var svc = sc.services.map(function (v) { return "<span class='sk-svc" + (v.on ? " on" : "") + "'>" + esc(v.k) + "<em>" + esc(v.s) + "</em></span>"; }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='sk'><div class='sk-row'>" + svc + "</div><div class='sk-layer'>" + esc(sc.layer) + "<em>" + esc(sc.layerL || "") + "</em></div>" +
+        "<div class='sk-user'>" + esc(sc.user) + "</div></div>" +
+        (sc.quote ? "<blockquote class='sk-quote reveal' data-step='1'>" + esc(sc.quote) + "</blockquote>" : "") + "</div>";
+    },
+
+    /* tracked funnels as horizontal bars, one panel per funnel */
+    funnels: function (sc) {
+      var panels = sc.funnels.map(function (f, i) {
+        var top = f.rows[0].v;
+        var rows = f.rows.map(function (r) {
+          return "<div class='fx-bar" + (r.tone ? " " + r.tone : "") + "' style='--w:" + (r.v / top * 100).toFixed(1) + "%'><span>" + esc(r.l) + "</span><b>" + esc(r.d || r.v.toLocaleString("en-IN")) + "</b></div>";
+        }).join("");
+        return "<div class='fx-panel reveal' data-step='" + (i + 1) + "'><div class='fx-head'><b>" + esc(f.k) + "</b>" + (f.proof ? "<button type='button' class='ev-link' data-proof='" + f.proof + "'>Source</button>" : "") + "</div>" + rows +
+          (f.note ? "<p class='fx-note'>" + esc(f.note) + "</p>" : "") + "</div>";
+      }).join("");
+      return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='fx-grid'>" + panels + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>";
+    },
+
     /* the physical site: aerial photo with key numbers, then the floor plan with a legend */
     hubmap: function (sc) {
       var chips = sc.stats.map(function (t) { return "<span class='hm-chip'><b>" + esc(t.n) + "</b>" + esc(t.l) + "</span>"; }).join("");
@@ -810,7 +835,7 @@
           "<span class='fv-stat'><b>" + esc(s.stat) + "</b>" + (s.est ? "<i>est.</i>" : "") + "<span>" + esc(s.statL || "") + "</span></span></div>";
       }).join("");
       var screens = sc.steps.map(function (s, i) {
-        return "<div class='fv-screen" + (i === 0 ? " on" : "") + "' data-fv='" + i + "'><span class='fv-cap'>Before · " + esc(s.k) + "</span>" +
+        return "<div class='fv-screen" + (i === 0 ? " on" : "") + "' data-fv='" + i + "'><span class='fv-cap'>" + esc(sc.cap || "Before") + " · " + esc(s.k) + "</span>" +
           "<span class='evo-media zoomable' title='Click to enlarge'>" + device(s.img, s.focus || 0, "fv") + "</span>" +
           (s.pain ? "<span class='fv-pain'>" + esc(s.pain) + "</span>" : "") + "</div>";
       }).join("");
@@ -823,7 +848,7 @@
     qa: function (sc) {
       var cards = sc.qs.map(function (x, i) {
         return "<div class='qa-card reveal' data-step='" + (i + 1) + "'><div class='qa-top'><span class='qa-n'>" + pad(i + 1) + "</span>" +
-          (x.tag ? "<span class='tag " + ({ Business: "info", Shopper: "pos", Scope: "neutral" }[x.tag] || "neutral") + "'>" + esc(x.tag) + "</span>" : "") + "</div>" +
+          (x.tag ? "<span class='tag " + ({ Business: "info", Shopper: "pos", User: "pos", Owner: "pos", Scope: "neutral", Fix: "info", Build: "neutral" }[x.tag] || "neutral") + "'>" + esc(x.tag) + "</span>" : "") + "</div>" +
           "<p class='qa-q'>" + esc(x.q) + "</p><p class='qa-a'>" + esc(x.a) + "</p></div>";
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
@@ -843,7 +868,7 @@
         "<div class='cl-wins'>" + wins + "</div>" +
         "<div class='cl-rows reveal' data-step='1'>" + rows + "</div>" +
         "<div class='close-cta reveal' data-step='2'>" + ctas + "</div></div>" +
-        "<div class='c-visual'><figure class='award'><span class='award-frame zoomable' title='Click to enlarge'><img src='" + img(sc.award.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
+        "<div class='c-visual'><figure class='award" + (sc.award.phone ? " is-phone" : "") + "'>" + (sc.award.phone ? "<span class='evo-media zoomable'>" + device(sc.award.img, 0, "big") + "</span>" : "<span class='award-frame zoomable' title='Click to enlarge'><img src='" + img(sc.award.img) + "' onerror=\"this.parentElement.classList.add('failed')\"></span>") +
         "<figcaption class='award-cap'>" + esc(sc.award.caption) + "</figcaption></figure></div></div>";
     }
   };
