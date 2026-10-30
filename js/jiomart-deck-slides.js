@@ -170,7 +170,7 @@ window.DECK = {
       headline: ["Making ", "product discovery", " seamless"],
       highlight: "product discovery",
       body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
-      hero: "enhance-v1-pdp-fold.png",
+      hero: "enhance-v1-pdp-fold.png?v=2",
       backShots: ["enhance-v1-home.png", "enhance-v1-plp.png"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
@@ -345,7 +345,7 @@ window.DECK = {
       sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png", n: "Rating, size and offers moved up" },
+        { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" },
         { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
       ],
       notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
