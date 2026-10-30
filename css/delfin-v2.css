@@ -210,3 +210,7 @@
 @media (max-width: 640px) { .dv-chip { right: auto; left: 0; } }
 @media (prefers-reduced-motion: reduce) { .dv-ph-back, .dv-ph-front { transition: none; } }
 .dv-chip span { white-space: nowrap; max-width: none; }
+/* never let anything push the page sideways */
+html:has(body.delfin), body.csv2.delfin { overflow-x: hidden; }
+.dv-hero-copy { min-width: 0; }
+.dv h1 { overflow-wrap: break-word; }
