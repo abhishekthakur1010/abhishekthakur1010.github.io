@@ -71,24 +71,6 @@ window.DECK = {
       notes: "HubEye is the control room for Delhivery's hubs. It was rich in data but passive. We turned it into a digital twin of the floor: grey is normal, red is act now, click anything for the why. Numbers are underlined; click to show the evidence."
     },
 
-    /* 02 — THE PHYSICAL HUB */
-    {
-      section: "context", type: "hubmap",
-      eyebrow: "The physical hub",
-      headline: ["A hub is a city of docks and sectors"],
-      sub: "Supervisors think in this layout, not in tables.",
-      aerial: "hub-aerial.webp", aerialTag: "Illustrative", place: "Tauru Gateway · near Gurgaon",
-      stats: [{ n: "159", l: "docks" }, { n: "100+", l: "sectors" }, { n: "59K", l: "shipments inside" }],
-      planK: "The floor plan, as HubEye maps it",
-      plan: "layout-tauru.webp",
-      legend: [
-        { sw: "dock", k: "Docks", d: "On every edge. Trucks unload inbound and load outbound." },
-        { sw: "sector", k: "Sectors", d: "Rows inside. Bags are sorted and put away by destination." },
-        { sw: "stg", k: "Staging", d: "Hatched zones where bags wait for their vehicle." }
-      ],
-      notes: "Set the scene. 57 inbound and 102 outbound docks wrap Tauru Gateway; 100+ sectors inside; about 59K shipments in the building at any time. Press → to show the floor plan: this is the mental model supervisors already have, so we used it as the dashboard."
-    },
-
     /* 02 — ASKING THE RIGHT QUESTIONS */
     {
       section: "context", type: "qa",
@@ -184,7 +166,25 @@ window.DECK = {
       notes: "Every decision was made with the hub team: walk the floor, watch the docks and sorter, map the real layout, review at Tauru Gateway."
     },
 
-    /* 06 — THE SOLUTION */
+    /* 06 — THE IDEA: MAP THE PHYSICAL HUB (sets up the dashboard that follows) */
+    {
+      section: "design", type: "hubmap",
+      eyebrow: "The idea: map the physical hub",
+      headline: ["A hub is a city of docks and sectors"],
+      sub: "Supervisors already think in this layout, not in tables. So the dashboard should too.",
+      aerial: "hub-aerial.webp", aerialTag: "Illustrative", place: "Tauru Gateway · near Gurgaon",
+      stats: [{ n: "159", l: "docks" }, { n: "100+", l: "sectors" }, { n: "59K", l: "shipments inside" }],
+      planK: "The floor plan, as HubEye maps it",
+      plan: "layout-tauru.webp",
+      legend: [
+        { sw: "dock", k: "Docks", d: "On every edge. Trucks unload inbound and load outbound." },
+        { sw: "sector", k: "Sectors", d: "Rows inside. Bags are sorted and put away by destination." },
+        { sw: "stg", k: "Staging", d: "Hatched zones where bags wait for their vehicle." }
+      ],
+      notes: "The idea before the screens. 57 inbound and 102 outbound docks wrap Tauru Gateway; 100+ sectors inside; about 59K shipments in the building at any time. Press → to show the floor plan: this is the mental model supervisors already have, so we mapped it 1:1 as the dashboard. Next slide: the twin itself."
+    },
+
+    /* 07 — THE SOLUTION */
     {
       section: "design", type: "board", tall: true,
       eyebrow: "The solution",
