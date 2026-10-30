@@ -1712,6 +1712,8 @@ html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
 /* ===== HubEye case study ===== */
 .csv2.hubeye .hx-hero { grid-template-columns: 1fr 1.25fr; align-items: center; }
 .csv2.hubeye .hx-hero-shot { position: relative; }
+/* the HubEye headline is a full sentence: a size down so it holds to four lines beside the screenshot */
+.csv2.hubeye .hero h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.1; max-width: 18ch; }
 .csv2.hubeye .hx-hero-shot .device-badge { left: -18px; bottom: -18px; }
 .csv2 .hx-shot { margin: 0; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.12); }
 .csv2 .hx-shot.wide { margin-top: 36px; }
