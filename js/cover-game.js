@@ -206,6 +206,7 @@
   }
   function resize() {
     var r = cover.getBoundingClientRect();
+    if (!r.width || !r.height) return; // hidden (the Instagram look has no banner)
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = r.width; H = r.height;
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
