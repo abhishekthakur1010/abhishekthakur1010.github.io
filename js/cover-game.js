@@ -251,14 +251,17 @@
     hint.style.width = (56 * L.s) + 'px';
     hint.style.height = (92 * L.s) + 'px';
     var n = Math.round((W * H) / (narrow ? 2600 : 4200));
-    // Keep the embers that are already floating: stretch them to the new size so they stay put
-    // when the banner resizes (e.g. opening a category), and only add or drop the difference.
-    if (embers.length && emberW && emberH) {
-      var sx = W / emberW, sy = H / emberH;
-      embers.forEach(function (e) { e.x *= sx; e.y *= sy; });
+    // Keep the embers already floating exactly where they are when the banner resizes
+    // (e.g. it shrinks after picking a category): drop only those now outside, and top up
+    // in the newly uncovered strip if the banner grew.
+    var grewFrom = embers.length ? emberH : 0;
+    embers = embers.filter(function (e) { return e.x <= W && e.y <= H + 20; });
+    var tries = 0;
+    while (embers.length < n && tries++ < n * 4) {
+      var e = newEmber(true);
+      if (grewFrom && e.y < grewFrom && e.x <= emberW) continue; // the area already shown keeps its own embers
+      embers.push(e);
     }
-    while (embers.length < n) embers.push(newEmber(true));
-    if (embers.length > n) embers.length = n;
     emberW = W; emberH = H;
   }
   function newEmber(anywhere) {
