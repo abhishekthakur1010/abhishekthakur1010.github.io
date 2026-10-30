@@ -196,3 +196,16 @@
 .dv-hero { overflow: hidden; }
 .dv-sec, .dv-hero { overflow-x: clip; }
 @media (max-width: 1000px) { .dv-split .dv-fig { max-width: 220px; margin: 0 auto; } }
+
+/* hero: back phones tucked behind the front one, fan out on hover */
+.dv-ph-back { transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .4s; opacity: 0; }
+.dv-ph-back.l, .dv-ph-back.r { left: 50%; top: 20px; transform: translateX(-50%) rotate(0deg) scale(.92); }
+.dv-hero-art:hover .dv-ph-back { opacity: 1; }
+.dv-hero-art:hover .dv-ph-back.l { transform: translateX(-112%) rotate(-8deg) scale(.92); }
+.dv-hero-art:hover .dv-ph-back.r { transform: translateX(12%) rotate(8deg) scale(.92); }
+.dv-ph-front { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.dv-hero-art:hover .dv-ph-front { transform: translateX(-50%) translateY(-6px); }
+.dv-chip { left: auto; right: calc(50% + 70px); bottom: 24px; padding: 14px 18px; }
+.dv-chip b { font-size: 28px; }
+@media (max-width: 640px) { .dv-chip { right: auto; left: 0; } }
+@media (prefers-reduced-motion: reduce) { .dv-ph-back, .dv-ph-front { transition: none; } }
