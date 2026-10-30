@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="./css/profile.css?v=86" rel="stylesheet" />
+    <link href="./css/profile.css?v=87" rel="stylesheet" />
     <link href="./css/categories.css?v=33" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -296,8 +296,8 @@
             <div class="feat-body feat-row"><div class="feat-text"><div class="feat-title">Streamlining the checkout experience</div><div class="feat-meta">JioMart · +20.54% conversion</div></div><span class="cs-type b2c">B2C</span></div>
           </a>
           <a class="feat" href="./delfin.html">
-            <div class="feat-img"><img src="./images/delfin/delfin-cover.png" alt="DelFin: a 0→1 financial services platform case study cover" loading="lazy" /></div>
-            <div class="feat-body feat-row"><div class="feat-text"><div class="feat-title">DelFin: a 0→1 financial services platform</div><div class="feat-meta">Delhivery · ~8 weeks to launch</div></div><span class="cs-type b2b">B2B</span></div>
+            <div class="feat-img"><video class="feat-video" src="./images/delfin/delfin-thumb.mp4" poster="./images/delfin/delfin-thumb.webp" muted loop playsinline preload="metadata" aria-label="DelFin case study cover: the app home screen in motion"><source src="./images/delfin/delfin-thumb.webm" type="video/webm" /><source src="./images/delfin/delfin-thumb.mp4" type="video/mp4" /></video></div>
+            <div class="feat-body feat-row"><div class="feat-text"><div class="feat-title">DelFin: a 0→1 financial services platform</div><div class="feat-meta">Delhivery · 80.4% self-serve activation</div></div><span class="cs-type b2b">B2B</span></div>
           </a>
           </div>
         </section>
@@ -551,6 +551,18 @@
 
     <script src="./js/profile.js?v=12"></script>
     <script src="./js/live-strip.js?v=1"></script>
+    <script>
+      // case study cover videos: play while on screen, pause off screen; stay still for reduced motion
+      (function () {
+        var vids = document.querySelectorAll('.feat-video');
+        if (!vids.length || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+        if (!('IntersectionObserver' in window)) { vids.forEach(function (v) { v.play().catch(function () {}); }); return; }
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
+        }, { threshold: 0.25 });
+        vids.forEach(function (v) { io.observe(v); });
+      })();
+    </script>
     <script src="./js/cover-game.js?v=41"></script>
 
     <!-- Feedback, opened from the + circle -->
