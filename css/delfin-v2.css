@@ -209,3 +209,4 @@
 .dv-chip b { font-size: 28px; }
 @media (max-width: 640px) { .dv-chip { right: auto; left: 0; } }
 @media (prefers-reduced-motion: reduce) { .dv-ph-back, .dv-ph-front { transition: none; } }
+.dv-chip span { white-space: nowrap; max-width: none; }
