@@ -18,7 +18,7 @@ window.DECK = {
     putc: {
       method: "Put compliance", tag: "Hub reporting · measured",
       img: "panel-top.webp", crop: 0,
-      calc: [["Before the redesign", "72%"], ["After rollout", "79%"], ["Change", "+7 points", 1]],
+      calc: [["Before the redesign", "65%"], ["After rollout", "79%"], ["Change", "+14 points", 1]],
       observed: "Share of shipments put away in the right sector on time.",
       takeaway: "With red sectors on the map, supervisors fix misplaced bags in the same shift."
     },
@@ -46,7 +46,7 @@ window.DECK = {
     baseline: {
       method: "Where it hurt", tag: "Hub reporting · measured",
       img: "control-room.webp", crop: 0,
-      calc: [["Dock throughput", "68%"], ["Put compliance", "72%"], ["Shipments ageing past 12 hrs", "3,400+", 1]],
+      calc: [["Dock throughput", "68%"], ["Put compliance", "65%"], ["Shipments ageing past 12 hrs", "3,400+", 1]],
       observed: "Baseline at a large gateway before the redesign.",
       takeaway: "Rich data existed; nobody could act on it fast enough."
     }
@@ -61,10 +61,10 @@ window.DECK = {
       highlight: "digital twin",
       body: "Supervisors could see every number but act on none of them. We mapped live operations onto the real hub floor, so problems show up where they happen.",
       heroWide: "hub-map-panel.webp", url: "eye.delhivery.com/mid-mile/hub",
-      badge: { n: "{{72% → 79%|putc}}", l: "Put compliance" },
+      badge: { n: "{{65% → 79%|putc}}", l: "Put compliance" },
       meta: [
         { l: "My role", v: "Design lead · direction to rollout" },
-        { l: "Timeline", v: "Q2 2025 · live in hubs" },
+        { l: "Timeline", v: "2025–26 · live in hubs" },
         { l: "Users", v: "Hub managers · supervisors · central ops" },
         { l: "After rollout", v: "{{46% → 54%|obsl}} on-time departures" }
       ],
@@ -162,7 +162,7 @@ window.DECK = {
       to: "Show where to act, and why",
       statement: "Supervisors didn't lack data. They lacked a view that told them where to act and why.",
       goals: [
-        { k: "Put compliance", v: "{{72%|putc}} → higher" },
+        { k: "Put compliance", v: "{{65%|putc}} → higher" },
         { k: "On-time departures", v: "{{46%|obsl}} → higher" },
         { k: "Shipment ageing", v: "Down" }
       ],
@@ -213,7 +213,7 @@ window.DECK = {
       eyebrow: "Impact",
       headline: ["Turning observation into operation"],
       hero: [
-        { k: "Put compliance", pre: 72, post: 79, pt: "72%", qt: "79%", d: "{{+7 pts|putc}}", sub: "right sector, on time" },
+        { k: "Put compliance", pre: 65, post: 79, pt: "65%", qt: "79%", d: "{{+14 pts|putc}}", sub: "right sector, on time" },
         { k: "On-time departures", pre: 46, post: 54, pt: "46%", qt: "54%", d: "{{+8 pts|obsl}}", sub: "OBSL" },
         { k: "Shipment ageing", pre: 100, post: 92, pt: "100", qt: "92", d: "{{−8%|ageing}}", sub: "indexed, lower is better" },
         { k: "Ageing at Ionad hub", pre: 100, post: 67, pt: "100", qt: "67", d: "{{−33%|ageing}}", sub: "indexed, lower is better" }
@@ -240,7 +240,7 @@ window.DECK = {
       eyebrow: "Key takeaways",
       headline: ["Show where to act"],
       wins: [
-        { n: "{{72→79%|putc}}", l: "put compliance" },
+        { n: "{{65→79%|putc}}", l: "put compliance" },
         { n: "{{46→54%|obsl}}", l: "on-time departures" }
       ],
       rows: [
