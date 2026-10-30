@@ -1,13 +1,11 @@
-/* Look: the visitor chooses how the profile looks (a social-platform style, light or dark, an accent colour).
+/* Look: the visitor chooses how the profile looks (LinkedIn or Instagram style, light or dark, an accent colour).
    Loaded in <head> without defer so the saved look is on <html> before the first paint; the panel is built
    once the page is parsed. ?skin=, ?mode= and ?accent= in the link override what this device has saved. */
 (function () {
   var KEY = "pf-look";
   var SKINS = {
     linkedin: { name: "LinkedIn", tag: "Professional", accent: "#0a66c2" },
-    instagram: { name: "Instagram", tag: "Visual grid", accent: "#0095f6" },
-    x: { name: "X", tag: "Feed", accent: "#1d9bf0" },
-    behance: { name: "Behance", tag: "Portfolio", accent: "#0057ff" }
+    instagram: { name: "Instagram", tag: "Visual grid", accent: "#0095f6" }
   };
   var MODES = { light: "Light", dark: "Dark", auto: "Auto" };
   var ACCENTS = ["#7c3aed", "#db2777", "#ea580c", "#16a34a", "#0d9488"];
@@ -82,7 +80,7 @@
       '<button type="button" class="lk-btn" aria-expanded="false" aria-controls="lk-panel" aria-label="Customize this page">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.3 0-1 .8-1.9 1.9-1.9H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2" fill="currentColor" stroke="none"/><circle cx="10" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg>' +
         '<span class="lk-btn-label">Customize</span></button>' +
-      '<p class="lk-nudge" hidden>See this profile as Instagram, X or Behance <button type="button" aria-label="Dismiss">×</button></p>' +
+      '<p class="lk-nudge" hidden>Try the Instagram look, or dark mode <button type="button" aria-label="Dismiss">×</button></p>' +
       '<div class="lk-panel" id="lk-panel" role="dialog" aria-labelledby="lk-title" hidden>' +
         '<div class="lk-head"><div><h2 id="lk-title">Make it yours</h2><p>Saved on this device.</p></div>' +
           '<button type="button" class="lk-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
@@ -124,6 +122,7 @@
       // a soft cross-fade between styles where the browser supports it
       if (k === "skin" && document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(go);
       else go();
+      if (k === "skin") window.dispatchEvent(new Event("scroll")); // light the Instagram tab in view
     }
 
     btn.addEventListener("click", function () { open(panel.hidden); });
@@ -166,6 +165,46 @@
       }
     }, 5000);
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build);
-  else build();
+  /* ---------- Instagram tab bar: sticky, jumps to a section, lights up the one in view ---------- */
+  var TABS = [
+    ["featured", "Work", '<rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>'],
+    ["ui-visual", "Visuals", '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.8"/><path d="m21 15-5-5L5 21"/>'],
+    ["experience", "Experience", '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/>'],
+    ["about", "Awards", '<circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/>'],
+    ["recommendations", "Reviews", '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-5A8 8 0 1 1 21 12Z"/>'],
+    ["interests", "Beyond", '<path d="M12 20s-7.5-4.6-7.5-10A4.4 4.4 0 0 1 12 7.4 4.4 4.4 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/>']
+  ];
+  function buildTabs() {
+    var main = document.querySelector(".main"), first = document.getElementById("featured");
+    if (!main || !first || document.getElementById("ig-tabs")) return;
+    var nav = document.createElement("nav");
+    nav.className = "ig-tabs";
+    nav.id = "ig-tabs";
+    nav.setAttribute("aria-label", "Sections");
+    nav.innerHTML = TABS.filter(function (t) { return document.getElementById(t[0]); }).map(function (t) {
+      return '<a href="#' + t[0] + '" data-tab="' + t[0] + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        t[2] + "</svg><span>" + t[1] + "</span></a>";
+    }).join("");
+    main.insertBefore(nav, first);
+    var links = [].slice.call(nav.querySelectorAll("a")), current = null, ticking = false;
+    function spy() {
+      ticking = false;
+      if (root.getAttribute("data-skin") !== "instagram") return;
+      var edge = nav.getBoundingClientRect().bottom + 24, on = links[0];
+      links.forEach(function (a) {
+        var sec = document.getElementById(a.getAttribute("data-tab"));
+        if (sec && sec.getBoundingClientRect().top <= edge) on = a;
+      });
+      if (on !== current) {
+        links.forEach(function (a) { a.classList.toggle("is-on", a === on); if (a === on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+        current = on;
+      }
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+    spy();
+  }
+
+  function init() { build(); buildTabs(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();

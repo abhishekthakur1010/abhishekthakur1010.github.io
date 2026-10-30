@@ -1,5 +1,5 @@
 /* Look: visitor-chosen style (data-skin), theme (data-mode) and accent, set on <html> by js/look.js.
-   LinkedIn is the page as designed in profile.css; the other styles and dark mode are overrides here. */
+   LinkedIn is the page as designed in profile.css; Instagram and dark mode are overrides here. */
 
 /* ---------- Customize button, hint and panel ---------- */
 .lk { position: fixed; right: 24px; bottom: 24px; z-index: 60; font: 14px/1.4 var(--font); color: var(--text); }
@@ -71,25 +71,6 @@
   linear-gradient(180deg, transparent 47%, #fff 47% 53%, transparent 53%),
   linear-gradient(120deg, #feda75, #fa7e1e 30%, #d62976 60%, #4f5bd5); opacity: .85; }
 .lk-prev-instagram i:nth-child(5), .lk-prev-instagram i:nth-child(6) { display: none; }
-/* X: one narrow column, banner, photo, posts split by hairlines */
-.lk-prev-x { background: #000; }
-.lk-prev-x i:nth-child(1) { left: 22%; right: 22%; top: 0; bottom: 0; background: #000; box-shadow: -1px 0 0 #2f3336, 1px 0 0 #2f3336; }
-.lk-prev-x i:nth-child(2) { left: 22%; right: 22%; top: 0; height: 16px; background: #333639; }
-.lk-prev-x i:nth-child(3) { left: calc(22% + 5px); top: 10px; width: 14px; height: 14px; border-radius: 50%; background: #c9b8a6; box-shadow: 0 0 0 2px #000; }
-.lk-prev-x i:nth-child(4) { right: calc(22% + 5px); top: 19px; width: 18px; height: 6px; border-radius: 3px; background: #e7e9ea; }
-.lk-prev-x i:nth-child(5) { left: calc(22% + 5px); right: calc(22% + 5px); top: 30px; height: 4px; border-radius: 2px; background: #e7e9ea; box-shadow: 0 8px 0 -0.5px #71767b; }
-.lk-prev-x i:nth-child(6) { left: 22%; right: 22%; top: 46px; height: 1px; background: #2f3336; box-shadow: 0 6px 0 0 #1d9bf0, 0 10px 0 0 #2f3336; }
-/* Behance: profile card on the left, project tiles on the right */
-.lk-prev-behance { background: #f6f6f6; }
-.lk-prev-behance i:nth-child(1) { left: 6px; top: 6px; bottom: 6px; width: 30%; border-radius: 4px; background: #fff; box-shadow: 0 0 0 1px #e8e8e8; }
-.lk-prev-behance i:nth-child(2) { left: calc(6px + 15% - 7px); top: 12px; width: 14px; height: 14px; border-radius: 50%; background: #c9b8a6; }
-.lk-prev-behance i:nth-child(3) { left: 11px; top: 44px; width: calc(30% - 10px); height: 6px; border-radius: 3px; background: #0057ff; }
-.lk-prev-behance i:nth-child(4) { left: calc(30% + 12px); right: 6px; top: 6px; bottom: 6px; border-radius: 3px; background:
-  linear-gradient(90deg, transparent 48%, #f6f6f6 48% 52%, transparent 52%),
-  linear-gradient(180deg, transparent 47%, #f6f6f6 47% 53%, transparent 53%),
-  linear-gradient(135deg, #ffb199, #ff6a3d 40%, #5b5bd6 70%, #1f2a44); }
-.lk-prev-behance i:nth-child(5), .lk-prev-behance i:nth-child(6) { display: none; }
-
 /* theme: one segmented control */
 .lk-segs { display: grid; grid-template-columns: repeat(3, 1fr); padding: 3px; border-radius: 10px; background: color-mix(in srgb, var(--text) 6%, transparent); }
 .lk-seg span { display: block; padding: 7px 0; border-radius: 8px; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--text-2); transition: background .15s, color .15s; }
@@ -101,7 +82,7 @@
 /* accent: swatches, the first follows the chosen style */
 .lk-dots { display: flex; flex-wrap: wrap; gap: 10px; }
 .lk-sw { display: block; width: 30px; height: 30px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1); transition: box-shadow .15s; }
-.lk-sw-auto { background: conic-gradient(#0a66c2 0 25%, #d62976 0 50%, #1d9bf0 0 75%, #0057ff 0); }
+.lk-sw-auto { background: conic-gradient(#0a66c2 0 50%, #d62976 0); }
 .lk-dot:has(input:checked) .lk-sw { box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--text); }
 .lk-dot:has(input:focus-visible) .lk-sw { outline: 2px solid var(--accent); outline-offset: 5px; }
 
@@ -167,203 +148,199 @@
 [data-mode="dark"] .lk-prev { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
 [data-mode="dark"] .lk-btn { box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
 
+/* the header stats carry their numbers in <b> for the Instagram look; LinkedIn keeps one weight */
+.meta-strong b { font-weight: inherit; }
+.ig-tabs { display: none; }
+
 /* ======================================================================
-   Instagram: ringed photo beside the name, stats and bio; centred tab
-   headings; case studies and visuals as edge-to-edge tiles
+   Instagram: photo in a story ring beside the name and stats, apps as
+   story highlights, a sticky tab bar, then work and visuals as a grid
    ====================================================================== */
-:root[data-skin="instagram"] { --accent-hover: #1877f2; --accent: #0095f6; --text: #000; --text-2: #737373; --line: #dbdbdb; --line-soft: #efefef; --ig-ring: linear-gradient(45deg, #feda75, #fa7e1e 30%, #d62976 60%, #962fbf 80%, #4f5bd5); }
-:root[data-skin="instagram"][data-mode="dark"] { --bg: #000; --card: #121212; --text: #f5f5f5; --text-2: #a8a8a8; --line: #262626; --line-soft: #1c1c1c; }
+:root[data-skin="instagram"] {
+  --accent: #0095f6; --accent-hover: #1877f2; --bg: #fff; --card: #fff; --text: #000; --text-2: #737373; --line: #dbdbdb; --line-soft: #efefef;
+  --ig-btn: #efefef; --ig-btn-hover: #dbdbdb;
+  --ig-ring: linear-gradient(45deg, #feda75, #fa7e1e 30%, #d62976 60%, #962fbf 80%, #4f5bd5);
+  scroll-padding-top: 64px;
+}
+:root[data-skin="instagram"][data-mode="dark"] {
+  --bg: #000; --card: #121212; --text: #f5f5f5; --text-2: #a8a8a8; --line: #262626; --line-soft: #1a1a1a; --ig-btn: #363636; --ig-btn-hover: #262626;
+}
+:root[data-skin="instagram"]:not(.cat-mode) .layout { max-width: 935px; }
 :root[data-skin="instagram"]:not(.cat-mode) .card.profile .cover { display: none; }
-[data-skin="instagram"] .profile-body { display: grid; grid-template-columns: 150px minmax(0, 1fr); column-gap: 56px; align-items: center; padding: 40px 24px 28px; }
-[data-skin="instagram"] .avatar { width: 150px; height: 150px; margin: 0; padding: 4px; border: 0; background: var(--ig-ring); }
-[data-skin="instagram"] .avatar img { border-radius: 50%; border: 4px solid var(--bg); }
-[data-skin="instagram"] .profile-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
-[data-skin="instagram"] .affil { display: none; }
-[data-skin="instagram"] .profile-name { font-size: 22px; font-weight: 600; }
-[data-skin="instagram"] .headline { order: 3; margin: 14px 0 2px; font-size: 14.5px; font-weight: 600; }
-[data-skin="instagram"] .meta-strong { margin-top: 12px; font-size: 16px; font-weight: 400; color: var(--text); }
-[data-skin="instagram"] .meta-strong a { color: var(--text); font-weight: 600; }
-[data-skin="instagram"] .profile .bio { margin: 2px 0 0; font-size: 14px; color: var(--text); }
-@media (min-width: 721px) { [data-skin="instagram"] .profile .bio { margin-right: 0; } }
-[data-skin="instagram"] .actions { gap: 8px; margin-top: 16px; }
-[data-skin="instagram"] .btn { height: 34px; padding: 0 16px; border-radius: 8px; border: 0; font-size: 14px; font-weight: 600; }
-[data-skin="instagram"] .btn-outline, [data-skin="instagram"] .btn-ghost { background: var(--line-soft); color: var(--text); box-shadow: none; }
-[data-skin="instagram"] .btn-outline:hover, [data-skin="instagram"] .btn-ghost:hover { background: var(--line); box-shadow: none; }
-[data-skin="instagram"][data-mode="dark"] .btn-outline, [data-skin="instagram"][data-mode="dark"] .btn-ghost { background: #363636; color: var(--text); border: 0; }
-[data-skin="instagram"] .more-btn { border-radius: 8px; }
-/* sections: a hairline across the column with the heading centred under it, like the profile tabs */
-[data-skin="instagram"] .card:not(.profile) { border-top: 1px solid var(--line); padding-top: 0; }
-[data-skin="instagram"] .card > .card-title, [data-skin="instagram"] .card > .card-head { position: relative; justify-content: center; text-align: center; margin-top: -1px; padding-top: 16px; }
-[data-skin="instagram"] .card > .card-title::before, [data-skin="instagram"] .card > .card-head::before { content: ""; position: absolute; left: 50%; top: 0; width: 64px; height: 1px; margin-left: -32px; background: var(--text); }
-[data-skin="instagram"] .card-title, [data-skin="instagram"] .card-head .card-title { color: var(--text); font-size: 12px; letter-spacing: .1em; }
-[data-skin="instagram"] .card-head .rail-nav { position: absolute; right: 0; top: 12px; margin: 0; }
-[data-skin="instagram"] .card .card-sub { text-align: center; color: var(--text-2); }
-[data-skin="instagram"] .app-card { border-radius: 16px; }
-/* case studies and visuals: edge-to-edge tiles, titles on the case study tiles */
-[data-skin="instagram"] .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
-[data-skin="instagram"] .feat { position: relative; }
-[data-skin="instagram"] .feat-img { aspect-ratio: 4 / 5; border-radius: 0; }
-[data-skin="instagram"] .feat-body {
-  position: absolute; left: 0; right: 0; bottom: 0; padding: 48px 14px 14px; align-items: flex-end;
-  background: linear-gradient(to top, rgba(0, 0, 0, .72), transparent); color: #fff;
-}
-[data-skin="instagram"] .feat-title { font-size: 15px; color: #fff; }
-[data-skin="instagram"] .feat:hover .feat-title { color: #fff; text-decoration: underline; }
-[data-skin="instagram"] .feat-meta { color: rgba(255, 255, 255, .82); font-size: 13px; }
-[data-skin="instagram"] .feat-row .cs-type { color: #fff; background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .6); padding: 2px 10px; font-size: 11px; }
-[data-skin="instagram"] .ui-grid { gap: 4px; }
-[data-skin="instagram"] .ui-item { aspect-ratio: 4 / 5; }
-[data-skin="instagram"] .ui-open { border-radius: 0; }
-[data-skin="instagram"] .award-img, [data-skin="instagram"] .xp-logo, [data-skin="instagram"] .rec-logo { border-radius: 12px; }
-/* people get story rings; interests become highlight circles */
-[data-skin="instagram"] .rec-pic { padding: 2px; background: var(--ig-ring); }
-[data-skin="instagram"] .rec-pic img { border-radius: 50%; border: 2px solid var(--bg); }
-[data-skin="instagram"] .interests { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-[data-skin="instagram"] .interest { align-items: center; text-align: center; gap: 10px; padding: 0; background: none; }
-[data-skin="instagram"] .interest:hover { transform: none; box-shadow: none; }
-[data-skin="instagram"] .interest .ico { width: 78px; height: 78px; border-radius: 50%; font-size: 32px; background: var(--card); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--line); }
-[data-skin="instagram"] .interest b { font-size: 13px; margin: 0; }
-[data-skin="instagram"] .interest span { font-size: 12.5px; color: var(--text-2); }
-@media (max-width: 720px) {
-  [data-skin="instagram"] .profile-body { grid-template-columns: 86px minmax(0, 1fr); column-gap: 24px; align-items: start; padding: 24px 0 20px; }
-  [data-skin="instagram"] .avatar { width: 86px; height: 86px; padding: 3px; }
-  [data-skin="instagram"] .avatar img { border-width: 3px; }
-  [data-skin="instagram"] .profile-name { font-size: 19px; }
-  [data-skin="instagram"] .meta-strong { font-size: 13.5px; }
-  [data-skin="instagram"] .featured { margin: 0 -16px; padding: 0; gap: 2px; }
-  [data-skin="instagram"] .feat-body { padding: 36px 10px 10px; flex-direction: column; align-items: flex-start; gap: 6px; }
-  [data-skin="instagram"] .feat-title { font-size: 13.5px; }
-  [data-skin="instagram"] .feat-meta { font-size: 12px; }
-  [data-skin="instagram"] .ui-grid { grid-template-columns: repeat(3, 1fr); gap: 2px; margin-left: -16px; margin-right: -16px; }
-  [data-skin="instagram"] .ui-grid:not(.is-open) .ui-item:nth-child(n+7) { display: none; }
-  [data-skin="instagram"] .ui-grid:not(.is-open) .ui-item:nth-child(-n+6) { display: block; }
-  [data-skin="instagram"] .interests { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-  [data-skin="instagram"] .interest .ico { width: 62px; height: 62px; font-size: 26px; }
-  [data-skin="instagram"] .interest span { display: none; }
-}
+:root[data-skin="instagram"] body { font-size: 14px; }
 
-/* ======================================================================
-   X: one narrow column between hairlines; banner, photo on its edge,
-   pill buttons, every section a bordered block, case studies as posts
-   ====================================================================== */
-:root[data-skin="x"] { --accent-hover: #1a8cd8; --accent: #1d9bf0; --text: #0f1419; --text-2: #536471; --text-3: #8b98a5; --line: #eff3f4; --line-soft: #f7f9f9; --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-:root[data-skin="x"][data-mode="dark"] { --bg: #000; --card: #16181c; --text: #e7e9ea; --text-2: #71767b; --text-3: #5b6066; --line: #2f3336; --line-soft: #16181c; }
-:root[data-skin="x"]:not(.cat-mode) .layout { max-width: 600px; padding: 0; border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; }
-:root[data-skin="x"]:not(.cat-mode) .card.profile .cover { width: auto; margin-left: 0; height: 200px; }
-[data-skin="x"] .profile-body { padding: 0 16px 16px; }
-[data-skin="x"] .avatar { width: 134px; height: 134px; margin-top: -67px; border: 4px solid var(--bg); }
-[data-skin="x"] .profile-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 12px; }
-[data-skin="x"] .profile-name { font-size: 20px; font-weight: 800; }
-[data-skin="x"] .headline { margin: 2px 0 10px; font-size: 15px; }
-[data-skin="x"] .meta-strong { font-size: 14px; font-weight: 400; color: var(--text-2); }
-[data-skin="x"] .meta-strong a { color: var(--text); font-weight: 700; }
-[data-skin="x"] .profile .bio { font-size: 15px; color: var(--text); margin-right: 0; }
-[data-skin="x"] .affil { flex-direction: row; align-items: center; text-align: left; }
-[data-skin="x"] .affil li { font-weight: 400; color: var(--text-2); font-size: 14px; }
-[data-skin="x"] .affil img { width: 20px; height: 20px; }
-[data-skin="x"] .btn { height: 36px; padding: 0 16px; border-radius: 999px; font-size: 15px; font-weight: 700; }
-[data-skin="x"] .btn-primary { background: var(--text); color: var(--bg); }
-[data-skin="x"] .btn-primary:hover { background: color-mix(in srgb, var(--text) 85%, var(--bg)); }
-[data-skin="x"] .btn-outline, [data-skin="x"] .btn-ghost { border-color: #cfd9de; color: var(--text); background: transparent; }
-[data-skin="x"][data-mode="dark"] .btn-outline, [data-skin="x"][data-mode="dark"] .btn-ghost { border-color: #536471; color: var(--text); }
-[data-skin="x"] .btn-outline:hover, [data-skin="x"] .btn-ghost:hover { background: color-mix(in srgb, var(--text) 8%, transparent); box-shadow: none; }
-@media (min-width: 640px) {
-  /* buttons sit top right, level with the photo */
-  [data-skin="x"] .profile-body { position: relative; }
-  [data-skin="x"] .actions { position: absolute; right: 16px; top: 12px; margin: 0; }
-}
-[data-skin="x"] .card:not(.profile) { padding: 14px 16px 18px; border-top: 1px solid var(--line); }
-[data-skin="x"] .card-title, [data-skin="x"] .card-head .card-title { font-size: 20px; font-weight: 800; letter-spacing: -.01em; text-transform: none; color: var(--text); }
-[data-skin="x"] .card > .card-title, [data-skin="x"] .card > .card-head { margin-bottom: 18px; }
-[data-skin="x"] .card .card-title + .card-sub, [data-skin="x"] .card .card-head + .card-sub { margin: -14px 0 16px; font-size: 15px; color: var(--text-2); }
-[data-skin="x"] .app-card, [data-skin="x"] .award-img, [data-skin="x"] .feat-img, [data-skin="x"] .interest { border-radius: 16px; }
-/* case studies read as posts: words first, media under them, a hairline between */
-[data-skin="x"] .featured { row-gap: 0; margin: 0 -16px; }
-[data-skin="x"] .feat { padding: 14px 16px; transition: background .15s; }
-[data-skin="x"] .feat + .feat { border-top: 1px solid var(--line); }
-[data-skin="x"] .feat:hover { background: color-mix(in srgb, var(--text) 3%, transparent); }
-[data-skin="x"] .feat-body { order: -1; padding: 0 0 12px; }
-[data-skin="x"] .feat-title { font-size: 15px; font-weight: 700; }
-[data-skin="x"] .feat-meta { font-size: 15px; }
-[data-skin="x"] .feat-img { box-shadow: inset 0 0 0 1px var(--line); }
-[data-skin="x"] .feat:hover .feat-img video, [data-skin="x"] .feat:hover .feat-img img { transform: none; }
-[data-skin="x"] .ui-grid { gap: 2px; border-radius: 16px; overflow: hidden; grid-template-columns: repeat(2, 1fr); }
-[data-skin="x"] .ui-grid:not(.is-open) .ui-item:nth-child(n+5) { display: none; }
-[data-skin="x"] .ui-open { border-radius: 0; }
-[data-skin="x"] .rec-list, [data-skin="x"] #rec-list { margin: 0 -16px; }
-[data-skin="x"] .rec { padding: 12px 16px; border-top: 1px solid var(--line); transition: background .15s; }
-[data-skin="x"] .rec:first-child { border-top: 0; }
-[data-skin="x"] .rec:hover { background: color-mix(in srgb, var(--text) 3%, transparent); }
-[data-skin="x"] .rec-pic { width: 40px; height: 40px; }
-[data-skin="x"] .rec { grid-template-columns: 40px minmax(0, 1fr) 40px; }
-[data-skin="x"] .rec-logo { width: 40px; height: 40px; border-radius: 8px; }
-[data-skin="x"] .rec-head { font-weight: 400; color: var(--text); }
-[data-skin="x"] .interests { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-[data-skin="x"] .interest { background: var(--line-soft); }
-[data-skin="x"] .card-foot a, [data-skin="x"] .card-foot button, [data-skin="x"] .ui-more, [data-skin="x"] .more-proj-label { color: var(--accent); }
-[data-skin="x"] .ui-more::after { display: none; }
-:root[data-skin="x"]:not(.cat-mode) .footer { max-width: 600px; padding: 16px; }
-@media (max-width: 720px) {
-  :root[data-skin="x"]:not(.cat-mode) .layout { border: 0; }
-  :root[data-skin="x"]:not(.cat-mode) .card.profile .cover { height: 130px; margin: 0 -16px; }
-  [data-skin="x"] .avatar { width: 84px; height: 84px; margin-top: -42px; }
-  [data-skin="x"] .profile-body { padding: 0 0 12px; }
-  [data-skin="x"] .card:not(.profile) { padding: 14px 0 18px; }
-  [data-skin="x"] .featured { margin: 0 -16px; padding: 0; }
-}
+/* the grid comes right after the header, the longer reading after it */
+:root[data-skin="instagram"] .main > #products { order: 1; }
+:root[data-skin="instagram"] .main > .ig-tabs { order: 2; }
+:root[data-skin="instagram"] .main > #featured { order: 3; }
+:root[data-skin="instagram"] .main > #ui-visual { order: 4; }
+:root[data-skin="instagram"] .main > #experience { order: 5; }
+:root[data-skin="instagram"] .main > #education { order: 6; }
+:root[data-skin="instagram"] .main > #about { order: 7; }
+:root[data-skin="instagram"] .main > #recommendations { order: 8; }
+:root[data-skin="instagram"] .main > #interests { order: 9; }
 
-/* ======================================================================
-   Behance: a profile card on the left that stays put, projects on the
-   right as a bold gallery
-   ====================================================================== */
-:root[data-skin="behance"] { --accent-hover: #0049d6; --accent: #0057ff; --bg: #f9f9f9; --card: #fff; --text: #191919; --text-2: #696969; --line: #e8e8e8; --line-soft: #f1f1f1; }
-:root[data-skin="behance"][data-mode="dark"] { --bg: #131313; --card: #1e1e1e; --text: #f1f1f1; --text-2: #a0a0a0; --line: #2e2e2e; --line-soft: #262626; }
-@media (min-width: 900px) {
-  :root[data-skin="behance"]:not(.cat-mode) .layout { max-width: 1240px; padding: 32px 32px 0 72px; }
-  :root[data-skin="behance"]:not(.cat-mode) .main { display: grid; grid-template-columns: 300px minmax(0, 1fr); column-gap: 36px; align-items: start; }
-  :root[data-skin="behance"]:not(.cat-mode) .card { grid-column: 2; }
-  :root[data-skin="behance"]:not(.cat-mode) .card.profile {
-    grid-column: 1; grid-row: 1 / span 20; position: sticky; top: 24px; z-index: 5;
-    padding: 0 0 24px; border-radius: 8px; background: var(--card); box-shadow: 0 0 0 1px var(--line); overflow: visible;
+/* header: photo on the left; name, stats, headline and buttons beside it */
+:root[data-skin="instagram"] .profile-body {
+  display: grid; grid-template-columns: 290px minmax(0, 1fr); grid-template-areas: "av name" "av stats" "av head" "av acts";
+  align-content: center; column-gap: 0; padding: 40px 0 44px;
+}
+:root[data-skin="instagram"] .profile-grid, :root[data-skin="instagram"] .profile-grid > div { display: contents; }
+:root[data-skin="instagram"] .affil { display: none; }
+:root[data-skin="instagram"] .avatar { grid-area: av; justify-self: center; align-self: center; width: 154px; height: 154px; margin: 0 0 0 -40px; padding: 4px; border: 0; background: var(--ig-ring); }
+:root[data-skin="instagram"] .avatar img { border-radius: 50%; border: 4px solid var(--bg); }
+:root[data-skin="instagram"] .profile-name { grid-area: name; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+:root[data-skin="instagram"] .meta-strong { grid-area: stats; display: flex; flex-wrap: wrap; gap: 6px 40px; margin: 18px 0 0; font-size: 16px; font-weight: 400; color: var(--text); }
+:root[data-skin="instagram"] .ms-sep { display: none; }
+:root[data-skin="instagram"] .ms-item, :root[data-skin="instagram"] .meta-strong a, :root[data-skin="instagram"] .meta-strong .visit-count { color: var(--text); font-weight: 400; }
+:root[data-skin="instagram"] .meta-strong b { font-weight: 600; }
+:root[data-skin="instagram"] .meta-strong a:hover { text-decoration: none; opacity: .7; }
+:root[data-skin="instagram"] .headline { grid-area: head; margin: 18px 0 0; font-size: 14px; font-weight: 600; }
+:root[data-skin="instagram"] .actions { grid-area: acts; gap: 8px; margin-top: 18px; }
+
+/* buttons: flat, no icons; blue for the main one, grey for the rest */
+:root[data-skin="instagram"] .btn { height: 32px; padding: 0 16px; border: 0; border-radius: 8px; font-size: 14px; font-weight: 600; box-shadow: none; }
+:root[data-skin="instagram"] .btn svg { display: none; }
+:root[data-skin="instagram"] .btn-primary { background: var(--accent); color: #fff; }
+:root[data-skin="instagram"] .btn-primary:hover { background: var(--accent-hover); }
+:root[data-skin="instagram"] .btn-outline, :root[data-skin="instagram"] .btn-ghost { background: var(--ig-btn); color: var(--text); }
+:root[data-skin="instagram"] .btn-outline:hover, :root[data-skin="instagram"] .btn-ghost:hover { background: var(--ig-btn-hover); box-shadow: none; }
+:root[data-skin="instagram"] .more-btn { width: 32px; height: 32px; border: 0; border-radius: 8px; background: var(--ig-btn); color: var(--text); }
+:root[data-skin="instagram"] .more-btn:hover { background: var(--ig-btn-hover); }
+
+/* apps I've shaped, as story highlights: a ringed circle, the name, its store rating */
+:root[data-skin="instagram"] #products { padding: 0 0 36px; }
+:root[data-skin="instagram"] #products > .card-head, :root[data-skin="instagram"] #products > .card-sub,
+:root[data-skin="instagram"] #featured > .card-head, :root[data-skin="instagram"] #featured > .card-title, :root[data-skin="instagram"] #featured > .card-sub,
+:root[data-skin="instagram"] #ui-visual > .card-title, :root[data-skin="instagram"] #ui-visual > .card-sub {
+  position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+:root[data-skin="instagram"] .app-rail { grid-auto-columns: 92px; gap: 28px; padding: 4px 4px 2px; margin: 0 -4px; }
+:root[data-skin="instagram"] .app-card { gap: 6px; padding: 0; border-radius: 0; background: none; box-shadow: none; text-align: center; align-items: center; }
+:root[data-skin="instagram"] .app-head { flex-direction: column; gap: 8px; width: 100%; }
+:root[data-skin="instagram"] .app-logo { width: 82px; height: 82px; padding: 4px; border-radius: 50%; object-fit: cover; background: var(--bg); box-shadow: 0 0 0 1px var(--line); }
+:root[data-skin="instagram"] .app-head > div { width: 100%; }
+:root[data-skin="instagram"] .app-head h3 { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+:root[data-skin="instagram"] .app-head p, :root[data-skin="instagram"] .store-label, :root[data-skin="instagram"] .store-detail,
+:root[data-skin="instagram"] .store:not(:first-child) { display: none; }
+:root[data-skin="instagram"] .app-stores { display: block; }
+:root[data-skin="instagram"] .store { padding: 0; background: none; box-shadow: none; }
+:root[data-skin="instagram"] .store-rating { justify-content: center; gap: 3px; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--text-2); }
+:root[data-skin="instagram"] .store-rating .star { width: 11px; height: 11px; order: -1; }
+
+/* tab bar: sticks to the top while scrolling, the section in view is lit */
+:root[data-skin="instagram"] .ig-tabs {
+  display: flex; justify-content: center; gap: 52px; position: sticky; top: 0; z-index: 20;
+  background: var(--bg); border-top: 1px solid var(--line);
+}
+:root[data-skin="instagram"] .ig-tabs a {
+  display: flex; align-items: center; gap: 6px; height: 52px; margin-top: -1px; border-top: 1px solid transparent;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .15s;
+}
+:root[data-skin="instagram"] .ig-tabs a:hover { color: var(--text); }
+:root[data-skin="instagram"] .ig-tabs a.is-on { color: var(--text); border-top-color: var(--text); }
+:root[data-skin="instagram"] .ig-tabs svg { width: 13px; height: 13px; flex: none; }
+:root[data-skin="instagram"] .ig-tabs a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 2px; }
+
+/* sections: no rules, plain sentence-case headings */
+:root[data-skin="instagram"] .card:not(.profile) { padding: 40px 0 0; border-top: 0; }
+:root[data-skin="instagram"] .card-title, :root[data-skin="instagram"] .card-head .card-title { font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text); }
+:root[data-skin="instagram"] .card .card-sub { color: var(--text-2); font-size: 14px; }
+
+/* case studies and visuals: one edge-to-edge grid of square tiles */
+:root[data-skin="instagram"] #featured { padding-top: 0; }
+:root[data-skin="instagram"] #featured, :root[data-skin="instagram"] #ui-visual, :root[data-skin="instagram"] #products { overflow: visible; }
+:root[data-skin="instagram"] #ui-visual { padding-top: 4px; }
+:root[data-skin="instagram"] .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; margin: 0; }
+:root[data-skin="instagram"] .feat { position: relative; overflow: hidden; border-radius: 0; }
+:root[data-skin="instagram"] .feat-img { aspect-ratio: 1; border-radius: 0; }
+:root[data-skin="instagram"] .feat:hover .feat-img video, :root[data-skin="instagram"] .feat:hover .feat-img img { transform: none; }
+:root[data-skin="instagram"] .feat-body {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 64px 16px 14px; align-items: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, .25) 60%, transparent); color: #fff; pointer-events: none;
+}
+:root[data-skin="instagram"] .feat-title { font-size: 15px; font-weight: 600; color: #fff; }
+:root[data-skin="instagram"] .feat:hover .feat-title { color: #fff; }
+:root[data-skin="instagram"] .feat-meta { color: rgba(255, 255, 255, .85); font-size: 13px; }
+:root[data-skin="instagram"] .feat-row .cs-type { color: #fff; background: rgba(255, 255, 255, .18); border-color: rgba(255, 255, 255, .55); padding: 2px 9px; font-size: 11px; }
+/* a reel mark on the video tiles, like a reel in the grid */
+:root[data-skin="instagram"] .feat:has(video)::after {
+  content: ""; position: absolute; top: 12px; right: 12px; width: 20px; height: 20px; background: #fff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='2.5' y='2.5' width='19' height='19' rx='5'/%3E%3Cpath d='M2.5 8h19M9 2.5l3 5.5M15 2.5l3 5.5'/%3E%3Cpath d='M10 11.5v6l5-3z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='2.5' y='2.5' width='19' height='19' rx='5'/%3E%3Cpath d='M2.5 8h19M9 2.5l3 5.5M15 2.5l3 5.5'/%3E%3Cpath d='M10 11.5v6l5-3z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .4));
+}
+:root[data-skin="instagram"] .feat::before, :root[data-skin="instagram"] .ui-open::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, 0); transition: background .2s; pointer-events: none;
+}
+:root[data-skin="instagram"] .feat:hover::before, :root[data-skin="instagram"] .ui-open:hover::after { background: rgba(0, 0, 0, .12); }
+:root[data-skin="instagram"] .feat-body { z-index: 2; }
+:root[data-skin="instagram"] .ui-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 0; }
+:root[data-skin="instagram"] .ui-item { aspect-ratio: 1; }
+:root[data-skin="instagram"] .ui-open { position: relative; border-radius: 0; }
+:root[data-skin="instagram"] .ui-open:hover img { transform: none; }
+:root[data-skin="instagram"] .ui-more { justify-content: center; margin-top: 20px; color: var(--text); }
+:root[data-skin="instagram"] .ui-more::after { display: none; }
+:root[data-skin="instagram"] .ui-more-label { font-weight: 600; }
+
+/* everything else: round logos like profile photos, comments for the recommendations */
+:root[data-skin="instagram"] .xp-logo { border-radius: 50%; overflow: hidden; }
+:root[data-skin="instagram"] .xp-logo img { border-radius: 0; }
+:root[data-skin="instagram"] .award-img, :root[data-skin="instagram"] .ui-open { border-radius: 0; }
+:root[data-skin="instagram"] .award-img { border-radius: 4px; }
+:root[data-skin="instagram"] .rec { grid-template-columns: 44px minmax(0, 1fr); gap: 14px; }
+:root[data-skin="instagram"] .rec-logo { display: none; }
+:root[data-skin="instagram"] .rec-pic { width: 44px; height: 44px; padding: 2px; background: var(--ig-ring); }
+:root[data-skin="instagram"] .rec-pic img { border-radius: 50%; border: 2px solid var(--bg); }
+:root[data-skin="instagram"] .rec-name { font-size: 14px; }
+:root[data-skin="instagram"] .rec-title { font-size: 13px; }
+:root[data-skin="instagram"] .rec-head { margin-top: 6px; font-size: 14px; }
+:root[data-skin="instagram"] .card-foot button, :root[data-skin="instagram"] .card-foot a { color: var(--text-2); }
+
+/* interests as highlight circles */
+:root[data-skin="instagram"] .interests { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+:root[data-skin="instagram"] .interest { align-items: center; text-align: center; gap: 10px; padding: 0; background: none; }
+:root[data-skin="instagram"] .interest:hover { transform: none; box-shadow: none; }
+:root[data-skin="instagram"] .interest .ico { width: 82px; height: 82px; border-radius: 50%; font-size: 34px; background: var(--line-soft); box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line); }
+:root[data-skin="instagram"] .interest b { font-size: 13px; margin: 6px 0 0; }
+:root[data-skin="instagram"] .interest span { font-size: 12.5px; color: var(--text-2); }
+:root[data-skin="instagram"] .footer { max-width: 935px; }
+
+/* phones: photo beside the three stats, everything else full width under them */
+@media (max-width: 720px) {
+  :root[data-skin="instagram"] { scroll-padding-top: 52px; }
+  :root[data-skin="instagram"] .profile-body {
+    grid-template-columns: 86px minmax(0, 1fr); grid-template-areas: "av stats" "name name" "head head" "acts acts";
+    column-gap: 20px; padding: 20px 0 20px;
   }
-  :root[data-skin="behance"]:not(.cat-mode) .card.profile .cover { width: auto; margin: 0; height: 110px; border-radius: 8px 8px 0 0; }
-  :root[data-skin="behance"]:not(.cat-mode) .card.profile .cover-lockup { display: none; }
-  [data-skin="behance"] .profile-body { padding: 0 24px; text-align: center; }
-  [data-skin="behance"] .avatar { width: 110px; height: 110px; margin: -55px auto 0; border: 4px solid var(--card); }
-  [data-skin="behance"] .profile-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 14px; }
-  [data-skin="behance"] .profile-name { justify-content: center; font-size: 22px; font-weight: 700; }
-  [data-skin="behance"] .profile .bio { margin-right: 0; font-size: 14px; }
-  [data-skin="behance"] .actions { flex-direction: column; align-items: stretch; gap: 8px; margin-top: 20px; }
-  [data-skin="behance"] .actions .more { align-self: center; }
-  [data-skin="behance"] .affil { align-items: center; text-align: center; padding-top: 16px; border-top: 1px solid var(--line-soft); }
-  [data-skin="behance"] .footer { max-width: 1240px; padding: 0 32px 0 72px; }
-  /* the profile card keeps the More menu inside the viewport */
-  [data-skin="behance"] .more-menu { left: 50%; right: auto; transform: translateX(-50%); }
-}
-[data-skin="behance"] .btn { height: 40px; border-radius: 999px; font-size: 14.5px; font-weight: 700; }
-[data-skin="behance"] .btn-outline, [data-skin="behance"] .btn-ghost { border-color: var(--line); color: var(--text); background: var(--line-soft); }
-[data-skin="behance"] .btn-outline:hover, [data-skin="behance"] .btn-ghost:hover { background: var(--line); box-shadow: none; }
-[data-skin="behance"] .meta-strong { color: var(--text-2); font-weight: 500; }
-[data-skin="behance"] .meta-strong a { color: var(--text); font-weight: 700; }
-[data-skin="behance"] .card:not(.profile) { padding: 0 0 40px; }
-[data-skin="behance"] .card-title, [data-skin="behance"] .card-head .card-title { font-size: 18px; font-weight: 800; letter-spacing: -.01em; text-transform: none; color: var(--text); }
-[data-skin="behance"] .card .card-sub { color: var(--text-2); }
-[data-skin="behance"] .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
-[data-skin="behance"] .feat { background: none; }
-[data-skin="behance"] .feat-img { aspect-ratio: 404 / 316; border-radius: 4px; }
-[data-skin="behance"] .feat-body { padding-top: 10px; }
-[data-skin="behance"] .feat-title { font-size: 15px; font-weight: 700; }
-[data-skin="behance"] .feat-meta { font-size: 13px; }
-[data-skin="behance"] .ui-grid { gap: 16px; }
-[data-skin="behance"] .ui-item { aspect-ratio: 404 / 316; }
-[data-skin="behance"] .ui-open, [data-skin="behance"] .award-img, [data-skin="behance"] .app-card { border-radius: 4px; }
-[data-skin="behance"] .app-rail { grid-auto-columns: calc((100% - 32px) / 2.5); }
-[data-skin="behance"] .interest { border-radius: 4px; }
-@media (max-width: 899px) {
-  [data-skin="behance"] .profile-body { text-align: left; }
-  [data-skin="behance"] .card:not(.profile) { padding: 28px 0 8px; }
-}
-@media (max-width: 720px) {
-  [data-skin="behance"] .featured { grid-template-columns: minmax(0, 1fr); }
-  [data-skin="behance"] .ui-grid { gap: 8px; }
+  :root[data-skin="instagram"] .avatar { width: 86px; height: 86px; margin: 0; padding: 3px; }
+  :root[data-skin="instagram"] .avatar img { border-width: 3px; }
+  :root[data-skin="instagram"] .meta-strong { margin: 0; flex-wrap: nowrap; justify-content: space-around; gap: 4px; font-size: 13px; line-height: 1.25; }
+  :root[data-skin="instagram"] .ms-item { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+  :root[data-skin="instagram"] .meta-strong b { font-size: 17px; font-weight: 700; line-height: 1.3; }
+  :root[data-skin="instagram"] .profile-name { margin-top: 14px; font-size: 15px; }
+  :root[data-skin="instagram"] .headline { margin: 2px 0 0; font-weight: 400; }
+  :root[data-skin="instagram"] .actions { display: grid; grid-template-columns: 1fr 1fr 1fr 32px; gap: 6px; margin-top: 14px; }
+  :root[data-skin="instagram"] .actions .btn { padding: 0 8px; font-size: 13.5px; }
+  :root[data-skin="instagram"] #products { padding-bottom: 20px; }
+  :root[data-skin="instagram"] .app-rail { grid-auto-columns: 70px; gap: 14px; margin: 0 -16px; padding: 2px 16px; scroll-padding-inline: 16px; }
+  :root[data-skin="instagram"] .app-logo { width: 64px; height: 64px; padding: 3px; }
+  :root[data-skin="instagram"] .ig-tabs { gap: 0; margin: 0 -16px; justify-content: space-around; }
+  :root[data-skin="instagram"] .ig-tabs a { flex: 1; justify-content: center; height: 46px; }
+  :root[data-skin="instagram"] .ig-tabs svg { width: 22px; height: 22px; }
+  :root[data-skin="instagram"] .ig-tabs span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :root[data-skin="instagram"] .featured, :root[data-skin="instagram"] .ui-grid { margin: 0 -16px; padding: 0; gap: 2px; }
+  :root[data-skin="instagram"] .feat-img { aspect-ratio: 4 / 5; }
+  :root[data-skin="instagram"] .feat-body { padding: 40px 12px 12px; }
+  :root[data-skin="instagram"] .feat-title { font-size: 13px; line-height: 1.3; }
+  :root[data-skin="instagram"] .feat-meta, :root[data-skin="instagram"] .feat-row .cs-type { display: none; }
+  :root[data-skin="instagram"] .feat:has(video)::after { top: 8px; right: 8px; width: 17px; height: 17px; }
+  :root[data-skin="instagram"] #ui-visual { padding-top: 2px; }
+  :root[data-skin="instagram"] .ui-grid { grid-template-columns: repeat(3, 1fr); }
+  :root[data-skin="instagram"] .ui-grid:not(.is-open) .ui-item:nth-child(-n+9) { display: block; }
+  :root[data-skin="instagram"] .ui-grid:not(.is-open) .ui-item:nth-child(n+10) { display: none; }
+  :root[data-skin="instagram"] .card:not(.profile) { padding-top: 32px; }
+  :root[data-skin="instagram"] .interests { gap: 8px; }
+  :root[data-skin="instagram"] .interest .ico { width: 64px; height: 64px; font-size: 27px; }
+  :root[data-skin="instagram"] .interest span { display: none; }
 }
