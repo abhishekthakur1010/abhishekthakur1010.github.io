@@ -244,7 +244,7 @@ window.DECK = {
         { n: "{{46→54%|obsl}}", l: "on-time departures" }
       ],
       rows: [
-        { k: "My role", d: "Set the direction, ran critiques, aligned hub ops. Ravinder Kumar designed and shipped it." },
+        { k: "My role", d: "Set the direction, ran critiques, aligned hub ops, with 3 designers, 5 PMs, 20+ ops leaders and 7 developers." },
         { k: "Learned", d: "Location and colour did more than any new chart." },
         { k: "Next", d: "From monitoring to simulation: test layout changes before moving a rack." }
       ],
