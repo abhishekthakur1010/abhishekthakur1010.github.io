@@ -171,7 +171,7 @@ window.DECK = {
       highlight: "product discovery",
       body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
       hero: "enhance-v1-pdp-fold.png?v=2",
-      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png"],
+      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png?v=2"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
@@ -361,7 +361,7 @@ window.DECK = {
       sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
-        { img: "enhance-v1-plp.png", n: "Rating, discount, wishlist, sub-categories" },
+        { img: "enhance-v1-plp.png?v=2", n: "Rating, discount, wishlist, sub-categories" },
         { img: "enhance-live-plp.jpg", video: "enhance-live-plp.mp4", n: "Grid to compare at a glance" }
       ],
       evidence: {
