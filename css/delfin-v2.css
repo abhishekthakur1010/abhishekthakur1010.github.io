@@ -214,3 +214,7 @@
 html:has(body.delfin), body.csv2.delfin { overflow-x: hidden; }
 .dv-hero-copy { min-width: 0; }
 .dv h1 { overflow-wrap: break-word; }
+/* line the page up with the top bar: left edge = back button, right edge = Resume */
+.dv { --wrap: 1096px; }
+.dv-wrap { width: min(var(--wrap), 100% - 32px); }
+.dv-rail { padding-left: max(16px, calc((100vw - var(--wrap)) / 2)); padding-right: max(16px, calc((100vw - var(--wrap)) / 2)); scroll-padding-inline: max(16px, calc((100vw - var(--wrap)) / 2)); }
