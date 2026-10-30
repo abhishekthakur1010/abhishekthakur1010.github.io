@@ -1,6 +1,6 @@
 /* Look: the visitor chooses how the profile looks (LinkedIn or Instagram style, light or dark, an accent colour).
    Loaded in <head> without defer so the saved look is on <html> before the first paint; the panel is built
-   once the page is parsed. ?skin=, ?mode= and ?accent= in the link override what this device has saved. */
+   once the page is parsed. A choice lasts for the visit (sessionStorage); ?skin=, ?mode= and ?accent= in a link override it. */
 (function () {
   var KEY = "pf-look";
   var SKINS = {
@@ -25,7 +25,9 @@
   }
   function load() {
     var p = {};
-    try { p = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+    // a choice lasts for this visit only, so every new visit opens on the LinkedIn look
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    try { p = JSON.parse(sessionStorage.getItem(KEY)) || {}; } catch (e) {}
     try {
       var q = new URLSearchParams(location.search);
       ["skin", "mode", "accent"].forEach(function (k) { if (q.get(k)) p[k] = q.get(k); });
@@ -33,7 +35,7 @@
     return clean(p);
   }
   function save(p) {
-    try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {}
+    try { sessionStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {}
   }
   function apply(p) {
     var m = p.mode === "auto" ? (dark && dark.matches ? "dark" : "light") : p.mode;
@@ -81,7 +83,7 @@
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.3 0-1 .8-1.9 1.9-1.9H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2" fill="currentColor" stroke="none"/><circle cx="10" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg>' +
         '</button>' +
       '<div class="lk-panel" id="lk-panel" role="dialog" aria-labelledby="lk-title" hidden>' +
-        '<div class="lk-head"><div><h2 id="lk-title">Make it yours</h2><p>Saved on this device.</p></div>' +
+        '<div class="lk-head"><div><h2 id="lk-title">Make it yours</h2><p>Kept while you browse this visit.</p></div>' +
           '<button type="button" class="lk-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
         '<fieldset><legend>View as</legend><div class="lk-skins">' + skins + "</div></fieldset>" +
         '<fieldset><legend>Theme</legend><div class="lk-segs">' + modes + "</div></fieldset>" +
@@ -126,7 +128,7 @@
     });
     wrap.querySelector(".lk-reset").addEventListener("click", function () {
       look = clean({});
-      try { localStorage.removeItem(KEY); } catch (e) {}
+      try { sessionStorage.removeItem(KEY); } catch (e) {}
       apply(look);
       sync();
     });
