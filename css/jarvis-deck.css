@@ -290,3 +290,4 @@ body.deck.jarvis .jy-line b { color: var(--ink); }
   body.deck.jarvis .jy-cols { grid-template-columns: 1fr; gap: 12px; }
   body.deck.jarvis .jy-arrow { margin: 0; transform: rotate(90deg); justify-self: center; }
 }
+body.deck.jarvis .sy-statement { font-size: clamp(18px, 1.75vw, 25px); line-height: 1.35; }

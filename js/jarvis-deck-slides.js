@@ -103,7 +103,7 @@ window.DECK = {
         { theme: "Escalating", symptom: "“Who do I send this to?”", cause: "Escalation meant copying and pasting email IDs" },
         { theme: "Deadline", symptom: "“When is it due?”", cause: "SLA and next-response dates not visible upfront" }
       ],
-      statement: "The TDP showed the conversation, not the decision. Agents couldn't see the real SLA, the shipment status or who to escalate to, so every ticket meant checking other tools, and tickets missed the 2-day SLA.",
+      statement: "The TDP hid what agents needed to act: the SLA, the shipment and who to escalate to. So tickets missed the 2-day SLA.",
       goals: [
         { k: "3 tools", v: "to validate one ticket" },
         { k: "2-day SLA", v: "routinely missed" },
