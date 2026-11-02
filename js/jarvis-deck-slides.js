@@ -20,9 +20,9 @@ window.DECK = {
     {
       section: "context", type: "opening",
       eyebrow: "Delhivery · CX platform · Jarvis 2.0",
-      headline: ["Every ticket is a ", "conversation", " waiting for its next action"],
-      highlight: "conversation",
-      body: "Redesigning the Jarvis Ticket Detail Page so that a new agent can resolve a ticket as confidently as an agent with five years' experience.",
+      headline: ["50,000 tickets a day. ", "Only experienced agents", " knew where to\u00a0click."],
+      highlight: "Only experienced agents",
+      body: "Jarvis is Delhivery's one-stop ticketing platform. We redesigned its Ticket Detail Page so a new agent can resolve a ticket as confidently as one with five years' experience.",
       heroWide: "tdp.webp", url: "Jarvis · Ticket Detail Page",
       heroVideo: { mov: "../media/tdp-laptop.mov", webm: "../media/tdp-laptop.webm", poster: "../media/tdp-laptop-poster.webp" },
       badge: { n: "~50K", l: "Tickets a day" },
@@ -317,6 +317,13 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
           setTimeout(function () { var lb = document.querySelector(".lightbox"); if (lb) lb.classList.add("jv-full"); });
         });
       });
+    }
+    if (sc.heroVideo) {   // cover headline: the figure on its own line, then the problem
+      var h1 = el.querySelector("h1");
+      if (h1 && h1.firstChild && h1.firstChild.nodeType === 3) {
+        var l1 = document.createElement("span"); l1.className = "jv-l1"; l1.textContent = h1.firstChild.textContent.trim();
+        h1.replaceChild(l1, h1.firstChild); h1.insertBefore(document.createTextNode(" "), l1.nextSibling);
+      }
     }
     if (sc.heroVideo) {   // cover: the before → after reveal instead of the still (poster only for reduced motion)
       var hv = sc.heroVideo, hz = el.querySelector(".op-browser .zoomable");
