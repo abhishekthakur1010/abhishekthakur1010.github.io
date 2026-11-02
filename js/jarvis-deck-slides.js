@@ -234,18 +234,28 @@ window.DECK = {
       headline: ["Agents stopped hunting"],
       sub: "The right information in one place, and the next action one click away.",
       experience: [
-        "CS agents find the new TDP engaging and easier to learn",
-        "Ticket, shipment and SLA are in one place, so the answer is on screen",
-        "Escalation is one click, not a lookup in the Escalation Matrix"
+        "Agents find it easier to learn",
+        "Ticket, shipment and SLA in one place",
+        "Escalation in one click"
       ],
       metricsLabel: "What changed",
       metrics: [
-        { n: "~3 days → a few hours", l: "avg. ticket resolution time", lead: true },
-        { n: "3 → 1", l: "tools open per ticket" },
+        { n: "~3 days → a few hours", l: "avg. ticket resolution time (MTTR)", lead: true },
         { n: "2", l: "paid tools retired: Freshdesk and Rezo" },
         { n: "~$6.7K", l: "a month saved in licences" }
       ],
-      notes: "From post-launch feedback from the CS team. Average resolution time dropped from about three days to a few hours."
+      // illustrative figures from the owner for the metrics on the Insight slide; labelled on the slide
+      projected: {
+        k: "Target metrics · illustrative",
+        items: [
+          { n: "85%", l: "chose the new TDP over legacy" },
+          { n: "4h → 1h", l: "first response" },
+          { n: "14 → 6", l: "clicks per ticket" },
+          { n: "12 → 22", l: "tickets per hour" },
+          { n: "64% → 92%", l: "SLA compliance" }
+        ]
+      },
+      notes: "From post-launch feedback from the CS team, average resolution time dropped from about three days to a few hours, two paid tools were retired and about 6.7 thousand dollars a month was saved in licences. The target metrics row maps to the five metrics on the Insight slide: 85% voluntary adoption, first response from 4 hours to 1, clicks per ticket from 14 to 6, tickets per hour from 12 to 22, and SLA compliance from 64% to 92%. Figures beyond resolution time, tools and licence savings are illustrative estimates."
     },
 
     /* 16 — LEARNINGS */
@@ -314,7 +324,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       a.addEventListener("click", function (e) { e.stopPropagation(); });   // no lightbox, no slide advance
       im.parentNode.replaceChild(a, im);
     });
-    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.jflow || s.targets) && s.eyebrow === eb.textContent; })[0];
+    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.jflow || s.targets || s.projected) && s.eyebrow === eb.textContent; })[0];
     if (!sc) return;
     if (sc.feature) {   // screen + key values, the same component as the case study
       var f = sc.feature, row2 = el.querySelector(".pr-row");
@@ -378,6 +388,17 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       sl.appendChild(hd);
       var body = document.createElement("div"); body.className = "jc-body"; body.innerHTML = left + table;
       sl.appendChild(body);
+    }
+    if (sc.projected) {   // impact slide: projected targets under the measured results, labelled as such
+      var pj = sc.projected, vis = el.querySelector(".impact-slide .c-visual");
+      if (vis && !vis.querySelector(".jpj")) {
+        var pb = document.createElement("div");
+        pb.className = "jpj";
+        pb.innerHTML = "<span class='jpj-k'>" + esc(pj.k) + "</span><div class='jpj-list'>" +
+          pj.items.map(function (m) { return "<div class='jpj-m'><b>" + esc(m.n) + "</b><span>" + esc(m.l) + "</span></div>"; }).join("") + "</div>";
+        var second = vis.querySelector(".metrics .metric:nth-child(2)");
+        if (second) second.parentNode.insertBefore(pb, second); else vis.appendChild(pb);
+      }
     }
     if (sc.targets) {   // insight slide: the metrics the redesign set out to move
       var tg = sc.targets, slEl = el.querySelector(".sl");

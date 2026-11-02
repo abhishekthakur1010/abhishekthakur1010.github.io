@@ -366,3 +366,14 @@ body.deck.jarvis .jvz-d { font-size: 12.5px; line-height: 1.35; color: var(--dim
   body.deck.jarvis .jvz-reveal .jvz-pin { animation: none; opacity: 1; transform: none; }
 }
 body.deck.jarvis .jvz-shot.rv-shot, body.deck.jarvis .jm-shot.rv-shot { max-width: none; }
+/* impact slide: hero result, the five target metrics, then the cost wins as a smaller row */
+body.deck.jarvis .impact-slide .metrics { grid-template-columns: 1fr 1fr; gap: 10px; }
+body.deck.jarvis .jpj { grid-column: 1 / -1; margin: 4px 0; }
+body.deck.jarvis .jpj-k { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+body.deck.jarvis .jpj-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+body.deck.jarvis .jpj-m { display: flex; flex-direction: column; gap: 6px; padding: 11px 10px; border-radius: 12px; border: 1px solid var(--pos-line, var(--panel-line)); background: var(--pos-soft, var(--panel)); min-width: 0; }
+body.deck.jarvis .jpj-m b { font-size: clamp(13px, 1.05vw, 17px); line-height: 1.1; font-weight: 800; color: var(--pos, var(--accent)); white-space: nowrap; }
+body.deck.jarvis .jpj-m span { font-size: 11.5px; line-height: 1.3; color: var(--dim); }
+body.deck.jarvis .impact-slide .metric:not(:first-child) { padding: 12px 14px; }
+body.deck.jarvis .impact-slide .metric:not(:first-child) .mn { font-size: 22px; }
+@media (max-width: 900px) { body.deck.jarvis .jpj-list { grid-template-columns: 1fr 1fr; } body.deck.jarvis .impact-slide .metrics { grid-template-columns: 1fr; } }
