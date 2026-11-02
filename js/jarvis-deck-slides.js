@@ -58,6 +58,28 @@ window.DECK = {
     },
 
     /* THE MOMENT — the old TDP plus the tools it depended on (built by the enhancer) */
+    /* CURRENT JOURNEY — how an agent reaches the TDP and everything they check before acting (built by the enhancer) */
+    {
+      section: "context", type: "pair",
+      eyebrow: "Current journey",
+      headline: ["From login to resolution: five stops, three tools"],
+      figs: [],
+      journey: {
+        steps: [
+          { k: "Log in", tool: "OS1", img: "journey/login.webp", rows: [["Does", "Signs in with OTP or SSO"], ["Thinks", "“Which queue am I on today?”"]], pain: 1 },
+          { k: "Ticket listing", tool: "TLP", img: "journey/tlp.webp", rows: [["Does", "Scans thousands of tickets, sorted by first response due"], ["Pain", "Every row says overdue (500+ days), so nothing says what to pick first"]], pain: 2 },
+          { k: "Ticket detail", tool: "TDP", img: "jarvis-old-tdp.webp", rows: [["Does", "Reads the thread and private notes"], ["Pain", "Long notes, hidden actions, raw SLA timestamps"]], pain: 3 },
+          { k: "Validate", tool: "TDP + 2 portals", checks: [
+              ["Is the category right?"], ["What is the SLA, really?"], ["Where is the shipment?", "HQ"],
+              ["Any related tickets or past replies?"], ["Who owns it, who to escalate to?", "Escalation Matrix"]
+            ], thumbs: [{ img: "context/hq-tracking.webp", k: "HQ" }, { img: "context/escalation-matrix.webp", k: "Escalation Matrix" }], pain: 4 },
+          { k: "Act", tool: "TDP + email", rows: [["Does", "Replies, notes or forwards. Escalation is an email written outside Jarvis"], ["Pain", "No escalation button, and nothing logs the escalation"]], pain: 3.4 }
+        ],
+        line: "Most of the work is validating, and two of the five checks happen outside Jarvis."
+      },
+      notes: "This is how an agent actually reaches a ticket. They log in through OS1, land on a listing that is a queue rather than a homepage, where every row says overdue, and open the ticket detail page. Before they can act they have to validate the issue: the category, the real SLA, where the shipment is, related tickets, and who owns it. Two of those checks mean leaving Jarvis for HQ and the Escalation Matrix. Then they act, and an escalation is still an email written outside Jarvis. Frustration climbs from the listing to validation. Click any screen to enlarge it."
+    },
+
     {
       section: "context", type: "pair",
       eyebrow: "The moment",
@@ -298,7 +320,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       a.addEventListener("click", function (e) { e.stopPropagation(); });   // no lightbox, no slide advance
       im.parentNode.replaceChild(a, im);
     });
-    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo) && s.eyebrow === eb.textContent; })[0];
+    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.journey) && s.eyebrow === eb.textContent; })[0];
     if (!sc) return;
     if (sc.feature) {   // screen + key values, the same component as the case study
       var f = sc.feature, row2 = el.querySelector(".pr-row");
@@ -362,6 +384,27 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       sl.appendChild(hd);
       var body = document.createElement("div"); body.className = "jc-body"; body.innerHTML = left + table;
       sl.appendChild(body);
+    }
+    if (sc.journey) {   // current journey: five columns on a numbered line, checks, a frustration curve
+      var jy = sc.journey, jrow = el.querySelector(".pr-row");
+      if (!jrow) return;
+      jrow.className = "jy";
+      var shot = function (src, alt, cls) { return "<span class='rv-shot jy-shot" + (cls ? " " + cls : "") + "' title='Click to enlarge'><img src='" + D.imgBase + src + "' alt='" + esc(alt) + "' loading='lazy'></span>"; };
+      var cols = jy.steps.map(function (st, i) {
+        var body = st.checks
+          ? "<ul class='jy-checks'>" + st.checks.map(function (c) { return "<li>" + esc(c[0]) + (c[1] ? " <em>" + esc(c[1]) + "</em><span class='jy-out'>Leaves Jarvis</span>" : "") + "</li>"; }).join("") + "</ul>" +
+            "<div class='jy-thumbs'>" + st.thumbs.map(function (t) { return "<figure>" + shot(t.img, t.k, "jy-mini") + "<figcaption>" + esc(t.k) + "</figcaption></figure>"; }).join("") + "</div>"
+          : (st.img ? shot(st.img, st.k + " screen") : "") +
+            st.rows.map(function (r) { return "<p class='jy-r jy-" + r[0].toLowerCase() + "'><b>" + esc(r[0]) + "</b>" + esc(r[1]) + "</p>"; }).join("");
+        return "<div class='jy-col'><div class='jy-node'><i>" + (i + 1) + "</i></div><div class='jy-k'><b>" + esc(st.k) + "</b><span>" + esc(st.tool) + "</span></div>" + body + "</div>";
+      }).join("");
+      // frustration curve across the five columns (0 calm → 4 most frustrated)
+      var W = 1000, H = 70, n = jy.steps.length, pts = jy.steps.map(function (st, i) { return [W * (i + .5) / n, H - 8 - (st.pain - 1) / 3 * (H - 20)]; });
+      var d = "M" + pts.map(function (p) { return p[0].toFixed(0) + " " + p[1].toFixed(0); }).join(" L");
+      var curve = "<div class='jy-curve'><span class='jy-curve-k'>Frustration</span><svg viewBox='0 0 " + W + " " + H + "' preserveAspectRatio='none' aria-hidden='true'><path d='" + d + "'/></svg>" +
+        "<div class='jy-dots'>" + pts.map(function (p) { return "<i style='left:" + (p[0] / W * 100) + "%;top:" + (p[1] / H * 100) + "%'></i>"; }).join("") + "</div></div>";
+      jrow.innerHTML = "<div class='jy-cols'>" + cols + "</div>" + curve + "<p class='jy-line'>" + esc(jy.line) + "</p>";
+      return;
     }
     if (sc.scatter) {   // the old TDP large, the tools it depended on beside it, and the hop between them
       var sx = sc.scatter, srow = el.querySelector(".pr-row");

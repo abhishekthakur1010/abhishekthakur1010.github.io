@@ -14,7 +14,7 @@
     />
     <link href="./css/case-study-v2.css?v=71" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
-    <link href="./css/jarvis.css?v=23" rel="stylesheet" />
+    <link href="./css/jarvis.css?v=24" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
 </head>
@@ -116,10 +116,30 @@
       </div>
     </section>
 
-    <!-- 03 The moment -->
+    <!-- 03 Current journey -->
     <section class="block">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label">The moment</span></div>
+        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label">Current journey</span></div>
+        <h2 class="sec-title">From login to resolution: five stops, three tools.</h2>
+        <ol class="jv-journey">
+          <li><figure><img src="./jarvis/img/journey/login.webp" width="1400" height="700" loading="lazy" alt="OS1 sign-in page: Email OTP, Phone OTP, Microsoft and Google sign-in" /></figure>
+            <b><i>1</i>Log in <span>OS1</span></b><p>Signs in with OTP or SSO. <em>&ldquo;Which queue am I on today?&rdquo;</em></p></li>
+          <li><figure><img src="./jarvis/img/journey/tlp.webp" width="1600" height="800" loading="lazy" alt="Jarvis All Tickets listing: every row tagged Closure overdue and First Response overdue by 460 to 560 days" /></figure>
+            <b><i>2</i>Ticket listing <span>TLP</span></b><p>A queue of thousands where every row says overdue, so nothing says what to pick first.</p></li>
+          <li><figure><img src="./jarvis/img/jarvis-old-tdp.webp" width="1400" height="780" loading="lazy" alt="The old Jarvis Ticket Detail Page" /></figure>
+            <b><i>3</i>Ticket detail <span>TDP</span></b><p>Reads the thread and private notes. Actions are hidden and the SLA is a raw timestamp.</p></li>
+          <li class="jv-journey-hot"><b><i>4</i>Validate <span>TDP + 2 portals</span></b>
+            <ul><li>Is the category right?</li><li>What is the SLA, really?</li><li>Where is the shipment? <em>HQ, leaves Jarvis</em></li><li>Any related tickets or past replies?</li><li>Who owns it, who to escalate to? <em>Escalation Matrix, leaves Jarvis</em></li></ul></li>
+          <li><b><i>5</i>Act <span>TDP + email</span></b><p>Replies or adds a note. Escalation is an email written outside Jarvis, and nothing logs it.</p></li>
+        </ol>
+        <div class="jv-callout">Most of the work is <b>validating</b>, and two of the five checks happen outside Jarvis.</div>
+      </div>
+    </section>
+
+    <!-- 04 The moment -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">The moment</span></div>
         <h2 class="sec-title">A ticket lands. It's already 88 days overdue.</h2>
         <p class="lead">
           Amit, a frontline CS agent, opens this ticket. Under a one-line message sits a stack of
@@ -146,7 +166,7 @@
     <!-- 04 Problem -->
     <section class="block soft">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">Problem</span></div>
+        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">Problem</span></div>
         <h2 class="sec-title">Only experienced agents could use this screen.</h2>
         <p class="lead">
           Experienced agents were fast because they had memorised the tool. Every gap in the screen became a gap in the SLA.
@@ -164,7 +184,7 @@
     <!-- 05 The numbers -->
     <section class="impact">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">The numbers behind it</span></div>
+        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">The numbers behind it</span></div>
         <div class="stats">
           <div class="stat"><div class="num">5</div><div class="cap">Tools to resolve one ticket: Jarvis, HQ, the Escalation Matrix, Excel and back</div></div>
           <div class="stat"><div class="num">7<span class="accent"> min</span></div><div class="cap">Before the agent had replied to anyone</div></div>
@@ -176,7 +196,7 @@
     <!-- 06 Research & process -->
     <section class="block">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">Research &amp; process</span></div>
+        <div class="sec-head"><span class="sec-num">07</span><span class="sec-label">Research &amp; process</span></div>
         <h2 class="sec-title">We sat with the people racing the SLA clock.</h2>
         <p class="lead">
           I ran sessions with CS agents, supervisors and the CS lead, and asked about the work, not the screen.
@@ -214,7 +234,7 @@
     <!-- 07 Insight -->
     <section class="block soft">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">07</span><span class="sec-label">Insight</span></div>
+        <div class="sec-head"><span class="sec-num">08</span><span class="sec-label">Insight</span></div>
         <h2 class="sec-title">Agents aren't trying to analyse. They're trying to fix.</h2>
         <p class="lead">
           That line from the floor became the brief. Every screen had to answer three questions.
@@ -236,7 +256,7 @@
     <!-- 08 Solution & decisions -->
     <section class="block">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">08</span><span class="sec-label">Solution &amp; decisions</span></div>
+        <div class="sec-head"><span class="sec-num">09</span><span class="sec-label">Solution &amp; decisions</span></div>
         <h2 class="sec-title">One screen that answers "what's next".</h2>
         <p class="lead">
           The same ticket in TDP 2.0, then the decisions behind it, one at a time.
@@ -321,7 +341,7 @@
     <!-- 09 Iterations -->
     <section class="block soft">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">09</span><span class="sec-label">Iterations</span></div>
+        <div class="sec-head"><span class="sec-num">10</span><span class="sec-label">Iterations</span></div>
         <h2 class="sec-title">Before → V1, click by click.</h2>
         <p class="lead">The same moments, before and after. Then try V1: follow the red dot.</p>
         <div class="jv-table">
@@ -356,7 +376,7 @@
     <!-- 10 Shipped -->
     <section class="block">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">10</span><span class="sec-label">Shipped</span></div>
+        <div class="sec-head"><span class="sec-num">11</span><span class="sec-label">Shipped</span></div>
         <h2 class="sec-title">What they asked for, and what V1 delivered.</h2>
         <p class="lead">I kept the floor's list open while designing. Here is what made V1, and what's next.</p>
         <div class="hx-principles two jv-map">
@@ -387,7 +407,7 @@
     <!-- 11 Outcome -->
     <section class="impact outcome">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">11</span><span class="sec-label">Outcome</span></div>
+        <div class="sec-head"><span class="sec-num">12</span><span class="sec-label">Outcome</span></div>
         <h2 class="sec-title" style="color:#fff">What changed on the floor.</h2>
         <p class="lead">Tickets that used to take about three days now close in a few hours. CS agents find the new TDP engaging and easier to learn: the right information is in one place, and escalation is one click instead of a lookup.</p>
         <div class="stats">
@@ -403,7 +423,7 @@
     <!-- 12 What's next -->
     <section class="block">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">12</span><span class="sec-label">What's next</span></div>
+        <div class="sec-head"><span class="sec-num">13</span><span class="sec-label">What's next</span></div>
         <h2 class="sec-title">Ship, then shadow.</h2>
         <p class="lead">After launch we went back to agents' desks. That gave us a sharper backlog than any pre-launch review.</p>
         <div class="hx-principles two">
@@ -431,7 +451,7 @@
     <!-- 13 Learnings -->
     <section class="block soft">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">13</span><span class="sec-label">Learnings</span></div>
+        <div class="sec-head"><span class="sec-num">14</span><span class="sec-label">Learnings</span></div>
         <h2 class="sec-title">What I'd tell the next team.</h2>
         <div class="hx-principles">
           <div><span class="hx-k">Learning 1</span><h4>Design for the new joiner</h4><p>My real test was whether someone in their first week could close a ticket in one go.</p></div>
@@ -516,7 +536,7 @@
         });
       })();
     </script>
-    <script src="./js/case-study-lightbox.js?v=8" defer></script>
+    <script src="./js/case-study-lightbox.js?v=9" defer></script>
     <script src="./js/jarvis-proto.js?v=4" defer></script>
     <script src="./js/jarvis-northstar.js?v=15" defer></script>
   </body>
