@@ -124,22 +124,22 @@ window.DECK = {
       eyebrow: "Insight",
       headline: ["Agents aren't trying to analyse. They're trying to fix."],
       quotes: [
-        { q: "Tell me what happened.", src: "Need 1 · Context, P0 facts and a summary at a glance" },
-        { q: "Tell me what to do next.", src: "Need 2 · SLA timers and the next action without scrolling" },
-        { q: "Let me do it in one click.", src: "Need 3 · Reply, note, forward and escalate in place" }
+        { q: "Tell me what happened.", src: "Context at a glance" },
+        { q: "Tell me what to do next.", src: "SLA and next step" },
+        { q: "Let me do it in one click.", src: "Act in place" }
       ],
-      end: "That one line from research became the brief.",
+      end: "",
       targets: {
-        k: "By solving these, we aim to move 5 metrics",
+        k: "Metrics we aim to move",
         items: [
-          { t: "Voluntary adoption", v: "Target: 80%+", d: "Agents choose the new TDP over the legacy view." },
-          { t: "MTTR and first response time", v: "Direction: down", d: "Next Response Due and Closure Due always visible." },
-          { t: "Clicks per resolution", v: "Direction: down", d: "HQ data, geofence status and shipment images in line of sight." },
-          { t: "Tickets per hour", v: "Target: 20 to 25", d: "No back-and-forth between Jarvis, HQ and spreadsheets." },
-          { t: "SLA compliance", v: "Direction: up", d: "A live priority queue instead of a static, refresh-heavy list." }
+          { v: "80%+", t: "Adoption" },
+          { v: "↓", t: "Resolution time (MTTR)" },
+          { v: "↓", t: "Clicks per ticket" },
+          { v: "20–25", t: "Tickets per hour" },
+          { v: "↑", t: "SLA compliance" }
         ]
       },
-      notes: "Every screen decision had to answer these three questions in the first seconds of opening a ticket. Solving them was meant to move five metrics: voluntary adoption of the new UI to at least 80%, mean time to resolve and first response time, clicks per resolution, tickets per hour against the 20 to 25 target, and SLA compliance."
+      notes: "Agents told us the same three things: tell me what happened, tell me what to do next, and let me do it in one click. Every screen decision had to answer these in the first seconds of opening a ticket. Solving them should move five metrics. Voluntary adoption to at least 80%, with agents choosing the new TDP over the legacy view. Mean time to resolve and first response time down, because Next Response Due and Closure Due are always visible. Clicks per ticket down, with HQ data, geofence status and shipment images in line of sight. Tickets per hour at the 20 to 25 target, with no back-and-forth between Jarvis, HQ and spreadsheets. And SLA compliance up, with a live priority queue instead of a static, refresh-heavy list."
     },
 
     /* 07c — NORTH STAR VISION (component in js/jarvis-northstar.js) */
@@ -385,7 +385,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
         var box = document.createElement("div");
         box.className = "jt";
         box.innerHTML = "<span class='jt-k'>" + esc(tg.k) + "</span><ol class='jt-list'>" +
-          tg.items.map(function (m, i) { return "<li><i>" + (i + 1) + "</i><b>" + esc(m.t) + "</b><em>" + esc(m.v) + "</em><span>" + esc(m.d) + "</span></li>"; }).join("") + "</ol>";
+          tg.items.map(function (m) { return "<li><em>" + esc(m.v) + "</em><b>" + esc(m.t) + "</b></li>"; }).join("") + "</ol>";
         slEl.appendChild(box);
       }
     }
