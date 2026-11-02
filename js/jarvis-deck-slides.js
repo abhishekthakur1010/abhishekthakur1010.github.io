@@ -158,10 +158,10 @@ window.DECK = {
       headline: ["One screen that answers “what's next”"],
       figs: [],
       zones: {
-        img: "v1/06.webp", cap: "TDP 2.0: the Escalate to Ops moment, with the six zones numbered",
+        img: "v1/06.webp", before: "jarvis-old-tdp.webp", cap: "TDP 2.0: the Escalate to Ops moment, with the six zones numbered",
         pins: [
-          { x: 11.0, y: 44.0, t: "Queue-aware list", d: "SLA in words on every ticket." },
-          { x: 61.4, y: 20.0, t: "Ticket header", d: "Category, client, source and MAWB on one line." },
+          { x: 19.4, y: 40.5, t: "Queue-aware list", d: "SLA in words on every ticket." },
+          { x: 22.6, y: 18.6, t: "Ticket header", d: "Category, client, source and MAWB on one line." },
           { x: 83.4, y: 18.6, t: "AI summary", d: "The gist and current blocker." },
           { x: 75.9, y: 51.9, t: "Conversation first", d: "A chat, not an email chain." },
           { x: 59.0, y: 73.7, t: "Escalation is a button", d: "Facility and TL/ATL prefilled." },
@@ -445,8 +445,10 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       zrow.classList.add("pr-zones");
       zrow.innerHTML = "<div class='jv-zones'><ol class='jvz-legend'>" +
         z.pins.map(function (p, i) { return "<li tabindex='0' data-z='" + i + "'><span class='jvz-n'>" + (i + 1) + "</span><b>" + esc(p.t) + "</b><span class='jvz-d'>" + esc(p.d) + "</span></li>"; }).join("") +
-        "</ol><div class='jvz-screen'><button class='tile jvz-shot' data-img='" + D.imgBase + z.img + "' title='Click to enlarge'><img src='" + D.imgBase + z.img + "' alt='" + esc(z.cap) + "' onerror=\"this.parentElement.classList.add('is-empty')\"><span class='jvz-empty'>" + esc(z.placeholder || "Screen") + "</span><span class='tile-t'>" + esc(z.cap) + "</span></button>" +
-        z.pins.map(function (p, i) { return "<span class='jvz-pin' data-z='" + i + "' style='left:" + p.x + "%;top:" + p.y + "%' aria-hidden='true'>" + (i + 1) + "</span>"; }).join("") +
+        // the old TDP sits on top and a curtain wipes it away, then the markers pop in one by one
+        "</ol><div class='jvz-screen'><span class='rv-shot zoomable jvz-shot' title='Click to enlarge'><img src='" + D.imgBase + z.img + "' alt='" + esc(z.cap) + "' onerror=\"this.parentElement.classList.add('is-empty')\"><span class='jvz-empty'>" + esc(z.placeholder || "Screen") + "</span>" +
+        (z.before ? "<span class='jvz-before' aria-hidden='true'><img src='" + D.imgBase + z.before + "' alt=''></span><span class='jvz-edge' aria-hidden='true'></span><span class='jvz-tag jvz-tag-b' aria-hidden='true'>Before</span><span class='jvz-tag jvz-tag-a' aria-hidden='true'>After</span>" : "") + "</span>" +
+        z.pins.map(function (p, i) { return "<span class='jvz-pin' data-z='" + i + "' style='left:" + p.x + "%;top:" + p.y + "%;--i:" + i + "' aria-hidden='true'>" + (i + 1) + "</span>"; }).join("") +
         "</div></div>";
       var box = zrow.querySelector(".jv-zones");
       function light(i) {
@@ -456,7 +458,8 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       box.addEventListener("mouseleave", function () { light(null); });
       box.addEventListener("focusin", function (e) { var t = e.target.closest("[data-z]"); if (t) light(t.getAttribute("data-z")); });
       box.addEventListener("focusout", function () { light(null); });
-      box.addEventListener("click", function (e) { if (e.target.closest(".jvz-pin, .jvz-legend")) e.stopPropagation(); });   // don't advance the slide
+      box.addEventListener("click", function (e) { if (e.target.closest(".jvz-pin, .jvz-legend")) e.stopPropagation(); });
+      if (zrow.querySelector(".jvz-before")) zrow.querySelector(".jv-zones").classList.add("jvz-reveal");   // don't advance the slide
       return;
     }
     if (sc.northstar) {

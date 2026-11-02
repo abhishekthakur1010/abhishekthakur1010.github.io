@@ -333,3 +333,36 @@ body.deck.jarvis .jt-list b { font-size: clamp(14px, 1.05vw, 16px); line-height:
 @media (max-width: 1100px) { body.deck.jarvis .jt-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 700px) { body.deck.jarvis .jt-list { grid-template-columns: 1fr 1fr; } }
 body.deck.jarvis .type-voice .note:empty, body.deck.jarvis p.note:empty { display: none; }
+/* TDP 2.0: curtain from the old TDP to the new one, then the markers pop in */
+body.deck.jarvis .jvz-shot { position: relative; }
+body.deck.jarvis .jvz-before { position: absolute; inset: 0; z-index: 1; background: #fff; clip-path: inset(0 0 0 0); pointer-events: none; }
+body.deck.jarvis .jvz-before img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+body.deck.jarvis .jvz-edge { position: absolute; top: 0; bottom: 0; left: 0; z-index: 2; width: 2px; background: rgba(237, 28, 36, .55); box-shadow: 0 0 18px 4px rgba(237, 28, 36, .25), -12px 0 28px rgba(0, 0, 0, .18); opacity: 0; pointer-events: none; }
+body.deck.jarvis .jvz-tag { position: absolute; top: 12px; z-index: 3; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
+body.deck.jarvis .jvz-tag-b { right: 12px; background: rgba(17, 17, 20, .82); color: #fff; }
+body.deck.jarvis .jvz-tag-a { left: 12px; background: var(--accent); color: #fff; opacity: 0; }
+body.deck.jarvis .jvz-reveal .jvz-before { animation: jvzWipe 1.2s cubic-bezier(.65, 0, .35, 1) .6s forwards; }
+body.deck.jarvis .jvz-reveal .jvz-edge { animation: jvzEdge 1.2s cubic-bezier(.65, 0, .35, 1) .6s forwards; }
+body.deck.jarvis .jvz-reveal .jvz-tag-b { animation: jvzOut .4s ease 1.3s forwards; }
+body.deck.jarvis .jvz-reveal .jvz-tag-a { animation: jvzTag 2.4s ease 1.6s forwards; }
+body.deck.jarvis .jvz-reveal .jvz-pin { opacity: 0; transform: scale(.4); animation: jvzPop .35s cubic-bezier(.3, 1.6, .5, 1) calc(1.9s + var(--i) * .12s) forwards; }
+@keyframes jvzWipe { to { clip-path: inset(0 0 0 100%); } }
+@keyframes jvzEdge { 0% { left: 0; opacity: 1; } 92% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+@keyframes jvzOut { to { opacity: 0; } }
+@keyframes jvzTag { 0% { opacity: 0; } 15%, 70% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes jvzPop { to { opacity: 1; transform: none; } }
+/* smaller, refined markers */
+body.deck.jarvis .jvz-pin { width: 18px; height: 18px; margin: -9px 0 0 -9px; font-size: 10px; font-weight: 700; z-index: 4; box-shadow: 0 0 0 1.5px #fff, 0 2px 8px rgba(0, 0, 0, .22); }
+body.deck.jarvis .jvz-reveal .jvz-pin.on, body.deck.jarvis .jvz-pin.on { transform: scale(1.35); box-shadow: 0 0 0 1.5px #fff, 0 0 0 7px rgba(237, 28, 36, .22), 0 3px 10px rgba(0, 0, 0, .25); }
+body.deck.jarvis .jvz-reveal .jvz-pin.on { animation: none; opacity: 1; }
+/* lighter legend */
+body.deck.jarvis .jvz-legend { gap: 0; }
+body.deck.jarvis .jvz-legend li { grid-template-columns: 20px 1fr; column-gap: 10px; padding: 7px 10px; }
+body.deck.jarvis .jvz-n { width: 18px; height: 18px; font-size: 10px; margin-top: 2px; }
+body.deck.jarvis .jvz-legend b { font-size: 14px; font-weight: 600; }
+body.deck.jarvis .jvz-d { font-size: 12.5px; line-height: 1.35; color: var(--dim); }
+@media (prefers-reduced-motion: reduce) {
+  body.deck.jarvis .jvz-before, body.deck.jarvis .jvz-edge, body.deck.jarvis .jvz-tag { display: none; }
+  body.deck.jarvis .jvz-reveal .jvz-pin { animation: none; opacity: 1; transform: none; }
+}
+body.deck.jarvis .jvz-shot.rv-shot, body.deck.jarvis .jm-shot.rv-shot { max-width: none; }
