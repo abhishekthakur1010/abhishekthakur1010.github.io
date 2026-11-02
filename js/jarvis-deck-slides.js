@@ -24,7 +24,7 @@ window.DECK = {
       highlight: "conversation",
       body: "Redesigning the Jarvis Ticket Detail Page so that a new agent can resolve a ticket as confidently as an agent with five years' experience.",
       heroWide: "tdp.webp", url: "Jarvis · Ticket Detail Page",
-      heroVideo: { mp4: "../media/tdp-reveal.mp4", webm: "../media/tdp-reveal.webm", poster: "../media/tdp-reveal-poster.webp" },
+      heroVideo: { mov: "../media/tdp-laptop.mov", webm: "../media/tdp-laptop.webm", poster: "../media/tdp-laptop-poster.webp" },
       badge: { n: "~50K", l: "Tickets a day" },
       meta: [
         { l: "My role", v: "Design Lead · Central Design Team" },
@@ -322,8 +322,10 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       var hv = sc.heroVideo, hz = el.querySelector(".op-browser .zoomable");
       if (hz) {
         var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // transparent laptop: HEVC with alpha first (Safari), then VP9 with alpha (Chrome, Firefox)
+        hz.parentNode.classList.add("jv-laptop");
         hz.outerHTML = "<video class='op-video' " + (still ? "" : "autoplay ") + "muted loop playsinline preload='metadata' poster='" + D.imgBase + hv.poster + "' aria-label='Jarvis TDP: the redesigned screen, then a wipe to the old screen and back'>" +
-          "<source src='" + D.imgBase + hv.webm + "' type='video/webm'><source src='" + D.imgBase + hv.mp4 + "' type='video/mp4'></video>";
+          "<source src='" + D.imgBase + hv.mov + "' type='video/quicktime; codecs=\"hvc1\"'><source src='" + D.imgBase + hv.webm + "' type='video/webm'></video>";
       }
     }
     if (sc.jdef) {   // context slide: highlight the definition, external/internal cards, who uses Jarvis

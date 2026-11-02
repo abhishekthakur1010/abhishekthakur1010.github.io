@@ -213,3 +213,14 @@ body.deck.jarvis .op-browser .op-video { display: block; width: 100%; height: au
 /* impact slide: resolution time leads, full width; the other three sit in a row beneath */
 body.deck.jarvis .impact-slide .metric:first-child { grid-column: 1 / -1; }
 @media (min-width: 901px) { body.deck.jarvis .impact-slide .metric:first-child .mn { white-space: nowrap; } }
+/* cover: the laptop alone, no card behind it, with a soft floor shadow */
+body.deck.jarvis .op-browser.jv-laptop { background: none; border: 0; box-shadow: none; }
+body.deck.jarvis .op-browser.jv-laptop .op-video { background: none; border-radius: 0; position: relative; z-index: 1; }
+body.deck.jarvis .op-browser.jv-laptop::after { content: ""; position: absolute; left: 12%; right: 12%; bottom: -6%; height: 9%; border-radius: 50%; background: rgba(0,0,0,.45); filter: blur(22px); }
+body.deck.jarvis[data-theme="light"] .op-browser.jv-laptop::after { background: rgba(40,30,80,.22); }
+body.deck.jarvis .op-wide .jv-laptop + .op-badge, body.deck.jarvis .op-wide .op-badge { z-index: 2; }
+@media (max-width: 900px) {
+  body.deck.jarvis .op-wide .op-top { grid-template-columns: 1fr; }
+  body.deck.jarvis .op-wide .op-hero { min-height: 0; margin: 8px 0 28px; }
+  body.deck.jarvis .op-wide .op-badge { left: 0; bottom: -18px; padding: 10px 14px; }
+}
