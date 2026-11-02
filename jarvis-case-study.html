@@ -86,7 +86,7 @@
         <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">Overview</span></div>
         <div class="acts">
           <div class="act"><div class="k"><span class="n">01</span><span class="t">Context</span></div><h3>50,000 tickets a day</h3><p>I redesigned the Ticket Detail Page of Jarvis, Delhivery's ticketing platform.</p></div>
-          <div class="act"><div class="k"><span class="n">02</span><span class="t">Problem</span></div><h3>Tenure did the work</h3><p>Experienced agents knew where everything hides. New agents didn't.</p></div>
+          <div class="act"><div class="k"><span class="n">02</span><span class="t">Problem</span></div><h3>Agents did the joining-up</h3><p>SLA, shipment status and owner lived in other tools.</p></div>
           <div class="act"><div class="k"><span class="n">03</span><span class="t">Solution</span></div><h3>A ticket as a conversation</h3><p>The story, the deadline and every action on one screen.</p></div>
           <div class="act"><div class="k"><span class="n">04</span><span class="t">Outcome</span></div><h3>One workspace</h3><p>Escalation became a button. Two paid tools were retired.</p></div>
         </div>
@@ -159,7 +159,7 @@
           <li><span class="jv-clock">05:40</span><span>Cleans the email IDs in Excel and pastes them into a note.</span><span class="jv-tool out">Excel</span></li>
           <li><span class="jv-clock">07:00</span><span>Back in Jarvis for the next-response date, below the fold.</span><span class="jv-tool">Jarvis</span></li>
         </ol>
-        <div class="jv-callout">Amit hasn't <b>replied to anyone</b> yet. A senior agent knows these shortcuts by heart. A new joiner doesn't.</div>
+        <div class="jv-callout">Amit hasn't <b>replied to anyone</b> yet. Everything so far was checking other tools.</div>
       </div>
     </section>
 
@@ -167,9 +167,9 @@
     <section class="block soft">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">Problem</span></div>
-        <h2 class="sec-title">Only experienced agents could use this screen.</h2>
+        <h2 class="sec-title">The screen showed the ticket, not the next step.</h2>
         <p class="lead">
-          Experienced agents were fast because they had memorised the tool. Every gap in the screen became a gap in the SLA.
+          The TDP showed the conversation, not the decision. Agents couldn't see the real SLA, the shipment status or who to escalate to, so every ticket meant checking other tools, and tickets missed the 2-day SLA.
         </p>
         <div class="problems">
           <div class="problem"><div class="idx">1</div><div><h4>Scattered information</h4><p>Context was split across the TDP, HQ and the Escalation Matrix.</p></div></div>
@@ -436,7 +436,7 @@
             </ul>
           </div>
           <div><span class="hx-k">Directional</span><h4>Let the system do the remembering</h4>
-            <p>The AI layer gives every agent an experienced agent's mental map. The agent still presses the button.</p>
+            <p>The AI layer joins up the context agents used to collect by hand. The agent still presses the button.</p>
           </div>
         </div>
         <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>Canvas · AI resolution actions</span></div><img src="./jarvis/img/canvas-ai.webp" width="2116" height="922" alt="AI resolution canvas: the ticket thread on the left, an AI summary with the blocker and three suggested next actions on the right" loading="lazy" decoding="async" /></figure>
@@ -454,7 +454,7 @@
         <div class="sec-head"><span class="sec-num">14</span><span class="sec-label">Learnings</span></div>
         <h2 class="sec-title">What I'd tell the next team.</h2>
         <div class="hx-principles">
-          <div><span class="hx-k">Learning 1</span><h4>Design for the new joiner</h4><p>My real test was whether someone in their first week could close a ticket in one go.</p></div>
+          <div><span class="hx-k">Learning 1</span><h4>Design for the next action</h4><p>My real test was whether an agent could validate and act on a ticket without leaving Jarvis.</p></div>
           <div><span class="hx-k">Learning 2</span><h4>Remove tools, not just clicks</h4><p>Most lost time sat between screens. Bringing context in beat any layout change.</p></div>
           <div><span class="hx-k">Learning 3</span><h4>Keep the floor's list open</h4><p>The team's own requests kept V1 honest about what it solved.</p></div>
         </div>

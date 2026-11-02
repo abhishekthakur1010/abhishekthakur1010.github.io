@@ -32,7 +32,7 @@ window.DECK = {
         { l: "Users", v: "~1.3K agents across CS, Ops, Security, Claims" },
         { l: "Scope", v: "TDP, with TLP and dashboard follow-ons" }
       ],
-      notes: "Jarvis is Delhivery's ticketing platform. The Ticket Detail Page is where agents spend their day. The goal: a new joiner resolves a ticket as confidently as an experienced agent."
+      notes: "Jarvis is Delhivery's ticketing platform, and the Ticket Detail Page is where CS makes every decision on a ticket. Yet tickets kept missing the 2-day SLA, because what agents needed to act was spread across other tools. The goal: the SLA, the context and the next step on one screen."
     },
 
     /* CONTEXT — what Jarvis is (Delhivery's own definition), then business, product and CS needs */
@@ -100,7 +100,7 @@ window.DECK = {
     {
       section: "discover", type: "synthesis",
       eyebrow: "The real problem",
-      headline: ["Only experienced agents could use this screen"],
+      headline: ["The screen showed the ticket, not the next step"],
       cols: ["What agents asked", "Why it happened"],
       rows: [
         { theme: "Context", symptom: "“Where is the shipment?”", cause: "Information scattered across TDP, HQ and the Escalation Matrix" },
@@ -108,13 +108,14 @@ window.DECK = {
         { theme: "Escalating", symptom: "“Who do I send this to?”", cause: "Escalation meant copying and pasting email IDs" },
         { theme: "Deadline", symptom: "“When is it due?”", cause: "SLA and next-response dates not visible upfront" }
       ],
-      statement: "Experienced agents memorised where things hide; new joiners had no clear next action. Hidden actions became missed SLAs.",
+      statement: "The TDP showed the conversation, not the decision. Agents couldn't see the real SLA, the shipment status or who to escalate to, so every ticket meant checking other tools, and tickets missed the 2-day SLA.",
       goals: [
-        { k: "5 tools", v: "to resolve one ticket" },
-        { k: "7 min", v: "before the first reply" },
+        { k: "3 tools", v: "to validate one ticket" },
+        { k: "2-day SLA", v: "routinely missed" },
+        { k: "0 ways", v: "to escalate inside Jarvis" },
         { k: "30 email IDs", v: "cap on a note" }
       ],
-      notes: "Experienced agents were productive because they memorised the tool. New agents had no visible escalation button and no next step."
+      notes: "The TDP showed the conversation but not what the agent needed to decide. The real SLA, the shipment status and the escalation contact all sat elsewhere, so every ticket meant checking HQ and the Escalation Matrix before acting, and there was no way to escalate inside Jarvis. That checking is where the 2-day SLA went."
     },
 
     /* RESEARCH — everything on one board, like the Discovery deck */
@@ -264,7 +265,7 @@ window.DECK = {
         { n: "~$6.7K", l: "a month saved in licences" }
       ],
       rows: [
-        { k: "Design for the new joiner", d: "The real test was whether someone in their first week could close a ticket in one go." },
+        { k: "Design for the next action", d: "The real test was whether an agent could validate and act on a ticket without leaving Jarvis." },
         { k: "Remove tools, not just clicks", d: "Most lost time was between screens. Bringing context in beat any layout change." },
         { k: "Ship, then shadow", d: "Going back to agents' desks after launch gave us the sharpest backlog." }
       ],
@@ -273,7 +274,7 @@ window.DECK = {
         { label: "Full case study", href: "./jarvis-case-study.html", primary: true },
         { label: "Next project →", href: "./profile.html#featured" }
       ],
-      notes: "Close on the principle: design for the new joiner, and experienced agents get faster too."
+      notes: "Close on the principle: design for the next action, and every agent gets faster."
     }
   ]
 };
