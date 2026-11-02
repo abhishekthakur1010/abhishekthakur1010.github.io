@@ -110,7 +110,7 @@ window.DECK = {
         { k: "Floor sessions", tag: "Listen", img: "interview.webp", pos: "center top", stat: "Agents + supervisors", learned: "“What happened? What do I do next?”" },
         { k: "Pain points", tag: "Synthesis", img: "research/cs-session-meet.webp", pos: "center center", stat: "30 email IDs", learned: "Note cap, tool hopping, buried P0 info." },
         { k: "CS lead's email", tag: "Co-create", img: "research/cs-suggestions-email.webp", pos: "left top", stat: "10 suggestions", learned: "Ageing in hours, escalation in the TDP, reassignment alerts." },
-        { k: "Heuristic audit", tag: "Audit", img: "jarvis-old-tdp.webp", pos: "left top", stat: "~60 findings", learned: "Visibility, consistency, control and clutter." },
+        { k: "Heuristic audit", tag: "Audit", img: "jarvis-old-tdp.webp", pos: "left top", stat: "~60 findings", learned: "Visibility, consistency, control and clutter.", link: "https://app.notion.com/p/User-Shadowing-Insights-40b24f9deb4880559c14c41693f65f4c", linkLabel: "Open in Notion" },
         { k: "Benchmarks", tag: "Benchmark", img: "competitive/intercom.webp", pos: "left top", stat: "4 tools", learned: "Freshdesk, HelpScout, Zendesk. Intercom set the north star." }
       ],
       notes: "All research on one board. We mapped the old TDP, sat with agents and supervisors, consolidated pain points, took the CS lead's ten suggestions, audited the live tool and benchmarked four help desks. Click any image to open it."
@@ -290,6 +290,18 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
   }
   function enhance(el) {
     var eb = el.querySelector(".eyebrow");
+    // board cards with a `link` open that page in a new tab instead of the lightbox
+    var bs = eb && D.slides.filter(function (s) { return s.type === "board" && s.eyebrow === eb.textContent; })[0];
+    if (bs) Array.prototype.forEach.call(el.querySelectorAll(".bd-card"), function (card, i) {
+      var c = bs.cards[i], im = card.querySelector(".bd-img");
+      if (!c || !c.link || !im || im.tagName === "A") return;
+      var a = document.createElement("a");
+      a.className = "bd-img jv-ext"; a.href = c.link; a.target = "_blank"; a.rel = "noopener";
+      a.title = c.linkLabel || "Open link"; a.setAttribute("aria-label", c.k + ": " + (c.linkLabel || "open link") + " (new tab)");
+      a.innerHTML = im.innerHTML + "<span class='jv-ext-cue'>" + esc(c.linkLabel || "Open") + " ↗</span>";
+      a.addEventListener("click", function (e) { e.stopPropagation(); });   // no lightbox, no slide advance
+      im.parentNode.replaceChild(a, im);
+    });
     var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo) && s.eyebrow === eb.textContent; })[0];
     if (!sc) return;
     if (sc.feature) {   // screen + key values, the same component as the case study
