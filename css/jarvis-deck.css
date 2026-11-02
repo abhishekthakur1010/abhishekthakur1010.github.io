@@ -377,3 +377,10 @@ body.deck.jarvis .jpj-m span { font-size: 11.5px; line-height: 1.3; color: var(-
 body.deck.jarvis .impact-slide .metric:not(:first-child) { padding: 12px 14px; }
 body.deck.jarvis .impact-slide .metric:not(:first-child) .mn { font-size: 22px; }
 @media (max-width: 900px) { body.deck.jarvis .jpj-list { grid-template-columns: 1fr 1fr; } body.deck.jarvis .impact-slide .metrics { grid-template-columns: 1fr; } }
+/* impact slide in green: wins read as wins */
+body.deck.jarvis .impact-slide { --win: #15803d; --win-soft: rgba(21, 128, 61, .07); --win-line: rgba(21, 128, 61, .28); }
+body.deck.jarvis[data-theme="dark"] .impact-slide { --win: #4ade80; --win-soft: rgba(74, 222, 128, .08); --win-line: rgba(74, 222, 128, .3); }
+body.deck.jarvis .impact-slide .metric { background: var(--win-soft); border-color: var(--win-line); }
+body.deck.jarvis .impact-slide .metric .mn, body.deck.jarvis .jpj-m b { color: var(--win); }
+body.deck.jarvis .jpj-m { background: var(--win-soft); border-color: var(--win-line); }
+body.deck.jarvis .impact-slide .exp-list .chk { color: var(--win); background: var(--win-soft); }
