@@ -40,25 +40,21 @@ window.DECK = {
       section: "context", type: "contextinfo",
       eyebrow: "Context",
       headline: ["One screen, three sets of needs"],
-      sub: "Jarvis is the one-stop ticketing platform for the entire Delhivery ecosystem. It handles every ticket, external and internal, and is the single system of record for conversations and actions.",
+      sub: "",
       jdef: {
+        what: "Delhivery's one-stop ticketing platform, the single system of record for every ticket, external and internal.",
         hl: "one-stop ticketing platform",
-        kinds: [
-          { k: "External tickets", d: "Package communication with consignees, clients, shippers and consignors" },
-          { k: "Internal tickets", d: "Requests between teams: PSI, Recon Digital, CCTV tracking, Ops and more" }
-        ],
-        users: ["CS", "Security", "Finance", "Claims", "Cross-Border", "PSI", "CCTV tracking", "Maintenance"]
+        stats: [{ n: "~50K", l: "tickets a day" }, { n: "~1.3K", l: "active agents" }],
+        kinds: [{ k: "External", d: "consignees, clients, shippers" }, { k: "Internal", d: "PSI, Recon, CCTV, Ops" }],
+        users: ["CS", "Security", "Finance", "Claims", "Cross-Border", "PSI"],
+        rows: [
+          { who: "Business", need: "Every ticket inside its SLA", today: "Tickets breach SLA; some sit overdue for months" },
+          { who: "Product", need: "One portal for every team", today: "Agents hop to HQ and the Escalation Matrix" },
+          { who: "CS team", need: "Know what to do next, in one click", today: "Hidden actions, no escalation, unclear SLA", focus: true }
+        ]
       },
-      flow: [
-        { k: "Business", t: "Every ticket inside its SLA", icon: "star", pts: [["Goal", "Resolve every ticket in SLA, at Delhivery's scale"], ["Today", "Tickets breach SLA; some sit overdue for months"]] },
-        { k: "Product", t: "One portal for everyone", icon: "brief", pts: [["Goal", "One portal for CS, Ops and anyone with Jarvis access"], ["Today", "Agents hop to HQ and the Escalation Matrix"]] },
-        { k: "Users · CS team", t: "“What do I do next?”", icon: "people", tone: "pos", pts: [["Goal", "What happened, what's next, in one click"], ["Today", "Hidden actions, no escalation button, unclear SLA"]] }
-      ],
-      reality: { big: "~50K", l: "tickets a day, internal and external", dots: 0 },
-      stats: [
-        { n: "~1.3K", l: "active agents across cross-functional teams" }
-      ],
-      notes: "Jarvis is Delhivery's one-stop ticketing platform: every external and internal ticket lives here. Three sides of the same screen: the business needs tickets inside SLA, the product needs one portal, and CS agents need to know what to do next."
+      flow: [{ k: "" }, { k: "" }, { k: "" }],   // keeps the slide's four reveal beats; the enhancer draws the layout
+      notes: "Jarvis is Delhivery's one-stop ticketing platform: around 50,000 tickets a day, external and internal, worked by about 1,300 agents. Three groups need different things from the same screen. The business needs every ticket inside its SLA, the product needs one portal for every team, and the CS team, our focus, needs to know what to do next. Today, tickets breach SLA, agents hop to HQ and the Escalation Matrix, and the next action is hidden."
     },
 
     /* THE MOMENT — the old TDP plus the tools it depended on (built by the enhancer) */
@@ -344,22 +340,25 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
           "<source src='" + D.imgBase + hv.mov + "' type='video/quicktime; codecs=\"hvc1\"'><source src='" + D.imgBase + hv.webm + "' type='video/webm'></video>";
       }
     }
-    if (sc.jdef) {   // context slide: highlight the definition, external/internal cards, who uses Jarvis
-      var jd = sc.jdef, subEl = el.querySelector(".sl-head .sub");
-      if (subEl) subEl.innerHTML = esc(sc.sub).replace(esc(jd.hl), "<b class='jv-hl'>" + esc(jd.hl) + "</b>");
-      var kinds = document.createElement("div");
-      kinds.className = "jv-kinds";
-      kinds.innerHTML = jd.kinds.map(function (k) { return "<div class='jv-kind'><b>" + esc(k.k) + "</b><span>" + esc(k.d) + "</span></div>"; }).join("");
-      var head = el.querySelector(".sl-head");
-      if (head) head.parentNode.insertBefore(kinds, head.nextSibling);
-      var real = el.querySelector(".ci-reality .ci-stats");
-      if (real) {
-        var u = document.createElement("div");
-        u.className = "ci-stat jv-users";
-        u.innerHTML = "<span class='jv-users-k'>Primary users</span><span class='jv-users-v'>" +
-          jd.users.map(function (x, i) { return i ? esc(x) : "<b>" + esc(x) + "</b>"; }).join(", ") + " and more</span>";
-        real.appendChild(u);
-      }
+    if (sc.jdef) {   // context slide: what Jarvis is on the left, who needs what on the right
+      var jd = sc.jdef, sl = el.querySelector(".sl"), hd = el.querySelector(".sl-head");
+      if (!sl || !hd) return;
+      var subEl = hd.querySelector(".sub"); if (subEl) subEl.remove();
+      var what = esc(jd.what).replace(esc(jd.hl), "<b class='jv-hl'>" + esc(jd.hl) + "</b>");
+      var left = "<div class='jc-left'><span class='jc-k'>What Jarvis is</span><p class='jc-what'>" + what + "</p>" +
+        "<div class='jc-stats'>" + jd.stats.map(function (x) { return "<div class='jc-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
+        "<div class='jc-pills'>" + jd.kinds.map(function (k) { return "<span class='jc-pill'><b>" + esc(k.k) + ":</b> " + esc(k.d) + "</span>"; }).join("") + "</div>" +
+        "<p class='jc-users reveal' data-step='4'>Used by " + jd.users.map(function (x, i) { return i ? esc(x) : "<b>" + esc(x) + "</b>"; }).join(", ") + " and more</p></div>";
+      var table = "<div class='jc-table' role='table'><div class='jc-row jc-head' role='row'><span role='columnheader'>Who</span><span role='columnheader'>Needs</span><span role='columnheader'>Today</span></div>" +
+        jd.rows.map(function (r, i) {
+          return "<div class='jc-row reveal" + (r.focus ? " jc-focus" : "") + "' role='row' data-step='" + (i + 1) + "'>" +
+            "<span class='jc-who' role='cell'>" + esc(r.who) + (r.focus ? "<i>Our focus</i>" : "") + "</span>" +
+            "<span class='jc-need' role='cell'>" + esc(r.need) + "</span><span class='jc-today' role='cell'>" + esc(r.today) + "</span></div>";
+        }).join("") + "</div>";
+      sl.innerHTML = "";
+      sl.appendChild(hd);
+      var body = document.createElement("div"); body.className = "jc-body"; body.innerHTML = left + table;
+      sl.appendChild(body);
     }
     if (sc.scatter) {   // the old TDP large, the tools it depended on beside it, and the hop between them
       var sx = sc.scatter, srow = el.querySelector(".pr-row");

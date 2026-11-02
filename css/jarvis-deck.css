@@ -233,3 +233,37 @@ body.deck.jarvis .bd-img.jv-ext:hover .jv-ext-cue, body.deck.jarvis .bd-img.jv-e
   body.deck.jarvis .op-wide h1 { font-size: clamp(36px, 3.2vw, 50px); }
   body.deck.jarvis .op-wide h1 .jv-l2 { white-space: nowrap; }
 }
+/* context slide: what Jarvis is (left) · who needs what (right) */
+body.deck.jarvis .jc-body { display: grid; grid-template-columns: minmax(0, 38fr) minmax(0, 62fr); gap: clamp(36px, 5vw, 88px); align-items: start; margin-top: clamp(20px, 4vh, 44px); }
+body.deck.jarvis .jc-k { display: block; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+body.deck.jarvis .jc-what { margin: 0; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.5; color: var(--ink); max-width: 34ch; }
+body.deck.jarvis .jc-stats { display: flex; gap: clamp(28px, 3vw, 52px); margin: clamp(22px, 4vh, 40px) 0 clamp(18px, 3vh, 28px); }
+body.deck.jarvis .jc-stat b { display: block; font-size: clamp(44px, 4.6vw, 72px); line-height: 1; font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
+body.deck.jarvis .jc-stat:first-child b { color: var(--accent); }
+body.deck.jarvis .jc-stat span { display: block; margin-top: 8px; font-size: 13px; color: var(--soft); }
+body.deck.jarvis .jc-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+body.deck.jarvis .jc-pill { font-size: 12.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line2, var(--panel-line)); color: var(--soft); }
+body.deck.jarvis .jc-pill b { color: var(--ink); font-weight: 600; }
+body.deck.jarvis .jc-users { margin: 18px 0 0; font-size: 13px; line-height: 1.5; color: var(--dim); }
+body.deck.jarvis .jc-users b { color: var(--accent); font-weight: 700; }
+body.deck.jarvis .jc-table { display: flex; flex-direction: column; }
+body.deck.jarvis .jc-row { display: grid; grid-template-columns: 112px minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: baseline; padding: clamp(16px, 2.6vh, 24px) 18px; border-top: 1px solid var(--panel-line); }
+body.deck.jarvis .jc-row:last-child { border-bottom: 1px solid var(--panel-line); }
+body.deck.jarvis .jc-head { padding-top: 0; padding-bottom: 10px; border-top: 0; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+body.deck.jarvis .jc-who { font-size: 14px; font-weight: 700; color: var(--ink); display: flex; flex-direction: column; gap: 6px; }
+body.deck.jarvis .jc-who i { font-style: normal; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+body.deck.jarvis .jc-need { font-size: clamp(16px, 1.25vw, 19px); line-height: 1.4; font-weight: 600; color: var(--ink); }
+body.deck.jarvis .jc-today { font-size: 14.5px; line-height: 1.45; color: #a3332f; }
+body.deck.jarvis[data-theme="dark"] .jc-today { color: #f08a86; }
+body.deck.jarvis .jc-focus { background: rgba(237, 28, 36, .06); box-shadow: inset 3px 0 0 var(--accent); border-top-color: transparent; }
+body.deck.jarvis .jc-focus + .jc-row, body.deck.jarvis .jc-focus:last-child { border-bottom-color: transparent; }
+body.deck.jarvis[data-theme="dark"] .jc-focus { background: rgba(237, 28, 36, .1); }
+@media (max-width: 900px) {
+  body.deck.jarvis .jc-body { grid-template-columns: 1fr; gap: 28px; }
+  body.deck.jarvis .jc-head { display: none; }
+  body.deck.jarvis .jc-table { gap: 10px; }
+  body.deck.jarvis .jc-row { grid-template-columns: 1fr; gap: 6px; padding: 16px; border: 1px solid var(--panel-line); border-radius: 12px; }
+  body.deck.jarvis .jc-row:last-child { border-bottom: 1px solid var(--panel-line); }
+  body.deck.jarvis .jc-focus { border-color: rgba(237, 28, 36, .35); }
+  body.deck.jarvis .jc-who { flex-direction: row; justify-content: space-between; align-items: baseline; }
+}
