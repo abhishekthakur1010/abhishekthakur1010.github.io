@@ -148,7 +148,7 @@ window.DECK = {
       eyebrow: "North star vision",
       headline: ["A ticket = a conversation + actions + intelligence"],
       figs: [], northstar: true,
-      notes: "The north star and the seven product pillars. Blue pillars serve the conversation, red ones the actions, violet ones the intelligence layer."
+      notes: "The north star: a ticket is a conversation, plus actions, plus intelligence. Seven product pillars sit under it. Conversation: chat-first resolution, a chat rather than an email thread, with internal notes; and zero cognitive load, so the screen makes sense at a glance through smart grouping and a clear hierarchy. Actions: everything in one view, with zero tool switching and P0 facts upfront; one-click actions, including escalation levels; and predictability for Ops and CS, with ageing in hours and dispatch counts. Intelligence: AI insights that predict needs and guide the agent, such as AI replies and RTO risk; and trust and transparency, with verified labels and geofence checks."
     },
 
     /* 09 — TDP 2.0: the V1 screen with live numbered markers and a linked legend (built by the enhancer) */
@@ -465,7 +465,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       nrow.classList.add("pr-ns");
       var nbox = document.createElement("div");
       nrow.appendChild(nbox);
-      window.JarvisNorthStar.mount(nbox);
+      window.JarvisNorthStar.mount(nbox, { simple: true });
       return;
     }
     if (sc.proto) {

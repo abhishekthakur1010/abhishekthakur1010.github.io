@@ -26,13 +26,13 @@
     right: '<path d="m9 18 6-6-6-6"/>'
   };
   var PILLARS = [
-    { t: "Unified information access", d: "Everything in one view.", f: ["Zero tool switching", "P0 upfront"], k: "act", ic: "layers" },
-    { t: "Conversation-centric resolution", d: "A chat, not an email thread.", f: ["Chat-first", "Internal notes"], k: "conv", ic: "chat" },
-    { t: "Action efficiency", d: "Key actions at the fingertips.", f: ["One-click actions", "Escalation levels"], k: "act", ic: "bolt" },
-    { t: "Zero cognitive load", d: "Makes sense at a glance.", f: ["Smart grouping", "Clear hierarchy"], k: "conv", ic: "focus" },
-    { t: "Intelligence + insights", d: "Predict needs, guide the agent.", f: ["AI replies", "RTO risk"], k: "intel", ic: "spark" },
-    { t: "Trust and transparency", d: "Every detail is trustworthy.", f: ["Verified labels", "Geofence verified"], k: "intel", ic: "shield" },
-    { t: "Operational predictability", d: "Consistent for Ops and CS.", f: ["Ageing in hours", "Dispatch count"], k: "act", ic: "clock" }
+    { t: "Unified information access", s: "Everything in one view", d: "Everything in one view.", f: ["Zero tool switching", "P0 upfront"], k: "act", ic: "layers" },
+    { t: "Conversation-centric resolution", s: "Chat-first resolution", d: "A chat, not an email thread.", f: ["Chat-first", "Internal notes"], k: "conv", ic: "chat" },
+    { t: "Action efficiency", s: "One-click actions", d: "Key actions at the fingertips.", f: ["One-click actions", "Escalation levels"], k: "act", ic: "bolt" },
+    { t: "Zero cognitive load", s: "Zero cognitive load", d: "Makes sense at a glance.", f: ["Smart grouping", "Clear hierarchy"], k: "conv", ic: "focus" },
+    { t: "Intelligence + insights", s: "AI insights", d: "Predict needs, guide the agent.", f: ["AI replies", "RTO risk"], k: "intel", ic: "spark" },
+    { t: "Trust and transparency", s: "Trust and transparency", d: "Every detail is trustworthy.", f: ["Verified labels", "Geofence verified"], k: "intel", ic: "shield" },
+    { t: "Operational predictability", s: "Predictable for Ops", d: "Consistent for Ops and CS.", f: ["Ageing in hours", "Dispatch count"], k: "act", ic: "clock" }
   ];
 
   var css =
@@ -99,6 +99,17 @@
     "body.deck[data-theme=light] .jns-mark{color:rgba(10,12,40,.035);}" +
     // panel version (deck): cards fade out at the right edge instead of a hard clip, as a scroll cue
     ".jns:not(.jns-bleed) .jns-grid{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent);}" +
+    // simple (deck): the equation with each pillar listed under its pill, nothing to scroll
+    ".jns.jns-simple{padding:clamp(28px,5vh,56px) clamp(16px,2.6vw,36px);}" +
+    ".jns-simple .jns-k{margin-top:0;}" +
+    ".jns-sgrid{display:inline-grid;grid-template-columns:repeat(7,auto);align-items:center;justify-items:center;column-gap:12px;row-gap:clamp(18px,3.4vh,32px);margin-top:12px;font-size:clamp(20px,2.3vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.01em;}" +
+    ".jns-sgrid .op{color:#7e8299;font-weight:500;}" +
+    ".jns-col{--c:#fff;align-self:start;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;width:100%;}" +
+    ".jns-col li{font-size:clamp(14px,1.15vw,17px);font-weight:600;line-height:1.3;letter-spacing:0;color:#e4e6f0;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--c) 10%,transparent);border-left:3px solid var(--c);text-align:left;white-space:nowrap;}" +
+    "body.deck[data-theme=light] .jns-sgrid{color:#0b0b0c;}" +
+    "body.deck[data-theme=light] .jns-sgrid .op{color:#a3a6b8;}" +
+    "body.deck[data-theme=light] .jns-col li{color:#1a1b22;background:color-mix(in srgb,var(--c) 9%,#fff);}" +
+    "@media (max-width:760px){.jns-sgrid{display:flex;flex-direction:column;align-items:stretch;gap:10px;}.jns-sgrid > .jns-gap,.jns-sgrid > .op,.jns-sgrid > .jns-lead{display:none;}.jns-sgrid .jns-tok{align-self:flex-start;margin-top:8px;}.jns-col li{white-space:normal;}.jns-sgrid>:nth-child(3){order:1}.jns-sgrid>:nth-child(10){order:2}.jns-sgrid>:nth-child(5){order:3}.jns-sgrid>:nth-child(12){order:4}.jns-sgrid>:nth-child(7){order:5}.jns-sgrid>:nth-child(14){order:6}}" +
     "@media (prefers-reduced-motion:reduce){.jns-sky i,.jns-sky b,.jns-orb{animation:none;}}";
 
   var style = document.createElement("style");
@@ -121,10 +132,27 @@
     return out;
   }
 
-  function mount(root) {
+  // simple layout: row 1 is the equation, row 2 puts each pillar under its own pill
+  function mountSimple(root) {
+    root.classList.add("jns-simple");
+    var keys = ["conv", "act", "intel"];
+    var row1 = "<span class='jns-lead'>A ticket</span><span class='op'>=</span>" + keys.map(function (k, i) {
+      return (i ? "<span class='op'>+</span>" : "") + "<span class='jns-tok' style='--c:" + TOKENS[k].c + "'>" + TOKENS[k].label + "</span>";
+    }).join("");
+    var cols = keys.map(function (k, i) {
+      var list = PILLARS.filter(function (p) { return p.k === k; }).map(function (p) { return "<li>" + esc(p.s || p.t) + "</li>"; }).join("");
+      return (i ? "<span class='jns-gap'></span>" : "") + "<ul class='jns-col' style='--c:" + TOKENS[k].c + "'>" + list + "</ul>";
+    }).join("");
+    root.setAttribute("role", "group");
+    root.setAttribute("aria-label", "North star vision: a ticket equals a conversation plus actions plus intelligence, with the product pillars under each");
+    root.innerHTML = "<span class='jns-k'>North star vision</span><div class='jns-sgrid'>" + row1 + "<span class='jns-gap'></span><span class='jns-gap'></span>" + cols + "</div>";
+  }
+
+  function mount(root, opts) {
     if (!root || root.__jns) return;
     root.__jns = true;
     root.classList.add("jns");
+    if (opts && opts.simple) { mountSimple(root); return; }
     if (root.hasAttribute("data-bleed")) root.classList.add("jns-bleed");   // edge to edge: no panel, row runs off the screen
     var eq = "<span>A ticket</span><span class='op'>=</span>" + ["conv", "act", "intel"].map(function (k, i) {
       return (i ? "<span class='op'>+</span>" : "") + "<span class='jns-tok' style='--c:" + TOKENS[k].c + "'>" + TOKENS[k].label + "</span>";
