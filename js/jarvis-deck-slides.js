@@ -387,7 +387,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       jrow.className = "jy";
       jrow.innerHTML = "<div class='jy-cols'>" + jy.steps.map(function (st, i) {
         return (i ? "<span class='jy-arrow' aria-hidden='true'>→</span>" : "") +
-          "<div class='jy-col" + (st.focus ? " jy-focus" : "") + "'><span class='rv-shot jy-shot' title='Click to enlarge'><img src='" + D.imgBase + st.img + "' alt='" + esc(st.k + " screen") + "' loading='lazy'></span>" +
+          "<div class='jy-col" + (st.focus ? " jy-focus" : "") + "'><span class='rv-shot jy-shot zoomable' title='Click to enlarge'><img src='" + D.imgBase + st.img + "' alt='" + esc(st.k + " screen") + "' loading='lazy'></span>" +
           "<p class='jy-k'><i>" + (i + 1) + "</i>" + esc(st.k) + "<span>" + esc(st.tool) + "</span></p><p class='jy-d'>" + esc(st.d) + "</p></div>";
       }).join("") + "</div><p class='jy-line'>" + jy.line.map(function (t, i) { return i % 2 ? "<b>" + esc(t) + "</b>" : esc(t); }).join("") + "</p>";
       return;

@@ -1097,9 +1097,11 @@
     }).join("");
   }
   function openGallery(list, i) { gal = { list: list, i: 0 }; showGal(i); }
-  function closeLightbox() { lb.classList.remove("open"); gal = null; }
+  var lbClosedAt = 0;   // a click right after closing must not fall through to click-to-advance
+  function closeLightbox() { lb.classList.remove("open"); gal = null; lbClosedAt = Date.now(); }
   function lightboxOpen() { return lb.classList.contains("open"); }
   lb.addEventListener("click", function (e) {
+    e.stopPropagation();
     var dot = e.target.closest(".lb-dot");
     if (dot) { showGal(parseInt(dot.getAttribute("data-k"), 10)); return; }
     if (e.target.closest(".lb-x")) { closeLightbox(); return; }
@@ -1153,8 +1155,9 @@
     else if (e.key === "End") go(TOTAL - 1);
   });
   stage.addEventListener("click", function (e) {
-    if (evidenceOpen() || lightboxOpen()) return;
-    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop, .fv-step")) return;
+    if (evidenceOpen() || lightboxOpen() || Date.now() - lbClosedAt < 250) return;
+    // anything that opens a lightbox or acts on its own never advances the slide
+    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop, .fv-step, .rv-shot, .bd-img, .dc-thumb, .ci-shot")) return;
     var x = e.clientX / window.innerWidth;
     if (x < 0.24) prev(); else next();
   });
