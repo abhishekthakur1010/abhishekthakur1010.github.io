@@ -291,3 +291,35 @@ body.deck.jarvis .jy-line b { color: var(--ink); }
   body.deck.jarvis .jy-arrow { margin: 0; transform: rotate(90deg); justify-self: center; }
 }
 body.deck.jarvis .sy-statement { font-size: clamp(18px, 1.75vw, 25px); line-height: 1.35; }
+/* current journey (merged): reach → decide → validate outside Jarvis */
+body.deck.jarvis .jm { margin-top: clamp(16px, 3vh, 34px); }
+body.deck.jarvis .jm-flow { display: grid; grid-template-columns: minmax(0, 22fr) auto minmax(0, 42fr) minmax(0, 30fr); column-gap: clamp(16px, 2vw, 30px); align-items: start; }
+body.deck.jarvis .jm-zone { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+body.deck.jarvis .jm-zk { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+body.deck.jarvis .jm-validate { padding: 12px 14px 14px; margin-top: -12px; border-radius: 14px; background: rgba(237, 28, 36, .05); }
+body.deck.jarvis[data-theme="dark"] .jm-validate { background: rgba(237, 28, 36, .08); }
+body.deck.jarvis .jm-validate .jm-zk { color: var(--accent); }
+body.deck.jarvis .jm-arrow { align-self: center; font-size: 22px; color: var(--dim); }
+body.deck.jarvis .jm-down { align-self: center; font-size: 16px; line-height: 1; color: var(--dim); margin: -4px 0; }
+body.deck.jarvis .jm-card { position: relative; margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+body.deck.jarvis .jm-shot { position: relative; display: block; width: 100%; padding: 0; border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid var(--panel-line); cursor: zoom-in; transition: transform .2s; }
+body.deck.jarvis .jm-shot:hover { transform: translateY(-2px); }
+body.deck.jarvis .jm-shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; }
+body.deck.jarvis .jm-shot .tile-t { display: none; }
+body.deck.jarvis .jm-hero { border: 2px solid var(--accent); box-shadow: 0 18px 44px rgba(0,0,0,.14), 0 0 0 4px rgba(237, 28, 36, .1); }
+body.deck.jarvis .jm-hero img { aspect-ratio: 14 / 9; }
+body.deck.jarvis .jm-validate .jm-shot img { aspect-ratio: 16 / 8; }
+body.deck.jarvis .jm-card figcaption { font-size: 13px; line-height: 1.4; color: var(--soft); }
+body.deck.jarvis .jm-card figcaption b { color: var(--ink); }
+body.deck.jarvis .jm-decide figcaption { font-size: 14.5px; }
+/* dashed hop from the TDP into each portal, with the "?" badge */
+body.deck.jarvis .jm-out::before { content: ""; position: absolute; top: 36%; right: calc(100% + 14px); width: clamp(16px, 2vw, 30px); border-top: 2px dashed var(--accent); opacity: .7; }
+body.deck.jarvis .jm-hop { position: absolute; z-index: 2; top: 36%; left: calc(-14px - clamp(16px, 2vw, 30px) / 2); transform: translate(-50%, -50%); width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; }
+body.deck.jarvis .jm-q { position: absolute; z-index: 2; top: -9px; right: -9px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--bg); color: var(--accent); border: 1.5px solid var(--accent); font-size: 11px; font-weight: 700; }
+body.deck.jarvis .jm-line { margin: clamp(16px, 3vh, 30px) 0 0; font-size: clamp(16px, 1.3vw, 20px); font-weight: 600; color: var(--ink); }
+@media (max-width: 900px) {
+  body.deck.jarvis .jm-flow { grid-template-columns: 1fr; row-gap: 22px; }
+  body.deck.jarvis .jm-arrow { transform: rotate(90deg); justify-self: center; }
+  body.deck.jarvis .jm-validate { margin-top: 0; }
+  body.deck.jarvis .jm-out::before, body.deck.jarvis .jm-hop { display: none; }
+}

@@ -58,37 +58,25 @@ window.DECK = {
     },
 
     /* THE MOMENT — the old TDP plus the tools it depended on (built by the enhancer) */
-    /* CURRENT JOURNEY — how an agent reaches the TDP and everything they check before acting (built by the enhancer) */
+    /* CURRENT JOURNEY — reach the ticket, decide on the TDP, validate in two portals outside Jarvis (built by the enhancer) */
     {
       section: "context", type: "pair",
       eyebrow: "Current journey",
-      headline: ["How an agent reaches a ticket"],
+      headline: ["Three screens to reach a ticket. Two more to act on it."],
       figs: [],
-      journey: {
-        steps: [
-          { k: "Log in", tool: "OS1", d: "The entry point to every ticket.", img: "journey/login.webp" },
-          { k: "Ticket listing", tool: "TLP", d: "A queue where every ticket looks overdue.", img: "journey/tlp.webp" },
-          { k: "Ticket detail", tool: "TDP", d: "Where agents decide, without the SLA, shipment or owner in view.", img: "jarvis-old-tdp.webp", focus: true }
+      jflow: {
+        reach: [
+          { img: "journey/login.webp", k: "Log in (OS1)", pos: "center 30%" },
+          { img: "journey/tlp.webp", k: "Listing: every ticket looks overdue" }
         ],
-        line: ["To validate, agents leave Jarvis for ", "HQ", " and the ", "Escalation Matrix", "."]
-      },
-      notes: "This is how an agent reaches a ticket. They sign in through OS1, land on a listing that is really a queue where every ticket looks overdue, and open the ticket detail page. That is where they decide what to do, but the SLA, the shipment and the owner are not in view, so to validate the ticket they leave Jarvis for HQ and the Escalation Matrix. Click any screen to enlarge it."
-    },
-
-    {
-      section: "context", type: "pair",
-      eyebrow: "The moment",
-      headline: ["A ticket lands. It's already 88 days overdue."],
-      figs: [],
-      scatter: {
-        main: { img: "jarvis-old-tdp.webp", full: "jarvis-old-tdp-full.webp", k: "Jarvis · the ticket", d: "Overdue, buried under private notes." },
-        side: [
-          { img: "context/escalation-matrix-thumb.webp", full: "context/escalation-matrix.webp", pos: "left top", k: "Escalation Matrix", d: "Who to escalate to? Look it up here.", alt: "Delhivery Control Tower Escalation Matrix: L1 to L6 escalation contacts per facility, contact details blurred" },
-          { img: "context/hq-tracking-thumb.webp", full: "context/hq-tracking.webp", pos: "left top", k: "HQ · shipment tracking", d: "Where's the shipment? Check HQ.", alt: "HQ by Delhivery shipment page: delivery status, consignee details, AI summary and scan history" }
+        decide: { img: "jarvis-old-tdp.webp", full: "jarvis-old-tdp-full.webp", k: "Ticket detail (TDP)", d: "88 days overdue, no SLA, shipment or owner in view." },
+        validate: [
+          { img: "context/hq-tracking-thumb.webp", full: "context/hq-tracking.webp", k: "HQ", d: "Where's the shipment?" },
+          { img: "context/escalation-matrix-thumb.webp", full: "context/escalation-matrix.webp", k: "Escalation Matrix", d: "Who do I escalate to?" }
         ],
         line: "One ticket. Three tools. No single place to act."
       },
-      notes: "Open on a real moment. The ticket is 88 days overdue, and to act on it the agent has to leave Jarvis for HQ, then the Escalation Matrix, then Excel. Click any screen to enlarge it."
+      notes: "Here is the journey for one real ticket. The agent logs in through OS1 and lands on a listing where every ticket looks overdue. They open the ticket detail page: this one is 88 days overdue, and the SLA, the shipment and the owner are nowhere in view. To decide what to do, they leave Jarvis twice: HQ to find the shipment, and the Escalation Matrix to find who to escalate to. One ticket, three tools, and no single place to act. Click any screen to enlarge it."
     },
 
     /* 05 — THE REAL PROBLEM */
@@ -316,7 +304,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       a.addEventListener("click", function (e) { e.stopPropagation(); });   // no lightbox, no slide advance
       im.parentNode.replaceChild(a, im);
     });
-    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.journey) && s.eyebrow === eb.textContent; })[0];
+    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.jflow) && s.eyebrow === eb.textContent; })[0];
     if (!sc) return;
     if (sc.feature) {   // screen + key values, the same component as the case study
       var f = sc.feature, row2 = el.querySelector(".pr-row");
@@ -381,15 +369,34 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       var body = document.createElement("div"); body.className = "jc-body"; body.innerHTML = left + table;
       sl.appendChild(body);
     }
-    if (sc.journey) {   // current journey: three screens joined by arrows, one footnote
-      var jy = sc.journey, jrow = el.querySelector(".pr-row");
-      if (!jrow) return;
-      jrow.className = "jy";
-      jrow.innerHTML = "<div class='jy-cols'>" + jy.steps.map(function (st, i) {
-        return (i ? "<span class='jy-arrow' aria-hidden='true'>→</span>" : "") +
-          "<div class='jy-col" + (st.focus ? " jy-focus" : "") + "'><span class='rv-shot jy-shot zoomable' title='Click to enlarge'><img src='" + D.imgBase + st.img + "' alt='" + esc(st.k + " screen") + "' loading='lazy'></span>" +
-          "<p class='jy-k'><i>" + (i + 1) + "</i>" + esc(st.k) + "<span>" + esc(st.tool) + "</span></p><p class='jy-d'>" + esc(st.d) + "</p></div>";
-      }).join("") + "</div><p class='jy-line'>" + jy.line.map(function (t, i) { return i % 2 ? "<b>" + esc(t) + "</b>" : esc(t); }).join("") + "</p>";
+    if (sc.jflow) {   // current journey: reach → decide → validate (outside Jarvis)
+      var fl = sc.jflow, frow = el.querySelector(".pr-row");
+      if (!frow) return;
+      frow.className = "jm";
+      var shot = function (c, cls) {
+        return "<span class='rv-shot zoomable jm-shot" + (cls ? " " + cls : "") + "'" + (c.full ? " data-full='" + D.imgBase + c.full + "'" : "") + " title='Click to enlarge'>" +
+          "<img src='" + D.imgBase + c.img + "' alt='" + esc(c.k) + "'" + (c.pos ? " style='object-position:" + c.pos + "'" : "") + "></span>";
+      };
+      frow.innerHTML = "<div class='jm-flow'>" +
+        "<div class='jm-zone jm-reach'><span class='jm-zk'>Reach</span>" +
+          fl.reach.map(function (c, i) { return (i ? "<span class='jm-down' aria-hidden='true'>↓</span>" : "") + "<figure class='jm-card'>" + shot(c) + "<figcaption>" + esc(c.k) + "</figcaption></figure>"; }).join("") + "</div>" +
+        "<span class='jm-arrow' aria-hidden='true'>→</span>" +
+        "<div class='jm-zone jm-decide'><span class='jm-zk'>Decide</span><figure class='jm-card'>" + shot(fl.decide, "jm-hero") +
+          "<figcaption><b>" + esc(fl.decide.k) + "</b> " + esc(fl.decide.d) + "</figcaption></figure></div>" +
+        "<div class='jm-zone jm-validate'><span class='jm-zk'>Validate · leaves Jarvis</span>" +
+          fl.validate.map(function (c, i) { return "<figure class='jm-card jm-out'><span class='jm-hop' aria-hidden='true'>" + (i + 1) + "</span><span class='jm-q' aria-hidden='true'>?</span>" + shot(c) + "<figcaption><b>" + esc(c.k) + ":</b> " + esc(c.d) + "</figcaption></figure>"; }).join("") + "</div>" +
+        "</div><p class='jm-line'>" + esc(fl.line) + "</p>";
+      // the engine's lightbox opens the inline crop; swap in the full capture once it is open
+      Array.prototype.forEach.call(frow.querySelectorAll("[data-full]"), function (sh) {
+        sh.addEventListener("click", function () {
+          var full = sh.getAttribute("data-full"), hero = sh.classList.contains("jm-hero");
+          setTimeout(function () {
+            var lb = document.querySelector(".lightbox.open"); if (!lb) return;
+            lb.querySelector(".lb-imgwrap img").src = full;
+            lb.classList.toggle("jv-full", hero);
+          });
+        });
+      });
       return;
     }
     if (sc.scatter) {   // the old TDP large, the tools it depended on beside it, and the hop between them
