@@ -14,7 +14,7 @@
     />
     <link href="./css/case-study-v2.css?v=71" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
-    <link href="./css/jarvis.css?v=17" rel="stylesheet" />
+    <link href="./css/jarvis.css?v=18" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
 </head>
@@ -55,7 +55,7 @@
             <a class="hx-deck-link" href="./jarvis-deck.html"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg>View presentation<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
           </div>
           <div class="hx-hero-shot">
-            <figure class="hx-shot"><video class="jv-hero-video" autoplay muted loop playsinline preload="metadata" poster="./jarvis/media/tdp-reveal-poster.webp" width="1600" height="870" aria-label="Jarvis TDP: the redesigned screen, then a wipe to the old screen and back"><source src="./jarvis/media/tdp-reveal.webm" type="video/webm" /><source src="./jarvis/media/tdp-reveal.mp4" type="video/mp4" /></video></figure>
+            <figure class="hx-shot jv-hero-device"><img src="./jarvis/media/tdp-desktop.webp" width="1600" height="908" fetchpriority="high" alt="Jarvis TDP 2.0: the redesigned ticket detail page on a laptop" /></figure>
             <div class="device-badge"><b>~50K</b><span>Tickets a day</span></div>
           </div>
         </div>
@@ -519,12 +519,6 @@
     </script>
     <script src="./js/case-study-lightbox.js?v=8" defer></script>
     <script src="./js/jarvis-proto.js?v=4" defer></script>
-    <script>
-      // reduced motion: keep the hero video on its poster frame
-      if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        var hv = document.querySelector(".jv-hero-video"); if (hv) { hv.removeAttribute("autoplay"); hv.pause(); }
-      }
-    </script>
     <script src="./js/jarvis-northstar.js?v=15" defer></script>
   </body>
 </html>

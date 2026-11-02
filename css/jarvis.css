@@ -143,3 +143,6 @@
 .csv2.jarvis .impact.outcome .stats .stat:first-child { grid-column: span 2; }
 .csv2.jarvis .impact.outcome .stats .stat:first-child .num { white-space: nowrap; }
 @media (max-width: 900px) { .csv2.jarvis .impact.outcome .stats .stat:first-child { grid-column: 1 / -1; } .csv2.jarvis .impact.outcome .stats .stat:first-child .num { white-space: normal; } }
+/* hero: the laptop render sits straight on the card, no frame around it */
+.csv2 .hx-shot.jv-hero-device { border: 0; border-radius: 0; background: none; box-shadow: none; overflow: visible; }
+.csv2 .hx-shot.jv-hero-device img { cursor: default; filter: drop-shadow(0 24px 40px rgba(0,0,0,.14)); }
