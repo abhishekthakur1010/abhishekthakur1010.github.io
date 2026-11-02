@@ -229,3 +229,7 @@ body.deck.jarvis h1 .jv-l2 { display: block; }
 body.deck.jarvis .bd-img.jv-ext { position: relative; display: block; cursor: pointer; }
 body.deck.jarvis .jv-ext-cue { position: absolute; right: 8px; bottom: 8px; padding: 4px 9px; border-radius: 999px; background: rgba(17,17,20,.82); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .02em; transition: background .2s; }
 body.deck.jarvis .bd-img.jv-ext:hover .jv-ext-cue, body.deck.jarvis .bd-img.jv-ext:focus-visible .jv-ext-cue { background: #ed1c24; }
+@media (min-width: 901px) {
+  body.deck.jarvis .op-wide h1 { font-size: clamp(36px, 3.2vw, 50px); }
+  body.deck.jarvis .op-wide h1 .jv-l2 { white-space: nowrap; }
+}

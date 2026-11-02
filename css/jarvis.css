@@ -1,5 +1,5 @@
 /* Jarvis 2.0 case study: extras on top of case-study-v2.css, same tokens as the HubEye page. */
-.csv2.jarvis .hx-hero { grid-template-columns: 1fr 1.25fr; align-items: center; }
+.csv2.jarvis .hx-hero { grid-template-columns: 1.1fr 1.15fr; align-items: center; }
 .csv2.jarvis .hx-hero-shot { position: relative; }
 .csv2.jarvis .hero h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.1; max-width: 18ch; }
 .csv2.jarvis .hx-hero-shot .device-badge { left: -18px; bottom: -18px; }

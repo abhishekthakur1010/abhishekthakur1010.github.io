@@ -20,9 +20,9 @@ window.DECK = {
     {
       section: "context", type: "opening",
       eyebrow: "Delhivery · CX platform · Jarvis 2.0",
-      headline: ["The screen that ", "slowed\u00a0CS\u00a0down."],
-      highlight: "slowed\u00a0CS\u00a0down.",
-      body: "CS spent their day in Jarvis, yet tickets kept missing the 2-day SLA. We rebuilt it around the SLA, the context and the next step.",
+      headline: ["Every decision happened here. ", "So did every\u00a0delay."],
+      highlight: "So did every\u00a0delay.",
+      body: "CS makes every ticket decision in Jarvis, yet tickets kept missing the 2-day SLA. We rebuilt it around the SLA, the context and the next\u00a0step.",
       heroWide: "tdp.webp", url: "Jarvis · Ticket Detail Page",
       heroVideo: { mov: "../media/tdp-laptop.mov", webm: "../media/tdp-laptop.webm", poster: "../media/tdp-laptop-poster.webp" },
       badge: { n: "~50K", l: "Tickets a day" },
@@ -329,6 +329,10 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
           setTimeout(function () { var lb = document.querySelector(".lightbox"); if (lb) lb.classList.add("jv-full"); });
         });
       });
+    }
+    if (sc.heroVideo) {   // cover headline: the accent on its own line
+      var hl = el.querySelector("h1 .hl");
+      if (hl) hl.classList.add("jv-l2");
     }
     if (sc.heroVideo) {   // cover: the before → after reveal instead of the still (poster only for reduced motion)
       var hv = sc.heroVideo, hz = el.querySelector(".op-browser .zoomable");
