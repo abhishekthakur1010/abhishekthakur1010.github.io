@@ -148,21 +148,18 @@
 .csv2 .hx-shot.jv-hero-device img { cursor: default; filter: drop-shadow(0 24px 40px rgba(0,0,0,.14)); }
 .csv2.jarvis h1 .jv-l2 { display: block; }
 .csv2.jarvis h1.jv-stack .jv-l2 { white-space: nowrap; }
-/* current journey: five stops in a row, validate highlighted */
-.csv2 .jv-journey { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+/* current journey: three screens, the TDP highlighted */
+.csv2 .jv-journey { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .csv2 .jv-journey > li { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.csv2 .jv-journey figure { margin: 0; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.csv2 .jv-journey figure { margin: 0; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
 .csv2 .jv-journey figure img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left top; cursor: zoom-in; }
 .csv2 .jv-journey > li:first-child figure img { object-position: center 30%; }
-.csv2 .jv-journey b { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 16px; color: var(--ink); }
-.csv2 .jv-journey b i { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 11px; border: 1.5px solid var(--line); }
+.csv2 .jv-journey b { display: flex; align-items: center; gap: 8px; font-size: 17px; color: var(--ink); }
+.csv2 .jv-journey b i { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 11px; border: 1.5px solid var(--line); }
 .csv2 .jv-journey b span { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.csv2 .jv-journey p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
-.csv2 .jv-journey em { font-style: normal; color: #c42a2a; font-weight: 600; }
-.csv2 .jv-journey p em { color: var(--muted); font-style: italic; font-weight: 400; }
-.csv2 .jv-journey-hot { padding: 14px; border-radius: 12px; background: rgba(237, 28, 36, .05); box-shadow: inset 3px 0 0 #ed1c24; }
+.csv2 .jv-journey p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.csv2 .jv-journey-hot figure { border-color: #ed1c24; box-shadow: 0 0 0 3px rgba(237, 28, 36, .12); }
 .csv2 .jv-journey-hot b i { background: #ed1c24; border-color: #ed1c24; color: #fff; }
-.csv2 .jv-journey-hot ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4; color: var(--ink-2); }
-.csv2 .jv-journey-hot ul em { display: block; font-size: 12px; }
-@media (max-width: 1000px) { .csv2 .jv-journey { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .csv2 .jv-journey { grid-template-columns: 1fr; } }
+.csv2 .jv-journey-note { margin: 24px 0 0; font-size: 16px; color: var(--ink-2); }
+.csv2 .jv-journey-note b { color: var(--ink); }
+@media (max-width: 700px) { .csv2 .jv-journey { grid-template-columns: 1fr; } }
