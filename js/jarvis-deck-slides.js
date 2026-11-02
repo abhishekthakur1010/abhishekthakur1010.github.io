@@ -215,7 +215,7 @@ window.DECK = {
       notes: "Left: requests from the CS session that are visible in the V1 screens. Right: requests parked for the next phase."
     },
 
-    /* IMPACT — what changed for the CS floor (resolution-time figures to be added once confirmed) */
+    /* IMPACT — what changed for the CS floor */
     {
       section: "results", type: "impact",
       eyebrow: "Impact",
@@ -228,11 +228,12 @@ window.DECK = {
       ],
       metricsLabel: "What changed",
       metrics: [
+        { n: "~3 days → a few hours", l: "avg. ticket resolution time", lead: true },
         { n: "3 → 1", l: "tools open per ticket" },
         { n: "2", l: "paid tools retired: Freshdesk and Rezo" },
         { n: "~$6.7K", l: "a month saved in licences" }
       ],
-      notes: "From post-launch feedback from the CS team. Resolution-time change to be added once the figures are confirmed."
+      notes: "From post-launch feedback from the CS team. Average resolution time dropped from about three days to a few hours."
     },
 
     /* 16 — LEARNINGS */

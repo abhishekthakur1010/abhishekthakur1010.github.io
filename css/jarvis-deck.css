@@ -209,3 +209,7 @@ body.deck.jarvis .ci-stat.jv-users { display: block; }
 
 /* cover video: the before → after reveal sits where the still screenshot was */
 body.deck.jarvis .op-browser .op-video { display: block; width: 100%; height: auto; border-radius: 12px; background: #e9e6fb; }
+
+/* impact slide: resolution time leads, full width; the other three sit in a row beneath */
+body.deck.jarvis .impact-slide .metric:first-child { grid-column: 1 / -1; }
+@media (min-width: 901px) { body.deck.jarvis .impact-slide .metric:first-child .mn { white-space: nowrap; } }

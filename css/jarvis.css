@@ -138,3 +138,8 @@
 
 /* hero: the before → after reveal video */
 .csv2 .jv-hero-video { display: block; width: 100%; height: auto; border-radius: 14px; background: #e9e6fb; }
+
+/* outcome: resolution time leads and spans two columns so it stays on one line */
+.csv2.jarvis .impact.outcome .stats .stat:first-child { grid-column: span 2; }
+.csv2.jarvis .impact.outcome .stats .stat:first-child .num { white-space: nowrap; }
+@media (max-width: 900px) { .csv2.jarvis .impact.outcome .stats .stat:first-child { grid-column: 1 / -1; } .csv2.jarvis .impact.outcome .stats .stat:first-child .num { white-space: normal; } }
