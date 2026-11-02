@@ -130,13 +130,13 @@ window.DECK = {
       ],
       end: "That one line from research became the brief.",
       targets: {
-        k: "Metrics we set out to move",
+        k: "By solving these, we aim to move 5 metrics",
         items: [
-          { n: "Adoption", t: "Voluntary adoption", d: "80%+ choosing the new UI over the old one" },
-          { n: "Time", t: "MTTR and first response", d: "Due dates visible, so replies go out sooner" },
-          { n: "Clicks", t: "Clicks per resolution", d: "HQ data and shipment status in view" },
-          { n: "Pace", t: "Tickets per hour", d: "20–25 an hour without tool hopping" },
-          { n: "SLA", t: "SLA compliance", d: "A live priority queue, not a static list" }
+          { t: "Voluntary adoption", v: "Target: 80%+", d: "Agents choose the new TDP over the legacy view." },
+          { t: "MTTR and first response time", v: "Direction: down", d: "Next Response Due and Closure Due always visible." },
+          { t: "Clicks per resolution", v: "Direction: down", d: "HQ data, geofence status and shipment images in line of sight." },
+          { t: "Tickets per hour", v: "Target: 20 to 25", d: "No back-and-forth between Jarvis, HQ and spreadsheets." },
+          { t: "SLA compliance", v: "Direction: up", d: "A live priority queue instead of a static, refresh-heavy list." }
         ]
       },
       notes: "Every screen decision had to answer these three questions in the first seconds of opening a ticket. Solving them was meant to move five metrics: voluntary adoption of the new UI to at least 80%, mean time to resolve and first response time, clicks per resolution, tickets per hour against the 20 to 25 target, and SLA compliance."
@@ -385,7 +385,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
         var box = document.createElement("div");
         box.className = "jt";
         box.innerHTML = "<span class='jt-k'>" + esc(tg.k) + "</span><ol class='jt-list'>" +
-          tg.items.map(function (m, i) { return "<li><i>" + (i + 1) + "</i><b>" + esc(m.t) + "</b><span>" + esc(m.d) + "</span></li>"; }).join("") + "</ol>";
+          tg.items.map(function (m, i) { return "<li><i>" + (i + 1) + "</i><b>" + esc(m.t) + "</b><em>" + esc(m.v) + "</em><span>" + esc(m.d) + "</span></li>"; }).join("") + "</ol>";
         slEl.appendChild(box);
       }
     }
