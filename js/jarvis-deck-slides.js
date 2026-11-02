@@ -20,9 +20,9 @@ window.DECK = {
     {
       section: "context", type: "opening",
       eyebrow: "Delhivery · CX platform · Jarvis 2.0",
-      headline: ["Every decision happened here. ", "So did every\u00a0delay."],
-      highlight: "So did every\u00a0delay.",
-      body: "CS makes every ticket decision in Jarvis, yet tickets kept missing the 2-day SLA. We rebuilt it around the SLA, the context and the next\u00a0step.",
+      headline: ["Jarvis TDP.", "Every decision.", "Every delay."],
+      highlight: "Every delay.",
+      body: "CS decides every ticket on the Ticket Detail Page, yet tickets kept missing the 2-day SLA. We rebuilt it around the SLA, the context and the next\u00a0step.",
       heroWide: "tdp.webp", url: "Jarvis · Ticket Detail Page",
       heroVideo: { mov: "../media/tdp-laptop.mov", webm: "../media/tdp-laptop.webm", poster: "../media/tdp-laptop-poster.webp" },
       badge: { n: "~50K", l: "Tickets a day" },
@@ -326,9 +326,12 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
         });
       });
     }
-    if (sc.heroVideo) {   // cover headline: the accent on its own line
-      var hl = el.querySelector("h1 .hl");
-      if (hl) hl.classList.add("jv-l2");
+    if (sc.heroVideo) {   // cover headline: one short line per part, the highlight in the accent
+      var h1 = el.querySelector("h1");
+      if (h1) {
+        h1.classList.add("jv-stack");
+        h1.innerHTML = sc.headline.map(function (part) { return "<span class='jv-l2" + (part === sc.highlight ? " hl" : "") + "'>" + esc(part) + "</span>"; }).join(" ");
+      }
     }
     if (sc.heroVideo) {   // cover: the before → after reveal instead of the still (poster only for reduced motion)
       var hv = sc.heroVideo, hz = el.querySelector(".op-browser .zoomable");

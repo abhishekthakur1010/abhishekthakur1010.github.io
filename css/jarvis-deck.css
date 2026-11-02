@@ -231,6 +231,7 @@ body.deck.jarvis .jv-ext-cue { position: absolute; right: 8px; bottom: 8px; padd
 body.deck.jarvis .bd-img.jv-ext:hover .jv-ext-cue, body.deck.jarvis .bd-img.jv-ext:focus-visible .jv-ext-cue { background: #ed1c24; }
 @media (min-width: 901px) {
   body.deck.jarvis .op-wide h1 { font-size: clamp(36px, 3.2vw, 50px); }
+  body.deck.jarvis .op-wide .op-top { grid-template-columns: 1fr 1.2fr; }
   body.deck.jarvis .op-wide h1 .jv-l2 { white-space: nowrap; }
 }
 /* context slide: what Jarvis is (left) · who needs what (right) */
@@ -267,3 +268,4 @@ body.deck.jarvis[data-theme="dark"] .jc-focus { background: rgba(237, 28, 36, .1
   body.deck.jarvis .jc-focus { border-color: rgba(237, 28, 36, .35); }
   body.deck.jarvis .jc-who { flex-direction: row; justify-content: space-between; align-items: baseline; }
 }
+body.deck.jarvis h1.jv-stack .jv-l2 { white-space: nowrap; }

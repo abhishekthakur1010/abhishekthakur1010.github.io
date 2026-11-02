@@ -147,3 +147,4 @@
 .csv2 .hx-shot.jv-hero-device { border: 0; border-radius: 0; background: none; box-shadow: none; overflow: visible; }
 .csv2 .hx-shot.jv-hero-device img { cursor: default; filter: drop-shadow(0 24px 40px rgba(0,0,0,.14)); }
 .csv2.jarvis h1 .jv-l2 { display: block; }
+.csv2.jarvis h1.jv-stack .jv-l2 { white-space: nowrap; }
