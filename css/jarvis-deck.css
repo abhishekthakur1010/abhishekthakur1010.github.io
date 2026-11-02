@@ -224,7 +224,7 @@ body.deck.jarvis .op-wide .jv-laptop + .op-badge, body.deck.jarvis .op-wide .op-
   body.deck.jarvis .op-wide .op-hero { min-height: 0; margin: 8px 0 28px; }
   body.deck.jarvis .op-wide .op-badge { left: 0; bottom: -18px; padding: 10px 14px; }
 }
-body.deck.jarvis h1 .jv-l1 { display: block; font-size: .72em; white-space: nowrap; margin-bottom: .08em; }
+body.deck.jarvis h1 .jv-l2 { display: block; }
 /* research board: a card that opens an external page */
 body.deck.jarvis .bd-img.jv-ext { position: relative; display: block; cursor: pointer; }
 body.deck.jarvis .jv-ext-cue { position: absolute; right: 8px; bottom: 8px; padding: 4px 9px; border-radius: 999px; background: rgba(17,17,20,.82); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .02em; transition: background .2s; }
