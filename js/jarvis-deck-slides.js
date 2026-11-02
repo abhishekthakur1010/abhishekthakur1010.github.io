@@ -129,7 +129,17 @@ window.DECK = {
         { q: "Let me do it in one click.", src: "Need 3 · Reply, note, forward and escalate in place" }
       ],
       end: "That one line from research became the brief.",
-      notes: "Every screen decision had to answer these three questions in the first seconds of opening a ticket."
+      targets: {
+        k: "Metrics we set out to move",
+        items: [
+          { n: "Adoption", t: "Voluntary adoption", d: "80%+ choosing the new UI over the old one" },
+          { n: "Time", t: "MTTR and first response", d: "Due dates visible, so replies go out sooner" },
+          { n: "Clicks", t: "Clicks per resolution", d: "HQ data and shipment status in view" },
+          { n: "Pace", t: "Tickets per hour", d: "20–25 an hour without tool hopping" },
+          { n: "SLA", t: "SLA compliance", d: "A live priority queue, not a static list" }
+        ]
+      },
+      notes: "Every screen decision had to answer these three questions in the first seconds of opening a ticket. Solving them was meant to move five metrics: voluntary adoption of the new UI to at least 80%, mean time to resolve and first response time, clicks per resolution, tickets per hour against the 20 to 25 target, and SLA compliance."
     },
 
     /* 07c — NORTH STAR VISION (component in js/jarvis-northstar.js) */
@@ -304,7 +314,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       a.addEventListener("click", function (e) { e.stopPropagation(); });   // no lightbox, no slide advance
       im.parentNode.replaceChild(a, im);
     });
-    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.jflow) && s.eyebrow === eb.textContent; })[0];
+    var sc = eb && D.slides.filter(function (s) { return (s.shots || s.proto || s.lightbox || s.feature || s.northstar || s.zones || s.scatter || s.jdef || s.heroVideo || s.jflow || s.targets) && s.eyebrow === eb.textContent; })[0];
     if (!sc) return;
     if (sc.feature) {   // screen + key values, the same component as the case study
       var f = sc.feature, row2 = el.querySelector(".pr-row");
@@ -368,6 +378,16 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
       sl.appendChild(hd);
       var body = document.createElement("div"); body.className = "jc-body"; body.innerHTML = left + table;
       sl.appendChild(body);
+    }
+    if (sc.targets) {   // insight slide: the metrics the redesign set out to move
+      var tg = sc.targets, slEl = el.querySelector(".sl");
+      if (slEl && !slEl.querySelector(".jt")) {
+        var box = document.createElement("div");
+        box.className = "jt";
+        box.innerHTML = "<span class='jt-k'>" + esc(tg.k) + "</span><ol class='jt-list'>" +
+          tg.items.map(function (m, i) { return "<li><i>" + (i + 1) + "</i><b>" + esc(m.t) + "</b><span>" + esc(m.d) + "</span></li>"; }).join("") + "</ol>";
+        slEl.appendChild(box);
+      }
     }
     if (sc.jflow) {   // current journey: reach → decide → validate (outside Jarvis)
       var fl = sc.jflow, frow = el.querySelector(".pr-row");
