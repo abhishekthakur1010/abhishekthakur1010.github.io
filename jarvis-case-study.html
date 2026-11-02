@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delhivery Jarvis 2.0 — Ticket Detail Page · Abhishek Thakur</title>
+    <meta property="og:image" content="./jarvis/img/tdp.webp" />
+    <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/case-study-v2.css?v=71" rel="stylesheet" />
+    <link href="./css/st-bar.css?v=5" rel="stylesheet" />
+    <link href="./css/jarvis.css?v=17" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/shimmer.css" />
+<script src="./js/shimmer.js"></script>
+</head>
+
+  <body class="csv2 jarvis">
+    <!-- Top bar: same as My story (css/st-bar.css) -->
+    <header class="st-bar">
+      <div class="st-bar-in">
+        <a class="st-back" href="./profile.html" onclick="try{var r=new window.URL(document.referrer),k=function(s){return s.replace(/\.html$/,'').replace(/\/(index)?$/,'/profile')};if(r.host===location.host&&k(r.pathname)===k(this.pathname)){event.preventDefault();history.back()}}catch(e){}" aria-label="Back to profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        </a>
+        <a class="st-brand" href="./profile.html"><img src="./images/profile-photo.jpg" alt="" /><span>Abhishek Thakur<small>AI Product Design Leader | Design Trusted by Millions</small></span></a>
+        <a class="st-btn" href="./resume.pdf?v=3" target="_blank" rel="noopener">Resume</a>
+      </div>
+      <div class="st-progress" aria-hidden="true"><span></span></div>
+    </header>
+    <script>
+      // reading progress under the bar
+      (function () {
+        var bar = document.querySelector('.st-progress span');
+        function onScroll() { var h = document.documentElement, max = h.scrollHeight - h.clientHeight; bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')'; }
+        addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+      })();
+    </script>
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-cover" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero-top hx-hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Delhivery · CX platform · Jarvis 2.0<span class="cs-type b2b">B2B</span></div>
+            <h1>Every ticket is a <span class="hl">conversation</span> waiting for its next action</h1>
+            <p class="sub">
+              Jarvis is Delhivery's one-stop ticketing platform, handling about 50,000 tickets a day. We redesigned its Ticket
+              Detail Page so that a new agent can resolve a ticket as confidently as an agent with five years' experience.
+            </p>
+            <a class="hx-deck-link" href="./jarvis-deck.html"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg>View presentation<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          </div>
+          <div class="hx-hero-shot">
+            <figure class="hx-shot"><video class="jv-hero-video" autoplay muted loop playsinline preload="metadata" poster="./jarvis/media/tdp-reveal-poster.webp" width="1600" height="870" aria-label="Jarvis TDP: the redesigned screen, then a wipe to the old screen and back"><source src="./jarvis/media/tdp-reveal.webm" type="video/webm" /><source src="./jarvis/media/tdp-reveal.mp4" type="video/mp4" /></video></figure>
+            <div class="device-badge"><b>~50K</b><span>Tickets a day</span></div>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div>
+            <div class="label">My Role</div>
+            <div class="val">Design Lead<br />Central Design Team</div>
+          </div>
+          <div>
+            <div class="label">Timeline</div>
+            <div class="val">Sept to Oct 2025<br />TDP, then TLP and dashboard</div>
+          </div>
+          <div>
+            <div class="label">Users</div>
+            <div class="val">~1.3K agents<br />CS, Ops, Security, Claims and more</div>
+          </div>
+          <div>
+            <div class="label">Headline impact</div>
+            <div class="val">One workspace for the common path<br />~$6.7K a month in licences saved</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01 Overview -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">Overview</span></div>
+        <div class="acts">
+          <div class="act"><div class="k"><span class="n">01</span><span class="t">Context</span></div><h3>50,000 tickets a day</h3><p>I redesigned the Ticket Detail Page of Jarvis, Delhivery's ticketing platform.</p></div>
+          <div class="act"><div class="k"><span class="n">02</span><span class="t">Problem</span></div><h3>Tenure did the work</h3><p>Experienced agents knew where everything hides. New agents didn't.</p></div>
+          <div class="act"><div class="k"><span class="n">03</span><span class="t">Solution</span></div><h3>A ticket as a conversation</h3><p>The story, the deadline and every action on one screen.</p></div>
+          <div class="act"><div class="k"><span class="n">04</span><span class="t">Outcome</span></div><h3>One workspace</h3><p>Escalation became a button. Two paid tools were retired.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Context -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">02</span><span class="sec-label">Context</span></div>
+        <h2 class="sec-title">Jarvis is the <span class="jv-hl">one-stop ticketing platform</span> for the entire Delhivery ecosystem.</h2>
+        <p class="lead">
+          It handles every ticket, external and internal, and is the single system of record for ticket
+          conversations and actions. Agents work every one from the Ticket Detail Page, so at this volume
+          seconds per ticket add up to hours of SLA.
+        </p>
+        <div class="hx-principles two">
+          <div><span class="hx-k">External tickets</span><h4>Package communication</h4><p>Every package conversation with consignees, clients, shippers and consignors.</p></div>
+          <div><span class="hx-k">Internal tickets</span><h4>Team to team</h4><p>Requests raised by internal teams for internal teams: PSI, Recon Digital, CCTV tracking, Ops and more.</p></div>
+        </div>
+        <div class="statgrid">
+          <div class="statcard"><div class="n">~50K</div><div class="l">Tickets a day, across internal and external use cases</div></div>
+          <div class="statcard"><div class="n">~1.3K</div><div class="l">Active agents across cross-functional teams</div></div>
+          <div class="statcard"><div class="n">~$6.7K</div><div class="l">A month in licences: Freshdesk (~$5.2K) and Rezo (~$1.5K)</div></div>
+        </div>
+        <p class="jv-users"><span class="hx-k">Primary users</span> <b>CS</b>, Security, Finance, Claims, Cross-Border, PSI, CCTV tracking, Maintenance and more.</p>
+      </div>
+    </section>
+
+    <!-- 03 The moment -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">03</span><span class="sec-label">The moment</span></div>
+        <h2 class="sec-title">A ticket lands. It's already 88 days overdue.</h2>
+        <p class="lead">
+          Amit, a frontline CS agent, opens this ticket. Under a one-line message sits a stack of
+          private notes, each with a wall of email addresses. His next step is somewhere in there.
+        </p>
+        <div class="jv-ticket">
+          <b>Reattempt or delay in delivery: consignee requests a new delivery attempt</b>
+          <small>Raised by KAM (Client) · Tata Steel · Source UCP · MAWB 62374848243499</small>
+          <p>"THE ORDER IS DELAYED. THE CUSTOMER IS AVAILABLE. PLEASE DELIVER IT AS SOON AS POSSIBLE."</p>
+        </div>
+        <figure class="jv-fig"><img src="./jarvis/img/jarvis-old-tdp.webp" data-full="./jarvis/img/jarvis-old-tdp-full.webp" width="1400" height="780" alt="The old Jarvis Ticket Detail Page for the same ticket: a red Closure overdue by 88 days chip, the customer's message, then a yellow private note whose Notified-To field is a wall of email IDs. Click to see the full page of stacked private notes." loading="lazy" decoding="async" /><figcaption><span class="jv-tag">Before</span>The TDP before the redesign: the same ticket, buried under private notes and overdue by 88 days. Click for the full page.</figcaption></figure>
+        <h3 class="hx-sub">What it took to reply</h3>
+        <ol class="jv-steps">
+          <li><span class="jv-clock">00:00</span><span>Opens the ticket. The thread reads oldest first, so the latest update is at the bottom.</span><span class="jv-tool">Jarvis</span></li>
+          <li><span class="jv-clock">01:30</span><span>No shipment status, so he opens the MAWB in HQ.</span><span class="jv-tool out">HQ portal</span></li>
+          <li><span class="jv-clock">03:10</span><span>Found short at the Bengaluru DC. He looks up the Ops and Security contacts.</span><span class="jv-tool out">Escalation Matrix</span></li>
+          <li><span class="jv-clock">05:40</span><span>Cleans the email IDs in Excel and pastes them into a note.</span><span class="jv-tool out">Excel</span></li>
+          <li><span class="jv-clock">07:00</span><span>Back in Jarvis for the next-response date, below the fold.</span><span class="jv-tool">Jarvis</span></li>
+        </ol>
+        <div class="jv-callout">Amit hasn't <b>replied to anyone</b> yet. A senior agent knows these shortcuts by heart. A new joiner doesn't.</div>
+      </div>
+    </section>
+
+    <!-- 04 Problem -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">Problem</span></div>
+        <h2 class="sec-title">Only experienced agents could use this screen.</h2>
+        <p class="lead">
+          Experienced agents were fast because they had memorised the tool. Every gap in the screen became a gap in the SLA.
+        </p>
+        <div class="problems">
+          <div class="problem"><div class="idx">1</div><div><h4>Scattered information</h4><p>Context was split across the TDP, HQ and the Escalation Matrix.</p></div></div>
+          <div class="problem"><div class="idx">2</div><div><h4>Threads you had to read</h4><p>Long threads were read message by message to find the blocker.</p></div></div>
+          <div class="problem"><div class="idx">3</div><div><h4>Copy-paste escalation</h4><p>Contacts lived elsewhere and were pasted into notes by hand.</p></div></div>
+          <div class="problem"><div class="idx">4</div><div><h4>Hidden deadlines</h4><p>SLA and next-response dates weren't visible upfront.</p></div></div>
+                    <div class="problem"><div class="idx">5</div><div><h4>Urgent looked routine</h4><p>Tickets that needed a reply now looked like every other ticket.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 The numbers -->
+    <section class="impact">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">05</span><span class="sec-label">The numbers behind it</span></div>
+        <div class="stats">
+          <div class="stat"><div class="num">5</div><div class="cap">Tools to resolve one ticket: Jarvis, HQ, the Escalation Matrix, Excel and back</div></div>
+          <div class="stat"><div class="num">7<span class="accent"> min</span></div><div class="cap">Before the agent had replied to anyone</div></div>
+          <div class="stat"><div class="num">30</div><div class="cap">Email IDs, the cap on a private note, for Ops teams of 100 or more</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Research & process -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">Research &amp; process</span></div>
+        <h2 class="sec-title">We sat with the people racing the SLA clock.</h2>
+        <p class="lead">
+          I ran sessions with CS agents, supervisors and the CS lead, and asked about the work, not the screen.
+        </p>
+        <figure class="jv-fig"><img src="./jarvis/img/interview.webp" width="1600" height="977" alt="Grid of video-call participants from the CS and Ops teams during the user interview sessions" loading="lazy" decoding="async" /><figcaption>Sessions with CS agents, supervisors and Ops</figcaption></figure>
+        <ol class="loop">
+          <li><b>Map</b><span>Every path from login to resolution.</span></li>
+          <li><b>Listen</b><span>Floor sessions and the CS lead's ten suggestions.</span></li>
+          <li><b>Audit</b><span>About 60 findings in the live tool.</span></li>
+          <li><b>Benchmark</b><span>Freshdesk, HelpScout, Zendesk and Intercom.</span></li>
+          <li><b>Prototype</b><span>V1 click by click, then shadowing.</span></li>
+        </ol>
+
+        <h3 class="hx-sub">Voice of the CS floor</h3>
+        <div class="hx-principles two jv-kw">
+          <div><span class="hx-k">What hurts</span>
+            <ul class="jv-dots"><li>Tool hopping: HQ, Escalation Matrix</li><li>Urgent tickets don't stand out</li><li>P0 info buried</li><li>Notes capped at 30 emails</li></ul></div>
+          <div><span class="hx-k">What they asked for</span>
+            <p class="jv-chips"><span>Ageing in hours</span><span>Multi-level escalation</span><span>Escalation contacts in reply</span><span>Notify whole teams</span><span>Category priority</span><span>Reassignment alert</span><span>Image upload</span><span>Dispatch count</span><span>Geo-fence flag</span><span>Prepaid/COD tag</span><span>Ticket download</span><span>Leave backup</span></p></div>
+        </div>
+
+        <h3 class="hx-sub">Mapping the old TDP</h3>
+        <figure class="jv-fig"><img src="./jarvis/img/jarvis-ia-flow.webp" width="2400" height="1212" alt="Information architecture map of the old TDP: Start, Jarvis portal, user auth and homescreen, then the global header, sort, filters and left nav. All Tickets splits into Ticket Context (left panel, 50%), Properties (centre panel, 25%: 10 statuses, about 100 teams, about 60 categories and 20 sub-categories, client) and Shipment Details (right panel, 25%: AWB, tracking and related tickets), all ending at Ticket Resolution." loading="lazy" decoding="async" /><figcaption><span class="jv-tag">IA map</span>Every path from login to resolution. All Tickets alone fans out into 3 panels, 10 statuses, ~100 teams and ~60 categories.</figcaption></figure>
+
+        <h3 class="hx-sub">What the best tools taught us</h3>
+        <div class="jv-bench">
+          <figure><img src="./jarvis/img/competitive/freshdesk.webp" alt="Freshdesk ticket view with quick list, conversation pane, properties and info panes" loading="lazy" decoding="async" /><figcaption><b>Freshdesk</b> · structured metadata beside the conversation</figcaption></figure>
+          <figure><img src="./jarvis/img/competitive/helpscout.webp" alt="HelpScout chat view with previous conversations and a Shopify sidebar" loading="lazy" decoding="async" /><figcaption><b>HelpScout</b> · a light view with the customer in a sidebar</figcaption></figure>
+          <figure><img src="./jarvis/img/competitive/zendesk.webp" alt="Zendesk sample ticket with the interaction history sidebar" loading="lazy" decoding="async" /><figcaption><b>Zendesk</b> · one timeline, intelligence on the right</figcaption></figure>
+          <figure><img src="./jarvis/img/competitive/intercom.webp" alt="Intercom VIP inbox with the command menu open" loading="lazy" decoding="async" /><figcaption><b>Intercom</b> · the ticket is a conversation. Our north star.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Insight -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">07</span><span class="sec-label">Insight</span></div>
+        <h2 class="sec-title">Agents aren't trying to analyse. They're trying to fix.</h2>
+        <p class="lead">
+          That line from the floor became the brief. Every screen had to answer three questions.
+        </p>
+        <div class="hx-principles">
+          <div><span class="hx-k">Need 1</span><h4>"What happened?"</h4><p>Context, P0 facts and a summary at a glance.</p></div>
+          <div><span class="hx-k">Need 2</span><h4>"What do I do next?"</h4><p>The SLA and the next action, without scrolling.</p></div>
+          <div><span class="hx-k">Need 3</span><h4>"Let me do it in one click."</h4><p>Reply, note, forward and escalate without leaving the ticket.</p></div>
+        </div>
+        <div class="reflection jv-story"><div class="q">"When a customer raises a ticket about a delayed shipment, I want to understand what's blocking it, so I can act before the SLA is breached."</div></div>
+      </div>
+    </section>
+
+    <!-- North star -->
+    <section class="jv-ns-band" id="northstar" aria-label="North star vision">
+      <div data-jv-northstar data-bleed></div>
+    </section>
+
+    <!-- 08 Solution & decisions -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">08</span><span class="sec-label">Solution &amp; decisions</span></div>
+        <h2 class="sec-title">One screen that answers "what's next".</h2>
+        <p class="lead">
+          The same ticket in TDP 2.0, then the decisions behind it, one at a time.
+        </p>
+        <figure class="hx-shot wide"><img src="./jarvis/img/tdp-annotated.webp" width="2208" height="1322" alt="Annotated TDP 2.0 screen with six numbered callouts" loading="lazy" decoding="async" /></figure>
+        <div class="problems jv-legend">
+          <div class="problem"><div class="idx">1</div><div><h4>Queue-aware list</h4><p>Next tickets, each with an SLA chip.</p></div></div>
+          <div class="problem"><div class="idx">2</div><div><h4>Ticket stripe</h4><p>Category, client, source, MAWB.</p></div></div>
+          <div class="problem"><div class="idx">3</div><div><h4>AI Summary</h4><p>A long thread in one card.</p></div></div>
+          <div class="problem"><div class="idx">4</div><div><h4>Conversation</h4><p>Each message type in its own colour.</p></div></div>
+          <div class="problem"><div class="idx">5</div><div><h4>Sticky respond bar</h4><p>Every action, always in reach.</p></div></div>
+          <div class="problem"><div class="idx">6</div><div><h4>Details panel</h4><p>Properties, details, related tickets.</p></div></div>
+        </div>
+
+        <figure class="jv-feature">
+          <div class="jv-feature-shot"><img src="./jarvis/img/conv-thread.webp" data-full="./jarvis/img/v1/03.webp" width="1200" height="1066" alt="TDP 2.0 conversation panel: the Tata Steel ticket header, the customer's message, the agent's reply as a chat message, and the composer with Reply, Note, Forward and Escalate to Ops" loading="lazy" decoding="async" /></div>
+          <div class="jv-feature-copy">
+            <span class="jv-feature-k">Decision 1 · Conversation first</span>
+            <h4>The ticket reads like a chat, not an email chain</h4>
+            <ul class="jv-values">
+              <li><span class="jv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></span><div><b>Conversation-first clarity</b><p>A chat-style thread replaces legacy email chains.</p></div></li>
+              <li><span class="jv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><b>Context and ownership at a glance</b><p>Who owns the ticket and what's blocking it is visible straight away.</p></div></li>
+              <li><span class="jv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span><div><b>Actions always in reach</b><p>Reply, note, escalate or record a voice note without leaving the thread.</p></div></li>
+              <li><span class="jv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.3 17a9 9 0 1 1 17.4 0"/><path d="m12 14 4-4"/></svg></span><div><b>Built for momentum</b><p>Context-rich messages cut the reading and switching agents have to do.</p></div></li>
+            </ul>
+          </div>
+          <figcaption>Why: agents described their work as a conversation, and Intercom's model matched it.</figcaption>
+        </figure>
+
+        <div class="flow">
+          <div>
+            <div class="tag">Decision 2 · Escalation</div>
+            <h3>Escalation became a button, not a research task</h3>
+            <p>Escalate to Ops opens in the composer with the facility and TL and ATL contacts filled in. The agent adds context and sends.</p>
+            <div class="win"><b>Why:</b> the system knows who to escalate to, so the agent shouldn't have to look it up.</div>
+          </div>
+          <figure class="jv-fig jv-flow-shot"><img src="./jarvis/img/v1/06.webp" width="1600" height="956" alt="Escalate to Ops tab in the composer, with the facility and the TL and ATL escalation contacts filled in" loading="lazy" decoding="async" /></figure>
+        </div>
+
+        <div class="flow">
+          <div>
+            <div class="tag">Decision 3 · Private notes</div>
+            <h3>Notes that reach whole teams</h3>
+            <p>Notes turn yellow in the thread and address whole teams instead of individual people.</p>
+            <div class="win"><b>Why:</b> the 30-address cap broke for big Ops teams, and a note must never look like a reply.</div>
+          </div>
+          <figure class="jv-fig jv-flow-shot"><img src="./jarvis/img/v1/05.webp" width="1600" height="956" alt="A yellow private note in the thread addressed to the Bangalore_Hoskote_GW team and the Security team" loading="lazy" decoding="async" /></figure>
+        </div>
+
+        <div class="flow">
+          <div>
+            <div class="tag">Decision 4 · SLA and context</div>
+            <h3>Deadlines in words, the shipment beside the thread</h3>
+            <p>"First response overdue by 5h." Shipment status, the current centre with its ageing and the consignee sit next to the thread.</p>
+            <div class="win"><b>Why:</b> agents asked for ageing in hours, as in HQ. Now HQ can stay closed.</div>
+          </div>
+          <figure class="jv-fig jv-flow-shot"><img src="./jarvis/img/v1/12.webp" width="1600" height="956" alt="Ticket Details panel showing the SLA in words, shipment status, the current centre Gurgaon Hub flagged with ageing 24h, and consignee info" loading="lazy" decoding="async" /></figure>
+        </div>
+
+        <div class="flow">
+          <div>
+            <div class="tag">Decision 5 · Voice replies</div>
+            <h3>Talk when typing is slower</h3>
+            <p>Record a reply, check the transcript, send both.</p>
+            <div class="win"><b>Decision:</b> show the transcript before sending, so the agent controls every word.</div>
+          </div>
+          <figure class="jv-fig jv-flow-shot"><img src="./jarvis/img/v1/10.webp" width="1600" height="956" alt="Composer with a recorded voice reply, an audio player and an editable transcript above the Send button" loading="lazy" decoding="async" /></figure>
+        </div>
+
+        <div class="flow">
+          <div>
+            <div class="tag">Decision 6 · AI summary</div>
+            <h3>A summary instead of a scroll</h3>
+            <p>Key ticket and package facts at a glance, rated by agents with a thumbs up or down.</p>
+            <div class="win"><b>Principle:</b> AI assists, the agent decides.</div>
+          </div>
+          <figure class="jv-fig jv-flow-shot"><img src="./jarvis/img/v1/08.webp" width="1600" height="956" alt="AI summary card at the top of the thread with key ticket details and a thumbs up or down" loading="lazy" decoding="async" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 Iterations -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">09</span><span class="sec-label">Iterations</span></div>
+        <h2 class="sec-title">Before → V1, click by click.</h2>
+        <p class="lead">The same moments, before and after. Then try V1: follow the red dot.</p>
+        <div class="jv-table">
+          <table>
+            <thead><tr><th>Moment</th><th>Before</th><th>TDP 2.0</th></tr></thead>
+            <tbody>
+              <tr><td>Finding what's next</td><td>Back to the listing, filter, reopen</td><td class="after">The next ticket is reachable without going back to the listing</td></tr>
+              <tr><td>Understanding the ticket</td><td>Read the email chain from the top</td><td class="after">Stripe, summary, latest message</td></tr>
+              <tr><td>Checking the shipment</td><td>Open HQ in another tab</td><td class="after">Shipment and ageing in the panel</td></tr>
+              <tr><td>Escalating</td><td>Matrix, Excel, paste into a note</td><td class="after">Escalate to Ops, prefilled</td></tr>
+              <tr><td>Knowing the deadline</td><td>Below the fold</td><td class="after">The SLA in words, on every ticket</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="jv-proto" id="walkthrough" data-jv-proto data-full="./jarvis-prototype.html"></div>
+
+        <!-- V2 section: shown once the V2 screenshot is added (jarvis/img/v2/tdp-v2.webp) -->
+        <template id="v2-pending">
+        <h3 class="hx-sub" id="v2">V2: testing took the queue away</h3>
+        <p class="lead">In usability testing, the queue docked on the left distracted agents and squeezed the space to reply. V1 had assumed agents wanted the next ticket in view; they wanted room to work this one. So V2 drops the queue and adds an AI panel on the right.</p>
+        <figure class="jv-fig jv-v2"><img src="./jarvis/img/v2/tdp-v2.webp" width="2000" height="1000" alt="TDP V2: the conversation takes the full left column, Properties and Related Tickets sit in the middle, and an Ask AI panel with consignee, product and ticket summaries is on the right" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('is-empty')" /><span class="jv-v2-empty" aria-hidden="true">V2 screen</span><figcaption><span class="jv-tag">V2</span>The conversation gets the full width, with properties in the middle and Ask AI on the right.</figcaption></figure>
+        <div class="problems jv-legend">
+          <div class="problem"><div class="idx">1</div><div><h4>Queue moved to the header</h4><p>A Ticket List breadcrumb and next/previous arrows.</p></div></div>
+          <div class="problem"><div class="idx">2</div><div><h4>Ask AI panel</h4><p>Consignee, product and ticket summaries, plus follow-up questions.</p></div></div>
+          <div class="problem"><div class="idx">3</div><div><h4>Ticket context in one line</h4><p>Created, raised by, client, source, MAWB and LRN.</p></div></div>
+          <div class="problem"><div class="idx">4</div><div><h4>Same action bar</h4><p>Reply, Note, Forward and Escalate to Ops.</p></div></div>
+        </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- 10 Shipped -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">10</span><span class="sec-label">Shipped</span></div>
+        <h2 class="sec-title">What they asked for, and what V1 delivered.</h2>
+        <p class="lead">I kept the floor's list open while designing. Here is what made V1, and what's next.</p>
+        <div class="hx-principles two jv-map">
+          <div><span class="hx-k">Asked for → in V1</span>
+            <ul class="hx-list">
+              <li><b>Ageing in hours.</b> The current centre shows "Ageing 24h".</li>
+              <li><b>Escalation inside the TDP.</b> Facility and TL/ATL levels prefilled.</li>
+              <li><b>Contacts in the reply panel.</b> TL and ATL addresses filled in.</li>
+              <li><b>Past the note cap.</b> Notes address whole teams.</li>
+              <li><b>SLA up front.</b> "First response overdue by 5h".</li>
+              <li><b>Clearer related tickets.</b> AWB, status and ID inline.</li>
+            </ul>
+          </div>
+          <div><span class="hx-k">Next phase</span>
+            <ul class="hx-list">
+              <li>Image upload for damaged shipments</li>
+              <li>Dispatch and attempt count</li>
+              <li>Geo-fence verification indicator</li>
+              <li>Prepaid or COD indicator on tickets</li>
+              <li>Reassignment alerts and leave backup</li>
+              <li>Ticket download for audits</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Outcome -->
+    <section class="impact outcome">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">11</span><span class="sec-label">Outcome</span></div>
+        <h2 class="sec-title" style="color:#fff">What changed on the floor.</h2>
+        <p class="lead">Tickets that used to take about three days now close in a few hours. CS agents find the new TDP engaging and easier to learn: the right information is in one place, and escalation is one click instead of a lookup.</p>
+        <div class="stats">
+          <div class="stat"><div class="num">~3 days<span class="accent"> → </span>hours</div><div class="cap">Avg. ticket resolution time: from about three days to a few hours</div></div>
+          <div class="stat"><div class="num">3<span class="accent"> → </span>1</div><div class="cap">Tools open per ticket: one workspace for the common path</div></div>
+          <div class="stat"><div class="num">2</div><div class="cap">Tools retired: Freshdesk and Rezo</div></div>
+          <div class="stat"><div class="num">~$6.7K</div><div class="cap">A month saved in licences</div></div>
+        </div>
+        <div class="reflection"><div class="q">"Escalation became an action, not a research task. New agents had a visible next step on every ticket."</div></div>
+      </div>
+    </section>
+
+    <!-- 12 What's next -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">12</span><span class="sec-label">What's next</span></div>
+        <h2 class="sec-title">Ship, then shadow.</h2>
+        <p class="lead">After launch we went back to agents' desks. That gave us a sharper backlog than any pre-launch review.</p>
+        <div class="hx-principles two">
+          <div><span class="hx-k">Fix next</span><h4>What shadowing showed</h4>
+            <ul class="hx-list">
+              <li>The reply box was too small</li>
+              <li>Due dates needed more prominence</li>
+              <li>Shipment facts as bullets, not prose</li>
+              <li>Reassignment alerts were missing</li>
+            </ul>
+          </div>
+          <div><span class="hx-k">Directional</span><h4>Let the system do the remembering</h4>
+            <p>The AI layer gives every agent an experienced agent's mental map. The agent still presses the button.</p>
+          </div>
+        </div>
+        <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>Canvas · AI resolution actions</span></div><img src="./jarvis/img/canvas-ai.webp" width="2116" height="922" alt="AI resolution canvas: the ticket thread on the left, an AI summary with the blocker and three suggested next actions on the right" loading="lazy" decoding="async" /></figure>
+        <p class="hx-credit">AI resolution actions, scoped as directional in the roadmap.</p>
+        <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>Canvas · Ticket Listing Page</span></div><img src="./jarvis/img/canvas-tlp.webp" width="1908" height="842" alt="Ticket Listing Page canvas: quick filters and a queue sorted by SLA risk, with SLA chips, team and ageing in hours" loading="lazy" decoding="async" /></figure>
+        <p class="hx-credit">The queue, sorted by SLA risk.</p>
+        <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>Canvas · Manager and supervisor dashboard</span></div><img src="./jarvis/img/canvas-dash.webp" width="1908" height="734" alt="Manager dashboard canvas: SLA breached, breaching in 6 hours, open tickets, average resolution time, ticket ageing and resolved by AI or agents" loading="lazy" decoding="async" /></figure>
+        <p class="hx-credit">Risk before it becomes a breach. Sample values.</p>
+      </div>
+    </section>
+
+    <!-- 13 Learnings -->
+    <section class="block soft">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">13</span><span class="sec-label">Learnings</span></div>
+        <h2 class="sec-title">What I'd tell the next team.</h2>
+        <div class="hx-principles">
+          <div><span class="hx-k">Learning 1</span><h4>Design for the new joiner</h4><p>My real test was whether someone in their first week could close a ticket in one go.</p></div>
+          <div><span class="hx-k">Learning 2</span><h4>Remove tools, not just clicks</h4><p>Most lost time sat between screens. Bringing context in beat any layout change.</p></div>
+          <div><span class="hx-k">Learning 3</span><h4>Keep the floor's list open</h4><p>The team's own requests kept V1 honest about what it solved.</p></div>
+        </div>
+        <p class="hx-credit" style="margin-top:28px">Screens and figures come from the project's Figma file and stakeholder deck. Ticket data shown is sample content used in the designs.</p>
+      </div>
+    </section>
+
+    <section class="next">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-num">·</span>
+          <span class="sec-label">More work</span>
+        </div>
+        <div class="nextgrid">
+          <a class="nextcard" href="./hubeye.html">
+            <div class="nextthumb">
+              <img src="./images/hubeye/hub-map-panel.webp" alt="Delhivery HubEye digital twin preview" loading="lazy" decoding="async" />
+            </div>
+            <div class="nextinfo">
+              <div class="l">Case study</div>
+              <h4>Delhivery HubEye</h4>
+              <p>From a dashboard nobody opened to a digital twin everyone watches.</p>
+            </div>
+          </a>
+          <a class="nextcard" href="./jiomart-discovery.html">
+            <div class="nextthumb">
+              <img src="./images/enhanceProduct/heaser-top-right-img.png" alt="JioMart product discovery preview" loading="lazy" decoding="async" />
+            </div>
+            <div class="nextinfo">
+              <div class="l">Case study</div>
+              <h4>Making Product Discovery Seamless</h4>
+              <p>Making browsing effortless across homepage, PLP, and PDP at JioMart.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wrap foot">
+      <div>© 2025 <a href="./profile.html">Abhishek Thakur Design</a> · <a href="./index.html">Start screen</a></div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/abhishekthakur1010/" target="_blank">LinkedIn</a>
+        <a href="https://www.behance.net/abhishekthakur1010/" target="_blank">Behance</a>
+        <a href="https://dribbble.com/abhishek_thakur_" target="_blank">Dribbble</a>
+        <a href="mailto:abhishekiit2k12@gmail.com">Email</a>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scroll-reveal for content as it enters the viewport
+      (function () {
+        var sel =
+          ".block .sec-head, .block .sec-title, .block .lead, .act, .statcard, .problem, .flow, .impact .stat, .nextcard, .reflection, .hero .meta, .hx-principles > div, .hx-photos figure, .jv-fig, .jv-steps li, .loop li, .jv-feature";
+        var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
+        if (!targets.length) return;
+        targets.forEach(function (el) {
+          el.classList.add("reveal");
+        });
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
+    <script src="./js/case-study-lightbox.js?v=8" defer></script>
+    <script src="./js/jarvis-proto.js?v=4" defer></script>
+    <script>
+      // reduced motion: keep the hero video on its poster frame
+      if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var hv = document.querySelector(".jv-hero-video"); if (hv) { hv.removeAttribute("autoplay"); hv.pause(); }
+      }
+    </script>
+    <script src="./js/jarvis-northstar.js?v=15" defer></script>
+  </body>
+</html>
