@@ -182,46 +182,13 @@ window.DECK = {
       notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
-    /* 02 — BUSINESS CONTEXT (infographic) */
-    {
-      section: "context", type: "contextinfo",
-      eyebrow: "Context",
-      headline: ["Traffic was high. Carts were not."],
-      sub: "{{~95M visitors|visitors}} came to JioMart, but only {{1 in 10 sessions|carts}} ended with something in the cart.",
-      define: {
-        k: "Discovery at JioMart",
-        steps: ["Home", "Search / browse", "Listing", "Product page", "Add to cart"],
-        note: "Where most of a shopping session is spent",
-        btn: "See before screens",
-        shots: [
-          { k: "Home", img: "enhance-problem-home.png", pain: "Busy banners, mixed icons" },
-          { k: "Search / browse", img: "enhance-iter-search-before.png", pain: "Generic suggestions" },
-          { k: "Listing", img: "enhance-problem-plp.png", pain: "Cards look alike" },
-          { k: "Product page", img: "enhance-problem-pdp.png", pain: "Key details buried" }
-        ]
-      },
-      flow: [
-        { k: "Business", t: "Visits, but few carts", icon: "star", pts: [["Ask", "Convert more visits"], ["Goal", "More add-to-carts"]] },
-        { k: "Product", t: "Pages felt dated", icon: "brief", pts: [["Ask", "Refresh 3 key pages"], ["Goal", "One consistent look"]] },
-        { k: "Shopper", t: "\u201cCan I trust this?\u201d", icon: "people", tone: "pos", pts: [["Need", "Key info up front"], ["Goal", "Buy with confidence"]] }
-      ],
-      paths: {
-        rows: [
-          { k: "Search", flow: "Search → Product → Cart", lit: 4, v: "{{41%|search}}", l: "add to cart", tone: "good" },
-          { k: "Browse", flow: "Home → Listing → Product → Cart", lit: 1, v: "{{10%|carts}}", l: "add to cart", tone: "bad" }
-        ],
-        big: "{{4×|searchers}}", bigL: "Shoppers who search add to cart 4× more. Browsing was the gap."
-      },
-      notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers didn't trust what they saw: unclear price, size, delivery and no reviews up front. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
-    },
-
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
-      section: "discover", type: "flowview",
-      eyebrow: "Asking why · The existing experience",
-      headline: ["Shoppers dropped at every step"],
-      sub: "We asked why, then followed the shopper. Click a step.",
-      reframe: { fromL: "The brief", from: "Make the pages look better", toL: "Became", to: "Help shoppers choose" },
+      section: "context", type: "flowview",
+      eyebrow: "Context · The existing experience",
+      headline: ["Traffic was high. Carts were not."],
+      sub: "{{~95M visitors|visitors}}, but only {{1 in 10 sessions|carts}} added to cart.",
+      reframe: { asks: [["Business", "More carts"], ["Product", "Refresh 3 pages"], ["Shopper", "\u201cCan I trust this?\u201d"]], toL: "Became", to: "Help shoppers choose" },
       steps: [
         { k: "Home", stat: "100%", statL: "sessions", img: "enhance-problem-home.png", issues: [{ t: "Inconsistent icons, busy banners", tag: "Audit" }], pain: "Busy banners and mixed icon styles" },
         { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", img: "enhance-iter-search-before.png", issues: [{ t: "Irrelevant search results", tag: "Audit" }], pain: "Generic suggestions, wrong categories" },
@@ -229,8 +196,8 @@ window.DECK = {
         { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", img: "enhance-problem-pdp.png", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }], pain: "Key details below the fold" },
         { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", img: "enhance-addtocart-before.webp", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }], pain: "Added from a list of near-identical cards, with no rating or detail to compare" }
       ],
-      foot: "{{23 issues|audit}} found; the product page was weakest. Checkout and payments out of scope.",
-      notes: "Start with the reframe: the brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
+      foot: "Searchers added to cart {{4× more|searchers}}: browsing was the gap.",
+      notes: "Context: ~95M visitors but only 1 in 10 sessions added to cart, while searchers did at 41% (4x), so browsing was the gap. Business wanted more carts, product asked for a refresh of 3 pages, and shoppers asked: can I trust this? The brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
     },
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */

@@ -1291,6 +1291,8 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 .fv-rf-l { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
 .fv-rf-l.pos { color: var(--pos); }
 .fv-rf-a { color: var(--faint); }
+.fv-ask { display: inline-flex; align-items: baseline; gap: 6px; color: var(--soft); }
+.fv-ask + .fv-ask::before { content: "·"; color: var(--faint); margin-right: 4px; }
 .fv-step { display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; align-items: center; width: 100%; text-align: left; padding: 11px 16px; border-radius: 14px; border: 1px solid var(--panel-line); background: var(--card); color: inherit; font-family: inherit; cursor: pointer; transition: border-color 0.25s, background 0.25s, transform 0.25s var(--ease); }
 .fv-step:hover { transform: translateX(3px); border-color: var(--info-line); }
 .fv-step.on { border-color: var(--info); background: var(--info-soft); box-shadow: 0 0 0 1px var(--info) inset; }
@@ -1576,3 +1578,4 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .opening h1 { color: var(--ink); }
 .opening h1 .hl { color: var(--info); }
 @media (max-height: 760px) and (min-width: 901px) { .vs-zone { --zp: 5px; } .vs-zone-t { font-size: 14px; margin: 4px 0 2px; } .vs-zone-pts { font-size: 12px; line-height: 1.35; } .vs-zone-stat { padding-top: 16px; } .vs-zone-stat b { font-size: 22px; } }
+@media (max-height: 760px) { .fv-step { padding-top: 8px; padding-bottom: 8px; } .fv-list { gap: 6px; margin-top: 12px; } .fv-reframe { margin-top: 10px; padding: 7px 14px; } }
