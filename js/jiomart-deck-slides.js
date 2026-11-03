@@ -274,26 +274,6 @@ window.DECK = {
       notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. Six sources, in order: plan, analytics, journey map, competitors, audit, interviews. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
     },
 
-    /* 06 — ANALYSIS & SYNTHESIS */
-    {
-      section: "discover", type: "oppmatrix",
-      eyebrow: "Analysis & synthesis",
-      headline: ["Where both sides win"],
-      heads: ["User need", "Business goal", "Opportunity"],
-      rows: [
-        { need: "Know where to start", lever: "More visits reach a list", metric: "Clear category entry", tier: "High" },
-        { need: "Compare quickly", lever: "More product clicks", metric: "Decision info on cards", tier: "High" },
-        { need: "Trust the choice", lever: "More add-to-cart", metric: "Key details up front", tier: "High" },
-        { need: "Find it by search", lever: "Protect the {{41%|search}} channel", metric: "Better search results", tier: "Medium" }
-      ],
-      prioritise: {
-        img: "enhance-impact-effort-matrix.png",
-        cap: "Pain points prioritised by impact and effort",
-        points: ["Quick wins first: discount tags, category clarity", "Parked: 3D icons, gamified categories"]
-      },
-      notes: "We clustered pain points and plotted them on impact vs effort. The top three opportunities sat where user needs and business goals overlapped."
-    },
-
     /* 08 — DEFINING THE PROBLEM */
     {
       section: "define", type: "synthesis",
@@ -329,9 +309,9 @@ window.DECK = {
         { img: "enhance-design-team-01.png", t: "Whiteboard workshop", who: "PM + Design + Engineering", out: "3 concepts for listing and product page" },
         { img: "enhance-design-team-02.png", t: "Design critique", who: "Wider design team", out: "One pattern for every screen" },
         { img: "enhance-design-team-03.png", t: "Screen review", who: "Senior stakeholders: HoD + HoP", out: "Gaps fixed before build" },
-        { img: "enhance-user-journey-02.png", t: "MoSCoW", who: "PM + Design + Engineering", out: "Price, rating, discount shipped first", fit: "contain" }
+        { img: "enhance-impact-effort-matrix.png", t: "Impact vs effort", who: "PM + Design + Engineering", out: "Quick wins first: discount tags, category clarity", fit: "contain" }
       ],
-      notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and used MoSCoW to decide what shipped first: name, price, rating and discount were Musts."
+      notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and plotted every idea on impact vs effort: quick wins like discount tags and category clarity shipped first, while 3D icons and gamified categories were parked."
     },
 
     /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
