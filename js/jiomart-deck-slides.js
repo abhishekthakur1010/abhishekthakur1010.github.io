@@ -12,7 +12,7 @@
 window.DECK = {
   imgBase: "./images/enhanceProduct/",
   sections: [
-    { id: "context", n: "01", label: "Context" },
+    { id: "context", n: "01", label: "Requirement" },
     { id: "discover", n: "02", label: "Discovery" },
     { id: "define", n: "03", label: "Define" },
     { id: "design", n: "04", label: "Design" },
@@ -182,64 +182,13 @@ window.DECK = {
       notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
-    /* 02 — BUSINESS CONTEXT (infographic) */
-    {
-      section: "context", type: "contextinfo",
-      eyebrow: "Context",
-      headline: ["Traffic was high. Carts were not."],
-      sub: "{{~95M visitors|visitors}} came to JioMart, but only {{1 in 10 sessions|carts}} ended with something in the cart.",
-      define: {
-        k: "Discovery at JioMart",
-        steps: ["Home", "Search / browse", "Listing", "Product page", "Add to cart"],
-        note: "Where most of a shopping session is spent",
-        btn: "See before screens",
-        shots: [
-          { k: "Home", img: "enhance-problem-home.png", pain: "Busy banners, mixed icons" },
-          { k: "Search / browse", img: "enhance-iter-search-before.png", pain: "Generic suggestions" },
-          { k: "Listing", img: "enhance-problem-plp.png", pain: "Cards look alike" },
-          { k: "Product page", img: "enhance-problem-pdp.png", pain: "Key details buried" }
-        ]
-      },
-      flow: [
-        { k: "Business", t: "Visits, but few carts", icon: "star", pts: [["Ask", "Convert more visits"], ["Goal", "More add-to-carts"]] },
-        { k: "Product", t: "Pages felt dated", icon: "brief", pts: [["Ask", "Refresh 3 key pages"], ["Goal", "One consistent look"]] },
-        { k: "Shopper", t: "\u201cCan I trust this?\u201d", icon: "people", tone: "pos", pts: [["Need", "Key info up front"], ["Goal", "Buy with confidence"]] }
-      ],
-      paths: {
-        rows: [
-          { k: "Search", flow: "Search → Product → Cart", lit: 4, v: "{{41%|search}}", l: "add to cart", tone: "good" },
-          { k: "Browse", flow: "Home → Listing → Product → Cart", lit: 1, v: "{{10%|carts}}", l: "add to cart", tone: "bad" }
-        ],
-        big: "{{4×|searchers}}", bigL: "Shoppers who search add to cart 4× more. Browsing was the gap."
-      },
-      notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers didn't trust what they saw: unclear price, size, delivery and no reviews up front. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
-    },
-
-    /* 03 — ASKING THE RIGHT QUESTIONS */
-    {
-      section: "context", type: "qa",
-      eyebrow: "Asking the right questions",
-      headline: ["We asked why before we designed"],
-      sub: "Six questions turned a facelift request into a clear problem to solve.",
-      qs: [
-        { tag: "Business", q: "Why fix it?", a: "Only {{1 in 10|carts}} visits ended in a cart." },
-        { tag: "Business", q: "Why now?", a: "Traffic kept growing, so every lost cart cost more." },
-        { tag: "Business", q: "What does success look like?", a: "More carts from browsing and search." },
-        { tag: "Shopper", q: "What stops shoppers?", a: "They can't compare products or trust the details." },
-        { tag: "Shopper", q: "Where do they get stuck?", a: "Browsing: listing and product page." },
-        { tag: "Scope", q: "What's not included?", a: "Checkout, payments and personalisation." }
-      ],
-      fromL: "The brief", from: "Make the pages look better",
-      toL: "What it became", to: "Help shoppers choose with confidence",
-      notes: "Business questions first, then shopper questions, then scope. Each answer came from talking to the PM, analytics or engineering. The shift at the bottom is the point: a facelift request became a problem about helping people choose."
-    },
-
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
-      section: "discover", type: "flowview",
-      eyebrow: "The existing experience",
-      headline: ["Shoppers dropped at every step"],
-      sub: "Click a step to see the screen shoppers saw.",
+      section: "context", type: "flowview",
+      eyebrow: "Requirement · The existing experience",
+      headline: ["Low conversion"],
+      sub: "{{~95M visitors|visitors}}, but only {{1 in 10 sessions|carts}} added to cart.",
+      reframe: { asks: [["Business", "More carts"], ["Product", "Refresh 3 pages"], ["Shopper", "\u201cCan I trust this?\u201d"]], toL: "Became", to: "Help shoppers choose" },
       steps: [
         { k: "Home", stat: "100%", statL: "sessions", img: "enhance-problem-home.png", issues: [{ t: "Inconsistent icons, busy banners", tag: "Audit" }], pain: "Busy banners and mixed icon styles" },
         { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", img: "enhance-iter-search-before.png", issues: [{ t: "Irrelevant search results", tag: "Audit" }], pain: "Generic suggestions, wrong categories" },
@@ -247,15 +196,15 @@ window.DECK = {
         { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", img: "enhance-problem-pdp.png", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }], pain: "Key details below the fold" },
         { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", img: "enhance-addtocart-before.webp", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }], pain: "Added from a list of near-identical cards, with no rating or detail to compare" }
       ],
-      foot: "{{23 heuristic issues|audit}} found. The product page was the weakest part of discovery.",
-      notes: "Press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
+      foot: "Searchers added to cart {{4× more|searchers}}: browsing was the gap.",
+      notes: "Context: ~95M visitors but only 1 in 10 sessions added to cart, while searchers did at 41% (4x), so browsing was the gap. Business wanted more carts, product asked for a refresh of 3 pages, and shoppers asked: can I trust this? The brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
     },
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */
     {
       section: "discover", type: "board", tall: true,
       eyebrow: "Research",
-      headline: ["How we found the real problem"],
+      headline: ["Root cause"],
       sub: "A plan, then data, then shoppers.",
       cards: [
         { k: "Research strategy", tag: "Plan", img: "enhance-research-strategy.png", pos: "left center", stat: "4 steps",
@@ -274,31 +223,11 @@ window.DECK = {
       notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. Six sources, in order: plan, analytics, journey map, competitors, audit, interviews. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
     },
 
-    /* 06 — ANALYSIS & SYNTHESIS */
-    {
-      section: "discover", type: "oppmatrix",
-      eyebrow: "Analysis & synthesis",
-      headline: ["Where both sides win"],
-      heads: ["User need", "Business goal", "Opportunity"],
-      rows: [
-        { need: "Know where to start", lever: "More visits reach a list", metric: "Clear category entry", tier: "High" },
-        { need: "Compare quickly", lever: "More product clicks", metric: "Decision info on cards", tier: "High" },
-        { need: "Trust the choice", lever: "More add-to-cart", metric: "Key details up front", tier: "High" },
-        { need: "Find it by search", lever: "Protect the {{41%|search}} channel", metric: "Better search results", tier: "Medium" }
-      ],
-      prioritise: {
-        img: "enhance-impact-effort-matrix.png",
-        cap: "Pain points prioritised by impact and effort",
-        points: ["Quick wins first: discount tags, category clarity", "Parked: 3D icons, gamified categories"]
-      },
-      notes: "We clustered pain points and plotted them on impact vs effort. The top three opportunities sat where user needs and business goals overlapped."
-    },
-
     /* 08 — DEFINING THE PROBLEM */
     {
       section: "define", type: "synthesis",
       eyebrow: "Defining the problem",
-      headline: ["Not a UI problem. A decision problem."],
+      headline: ["Decision problem"],
       cols: ["What shoppers felt", "Why it happened", "How we know"],
       rows: [
         { theme: "Finding", symptom: "\u201cWhere do I start?\u201d", cause: "Inconsistent icons and categories",
@@ -323,46 +252,57 @@ window.DECK = {
     {
       section: "design", type: "collab",
       eyebrow: "Ideation & collaboration",
-      headline: ["Built with the team"],
+      headline: ["Team effort"],
       sub: "Four working sessions took us from ideas to a plan we could ship.",
       steps: [
         { img: "enhance-design-team-01.png", t: "Whiteboard workshop", who: "PM + Design + Engineering", out: "3 concepts for listing and product page" },
         { img: "enhance-design-team-02.png", t: "Design critique", who: "Wider design team", out: "One pattern for every screen" },
         { img: "enhance-design-team-03.png", t: "Screen review", who: "Senior stakeholders: HoD + HoP", out: "Gaps fixed before build" },
-        { img: "enhance-user-journey-02.png", t: "MoSCoW", who: "PM + Design + Engineering", out: "Price, rating, discount shipped first", fit: "contain" }
+        { img: "enhance-impact-effort-matrix.png", t: "Impact vs effort", who: "PM + Design + Engineering", out: "Quick wins first: discount tags, category clarity", fit: "contain" }
       ],
-      notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and used MoSCoW to decide what shipped first: name, price, rating and discount were Musts."
+      notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and plotted every idea on impact vs effort: quick wins like discount tags and category clarity shipped first, while 3D icons and gamified categories were parked."
     },
 
-    /* 10–12 — SOLUTION: each screen from Before to Live */
+    /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Product",
-      headline: ["Can I trust it?"],
-      labels: ["Before", "V1 · My design", "Live · Latest UI"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
-      jump: "UI refresh",
-      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
+      eyebrow: "The solution",
+      headline: ["PDP Conversion"],
+      labels: ["Before", "After"],
+      when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" },
-        { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
+        { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" }
       ],
-      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
+            t: "Fewer actions, less to remember",
+            pts: ["Only back, search, voice and cart"],
+            stat: ["8 → 4", "header actions"], pin: 9 },
+          { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy"],
+            t: "Build trust above the fold",
+            pts: ["Brand, then name, then ratings", "Price, offer and size before the fold"],
+            stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
+          { k: "Bottom", where: "Action bar", laws: ["Fitts's law"],
+            t: "One next step, not five exits",
+            pts: ["Nav bar drove bounce", "Sticky Add to cart in thumb reach"],
+            stat: ["6 → 1", "exits → one CTA"], pin: 95 }
+        ]
+      },
+      notes: "Product answers: can I trust it? Read the After screen top to bottom. Top: the header went from 8 actions to 4 (Hick's and Miller's law). Mid: brand before name, ratings under it, price, size and offers above the fold, which is where trust is built. Bottom: the nav bar gave five ways out on a page meant for one decision and drove bounce, so it became a sticky price + Add to cart bar."
     },
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Listing",
-      headline: ["Which one should I pick?"],
-      labels: ["Before", "V1 · My design", "Live · Latest UI"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
-      jump: "UI refresh",
-      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
+      eyebrow: "The solution",
+      headline: ["PLP Engagement"],
+      labels: ["Before", "After"],
+      when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
-        { img: "enhance-v1-plp.png?v=2", n: "Rating, discount, wishlist, sub-categories" },
-        { img: "enhance-live-plp.jpg", video: "enhance-live-plp.mp4", n: "Grid to compare at a glance" }
+        { img: "enhance-v1-plp.png?v=2", n: "Discount, unit price, size and wishlist on every card" }
       ],
       evidence: {
         method: "Old vs new listing",
@@ -371,29 +311,56 @@ window.DECK = {
         takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
         implication: "Every change answers a comparison question on the card itself."
       },
-      notes: "Listing answers: which one? Before, cards showed only name and price. My V1 put the decision on the card: rating, discount, wishlist. Live is the latest UI refresh on the same IA, now as a compact grid."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
+            t: "Fewer actions, less to remember",
+            pts: ["Same 4-action header", "Sort and Filter up front"],
+            stat: ["8 → 4", "header actions"], pin: 8 },
+          { k: "Mid", where: "Narrow down", laws: ["Chunking", "Progressive disclosure"],
+            t: "Narrow the list in small steps",
+            pts: ["Sub-category tiles, then quick chips"], pin: 18 },
+          { k: "Bottom", where: "Product cards", laws: ["Consistency", "Visual hierarchy"],
+            t: "Put the decision on the card",
+            pts: ["Price, % off, unit price and size", "One card everywhere, like {{5 leading apps|competitors}}"] , pin: 45 }
+        ]
+      },
+      notes: "Listing answers: which one? Top: the same 4-action header, with Sort and Filter as clear buttons. Mid: sub-category tiles and chips let shoppers narrow in small steps. Bottom: the card carries the decision: price, MRP, % off, unit price, size and wishlist, the same in every category."
     },
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Home",
-      headline: ["Where do I start?"],
-      labels: ["Before", "V1 · My design", "Live · Latest UI"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
-      jump: "UI refresh",
-      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
+      eyebrow: "The solution",
+      headline: ["Home Discovery"],
+      labels: ["Before", "After"],
+      when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
-        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
-        { img: "enhance-live-home.jpg", video: "enhance-live-home.mp4", n: "Search first, Quick and ShopAll" }
+        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" }
       ],
-      notes: "Home answers: where do I start? Before, banners pushed search and categories down. My V1 moved them to the top with one icon style. Live is the latest UI refresh on the same IA: search still comes first."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
+            t: "Search first, fewer actions",
+            pts: ["Searchers added to cart {{4× more|searchers}}"],
+            stat: ["7 → 4", "header actions"], pin: 7 },
+          { k: "Mid", where: "Categories", laws: ["Law of similarity", "Minimalist design"],
+            t: "One clear way in",
+            pts: ["Categories under search, one icon style", "4 promo blocks → 1 carousel"], pin: 25 },
+          { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall"],
+            t: "Pick up where you left off",
+            pts: ["Recent items shown, not recalled"], pin: 62 }
+        ]
+      },
+      notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
     },
 
     {
       section: "results", type: "results",
       eyebrow: "Validation & impact",
-      headline: ["Tested, refined, and it moved the numbers"],
+      headline: ["Measured impact"],
       hero: [
         { k: "Sessions with add-to-cart", pre: 10.41, post: 13.35, pt: "10.41%", qt: "13.35%", d: "{{+28%|carts}}", sub: "+294 bps" },
         { k: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, pt: "41.40%", qt: "50.20%", d: "{{+21%|search}}", sub: "+880 bps" },
@@ -420,7 +387,7 @@ window.DECK = {
     {
       section: "results", type: "close",
       eyebrow: "Key takeaways",
-      headline: ["Remove a doubt on every screen"],
+      headline: ["Remove doubt"],
       wins: [
         { n: "{{+28%|carts}}", l: "add-to-cart sessions" },
         { n: "{{+21%|search}}", l: "add-to-cart from search" }
