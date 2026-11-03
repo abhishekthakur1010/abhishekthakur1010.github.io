@@ -743,11 +743,14 @@
         var after = fig(sc.stages[n - 1], n - 1).replace("<span class='evo-media", "<span class='vs-pinned'>" + pins + "<span class='evo-media").replace("<p class='vs-note'>", "</span><p class='vs-note'>");
         var zones = zs.map(function (z, j) {
           return "<div class='vs-zone reveal' data-step='" + (s0 + j) + "'>" +
-            "<div class='vs-zone-k'><span class='vs-zone-n'>" + (j + 1) + "</span>" + esc(z.k) + "<span class='vs-zone-where'>" + esc(z.where) + "</span>" +
-            "<span class='vs-laws'>" + z.laws.map(function (l) { return "<span class='vs-law'>" + esc(l) + "</span>"; }).join("") + "</span></div>" +
+            "<span class='vs-zone-n'>" + (j + 1) + "</span>" +
+            "<div class='vs-zone-body'>" +
+            "<div class='vs-zone-k'>" + esc(z.k) + "<span class='vs-zone-where'>" + esc(z.where) + "</span></div>" +
             "<p class='vs-zone-t'>" + esc(z.t) + "</p>" +
             "<ul class='vs-zone-pts'>" + z.pts.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
-            (z.stat ? "<div class='vs-zone-stat'><b>" + esc(z.stat[0]) + "</b><span>" + esc(z.stat[1]) + "</span></div>" : "") +
+            "<div class='vs-laws'>" + z.laws.map(function (l) { return "<span class='vs-law'>" + esc(l) + "</span>"; }).join("") + "</div>" +
+            "</div>" +
+            (z.stat ? "<div class='vs-zone-stat'><b>" + esc(z.stat[0]).replace("→", "<i>→</i>") + "</b><span>" + esc(z.stat[1]) + "</span></div>" : "") +
             "</div>";
         }).join("");
         return head + "<div class='vs-row has-dec'><div class='vs-group'>" + early + "<span class='vs-arrow reveal' data-step='" + (n - 1) + "'>→</span>" + after + "</div>" +

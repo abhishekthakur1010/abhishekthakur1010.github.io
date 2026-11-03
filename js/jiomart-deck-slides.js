@@ -359,7 +359,7 @@ window.DECK = {
             stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
           { k: "Bottom", where: "Action bar", laws: ["Fitts's law", "One primary action"],
             t: "Replace exits with one next step",
-            pts: ["Bottom nav gave 5 ways out of a buying page and drove bounce", "Sticky price, savings and Add to cart, in thumb reach"],
+            pts: ["Bottom nav gave 5 ways out and drove bounce", "Sticky price, savings and Add to cart, in thumb reach"],
             stat: ["6 → 1", "exits → one CTA"], pin: 95 }
         ]
       },
