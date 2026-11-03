@@ -267,7 +267,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution",
-      headline: ["PDP"],
+      headline: ["PDP Conversion"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
@@ -297,7 +297,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution",
-      headline: ["PLP"],
+      headline: ["PLP Engagement"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
@@ -332,7 +332,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution",
-      headline: ["Home Page"],
+      headline: ["Home Discovery"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
