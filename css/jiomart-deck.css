@@ -1584,3 +1584,7 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .opening h1 .hl { color: var(--info); }
 @media (max-height: 760px) and (min-width: 901px) { .vs-zone { --zp: 5px; } .vs-zone-t { font-size: 14px; margin: 4px 0 2px; } .vs-zone-pts { font-size: 12px; line-height: 1.35; } .vs-zone-stat { padding-top: 16px; } .vs-zone-stat b { font-size: 22px; } }
 @media (max-height: 760px) { .fv-step { padding-top: 8px; padding-bottom: 8px; } .fv-list { gap: 6px; margin-top: 12px; } .fv-reframe { margin-top: 10px; } .fv-ask, .fv-became { padding-top: 7px; padding-bottom: 7px; } }
+
+/* Opening headline: "Enhancing / Product Discovery / on JioMart" */
+.opening h1 .hl { display: block; }
+@media (min-width: 700px) { .opening h1 .hl { white-space: nowrap; } }

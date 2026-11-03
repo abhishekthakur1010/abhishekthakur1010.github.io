@@ -167,9 +167,9 @@ window.DECK = {
     {
       section: "context", type: "opening",
       eyebrow: "JioMart · Product discovery redesign",
-      headline: ["Making ", "product discovery", " seamless"],
-      highlight: "product discovery",
-      body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
+      headline: ["Enhancing ", "Product Discovery", " on JioMart"],
+      highlight: "Product Discovery",
+      body: "Simplifying the journey from discovery to purchase, helping shoppers make confident decisions.",
       hero: "enhance-v1-pdp-fold.png?v=4",
       backShots: ["enhance-v1-home.png", "enhance-v1-plp.png?v=3"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
@@ -179,7 +179,7 @@ window.DECK = {
         { l: "Team", v: "PM · Engineering · Analytics" },
         { l: "After launch", v: "{{50%|search}} search → cart · {{29%|speed}} faster" }
       ],
-      notes: "Open simply: shoppers could find products but struggled to choose, so I made discovery seamless. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
+      notes: "Open simply: shoppers could find products but struggled to choose, so I simplified the journey from discovery to purchase. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
