@@ -266,9 +266,9 @@ window.DECK = {
     /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Product",
-      headline: ["Build trust"],
-      labels: ["Before", "After · My design"],
+      eyebrow: "The solution · Before & After",
+      headline: ["PDP"],
+      labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       sub: "Three zones of the screen, one job each.",
       stages: [
@@ -297,9 +297,9 @@ window.DECK = {
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Listing",
-      headline: ["Compare fast"],
-      labels: ["Before", "After · My design"],
+      eyebrow: "The solution · Before & After",
+      headline: ["PLP"],
+      labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       sub: "Three zones of the screen, one job each.",
       stages: [
@@ -333,9 +333,9 @@ window.DECK = {
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Home",
-      headline: ["Clear start"],
-      labels: ["Before", "After · My design"],
+      eyebrow: "The solution · Before & After",
+      headline: ["Home Page"],
+      labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       sub: "Three zones of the screen, one job each.",
       stages: [
