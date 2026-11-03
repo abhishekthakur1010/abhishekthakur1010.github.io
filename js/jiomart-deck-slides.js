@@ -266,7 +266,7 @@ window.DECK = {
     /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Before & After",
+      eyebrow: "The solution",
       headline: ["PDP"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
@@ -297,7 +297,7 @@ window.DECK = {
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Before & After",
+      eyebrow: "The solution",
       headline: ["PLP"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
@@ -333,7 +333,7 @@ window.DECK = {
 
     {
       section: "design", type: "versions",
-      eyebrow: "The solution · Before & After",
+      eyebrow: "The solution",
       headline: ["Home Page"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
