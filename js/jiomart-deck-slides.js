@@ -350,16 +350,16 @@ window.DECK = {
         title: "Design decisions",
         zones: [
           { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
-            t: "Fewer actions, less to hold in mind",
-            pts: ["Header cut to back, search, voice and cart", "Fewer choices to scan, less to remember"],
+            t: "Fewer actions, less to remember",
+            pts: ["Only back, search, voice and cart"],
             stat: ["8 → 4", "header actions"], pin: 9 },
-          { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy", "Consistency"],
+          { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy"],
             t: "Build trust above the fold",
-            pts: ["Brand first, then product name (parent → child)", "Ratings and reviews right under the name", "Price, offer, size and free shipping above the fold"],
+            pts: ["Brand, then name, then ratings", "Price, offer and size before the fold"],
             stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
-          { k: "Bottom", where: "Action bar", laws: ["Fitts's law", "One primary action"],
-            t: "Replace exits with one next step",
-            pts: ["Bottom nav gave 5 ways out and drove bounce", "Sticky price, savings and Add to cart, in thumb reach"],
+          { k: "Bottom", where: "Action bar", laws: ["Fitts's law"],
+            t: "One next step, not five exits",
+            pts: ["Nav bar drove bounce", "Sticky Add to cart in thumb reach"],
             stat: ["6 → 1", "exits → one CTA"], pin: 95 }
         ]
       },
@@ -388,15 +388,15 @@ window.DECK = {
         title: "Design decisions",
         zones: [
           { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
-            t: "Fewer actions, less to hold in mind",
-            pts: ["Same 4-action header as every screen", "Sort and Filter as two clear buttons beside the category"],
+            t: "Fewer actions, less to remember",
+            pts: ["Same 4-action header", "Sort and Filter up front"],
             stat: ["8 → 4", "header actions"], pin: 8 },
           { k: "Mid", where: "Narrow down", laws: ["Chunking", "Progressive disclosure"],
             t: "Narrow the list in small steps",
-            pts: ["Sub-category tiles, then quick chips (Apples, Banana, Citrus…)", "Small groups instead of one long list of results"], pin: 18 },
+            pts: ["Sub-category tiles, then quick chips"], pin: 18 },
           { k: "Bottom", where: "Product cards", laws: ["Consistency", "Visual hierarchy"],
             t: "Put the decision on the card",
-            pts: ["Price, struck MRP and % off side by side", "Unit price (₹/kg), size picker and wishlist on every card", "Same card layout in every category, as {{5 leading apps|competitors}} do"] , pin: 45 }
+            pts: ["Price, % off, unit price and size", "One card everywhere, like {{5 leading apps|competitors}}"] , pin: 45 }
         ]
       },
       notes: "Listing answers: which one? Top: the same 4-action header, with Sort and Filter as clear buttons. Mid: sub-category tiles and chips let shoppers narrow in small steps. Bottom: the card carries the decision: price, MRP, % off, unit price, size and wishlist, the same in every category."
@@ -418,14 +418,14 @@ window.DECK = {
         zones: [
           { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
             t: "Search first, fewer actions",
-            pts: ["Header cut to menu, search, voice and cart", "Search is the hero: searchers added to cart {{4× more|searchers}}"],
+            pts: ["Searchers added to cart {{4× more|searchers}}"],
             stat: ["7 → 4", "header actions"], pin: 7 },
           { k: "Mid", where: "Categories", laws: ["Law of similarity", "Minimalist design"],
             t: "One clear way in",
-            pts: ["Categories right under search, one photo icon style", "Four stacked promo blocks became one banner carousel"], pin: 25 },
-          { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall", "Consistency"],
+            pts: ["Categories under search, one icon style", "4 promo blocks → 1 carousel"], pin: 25 },
+          { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall"],
             t: "Pick up where you left off",
-            pts: ["Continue Shopping For shows recent items, no need to remember them", "Deals in one consistent card style with a clear discount"], pin: 62 }
+            pts: ["Recent items shown, not recalled"], pin: 62 }
         ]
       },
       notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
