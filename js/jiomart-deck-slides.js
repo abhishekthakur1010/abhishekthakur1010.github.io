@@ -186,7 +186,7 @@ window.DECK = {
     {
       section: "context", type: "flowview",
       eyebrow: "Requirement · The existing experience",
-      headline: ["Traffic was high. Carts were not."],
+      headline: ["Low conversion"],
       sub: "{{~95M visitors|visitors}}, but only {{1 in 10 sessions|carts}} added to cart.",
       reframe: { asks: [["Business", "More carts"], ["Product", "Refresh 3 pages"], ["Shopper", "\u201cCan I trust this?\u201d"]], toL: "Became", to: "Help shoppers choose" },
       steps: [
@@ -204,7 +204,7 @@ window.DECK = {
     {
       section: "discover", type: "board", tall: true,
       eyebrow: "Research",
-      headline: ["How we found the real problem"],
+      headline: ["Root cause"],
       sub: "A plan, then data, then shoppers.",
       cards: [
         { k: "Research strategy", tag: "Plan", img: "enhance-research-strategy.png", pos: "left center", stat: "4 steps",
@@ -227,7 +227,7 @@ window.DECK = {
     {
       section: "define", type: "synthesis",
       eyebrow: "Defining the problem",
-      headline: ["Not a UI problem. A decision problem."],
+      headline: ["Decision problem"],
       cols: ["What shoppers felt", "Why it happened", "How we know"],
       rows: [
         { theme: "Finding", symptom: "\u201cWhere do I start?\u201d", cause: "Inconsistent icons and categories",
@@ -252,7 +252,7 @@ window.DECK = {
     {
       section: "design", type: "collab",
       eyebrow: "Ideation & collaboration",
-      headline: ["Built with the team"],
+      headline: ["Team effort"],
       sub: "Four working sessions took us from ideas to a plan we could ship.",
       steps: [
         { img: "enhance-design-team-01.png", t: "Whiteboard workshop", who: "PM + Design + Engineering", out: "3 concepts for listing and product page" },
@@ -267,7 +267,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Product",
-      headline: ["Can I trust it?"],
+      headline: ["Build trust"],
       labels: ["Before", "After · My design"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       sub: "Three zones of the screen, one job each.",
@@ -298,7 +298,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Listing",
-      headline: ["Which one should I pick?"],
+      headline: ["Compare fast"],
       labels: ["Before", "After · My design"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       sub: "Three zones of the screen, one job each.",
@@ -334,7 +334,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Home",
-      headline: ["Where do I start?"],
+      headline: ["Clear start"],
       labels: ["Before", "After · My design"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       sub: "Three zones of the screen, one job each.",
@@ -363,7 +363,7 @@ window.DECK = {
     {
       section: "results", type: "results",
       eyebrow: "Validation & impact",
-      headline: ["Tested, refined, and it moved the numbers"],
+      headline: ["Measured impact"],
       hero: [
         { k: "Sessions with add-to-cart", pre: 10.41, post: 13.35, pt: "10.41%", qt: "13.35%", d: "{{+28%|carts}}", sub: "+294 bps" },
         { k: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, pt: "41.40%", qt: "50.20%", d: "{{+21%|search}}", sub: "+880 bps" },
@@ -390,7 +390,7 @@ window.DECK = {
     {
       section: "results", type: "close",
       eyebrow: "Key takeaways",
-      headline: ["Remove a doubt on every screen"],
+      headline: ["Remove doubt"],
       wins: [
         { n: "{{+28%|carts}}", l: "add-to-cart sessions" },
         { n: "{{+21%|search}}", l: "add-to-cart from search" }
