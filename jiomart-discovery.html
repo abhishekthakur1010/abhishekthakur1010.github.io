@@ -15,7 +15,13 @@
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
-</head>
+    <style>
+      /* hero heading: JioMart blue highlight, "Product Discovery" kept on one line from tablet up */
+      .csv2 .hero h1.jm-hero-h1 { max-width: 18ch; text-wrap: balance; }
+      .csv2 .hero h1.jm-hero-h1 .hl { color: #0078ad; }
+      @media (min-width: 600px) { .csv2 .hero h1.jm-hero-h1 .hl { white-space: nowrap; } }
+    </style>
+  </head>
 
   <body class="csv2 accent-blue">
     <!-- Top bar: same as My story (css/st-bar.css) -->
@@ -44,12 +50,12 @@
         <div class="hero-top">
           <div class="hero-copy">
             <div class="eyebrow">JioMart · Product discovery redesign<span class="cs-type b2c">B2C</span></div>
-            <h1>
-              Making <span class="hl">product discovery</span> seamless
+            <h1 class="jm-hero-h1">
+              Enhancing <span class="hl">Product Discovery</span> on JioMart
             </h1>
             <p class="sub">
-              Shoppers could find products but struggled to choose. I redesigned
-              the journey from Home to product page so deciding feels effortless.
+              Simplifying the journey from discovery to purchase, helping shoppers
+              make confident decisions.
             </p>
             <a
               class="deck-link"
