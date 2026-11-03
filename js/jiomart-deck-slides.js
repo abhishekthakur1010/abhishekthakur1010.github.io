@@ -170,7 +170,7 @@ window.DECK = {
       headline: ["Making ", "product discovery", " seamless"],
       highlight: "product discovery",
       body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
-      hero: "enhance-v1-pdp-fold.png?v=2",
+      hero: "enhance-v1-pdp-fold.png?v=3",
       backShots: ["enhance-v1-home.png", "enhance-v1-plp.png?v=2"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
@@ -272,7 +272,7 @@ window.DECK = {
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" }
+        { img: "enhance-v1-pdp-fold.png?v=3", scroll: "enhance-v1-pdp-full.png?v=3", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" }
       ],
       decisions: {
         title: "Design decisions",
