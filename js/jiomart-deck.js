@@ -745,16 +745,16 @@
           return "<div class='vs-zone reveal' data-step='" + (s0 + j) + "'>" +
             "<span class='vs-zone-n'>" + (j + 1) + "</span>" +
             "<div class='vs-zone-body'>" +
-            "<div class='vs-zone-k'>" + esc(z.k) + "<span class='vs-zone-where'>" + esc(z.where) + "</span></div>" +
+            "<div class='vs-zone-k'>" + esc(z.k) + "<span class='vs-zone-where'>" + esc(z.where) + "</span>" +
+            "<span class='vs-laws'>" + z.laws.map(function (l) { return "<span class='vs-law'>" + esc(l) + "</span>"; }).join("") + "</span></div>" +
             "<p class='vs-zone-t'>" + esc(z.t) + "</p>" +
             "<ul class='vs-zone-pts'>" + z.pts.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
-            "<div class='vs-laws'>" + z.laws.map(function (l) { return "<span class='vs-law'>" + esc(l) + "</span>"; }).join("") + "</div>" +
             "</div>" +
             (z.stat ? "<div class='vs-zone-stat'><b>" + esc(z.stat[0]).replace("→", "<i>→</i>") + "</b><span>" + esc(z.stat[1]) + "</span></div>" : "") +
             "</div>";
         }).join("");
         return head + "<div class='vs-row has-dec'><div class='vs-group'>" + early + "<span class='vs-arrow reveal' data-step='" + (n - 1) + "'>→</span>" + after + "</div>" +
-          "<aside class='vs-dec'><div class='vs-dec-h'>" + esc(sc.decisions.title || "Design decisions") + "</div>" + zones + "</aside></div></div>";
+          "<aside class='vs-dec'><div class='vs-dec-h'><span>" + esc(sc.decisions.title || "Design decisions") + "</span></div><div class='vs-zones'>" + zones + "</div></aside></div></div>";
       }
       var jump = "<div class='vs-jump reveal' data-step='" + (n - 1) + "'><span class='vs-jump-l'>" + esc(sc.jump || "") + "</span><span class='vs-jump-a'></span></div>";
       return head + "<div class='vs-row'><div class='vs-group'>" + early + "</div>" + jump + fig(sc.stages[n - 1], n - 1) + "</div></div>";
@@ -941,7 +941,23 @@
     });
   }
 
+  // design-decisions panel: zones span exactly from the top to the bottom of the After phone
+  function alignDec(root) {
+    Array.prototype.forEach.call((root || document).querySelectorAll(".vs-row.has-dec"), function (row) {
+      var dev = row.querySelector(".vs-col.after .device"), zs = row.querySelector(".vs-zones");
+      if (!dev || !zs) return;
+      zs.style.marginTop = ""; zs.style.minHeight = "";
+      if (window.innerWidth <= 900) return;
+      // layout offsets (ignore the reveal transforms, which move things while they animate in)
+      var top = function (el) { var t = 0; while (el && el !== row) { t += el.offsetTop; el = el.offsetParent; } return t; };
+      zs.style.marginTop = Math.max(0, top(dev) - top(zs)) + "px";
+      zs.style.minHeight = dev.offsetHeight + "px";
+    });
+  }
+  window.addEventListener("resize", function () { alignDec(slideEl); });
+
   function applyStep() {
+    alignDec(slideEl); setTimeout(function () { alignDec(slideEl); }, 60);
     if (!slideEl) return;
     var sc = slides[index];
     Array.prototype.forEach.call(slideEl.querySelectorAll(".reveal"), function (r) {
