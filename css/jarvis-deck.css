@@ -100,7 +100,7 @@ body.deck.jarvis .lightbox.jv-full .lb-imgwrap img { width: min(1100px, 88vw); m
 
 /* V1 click-through prototype (js/jarvis-proto.js): screen fits the slide, notes beside it */
 body.deck.jarvis .pr-proto { display: block; margin-top: clamp(10px, 2vh, 20px); }
-body.deck.jarvis .pr-proto .jvp { --jvp-max-h: calc(100vh - 300px); color: var(--ink); }
+body.deck.jarvis .pr-proto .jvp { --jvp-max-h: calc(100vh - 330px); color: var(--ink); }
 body.deck.jarvis .pr-proto .jvp-screen img { width: auto; max-width: 100%; }
 body.deck.jarvis .pr-proto .jvp-d { color: var(--soft); opacity: 1; }
 @media (max-width: 900px) { body.deck.jarvis .pr-proto .jvp { --jvp-max-h: none; } body.deck.jarvis .pr-proto .jvp-screen img { width: 100%; } }
@@ -384,3 +384,7 @@ body.deck.jarvis .impact-slide .metric { background: var(--win-soft); border-col
 body.deck.jarvis .impact-slide .metric .mn, body.deck.jarvis .jpj-m b { color: var(--win); }
 body.deck.jarvis .jpj-m { background: var(--win-soft); border-color: var(--win-line); }
 body.deck.jarvis .impact-slide .exp-list .chk { color: var(--win); background: var(--win-soft); }
+/* short headings: one key phrase in the red accent (JioMart hero pattern), one-line subtitle */
+body.deck.jarvis h2 .hl { color: var(--accent); }
+body.deck.jarvis .sl-head .sub, body.deck.jarvis .c-copy > .sub { margin-top: 8px; max-width: none; }
+body.deck.jarvis .cl-wins:empty { display: none; }

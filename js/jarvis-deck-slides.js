@@ -22,7 +22,7 @@ window.DECK = {
       eyebrow: "Delhivery · CX platform · Jarvis 2.0",
       headline: ["Jarvis TDP.", "Every decision.", "Every delay."],
       highlight: "Every delay.",
-      body: "CS decides every ticket on the Ticket Detail Page, yet tickets kept missing the 2-day SLA. We rebuilt it around the SLA, the context and the next\u00a0step.",
+      body: "Tickets kept missing the 2-day SLA. We rebuilt the screen around\u00a0it.",
       heroWide: "tdp.webp", url: "Jarvis · Ticket Detail Page",
       heroVideo: { mov: "../media/tdp-laptop.mov", webm: "../media/tdp-laptop.webm", poster: "../media/tdp-laptop-poster.webp" },
       badge: { n: "~50K", l: "Tickets a day" },
@@ -32,25 +32,26 @@ window.DECK = {
         { l: "Users", v: "~1.3K agents across CS, Ops, Security, Claims" },
         { l: "Scope", v: "TDP, with TLP and dashboard follow-ons" }
       ],
-      notes: "Jarvis is Delhivery's ticketing platform, and the Ticket Detail Page is where CS makes every decision on a ticket. Yet tickets kept missing the 2-day SLA, because what agents needed to act was spread across other tools. The goal: the SLA, the context and the next step on one screen."
+      notes: "Jarvis is Delhivery's ticketing platform, and the Ticket Detail Page is where CS makes every decision on a ticket. Yet tickets kept missing the 2-day SLA, because what agents needed to act was spread across other tools. We rebuilt it around the SLA, the context and the next step, all on one screen."
     },
 
     /* CONTEXT — what Jarvis is (Delhivery's own definition), then business, product and CS needs */
     {
       section: "context", type: "contextinfo",
       eyebrow: "Context",
-      headline: ["One screen, three sets of needs"],
-      sub: "",
+      headline: ["One screen, three needs"],
+      highlight: "three needs",
+      sub: "Business, product and CS want different things from the TDP.",
       jdef: {
-        what: "Delhivery's one-stop ticketing platform, the single system of record for every ticket, external and internal.",
+        what: "Delhivery's one-stop ticketing platform for every ticket, external and internal.",
         hl: "one-stop ticketing platform",
         stats: [{ n: "~50K", l: "tickets a day" }, { n: "~1.3K", l: "active agents" }],
         kinds: [{ k: "External", d: "consignees, clients, shippers" }, { k: "Internal", d: "PSI, Recon, CCTV, Ops" }],
         users: ["CS", "Security", "Finance", "Claims", "Cross-Border", "PSI"],
         rows: [
-          { who: "Business", need: "Every ticket inside its SLA", today: "Tickets breach SLA; some sit overdue for months" },
-          { who: "Product", need: "One portal for every team", today: "Agents hop to HQ and the Escalation Matrix" },
-          { who: "CS team", need: "Know what to do next, in one click", today: "Hidden actions, no escalation, unclear SLA", focus: true }
+          { who: "Business", need: "Every ticket inside its SLA", today: "SLA breaches, some overdue for months" },
+          { who: "Product", need: "One portal for every team", today: "Agents hop to HQ and Escalation Matrix" },
+          { who: "CS team", need: "The next step, in one click", today: "Hidden actions, no escalation, unclear SLA", focus: true }
         ]
       },
       flow: [{ k: "" }, { k: "" }, { k: "" }],   // keeps the slide's four reveal beats; the enhancer draws the layout
@@ -62,19 +63,21 @@ window.DECK = {
     {
       section: "context", type: "pair",
       eyebrow: "Current journey",
-      headline: ["Three screens to reach a ticket. Two more to act on it."],
+      headline: ["Five screens for one ticket"],
+      highlight: "Five screens",
+      sub: "Three to reach it, then two outside Jarvis to act.",
       figs: [],
       jflow: {
         reach: [
           { img: "journey/login.webp", k: "Log in (OS1)", pos: "center 30%" },
           { img: "journey/tlp.webp", k: "Listing: every ticket looks overdue" }
         ],
-        decide: { img: "jarvis-old-tdp.webp", full: "jarvis-old-tdp-full.webp", k: "Ticket detail (TDP)", d: "88 days overdue, no SLA, shipment or owner in view." },
+        decide: { img: "jarvis-old-tdp.webp", full: "jarvis-old-tdp-full.webp", k: "Ticket detail (TDP)", d: "88 days overdue. No SLA, shipment or owner." },
         validate: [
           { img: "context/hq-tracking-thumb.webp", full: "context/hq-tracking.webp", k: "HQ", d: "Where's the shipment?" },
           { img: "context/escalation-matrix-thumb.webp?v=2", full: "context/escalation-matrix.webp?v=2", k: "Escalation Matrix", d: "Who do I escalate to?" }
         ],
-        line: "One ticket. Three tools. No single place to act."
+        line: ""
       },
       notes: "Here is the journey for one real ticket. The agent logs in through OS1 and lands on a listing where every ticket looks overdue. They open the ticket detail page: this one is 88 days overdue, and the SLA, the shipment and the owner are nowhere in view. To decide what to do, they leave Jarvis twice: HQ to find the shipment, and the Escalation Matrix to find who to escalate to. One ticket, three tools, and no single place to act. Click any screen to enlarge it."
     },
@@ -83,70 +86,48 @@ window.DECK = {
     {
       section: "discover", type: "synthesis",
       eyebrow: "The real problem",
-      headline: ["The screen showed the ticket, not the next step"],
+      headline: ["The screen hid the next step"],
+      highlight: "next step",
+      sub: "Agents aren't trying to analyse. They're trying to fix.",
       cols: ["What agents asked", "Why it happened"],
       rows: [
-        { theme: "Context", symptom: "“Where is the shipment?”", cause: "Information scattered across TDP, HQ and the Escalation Matrix" },
+        { theme: "Context", symptom: "“Where is the shipment?”", cause: "Spread across TDP, HQ and Escalation Matrix" },
         { theme: "Reading", symptom: "“What happened here?”", cause: "No way to summarise long threads" },
-        { theme: "Escalating", symptom: "“Who do I send this to?”", cause: "Escalation meant copying and pasting email IDs" },
-        { theme: "Deadline", symptom: "“When is it due?”", cause: "SLA and next-response dates not visible upfront" }
+        { theme: "Escalating", symptom: "“Who do I send this to?”", cause: "Escalation meant copy-pasting email IDs" },
+        { theme: "Deadline", symptom: "“When is it due?”", cause: "SLA and due dates not upfront" }
       ],
-      statement: "The TDP didn't show what agents needed to act: the SLA, the shipment and who to escalate to. So tickets missed the 2-day SLA.",
-      goals: [
-        { k: "3 tools", v: "to validate one ticket" },
-        { k: "2-day SLA", v: "routinely missed" },
-        { k: "0 ways", v: "to escalate inside Jarvis" },
-        { k: "30 email IDs", v: "cap on a note" }
-      ],
-      notes: "The TDP showed the conversation but not what the agent needed to decide. The real SLA, the shipment status and the escalation contact all sat elsewhere, so every ticket meant checking HQ and the Escalation Matrix before acting, and there was no way to escalate inside Jarvis. That checking is where the 2-day SLA went."
+      statement: "No SLA, shipment or escalation contact in view, so tickets missed the 2-day SLA.",
+      notes: "The TDP showed the conversation but not what the agent needed to decide. The real SLA, the shipment status and the escalation contact all sat elsewhere, so every ticket meant checking HQ and the Escalation Matrix before acting, and there was no way to escalate inside Jarvis. That checking is where the 2-day SLA went. In numbers: three tools to validate one ticket, the 2-day SLA routinely missed, no way to escalate inside Jarvis, and a 30 email ID cap on a note. The insight under it: agents aren't trying to analyse, they're trying to fix. They told us the same three things: tell me what happened, tell me what to do next, and let me do it in one click. Every screen decision had to answer these in the first seconds of opening a ticket."
     },
 
     /* RESEARCH — everything on one board, like the Discovery deck */
     {
       section: "discover", type: "board", tall: true,
       eyebrow: "Research",
-      headline: ["We sat with the people racing the SLA clock"],
+      headline: ["Research on the CS floor"],
+      highlight: "CS floor",
       sub: "Map the tool, listen to the floor, then benchmark.",
       cards: [
         { k: "IA map", tag: "Map", img: "jarvis-ia-flow.webp", pos: "30% center", stat: "3 panels · ~100 teams", learned: "Every path from login to resolution, mapped." },
         { k: "Floor sessions", tag: "Listen", img: "interview.webp", pos: "center top", stat: "Agents + supervisors", learned: "“What happened? What do I do next?”" },
         { k: "Pain points", tag: "Synthesis", img: "research/cs-session-meet.webp", pos: "center center", stat: "30 email IDs", learned: "Note cap, tool hopping, buried P0 info." },
-        { k: "CS lead's email", tag: "Co-create", img: "research/cs-suggestions-email.webp", pos: "left top", stat: "10 suggestions", learned: "Ageing in hours, escalation in the TDP, reassignment alerts." },
+        { k: "CS lead's email", tag: "Co-create", img: "research/cs-suggestions-email.webp", pos: "left top", stat: "10 suggestions", learned: "Ageing in hours, in-TDP escalation, reassignment alerts." },
         { k: "Heuristic audit", tag: "Audit", img: "jarvis-old-tdp.webp", pos: "left top", stat: "~60 findings", learned: "Visibility, consistency, control and clutter.", link: "https://app.notion.com/p/User-Shadowing-Insights-40b24f9deb4880559c14c41693f65f4c", linkLabel: "Open in Notion" },
-        { k: "Benchmarks", tag: "Benchmark", img: "competitive/intercom.webp", pos: "left top", stat: "4 tools", learned: "Freshdesk, HelpScout, Zendesk. Intercom set the north star." }
+        { k: "Benchmarks", tag: "Benchmark", img: "competitive/intercom.webp", pos: "left top", stat: "4 tools", learned: "Freshdesk, HelpScout, Zendesk. Intercom led." }
       ],
-      notes: "All research on one board. We mapped the old TDP, sat with agents and supervisors, consolidated pain points, took the CS lead's ten suggestions, audited the live tool and benchmarked four help desks. Click any image to open it."
+      notes: "All research on one board. We mapped the old TDP, sat with agents and supervisors, consolidated pain points, took the CS lead's ten suggestions, audited the live tool and benchmarked four help desks: Freshdesk, HelpScout, Zendesk and Intercom, which set the north star. Click any image to open it."
     },
 
-    /* 07 — INSIGHT */
-    {
-      section: "define", type: "voice",
-      eyebrow: "Insight",
-      headline: ["Agents aren't trying to analyse. They're trying to fix."],
-      quotes: [
-        { q: "Tell me what happened.", src: "Context at a glance" },
-        { q: "Tell me what to do next.", src: "SLA and next step" },
-        { q: "Let me do it in one click.", src: "Act in place" }
-      ],
-      end: "",
-      targets: {
-        k: "Metrics we aim to move",
-        items: [
-          { v: "80%+", t: "Adoption" },
-          { v: "↓", t: "Resolution time (MTTR)" },
-          { v: "↓", t: "Clicks per ticket" },
-          { v: "20–25", t: "Tickets per hour" },
-          { v: "↑", t: "SLA compliance" }
-        ]
-      },
-      notes: "Agents told us the same three things: tell me what happened, tell me what to do next, and let me do it in one click. Every screen decision had to answer these in the first seconds of opening a ticket. Solving them should move five metrics. Voluntary adoption to at least 80%, with agents choosing the new TDP over the legacy view. Mean time to resolve and first response time down, because Next Response Due and Closure Due are always visible. Clicks per ticket down, with HQ data, geofence status and shipment images in line of sight. Tickets per hour at the 20 to 25 target, with no back-and-forth between Jarvis, HQ and spreadsheets. And SLA compliance up, with a live priority queue instead of a static, refresh-heavy list."
-    },
+    /* The Insight slide was merged away: its line is the Problem subtitle, its quotes and five
+       target metrics live in the Problem and Impact notes, and the Impact slide shows the targets. */
 
     /* 07c — NORTH STAR VISION (component in js/jarvis-northstar.js) */
     {
       section: "define", type: "pair",
       eyebrow: "North star vision",
-      headline: ["A ticket = a conversation + actions + intelligence"],
+      headline: ["Our north star ticket"],
+      highlight: "north star",
+      sub: "A conversation, plus actions, plus intelligence.",
       figs: [], northstar: true,
       notes: "The north star: a ticket is a conversation, plus actions, plus intelligence. Seven product pillars sit under it. Conversation: chat-first resolution, a chat rather than an email thread, with internal notes; and zero cognitive load, so the screen makes sense at a glance through smart grouping and a clear hierarchy. Actions: everything in one view, with zero tool switching and P0 facts upfront; one-click actions, including escalation levels; and predictability for Ops and CS, with ageing in hours and dispatch counts. Intelligence: AI insights that predict needs and guide the agent, such as AI replies and RTO risk; and trust and transparency, with verified labels and geofence checks."
     },
@@ -155,7 +136,9 @@ window.DECK = {
     {
       section: "design", type: "pair",
       eyebrow: "TDP 2.0",
-      headline: ["One screen that answers “what's next”"],
+      headline: ["One screen answers “what's next”"],
+      highlight: "“what's next”",
+      sub: "Hover a zone to find it on the screen.",
       figs: [],
       zones: {
         img: "v1/06.webp", before: "jarvis-old-tdp.webp", cap: "TDP 2.0: the Escalate to Ops moment, with the six zones numbered",
@@ -176,6 +159,8 @@ window.DECK = {
       section: "design", type: "pair",
       eyebrow: "V1 iteration",
       headline: ["Click through the first version"],
+      highlight: "first version",
+      sub: "Fourteen V1 screens, wired like a prototype.",
       figs: [], proto: true,
       notes: "Fourteen V1 screens wired up like a prototype. Click the red dot on each screen: reply, note, escalate, AI summary, voice reply, ticket details, related tickets, canned responses."
     },
@@ -205,26 +190,27 @@ window.DECK = {
     {
       section: "results", type: "columns",
       eyebrow: "Requests to design",
-      headline: ["What they asked for, what shipped in V1"],
+      headline: ["Asked for, shipped in V1"],
+      highlight: "shipped in V1",
+      sub: "CS requests in the V1 screens, and what's parked.",
       cols: [
         { k: "Asked for → in V1", tone: "pos", items: [
-          "Ageing in hours, like HQ → Ticket Details flags the current centre: Gurgaon Hub, ageing 24h",
-          "Escalation inside the TDP → Escalate to Ops with the facility and TL and ATL levels filled in",
-          "Escalation contacts in the reply panel → TL and ATL addresses prefilled in the Escalate tab",
-          "A way past the 30-email note limit → notes tag whole teams, like @Bangalore_Hoskote_GW team",
-          "P0 and SLA up front → “First response overdue by 5h”, “Resolution due tomorrow, 6PM”",
-          "Clearer Related Tickets → each shows its AWB, status and ticket ID inline"
+          "Ageing in hours → current centre and ageing",
+          "Escalation in the TDP → TL and ATL prefilled",
+          "Past the 30-email cap → tag whole teams",
+          "P0 and SLA upfront → overdue and due times",
+          "Clearer related tickets → AWB, status, ID inline"
         ] },
         { k: "Next phase", tone: "neutral", items: [
-          "Image upload for damaged or QC-failed shipments",
+          "Images for damaged or QC-failed shipments",
           "Dispatch and attempt count",
           "Geo-fence verification indicator",
-          "Prepaid or COD indicator on tickets",
-          "Reassignment alerts and backup assignment during leave",
+          "Prepaid or COD indicator",
+          "Reassignment alerts and leave backup",
           "Ticket download for audits"
         ] }
       ],
-      notes: "Left: requests from the CS session that are visible in the V1 screens. Right: requests parked for the next phase."
+      notes: "Left: requests from the CS session that are visible in the V1 screens. Ageing in hours, like HQ: Ticket Details flags the current centre, for example Gurgaon Hub, ageing 24h. Escalation inside the TDP: Escalate to Ops with the facility and the TL and ATL levels and addresses filled in. A way past the 30-email note limit: notes tag whole teams, like the Bangalore Hoskote GW team. P0 and SLA up front: “First response overdue by 5h”, “Resolution due tomorrow, 6PM”. Clearer Related Tickets: each shows its AWB, status and ticket ID inline. Right: requests parked for the next phase, including reassignment alerts and backup assignment during leave."
     },
 
     /* IMPACT — what changed for the CS floor */
@@ -232,7 +218,8 @@ window.DECK = {
       section: "results", type: "impact",
       eyebrow: "Impact",
       headline: ["Agents stopped hunting"],
-      sub: "The right information in one place, and the next action one click away.",
+      highlight: "stopped hunting",
+      sub: "Everything in one place, the next action one click away.",
       experience: [
         "Agents find it easier to learn",
         "Ticket, shipment and SLA in one place",
@@ -255,7 +242,7 @@ window.DECK = {
           { n: "64% → 92%", l: "SLA compliance" }
         ]
       },
-      notes: "From post-launch feedback from the CS team, average resolution time dropped from about three days to a few hours, two paid tools were retired and about 6.7 thousand dollars a month was saved in licences. The target metrics row maps to the five metrics on the Insight slide: 85% voluntary adoption, first response from 4 hours to 1, clicks per ticket from 14 to 6, tickets per hour from 12 to 22, and SLA compliance from 64% to 92%. Figures beyond resolution time, tools and licence savings are illustrative estimates."
+      notes: "From post-launch feedback from the CS team, average resolution time dropped from about three days to a few hours, two paid tools were retired and about 6.7 thousand dollars a month was saved in licences. The target metrics row maps to the five metrics we set out to move. Voluntary adoption to at least 80%, with agents choosing the new TDP over the legacy view. Mean time to resolve and first response time down, because Next Response Due and Closure Due are always visible. Clicks per ticket down, with HQ data, geofence status and shipment images in line of sight. Tickets per hour at the 20 to 25 target, with no back-and-forth between Jarvis, HQ and spreadsheets. And SLA compliance up, with a live priority queue instead of a static, refresh-heavy list. The illustrative values: 85% voluntary adoption, first response from 4 hours to 1, clicks per ticket from 14 to 6, tickets per hour from 12 to 22, and SLA compliance from 64% to 92%. Figures beyond resolution time, tools and licence savings are illustrative estimates."
     },
 
     /* 16 — LEARNINGS */
@@ -263,21 +250,20 @@ window.DECK = {
       section: "results", type: "close",
       eyebrow: "Learnings",
       headline: ["From navigation to resolution"],
-      wins: [
-        { n: "1", l: "workspace for the common path" },
-        { n: "~$6.7K", l: "a month saved in licences" }
-      ],
+      highlight: "resolution",
+      sub: "Design for the next action, and agents get faster.",
+      wins: [],   // the Impact slide already carries the wins
       rows: [
-        { k: "Design for the next action", d: "The real test was whether an agent could validate and act on a ticket without leaving Jarvis." },
-        { k: "Remove tools, not just clicks", d: "Most lost time was between screens. Bringing context in beat any layout change." },
-        { k: "Ship, then shadow", d: "Going back to agents' desks after launch gave us the sharpest backlog." }
+        { k: "Design for the next action", d: "Can an agent act without leaving Jarvis?" },
+        { k: "Remove tools, not just clicks", d: "Most time was lost between screens." },
+        { k: "Ship, then shadow", d: "Desk visits after launch built the backlog." }
       ],
       award: { img: "tdp.webp", caption: "Jarvis 2.0 · Central Design Team, Delhivery" },
       cta: [
         { label: "Full case study", href: "./jarvis-case-study.html", primary: true },
         { label: "Next project →", href: "./profile.html#featured" }
       ],
-      notes: "Close on the principle: design for the next action, and every agent gets faster."
+      notes: "Close on the principle: design for the next action, and every agent gets faster. One workspace now covers the common path. The real test was whether an agent could validate and act on a ticket without leaving Jarvis. Most lost time was between screens, so bringing context in beat any layout change. Going back to agents' desks after launch gave us the sharpest backlog."
     }
   ]
 };
@@ -312,6 +298,16 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
   }
   function enhance(el) {
     var eb = el.querySelector(".eyebrow");
+    // short headings: one key phrase in the red accent, plus the subtitle where a template has no slot for it
+    var hs = eb && D.slides.filter(function (s) { return s.highlight && s.type !== "opening" && s.eyebrow === eb.textContent; })[0];
+    var h2 = hs && el.querySelector("h2");
+    if (h2) {
+      h2.innerHTML = hs.headline.map(function (part) { return esc(part).replace(esc(hs.highlight), "<span class='hl'>" + esc(hs.highlight) + "</span>"); }).join("<br>");
+      if (hs.sub && !h2.parentNode.querySelector(".sub")) {
+        var sp = document.createElement("p"); sp.className = "sub"; sp.textContent = hs.sub;
+        h2.parentNode.insertBefore(sp, h2.nextSibling);
+      }
+    }
     // board cards with a `link` open that page in a new tab instead of the lightbox
     var bs = eb && D.slides.filter(function (s) { return s.type === "board" && s.eyebrow === eb.textContent; })[0];
     if (bs) Array.prototype.forEach.call(el.querySelectorAll(".bd-card"), function (card, i) {
@@ -372,7 +368,6 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
     if (sc.jdef) {   // context slide: what Jarvis is on the left, who needs what on the right
       var jd = sc.jdef, sl = el.querySelector(".sl"), hd = el.querySelector(".sl-head");
       if (!sl || !hd) return;
-      var subEl = hd.querySelector(".sub"); if (subEl) subEl.remove();
       var what = esc(jd.what).replace(esc(jd.hl), "<b class='jv-hl'>" + esc(jd.hl) + "</b>");
       var left = "<div class='jc-left'><span class='jc-k'>What Jarvis is</span><p class='jc-what'>" + what + "</p>" +
         "<div class='jc-stats'>" + jd.stats.map(function (x) { return "<div class='jc-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
@@ -426,7 +421,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
           "<figcaption><b>" + esc(fl.decide.k) + "</b> " + esc(fl.decide.d) + "</figcaption></figure></div>" +
         "<div class='jm-zone jm-validate'><span class='jm-zk'>Validate · leaves Jarvis</span>" +
           fl.validate.map(function (c, i) { return "<figure class='jm-card jm-out'><span class='jm-hop' aria-hidden='true'>" + (i + 1) + "</span><span class='jm-q' aria-hidden='true'>?</span>" + shot(c) + "<figcaption><b>" + esc(c.k) + ":</b> " + esc(c.d) + "</figcaption></figure>"; }).join("") + "</div>" +
-        "</div><p class='jm-line'>" + esc(fl.line) + "</p>";
+        "</div>" + (fl.line ? "<p class='jm-line'>" + esc(fl.line) + "</p>" : "");
       // the engine's lightbox opens the inline crop; swap in the full capture once it is open
       Array.prototype.forEach.call(frow.querySelectorAll("[data-full]"), function (sh) {
         sh.addEventListener("click", function () {
