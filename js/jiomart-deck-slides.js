@@ -171,7 +171,7 @@ window.DECK = {
       highlight: "product discovery",
       body: "Shoppers could find products but struggled to choose. I redesigned the journey from Home to product page so deciding feels effortless.",
       hero: "enhance-v1-pdp-fold.png?v=4",
-      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png?v=2"],
+      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png?v=3"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
@@ -302,7 +302,7 @@ window.DECK = {
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
-        { img: "enhance-v1-plp.png?v=2", n: "Discount, unit price, size and wishlist on every card" }
+        { img: "enhance-v1-plp.png?v=3", n: "Discount, unit price, size and wishlist on every card" }
       ],
       evidence: {
         method: "Old vs new listing",
