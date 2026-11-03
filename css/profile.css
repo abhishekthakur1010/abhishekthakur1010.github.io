@@ -1230,3 +1230,14 @@ html, body { overflow-x: clip; }
 .feat-row .cs-type { flex: none; margin: 0; font-size: 12px; padding: 4px 12px; }
 .feat-img video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
 .feat:hover .feat-img video { transform: scale(1.03); }
+
+/* Case study rows: the company logo beside the title, same tile as Experience, so each project reads at a glance */
+.feat-row .feat-logo {
+  flex: none; width: 40px; height: 40px; border-radius: 8px; background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line); display: grid; place-items: center; overflow: hidden;
+}
+.feat-row .feat-logo img { width: 32px; height: 32px; object-fit: contain; border-radius: 4px; }
+.feat-row .feat-logo + .feat-text { flex: 1; }
+[data-mode="dark"] .feat-row .feat-logo { box-shadow: none; }
+:root[data-skin="instagram"] .feat-row .feat-logo { display: none; }
+@media (max-width: 720px) { .feat-row .feat-logo { width: 36px; height: 36px; } .feat-row .feat-logo img { width: 28px; height: 28px; } }
