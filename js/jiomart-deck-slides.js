@@ -12,7 +12,7 @@
 window.DECK = {
   imgBase: "./images/enhanceProduct/",
   sections: [
-    { id: "context", n: "01", label: "Context" },
+    { id: "context", n: "01", label: "Requirement" },
     { id: "discover", n: "02", label: "Discovery" },
     { id: "define", n: "03", label: "Define" },
     { id: "design", n: "04", label: "Design" },
@@ -185,7 +185,7 @@ window.DECK = {
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
       section: "context", type: "flowview",
-      eyebrow: "Context · The existing experience",
+      eyebrow: "Requirement · The existing experience",
       headline: ["Traffic was high. Carts were not."],
       sub: "{{~95M visitors|visitors}}, but only {{1 in 10 sessions|carts}} added to cart.",
       reframe: { asks: [["Business", "More carts"], ["Product", "Refresh 3 pages"], ["Shopper", "\u201cCan I trust this?\u201d"]], toL: "Became", to: "Help shoppers choose" },
