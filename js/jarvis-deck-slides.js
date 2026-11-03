@@ -72,7 +72,7 @@ window.DECK = {
         decide: { img: "jarvis-old-tdp.webp", full: "jarvis-old-tdp-full.webp", k: "Ticket detail (TDP)", d: "88 days overdue, no SLA, shipment or owner in view." },
         validate: [
           { img: "context/hq-tracking-thumb.webp", full: "context/hq-tracking.webp", k: "HQ", d: "Where's the shipment?" },
-          { img: "context/escalation-matrix-thumb.webp", full: "context/escalation-matrix.webp", k: "Escalation Matrix", d: "Who do I escalate to?" }
+          { img: "context/escalation-matrix-thumb.webp?v=2", full: "context/escalation-matrix.webp?v=2", k: "Escalation Matrix", d: "Who do I escalate to?" }
         ],
         line: "One ticket. Three tools. No single place to act."
       },
