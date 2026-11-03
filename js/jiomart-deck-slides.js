@@ -334,35 +334,48 @@ window.DECK = {
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and used MoSCoW to decide what shipped first: name, price, rating and discount were Musts."
     },
 
-    /* 10–12 — SOLUTION: each screen from Before to Live */
+    /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Product",
       headline: ["Can I trust it?"],
-      labels: ["Before", "V1 · My design", "Live · Latest UI"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
-      jump: "UI refresh",
-      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
+      labels: ["Before", "After · My design"],
+      when: ["Until Dec 2022", "Jan – Mar 2023"],
+      sub: "Three zones of the screen, one job each.",
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" },
-        { img: "enhance-live-pdp.jpg", video: "enhance-live-pdp.mp4", n: "Big image, offers, sticky Add to cart" }
+        { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" }
       ],
-      notes: "Product answers: can I trust it? Before, size, offers and delivery sat far down. My V1 pulled them up. Live is the latest UI refresh on the same IA: price, size and Add to cart stay on the first screen."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
+            t: "Fewer actions, less to hold in mind",
+            pts: ["Header cut to back, search, voice and cart", "Fewer choices to scan, less to remember"],
+            stat: ["8 → 4", "header actions"], pin: 9 },
+          { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy", "Consistency"],
+            t: "Build trust above the fold",
+            pts: ["Brand first, then product name (parent → child)", "Ratings and reviews right under the name", "Price, offer, size and free shipping above the fold"],
+            stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
+          { k: "Bottom", where: "Action bar", laws: ["Fitts's law", "One primary action"],
+            t: "Replace exits with one next step",
+            pts: ["Bottom nav gave 5 ways out of a buying page and drove bounce", "Sticky price, savings and Add to cart, in thumb reach"],
+            stat: ["6 → 1", "exits → one CTA"], pin: 95 }
+        ]
+      },
+      notes: "Product answers: can I trust it? Read the After screen top to bottom. Top: the header went from 8 actions to 4 (Hick's and Miller's law). Mid: brand before name, ratings under it, price, size and offers above the fold, which is where trust is built. Bottom: the nav bar gave five ways out on a page meant for one decision and drove bounce, so it became a sticky price + Add to cart bar."
     },
 
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Listing",
       headline: ["Which one should I pick?"],
-      labels: ["Before", "V1 · My design", "Live · Latest UI"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
-      jump: "UI refresh",
-      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
+      labels: ["Before", "After · My design"],
+      when: ["Until Dec 2022", "Jan – Mar 2023"],
+      sub: "Three zones of the screen, one job each.",
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
-        { img: "enhance-v1-plp.png?v=2", n: "Rating, discount, wishlist, sub-categories" },
-        { img: "enhance-live-plp.jpg", video: "enhance-live-plp.mp4", n: "Grid to compare at a glance" }
+        { img: "enhance-v1-plp.png?v=2", n: "Discount, unit price, size and wishlist on every card" }
       ],
       evidence: {
         method: "Old vs new listing",
@@ -371,23 +384,51 @@ window.DECK = {
         takeaway: "Cleaner cards, wishlist on the list, sort and filter up top, deal timers and tags.",
         implication: "Every change answers a comparison question on the card itself."
       },
-      notes: "Listing answers: which one? Before, cards showed only name and price. My V1 put the decision on the card: rating, discount, wishlist. Live is the latest UI refresh on the same IA, now as a compact grid."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
+            t: "Fewer actions, less to hold in mind",
+            pts: ["Same 4-action header as every screen", "Sort and Filter as two clear buttons beside the category"],
+            stat: ["8 → 4", "header actions"], pin: 8 },
+          { k: "Mid", where: "Narrow down", laws: ["Chunking", "Progressive disclosure"],
+            t: "Narrow the list in small steps",
+            pts: ["Sub-category tiles, then quick chips (Apples, Banana, Citrus…)", "Small groups instead of one long list of results"], pin: 18 },
+          { k: "Bottom", where: "Product cards", laws: ["Consistency", "Visual hierarchy"],
+            t: "Put the decision on the card",
+            pts: ["Price, struck MRP and % off side by side", "Unit price (₹/kg), size picker and wishlist on every card", "Same card layout in every category, as {{5 leading apps|competitors}} do"] , pin: 45 }
+        ]
+      },
+      notes: "Listing answers: which one? Top: the same 4-action header, with Sort and Filter as clear buttons. Mid: sub-category tiles and chips let shoppers narrow in small steps. Bottom: the card carries the decision: price, MRP, % off, unit price, size and wishlist, the same in every category."
     },
 
     {
       section: "design", type: "versions",
       eyebrow: "The solution · Home",
       headline: ["Where do I start?"],
-      labels: ["Before", "V1 · My design", "Live · Latest UI"],
-      when: ["Until Dec 2022", "Jan – Mar 2023", "Same IA, refreshed UI"],
-      jump: "UI refresh",
-      sub: "I designed V1 and its IA. Live is the latest UI update, built on that IA.",
+      labels: ["Before", "After · My design"],
+      when: ["Until Dec 2022", "Jan – Mar 2023"],
+      sub: "Three zones of the screen, one job each.",
       stages: [
         { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
-        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
-        { img: "enhance-live-home.jpg", video: "enhance-live-home.mp4", n: "Search first, Quick and ShopAll" }
+        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" }
       ],
-      notes: "Home answers: where do I start? Before, banners pushed search and categories down. My V1 moved them to the top with one icon style. Live is the latest UI refresh on the same IA: search still comes first."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
+            t: "Search first, fewer actions",
+            pts: ["Header cut to menu, search, voice and cart", "Search is the hero: searchers added to cart {{4× more|searchers}}"],
+            stat: ["7 → 4", "header actions"], pin: 7 },
+          { k: "Mid", where: "Categories", laws: ["Law of similarity", "Minimalist design"],
+            t: "One clear way in",
+            pts: ["Categories right under search, one photo icon style", "Four stacked promo blocks became one banner carousel"], pin: 25 },
+          { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall", "Consistency"],
+            t: "Pick up where you left off",
+            pts: ["Continue Shopping For shows recent items, no need to remember them", "Deals in one consistent card style with a clear discount"], pin: 62 }
+        ]
+      },
+      notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
     },
 
     {

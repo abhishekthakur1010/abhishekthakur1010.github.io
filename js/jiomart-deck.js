@@ -126,7 +126,7 @@
       case "funnels": return sc.funnels.length;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
-      case "versions": return sc.stages.length - 1;
+      case "versions": return sc.stages.length - 1 + (sc.decisions ? sc.decisions.zones.length : 0);
       case "kpis": return sc.groups.length + 1;
       case "results": return 2;
       case "close": return 2;
@@ -722,7 +722,7 @@
     versions: function (sc) {
       var n = sc.stages.length;
       var fig = function (s, i) {
-        var cls = i === 0 ? "before" : (i === n - 1 ? "live" : "mid");
+        var cls = i === 0 ? "before" : (i === n - 1 ? (sc.decisions ? "after" : "live") : "mid");
         return "<figure class='vs-col " + cls + (i ? " reveal' data-step='" + i + "'" : "'") + ">" +
           "<figcaption><span class='vs-chip'>" + esc(sc.labels[i]) + "</span><span class='vs-when'>" + esc((sc.when || [])[i] || "") + "</span></figcaption>" +
           "<span class='evo-media zoomable' title='Click to enlarge'>" + (s.video ? videoDevice(s.video, s.img, "vs") : s.scroll ? scrollDevice(s) : device(s.img, 0, "vs")) + "</span>" +
@@ -732,10 +732,29 @@
       var early = sc.stages.slice(0, n - 1).map(function (s, i) {
         return (i ? "<span class='vs-arrow reveal' data-step='" + i + "'>→</span>" : "") + fig(s, i);
       }).join("");
+      var head = "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+        (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") + "</div>" + evidencePill(sc.evidence) + "</div>";
+      // Before → After, then the design decisions behind the After screen, zone by zone (Top, Mid, Bottom)
+      if (sc.decisions) {
+        var zs = sc.decisions.zones, s0 = n; // zone j reveals at step n + j
+        var pins = zs.map(function (z, j) {
+          return "<span class='vs-pin reveal' data-step='" + (s0 + j) + "' style='top:" + z.pin + "%'>" + (j + 1) + "</span>";
+        }).join("");
+        var after = fig(sc.stages[n - 1], n - 1).replace("<span class='evo-media", "<span class='vs-pinned'>" + pins + "<span class='evo-media").replace("<p class='vs-note'>", "</span><p class='vs-note'>");
+        var zones = zs.map(function (z, j) {
+          return "<div class='vs-zone reveal' data-step='" + (s0 + j) + "'>" +
+            "<div class='vs-zone-k'><span class='vs-zone-n'>" + (j + 1) + "</span>" + esc(z.k) + "<span class='vs-zone-where'>" + esc(z.where) + "</span>" +
+            "<span class='vs-laws'>" + z.laws.map(function (l) { return "<span class='vs-law'>" + esc(l) + "</span>"; }).join("") + "</span></div>" +
+            "<p class='vs-zone-t'>" + esc(z.t) + "</p>" +
+            "<ul class='vs-zone-pts'>" + z.pts.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
+            (z.stat ? "<div class='vs-zone-stat'><b>" + esc(z.stat[0]) + "</b><span>" + esc(z.stat[1]) + "</span></div>" : "") +
+            "</div>";
+        }).join("");
+        return head + "<div class='vs-row has-dec'><div class='vs-group'>" + early + "<span class='vs-arrow reveal' data-step='" + (n - 1) + "'>→</span>" + after + "</div>" +
+          "<aside class='vs-dec'><div class='vs-dec-h'>" + esc(sc.decisions.title || "Design decisions") + "</div>" + zones + "</aside></div></div>";
+      }
       var jump = "<div class='vs-jump reveal' data-step='" + (n - 1) + "'><span class='vs-jump-l'>" + esc(sc.jump || "") + "</span><span class='vs-jump-a'></span></div>";
-      return "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
-        (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") + "</div>" + evidencePill(sc.evidence) + "</div>" +
-        "<div class='vs-row'><div class='vs-group'>" + early + "</div>" + jump + fig(sc.stages[n - 1], n - 1) + "</div></div>";
+      return head + "<div class='vs-row'><div class='vs-group'>" + early + "</div>" + jump + fig(sc.stages[n - 1], n - 1) + "</div></div>";
     },
 
     /* 11 · accurately scaled pre/post bars, grouped */
