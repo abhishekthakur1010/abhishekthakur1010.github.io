@@ -114,7 +114,7 @@ window.DECK = {
           learned: "HubEye on one screen, camera feeds on another, a sheet on the third." },
         { k: "The workaround", tag: "Observed", proof: "workflow", img: "sheet-workaround.webp", stat: "{{6+ hrs|workflow}}",
           learned: "Shift data rebuilt in spreadsheets and paper unloading slips." },
-        { k: "Supervisor sessions", tag: "Research", img: "research-discussion.webp", stat: "On the floor",
+        { k: "Supervisor sessions", tag: "Research", img: "on-the-floor.webp", stat: "On the floor",
           learned: "“Tell me which dock, not which row in a table.”" },
         { k: "Dock unloading", tag: "Observed", img: "research-dock.webp", stat: "Live",
           learned: "Delays start at the dock and ripple into sectors within the hour." },
@@ -158,7 +158,7 @@ window.DECK = {
       headline: ["Built with the hub team"],
       sub: "From floor walks to a shipped digital twin.",
       steps: [
-        { img: "research-session.webp", t: "Floor walkthrough", who: "Design + hub managers", out: "Mapped how supervisors move through a shift" },
+        { img: "floor-walkthrough.webp", t: "Floor walkthrough", who: "Design + hub managers", out: "Mapped how supervisors move through a shift" },
         { img: "research-observe.webp", t: "Live observation", who: "Design + floor teams", out: "Found where delays start: docks and sorter" },
         { img: "field-sorter.webp", t: "Layout mapping", who: "Design + engineering", out: "Real hub layout as the base, 1:1" },
         { img: "team-tauru.webp", t: "Review at Tauru", who: "Design + ops leadership", out: "Grey or red only, signed off for rollout" }
