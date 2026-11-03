@@ -862,9 +862,12 @@
           (s.pain ? "<span class='fv-pain'>" + esc(s.pain) + "</span>" : "") + "</div>";
       }).join("");
       // optional brief → reframe strip (from the merged "asked why" slide)
-      var asks = sc.reframe && sc.reframe.asks ? sc.reframe.asks.map(function (x) { return "<span class='fv-ask'><span class='fv-rf-l'>" + esc(x[0]) + "</span>" + esc(x[1]) + "</span>"; }).join("") : "";
-      var rf = sc.reframe ? "<div class='fv-reframe'>" + (asks || "<span class='fv-rf-l'>" + esc(sc.reframe.fromL || "The brief") + "</span><span class='qa-strike'>" + esc(sc.reframe.from) + "</span>") +
-        "<span class='fv-rf-a'>→</span><span class='fv-rf-l pos'>" + esc(sc.reframe.toL || "Became") + "</span><b>" + esc(sc.reframe.to) + "</b></div>" : "";
+      var rfo = sc.reframe || {};
+      var asks = (rfo.asks || [[rfo.fromL || "The brief", rfo.from]]).map(function (x) {
+        return "<span class='fv-ask'><span class='fv-rf-l'>" + esc(x[0]) + "</span><span class='fv-rf-v'>" + esc(x[1]) + "</span></span>";
+      }).join("");
+      var rf = sc.reframe ? "<div class='fv-reframe'><div class='fv-asks'>" + asks + "</div><span class='fv-rf-a' aria-hidden='true'></span>" +
+        "<span class='fv-became'><span class='fv-rf-l'>" + esc(rfo.toL || "Became") + "</span><b>" + esc(rfo.to) + "</b></span></div>" : "";
       return "<div class='sl fv-slide'><div class='fv-left'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + rf +
         "<div class='fv-list'>" + list + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>" +
         "<div class='fv-right'>" + screens + "</div></div>";
