@@ -15,7 +15,7 @@
   var crackerLit = false, chStage = '';
   if (reduce) { document.documentElement.classList.add('sky-peak'); document.documentElement.setAttribute('data-ch', 'wish'); }
   function headStage(st) {
-    var next = peak ? (crackerLit ? 'wish' : 'cracker') : sparkler.lit ? (st < RAMP ? 'catch' : 'fade') : sparkler.everLit ? 'again' : 'hint';
+    var next = peak ? (crackerLit || welcome > 0 ? 'wish' : 'cracker') : sparkler.lit ? (st < RAMP ? 'catch' : 'fade') : sparkler.everLit ? 'again' : 'hint';
     if (next === chStage) return;
     chStage = next;
     document.documentElement.setAttribute('data-ch', next);
@@ -187,6 +187,10 @@
   var embers = [], sparks = [], trail = [], scene = null, emberW = 0, emberH = 0;
   // Skyrockets in the background while the sparkler is at its peak.
   var rockets = [], stars = [], nextRocket = 0, peak = false;
+  // Welcome show: when the visitor first lands on the full-screen banner ("Light up the night"),
+  // it greets them with "Happy Diwali", skyrockets and both anaars lit for a few seconds,
+  // then hands over to the sparkler so they can light it all again themselves.
+  var WELCOME = 7, welcome = -1;
   var STAR_COLS = ['#ffd27a', '#ff9a4d', '#ff6b5a', '#ffe9b8', '#ffb3c7', '#9fe3c9'];
   // Sparkler state: unlit until it touches a diya flame, then burns for BURN seconds.
   var sparkler = { lit: false, t: 0, everLit: false }, sparkles = [];
@@ -411,6 +415,12 @@
   }
 
   function drawScene(dt, dim) {
+    var hc = document.documentElement.classList;
+    if (welcome < 0 && !reduce && mode === 'idle' && hc.contains('cat-mode') && !hc.contains('splash-on') && !hc.contains('cat-out')) {
+      welcome = WELCOME; nextRocket = 0;
+      fountains.forEach(function (F) { F.t = 0; });
+    }
+    if (welcome > 0) { welcome = Math.max(0, welcome - dt); if (mode !== 'idle') welcome = 0; }
     if (!dim) drawFireworks(dt);
     ctx.globalAlpha = dim ? 0.45 : 1;
     drawDiyaStrings();
@@ -504,7 +514,7 @@
       : st < RAMP ? 0.12 + 0.88 * Math.pow((st - CATCH) / (RAMP - CATCH), 2)
       : st > BURN - FADE ? (BURN - st) / FADE : 1;
     // The greeting shows only while the sparkler is at its peak.
-    peak = strength >= 1;
+    peak = strength >= 1 || welcome > 0;
     if (!reduce) cover.classList.toggle('awaits-greeting', !peak);
     if (!reduce) headStage(st);
     if (mouse && !sparkler.lit && scene.flames.some(function (f) {
@@ -778,7 +788,7 @@
   }
 
   function start() {
-    mouse = null; sparkles = []; rockets = []; stars = []; peak = false;
+    welcome = 0; mouse = null; sparkles = []; rockets = []; stars = []; peak = false;
     cover.classList.add('is-playing');
     mode = 'aim';
     setTimeout(function () { resize(); newRound(); }, reduce ? 0 : 320);
