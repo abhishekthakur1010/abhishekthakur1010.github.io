@@ -1469,8 +1469,7 @@ body.deck[data-theme="light"] { background: radial-gradient(1000px 640px at 88% 
 /* rail joining each zone marker to the next, top → bottom like the screen */
 .vs-zone { --zp: clamp(6px, 1.3vh, 14px); }
 .vs-zone:not(:last-child)::before { content: ""; position: absolute; left: 11px; top: calc(var(--zp) + 20px); bottom: calc(2px - var(--zp)); width: 1px; background: var(--info-line); z-index: 0; }
-.vs-zone { position: relative; display: grid; grid-template-columns: 22px 1fr auto; column-gap: 16px; padding: var(--zp) 0; border-top: 1px solid var(--line); }
-.vs-zone:last-child { border-bottom: 1px solid var(--line); }
+.vs-zone { position: relative; display: grid; grid-template-columns: 22px 1fr auto; column-gap: 16px; padding: var(--zp) 0; }
 .vs-zone-n { position: relative; z-index: 1; width: 22px; height: 22px; border-radius: 50%; background: var(--bg, #fff); color: var(--info); border: 1.5px solid var(--info); font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; margin-top: -2px; }
 .vs-zone-body { min-width: 0; }
 .vs-zone-k { display: flex; flex-wrap: wrap; row-gap: 4px; align-items: center; gap: 8px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--info); line-height: 1; }
