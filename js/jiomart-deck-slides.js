@@ -270,7 +270,6 @@ window.DECK = {
       headline: ["PDP"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
-      sub: "Three zones of the screen, one job each.",
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
         { img: "enhance-v1-pdp-fold.png?v=2", scroll: "enhance-v1-pdp-full.png", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" }
@@ -301,7 +300,6 @@ window.DECK = {
       headline: ["PLP"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
-      sub: "Three zones of the screen, one job each.",
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
         { img: "enhance-v1-plp.png?v=2", n: "Discount, unit price, size and wishlist on every card" }
@@ -337,7 +335,6 @@ window.DECK = {
       headline: ["Home Page"],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
-      sub: "Three zones of the screen, one job each.",
       stages: [
         { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
         { img: "enhance-v1-home.png", n: "Search, categories, one icon style" }
