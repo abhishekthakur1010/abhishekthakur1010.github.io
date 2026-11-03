@@ -215,31 +215,13 @@ window.DECK = {
       notes: "First define discovery: every step from opening the app to adding to cart, where most of a session is spent. Then the three frustrations, left to right: business saw lots of visits but too few carts; product felt the pages looked dated and messy, so they asked for a refresh; and shoppers didn't trust what they saw: unclear price, size, delivery and no reviews up front. That third one was the real problem. Ground reality: huge traffic, but only 1 in 10 sessions added to cart, while searchers did at 41%. We had to ship on a live app without freezing releases."
     },
 
-    /* 03 — ASKING THE RIGHT QUESTIONS */
-    {
-      section: "context", type: "qa",
-      eyebrow: "Asking the right questions",
-      headline: ["We asked why before we designed"],
-      sub: "Six questions turned a facelift request into a clear problem to solve.",
-      qs: [
-        { tag: "Business", q: "Why fix it?", a: "Only {{1 in 10|carts}} visits ended in a cart." },
-        { tag: "Business", q: "Why now?", a: "Traffic kept growing, so every lost cart cost more." },
-        { tag: "Business", q: "What does success look like?", a: "More carts from browsing and search." },
-        { tag: "Shopper", q: "What stops shoppers?", a: "They can't compare products or trust the details." },
-        { tag: "Shopper", q: "Where do they get stuck?", a: "Browsing: listing and product page." },
-        { tag: "Scope", q: "What's not included?", a: "Checkout, payments and personalisation." }
-      ],
-      fromL: "The brief", from: "Make the pages look better",
-      toL: "What it became", to: "Help shoppers choose with confidence",
-      notes: "Business questions first, then shopper questions, then scope. Each answer came from talking to the PM, analytics or engineering. The shift at the bottom is the point: a facelift request became a problem about helping people choose."
-    },
-
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
       section: "discover", type: "flowview",
-      eyebrow: "The existing experience",
+      eyebrow: "Asking why · The existing experience",
       headline: ["Shoppers dropped at every step"],
-      sub: "Click a step to see the screen shoppers saw.",
+      sub: "We asked why, then followed the shopper. Click a step.",
+      reframe: { fromL: "The brief", from: "Make the pages look better", toL: "Became", to: "Help shoppers choose" },
       steps: [
         { k: "Home", stat: "100%", statL: "sessions", img: "enhance-problem-home.png", issues: [{ t: "Inconsistent icons, busy banners", tag: "Audit" }], pain: "Busy banners and mixed icon styles" },
         { k: "Browse / search", stat: "{{72%|funnel}}", est: true, statL: "kept going", img: "enhance-iter-search-before.png", issues: [{ t: "Irrelevant search results", tag: "Audit" }], pain: "Generic suggestions, wrong categories" },
@@ -247,8 +229,8 @@ window.DECK = {
         { k: "Product page", stat: "{{24%|funnel}}", est: true, statL: "opened a product", img: "enhance-problem-pdp.png", issues: [{ t: "Price, size, delivery buried", tag: "Audit" }], pain: "Key details below the fold" },
         { k: "Add to cart", stat: "{{10.4%|carts}}", statL: "added to cart", img: "enhance-addtocart-before.webp", issues: [{ t: "{{41.4%|search}} when searching", tag: "Measured" }], pain: "Added from a list of near-identical cards, with no rating or detail to compare" }
       ],
-      foot: "{{23 heuristic issues|audit}} found. The product page was the weakest part of discovery.",
-      notes: "Press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
+      foot: "{{23 issues|audit}} found; the product page was weakest. Checkout and payments out of scope.",
+      notes: "Start with the reframe: the brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
     },
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */

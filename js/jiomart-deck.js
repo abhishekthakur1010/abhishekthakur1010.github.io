@@ -861,7 +861,10 @@
           "<span class='evo-media zoomable' title='Click to enlarge'>" + device(s.img, s.focus || 0, "fv") + "</span>" +
           (s.pain ? "<span class='fv-pain'>" + esc(s.pain) + "</span>" : "") + "</div>";
       }).join("");
-      return "<div class='sl fv-slide'><div class='fv-left'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) +
+      // optional brief → reframe strip (from the merged "asked why" slide)
+      var rf = sc.reframe ? "<div class='fv-reframe'><span class='fv-rf-l'>" + esc(sc.reframe.fromL || "The brief") + "</span><span class='qa-strike'>" + esc(sc.reframe.from) + "</span>" +
+        "<span class='fv-rf-a'>→</span><span class='fv-rf-l pos'>" + esc(sc.reframe.toL || "Became") + "</span><b>" + esc(sc.reframe.to) + "</b></div>" : "";
+      return "<div class='sl fv-slide'><div class='fv-left'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + rf +
         "<div class='fv-list'>" + list + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>" +
         "<div class='fv-right'>" + screens + "</div></div>";
     },
