@@ -83,7 +83,7 @@ window.DECK = {
       highlight: "passive experience",
       sub: "Alerts, tiles and tables across 14 tabs.",
       figs: [
-        { img: "old-overview.webp", t: "Overview tab", d: "Alert counts and tiles, no location or priority.", tag: "Before" },
+        { img: "old-overview.webp?v=2", t: "Overview tab", d: "Alert counts and tiles, no location or priority.", tag: "Before" },
         { img: "old-floorops.webp", t: "Floor ops tab", d: "Sector health as long tables to scan.", tag: "Before" }
       ],
       notes: "This is what supervisors had: alerts, tiles and tables across 14 tabs. Plenty to read, nothing that said where to act. Every number was there, but as counts and tables. To find a problem they had to read, cross-check tabs, then export."
@@ -113,26 +113,24 @@ window.DECK = {
       notes: "We spent time in the hubs: control room, docks, sorter, and with supervisors. Designed on the hub floor, not at a desk. In the control room, HubEye was on one screen, camera feeds on another and a sheet on the third. Shift data was rebuilt in spreadsheets and paper unloading slips. A supervisor: “Tell me which dock, not which row in a table.” Delays start at the dock and ripple into sectors within the hour. Rejections and jams are seen on the floor before the dashboard. Every station has data; nobody has the whole hub in one view. The clearest finding: the tool lost to the spreadsheet. People needed location and priority, not more numbers."
     },
 
-    /* 04 — DEFINING THE PROBLEM */
+    /* 04 — THE BUSINESS PROBLEM: what watching-not-acting cost (stat cards built by the enhancer) */
     {
-      section: "define", type: "synthesis",
-      eyebrow: "Defining the problem",
-      headline: ["An action problem, not data"],
-      highlight: "action problem",
-      sub: "Three questions supervisors couldn't answer in HubEye.",
-      cols: ["What supervisors felt", "Why it happened", "How we know"],
-      rows: [
-        { theme: "Finding", symptom: "“Where is the problem?”", cause: "Tables and tiles, no hub layout",
-          how: [["Research", "Supervisors think in docks and sectors"], ["Observed", "14 tabs to see the whole hub"]] },
-        { theme: "Prioritising", symptom: "“What do I fix first?”", cause: "Every number looked equally important",
-          how: [["Measured", "{{3,400+ shipments|baseline}} ageing past 12 hrs"], ["Observed", "No alert or priority layer"]] },
-        { theme: "Acting", symptom: "“Why is it red?”", cause: "Insight lived outside the tool",
-          how: [["Observed", "{{Excel and paper|workflow}} to find bottlenecks"], ["Measured", "{{6+ hrs lost|workflow}} every shift"]] }
-      ],
-      from: "Show more data",
-      to: "Show where to act, and why",
-      statement: "Supervisors didn't lack data. They lacked where to act, and why.",
-      notes: "Read each row: what supervisors felt, why it happened, how we know. The shift: from showing more data to showing where to act and why. Supervisors didn't lack data; they lacked a view that told them where to act and why. What success looks like: put compliance up from 65%, on-time departures up from 46%, and shipment ageing down. The Impact slide shows where each one landed."
+      section: "define", type: "pair",
+      eyebrow: "The business problem",
+      headline: ["Watching, while shipments age"],
+      highlight: "shipments age",
+      sub: "Supervisors could watch but not act, so shipments aged and went missing.",
+      figs: [],
+      biz: {
+        lead: { n: "~₹5 Cr", u: "a month", l: "Lost to missing or lost shipments at hubs" },
+        stats: [
+          { n: "~₹60 Cr", l: "A year, at that rate" },
+          { n: "3,400+", l: "Shipments ageing past 12 hrs at a hub" },
+          { n: "68%", l: "Dock throughput: unloading and loading" },
+          { n: "140+", l: "Hubs and gateways carrying the risk" }
+        ]
+      },
+      notes: "This is what watching without acting cost. Delhivery was losing about 5 crore rupees a month to missing or lost shipments at hubs; at that rate, about 60 crore a year. At a large gateway, 3,400+ shipments sat ageing past 12 hours, and dock throughput, the productivity of unloading and loading, was at 68%. And this runs across 140+ hubs and gateways. Put compliance (65% before) was one of the floor metrics, but not the core problem: ageing, missing shipments and productivity were. Why it happened: supervisors couldn't see where the problem was, because HubEye showed tables and tiles with no hub layout and took 14 tabs to see the whole hub. They couldn't tell what to fix first, because every number looked equally important and there was no alert or priority layer. And they couldn't see why something was red, because the insight lived outside the tool: Excel and paper, with 6+ hours lost every shift. Supervisors didn't lack data; they lacked a view that told them where to act and why."
     },
 
     /* 05 — IDEATION & COLLABORATION */
@@ -170,57 +168,47 @@ window.DECK = {
       notes: "A hub is a city of docks and sectors. The idea before the screens. Docks sit on every edge: trucks unload inbound and load outbound. Sectors are the rows inside, where bags are sorted and put away by destination. Staging is the hatched zones where bags wait for their vehicle. 57 inbound and 102 outbound docks wrap Tauru Gateway; 100+ sectors inside; about 59K shipments in the building at any time. Press → to show the floor plan: this is the mental model supervisors already have, so we mapped it 1:1 as the dashboard. Next slide: the twin itself."
     },
 
-    /* 07 — THE SOLUTION */
+    /* 07 — THE SOLUTION: one screen, the old Overview wiped away by a curtain (built by the enhancer) */
     {
-      section: "design", type: "board", tall: true,
+      section: "design", type: "pair",
       eyebrow: "The solution",
       headline: ["Problems show where they happen"],
       highlight: "where they happen",
       sub: "The hub mapped 1:1: grey is normal, red is act now.",
-      cards: [
-        { k: "Digital twin map", tag: "Shipped", img: "hub-map-full.webp", fit: "contain", stat: "1:1 layout",
-          learned: "Every dock, sector and lane, in place." },
-        { k: "Grey or red", tag: "Shipped", img: "hub-zoom.webp", fit: "contain", stat: "2 states",
-          learned: "No in-between colours. Scan 300+ sectors fast." },
-        { k: "Click for the why", tag: "Shipped", proof: "ageing", img: "pop-bangalore.webp", fit: "contain", stat: "1 click",
-          learned: "Bags, ETD, ageing, compliance; red rows flag issues." },
-        { k: "Hub vitals", tag: "Shipped", proof: "putc", img: "panel-top.webp", fit: "contain", stat: "Always on",
-          learned: "Shipments, yard, docks, manpower beside the map." },
-        { k: "Yard forecast", tag: "Shipped", img: "yard-waiting.webp", fit: "contain", stat: "Hour by hour",
-          learned: "Yard vehicles vs planned docks, overflow in red." },
-        { k: "Floor cameras", tag: "Shipped", img: "floor-images.webp", fit: "contain", stat: "158 views",
-          learned: "Check a red dock on camera, in place." }
-      ],
-      notes: "The hub, mapped 1:1; problems show where they happen. Walk the six parts. The map: every dock, sector and yard lane sits where it is on the floor. The two-colour rule: no in-between colours to decode, so supervisors scan 300+ sectors in seconds. The click-for-why card: bags, ETD, ageing and compliance, with red rows saying what's wrong. The always-on vitals: shipments, yard, docks, manpower and compliance beside the map. The yard forecast: vehicles in yard vs planned docks, overflow in red. And floor cameras: check a red dock on camera without leaving the map. Click any card to enlarge."
+      figs: [],
+      twin: {
+        before: "old-overview.webp?v=2", after: "hub-map-full.webp?v=2",
+        cap: "HubEye digital twin: the whole hub mapped 1:1, with problem docks and sectors in red",
+        labels: ["1:1 layout", "Grey or red", "1 click for the why"]
+      },
+      notes: "The hub, mapped 1:1; problems show where they happen. The screen opens on the old Overview tab, then the curtain wipes it away to the digital twin. Three ideas carry it. The map: every dock, sector and yard lane sits where it is on the floor. Grey or red: two states, no in-between colours to decode, so supervisors scan 300+ sectors in seconds. One click for the why: bags, ETD, ageing and compliance, with red rows saying what's wrong. Around the map: always-on hub vitals (shipments, yard, docks, manpower and compliance), an hour-by-hour yard forecast of vehicles in yard vs planned docks with overflow in red, and 158 live floor camera views, so a red dock can be checked on camera without leaving the map. Click the screen to enlarge."
     },
 
-    /* 07 — IMPACT */
+    /* 07 — IMPACT (outcomes and the money card built by the enhancer; numbers in green) */
     {
       section: "results", type: "results",
       eyebrow: "Impact",
-      headline: ["Turning observation into operation"],
-      highlight: "operation",
-      sub: "Four hub metrics, before and after rollout.",
+      headline: ["From watching to acting"],
+      highlight: "acting",
+      sub: "Supervisors use it, it's simpler, and it drives action.",
       hero: [
-        { k: "Put compliance", pre: 65, post: 79, pt: "65%", qt: "79%", d: "{{+14 pts|putc}}", sub: "right sector, on time" },
-        { k: "On-time departures", pre: 46, post: 54, pt: "46%", qt: "54%", d: "{{+8 pts|obsl}}", sub: "OBSL" },
         { k: "Shipment ageing", pre: 100, post: 92, pt: "100", qt: "92", d: "{{−8%|ageing}}", sub: "indexed, lower is better" },
-        { k: "Ageing at Ionad hub", pre: 100, post: 67, pt: "100", qt: "67", d: "{{−33%|ageing}}", sub: "indexed, lower is better" }
+        { k: "Ageing at Ionad hub", pre: 100, post: 67, pt: "100", qt: "67", d: "{{−33%|ageing}}", sub: "indexed, lower is better" },
+        { k: "On-time departures", pre: 46, post: 54, pt: "46%", qt: "54%", d: "{{+8 pts|obsl}}", sub: "OBSL" },
+        { k: "Put compliance", pre: 65, post: 79, pt: "65%", qt: "79%", d: "{{+14 pts|putc}}", sub: "right sector, on time" }
       ],
-      checksTitle: "What shipped",
-      checks: [
-        { n: "1:1", l: "real hub layout" },
-        { n: "2", l: "states: grey or red" },
-        { n: "158", l: "live camera views" }
-      ],
-      moreTitle: "Live at Tauru Gateway today",
-      more: [
-        { l: "Put compliance", pt: "", qt: "96.36%", d: "" },
-        { l: "Shipments in centre", pt: "", qt: "59,375", d: "" },
-        { l: "Outbound docks live", pt: "", qt: "59 / 102", d: "" }
-      ],
+      checksTitle: "", checks: [], moreTitle: "", more: [],
+      outcomes: {
+        k: "What changed on the floor",
+        items: [
+          { t: "Adopted", d: "Supervisors adopted it hub-wide" },
+          { t: "Simpler", d: "One map, not 14 tabs" },
+          { t: "Action-driven", d: "Red means act now" }
+        ],
+        money: { n: "₹ crores", l: "Saved for Delhivery" }
+      },
       disclaimer: "Delhivery hub reporting, before vs after rollout. Ageing shown as an index (before = 100).",
-      notes: "Put compliance 65 to 79, on-time departures 46 to 54, ageing down 8% and 33% at Ionad. These are before/after, not an A/B test."
+      notes: "From watching to acting. Supervisors adopted it hub-wide, it is simpler, one map instead of 14 tabs, and it drives action, because red means act now. Delhivery saves crores of rupees. The measured results: shipment ageing down 8% across hubs and 33% at Ionad, on-time departures 46% to 54%, and put compliance 65% to 79%. These are before/after, not an A/B test. What shipped: the real hub layout 1:1, two states, grey or red, and 158 live camera views. Live at Tauru Gateway today: put compliance 96.36%, 59,375 shipments in the centre, and 59 of 102 outbound docks live."
     },
 
     /* 08 — KEY TAKEAWAYS */
@@ -261,6 +249,31 @@ window.DECK = {
     if (hs.sub && !h2.parentNode.querySelector(".sub")) {
       var sp = document.createElement("p"); sp.className = "sub"; sp.textContent = hs.sub;
       h2.parentNode.insertBefore(sp, h2.nextSibling);
+    }
+    var row = hs.biz && el.querySelector(".pr-row");
+    if (row) {   // business problem: the money figure large, the other stats beside it
+      var b = hs.biz;
+      row.className = "hb-biz";
+      row.innerHTML = "<div class='hb-lead'><span class='hb-k'>The cost</span><b>" + esc(b.lead.n) + "<small>" + esc(b.lead.u) + "</small></b><span class='hb-l'>" + esc(b.lead.l) + "</span></div>" +
+        b.stats.map(function (s) { return "<div class='hb-stat'><b>" + esc(s.n) + "</b><span>" + esc(s.l) + "</span></div>"; }).join("");
+    }
+    var trow = hs.twin && el.querySelector(".pr-row");
+    if (trow) {   // solution: one screen; the old Overview sits on top and a curtain wipes it away (same reveal as the Jarvis deck)
+      var t = hs.twin, still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      trow.className = "hb-twin";
+      trow.innerHTML = "<span class='rv-shot zoomable hbt-shot' title='Click to enlarge'><img src='" + D.imgBase + t.after + "' alt='" + esc(t.cap) + "'>" +
+        (still ? "" : "<span class='hbt-before' aria-hidden='true'><img src='" + D.imgBase + t.before + "' alt=''></span><span class='hbt-edge' aria-hidden='true'></span><span class='hbt-tag hbt-tag-b' aria-hidden='true'>Before</span>") +
+        "<span class='hbt-tag hbt-tag-a' aria-hidden='true'>After</span></span>" +
+        "<ul class='hbt-labels'>" + t.labels.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+    }
+    var low = hs.outcomes && el.querySelector(".im-low");
+    if (low) {   // impact: the outcomes supervisors felt, and the money card, in place of the panels
+      var o = hs.outcomes;
+      el.querySelector(".sl").classList.add("hb-impact");
+      low.className = "im-low hb-out reveal";
+      low.innerHTML = "<div class='im-panel'><div class='tier-label'>" + esc(o.k) + "</div><ul class='hbo-list'>" +
+        o.items.map(function (x) { return "<li><span class='hbo-chk' aria-hidden='true'>✓</span><b>" + esc(x.t) + "</b><span>" + esc(x.d) + "</span></li>"; }).join("") + "</ul></div>" +
+        "<div class='hbo-money'><b>" + esc(o.money.n) + "</b><span>" + esc(o.money.l) + "</span></div>";
     }
   }
   new MutationObserver(function (muts) {
