@@ -74,6 +74,28 @@ window.DECK = {
        workaround repeat the Existing HubEye, Research and Problem slides; the brief, the 140+ hubs
        and the scope now sit in the opening's notes. */
 
+    /* WHAT A HUB IS — the annotated floor photo with a few numbers (built by the enhancer) */
+    {
+      section: "context", type: "pair",
+      eyebrow: "What a hub is",
+      headline: ["Inside a Delhivery hub"],
+      highlight: "Delhivery hub",
+      sub: "Where shipments are sorted, staged and loaded, around the clock.",
+      figs: [],
+      hub: {
+        img: "hub-floor-annotated.webp",
+        cap: "A Delhivery hub floor: automatic sorters, docking stations and sectors 1 to 4, with 1,00,000+ shipments inside",
+        stats: [
+          { n: "140+", l: "Hubs and gateways across India" },
+          { n: "100+", l: "Floor sectors per hub" },
+          { n: "1.2M+", l: "Sq ft at the largest hubs" },
+          { n: "24/7", l: "Round-the-clock operations" }
+        ],
+        flow: ["Inbound dock", "Sectors", "Outbound dock"]
+      },
+      notes: "Before the software, the place. A Delhivery hub is where shipments are unloaded at inbound docks, sorted by automatic sorters into floor sectors by destination, staged, and loaded onto outbound vehicles, around the clock. There are 140+ hubs and gateways across India, each with 100+ floor sectors; the largest exceed 1.2 million square feet, and a single hub holds 1,00,000+ shipments at a time. Every one of those zones needs decisions in minutes."
+    },
+
     /* THE EXISTING HUBEYE */
     {
       section: "context", type: "pair",
@@ -82,7 +104,7 @@ window.DECK = {
       highlight: "passive experience",
       sub: "Alerts, tiles and tables across 14 tabs.",
       figs: [
-        { img: "old-overview-browser.webp", t: "Overview tab", d: "Alert counts and tiles, no location or priority.", tag: "Before" },
+        { img: "old-overview-browser.webp?v=2", t: "Overview tab", d: "Alert counts and tiles, no location or priority.", tag: "Before" },
         { img: "old-floorops.webp?v=3", t: "Floor ops tab", d: "Sector health as long tables to scan.", tag: "Before" }
       ],
       notes: "This is what supervisors had: alerts, tiles and tables across 14 tabs. Plenty to read, nothing that said where to act. Every number was there, but as counts and tables. To find a problem they had to read, cross-check tabs, then export."
@@ -104,7 +126,7 @@ window.DECK = {
           { n: "68%", l: "Dock throughput: unloading and loading" },
           { n: "140+", l: "Hubs and gateways carrying the risk" }
         ],
-        hmw: "How might we help hub managers spot and act on operational issues in real time, without leaving the dashboard?"
+        hmw: "How might we help hub managers spot and act on issues in real time, without external analysis tools?"
       },
       notes: "This is what watching without acting cost. Delhivery was losing about 5 crore rupees a month to missing or lost shipments at hubs; at that rate, about 60 crore a year. At a large gateway, 20K–25K shipments sat ageing past 12 hours, and dock throughput, the productivity of unloading and loading, was at 68%. And this runs across 140+ hubs and gateways. Put compliance (65% before) was one of the floor metrics, but not the core problem: ageing, missing shipments and productivity were. Why it happened: supervisors couldn't see where the problem was, because HubEye showed tables and tiles with no hub layout and took 14 tabs to see the whole hub. They couldn't tell what to fix first, because every number looked equally important and there was no alert or priority layer. And they couldn't see why something was red, because the insight lived outside the tool: Excel and paper, with 6+ hours lost every shift. Supervisors didn't lack data; they lacked a view that told them where to act and why."
     },
@@ -177,7 +199,7 @@ window.DECK = {
       sub: "The hub mapped 1:1: grey is normal, red is act now.",
       figs: [],
       twin: {
-        before: "old-overview.webp?v=2", after: "hub-map-full.webp?v=2",
+        before: "old-overview.webp?v=3", after: "hub-map-full.webp?v=2",
         cap: "HubEye digital twin: the whole hub mapped 1:1, with problem docks and sectors in red",
         labels: ["1:1 layout", "Grey or red", "1 click for the why"]
       },
@@ -252,6 +274,14 @@ window.DECK = {
     }
     // laptop screens open in the lightbox (smooth zoom) instead of zooming in place
     Array.prototype.forEach.call(el.querySelectorAll(".pr-laptop .pr-img"), function (x) { x.classList.remove("zoomable"); x.classList.add("rv-shot"); });
+    var hrow = hs.hub && el.querySelector(".pr-row");
+    if (hrow) {   // what a hub is: a few numbers beside the annotated floor photo, the flow under it
+      var hb = hs.hub;
+      hrow.className = "hb-hub";
+      hrow.innerHTML = "<div class='hbh-stats'>" + hb.stats.map(function (x) { return "<div class='hbh-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
+        "<div class='hbh-visual'><figure class='rv-shot hbh-shot' title='Click to enlarge'><img src='" + D.imgBase + hb.img + "' alt='" + esc(hb.cap) + "'></figure>" +
+        "<ol class='hbh-flow'>" + hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol></div>";
+    }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
       var b = hs.biz;

@@ -149,3 +149,16 @@ body.deck.hubeye[data-theme="dark"] .hb-impact .im-bar.post span { color: #04150
 .hb-hmw { margin: clamp(10px, 1.8vh, 18px) 0 0; font-size: clamp(13px, 1.05vw, 15px); line-height: 1.4; color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hb-hmw span { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-right: 10px; }
 @media (max-width: 900px) { .hb-hmw { white-space: normal; } }
+/* what a hub is: compact numbers left, the annotated floor photo right, the flow under it */
+.hb-hub { display: grid; grid-template-columns: minmax(200px, .32fr) 1fr; gap: clamp(18px, 2.6vw, 36px); align-items: center; margin-top: clamp(14px, 2.6vh, 26px); }
+.hbh-stats { display: grid; gap: 10px; }
+.hbh-stat { padding: 12px 16px; border-radius: 14px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 4px; }
+.hbh-stat b { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+.hbh-stat span { font-size: 13px; line-height: 1.35; color: var(--soft); }
+.hbh-visual { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
+.hbh-shot.rv-shot { margin: 0; max-width: calc((100vh - 400px) * 1.59); border: 0; box-shadow: 0 28px 70px rgba(0,0,0,.3); }
+.hbh-shot.rv-shot:hover { transform: none; }
+.hbh-flow { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.hbh-flow li { display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; color: var(--soft); }
+.hbh-flow li + li::before { content: "→"; margin-right: 8px; color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .hb-hub { grid-template-columns: 1fr; } .hbh-visual { order: -1; } .hbh-stats { grid-template-columns: 1fr 1fr; } .hbh-shot.rv-shot { max-width: none; } }
