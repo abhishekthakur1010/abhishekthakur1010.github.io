@@ -512,6 +512,7 @@ window.DECK.slides = window.DECK.slides.filter(function (s) { return !s.hide; })
   document.addEventListener("keyup", function (e) {
     if (e.key === "Escape") { var lb = document.querySelector(".lightbox.jv-full"); if (lb) lb.classList.remove("jv-full"); }
   });
+  document.addEventListener("lb:closed", function (e) { e.target.classList.remove("jv-full"); });   // the lightbox now closes with a short zoom-out
   // runs before the engine's requestAnimationFrame wiring, so the tiles get their click handler
   new MutationObserver(function (muts) {
     muts.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) enhance(n); }); });

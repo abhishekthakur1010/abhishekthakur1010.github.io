@@ -1588,3 +1588,9 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 /* Opening headline: "Enhancing / Product Discovery / on JioMart" */
 .opening h1 .hl { display: block; }
 @media (min-width: 700px) { .opening h1 .hl { white-space: nowrap; } }
+/* lightbox: smooth zoom from the thumbnail; drag to pan when zoomed in */
+.lightbox.closing { pointer-events: none; }
+.lightbox.zoomed .lb-imgwrap img { cursor: grab; }
+.lightbox.zoomed.dragging .lb-imgwrap img { cursor: grabbing; }
+.lightbox.zoomed .lb-cap:empty::before { content: "Drag or scroll to move · pinch to zoom · click to zoom out"; }
+.lb-imgwrap { will-change: transform; }

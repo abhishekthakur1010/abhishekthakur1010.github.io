@@ -10,9 +10,8 @@ window.DECK = {
   sections: [
     { id: "context", n: "01", label: "Context" },
     { id: "discover", n: "02", label: "Discovery" },
-    { id: "define", n: "03", label: "Define" },
-    { id: "design", n: "04", label: "Design" },
-    { id: "results", n: "05", label: "Impact" }
+    { id: "design", n: "03", label: "Design" },
+    { id: "results", n: "04", label: "Impact" }
   ],
   proofs: {
     putc: {
@@ -46,7 +45,7 @@ window.DECK = {
     baseline: {
       method: "Where it hurt", tag: "Hub reporting · measured",
       img: "control-room.webp", crop: 0,
-      calc: [["Dock throughput", "68%"], ["Put compliance", "65%"], ["Shipments ageing past 12 hrs", "3,400+", 1]],
+      calc: [["Dock throughput", "68%"], ["Put compliance", "65%"], ["Shipments ageing past 12 hrs", "20K–25K", 1]],
       observed: "Baseline at a large gateway before the redesign.",
       takeaway: "Rich data existed; nobody could act on it fast enough."
     }
@@ -77,16 +76,37 @@ window.DECK = {
 
     /* THE EXISTING HUBEYE */
     {
-      section: "discover", type: "pair",
+      section: "context", type: "pair",
       eyebrow: "The existing HubEye", device: "laptop",
       headline: ["Rich data, passive experience"],
       highlight: "passive experience",
       sub: "Alerts, tiles and tables across 14 tabs.",
       figs: [
-        { img: "old-overview.webp?v=2", t: "Overview tab", d: "Alert counts and tiles, no location or priority.", tag: "Before" },
-        { img: "old-floorops.webp", t: "Floor ops tab", d: "Sector health as long tables to scan.", tag: "Before" }
+        { img: "old-overview-browser.webp", t: "Overview tab", d: "Alert counts and tiles, no location or priority.", tag: "Before" },
+        { img: "old-floorops.webp?v=3", t: "Floor ops tab", d: "Sector health as long tables to scan.", tag: "Before" }
       ],
       notes: "This is what supervisors had: alerts, tiles and tables across 14 tabs. Plenty to read, nothing that said where to act. Every number was there, but as counts and tables. To find a problem they had to read, cross-check tabs, then export."
+    },
+
+    /* 04 — THE BUSINESS PROBLEM: what watching-not-acting cost (stat cards built by the enhancer) */
+    {
+      section: "context", type: "pair",
+      eyebrow: "The business problem",
+      headline: ["Watching, while shipments age"],
+      highlight: "shipments age",
+      sub: "Supervisors could watch but not act, so shipments aged and went missing.",
+      figs: [],
+      biz: {
+        lead: { n: "~₹5 Cr", u: "a month", l: "Lost to missing or lost shipments at hubs" },
+        stats: [
+          { n: "~₹60 Cr", l: "A year, at that rate" },
+          { n: "20K–25K", l: "Shipments ageing past 12 hrs at a hub" },
+          { n: "68%", l: "Dock throughput: unloading and loading" },
+          { n: "140+", l: "Hubs and gateways carrying the risk" }
+        ],
+        hmw: "How might we help hub managers spot and act on operational issues in real time, without leaving the dashboard?"
+      },
+      notes: "This is what watching without acting cost. Delhivery was losing about 5 crore rupees a month to missing or lost shipments at hubs; at that rate, about 60 crore a year. At a large gateway, 20K–25K shipments sat ageing past 12 hours, and dock throughput, the productivity of unloading and loading, was at 68%. And this runs across 140+ hubs and gateways. Put compliance (65% before) was one of the floor metrics, but not the core problem: ageing, missing shipments and productivity were. Why it happened: supervisors couldn't see where the problem was, because HubEye showed tables and tiles with no hub layout and took 14 tabs to see the whole hub. They couldn't tell what to fix first, because every number looked equally important and there was no alert or priority layer. And they couldn't see why something was red, because the insight lived outside the tool: Excel and paper, with 6+ hours lost every shift. Supervisors didn't lack data; they lacked a view that told them where to act and why."
     },
 
     /* 03 — RESEARCH ON THE FLOOR */
@@ -111,26 +131,6 @@ window.DECK = {
           learned: "Data per station, never the whole hub." }
       ],
       notes: "We spent time in the hubs: control room, docks, sorter, and with supervisors. Designed on the hub floor, not at a desk. In the control room, HubEye was on one screen, camera feeds on another and a sheet on the third. Shift data was rebuilt in spreadsheets and paper unloading slips. A supervisor: “Tell me which dock, not which row in a table.” Delays start at the dock and ripple into sectors within the hour. Rejections and jams are seen on the floor before the dashboard. Every station has data; nobody has the whole hub in one view. The clearest finding: the tool lost to the spreadsheet. People needed location and priority, not more numbers."
-    },
-
-    /* 04 — THE BUSINESS PROBLEM: what watching-not-acting cost (stat cards built by the enhancer) */
-    {
-      section: "define", type: "pair",
-      eyebrow: "The business problem",
-      headline: ["Watching, while shipments age"],
-      highlight: "shipments age",
-      sub: "Supervisors could watch but not act, so shipments aged and went missing.",
-      figs: [],
-      biz: {
-        lead: { n: "~₹5 Cr", u: "a month", l: "Lost to missing or lost shipments at hubs" },
-        stats: [
-          { n: "~₹60 Cr", l: "A year, at that rate" },
-          { n: "3,400+", l: "Shipments ageing past 12 hrs at a hub" },
-          { n: "68%", l: "Dock throughput: unloading and loading" },
-          { n: "140+", l: "Hubs and gateways carrying the risk" }
-        ]
-      },
-      notes: "This is what watching without acting cost. Delhivery was losing about 5 crore rupees a month to missing or lost shipments at hubs; at that rate, about 60 crore a year. At a large gateway, 3,400+ shipments sat ageing past 12 hours, and dock throughput, the productivity of unloading and loading, was at 68%. And this runs across 140+ hubs and gateways. Put compliance (65% before) was one of the floor metrics, but not the core problem: ageing, missing shipments and productivity were. Why it happened: supervisors couldn't see where the problem was, because HubEye showed tables and tiles with no hub layout and took 14 tabs to see the whole hub. They couldn't tell what to fix first, because every number looked equally important and there was no alert or priority layer. And they couldn't see why something was red, because the insight lived outside the tool: Excel and paper, with 6+ hours lost every shift. Supervisors didn't lack data; they lacked a view that told them where to act and why."
     },
 
     /* 05 — IDEATION & COLLABORATION */
@@ -250,12 +250,15 @@ window.DECK = {
       var sp = document.createElement("p"); sp.className = "sub"; sp.textContent = hs.sub;
       h2.parentNode.insertBefore(sp, h2.nextSibling);
     }
+    // laptop screens open in the lightbox (smooth zoom) instead of zooming in place
+    Array.prototype.forEach.call(el.querySelectorAll(".pr-laptop .pr-img"), function (x) { x.classList.remove("zoomable"); x.classList.add("rv-shot"); });
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
       var b = hs.biz;
       row.className = "hb-biz";
       row.innerHTML = "<div class='hb-lead'><span class='hb-k'>The cost</span><b>" + esc(b.lead.n) + "<small>" + esc(b.lead.u) + "</small></b><span class='hb-l'>" + esc(b.lead.l) + "</span></div>" +
         b.stats.map(function (s) { return "<div class='hb-stat'><b>" + esc(s.n) + "</b><span>" + esc(s.l) + "</span></div>"; }).join("");
+      if (b.hmw) { var hm = document.createElement("p"); hm.className = "hb-hmw"; hm.innerHTML = "<span>How might we</span>" + esc(b.hmw.replace(/^How might we /, "")); row.parentNode.insertBefore(hm, row.nextSibling); }
     }
     var trow = hs.twin && el.querySelector(".pr-row");
     if (trow) {   // solution: one screen; the old Overview sits on top and a curtain wipes it away (same reveal as the Jarvis deck)

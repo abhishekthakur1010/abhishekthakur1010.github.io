@@ -1082,6 +1082,7 @@
   function evidenceOpen() { return panel && panel.classList.contains("open"); }
   if (panel) panel.addEventListener("click", function (e) {
     if (e.target.closest(".ev-close") || e.target.classList.contains("ev-backdrop")) closeEvidence();
+    if (e.target.tagName === "IMG") lbFrom = e.target;
     if (e.target.tagName === "IMG" && e.target.closest(".ev-find-img")) { openLightbox(e.target.src, ""); return; }
     if (e.target.tagName === "IMG" && e.target.closest(".ev-img")) openLightbox(e.target.src, (panel.querySelector(".ev-method") || {}).textContent || "");
   });
@@ -1118,17 +1119,40 @@
     "<figcaption class='lb-cap'></figcaption><div class='lb-dots'></div></figure>";
   var gal = null; // { list: [{src, cap}], i }
   document.body.appendChild(lb);
+  // smooth zoom: the image grows from the thumbnail that was clicked, and shrinks back on close
+  var lbFrom = null, lbAnim = null;
+  var lbStill = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  function lbFlip(back, done) {
+    var w = lb.querySelector(".lb-imgwrap"), bd = lb.querySelector(".lb-backdrop");
+    var from = lbFrom && document.body.contains(lbFrom) ? lbFrom.getBoundingClientRect() : null;
+    if (!w.animate || (lbStill && lbStill.matches) || !from || !from.width) { if (done) done(); return; }
+    var to = w.getBoundingClientRect();
+    if (!to.width) { if (done) done(); return; }
+    var sc = from.width / to.width, dx = (from.left + from.width / 2) - (to.left + to.width / 2), dy = (from.top + from.height / 2) - (to.top + to.height / 2);
+    var k = [{ transform: "translate(" + dx + "px," + dy + "px) scale(" + sc + ")", opacity: 0.4 }, { transform: "none", opacity: 1 }];
+    var opt = { duration: back ? 220 : 300, easing: back ? "cubic-bezier(.4,0,.6,1)" : "cubic-bezier(.2,.7,.2,1)" };
+    if (back) k.reverse();
+    if (lbAnim) lbAnim.cancel();
+    lbAnim = w.animate(k, opt);
+    bd.animate([{ opacity: 0 }, { opacity: 1 }], { duration: opt.duration, direction: back ? "reverse" : "normal", fill: back ? "forwards" : "none" });
+    lbAnim.onfinish = function () { lbAnim = null; if (done) done(); };
+  }
   function openLightbox(src, caption, tall) {
     var li = lb.querySelector("img");
-    lb.classList.remove("fit", "zoomed");
+    lb.classList.remove("fit", "zoomed", "closing");
     li.style.width = "";
-    li.onload = function () { lb.classList.toggle("fit", !!tall && li.naturalHeight / li.naturalWidth <= 2.4); };
+    var flipped = false;
+    li.onload = function () {
+      lb.classList.toggle("fit", !!tall && li.naturalHeight / li.naturalWidth <= 2.4);
+      if (!flipped) { flipped = true; lbFlip(false); }
+    };
     li.src = src;
     lb.querySelector(".lb-cap").textContent = caption || "";
     lb.classList.toggle("tall", !!tall);
     lb.classList.toggle("gallery", !!gal);
     var w = lb.querySelector(".lb-imgwrap"); if (w) w.scrollTop = 0;
     lb.classList.add("open");
+    if (li.complete && li.naturalWidth && !flipped) { flipped = true; lbFlip(false); }
   }
   function showGal(i) {
     if (!gal) return;
@@ -1143,10 +1167,49 @@
   }
   function openGallery(list, i) { gal = { list: list, i: 0 }; showGal(i); }
   var lbClosedAt = 0;   // a click right after closing must not fall through to click-to-advance
-  function closeLightbox() { lb.classList.remove("open"); gal = null; lbClosedAt = Date.now(); }
+  function closeLightbox() {
+    if (lb.classList.contains("closing")) return;
+    var im = lb.querySelector("img");
+    gal = null; lbClosedAt = Date.now() + 250;
+    lb.classList.remove("zoomed"); im.style.width = "";
+    lb.classList.add("closing");
+    lbFlip(true, function () {
+      lb.classList.remove("open", "closing");
+      lb.querySelectorAll(".lb-backdrop").forEach(function (b) { b.getAnimations && b.getAnimations().forEach(function (a) { a.cancel(); }); });
+      lbFrom = null; lbClosedAt = Date.now();
+      lb.dispatchEvent(new CustomEvent("lb:closed", { bubbles: true }));
+    });
+  }
   function lightboxOpen() { return lb.classList.contains("open"); }
+  // zoomed in: drag to pan; pinch or ctrl/cmd + scroll zooms further
+  var drag = null, dragged = false;
+  lb.addEventListener("pointerdown", function (e) {
+    if (!lb.classList.contains("zoomed") || e.button !== 0) return;
+    var wrap = lb.querySelector(".lb-imgwrap");
+    if (!wrap.contains(e.target)) return;
+    drag = { x: e.clientX, y: e.clientY, l: wrap.scrollLeft, t: wrap.scrollTop, wrap: wrap }; dragged = false;
+  });
+  window.addEventListener("pointermove", function (e) {
+    if (!drag) return;
+    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) { dragged = true; lb.classList.add("dragging"); }
+    drag.wrap.scrollLeft = drag.l - dx; drag.wrap.scrollTop = drag.t - dy;
+  });
+  window.addEventListener("pointerup", function () { drag = null; lb.classList.remove("dragging"); });
+  lb.addEventListener("wheel", function (e) {
+    if (!e.ctrlKey && !e.metaKey) return;
+    if (lb.classList.contains("tall")) return;
+    var im = lb.querySelector(".lb-imgwrap img"), wrap = im.parentNode;
+    e.preventDefault();
+    var r = im.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+    var w = Math.min(Math.max(r.width * Math.exp(-e.deltaY * 0.01), 200), im.naturalWidth * 3);
+    lb.classList.add("zoomed"); im.style.width = w + "px";
+    wrap.scrollLeft = fx * w - (e.clientX - wrap.getBoundingClientRect().left);
+    wrap.scrollTop = fy * im.offsetHeight - (e.clientY - wrap.getBoundingClientRect().top);
+  }, { passive: false });
   lb.addEventListener("click", function (e) {
     e.stopPropagation();
+    if (dragged) { dragged = false; return; }
     var dot = e.target.closest(".lb-dot");
     if (dot) { showGal(parseInt(dot.getAttribute("data-k"), 10)); return; }
     if (e.target.closest(".lb-x")) { closeLightbox(); return; }
@@ -1199,6 +1262,9 @@
     else if (e.key === "Home") go(0);
     else if (e.key === "End") go(TOTAL - 1);
   });
+  stage.addEventListener("click", function (e) {   // remember which thumbnail opens the lightbox, for the zoom
+    if (!lightboxOpen()) lbFrom = e.target.closest && e.target.closest(".rv-shot, .bd-img, .dc-thumb, .tile, .ci-shot, .zoomable, img");
+  }, true);
   stage.addEventListener("click", function (e) {
     if (evidenceOpen() || lightboxOpen() || Date.now() - lbClosedAt < 250) return;
     // anything that opens a lightbox or acts on its own never advances the slide
