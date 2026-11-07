@@ -94,7 +94,7 @@ window.STORY = {
         metrics: ["Installs 51%", "MAU 65%", "Revenue 38%"], link: "../jiomart-discovery.html" },
       { brand: "JioMart", title: "Streamlining Checkout", sub: "Cart → Offer → Review → Payment", img: "../images/feature-project-01.webp",
         screens: ["../images/stream-study/stream-case-study-cart-page-01.png", "../images/stream-study/stream-case-study-payment-page.png", "../images/stream-study/stream-case-study-order-success-page.png"],
-        metrics: ["Conversion 20.54%", "Returning users 20.54%", "Page load −29.6%"], link: "../jio-checkout.html" },
+        metrics: ["Conversion 20.54%", "Returning users 20.54%", "Page load −29.6%"], link: null },
       { brand: "MyJio", title: "One Payment, Many Journeys", sub: "MyJio payment experience", img: "../images/feature-project-12.webp",
         metrics: ["Payment time 1.8 min → 42 s", "UPI adoption 32%", "Repeat transactions 1.4×"], link: null },
       { brand: "Netmeds", title: "Healing by Design", sub: "Discovery to delivery, from field research", img: "../images/feature-project-11.webp",
@@ -139,7 +139,6 @@ window.STORY = {
   // Always-available case studies (the Work menu).
   caseStudies: [
     { label: "JioMart — Product discovery", href: "../jiomart-discovery.html" },
-    { label: "JioMart — Checkout", href: "../jio-checkout.html" },
     { label: "Delhivery — DelFin 0→1", href: "../delfin.html" },
     { label: "Delhivery — Hub Digital Twin", href: "../hubeye.html" },
     { label: "All work on the portfolio", href: "../profile.html#featured" },
