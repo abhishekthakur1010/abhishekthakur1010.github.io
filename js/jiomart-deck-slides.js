@@ -334,18 +334,15 @@ window.DECK = {
       eyebrow: "The solution · Why the price is big",
       headline: ["Price first"],
       sub: "We borrowed the hierarchy shoppers already trust on the shelf.",
-      shelf: { k: "In store", img: "offline-price-spices.webp", inset: "offline-price-tag.webp",
-        alt: "Supermarket spice aisle: every tag shows the selling price biggest and MRP small",
-        d: "Every tag leads with the price you pay. Name next, MRP smallest." },
-      ours: { k: "On JioMart", shots: [
-        { t: "PLP card", img: "price-plp-card.png" },
-        { t: "PDP", img: "price-pdp-block.png" }
-      ] },
-      why: [
-        { t: "People buy on what they pay", d: "The selling price is the deciding number, so it gets the largest type on the card." },
-        { t: "MRP is the anchor, not the headline", d: "Small and struck through beside the big price, so the saving reads at a glance." },
-        { t: "Faster comparison on a list", d: "One column of bold prices lets the eye scan cards without reading every line." },
-        { t: "Familiar, so nothing to learn", d: "The same hierarchy as every grocery shelf tag in India." }
+      cards: [
+        { src: "In store", t: "People buy on what they pay", d: "Every shelf tag leads with the selling price, biggest.",
+          img: "offline-price-tag.webp", alt: "Shelf tag: ₹79.50 large, MRP ₹106 small" },
+        { src: "On JioMart", t: "MRP anchors, it doesn't lead", d: "Small and struck through, so the saving reads at a glance.",
+          img: "price-pdp-tight.png", alt: "PDP price: ₹900.00 large, MRP ₹1084 struck through" },
+        { src: "On JioMart", t: "Faster comparison on a list", d: "A column of bold prices: scan cards without reading every line.",
+          img: "price-plp-cards.png", fit: "top", alt: "Two PLP cards with ₹77.00 in bold" },
+        { src: "In store", t: "Familiar, nothing to learn", d: "The same order as every grocery aisle: price, name, then MRP.",
+          img: "offline-price-spices.webp", fit: "cover", alt: "Supermarket spice aisle with price tags" }
       ],
       notes: "An interviewer asked why the rupee price is bigger than the product name. Answer with the shelf: in every Indian supermarket the tag leads with the price you pay, big and bold, and puts MRP small and struck through. Shoppers already decide this way. On the PLP a column of bold prices makes cards quick to compare; on the PDP the big price next to the struck MRP makes the saving obvious. We didn't invent a pattern, we reused one they trust."
     },

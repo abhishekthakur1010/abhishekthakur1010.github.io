@@ -1776,16 +1776,21 @@ html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
 .csv2 .cs-type.b2c { color: #0a66c2; background: #eaf2fb; }
 .csv2 .cs-type.b2b { color: #141414; background: #f1f1f0; }
 
-/* ---------- Price first (JioMart) ---------- */
-.csv2 .pq-why { margin: 16px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
-.csv2 .pq-why b { color: var(--ink); }
-.csv2 .pq { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
-.csv2 .pq figure { margin: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--bg-soft); }
-.csv2 .pq figcaption { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); padding: 10px 14px 8px; }
-.csv2 .pq figure.after figcaption { color: #2f9e5c; }
-.csv2 .pq figure > img { display: block; width: calc(100% - 24px); margin: 0 12px 12px; border-radius: 10px; background: #fff; }
-.csv2 .pq .pq-shelf { grid-column: 1 / -1; }
-.csv2 .pq-media { position: relative; margin: 0 12px 12px; }
-.csv2 .pq-media > img:first-child { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; }
-.csv2 .pq-inset { position: absolute; right: 12px; bottom: 12px; width: 38%; border-radius: 10px; border: 2px solid #fff; box-shadow: 0 10px 28px rgba(0,0,0,.28); }
-@media (max-width: 640px) { .csv2 .pq { grid-template-columns: 1fr; } }
+/* ---------- Price first (JioMart): bento of grey cards ---------- */
+.csv2 .flow.pq-flow { grid-template-columns: 1fr; gap: 24px; }
+.csv2 .pq-head { display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: end; }
+.csv2 .pq-head h3 { margin-bottom: 0; }
+.csv2 .pq-bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.csv2 .pq-card { background: #ebebe9; border-radius: 16px; padding: 20px 16px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.csv2 .pq-card b { font-size: 16px; line-height: 1.3; color: var(--ink); }
+.csv2 .pq-card p { font-size: 13px; line-height: 1.5; color: var(--muted); margin: 0 0 8px; }
+.csv2 .pq-src { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-bottom: 4px; }
+.csv2 .pq-src.store { color: #a85b00; background: rgba(168,91,0,.09); }
+.csv2 .pq-src.app { color: #0078ad; background: #e5f1f7; }
+.csv2 .pq-vis { margin-top: auto; width: 100%; height: 200px; border-radius: 12px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; }
+.csv2 .pq-vis img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.csv2 .pq-vis.contain { padding: 10px; }
+.csv2 .pq-vis.cover img, .csv2 .pq-vis.top img { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
+.csv2 .pq-vis.top img { object-position: top center; }
+@media (max-width: 960px) { .csv2 .pq-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } .csv2 .pq-head { grid-template-columns: 1fr; gap: 12px; } }
+@media (max-width: 520px) { .csv2 .pq-bento { grid-template-columns: 1fr; } }

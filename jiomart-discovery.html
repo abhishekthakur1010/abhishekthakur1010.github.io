@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="./css/case-study-v2.css?v=72" rel="stylesheet" />
+    <link href="./css/case-study-v2.css?v=73" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
@@ -449,40 +449,45 @@
         </div>
 
         <!-- Flow 4b: why the price is big -->
-        <div class="flow">
-          <div>
-            <div class="tag">Pricing · PLP &amp; PDP</div>
-            <h3>Price first</h3>
+        <div class="flow pq-flow">
+          <div class="pq-head">
+            <div>
+              <div class="tag">Pricing · PLP &amp; PDP</div>
+              <h3>Price first</h3>
+            </div>
             <p>
               The selling price is the largest type on every card and on the
               product page. We didn't invent that hierarchy: it's the one
               shoppers already trust on every grocery shelf tag.
             </p>
-            <ol class="pq-why">
-              <li><b>People buy on what they pay.</b> The selling price is the deciding number.</li>
-              <li><b>MRP anchors, it doesn't lead.</b> Small and struck through, so the saving reads at a glance.</li>
-              <li><b>Faster comparison.</b> A column of bold prices lets the eye scan a list without reading every line.</li>
-              <li><b>Familiar.</b> The same order as a shelf tag: price, then name, then MRP.</li>
-            </ol>
-            <div class="win"><b>Decision:</b> lead with the price shoppers pay, like the shelf does.</div>
           </div>
-          <div class="pq">
-            <figure class="pq-shelf">
-              <figcaption>In store</figcaption>
-              <div class="pq-media">
-                <img src="./images/enhanceProduct/offline-price-spices.webp" alt="Supermarket spice aisle: every tag shows the selling price biggest and MRP small" loading="lazy" />
-                <img class="pq-inset" src="./images/enhanceProduct/offline-price-tag.webp" alt="Close-up of a shelf tag: ₹79.50 large, MRP ₹106 small" loading="lazy" />
+          <div class="pq-bento">
+              <div class="pq-card">
+                <span class="pq-src store">In store</span>
+                <b>People buy on what they pay</b>
+                <p>Every shelf tag leads with the selling price, biggest.</p>
+                <span class="pq-vis contain"><img src="./images/enhanceProduct/offline-price-tag.webp" alt="Shelf tag: ₹79.50 large, MRP ₹106 small" loading="lazy" /></span>
               </div>
-            </figure>
-            <figure class="after">
-              <figcaption>JioMart · PLP card</figcaption>
-              <img src="./images/enhanceProduct/price-plp-card.png" alt="PLP card with ₹77.00 large and MRP struck through" loading="lazy" />
-            </figure>
-            <figure class="after">
-              <figcaption>JioMart · PDP</figcaption>
-              <img src="./images/enhanceProduct/price-pdp-block.png" alt="PDP price block with ₹900.00 large and MRP struck through" loading="lazy" />
-            </figure>
+              <div class="pq-card">
+                <span class="pq-src app">On JioMart</span>
+                <b>MRP anchors, it doesn't lead</b>
+                <p>Small and struck through, so the saving reads at a glance.</p>
+                <span class="pq-vis contain"><img src="./images/enhanceProduct/price-pdp-tight.png" alt="PDP price: ₹900.00 large, MRP ₹1084 struck through" loading="lazy" /></span>
+              </div>
+              <div class="pq-card">
+                <span class="pq-src app">On JioMart</span>
+                <b>Faster comparison on a list</b>
+                <p>A column of bold prices: scan cards without reading every line.</p>
+                <span class="pq-vis top"><img src="./images/enhanceProduct/price-plp-cards.png" alt="Two PLP cards with ₹77.00 in bold" loading="lazy" /></span>
+              </div>
+              <div class="pq-card">
+                <span class="pq-src store">In store</span>
+                <b>Familiar, nothing to learn</b>
+                <p>The same order as every grocery aisle: price, name, then MRP.</p>
+                <span class="pq-vis cover"><img src="./images/enhanceProduct/offline-price-spices.webp" alt="Supermarket spice aisle with price tags" loading="lazy" /></span>
+              </div>
           </div>
+          <div class="win"><b>Decision:</b> lead with the price shoppers pay, like the shelf does.</div>
         </div>
 
         <!-- Flow 5 -->

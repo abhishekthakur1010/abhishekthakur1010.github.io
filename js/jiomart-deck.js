@@ -121,7 +121,7 @@
       case "ideas": return sc.pairs.length;
       case "collab": return sc.steps.length;
       case "pair": return 0;
-      case "pricecue": return sc.why.length;
+      case "pricecue": return sc.cards.length;
       case "hubmap": return 1;
       case "stack": return 1;
       case "funnels": return sc.funnels.length;
@@ -677,23 +677,16 @@
         "<div class='pr-row'>" + figs + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
-    /* real-world cue → our UI → the reasons, one per step */
+    /* bento: one grey card per reason, each with its proof image */
     pricecue: function (sc) {
-      var fig = function (f, cls) {
-        return "<figure class='pc-fig " + cls + "'><figcaption>" + esc(f.k) + "</figcaption>" +
-          "<span class='pc-media'><span class='pc-img zoomable' title='Click to enlarge'><img src='" + img(f.img) + "' alt='" + esc(f.alt || "") + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
-          (f.inset ? "<span class='pc-inset zoomable' title='Click to enlarge'><img src='" + img(f.inset) + "' alt=''></span>" : "") + "</span>" +
-          (f.d ? "<p class='pc-cap'>" + esc(f.d) + "</p>" : "") + "</figure>";
-      };
-      var ours = "<div class='pc-ours'><div class='pc-k'>" + esc(sc.ours.k) + "</div>" + sc.ours.shots.map(function (o) {
-        return "<div class='pc-shot'><span class='pc-tag'>" + esc(o.t) + "</span><span class='pc-img zoomable' title='Click to enlarge'><img src='" + img(o.img) + "' alt=''></span></div>";
-      }).join("") + "</div>";
-      var why = sc.why.map(function (w, i) {
-        return "<li class='reveal' data-step='" + (i + 1) + "'><span class='pc-n'>" + pad(i + 1) + "</span><div><b>" + esc(w.t) + "</b><span>" + esc(w.d) + "</span></div></li>";
+      var cards = sc.cards.map(function (c, i) {
+        return "<div class='pc-card reveal' data-step='" + (i + 1) + "'>" +
+          "<div class='pc-txt'><span class='pc-src " + (c.src === "In store" ? "store" : "app") + "'>" + esc(c.src) + "</span>" +
+          "<b>" + esc(c.t) + "</b><p>" + esc(c.d) + "</p></div>" +
+          "<span class='pc-vis zoomable " + (c.fit || "contain") + "' title='Click to enlarge'><img src='" + img(c.img) + "' alt='" + esc(c.alt || "") + "'></span></div>";
       }).join("");
       return "<div class='sl pricecue'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
-        "<div class='pc-grid'>" + fig(sc.shelf, "shelf") + "<span class='pc-arrow' aria-hidden='true'>→</span>" + ours +
-        "<ol class='pc-why'>" + why + "</ol></div></div>";
+        "<div class='pc-bento'>" + cards + "</div></div>";
     },
 
     /* team sessions as a photo-led timeline */
