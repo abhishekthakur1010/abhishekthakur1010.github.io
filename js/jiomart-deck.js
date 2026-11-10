@@ -683,7 +683,7 @@
         return "<div class='pc-card reveal' data-step='" + (i + 1) + "'>" +
           "<div class='pc-txt'><span class='pc-src " + (c.src.indexOf("In store") === 0 ? "store" : "app") + "'>" + esc(c.src) + "</span>" +
           "<b>" + esc(c.t) + "</b><p>" + esc(c.d) + "</p></div>" +
-          "<span class='pc-vis zoomable " + (c.fit || "contain") + "' title='Click to enlarge'><img src='" + img(c.img) + "' alt='" + esc(c.alt || "") + "'>" +
+          "<span class='pc-vis " + (/still/.test(c.fit || "") ? "" : "zoomable ") + (c.fit || "contain") + "'" + (/still/.test(c.fit || "") ? "" : " title='Click to enlarge'") + "><img src='" + img(c.img) + "' alt='" + esc(c.alt || "") + "'>" +
           (c.inset ? "<img class='pc-inset' src='" + img(c.inset) + "' alt=''>" : "") + "</span></div>";
       }).join("");
       return "<div class='sl pricecue'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +

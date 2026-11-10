@@ -1603,7 +1603,7 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .pc-src.store { color: var(--warn); background: var(--warn-soft); }
 .pc-vis { position: relative; }
 .pc-vis > img:first-child { transition: transform .5s var(--ease); }
-.pc-card:hover .pc-vis > img:first-child { transform: scale(1.08); }
+.pc-card:hover .pc-vis:not(.still) > img:first-child { transform: scale(1.08); }
 .pc-inset { position: absolute; right: 10px; bottom: 10px; width: 46%; border-radius: 8px; border: 2px solid #fff; box-shadow: 0 10px 26px rgba(0,0,0,.35); transition: transform .5s var(--ease); transform-origin: bottom right; }
 .pc-card:hover .pc-inset { transform: scale(1.18); }
 .pc-card { transition: border-color .3s, transform .4s var(--ease); }
@@ -1611,11 +1611,12 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .pc-src.app { color: var(--info); background: var(--info-soft); }
 .pc-txt b { font-size: clamp(14px,1.15vw,17px); line-height: 1.25; color: var(--ink); }
 .pc-txt p { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--dim); max-width: 26ch; }
-.pc-vis { margin-top: auto; display: flex; align-items: center; justify-content: center; height: clamp(170px,32vh,290px); border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid var(--panel-line); cursor: zoom-in; }
+.pc-vis { margin-top: auto; display: flex; align-items: center; justify-content: center; height: clamp(190px,38vh,340px); border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid var(--panel-line); cursor: zoom-in; }
 .pc-vis img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
 .pc-vis.cover > img:first-child, .pc-vis.top > img:first-child { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
 .pc-vis.top > img:first-child { object-position: top center; }
 .pc-vis.contain { padding: 10px; }
+.pc-vis.still { cursor: default; }
 .pc-vis .pc-inset { max-width: none; max-height: none; height: auto; }
 @media (max-width: 900px) { .pricecue .pc-bento { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .pricecue .pc-bento { grid-template-columns: 1fr; } }

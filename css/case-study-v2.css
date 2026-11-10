@@ -1787,7 +1787,7 @@ html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
 .csv2 .pq-src { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-bottom: 4px; }
 .csv2 .pq-src.store { color: #a85b00; background: rgba(168,91,0,.09); }
 .csv2 .pq-src.app { color: #0078ad; background: #e5f1f7; }
-.csv2 .pq-vis { position: relative; cursor: zoom-in; margin-top: auto; width: 100%; height: 260px; border-radius: 12px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; }
+.csv2 .pq-vis { position: relative; cursor: zoom-in; margin-top: auto; width: 100%; height: 340px; border-radius: 12px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; }
 .csv2 .pq-vis img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
 .csv2 .pq-vis.contain { padding: 10px; }
 .csv2 .pq-vis.cover > img:first-child, .csv2 .pq-vis.top > img:first-child { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
@@ -1795,7 +1795,8 @@ html:has(body.csv2.accent-blue), body.csv2.accent-blue { overflow-x: clip; }
 .csv2 .pq-vis > img:first-child { transition: transform .5s cubic-bezier(.22,1,.36,1); }
 .csv2 .pq-card { transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s; }
 .csv2 .pq-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.08); }
-.csv2 .pq-card:hover .pq-vis > img:first-child { transform: scale(1.08); }
+.csv2 .pq-card:hover .pq-vis:not(.still) > img:first-child { transform: scale(1.08); }
+.csv2 .pq-vis.still { cursor: default; }
 .csv2 .pq-tag { position: absolute; right: 10px; bottom: 10px; width: 50%; max-width: none; max-height: none; border-radius: 8px; border: 2px solid #fff; box-shadow: 0 10px 26px rgba(0,0,0,.3); transition: transform .5s cubic-bezier(.22,1,.36,1); transform-origin: bottom right; }
 .csv2 .pq-card:hover .pq-tag { transform: scale(1.18); }
 @media (max-width: 960px) { .csv2 .pq-bento { grid-template-columns: 1fr; } .csv2 .pq-head { grid-template-columns: 1fr; gap: 12px; } }
