@@ -189,17 +189,18 @@ window.DECK = {
       headline: ["Target shopper"],
       sub: "JioMart started with value-conscious households beyond the metros.",
       tiers: [
-        { india: "India 1", k: "Rich", inc: "above ₹17L a year", pct: "1%", pop: "16M people" },
-        { india: "India 1", k: "Middle class", inc: "₹3.4–17L a year", pct: "13%", pop: "160M people" },
-        { india: "India 2", k: "Aspirers", inc: "₹1.5–3.4L a year", pct: "30%", pop: "359M people", focus: true },
-        { india: "India 3", k: "Deprived", inc: "below ₹1.5L a year", pct: "56%", pop: "684M people", focus: true }
+        { india: "India 1", k: "Rich", inc: "above ₹17L a year", pct: "1%", pop: "16M people", hh: "3M households" },
+        { india: "India 1", k: "Middle class", inc: "₹3.4–17L a year", pct: "13%", pop: "160M people", hh: "31M households" },
+        { india: "India 2", k: "Aspirers", inc: "₹1.5–3.4L a year", pct: "30%", pop: "359M people", hh: "71M households", focus: true },
+        { india: "India 3", k: "Deprived", inc: "below ₹1.5L a year", pct: "56%", pop: "684M people", hh: "135M households", focus: true }
       ],
       brace: { n: "86%", l: "of households earn under ₹3.4L a year" },
       source: "Share of households by annual income. Source: India Stack",
+      statsTitle: "On JioMart",
       stats: [
         { n: "50%+", l: "of JioMart orders from Tier 2 cities and beyond", src: "Reliance AGM, 2021" },
         { n: "~98%", l: "of shoppers on mobile", src: "JioMart live analytics, Jan 2023" },
-        { n: "~25K", l: "shoppers on the app at any moment, mostly browsing, not searching", src: "JioMart live analytics, Jan 2023" }
+        { n: "~25K", l: "shoppers at any moment, mostly browsing, not searching", src: "JioMart live analytics, Jan 2023" }
       ],
       foot: "Price-sensitive, mobile-only, browsing to decide: price, size and trust have to read at a glance.",
       notes: "Before the problem, who the shopper is. JioMart started with value-conscious households beyond the metros, the India 2 aspirers and India 3. 86% of Indian households earn under ₹3.4L a year, about ₹28K a month. Reliance said at its 2021 AGM that over half of JioMart orders came from Tier 2 and 3 cities. A live analytics snapshot from Jan 2023: about 25K shoppers on the app at any moment, about 98% on mobile, and far more of them on home and category pages than on search. So they browse to decide, on a phone, watching the price. Every later decision follows: price first, unit price and size on the card, trust signals up front."

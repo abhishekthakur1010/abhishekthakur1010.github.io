@@ -1622,7 +1622,7 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 @media (max-width: 560px) { .pricecue .pc-bento { grid-template-columns: 1fr; } }
 
 /* Target shopper: income pyramid + stats */
-.audience .au-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: clamp(20px,3vw,48px); align-items: center; margin-top: clamp(12px,2.2vh,26px); }
+.audience .au-grid { display: grid; grid-template-columns: minmax(0,1.55fr) minmax(0,.95fr); gap: clamp(20px,3vw,48px); align-items: center; margin-top: clamp(12px,2.2vh,26px); }
 .au-pyr { margin: 0; position: relative; display: flex; flex-direction: column; gap: 4px; padding-right: clamp(90px,10vw,150px); }
 .au-row { display: grid; grid-template-columns: clamp(120px,11vw,170px) 1fr; gap: 14px; align-items: center; height: clamp(46px,8.4vh,78px); }
 .au-lab { display: flex; flex-direction: column; text-align: right; line-height: 1.25; }
@@ -1635,16 +1635,27 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .au-row.focus .au-band { background: var(--info-soft); }
 .au-row.focus .au-band b { color: var(--info); }
 .au-row.focus .au-lab .au-india, .au-row.focus .au-lab b { color: var(--info); }
-.au-row:first-child .au-band span { display: none; }
+.au-row:first-child .au-band span, .au-row:first-child .au-band em { display: none; }
+.au-band em { font-style: normal; font-size: 11px; font-weight: 600; color: var(--info); max-height: 0; opacity: 0; overflow: hidden; transition: max-height .3s var(--ease), opacity .3s; }
+.au-row { cursor: default; transition: opacity .3s var(--ease); }
+.au-band { transition: transform .35s var(--ease), background .3s; transform-origin: center; }
+.au-pyr:hover .au-row { opacity: .4; }
+.au-pyr .au-row:hover { opacity: 1; }
+.au-row:hover .au-band { transform: scale(1.06); background: var(--info-soft); }
+.au-row:hover .au-band b, .au-row:hover .au-lab b { color: var(--info); }
+.au-row:hover .au-band em { max-height: 16px; opacity: 1; }
+.au-row.focus:hover .au-band { background: var(--info-line); }
 .au-brace { position: absolute; right: 0; top: calc(50% + 2px); bottom: 26px; width: clamp(80px,9vw,140px); border-left: 2px solid var(--info-line); padding-left: 12px; display: flex; flex-direction: column; justify-content: center; }
 .au-brace b { font-size: clamp(26px,2.6vw,38px); color: var(--info); line-height: 1; }
 .au-brace span { font-size: 12px; line-height: 1.4; color: var(--dim); margin-top: 6px; }
 .au-pyr figcaption { margin-top: 8px; font-size: 11px; color: var(--dim); padding-left: calc(clamp(120px,11vw,170px) + 14px); }
-.au-stats { display: flex; flex-direction: column; gap: clamp(10px,1.6vh,16px); }
-.au-stat { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 16px; padding: clamp(14px,1.4vw,20px); display: flex; flex-direction: column; gap: 4px; }
-.au-stat b { font-size: clamp(24px,2.4vw,34px); line-height: 1.05; color: var(--ink); letter-spacing: -0.02em; }
-.au-stat span { font-size: 13.5px; line-height: 1.45; color: var(--soft); }
-.au-stat em { font-style: normal; font-size: 11px; color: var(--dim); margin-top: 4px; }
+.au-stats { align-self: stretch; display: flex; flex-direction: column; justify-content: center; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 18px; padding: clamp(14px,1.6vw,22px) clamp(16px,1.8vw,26px); }
+.au-stats-h { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--info); margin-bottom: 6px; }
+.au-stat { display: grid; grid-template-columns: clamp(78px,7vw,104px) 1fr; gap: 14px; align-items: center; padding: clamp(10px,1.6vh,16px) 0; }
+.au-stat + .au-stat { border-top: 1px solid var(--panel-line); }
+.au-stat b { font-size: clamp(22px,2.1vw,30px); line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+.au-stat span { display: block; font-size: 13px; line-height: 1.4; color: var(--soft); }
+.au-stat em { display: block; font-style: normal; font-size: 10.5px; color: var(--dim); margin-top: 3px; }
 .au-foot { margin-top: clamp(14px,2.4vh,26px); font-size: clamp(14px,1.15vw,17px); font-weight: 600; color: var(--ink); border-left: 3px solid var(--info); padding-left: 12px; }
 @media (max-width: 1000px) { .audience .au-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .au-pyr { padding-right: 0; } .au-brace { position: static; margin-top: 10px; width: auto; } .au-row { grid-template-columns: 96px 1fr; } .au-pyr figcaption { padding-left: 0; } }

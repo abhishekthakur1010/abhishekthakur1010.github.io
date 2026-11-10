@@ -687,17 +687,18 @@
         var clip = "polygon(" + (50 - half(top)) + "% 0," + (50 + +half(top)) + "% 0," + (50 + +half(bot)) + "% 100%," + (50 - half(bot)) + "% 100%)";
         return "<div class='au-row" + (t.focus ? " focus" : "") + "'>" +
           "<div class='au-lab'><span class='au-india'>" + esc(t.india) + "</span><b>" + esc(t.k) + "</b><span>" + esc(t.inc) + "</span></div>" +
-          "<div class='au-band' style='clip-path:" + clip + "'><b>" + esc(t.pct) + "</b><span>" + esc(t.pop) + "</span></div></div>";
+          "<div class='au-band' style='clip-path:" + clip + "'><b>" + esc(t.pct) + "</b><span>" + esc(t.pop) + "</span>" +
+          (t.hh ? "<em>" + esc(t.hh) + "</em>" : "") + "</div></div>";
       }).join("");
       var stats = sc.stats.map(function (st, i) {
-        return "<div class='au-stat reveal' data-step='" + (i + 1) + "'><b>" + esc(st.n) + "</b><span>" + esc(st.l) + "</span>" +
-          (st.src ? "<em>" + esc(st.src) + "</em>" : "") + "</div>";
+        return "<div class='au-stat reveal' data-step='" + (i + 1) + "'><b>" + esc(st.n) + "</b><div><span>" + esc(st.l) + "</span>" +
+          (st.src ? "<em>" + esc(st.src) + "</em>" : "") + "</div></div>";
       }).join("");
       return "<div class='sl audience'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='au-grid'><figure class='au-pyr'>" + tiers +
         "<div class='au-brace'><b>" + esc(sc.brace.n) + "</b><span>" + esc(sc.brace.l) + "</span></div>" +
         "<figcaption>" + esc(sc.source) + "</figcaption></figure>" +
-        "<div class='au-stats'>" + stats + "</div></div>" +
+        "<div class='au-stats'><div class='au-stats-h'>" + esc(sc.statsTitle || "") + "</div>" + stats + "</div></div>" +
         (sc.foot ? "<p class='au-foot reveal' data-step='" + sc.stats.length + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
