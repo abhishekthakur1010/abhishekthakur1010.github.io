@@ -1594,3 +1594,33 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .lightbox.zoomed.dragging .lb-imgwrap img { cursor: grabbing; }
 .lightbox.zoomed .lb-cap:empty::before { content: "Drag or scroll to move · pinch to zoom · click to zoom out"; }
 .lb-imgwrap { will-change: transform; }
+
+/* Price first: shelf cue → our UI → reasons */
+.pricecue .pc-grid { display: grid; grid-template-columns: minmax(0,1.35fr) auto minmax(0,.95fr) minmax(0,1fr); gap: clamp(14px,2vw,28px); align-items: center; margin-top: clamp(14px,2.4vh,28px); }
+.pc-fig { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.pc-fig figcaption, .pc-k { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.pc-img { display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #fff; cursor: zoom-in; }
+.pc-img img { display: block; width: 100%; height: auto; }
+.pc-media { position: relative; display: block; padding-bottom: 6%; }
+.pc-fig.shelf .pc-img { aspect-ratio: 4/3; }
+.pc-inset { position: absolute; right: -4%; bottom: 0; width: 42%; border-radius: 10px; overflow: hidden; border: 2px solid var(--info); box-shadow: 0 12px 30px rgba(0,0,0,.35); cursor: zoom-in; background: #fff; }
+.pc-inset img { display: block; width: 100%; height: auto; }
+.pc-fig.shelf .pc-img img { height: 100%; object-fit: cover; }
+.pc-img.failed { aspect-ratio: 4/3; background: var(--info-soft); }
+.pc-img.failed img { display: none; }
+.pc-cap { margin: 0; font-size: 13px; line-height: 1.45; color: var(--dim); }
+.pc-arrow { font-size: 28px; color: var(--info); }
+.pc-ours { display: flex; flex-direction: column; gap: 12px; }
+.pc-shot { display: flex; flex-direction: column; gap: 6px; }
+.pc-tag { font-size: 12px; font-weight: 600; color: var(--info); }
+.pc-why { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: clamp(10px,1.8vh,18px); }
+.pc-why li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+.pc-n { font-size: 12px; font-weight: 700; color: var(--info); padding-top: 3px; }
+.pc-why b { display: block; font-size: clamp(14px,1.15vw,17px); color: var(--ink); margin-bottom: 3px; }
+.pc-why span:not(.pc-n) { font-size: 13px; line-height: 1.45; color: var(--dim); }
+@media (max-width: 1100px) {
+  .pricecue .pc-grid { grid-template-columns: 1fr 1fr; }
+  .pc-arrow { display: none; }
+  .pc-why { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) { .pricecue .pc-grid { grid-template-columns: 1fr; } }

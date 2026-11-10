@@ -121,6 +121,7 @@
       case "ideas": return sc.pairs.length;
       case "collab": return sc.steps.length;
       case "pair": return 0;
+      case "pricecue": return sc.why.length;
       case "hubmap": return 1;
       case "stack": return 1;
       case "funnels": return sc.funnels.length;
@@ -674,6 +675,25 @@
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='pr-row'>" + figs + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>";
+    },
+
+    /* real-world cue → our UI → the reasons, one per step */
+    pricecue: function (sc) {
+      var fig = function (f, cls) {
+        return "<figure class='pc-fig " + cls + "'><figcaption>" + esc(f.k) + "</figcaption>" +
+          "<span class='pc-media'><span class='pc-img zoomable' title='Click to enlarge'><img src='" + img(f.img) + "' alt='" + esc(f.alt || "") + "' onerror=\"this.parentElement.classList.add('failed')\"></span>" +
+          (f.inset ? "<span class='pc-inset zoomable' title='Click to enlarge'><img src='" + img(f.inset) + "' alt=''></span>" : "") + "</span>" +
+          (f.d ? "<p class='pc-cap'>" + esc(f.d) + "</p>" : "") + "</figure>";
+      };
+      var ours = "<div class='pc-ours'><div class='pc-k'>" + esc(sc.ours.k) + "</div>" + sc.ours.shots.map(function (o) {
+        return "<div class='pc-shot'><span class='pc-tag'>" + esc(o.t) + "</span><span class='pc-img zoomable' title='Click to enlarge'><img src='" + img(o.img) + "' alt=''></span></div>";
+      }).join("") + "</div>";
+      var why = sc.why.map(function (w, i) {
+        return "<li class='reveal' data-step='" + (i + 1) + "'><span class='pc-n'>" + pad(i + 1) + "</span><div><b>" + esc(w.t) + "</b><span>" + esc(w.d) + "</span></div></li>";
+      }).join("");
+      return "<div class='sl pricecue'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='pc-grid'>" + fig(sc.shelf, "shelf") + "<span class='pc-arrow' aria-hidden='true'>→</span>" + ours +
+        "<ol class='pc-why'>" + why + "</ol></div></div>";
     },
 
     /* team sessions as a photo-led timeline */
