@@ -194,12 +194,11 @@ window.DECK = {
         { india: "India 2", k: "Aspirers", inc: "₹1.5–3.4L a year", pct: "30%", pop: "359M people", hh: "71M households", focus: true },
         { india: "India 3", k: "Deprived", inc: "below ₹1.5L a year", pct: "56%", pop: "684M people", hh: "135M households", focus: true }
       ],
-      brace: { n: "86%", l: "of households earn under ₹3.4L a year" },
       source: "Share of households by annual income. Source: India Stack",
-      statsTitle: "On JioMart",
       stats: [
+        { n: "86%", l: "of Indian households earn under ₹3.4L a year", src: "India Stack", key: true },
         { n: "50%+", l: "of JioMart orders from Tier 2 cities and beyond", src: "Reliance AGM, 2021" },
-        { n: "~98%", l: "of shoppers on mobile", src: "JioMart live analytics, Jan 2023" },
+        { n: "~98%", l: "of JioMart shoppers on mobile", src: "JioMart live analytics, Jan 2023" },
         { n: "~25K", l: "shoppers at any moment, mostly browsing, not searching", src: "JioMart live analytics, Jan 2023" }
       ],
       foot: "Price-sensitive, mobile-only, browsing to decide: price, size and trust have to read at a glance.",

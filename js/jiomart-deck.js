@@ -678,27 +678,25 @@
         "<div class='pr-row'>" + figs + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
-    /* who we designed for: income pyramid + live stats */
+    /* who we designed for: income pyramid, each tier row aligned with one stat row */
     audience: function (sc) {
       var n = sc.tiers.length;
       var tiers = sc.tiers.map(function (t, i) {
-        var top = (i / n * 100).toFixed(2), bot = ((i + 1) / n * 100).toFixed(2);
-        var half = function (y) { return (50 * y / 100).toFixed(2); };
-        var clip = "polygon(" + (50 - half(top)) + "% 0," + (50 + +half(top)) + "% 0," + (50 + +half(bot)) + "% 100%," + (50 - half(bot)) + "% 100%)";
+        var top = (i / n * 100), bot = ((i + 1) / n * 100);
+        var h = function (y) { return (50 * y / 100).toFixed(2); };
+        var clip = "polygon(" + (50 - h(top)) + "% 0," + (50 + +h(top)) + "% 0," + (50 + +h(bot)) + "% 100%," + (50 - h(bot)) + "% 100%)";
         return "<div class='au-row" + (t.focus ? " focus" : "") + "'>" +
           "<div class='au-lab'><span class='au-india'>" + esc(t.india) + "</span><b>" + esc(t.k) + "</b><span>" + esc(t.inc) + "</span></div>" +
           "<div class='au-band' style='clip-path:" + clip + "'><b>" + esc(t.pct) + "</b><span>" + esc(t.pop) + "</span>" +
           (t.hh ? "<em>" + esc(t.hh) + "</em>" : "") + "</div></div>";
       }).join("");
       var stats = sc.stats.map(function (st, i) {
-        return "<div class='au-stat reveal' data-step='" + (i + 1) + "'><b>" + esc(st.n) + "</b><div><span>" + esc(st.l) + "</span>" +
+        return "<div class='au-stat reveal" + (st.key ? " key" : "") + "' data-step='" + (i + 1) + "'><b>" + esc(st.n) + "</b><div><span>" + esc(st.l) + "</span>" +
           (st.src ? "<em>" + esc(st.src) + "</em>" : "") + "</div></div>";
       }).join("");
       return "<div class='sl audience'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
-        "<div class='au-grid'><figure class='au-pyr'>" + tiers +
-        "<div class='au-brace'><b>" + esc(sc.brace.n) + "</b><span>" + esc(sc.brace.l) + "</span></div>" +
-        "<figcaption>" + esc(sc.source) + "</figcaption></figure>" +
-        "<div class='au-stats'><div class='au-stats-h'>" + esc(sc.statsTitle || "") + "</div>" + stats + "</div></div>" +
+        "<div class='au-grid'><figure class='au-pyr'>" + tiers + "<figcaption>" + esc(sc.source) + "</figcaption></figure>" +
+        "<div class='au-stats'>" + stats + "</div></div>" +
         (sc.foot ? "<p class='au-foot reveal' data-step='" + sc.stats.length + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
