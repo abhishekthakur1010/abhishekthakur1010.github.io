@@ -122,6 +122,7 @@
       case "collab": return sc.steps.length;
       case "pair": return 0;
       case "pricecue": return sc.cards.length;
+      case "audience": return sc.stats.length;
       case "hubmap": return 1;
       case "stack": return 1;
       case "funnels": return sc.funnels.length;
@@ -675,6 +676,29 @@
       }).join("");
       return "<div class='sl'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
         "<div class='pr-row'>" + figs + "</div>" + (sc.foot ? "<p class='note'>" + esc(sc.foot) + "</p>" : "") + "</div>";
+    },
+
+    /* who we designed for: income pyramid + live stats */
+    audience: function (sc) {
+      var n = sc.tiers.length;
+      var tiers = sc.tiers.map(function (t, i) {
+        var top = (i / n * 100).toFixed(2), bot = ((i + 1) / n * 100).toFixed(2);
+        var half = function (y) { return (50 * y / 100).toFixed(2); };
+        var clip = "polygon(" + (50 - half(top)) + "% 0," + (50 + +half(top)) + "% 0," + (50 + +half(bot)) + "% 100%," + (50 - half(bot)) + "% 100%)";
+        return "<div class='au-row" + (t.focus ? " focus" : "") + "'>" +
+          "<div class='au-lab'><span class='au-india'>" + esc(t.india) + "</span><b>" + esc(t.k) + "</b><span>" + esc(t.inc) + "</span></div>" +
+          "<div class='au-band' style='clip-path:" + clip + "'><b>" + esc(t.pct) + "</b><span>" + esc(t.pop) + "</span></div></div>";
+      }).join("");
+      var stats = sc.stats.map(function (st, i) {
+        return "<div class='au-stat reveal' data-step='" + (i + 1) + "'><b>" + esc(st.n) + "</b><span>" + esc(st.l) + "</span>" +
+          (st.src ? "<em>" + esc(st.src) + "</em>" : "") + "</div>";
+      }).join("");
+      return "<div class='sl audience'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='au-grid'><figure class='au-pyr'>" + tiers +
+        "<div class='au-brace'><b>" + esc(sc.brace.n) + "</b><span>" + esc(sc.brace.l) + "</span></div>" +
+        "<figcaption>" + esc(sc.source) + "</figcaption></figure>" +
+        "<div class='au-stats'>" + stats + "</div></div>" +
+        (sc.foot ? "<p class='au-foot reveal' data-step='" + sc.stats.length + "'>" + esc(sc.foot) + "</p>" : "") + "</div>";
     },
 
     /* bento: one grey card per reason, each with its proof image */

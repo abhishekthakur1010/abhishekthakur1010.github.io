@@ -182,6 +182,29 @@ window.DECK = {
       notes: "Open simply: shoppers could find products but struggled to choose, so I simplified the journey from discovery to purchase. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
+    /* 02 — WHO WE DESIGNED FOR */
+    {
+      section: "context", type: "audience",
+      eyebrow: "Requirement · Who we designed for",
+      headline: ["Target shopper"],
+      sub: "JioMart started with value-conscious households beyond the metros.",
+      tiers: [
+        { india: "India 1", k: "Rich", inc: "above ₹17L a year", pct: "1%", pop: "16M people" },
+        { india: "India 1", k: "Middle class", inc: "₹3.4–17L a year", pct: "13%", pop: "160M people" },
+        { india: "India 2", k: "Aspirers", inc: "₹1.5–3.4L a year", pct: "30%", pop: "359M people", focus: true },
+        { india: "India 3", k: "Deprived", inc: "below ₹1.5L a year", pct: "56%", pop: "684M people", focus: true }
+      ],
+      brace: { n: "86%", l: "of households earn under ₹3.4L a year" },
+      source: "Share of households by annual income. Source: India Stack",
+      stats: [
+        { n: "50%+", l: "of JioMart orders from Tier 2 cities and beyond", src: "Reliance AGM, 2021" },
+        { n: "~98%", l: "of shoppers on mobile", src: "JioMart live analytics, Jan 2023" },
+        { n: "~25K", l: "shoppers on the app at any moment, mostly browsing, not searching", src: "JioMart live analytics, Jan 2023" }
+      ],
+      foot: "Price-sensitive, mobile-only, browsing to decide: price, size and trust have to read at a glance.",
+      notes: "Before the problem, who the shopper is. JioMart started with value-conscious households beyond the metros, the India 2 aspirers and India 3. 86% of Indian households earn under ₹3.4L a year, about ₹28K a month. Reliance said at its 2021 AGM that over half of JioMart orders came from Tier 2 and 3 cities. A live analytics snapshot from Jan 2023: about 25K shoppers on the app at any moment, about 98% on mobile, and far more of them on home and category pages than on search. So they browse to decide, on a phone, watching the price. Every later decision follows: price first, unit price and size on the card, trust signals up front."
+    },
+
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
       section: "context", type: "flowview",
@@ -333,7 +356,7 @@ window.DECK = {
       section: "design", type: "pricecue",
       eyebrow: "The solution · Why the price is big",
       headline: ["Price first"],
-      sub: "We borrowed the hierarchy shoppers already trust on the shelf.",
+      sub: "For a family on ₹12–28K a month, the price tag is the decision. So we borrowed the shelf’s hierarchy.",
       cards: [
         { src: "In store", t: "Shoppers read the price first", d: "Every shelf tag leads with what you pay. Name next, MRP smallest.",
           img: "offline-price-spices.webp", inset: "offline-price-tag.webp", fit: "cover", alt: "Spice aisle; close-up tag: ₹79.50 large, MRP ₹106 small" },
