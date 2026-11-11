@@ -122,6 +122,9 @@
       case "collab": return sc.steps.length;
       case "pair": return 0;
       case "pricecue": return sc.cards.length;
+      case "screenwall": return 0;
+      case "pushback": return sc.rows.length;
+      case "nowlens": return 2;
       case "audience": return sc.stats.length;
       case "hubmap": return 1;
       case "stack": return 1;
@@ -742,6 +745,50 @@
         "<div class='dc-table" + (cmp ? " compact" : "") + "'>" + head + rows + "</div></div>";
     },
 
+    /* one page type across categories: Old → New pairs on a sideways track, each with a Saw / Proof / Decided card */
+    screenwall: function (sc) {
+      var lab = sc.labels || ["Old", "New"];
+      var pairs = sc.pairs.map(function (p) {
+        var old = p.before ? "<span class='sw-shot' title='Click to enlarge'>" + device(p.before, 0, "sw") + "</span>" : pendingDevice(p.beforeNote || "[ADD OLD SCREEN]");
+        var nu = p.after ? "<span class='sw-shot' title='Click to enlarge'>" + device(p.after, 0, "sw") + "</span>" : pendingDevice(p.afterNote || "[ADD NEW SCREEN]");
+        var why = [["Saw", p.saw], ["Proof", p.proof], ["Decided", p.decided]].map(function (x) {
+          return x[1] ? "<div class='sw-why-row'><span class='sw-why-k'>" + x[0] + "</span><span class='sw-why-v" + (ph(x[1]) ? " ph" : "") + "'>" + esc(x[1]) + "</span></div>" : "";
+        }).join("");
+        return "<article class='sw-pair'><div class='sw-k'><b>" + esc(p.k) + "</b>" + (p.tag ? "<span class='tag " + (p.tone || "neutral") + "'>" + esc(p.tag) + "</span>" : "") + "</div>" +
+          "<div class='sw-phones'><figure><figcaption>" + esc(lab[0]) + "</figcaption>" + old + "</figure><span class='sw-arrow' aria-hidden='true'>→</span>" +
+          "<figure class='new'><figcaption>" + esc(lab[1]) + "</figcaption>" + nu + "</figure></div>" +
+          (why ? "<div class='sw-why'>" + why + "</div>" : "") + "</article>";
+      }).join("");
+      return "<div class='sl screenwall'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='sw-nav'><span class='sw-count'>" + sc.pairs.length + " screens</span><button type='button' class='sw-btn' data-sw='-1' aria-label='Scroll back'>←</button><button type='button' class='sw-btn' data-sw='1' aria-label='Scroll on'>→</button></div></div>" +
+        "<div class='sw-track' tabindex='0'>" + pairs + "</div></div>";
+    },
+
+    /* moments where design held its position: what product wanted, what I proposed, the evidence, the outcome */
+    pushback: function (sc) {
+      var hd = sc.heads || ["Moment", "Product wanted", "I proposed", "Evidence I used", "Outcome"];
+      var head = "<div class='pb-row pb-head'>" + hd.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>";
+      var cell = function (v) { return "<span class='" + (ph(v) ? "ph" : "") + "'>" + esc(v) + "</span>"; };
+      var rows = sc.rows.map(function (r, i) {
+        return "<div class='pb-row reveal' data-step='" + (i + 1) + "'><b class='" + (ph(r.k) ? "ph" : "") + "'>" + esc(r.k) + "</b>" +
+          cell(r.want) + cell(r.proposed) + cell(r.evidence) + cell(r.outcome) + "</div>";
+      }).join("");
+      return "<div class='sl pushback'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='pb-table'>" + head + rows + "</div>" + (sc.foot ? "<p class='pb-foot'>" + esc(sc.foot) + "</p>" : "") + "</div>";
+    },
+
+    /* how I would design it today, and how I work now with AI */
+    nowlens: function (sc) {
+      var col = function (c, n) {
+        return "<section class='nl-col reveal' data-step='" + n + "'><div class='nl-k'>" + esc(c.k) + "</div>" + (c.lead ? "<p class='nl-lead'>" + esc(c.lead) + "</p>" : "") +
+          "<ol class='nl-list'>" + c.items.map(function (it) {
+            return "<li><b>" + esc(it.t) + "</b><span class='" + (ph(it.d) ? "ph" : "") + "'>" + esc(it.d) + "</span></li>";
+          }).join("") + "</ol></section>";
+      };
+      return "<div class='sl nowlens'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div>" +
+        "<div class='nl-grid'>" + col(sc.today, 1) + col(sc.ai, 2) + "</div></div>";
+    },
+
     /* 09 · three before/after pairs of the shipped DS 2.0 screens */
     showcase: function (sc) {
       var pairs = sc.pairs.map(function (p, i) {
@@ -1305,7 +1352,7 @@
   stage.addEventListener("click", function (e) {
     if (evidenceOpen() || lightboxOpen() || Date.now() - lbClosedAt < 250) return;
     // anything that opens a lightbox or acts on its own never advances the slide
-    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop, .fv-step, .rv-shot, .bd-img, .dc-thumb, .ci-shot")) return;
+    if (e.target.closest("a, button, video, .zoomable, .device, .tile, .ci-drop, .fv-step, .rv-shot, .bd-img, .dc-thumb, .ci-shot, .sw-track")) return;
     var x = e.clientX / window.innerWidth;
     if (x < 0.24) prev(); else next();
   });
@@ -1317,6 +1364,18 @@
     if (shot) {
       var sh = (slides[index].define || {}).shots || [];
       openGallery(sh.map(function (x) { return { src: img(x.img), cap: x.k, title: x.k, pain: x.pain }; }), parseInt(shot.getAttribute("data-shot"), 10) || 0);
+      return;
+    }
+    var swb = e.target.closest(".sw-btn");
+    if (swb) {
+      var tr = slideEl && slideEl.querySelector(".sw-track");
+      if (tr) tr.scrollBy({ left: (parseInt(swb.getAttribute("data-sw"), 10) || 1) * tr.clientWidth * 0.8, behavior: "smooth" });
+      return;
+    }
+    var sw = e.target.closest(".sw-shot");
+    if (sw && sw.querySelector("img")) {
+      var swk = sw.closest(".sw-pair").querySelector(".sw-k b");
+      openLightbox(sw.querySelector("img").src, swk ? swk.textContent : "");
       return;
     }
     var rv = e.target.closest(".rv-shot, .bd-img, .dc-thumb");

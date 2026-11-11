@@ -396,6 +396,107 @@ window.DECK = {
       notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
     },
 
+    /* ACROSS THE APP — every page type, Old → New, per category (new screens: blank frames until the final Figma) */
+    {
+      section: "design", type: "screenwall",
+      eyebrow: "Across the app · Product page",
+      headline: ["PDP, every vertical"],
+      sub: "One product-page system for groceries, gadgets, fashion and beauty. Scroll sideways.",
+      labels: ["Old", "New"],
+      pairs: [
+        { k: "Grocery", tag: "S3 critical", tone: "neg", before: "enhance-problem-pdp.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Brand not highlighted; delivery date hidden behind a pincode; rating and CTA weak.",
+          proof: "Rated S3 / E2 in the {{23-issue audit|audit}}; breaks heuristics #3, #4 and #5.",
+          decided: "Brand above the name, rating under it, price, size and delivery above the fold." },
+        { k: "Electronics", beforeNote: "[ADD OLD SCREEN · Electronics PDP]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "EMI didn't look tappable; compare chart had no buy CTA; lots of white space.",
+          proof: "Same gaps on 4 of 4 audited verticals: brand, pincode wall, weak rating and CTA.",
+          decided: "[ADD · what changed on the Electronics PDP]" },
+        { k: "Mobiles", beforeNote: "[ADD OLD SCREEN · Mobile PDP]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Colour and storage variants missing; specs text-heavy, main purpose not up front.",
+          proof: "Section-by-section comparison across Beauty, Electronics, Mobile and Fashion PDPs.",
+          decided: "[ADD · what changed on the Mobile PDP]" },
+        { k: "Fashion", beforeNote: "[ADD OLD SCREEN · Fashion PDP]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Brand came after the product name; offers didn't look tappable; one font weight everywhere.",
+          proof: "Audit note on Fashion: \u201cbrand first, then the product name\u201d.",
+          decided: "[ADD · what changed on the Fashion PDP]" },
+        { k: "Beauty", beforeNote: "[ADD OLD SCREEN · Beauty PDP]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Offers missing; wishlist badly placed; seller info and return policy not shown.",
+          proof: "Beauty PDP audit: gaps and pain points page.",
+          decided: "[ADD · what changed on the Beauty PDP]" },
+        { k: "Ratings & reviews", before: "enhance-ba-pdp-reviews-before.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "No review section; rating didn't read as intuitive.",
+          proof: "Reviews and ratings came up in field research and the audit.",
+          decided: "Rating summary, reviews with View all, likes and photo upload." }
+      ],
+      notes: "This is the range. Every vertical had the same four problems in the audit: brand not highlighted, delivery behind a pincode, weak rating, weak CTA. One product-page system fixed them for groceries, gadgets, fashion and beauty. Each card says what we saw, the proof, and what we decided. Click any old screen to enlarge it."
+    },
+
+    {
+      section: "design", type: "screenwall",
+      eyebrow: "Across the app · Listing page",
+      headline: ["PLP, every vertical"],
+      sub: "The same card everywhere, so shoppers compare instead of read.",
+      labels: ["Old", "New"],
+      pairs: [
+        { k: "Grocery", tag: "S2", before: "enhance-problem-plp.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Name and price only; the + button silently stopped at max quantity.",
+          proof: "Listing page rated S2 / E2 (#5 Error prevention) in the {{audit|audit}}.",
+          decided: "Discount, unit price, size and wishlist on every card; feedback at max quantity." },
+        { k: "Mobiles & electronics", before: "enhance-iter-mobile-before.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Every card showed different info; selected filters barely visible.",
+          proof: "Filter & sort rated S2 in the audit; {{5 leading apps|competitors}} show price and rating on cards.",
+          decided: "[ADD · what changed on the Electronics PLP]" },
+        { k: "Fashion", beforeNote: "[ADD OLD SCREEN · Fashion PLP]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "[ADD · audit finding for Fashion listing]", proof: "[ADD · data or field evidence]", decided: "[ADD · what changed]" },
+        { k: "Beauty", beforeNote: "[ADD OLD SCREEN · Beauty PLP]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "[ADD · audit finding for Beauty listing]", proof: "[ADD · data or field evidence]", decided: "[ADD · what changed]" },
+        { k: "Wishlist test", tag: "9 of 12", tone: "pos", beforeNote: "[ADD OLD SCREEN · wishlist]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Shoppers needed to save products while comparing.",
+          proof: "{{9 of 12|usability}} completed the save-to-wishlist task in the usability test.",
+          decided: "Wishlist on the card, then iterated so the icon was easier to spot." }
+      ],
+      notes: "Listing pages are where comparison happens, so every vertical got the same card: price, MRP, % off, unit price, size, wishlist. The usability test backs it: 9 of 12 completed the wishlist task, and we iterated the icon after."
+    },
+
+    {
+      section: "design", type: "screenwall",
+      eyebrow: "Across the app · Home and search",
+      headline: ["Home & search"],
+      sub: "Where most shoppers start, and where searchers already convert best.",
+      labels: ["Old", "New"],
+      pairs: [
+        { k: "Home", before: "enhance-problem-home.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Busy banners, random fonts and colours, 7+ carousel cards; category icons inconsistent.",
+          proof: "Banners rated S2 and category icons S0 in the {{audit|audit}}.",
+          decided: "Search first, categories right under it, one banner carousel." },
+        { k: "Search", before: "enhance-iter-search-before.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Wrong categories in suggestions; monotonous, text-only results.",
+          proof: "Searchers added to cart {{4\u00d7 more|searchers}} than the average session.",
+          decided: "Search made the hero of Home; visual suggestions." },
+        { k: "Categories", beforeNote: "[ADD OLD SCREEN · category tray]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Category hierarchy differed by entry point; fashion and medicine missing.",
+          proof: "Menu & categories rated S2 in the audit.",
+          decided: "[ADD · what changed in categories]" }
+      ],
+      notes: "Home is where most sessions start, but searchers convert about four times better, so search became the hero and categories sit right under it."
+    },
+
+    /* WHERE I HELD THE LINE — real stories only: fill every [ADD] before presenting */
+    {
+      section: "design", type: "pushback",
+      eyebrow: "Design leadership · Under product pressure",
+      headline: ["Where I pushed back"],
+      sub: "Moments where product wanted one thing, and data moved the decision.",
+      rows: [
+        { k: "[ADD · moment 1, e.g. bottom nav on the PDP]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used: bounce, test, audit]", outcome: "[ADD · what shipped, or the compromise]" },
+        { k: "[ADD · moment 2, e.g. header actions]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used]", outcome: "[ADD · what shipped, or the compromise]" },
+        { k: "[ADD · moment 3, a compromise]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used]", outcome: "[ADD · the trade-off we agreed and why]" }
+      ],
+      foot: "Draft: replace every placeholder with a real moment before presenting.",
+      notes: "Three moments where design held a position under product pressure: what product wanted, what I proposed, the data I used, and how it ended. Include at least one compromise. Fill these with real stories only."
+    },
+
     {
       section: "results", type: "results",
       eyebrow: "Validation & impact",
@@ -423,6 +524,32 @@ window.DECK = {
     },
 
     /* 12 — KEY TAKEAWAYS */
+    /* NOW — today's design lens and AI-led process (placeholders until confirmed) */
+    {
+      section: "results", type: "nowlens",
+      eyebrow: "Today",
+      headline: ["If I built it now"],
+      today: {
+        k: "If I designed this today", lead: "2023 constraints shaped the UI. Here's how I'd evolve it now.",
+        items: [
+          { t: "Visual system", d: "[ADD · tokens, type scale, colour and dark mode]" },
+          { t: "Motion & feedback", d: "[ADD · micro-interactions for add to cart, wishlist, filters]" },
+          { t: "Accessibility", d: "[ADD · contrast, tap targets, screen-reader labels]" },
+          { t: "Personalisation", d: "[ADD · what the page would adapt to]" }
+        ]
+      },
+      ai: {
+        k: "How I work now · AI-led", lead: "Where AI sits in my process, step by step.",
+        items: [
+          { t: "Research synthesis", d: "[ADD · tool and how: e.g. clustering audit and interview notes]" },
+          { t: "Exploration", d: "[ADD · tool and how: variants and flows]" },
+          { t: "Prototyping", d: "[ADD · tool and how: coded or interactive prototypes]" },
+          { t: "Build & ship", d: "[ADD · tool and how: e.g. this deck and portfolio built with AI agents]" }
+        ]
+      },
+      notes: "Two things: how I'd evolve this UI today, and where AI sits in my process now. Only list what I actually use."
+    },
+
     {
       section: "results", type: "close",
       eyebrow: "Key takeaways",
