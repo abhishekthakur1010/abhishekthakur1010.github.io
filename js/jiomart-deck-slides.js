@@ -557,11 +557,11 @@ window.DECK = {
     {
       section: "impact", type: "kpm",
       title: "Key performance metrics",
-      sub: "Before vs after launch",
+      sub: "Before vs after launch. Both targets beaten.",
       when: "Jan – Aug 2023",
       items: [
-        ["+28%", "Sessions with add-to-cart", "10.41% vs 13.35%"],
-        ["+21%", "Search add-to-cart", "41.4% vs 50.2%"],
+        ["+28%", "Sessions with add-to-cart", "10.41% vs 13.35% \u00b7 target was 12%"],
+        ["+21%", "Search add-to-cart", "41.4% vs 50.2% \u00b7 target was 45%"],
         ["+24%", "Time per active user", "4m 14s vs 5m 15s"],
         ["+25%", "Time per session", "1m 46s vs 2m 13s"],
         ["+21%", "Page views per user", "5.81 vs 7.04"],
