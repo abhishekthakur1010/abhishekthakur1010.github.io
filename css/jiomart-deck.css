@@ -1944,3 +1944,36 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .ch-mo .ch-m:nth-child(3) { grid-column: span 2; opacity: .75; }
 .ch-vis { position: relative; }
 .ch-vis > img { position: absolute; inset: 0; }
+
+/* ===================== CONSISTENCY LAYER =====================
+   One title size, one sub size, one top line for every content slide. */
+:root {
+  --t-title: clamp(28px, 2.9vw, 44px);
+  --t-display: clamp(52px, 6vw, 92px);
+  --t-sub: clamp(15px, 1.2vw, 18px);
+  --t-label: 12px;
+  --card-r: 16px;
+  --card-b: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  --card-sh: 0 1px 2px rgba(16,24,40,.04), 0 10px 28px -8px rgba(16,24,40,.10);
+}
+.slide:not(.type-opening) { align-items: flex-start; padding-top: clamp(24px, 4.5vh, 52px); }
+.slide:not(.type-opening) .sl h2 {
+  font-size: var(--t-title) !important; font-weight: 800 !important; letter-spacing: -0.03em !important;
+  line-height: 1.08 !important; max-width: 24ch !important; white-space: normal !important; margin-top: 0 !important;
+}
+.slide.type-why .sl h2, .slide.type-overview .sl h2 { font-size: var(--t-display) !important; line-height: .98 !important; max-width: 10ch !important; }
+.slide:not(.type-opening) .sl :is(.sub, .ch-sub, .au-sub, .kpm-h p, .ap-h p, .ov-l p, .why-l > p) {
+  font-size: var(--t-sub) !important; color: var(--soft); line-height: 1.5; max-width: 62ch; margin-top: 10px;
+}
+/* two-column layouts: top-align so the title sits on the same line everywhere */
+.slide:not(.type-opening) :is(.split, .ov-row, .why, .au, .sl.audit, .sl.why, .sl.overview, .fv-slide, .cl2, .sl.close) { align-items: start !important; }
+/* step labels */
+.st-n, .ch-step .st-n, .ap-col { font-size: var(--t-label) !important; letter-spacing: .08em !important; text-transform: uppercase; font-weight: 800 !important; color: var(--info) !important; }
+/* cards and image frames share one radius, border and shadow */
+:is(.ch-vis, .st-vis, .usp-i, .kpm-i, .ev-c .ev-img, .fd-grid > *, .ap-b, .ap-a) { border-radius: var(--card-r) !important; }
+:is(.ch-vis, .st-vis, .ev-c .ev-img) { border: var(--card-b) !important; box-shadow: var(--card-sh); background: #fff; }
+/* source lines */
+:is(.au-src, .kpm-src) { font-size: 12px !important; color: var(--dim) !important; margin-top: 2.2vh; }
+.slide.type-overview .sl h2 { font-size: clamp(40px, 4.4vw, 68px) !important; max-width: 7ch !important; }
+.ch-vis { height: min(38vh, 350px); }
+.ov-n .device { --w: min(11.5vw, 34vh, 220px) !important; }
