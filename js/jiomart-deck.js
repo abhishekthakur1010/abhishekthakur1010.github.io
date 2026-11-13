@@ -123,6 +123,7 @@
       case "pair": return 0;
       case "pricecue": return sc.cards.length;
       case "screenwall": return 0;
+      case "proto": return 0;
       case "pushback": return sc.rows.length;
       case "nowlens": return 2;
       case "audience": return sc.stats.length;
@@ -764,6 +765,24 @@
         "<div class='sw-track' tabindex='0'>" + pairs + "</div></div>";
     },
 
+    /* four tappable phones: hotspots open the real sheets inside the phone; Old/New flips the screen */
+    proto: function (sc) {
+      var phones = sc.phones.map(function (p, i) {
+        var hot = (p.hot || []).map(function (h) {
+          return "<button type='button' class='pt-hot' data-open='" + img(h.open) + "' aria-label='" + esc(h.label) + "' style='left:" + (h.x / 3.6) + "%;top:" + (h.y / p.h * 100) + "%;width:" + (h.w / 3.6) + "%;height:" + (h.h / p.h * 100) + "%'><i></i><span>" + esc(h.label) + "</span></button>";
+        }).join("");
+        var tog = p.old ? "<div class='pt-tog' role='group'><button type='button' data-v='old'>Old</button><button type='button' data-v='new' class='on'>New</button></div>" : "<div class='pt-tog none'><span>New</span></div>";
+        return "<article class='pt-card'><div class='pt-k'><b>" + esc(p.k) + "</b>" + tog + "</div>" +
+          "<div class='device pt-dev'><div class='dn'></div><div class='ds'><div class='pt-scroll'>" +
+          "<div class='pt-view new on'><img src='" + img(p.img) + "' alt='" + esc(p.k) + ", new'>" + hot + "</div>" +
+          (p.old ? "<div class='pt-view old'><img src='" + img(p.old) + "' alt='" + esc(p.k) + ", old' loading='lazy'></div>" : "") +
+          "</div><div class='pt-sheet' hidden><img alt=''><button type='button' class='pt-x' aria-label='Close'>✕</button></div></div></div>" +
+          "<div class='pt-why'><p>" + esc(p.why) + "</p>" + (p.proof ? "<small>" + esc(p.proof) + "</small>" : "") + "</div>" +
+          ((p.hot || []).length ? "<div class='pt-hint'>Tap: " + p.hot.map(function (h) { return esc(h.label); }).join(" · ") + "</div>" : "<div class='pt-hint'>Scroll inside the phone</div>") + "</article>";
+      }).join("");
+      return "<div class='sl proto'><div class='sl-head'><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") + sub(sc.sub) + "</div><div class='pt-grid'>" + phones + "</div></div>";
+    },
+
     /* moments where design held its position: what product wanted, what I proposed, the evidence, the outcome */
     pushback: function (sc) {
       var hd = sc.heads || ["Moment", "Product wanted", "I proposed", "Evidence I used", "Outcome"];
@@ -1364,6 +1383,23 @@
     if (shot) {
       var sh = (slides[index].define || {}).shots || [];
       openGallery(sh.map(function (x) { return { src: img(x.img), cap: x.k, title: x.k, pain: x.pain }; }), parseInt(shot.getAttribute("data-shot"), 10) || 0);
+      return;
+    }
+    var pth = e.target.closest(".pt-hot");
+    if (pth) {
+      var dev = pth.closest(".pt-dev"), shp = dev.querySelector(".pt-sheet");
+      shp.querySelector("img").src = pth.getAttribute("data-open"); shp.hidden = false;
+      requestAnimationFrame(function () { shp.classList.add("on"); });
+      return;
+    }
+    var pts = e.target.closest(".pt-sheet");
+    if (pts) { pts.classList.remove("on"); setTimeout(function () { pts.hidden = true; }, 260); return; }
+    var ptt = e.target.closest(".pt-tog button");
+    if (ptt) {
+      var card = ptt.closest(".pt-card"), v = ptt.getAttribute("data-v");
+      card.querySelectorAll(".pt-tog button").forEach(function (b) { b.classList.toggle("on", b === ptt); });
+      card.querySelectorAll(".pt-view").forEach(function (x) { x.classList.toggle("on", x.classList.contains(v)); });
+      card.querySelector(".pt-scroll").scrollTop = 0;
       return;
     }
     var swb = e.target.closest(".sw-btn");

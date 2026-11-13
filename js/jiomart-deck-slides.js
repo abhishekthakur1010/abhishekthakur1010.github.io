@@ -397,83 +397,37 @@ window.DECK = {
     },
 
     /* ACROSS THE APP — every page type, Old → New, per category (new screens: blank frames until the final Figma) */
+    /* TAP THROUGH IT — four live phones: tap the pulsing spots to open the real sheets */
     {
-      section: "design", type: "screenwall",
-      eyebrow: "Across the app · Product page",
-      headline: ["PDP, every vertical"],
-      sub: "One product-page system for groceries, gadgets, fashion and beauty. Scroll sideways, and scroll inside any phone.",
-      labels: ["Old", "New"],
-      pairs: [
-        { k: "Grocery", tag: "S3 critical", tone: "neg", before: "enhance-problem-pdp.png", after: "new/pdp-grocery.webp",
-          saw: "Brand not highlighted; delivery date hidden behind a pincode; rating and CTA weak.",
-          proof: "Rated S3 / E2 in the {{23-issue audit|audit}}; breaks heuristics #3, #4 and #5.",
-          decided: "Brand above the name, rating under it, price, size and delivery above the fold." },
-        { k: "Electronics", beforeNote: "[ADD OLD SCREEN · Electronics PDP]", after: "new/pdp-electronics.webp",
-          saw: "EMI didn't look tappable; compare chart had no buy CTA; lots of white space.",
-          proof: "Same gaps on 4 of 4 audited verticals: brand, pincode wall, weak rating and CTA.",
-          decided: "[ADD · what changed on the Electronics PDP]" },
-        { k: "Mobiles", beforeNote: "[ADD OLD SCREEN · Mobile PDP]", after: "new/pdp-mobile.webp",
-          saw: "Colour and storage variants missing; specs text-heavy, main purpose not up front.",
-          proof: "Section-by-section comparison across Beauty, Electronics, Mobile and Fashion PDPs.",
-          decided: "[ADD · what changed on the Mobile PDP]" },
-        { k: "Fashion", beforeNote: "[ADD OLD SCREEN · Fashion PDP]", after: "new/pdp-fashion.webp",
-          saw: "Brand came after the product name; offers didn't look tappable; one font weight everywhere.",
-          proof: "Audit note on Fashion: \u201cbrand first, then the product name\u201d.",
-          decided: "[ADD · what changed on the Fashion PDP]" },
-        { k: "Beauty", beforeNote: "[ADD OLD SCREEN · Beauty PDP]", after: "new/pdp-beauty.webp",
-          saw: "Offers missing; wishlist badly placed; seller info and return policy not shown.",
-          proof: "Beauty PDP audit: gaps and pain points page.",
-          decided: "[ADD · what changed on the Beauty PDP]" },
-        { k: "Grocery · pack sizes", beforeNote: "[ADD OLD SCREEN · grocery sizes]", after: "new/pdp-grocery-b.webp",
-          saw: "Size options weren't visible on the first screen.", proof: "Variants missing or incomplete across verticals in the PDP comparison.",
-          decided: "Every pack size with its price, unit price and % off, right under the product." },
-        { k: "Product details", beforeNote: "[ADD OLD SCREEN · description]", after: "new/pdp-details.webp",
-          saw: "Description and specs didn't highlight the main purpose; text-heavy.", proof: "Flagged on 4 of 4 audited verticals.",
-          decided: "Description, Specifications and More info in tabs, led by key features." },
-        { k: "EMI options", beforeNote: "[ADD OLD SCREEN · EMI]", after: "new/pdp-emi.webp",
-          saw: "EMI didn't look tappable.", proof: "Flagged on Electronics, Mobile and Fashion PDPs in the audit.",
-          decided: "No cost, Low cost and Standard EMI in tabs, with a monthly table per bank." },
-        { k: "Ratings & reviews", before: "enhance-ba-pdp-reviews-before.png", after: "new/pdp-reviews.webp",
-          saw: "No review section; rating didn't read as intuitive.",
-          proof: "Reviews and ratings came up in field research and the audit.",
-          decided: "Rating summary, reviews with View all, likes and photo upload." }
+      section: "design", type: "proto",
+      eyebrow: "Across the app · Try it",
+      headline: ["Tap through it"],
+      sub: "Four screens from the final design. Tap a pulsing spot to open it, scroll inside any phone, and flip to Old to compare.",
+      phones: [
+        { k: "Grocery listing", img: "new/plp-grocery.webp", h: 800, old: "enhance-problem-plp.png",
+          hot: [
+            { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
+            { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" },
+            { x: 142, y: 362, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" }
+          ],
+          why: "Pick a pack size, filter or sort without leaving the list.", proof: "Listing rated S2 in the {{audit|audit}}: name and price only on the old card." },
+        { k: "Mobiles listing", img: "new/plp-electronics.webp", h: 978, old: "enhance-iter-mobile-before.png",
+          hot: [
+            { x: 236, y: 142, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
+            { x: 305, y: 142, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" }
+          ],
+          why: "Applied filters stay visible as chips; specs and rating on every card.", proof: "Filter & sort rated S2; {{5 leading apps|competitors}} show price and rating on the card." },
+        { k: "Grocery product", img: "new/pdp-grocery.webp", h: 4098, old: "enhance-problem-pdp.png",
+          hot: [],
+          why: "Brand, rating, price and every pack size before the fold.", proof: "PDP rated S3 critical in the {{audit|audit}}; brand hidden on 4 of 4 verticals." },
+        { k: "Electronics product", img: "new/pdp-electronics.webp", h: 4098,
+          hot: [
+            { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI plans" },
+            { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" }
+          ],
+          why: "EMI and full specs open in a sheet, so the page stays short.", proof: "EMI didn't look tappable on 3 of 4 audited verticals." }
       ],
-      notes: "This is the range. Every vertical had the same four problems in the audit: brand not highlighted, delivery behind a pincode, weak rating, weak CTA. One product-page system fixed them for groceries, gadgets, fashion and beauty. Each card says what we saw, the proof, and what we decided. Click any old screen to enlarge it."
-    },
-
-    {
-      section: "design", type: "screenwall",
-      eyebrow: "Across the app · Listing page",
-      headline: ["PLP, every vertical"],
-      sub: "The same card everywhere, so shoppers compare instead of read. Scroll inside any phone.",
-      labels: ["Old", "New"],
-      pairs: [
-        { k: "Grocery", tag: "S2", before: "enhance-problem-plp.png", after: "new/plp-grocery.webp",
-          saw: "Name and price only; the + button silently stopped at max quantity.",
-          proof: "Listing page rated S2 / E2 (#5 Error prevention) in the {{audit|audit}}.",
-          decided: "Discount, unit price, size and wishlist on every card; feedback at max quantity." },
-        { k: "Mobiles & electronics", before: "enhance-iter-mobile-before.png", after: "new/plp-electronics.webp",
-          saw: "Every card showed different info; selected filters barely visible.",
-          proof: "Filter & sort rated S2 in the audit; {{5 leading apps|competitors}} show price and rating on cards.",
-          decided: "[ADD · what changed on the Electronics PLP]" },
-        { k: "Fashion", beforeNote: "[ADD OLD SCREEN · Fashion PLP]", after: "new/plp-fashion.webp",
-          saw: "[ADD · audit finding for Fashion listing]", proof: "[ADD · data or field evidence]", decided: "[ADD · what changed]" },
-        { k: "Beauty", beforeNote: "[ADD OLD SCREEN · Beauty PLP]", after: "new/plp-beauty-grid.webp",
-          saw: "[ADD · audit finding for Beauty listing]", proof: "[ADD · data or field evidence]", decided: "[ADD · what changed]" },
-        { k: "Beauty · list view", beforeNote: "[ADD OLD SCREEN · Beauty list]", after: "new/plp-beauty-list.webp",
-          saw: "[ADD · audit finding]", proof: "[ADD · data or field evidence]", decided: "A list view next to the grid, with shade swatches on every card." },
-        { k: "Select pack size", beforeNote: "[ADD OLD SCREEN · variant picker]", after: "new/plp-grocery-variant.webp",
-          saw: "[ADD · audit finding on variants]", proof: "[ADD · data or field evidence]", decided: "Pick a pack size from the list in a sheet, with price per size, without opening the product." },
-        { k: "Sort & filter", beforeNote: "[ADD OLD SCREEN · filters]", after: "new/plp-filter.webp",
-          saw: "Selected filters barely visible.", proof: "Filter & sort rated S2 in the {{audit|audit}}.", decided: "[ADD · what changed in sort and filter]" },
-        { k: "Sort", beforeNote: "[ADD OLD SCREEN · sort]", after: "new/plp-sort.webp",
-          saw: "Selected filters barely visible.", proof: "Filter & sort rated S2 in the {{audit|audit}}.", decided: "[ADD · what changed in sort]" },
-        { k: "Wishlist test", tag: "9 of 12", tone: "pos", beforeNote: "[ADD OLD SCREEN · wishlist]", afterNote: "[ADD NEW SCREEN · final Figma]",
-          saw: "Shoppers needed to save products while comparing.",
-          proof: "{{9 of 12|usability}} completed the save-to-wishlist task in the usability test.",
-          decided: "Wishlist on the card, then iterated so the icon was easier to spot." }
-      ],
-      notes: "Listing pages are where comparison happens, so every vertical got the same card: price, MRP, % off, unit price, size, wishlist. The usability test backs it: 9 of 12 completed the wishlist task, and we iterated the icon after."
+      notes: "Let the panel try it. Tap Filter, Sort or the pack size on the grocery list; tap View plans or View details on the phone page. Flip any phone to Old to see what it replaced. Every sheet is the real design, not a mock-up."
     },
 
     {
@@ -590,6 +544,85 @@ window.DECK = {
   ],
   /* parked slides (not shown): kept for later use */
   parked: [
+    {
+      section: "design", type: "screenwall",
+      eyebrow: "Across the app · Product page",
+      headline: ["PDP, every vertical"],
+      sub: "One product-page system for groceries, gadgets, fashion and beauty. Scroll sideways, and scroll inside any phone.",
+      labels: ["Old", "New"],
+      pairs: [
+        { k: "Grocery", tag: "S3 critical", tone: "neg", before: "enhance-problem-pdp.png", after: "new/pdp-grocery.webp",
+          saw: "Brand not highlighted; delivery date hidden behind a pincode; rating and CTA weak.",
+          proof: "Rated S3 / E2 in the {{23-issue audit|audit}}; breaks heuristics #3, #4 and #5.",
+          decided: "Brand above the name, rating under it, price, size and delivery above the fold." },
+        { k: "Electronics", beforeNote: "[ADD OLD SCREEN · Electronics PDP]", after: "new/pdp-electronics.webp",
+          saw: "EMI didn't look tappable; compare chart had no buy CTA; lots of white space.",
+          proof: "Same gaps on 4 of 4 audited verticals: brand, pincode wall, weak rating and CTA.",
+          decided: "[ADD · what changed on the Electronics PDP]" },
+        { k: "Mobiles", beforeNote: "[ADD OLD SCREEN · Mobile PDP]", after: "new/pdp-mobile.webp",
+          saw: "Colour and storage variants missing; specs text-heavy, main purpose not up front.",
+          proof: "Section-by-section comparison across Beauty, Electronics, Mobile and Fashion PDPs.",
+          decided: "[ADD · what changed on the Mobile PDP]" },
+        { k: "Fashion", beforeNote: "[ADD OLD SCREEN · Fashion PDP]", after: "new/pdp-fashion.webp",
+          saw: "Brand came after the product name; offers didn't look tappable; one font weight everywhere.",
+          proof: "Audit note on Fashion: \u201cbrand first, then the product name\u201d.",
+          decided: "[ADD · what changed on the Fashion PDP]" },
+        { k: "Beauty", beforeNote: "[ADD OLD SCREEN · Beauty PDP]", after: "new/pdp-beauty.webp",
+          saw: "Offers missing; wishlist badly placed; seller info and return policy not shown.",
+          proof: "Beauty PDP audit: gaps and pain points page.",
+          decided: "[ADD · what changed on the Beauty PDP]" },
+        { k: "Grocery · pack sizes", beforeNote: "[ADD OLD SCREEN · grocery sizes]", after: "new/pdp-grocery-b.webp",
+          saw: "Size options weren't visible on the first screen.", proof: "Variants missing or incomplete across verticals in the PDP comparison.",
+          decided: "Every pack size with its price, unit price and % off, right under the product." },
+        { k: "Product details", beforeNote: "[ADD OLD SCREEN · description]", after: "new/pdp-details.webp",
+          saw: "Description and specs didn't highlight the main purpose; text-heavy.", proof: "Flagged on 4 of 4 audited verticals.",
+          decided: "Description, Specifications and More info in tabs, led by key features." },
+        { k: "EMI options", beforeNote: "[ADD OLD SCREEN · EMI]", after: "new/pdp-emi.webp",
+          saw: "EMI didn't look tappable.", proof: "Flagged on Electronics, Mobile and Fashion PDPs in the audit.",
+          decided: "No cost, Low cost and Standard EMI in tabs, with a monthly table per bank." },
+        { k: "Ratings & reviews", before: "enhance-ba-pdp-reviews-before.png", after: "new/pdp-reviews.webp",
+          saw: "No review section; rating didn't read as intuitive.",
+          proof: "Reviews and ratings came up in field research and the audit.",
+          decided: "Rating summary, reviews with View all, likes and photo upload." }
+      ],
+      notes: "This is the range. Every vertical had the same four problems in the audit: brand not highlighted, delivery behind a pincode, weak rating, weak CTA. One product-page system fixed them for groceries, gadgets, fashion and beauty. Each card says what we saw, the proof, and what we decided. Click any old screen to enlarge it."
+    },
+
+    {
+      section: "design", type: "screenwall",
+      eyebrow: "Across the app · Listing page",
+      headline: ["PLP, every vertical"],
+      sub: "The same card everywhere, so shoppers compare instead of read. Scroll inside any phone.",
+      labels: ["Old", "New"],
+      pairs: [
+        { k: "Grocery", tag: "S2", before: "enhance-problem-plp.png", after: "new/plp-grocery.webp",
+          saw: "Name and price only; the + button silently stopped at max quantity.",
+          proof: "Listing page rated S2 / E2 (#5 Error prevention) in the {{audit|audit}}.",
+          decided: "Discount, unit price, size and wishlist on every card; feedback at max quantity." },
+        { k: "Mobiles & electronics", before: "enhance-iter-mobile-before.png", after: "new/plp-electronics.webp",
+          saw: "Every card showed different info; selected filters barely visible.",
+          proof: "Filter & sort rated S2 in the audit; {{5 leading apps|competitors}} show price and rating on cards.",
+          decided: "[ADD · what changed on the Electronics PLP]" },
+        { k: "Fashion", beforeNote: "[ADD OLD SCREEN · Fashion PLP]", after: "new/plp-fashion.webp",
+          saw: "[ADD · audit finding for Fashion listing]", proof: "[ADD · data or field evidence]", decided: "[ADD · what changed]" },
+        { k: "Beauty", beforeNote: "[ADD OLD SCREEN · Beauty PLP]", after: "new/plp-beauty-grid.webp",
+          saw: "[ADD · audit finding for Beauty listing]", proof: "[ADD · data or field evidence]", decided: "[ADD · what changed]" },
+        { k: "Beauty · list view", beforeNote: "[ADD OLD SCREEN · Beauty list]", after: "new/plp-beauty-list.webp",
+          saw: "[ADD · audit finding]", proof: "[ADD · data or field evidence]", decided: "A list view next to the grid, with shade swatches on every card." },
+        { k: "Select pack size", beforeNote: "[ADD OLD SCREEN · variant picker]", after: "new/plp-grocery-variant.webp",
+          saw: "[ADD · audit finding on variants]", proof: "[ADD · data or field evidence]", decided: "Pick a pack size from the list in a sheet, with price per size, without opening the product." },
+        { k: "Sort & filter", beforeNote: "[ADD OLD SCREEN · filters]", after: "new/plp-filter.webp",
+          saw: "Selected filters barely visible.", proof: "Filter & sort rated S2 in the {{audit|audit}}.", decided: "[ADD · what changed in sort and filter]" },
+        { k: "Sort", beforeNote: "[ADD OLD SCREEN · sort]", after: "new/plp-sort.webp",
+          saw: "Selected filters barely visible.", proof: "Filter & sort rated S2 in the {{audit|audit}}.", decided: "[ADD · what changed in sort]" },
+        { k: "Wishlist test", tag: "9 of 12", tone: "pos", beforeNote: "[ADD OLD SCREEN · wishlist]", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Shoppers needed to save products while comparing.",
+          proof: "{{9 of 12|usability}} completed the save-to-wishlist task in the usability test.",
+          decided: "Wishlist on the card, then iterated so the icon was easier to spot." }
+      ],
+      notes: "Listing pages are where comparison happens, so every vertical got the same card: price, MRP, % off, unit price, size, wishlist. The usability test backs it: 9 of 12 completed the wishlist task, and we iterated the icon after."
+    },
+
     /* 10 — SOLUTION & DESIGN EXECUTION (mockups unchanged) */
     {
       section: "design", type: "showcase",
