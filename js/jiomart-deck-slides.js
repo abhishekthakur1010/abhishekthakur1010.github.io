@@ -186,8 +186,7 @@ window.DECK = {
     {
       section: "context", type: "audience",
       eyebrow: "Requirement · Who we designed for",
-      headline: ["Target shopper"],
-      sub: "JioMart started with value-conscious households beyond the metros.",
+      headline: ["Built for shoppers beyond the metros"],
       tiers: [
         { india: "India 1", k: "Rich", inc: "above ₹17L a year", pct: "1%", pop: "16M people", hh: "3M households" },
         { india: "India 1", k: "Middle class", inc: "₹3.4–17L a year", pct: "13%", pop: "160M people", hh: "31M households" },
@@ -209,7 +208,7 @@ window.DECK = {
     {
       section: "context", type: "flowview",
       eyebrow: "Requirement · The existing experience",
-      headline: ["Low conversion"],
+      headline: ["1 in 10 visits ended in a cart"],
       sub: "{{~95M visitors|visitors}}, but only {{1 in 10 sessions|carts}} added to cart.",
       reframe: { asks: [["Business", "More carts"], ["Product", "Refresh 3 pages"], ["Shopper", "\u201cCan I trust this?\u201d"]], toL: "Became", to: "Help shoppers choose" },
       steps: [
@@ -227,8 +226,7 @@ window.DECK = {
     {
       section: "discover", type: "board", tall: true,
       eyebrow: "Research",
-      headline: ["Root cause"],
-      sub: "A plan, then data, then shoppers.",
+      headline: ["Where shoppers got stuck"],
       cards: [
         { k: "Research strategy", tag: "Plan", img: "enhance-research-strategy.png", pos: "left center", stat: "4 steps",
           learned: "Benchmark, analyse the journey, map emotions, define the ideal." },
@@ -250,7 +248,7 @@ window.DECK = {
     {
       section: "define", type: "synthesis",
       eyebrow: "Defining the problem",
-      headline: ["Decision problem"],
+      headline: ["They could find products, not choose one"],
       cols: ["What shoppers felt", "Why it happened", "How we know"],
       rows: [
         { theme: "Finding", symptom: "\u201cWhere do I start?\u201d", cause: "Inconsistent icons and categories",
@@ -275,8 +273,7 @@ window.DECK = {
     {
       section: "design", type: "collab",
       eyebrow: "Ideation & collaboration",
-      headline: ["Team effort"],
-      sub: "Four working sessions took us from ideas to a plan we could ship.",
+      headline: ["From whiteboard to build plan"],
       steps: [
         { img: "enhance-design-team-01.png", t: "Whiteboard workshop", who: "PM + Design + Engineering", out: "3 concepts for listing and product page" },
         { img: "enhance-design-team-02.png", t: "Design critique", who: "Wider design team", out: "One pattern for every screen" },
@@ -290,7 +287,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution",
-      headline: ["PDP Conversion"],
+      headline: ["Product page: trust before the fold"],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
         { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" },
@@ -314,11 +311,11 @@ window.DECK = {
             stat: ["8 → 4", "header actions"], pin: 9 },
           { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy"],
             t: "Build trust above the fold",
-            pts: ["Brand, then name, then ratings", "Price, offer and size before the fold"],
+            pts: ["Brand, then name, then ratings"],
             stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
           { k: "Bottom", where: "Action bar", laws: ["Fitts's law"],
             t: "One next step, not five exits",
-            pts: ["Nav bar drove bounce", "Sticky Add to cart in thumb reach"],
+            pts: ["Nav bar drove bounce"],
             stat: ["6 → 1", "exits → one CTA"], pin: 95 }
         ]
       },
@@ -328,7 +325,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution",
-      headline: ["PLP Engagement"],
+      headline: ["Listing: the decision on the card"],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-plp.png", n: "Name and price only" },
         { v: "new", label: "Grocery", img: "new/plp-grocery.webp", h: 800, n: "Discount, size and wishlist on every card",
@@ -356,14 +353,14 @@ window.DECK = {
         zones: [
           { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
             t: "Fewer actions, less to remember",
-            pts: ["Same 4-action header", "Sort and Filter up front"],
+            pts: ["Same 4-action header"],
             stat: ["8 → 4", "header actions"], pin: 8 },
           { k: "Mid", where: "Narrow down", laws: ["Chunking", "Progressive disclosure"],
             t: "Narrow the list in small steps",
             pts: ["Sub-category tiles, then quick chips"], pin: 30 },
           { k: "Bottom", where: "Product cards", laws: ["Consistency", "Visual hierarchy"],
             t: "Put the decision on the card",
-            pts: ["Price, % off, unit price and size", "One card everywhere, like {{5 leading apps|competitors}}"] , pin: 45 }
+            pts: ["Price, % off, unit price and size"] , pin: 45 }
         ]
       },
       notes: "Listing answers: which one? Top: the same 4-action header, with Sort and Filter as clear buttons. Mid: sub-category tiles and chips let shoppers narrow in small steps. Bottom: the card carries the decision: price, MRP, % off, unit price, size and wishlist, the same in every category."
@@ -372,8 +369,8 @@ window.DECK = {
     {
       section: "design", type: "pricecue",
       eyebrow: "The solution · Why the price is big",
-      headline: ["Price first"],
-      sub: "For a family on ₹12–28K a month, the price tag is the decision. So we borrowed the shelf’s hierarchy.",
+      headline: ["Why the price is the biggest text"],
+      sub: "For a family on ₹12–28K a month, price decides. We copied the shelf tag.",
       cards: [
         { src: "In store", t: "Shoppers read the price first", d: "Every shelf tag leads with what you pay. Name next, MRP smallest.",
           img: "offline-price-spices.webp", inset: "offline-price-tag.webp", fit: "cover", alt: "Spice aisle; close-up tag: ₹79.50 large, MRP ₹106 small" },
@@ -388,7 +385,7 @@ window.DECK = {
     {
       section: "design", type: "versions",
       eyebrow: "The solution",
-      headline: ["Home Discovery"],
+      headline: ["Home: search first, then categories"],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
         { v: "new", label: "After", img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
@@ -409,7 +406,7 @@ window.DECK = {
             stat: ["7 → 4", "header actions"], pin: 7 },
           { k: "Mid", where: "Categories", laws: ["Law of similarity", "Minimalist design"],
             t: "One clear way in",
-            pts: ["Categories under search, one icon style", "4 promo blocks → 1 carousel"], pin: 25 },
+            pts: ["Categories under search, one icon style"], pin: 25 },
           { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall"],
             t: "Pick up where you left off",
             pts: ["Recent items shown, not recalled"], pin: 62 }
@@ -419,25 +416,10 @@ window.DECK = {
     },
 
     /* ACROSS THE APP — every page type, Old → New, per category (new screens: blank frames until the final Figma) */
-    /* WHERE I HELD THE LINE — real stories only: fill every [ADD] before presenting */
-    {
-      section: "design", type: "pushback",
-      eyebrow: "Design leadership · Under product pressure",
-      headline: ["Where I pushed back"],
-      sub: "Moments where product wanted one thing, and data moved the decision.",
-      rows: [
-        { k: "[ADD · moment 1, e.g. bottom nav on the PDP]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used: bounce, test, audit]", outcome: "[ADD · what shipped, or the compromise]" },
-        { k: "[ADD · moment 2, e.g. header actions]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used]", outcome: "[ADD · what shipped, or the compromise]" },
-        { k: "[ADD · moment 3, a compromise]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used]", outcome: "[ADD · the trade-off we agreed and why]" }
-      ],
-      foot: "Draft: replace every placeholder with a real moment before presenting.",
-      notes: "Three moments where design held a position under product pressure: what product wanted, what I proposed, the data I used, and how it ended. Include at least one compromise. Fill these with real stories only."
-    },
-
     {
       section: "results", type: "results",
       eyebrow: "Validation & impact",
-      headline: ["Measured impact"],
+      headline: ["Add-to-cart rose from 10.4% to 13.35%"],
       hero: [
         { k: "Sessions with add-to-cart", pre: 10.41, post: 13.35, pt: "10.41%", qt: "13.35%", d: "{{+28%|carts}}", sub: "+294 bps" },
         { k: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, pt: "41.40%", qt: "50.20%", d: "{{+21%|search}}", sub: "+880 bps" },
@@ -461,6 +443,45 @@ window.DECK = {
     },
 
     /* 12 — KEY TAKEAWAYS */
+
+    {
+      section: "results", type: "close",
+      eyebrow: "Key takeaways",
+      headline: ["What I took away"],
+      wins: [
+        { n: "{{+28%|carts}}", l: "add-to-cart sessions" },
+        { n: "{{+21%|search}}", l: "add-to-cart from search" }
+      ],
+      rows: [
+        { k: "My role", d: "Reframed the brief, led research, designed end to end." },
+        { k: "Learned", d: "Same gap everywhere? Fix the system, not the screen." },
+        { k: "Next time", d: "Track every step and A/B test from day one." }
+      ],
+      award: { img: "enhance-award.png", caption: "Jio Spotlight Award · Q4 2022–23" },
+      cta: [
+        { label: "Full case study", href: "./jiomart-discovery.html", primary: true },
+        { label: "Next project →", href: "./index.html" }
+      ],
+      notes: "Close on the principle: people buy when every screen removes a doubt."
+    }
+  ],
+  /* parked slides (not shown): kept for later use */
+  parked: [
+    /* WHERE I HELD THE LINE — real stories only: fill every [ADD] before presenting */
+    {
+      section: "design", type: "pushback",
+      eyebrow: "Design leadership · Under product pressure",
+      headline: ["Where I pushed back"],
+      sub: "Moments where product wanted one thing, and data moved the decision.",
+      rows: [
+        { k: "[ADD · moment 1, e.g. bottom nav on the PDP]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used: bounce, test, audit]", outcome: "[ADD · what shipped, or the compromise]" },
+        { k: "[ADD · moment 2, e.g. header actions]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used]", outcome: "[ADD · what shipped, or the compromise]" },
+        { k: "[ADD · moment 3, a compromise]", want: "[ADD · what product asked for]", proposed: "[ADD · what I proposed]", evidence: "[ADD · data I used]", outcome: "[ADD · the trade-off we agreed and why]" }
+      ],
+      foot: "Draft: replace every placeholder with a real moment before presenting.",
+      notes: "Three moments where design held a position under product pressure: what product wanted, what I proposed, the data I used, and how it ended. Include at least one compromise. Fill these with real stories only."
+    },
+
     /* NOW — today's design lens and AI-led process (placeholders until confirmed) */
     {
       section: "results", type: "nowlens",
@@ -486,30 +507,6 @@ window.DECK = {
       },
       notes: "Two things: how I'd evolve this UI today, and where AI sits in my process now. Only list what I actually use."
     },
-
-    {
-      section: "results", type: "close",
-      eyebrow: "Key takeaways",
-      headline: ["Remove doubt"],
-      wins: [
-        { n: "{{+28%|carts}}", l: "add-to-cart sessions" },
-        { n: "{{+21%|search}}", l: "add-to-cart from search" }
-      ],
-      rows: [
-        { k: "My role", d: "Reframed the brief, led research, designed end to end." },
-        { k: "Learned", d: "Same gap everywhere? Fix the system, not the screen." },
-        { k: "Next time", d: "Track every step and A/B test from day one." }
-      ],
-      award: { img: "enhance-award.png", caption: "Jio Spotlight Award · Q4 2022–23" },
-      cta: [
-        { label: "Full case study", href: "./jiomart-discovery.html", primary: true },
-        { label: "Next project →", href: "./index.html" }
-      ],
-      notes: "Close on the principle: people buy when every screen removes a doubt."
-    }
-  ],
-  /* parked slides (not shown): kept for later use */
-  parked: [
     {
       section: "design", type: "screenwall",
       eyebrow: "Across the app · Home and search",

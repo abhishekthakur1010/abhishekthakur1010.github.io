@@ -1781,3 +1781,17 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .fo-cap.bad { color: var(--warn); }
 .fo-cap .fo-tap { display: block; margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--info); }
 @media (max-width: 1000px) { .fo .fo-row { grid-template-columns: 1fr; } .fo-dev { --w: 240px; } }
+
+/* de-template pass: fewer labels, more picture */
+.slide:not(.type-opening) .sl-head .eyebrow, .slide:not(.type-opening) .fo-left .eyebrow { display: none; }
+.vs-laws, .vs-zone-where, .vs-zone-k > .vs-zone-where { display: none; }
+.vs-zone-k { font-size: 10.5px; letter-spacing: .12em; }
+.type-board .bd-top .tag, .type-collab .tag { display: none; }
+.sy-how-i .tag { background: none !important; border: 0 !important; padding: 0 !important; color: var(--dim) !important; font-weight: 600; }
+.sl h2 { font-size: clamp(26px, 2.7vw, 38px); max-width: 22ch; }
+.fo .sl h2, .fo h2 { max-width: 16ch; }
+.fo .fo-row { grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+.fo-dev { --w: min(19vw, 34vh, 320px); }
+.fo .vs-zone-t { font-size: clamp(16px,1.3vw,20px); }
+.slide:not(.type-opening) .eyebrow { display: none; }
+.fv-issue .tag, .sy-status .tag { display: none; }
