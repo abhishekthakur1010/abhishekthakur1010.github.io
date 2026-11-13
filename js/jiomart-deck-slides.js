@@ -459,6 +459,23 @@ window.DECK = {
       notes: "An interviewer asked why the rupee price is bigger than the product name. Answer with the shelf: in every Indian supermarket the tag leads with the price you pay, big and bold, and puts MRP small and struck through. Shoppers already decide this way. On the PLP a column of bold prices makes cards quick to compare; on the PDP the big price next to the struck MRP makes the saving obvious. We didn't invent a pattern, we reused one they trust."
     },
 
+    /* HOME BANNER AUDIT */
+    {
+      section: "design", type: "audit",
+      title: "Home was a wall of banners",
+      sub: "We audited every banner on the Home page before redesigning it.",
+      findings: [
+        ["No pattern.", "Image, text and offer sat somewhere new on every banner."],
+        ["Weak CTAs.", "Small, low-contrast buttons in a different shape each time."],
+        ["Hard to read.", "A new background colour per category, text lost on top."],
+        ["Logos anywhere.", "Brand logos and symbols overlapped the product."],
+        ["Endless scroll.", "Banners stacked one after another in 4 different sizes."]
+      ],
+      src: "Home banner audit with the Central UI/UX team.",
+      screens: ["research/as-is-0.webp","research/as-is-1.webp","research/as-is-2.webp","research/as-is-3.webp","research/as-is-4.webp","research/as-is-5.webp","research/as-is-6.webp","research/as-is-7.webp","research/as-is-8.webp","research/as-is-9.webp"],
+      notes: "This is why Home moved to search first and one card style: the banners were competing with each other, not helping shoppers start."
+    },
+
     {
       section: "design", type: "versions",
       eyebrow: "The solution",

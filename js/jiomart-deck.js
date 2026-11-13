@@ -141,6 +141,7 @@
       case "overview": return 0;
       case "usp": return 0;
       case "kpm": return 0;
+      case "audit": return 0;
       case "qa": return sc.qs.length + 1;
       case "contextinfo": return sc.flow.length + 1;
       case "flowview": return sc.steps.length - 1;
@@ -1031,6 +1032,11 @@
     },
 
     /* 12 · contribution, learning, next time + award */
+    audit: function (sc) {
+      return "<div class='sl audit'><div class='au-l'><h2>" + esc(sc.title) + "</h2><p class='au-sub'>" + esc(sc.sub) + "</p><ol>" +
+        sc.findings.map(function (f) { return "<li><b>" + esc(f[0]) + "</b> " + esc(f[1]) + "</li>"; }).join("") + "</ol><p class='au-src'>" + esc(sc.src) + "</p></div>" +
+        "<div class='au-grid'>" + sc.screens.map(function (x) { return "<img src='" + img(x) + "' alt='' loading='lazy'>"; }).join("") + "</div></div>";
+    },
     kpm: function (sc) {
       return "<div class='sl kpm'><div class='kpm-h'><div><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div><span class='kpm-when'>" + esc(sc.when) + "</span></div>" +
         "<div class='kpm-grid'>" + sc.items.map(function (x) {
