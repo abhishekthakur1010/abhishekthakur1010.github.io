@@ -1708,3 +1708,8 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .nl-list span.ph { border: 1px dashed var(--line2); border-radius: 8px; padding: 4px 8px; margin-top: 4px; display: block; font-size: 12px; }
 @media (max-width: 900px) { .nl-grid { grid-template-columns: 1fr; } .pb-row { grid-template-columns: 1fr; gap: 6px; } .pb-head { display: none; } }
 .sw-why-v.ph { color: var(--dim) !important; font-weight: 500 !important; border: 1px dashed var(--line2); border-radius: 6px; padding: 2px 6px; }
+
+/* screen walls: every phone scrolls top to bottom inside its frame */
+.sw-phones .device:not(.pending) .ds { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.sw-phones .device:not(.pending) .ds::-webkit-scrollbar { display: none; }
+.sw-phones .device .ds img { display: block; width: 100%; height: auto; transform: none !important; transition: none; }
