@@ -142,6 +142,9 @@
       case "usp": return 0;
       case "kpm": return 0;
       case "audit": return 0;
+      case "strategy": return 0;
+      case "evidence": return 0;
+      case "applied": return 0;
       case "qa": return sc.qs.length + 1;
       case "contextinfo": return sc.flow.length + 1;
       case "flowview": return sc.steps.length - 1;
@@ -1032,6 +1035,30 @@
     },
 
     /* 12 · contribution, learning, next time + award */
+    evidence: function (sc) {
+      return "<div class='sl evidence'><h2>" + esc(sc.title) + "</h2><div class='ev-grid'>" + sc.items.map(function (x) {
+        return "<div class='ev-c'><div class='ev-img'><img src='" + img(x.img) + "' alt='' loading='lazy' style='object-fit:" + (x.fit || "cover") + ";object-position:" + (x.pos || "center") + "'><span class='ev-m'>" + esc(x.m) + "</span></div>" +
+          "<p class='ev-saw'>" + esc(x.saw) + "</p><p class='ev-dec'><b>\u2192</b> " + esc(x.dec) + "</p></div>";
+      }).join("") + "</div></div>";
+    },
+    strategy: function (sc) {
+      var vis = function (st) {
+        if (st.img) return "<img src='" + img(st.img) + "' alt='' loading='lazy'>";
+        if (st.chips) return "<div class='st-chips'>" + st.chips.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div>";
+        if (st.sizes) return "<div class='st-sizes'>" + st.sizes.map(function (z) { return "<div class='st-sz'><i style='aspect-ratio:" + z[1] + "'></i><b>" + esc(z[0]) + "</b><small>" + esc(z[2]) + "</small></div>"; }).join("") + "</div>";
+        return "";
+      };
+      return "<div class='sl strategy'><div class='st-h'><h2>" + esc(sc.title) + "</h2><div class='st-goals'>" + sc.goals.map(function (g) { return "<span>" + esc(g) + "</span>"; }).join("") + "</div></div>" +
+        "<div class='st-row'>" + sc.steps.map(function (st, i) {
+          return "<div class='st-step'><div class='st-vis'>" + vis(st) + "</div><span class='st-n'>0" + (i + 1) + "</span><h3>" + esc(st.k) + "</h3><p>" + esc(st.t) + "</p></div>";
+        }).join("") + "</div><p class='au-src'>" + esc(sc.src) + "</p></div>";
+    },
+    applied: function (sc) {
+      return "<div class='sl applied'><div class='ap-h'><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div><div class='ap-grid'><span class='ap-col'>Before</span><span></span><span class='ap-col'>After</span>" +
+        sc.pairs.map(function (p) {
+          return "<figure class='ap-b'><img src='" + img(p.b) + "' alt=''></figure><span class='ap-arrow'>\u2192</span><figure class='ap-a'><img src='" + img(p.a) + "' alt=''><figcaption>" + esc(p.cap) + "</figcaption></figure>";
+        }).join("") + "</div></div>";
+    },
     audit: function (sc) {
       return "<div class='sl audit'><div class='au-l'><h2>" + esc(sc.title) + "</h2><p class='au-sub'>" + esc(sc.sub) + "</p><ol>" +
         sc.findings.map(function (f) { return "<li><b>" + esc(f[0]) + "</b> " + esc(f[1]) + "</li>"; }).join("") + "</ol><p class='au-src'>" + esc(sc.src) + "</p></div>" +

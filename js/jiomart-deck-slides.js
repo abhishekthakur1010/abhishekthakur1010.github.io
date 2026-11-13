@@ -332,6 +332,21 @@ window.DECK = {
       notes: "Read each row left to right: what shoppers felt, why it happened, and how we know. Every claim has a source: audit, analytics, interviews or benchmark. The key milestone. Show the shift from 'refresh the UI' to 'help shoppers decide'. Then the statement and the success metrics we set. Time-to-decide is illustrative (est.)."
     },
 
+    /* EVIDENCE TO DECISION */
+    {
+      section: "define", type: "evidence",
+      title: "Every decision traced back to something we saw",
+      items: [
+        { m: "Analytics", img: "enhance-ga-pre-conversion.png", fit: "contain", saw: "Searchers added to cart 4\u00d7 more than browsers (41% vs 10%).", dec: "Search first on Home." },
+        { m: "Shopper interviews", img: "enhance-user-interview.png", pos: "center 35%", saw: "\u201cI can\u2019t tell which one to buy.\u201d", dec: "Size, price and rating on every card." },
+        { m: "Store observation", img: "offline-price-tag.webp", saw: "Every shelf tag leads with the price, MRP smallest.", dec: "Price is the biggest text." },
+        { m: "Heuristic audit", img: "enhance-heuristic-table.png", pos: "top left", saw: "23 issues, 5 critical. The product page was the worst.", dec: "Key details above the fold." },
+        { m: "Home audit", img: "research/fold-map.webp", pos: "top left", saw: "6 folds, banners back to back, 27 banner issues.", dec: "One system for every promo." },
+        { m: "Benchmark", img: "research/benchmark.webp", pos: "left center", saw: "Leaders keep text left, image right, one clear CTA.", dec: "One card pattern across categories." }
+      ],
+      notes: "Method, what we saw, what we decided. This is the logic the rest of the deck follows."
+    },
+
     /* 09 — IDEATION & COLLABORATION */
     {
       section: "design", type: "collab",
@@ -474,6 +489,34 @@ window.DECK = {
       src: "Home banner audit with the Central UI/UX team: 27 issues across text, image, CTA, logo, background and space.",
       screens: ["research/as-is-0.webp","research/as-is-1.webp","research/as-is-2.webp","research/as-is-3.webp","research/as-is-4.webp","research/as-is-5.webp","research/as-is-6.webp","research/as-is-7.webp","research/as-is-8.webp","research/as-is-9.webp"],
       notes: "This is why Home moved to search first and one card style: the banners were competing with each other, not helping shoppers start."
+    },
+
+    /* REDESIGN STRATEGY */
+    {
+      section: "design", type: "strategy",
+      title: "Redesign strategy: fix the system, not each screen",
+      goals: ["User-centric", "Standard sizes", "Shorter scroll", "Guidelines for consistency"],
+      steps: [
+        { k: "Map the page", t: "Home ran 6 folds, with banners back to back.", img: "research/fold-map.webp" },
+        { k: "Name the parts", t: "Every promo is the same 6 parts, in a fixed order.", chips: ["Title", "Offer", "Image", "Logo", "CTA", "Validity"] },
+        { k: "Benchmark", t: "Leaders use light backgrounds, text left, image right, one clear CTA.", img: "research/benchmark.webp" },
+        { k: "Fix the sizes", t: "4 ratios on one 344px grid, 8px corners.", sizes: [["Strip", "344/56", "344\u00d756"], ["Slim", "4/1", "4:1"], ["Landscape", "2/1", "2:1"], ["Square", "1/1", "1:1"]] }
+      ],
+      src: "Five-stage process with the Central UI/UX team: audit, elements, scenarios, benchmark, templates.",
+      notes: "The point is the system: once the parts and sizes were fixed, any team could make a promo that fits."
+    },
+
+    /* SYSTEM APPLIED */
+    {
+      section: "design", type: "applied",
+      title: "Same content, one system",
+      sub: "Templates from the system, applied to real promos.",
+      pairs: [
+        { b: "research/land-before.webp", a: "research/land-after.webp", cap: "Category offer" },
+        { b: "research/offer-before.webp", a: "research/offer-after.webp", cap: "Weekly deal" },
+        { b: "research/bank-before.webp", a: "research/bank-after.webp", cap: "Bank offers become a card set" }
+      ],
+      notes: "Same words, same offer. Only the system changed: one layout, readable contrast, one CTA."
     },
 
     {
