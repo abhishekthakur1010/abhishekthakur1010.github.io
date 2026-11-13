@@ -348,6 +348,21 @@ window.DECK = {
       notes: "Method, what we saw, what we decided. This is the logic the rest of the deck follows."
     },
 
+    /* HEURISTIC EVALUATION — ranked */
+    {
+      section: "define", type: "chain",
+      title: "23 issues, ranked before anything was drawn",
+      sub: "A heuristic evaluation of the live app against Nielsen's 10 heuristics, done with the Central UI/UX research team.",
+      steps: [
+        { k: "Method", chips: ["10 heuristics", "Severity S0\u2013S4", "Ease to fix E0\u2013E3", "23 problem areas"], t: "Every issue was scored on how much it hurts and how hard it is to fix." },
+        { k: "Ranked", img: "research/he-table.webp", pos: "top center", t: "Eight areas scored S3 or worse, the product page among them." },
+        { k: "Product page \u00b7 S3", img: "research/he-pdp.webp", pos: "top center", t: "Brand hidden, EMI not tappable, delivery date needed a pincode, rating greyed out." },
+        { k: "Listing \u00b7 S2", img: "research/he-plp.webp", fit: "contain", pos: "center", t: "At the max quantity the + button silently stopped working. No message." }
+      ],
+      src: "Heuristic evaluation, Central UI/UX research team.",
+      notes: "This is where priorities came from. Severity times ease told us what to fix first."
+    },
+
     /* 09 — IDEATION & COLLABORATION */
     {
       section: "design", type: "collab",
@@ -413,6 +428,36 @@ window.DECK = {
         ]
       },
       notes: "Product answers: can I trust it? Read the After screen top to bottom. Top: the header went from 8 actions to 4 (Hick's and Miller's law). Mid: brand before name, ratings under it, price, size and offers above the fold, which is where trust is built. Bottom: the nav bar gave five ways out on a page meant for one decision and drove bounce, so it became a sticky price + Add to cart bar."
+    },
+
+    /* ELECTRONICS PDP — the ask, the benchmark, the answer */
+    {
+      section: "design", type: "chain",
+      title: "Product asked for proof, so we benchmarked",
+      sub: "The brief: make warranty, installation and replacement visible on electronics product pages, and justify where they go.",
+      steps: [
+        { k: "The ask", quote: "We need to have a justification for why placing it above or below something is likely to result in greater conversions.", by: "Product manager's brief", t: "A placement question, framed around conversion." },
+        { k: "Saw", img: "research/pdp-ask-asis.webp", pos: "top left", t: "No warranty or replacement callout. Return policy sat near the bottom; compare opened its own flow." },
+        { k: "Benchmarked", chips: ["Flipkart", "Amazon", "Tata CLiQ", "By Jio / Reliance", "By the seller", "By both"], t: "Listed every value-add competitors show, and who offers it." },
+        { k: "Shipped", img: "research/pdp-valueprops.webp", pos: "center 100%", t: "One icon row under offers, above delivery: warranty, ResQ, cash on delivery, 7-day return." }
+      ],
+      src: "Electronics PDP research, Central UI/UX team.",
+      notes: "The PM wanted a conversion argument. The answer was evidence from three competitors and a clear split of who offers what."
+    },
+
+    /* PRODUCT CARD — prioritise, explore, ship */
+    {
+      section: "design", type: "chain",
+      title: "One card doesn't fit every category",
+      sub: "The listing card, from audit to shipped: decide what earns a place on it, then test layouts across categories.",
+      steps: [
+        { k: "Saw", img: "research/card-old.webp", pos: "top center", t: "Six categories, six cards. Desktop and mobile differed, brand came before name, no rating." },
+        { k: "Prioritised \u00b7 MoSCoW", moscow: [["Must", "Image, name, price, discount, rating"], ["Should", "Brand, variant or size, booster, source, wishlist"], ["Could", "Delivery date, coupons, share"]], t: "Must-haves are the minimum usable set. The rest earn their place by category." },
+        { k: "Explored", opts: [{ img: "research/card-opt1.webp", cap: "Option 1 \u00b7 shipped", win: true }, { img: "research/card-opt3.webp", cap: "Option 3" }, { img: "research/card-opt4.webp", cap: "Option 4" }], t: "Wishlist and discount placement tried on beauty, grocery, fashion, furniture and mobiles." },
+        { k: "Shipped", img: "new/plp-grocery.webp", pos: "center 40%", t: "Option 1, then by category: pack size for grocery, specs for mobiles, swatches for fashion and beauty." }
+      ],
+      src: "Product card research, Central UI/UX team.",
+      notes: "Real alternatives, real prioritisation. Option 1 kept the discount right next to the price."
     },
 
     {

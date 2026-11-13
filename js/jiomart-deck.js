@@ -144,6 +144,7 @@
       case "audit": return 0;
       case "strategy": return 0;
       case "evidence": return 0;
+      case "chain": return 0;
       case "applied": return 0;
       case "qa": return sc.qs.length + 1;
       case "contextinfo": return sc.flow.length + 1;
@@ -1040,6 +1041,20 @@
         return "<div class='ev-c'><div class='ev-img'><img src='" + img(x.img) + "' alt='' loading='lazy' style='object-fit:" + (x.fit || "cover") + ";object-position:" + (x.pos || "center") + "'><span class='ev-m'>" + esc(x.m) + "</span></div>" +
           "<p class='ev-saw'>" + esc(x.saw) + "</p><p class='ev-dec'><b>\u2192</b> " + esc(x.dec) + "</p></div>";
       }).join("") + "</div></div>";
+    },
+    chain: function (sc) {
+      var vis = function (st) {
+        if (st.img) return "<img src='" + img(st.img) + "' alt='' loading='lazy' style='object-fit:" + (st.fit || "cover") + ";object-position:" + (st.pos || "top center") + "'>";
+        if (st.opts) return "<div class='ch-opts'>" + st.opts.map(function (o) { return "<figure class='" + (o.win ? "win" : "") + "'><img src='" + img(o.img) + "' alt=''><figcaption>" + esc(o.cap) + "</figcaption></figure>"; }).join("") + "</div>";
+        if (st.quote) return "<blockquote class='ch-q'>\u201c" + esc(st.quote) + "\u201d<cite>" + esc(st.by) + "</cite></blockquote>";
+        if (st.moscow) return "<div class='ch-mo'>" + st.moscow.map(function (m) { return "<div class='ch-m ch-" + m[0].charAt(0).toLowerCase() + "'><b>" + esc(m[0]) + "</b><span>" + esc(m[1]) + "</span></div>"; }).join("") + "</div>";
+        if (st.chips) return "<div class='st-chips'>" + st.chips.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div>";
+        return "";
+      };
+      return "<div class='sl chain'><div class='st-h'><div><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='ch-sub'>" + esc(sc.sub) + "</p>" : "") + "</div></div>" +
+        "<div class='ch-row'>" + sc.steps.map(function (st, i) {
+          return (i ? "<span class='ch-arrow'><svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span>" : "") + "<div class='ch-step'><span class='st-n'>" + esc(st.k) + "</span><div class='ch-vis'>" + vis(st) + "</div><p>" + esc(st.t) + "</p></div>";
+        }).join("") + "</div>" + (sc.src ? "<p class='au-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
     },
     strategy: function (sc) {
       var vis = function (st) {
