@@ -769,9 +769,9 @@
     proto: function (sc) {
       var phones = sc.phones.map(function (p, i) {
         var hot = (p.hot || []).map(function (h) {
-          return "<button type='button' class='pt-hot' data-open='" + img(h.open) + "' aria-label='" + esc(h.label) + "' style='left:" + (h.x / 3.6) + "%;top:" + (h.y / p.h * 100) + "%;width:" + (h.w / 3.6) + "%;height:" + (h.h / p.h * 100) + "%'><i></i><span>" + esc(h.label) + "</span></button>";
+          return "<button type='button' class='pt-hot' data-open='" + img(h.open) + "' aria-label='" + esc(h.label) + "' style='left:" + (h.x / 3.6) + "%;top:" + (h.y / p.h * 100) + "%;width:" + (h.w / 3.6) + "%;height:" + (h.h / p.h * 100) + "%'><span>Tap · " + esc(h.label) + "</span></button>";
         }).join("");
-        var tog = p.old ? "<div class='pt-tog' role='group'><button type='button' data-v='old'>Old</button><button type='button' data-v='new' class='on'>New</button></div>" : "<div class='pt-tog none'><span>New</span></div>";
+        var tog = p.old ? "<div class='pt-tog' role='group'><button type='button' data-v='old'>Old</button><button type='button' data-v='new' class='on'>New</button></div>" : "";
         return "<article class='pt-card'><div class='pt-k'><b>" + esc(p.k) + "</b>" + tog + "</div>" +
           "<div class='device pt-dev'><div class='dn'></div><div class='ds'><div class='pt-scroll'>" +
           "<div class='pt-view new on'><img src='" + img(p.img) + "' alt='" + esc(p.k) + ", new'>" + hot + "</div>" +

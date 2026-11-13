@@ -402,7 +402,7 @@ window.DECK = {
       section: "design", type: "proto",
       eyebrow: "Across the app · Try it",
       headline: ["Tap through it"],
-      sub: "Four screens from the final design. Tap a pulsing spot to open it, scroll inside any phone, and flip to Old to compare.",
+      sub: "Four screens from the final design. Tap a pulsing ring to open the real sheet, scroll inside any phone, flip to Old to compare.",
       phones: [
         { k: "Grocery listing", img: "new/plp-grocery.webp", h: 800, old: "enhance-problem-plp.png",
           hot: [
