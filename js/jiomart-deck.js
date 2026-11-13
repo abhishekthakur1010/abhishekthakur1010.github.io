@@ -136,6 +136,11 @@
       case "kpis": return sc.groups.length + 1;
       case "results": return 2;
       case "close": return 2;
+      case "why": return sc.reasons.length;
+      case "field": return 0;
+      case "overview": return 0;
+      case "usp": return 0;
+      case "kpm": return 0;
       case "qa": return sc.qs.length + 1;
       case "contextinfo": return sc.flow.length + 1;
       case "flowview": return sc.steps.length - 1;
@@ -1026,6 +1031,36 @@
     },
 
     /* 12 · contribution, learning, next time + award */
+    kpm: function (sc) {
+      return "<div class='sl kpm'><div class='kpm-h'><div><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div><span class='kpm-when'>" + esc(sc.when) + "</span></div>" +
+        "<div class='kpm-grid'>" + sc.items.map(function (x) {
+          return "<div class='kpm-i'><b>" + esc(x[0]) + "</b><h3>" + esc(x[1]) + "</h3><p>" + esc(x[2]) + "</p></div>";
+        }).join("") + "</div><p class='kpm-src'>" + esc(sc.src) + "</p></div>";
+    },
+    usp: function (sc) {
+      return "<div class='sl usp'><h2>" + esc(sc.title) + "</h2><div class='usp-grid'>" + sc.items.map(function (x, i) {
+        return "<div class='usp-i'><span class='usp-n'>" + (i + 1) + "</span><h3>" + esc(x[0]) + "</h3><p>" + esc(x[1]) + "</p></div>";
+      }).join("") + "</div></div>";
+    },
+    overview: function (sc) {
+      var tiles = sc.screens.map(function (x, i) {
+        return sc.old ? "<figure class='ov-t'><img src='" + img(x.src) + "' alt='" + esc(x.cap) + "' loading='lazy'><figcaption>" + esc(x.cap) + "</figcaption></figure>"
+          : "<figure class='ov-n'>" + device(x.src, 0, "ov-dev") + "<figcaption>" + esc(x.cap) + "</figcaption></figure>";
+      }).join("");
+      return "<div class='sl overview" + (sc.old ? " ov-old" : " ov-new") + "'><div class='ov-l'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p>" + esc(sc.sub) + "</p>" : "") + "</div>" +
+        "<div class='ov-grid'>" + tiles + "</div></div>";
+    },
+    field: function (sc) {
+      return "<div class='sl field'><h2>" + esc(sc.title) + "</h2><div class='fd-grid'>" + sc.photos.map(function (p, i) {
+        return "<figure class='fd-p fd-" + i + "'><img src='" + img(p.src) + "' alt='" + esc(p.cap) + "' loading='lazy' style='object-position:" + (p.pos || "center") + "'><figcaption>" + esc(p.cap) + "</figcaption></figure>";
+      }).join("") + "</div></div>";
+    },
+    why: function (sc) {
+      return "<div class='sl why'><div class='why-l'><span class='why-tag'>" + esc(sc.tag) + "</span><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div>" +
+        "<div class='why-r'><h3>" + esc(sc.ask) + "</h3><ol>" + sc.reasons.map(function (r, i) {
+          return "<li class='reveal' data-step='" + (i + 1) + "'><b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "") + "</li>";
+        }).join("") + "</ol></div></div>";
+    },
     close: function (sc) {
       var wins = sc.wins.map(function (w) { return "<div class='cl-win'><b>" + esc(w.n) + "</b><span>" + esc(w.l) + "</span></div>"; }).join("");
       var rows = sc.rows.map(function (r) { return "<div class='cl-row'><span class='cl-k'>" + esc(r.k) + "</span><p>" + esc(r.d) + "</p></div>"; }).join("");

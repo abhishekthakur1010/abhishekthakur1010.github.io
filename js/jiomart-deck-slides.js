@@ -182,6 +182,38 @@ window.DECK = {
       notes: "Open simply: shoppers could find products but struggled to choose, so I simplified the journey from discovery to purchase. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
+    /* USPs OF JIOMART */
+    {
+      section: "context", type: "usp",
+      title: "USPs of JioMart",
+      items: [
+        ["Everything in one app", "Grocery, fresh, electronics, fashion and beauty, all in one cart."],
+        ["Value pricing", "Every product shows what you save against MRP."],
+        ["Reach beyond the metros", "Over half of orders come from Tier 2 cities and beyond."],
+        ["Shop on WhatsApp", "Since 2022, shoppers can order end to end inside WhatsApp."],
+        ["Local kirana partners", "Neighbourhood stores sell and deliver through JioMart Partner."],
+        ["Built for the phone", "Almost every shopper arrives on mobile."]
+      ],
+      notes: "What JioMart already did well. The redesign had to make these visible at the moment of choice."
+    },
+
+    /* 02 — WHY REDESIGN */
+    {
+      section: "context", type: "why",
+      tag: "#Product discovery",
+      title: "JioMart 2.0",
+      sub: "Redesigning how shoppers find and choose.",
+      ask: "Why redesign?",
+      reasons: [
+        ["Only 1 in 10 visits ended in a cart.", "10.41% of sessions, Google Analytics"],
+        ["Searchers bought 4× more than browsers.", "41.4% vs 10.4%: browsing was the gap"],
+        ["Every listing card looked alike.", "No rating, size or unit price to compare"],
+        ["Price, size and trust sat below the fold.", "Product page rated critical in the audit"],
+        ["23 usability issues, 5 critical.", "Heuristic audit across Home, search, listing and PDP"]
+      ],
+      notes: "Set up the why before the who. Each reason is measured or from the audit."
+    },
+
     /* 02 — WHO WE DESIGNED FOR */
     {
       section: "context", type: "audience",
@@ -220,6 +252,37 @@ window.DECK = {
       ],
       foot: "Searchers added to cart {{4× more|searchers}}: browsing was the gap.",
       notes: "Context: ~95M visitors but only 1 in 10 sessions added to cart, while searchers did at 41% (4x), so browsing was the gap. Business wanted more carts, product asked for a refresh of 3 pages, and shoppers asked: can I trust this? The brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
+    },
+
+    /* OLD DESIGNS — overview */
+    {
+      section: "context", type: "overview", old: true,
+      title: "Old designs",
+      sub: "Every surface had its own pattern.",
+      screens: [
+        { src: "enhance-problem-home.png", cap: "Home" },
+        { src: "enhance-iter-search-before.png", cap: "Search" },
+        { src: "enhance-problem-plp.png", cap: "Grocery listing" },
+        { src: "enhance-iter-mobile-before.png", cap: "Mobile listing" },
+        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" },
+        { src: "enhance-iter-reviews-before.png", cap: "Reviews" },
+        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
+        { src: "enhance-cart-before.webp", cap: "Cart" }
+      ],
+      notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
+    },
+
+    /* FIELD — glimpses from research */
+    {
+      section: "research", type: "field",
+      title: "Glimpses from the field",
+      photos: [
+        { src: "enhance-user-interview.png", cap: "Shopper interview: \u201cI can\u2019t tell which one to buy.\u201d", pos: "center 40%" },
+        { src: "offline-price-spices.webp", cap: "In store, every tag leads with the price" },
+        { src: "offline-price-shelf.webp", cap: "Same product, many pack sizes, side by side" },
+        { src: "offline-price-tag.webp", cap: "Price first, name next, MRP smallest" }
+      ],
+      notes: "Real photos from interviews and store visits. This is where the price-first and pack-size decisions came from."
     },
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */
@@ -281,6 +344,20 @@ window.DECK = {
         { img: "enhance-impact-effort-matrix.png", t: "Impact vs effort", who: "PM + Design + Engineering", out: "Quick wins first: discount tags, category clarity", fit: "contain" }
       ],
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and plotted every idea on impact vs effort: quick wins like discount tags and category clarity shipped first, while 3D icons and gamified categories were parked."
+    },
+
+    /* NEW DESIGNS — overview */
+    {
+      section: "design", type: "overview",
+      title: "New designs",
+      sub: "One pattern from Home to product page.",
+      screens: [
+        { src: "enhance-v1-home.png", cap: "Home" },
+        { src: "new/plp-grocery.webp", cap: "Listing" },
+        { src: "new/plp-grocery-variant.webp", cap: "Pack size" },
+        { src: "new/pdp-grocery-fold.webp", cap: "Product page" }
+      ],
+      notes: "The reveal. The next three slides explain the decisions behind each screen."
     },
 
     /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
@@ -415,32 +492,24 @@ window.DECK = {
       notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
     },
 
-    /* ACROSS THE APP — every page type, Old → New, per category (new screens: blank frames until the final Figma) */
+    /* KEY PERFORMANCE METRICS */
     {
-      section: "results", type: "results",
-      eyebrow: "Validation & impact",
-      headline: ["Add-to-cart rose from 10.4% to 13.35%"],
-      hero: [
-        { k: "Sessions with add-to-cart", pre: 10.41, post: 13.35, pt: "10.41%", qt: "13.35%", d: "{{+28%|carts}}", sub: "+294 bps" },
-        { k: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, pt: "41.40%", qt: "50.20%", d: "{{+21%|search}}", sub: "+880 bps" },
-        { k: "Time per active user", pre: 254, post: 315, pt: "4m 14s", qt: "5m 15s", d: "{{+24%|time}}", sub: "more browsing" },
-        { k: "Page download time", pre: 0.17, post: 0.12, pt: "0.17s", qt: "0.12s", d: "{{−29%|speed}}", sub: "faster, lower is better" }
+      section: "impact", type: "kpm",
+      title: "Key performance metrics",
+      sub: "Before vs after launch",
+      when: "Jan – Aug 2023",
+      items: [
+        ["+28%", "Sessions with add-to-cart", "10.41% vs 13.35%"],
+        ["+21%", "Search add-to-cart", "41.4% vs 50.2%"],
+        ["+24%", "Time per active user", "4m 14s vs 5m 15s"],
+        ["+25%", "Time per session", "1m 46s vs 2m 13s"],
+        ["+21%", "Page views per user", "5.81 vs 7.04"],
+        ["\u221229%", "Page download time", "0.17s vs 0.12s"]
       ],
-      checksTitle: "Validated before launch",
-      checks: [
-        { n: "{{9 / 12|usability}}", l: "completed the usability test" },
-        { n: "{{3|iterations}}", l: "design iterations", est: true },
-        { n: "{{6|reviews}}", l: "design review rounds", est: true }
-      ],
-      moreTitle: "Also improved",
-      more: [
-        { l: "Time per session", pt: "1m 46s", qt: "2m 13s", d: "{{+25.5%|time}}" },
-        { l: "Page views per user", pt: "5.81", qt: "7.04", d: "{{+21.2%|pages}}" },
-        { l: "Server response time", pt: "0.47s", qt: "0.37s", d: "{{−21.3%|speed}}" }
-      ],
-      disclaimer: "Google Analytics, before launch vs after launch (report evaluated Aug 2023). Iteration and review counts are illustrative (est.).",
-      notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results from the Aug 2023 report: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
+      src: "Google Analytics, report evaluated Aug 2023.",
+      notes: "Lead with +28%: one in ten visits ending in a cart became more than one in eight."
     },
+
 
     /* 12 — KEY TAKEAWAYS */
 
@@ -467,6 +536,32 @@ window.DECK = {
   ],
   /* parked slides (not shown): kept for later use */
   parked: [
+    /* ACROSS THE APP — every page type, Old → New, per category (new screens: blank frames until the final Figma) */
+    {
+      section: "results", type: "results",
+      eyebrow: "Validation & impact",
+      headline: ["Add-to-cart rose from 10.4% to 13.35%"],
+      hero: [
+        { k: "Sessions with add-to-cart", pre: 10.41, post: 13.35, pt: "10.41%", qt: "13.35%", d: "{{+28%|carts}}", sub: "+294 bps" },
+        { k: "Search-assisted add-to-cart", pre: 41.40, post: 50.20, pt: "41.40%", qt: "50.20%", d: "{{+21%|search}}", sub: "+880 bps" },
+        { k: "Time per active user", pre: 254, post: 315, pt: "4m 14s", qt: "5m 15s", d: "{{+24%|time}}", sub: "more browsing" },
+        { k: "Page download time", pre: 0.17, post: 0.12, pt: "0.17s", qt: "0.12s", d: "{{−29%|speed}}", sub: "faster, lower is better" }
+      ],
+      checksTitle: "Validated before launch",
+      checks: [
+        { n: "{{9 / 12|usability}}", l: "completed the usability test" },
+        { n: "{{3|iterations}}", l: "design iterations", est: true },
+        { n: "{{6|reviews}}", l: "design review rounds", est: true }
+      ],
+      moreTitle: "Also improved",
+      more: [
+        { l: "Time per session", pt: "1m 46s", qt: "2m 13s", d: "{{+25.5%|time}}" },
+        { l: "Page views per user", pt: "5.81", qt: "7.04", d: "{{+21.2%|pages}}" },
+        { l: "Server response time", pt: "0.47s", qt: "0.37s", d: "{{−21.3%|speed}}" }
+      ],
+      disclaimer: "Google Analytics, before launch vs after launch (report evaluated Aug 2023). Iteration and review counts are illustrative (est.).",
+      notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results from the Aug 2023 report: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
+    },
     /* WHERE I HELD THE LINE — real stories only: fill every [ADD] before presenting */
     {
       section: "design", type: "pushback",
