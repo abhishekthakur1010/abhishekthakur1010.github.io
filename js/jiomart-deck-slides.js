@@ -471,7 +471,7 @@ window.DECK = {
         ["Logos anywhere.", "Brand logos and symbols overlapped the product."],
         ["Endless scroll.", "Banners stacked one after another in 4 different sizes."]
       ],
-      src: "Home banner audit with the Central UI/UX team.",
+      src: "Home banner audit with the Central UI/UX team: 27 issues across text, image, CTA, logo, background and space.",
       screens: ["research/as-is-0.webp","research/as-is-1.webp","research/as-is-2.webp","research/as-is-3.webp","research/as-is-4.webp","research/as-is-5.webp","research/as-is-6.webp","research/as-is-7.webp","research/as-is-8.webp","research/as-is-9.webp"],
       notes: "This is why Home moved to search first and one card style: the banners were competing with each other, not helping shoppers start."
     },
