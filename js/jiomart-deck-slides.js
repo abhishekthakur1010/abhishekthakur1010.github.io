@@ -170,8 +170,8 @@ window.DECK = {
       headline: ["Enhancing ", "Product Discovery", " on JioMart"],
       highlight: "Product Discovery",
       body: "Simplifying the journey from discovery to purchase, helping shoppers make confident decisions.",
-      hero: "enhance-v1-pdp-fold.png?v=4",
-      backShots: ["enhance-v1-home.png", "enhance-v1-plp.png?v=3"],
+      hero: "new/pdp-grocery-fold.webp",
+      backShots: ["enhance-v1-home.png", "new/plp-grocery.webp"],
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
@@ -295,7 +295,7 @@ window.DECK = {
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "enhance-v1-pdp-fold.png?v=4", scroll: "enhance-v1-pdp-full.png?v=4", cta: "enhance-v1-pdp-cta.png?v=2", n: "Rating, size and offers moved up" }
+        { img: "new/pdp-grocery-fold.webp", scroll: "new/pdp-grocery.webp", cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" }
       ],
       decisions: {
         title: "Design decisions",
@@ -325,7 +325,7 @@ window.DECK = {
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
-        { img: "enhance-v1-plp.png?v=3", n: "Discount, unit price, size and wishlist on every card" }
+        { img: "new/plp-grocery.webp", scroll: "new/plp-grocery.webp", n: "Discount, size and wishlist on every card; filter and sort up top" }
       ],
       evidence: {
         method: "Old vs new listing",
@@ -343,7 +343,7 @@ window.DECK = {
             stat: ["8 → 4", "header actions"], pin: 8 },
           { k: "Mid", where: "Narrow down", laws: ["Chunking", "Progressive disclosure"],
             t: "Narrow the list in small steps",
-            pts: ["Sub-category tiles, then quick chips"], pin: 18 },
+            pts: ["Sub-category tiles, then quick chips"], pin: 30 },
           { k: "Bottom", where: "Product cards", laws: ["Consistency", "Visual hierarchy"],
             t: "Put the decision on the card",
             pts: ["Price, % off, unit price and size", "One card everywhere, like {{5 leading apps|competitors}}"] , pin: 45 }
