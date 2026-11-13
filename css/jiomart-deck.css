@@ -1977,3 +1977,5 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .slide.type-overview .sl h2 { font-size: clamp(40px, 4.4vw, 68px) !important; max-width: 7ch !important; }
 .ch-vis { height: min(38vh, 350px); }
 .ov-n .device { --w: min(11.5vw, 34vh, 220px) !important; }
+.sl.chain { margin-top: 0 !important; }
+.slide.type-why .sl h2, .slide.type-overview .sl h2 { font-size: clamp(40px, 4.4vw, 68px) !important; line-height: 1 !important; }
