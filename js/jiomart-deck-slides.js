@@ -336,6 +336,7 @@ window.DECK = {
     {
       section: "define", type: "evidence",
       title: "Every decision traced back to something we saw",
+      stats: [["20", "interviews"], ["8", "benchmarks"], ["2", "usability tests (12 + 8 users)"], ["23", "audit issues"]],
       items: [
         { m: "Analytics", img: "enhance-ga-pre-conversion.png", fit: "contain", saw: "Searchers added to cart 4\u00d7 more than browsers (41% vs 10%).", dec: "Search first on Home." },
         { m: "Shopper interviews", img: "enhance-user-interview.png", pos: "center 35%", saw: "\u201cI can\u2019t tell which one to buy.\u201d", dec: "Size, price and rating on every card." },

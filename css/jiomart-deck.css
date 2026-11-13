@@ -1908,3 +1908,6 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .ev-dec { margin: 0; font-size: clamp(14px,1.15vw,17px); font-weight: 800; color: var(--ink); }
 .ev-dec b { color: var(--info,#0a66c2); }
 @media (max-width: 760px) { .ev-grid { grid-template-columns: 1fr 1fr; } }
+
+.ev-stats { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: -1.5vh 0 3vh; font-size: clamp(13px,1.1vw,16px); color: var(--dim); }
+.ev-stats b { color: var(--ink); font-weight: 900; font-size: 1.25em; }
