@@ -291,6 +291,14 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution",
       headline: ["PDP Conversion"],
+      views: [
+        { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
+        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" },
+        { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, n: "EMI and full specs open in a sheet, so the page stays short",
+          hot: [ { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
+        { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, n: "Brand first, then the name; colour and size before the fold" },
+        { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, n: "Shades as swatches, offers grouped, reviews with photos" }
+      ],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
@@ -321,6 +329,15 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution",
       headline: ["PLP Engagement"],
+      views: [
+        { v: "old", label: "Before", img: "enhance-problem-plp.png", n: "Name and price only" },
+        { v: "new", label: "Grocery", img: "new/plp-grocery.webp", h: 800, n: "Discount, size and wishlist on every card",
+          hot: [ { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" }, { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" }, { x: 142, y: 362, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" } ] },
+        { v: "mob", label: "Mobiles", img: "new/plp-electronics.webp", h: 978, n: "Applied filters stay visible as chips; specs on every card",
+          hot: [ { x: 236, y: 142, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" }, { x: 305, y: 142, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" } ] },
+        { v: "fash", label: "Fashion", img: "new/plp-fashion.webp", h: 1024, n: "Size, fit and brand filters up top; colour dots on the card" },
+        { v: "beauty", label: "Beauty", img: "new/plp-beauty-grid.webp", h: 1067, n: "Shade swatches on every card" }
+      ],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
@@ -372,6 +389,11 @@ window.DECK = {
       section: "design", type: "versions",
       eyebrow: "The solution",
       headline: ["Home Discovery"],
+      views: [
+        { v: "old", label: "Before", img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
+        { v: "new", label: "After", img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
+        { v: "cat", label: "Categories", img: "new/cat-grocery.webp", n: "One category tray, the same from every entry point" }
+      ],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
@@ -397,62 +419,6 @@ window.DECK = {
     },
 
     /* ACROSS THE APP — every page type, Old → New, per category (new screens: blank frames until the final Figma) */
-    /* TAP THROUGH IT — four live phones: tap the pulsing spots to open the real sheets */
-    {
-      section: "design", type: "proto",
-      eyebrow: "Across the app · Try it",
-      headline: ["Tap through it"],
-      sub: "Four screens from the final design. Tap a pulsing ring to open the real sheet, scroll inside any phone, flip to Old to compare.",
-      phones: [
-        { k: "Grocery listing", img: "new/plp-grocery.webp", h: 800, old: "enhance-problem-plp.png",
-          hot: [
-            { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
-            { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" },
-            { x: 142, y: 362, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" }
-          ],
-          why: "Pick a pack size, filter or sort without leaving the list.", proof: "Listing rated S2 in the {{audit|audit}}: name and price only on the old card." },
-        { k: "Mobiles listing", img: "new/plp-electronics.webp", h: 978, old: "enhance-iter-mobile-before.png",
-          hot: [
-            { x: 236, y: 142, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
-            { x: 305, y: 142, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" }
-          ],
-          why: "Applied filters stay visible as chips; specs and rating on every card.", proof: "Filter & sort rated S2; {{5 leading apps|competitors}} show price and rating on the card." },
-        { k: "Grocery product", img: "new/pdp-grocery.webp", h: 4098, old: "enhance-problem-pdp.png",
-          hot: [],
-          why: "Brand, rating, price and every pack size before the fold.", proof: "PDP rated S3 critical in the {{audit|audit}}; brand hidden on 4 of 4 verticals." },
-        { k: "Electronics product", img: "new/pdp-electronics.webp", h: 4098,
-          hot: [
-            { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI plans" },
-            { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" }
-          ],
-          why: "EMI and full specs open in a sheet, so the page stays short.", proof: "EMI didn't look tappable on 3 of 4 audited verticals." }
-      ],
-      notes: "Let the panel try it. Tap Filter, Sort or the pack size on the grocery list; tap View plans or View details on the phone page. Flip any phone to Old to see what it replaced. Every sheet is the real design, not a mock-up."
-    },
-
-    {
-      section: "design", type: "screenwall",
-      eyebrow: "Across the app · Home and search",
-      headline: ["Home & search"],
-      sub: "Where most shoppers start, and where searchers already convert best.",
-      labels: ["Old", "New"],
-      pairs: [
-        { k: "Home", before: "enhance-problem-home.png", afterNote: "[ADD NEW SCREEN · final Figma]",
-          saw: "Busy banners, random fonts and colours, 7+ carousel cards; category icons inconsistent.",
-          proof: "Banners rated S2 and category icons S0 in the {{audit|audit}}.",
-          decided: "Search first, categories right under it, one banner carousel." },
-        { k: "Search", before: "enhance-iter-search-before.png", afterNote: "[ADD NEW SCREEN · final Figma]",
-          saw: "Wrong categories in suggestions; monotonous, text-only results.",
-          proof: "Searchers added to cart {{4\u00d7 more|searchers}} than the average session.",
-          decided: "Search made the hero of Home; visual suggestions." },
-        { k: "Categories", beforeNote: "[ADD OLD SCREEN · category tray]", after: "new/cat-grocery.webp",
-          saw: "Category hierarchy differed by entry point; fashion and medicine missing.",
-          proof: "Menu & categories rated S2 in the audit.",
-          decided: "[ADD · what changed in categories]" }
-      ],
-      notes: "Home is where most sessions start, but searchers convert about four times better, so search became the hero and categories sit right under it."
-    },
-
     /* WHERE I HELD THE LINE — real stories only: fill every [ADD] before presenting */
     {
       section: "design", type: "pushback",
@@ -544,6 +510,62 @@ window.DECK = {
   ],
   /* parked slides (not shown): kept for later use */
   parked: [
+    {
+      section: "design", type: "screenwall",
+      eyebrow: "Across the app · Home and search",
+      headline: ["Home & search"],
+      sub: "Where most shoppers start, and where searchers already convert best.",
+      labels: ["Old", "New"],
+      pairs: [
+        { k: "Home", before: "enhance-problem-home.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Busy banners, random fonts and colours, 7+ carousel cards; category icons inconsistent.",
+          proof: "Banners rated S2 and category icons S0 in the {{audit|audit}}.",
+          decided: "Search first, categories right under it, one banner carousel." },
+        { k: "Search", before: "enhance-iter-search-before.png", afterNote: "[ADD NEW SCREEN · final Figma]",
+          saw: "Wrong categories in suggestions; monotonous, text-only results.",
+          proof: "Searchers added to cart {{4\u00d7 more|searchers}} than the average session.",
+          decided: "Search made the hero of Home; visual suggestions." },
+        { k: "Categories", beforeNote: "[ADD OLD SCREEN · category tray]", after: "new/cat-grocery.webp",
+          saw: "Category hierarchy differed by entry point; fashion and medicine missing.",
+          proof: "Menu & categories rated S2 in the audit.",
+          decided: "[ADD · what changed in categories]" }
+      ],
+      notes: "Home is where most sessions start, but searchers convert about four times better, so search became the hero and categories sit right under it."
+    },
+
+    /* TAP THROUGH IT — four live phones: tap the pulsing spots to open the real sheets */
+    {
+      section: "design", type: "proto",
+      eyebrow: "Across the app · Try it",
+      headline: ["Tap through it"],
+      sub: "Four screens from the final design. Tap a pulsing ring to open the real sheet, scroll inside any phone, flip to Old to compare.",
+      phones: [
+        { k: "Grocery listing", img: "new/plp-grocery.webp", h: 800, old: "enhance-problem-plp.png",
+          hot: [
+            { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
+            { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" },
+            { x: 142, y: 362, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" }
+          ],
+          why: "Pick a pack size, filter or sort without leaving the list.", proof: "Listing rated S2 in the {{audit|audit}}: name and price only on the old card." },
+        { k: "Mobiles listing", img: "new/plp-electronics.webp", h: 978, old: "enhance-iter-mobile-before.png",
+          hot: [
+            { x: 236, y: 142, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
+            { x: 305, y: 142, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" }
+          ],
+          why: "Applied filters stay visible as chips; specs and rating on every card.", proof: "Filter & sort rated S2; {{5 leading apps|competitors}} show price and rating on the card." },
+        { k: "Grocery product", img: "new/pdp-grocery.webp", h: 4098, old: "enhance-problem-pdp.png",
+          hot: [],
+          why: "Brand, rating, price and every pack size before the fold.", proof: "PDP rated S3 critical in the {{audit|audit}}; brand hidden on 4 of 4 verticals." },
+        { k: "Electronics product", img: "new/pdp-electronics.webp", h: 4098,
+          hot: [
+            { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI plans" },
+            { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" }
+          ],
+          why: "EMI and full specs open in a sheet, so the page stays short.", proof: "EMI didn't look tappable on 3 of 4 audited verticals." }
+      ],
+      notes: "Let the panel try it. Tap Filter, Sort or the pack size on the grocery list; tap View plans or View details on the phone page. Flip any phone to Old to see what it replaced. Every sheet is the real design, not a mock-up."
+    },
+
     {
       section: "design", type: "screenwall",
       eyebrow: "Across the app · Product page",

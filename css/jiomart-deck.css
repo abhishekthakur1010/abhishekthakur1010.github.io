@@ -1763,3 +1763,21 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .pt-why p { font-size: 12.5px; line-height: 1.35; }
 .pt-why small { font-size: 10.5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .pt-hint { font-size: 9.5px; margin-top: auto; padding-top: 2px; }
+
+/* focus layout: story left, one interactive phone right */
+.fo .fo-row { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,.9fr); gap: clamp(24px,4vw,72px); align-items: start; }
+.fo .fo-left { min-width: 0; }
+.fo .fo-dec { max-width: none; min-width: 0; margin-top: clamp(10px,2vh,24px); }
+.fo .fo-right { display: flex; justify-content: center; padding-top: 4px; }
+.fo-mock { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.fo-tabs { flex-wrap: wrap; justify-content: center; }
+.fo-tabs button { font-size: 11px; padding: 4px 11px; }
+.fo-dev { --w: min(17vw, 31vh, 290px); }
+.fo-pinned:has(.pt-sheet.on) .vs-pin { opacity: 0 !important; }
+.fo-pinned { position: relative; }
+.fo-mock.pins-off .vs-pin { opacity: 0 !important; transition: opacity .2s; }
+.fo-cta { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; z-index: 2; }
+.fo-cap { margin: 0; max-width: 300px; text-align: center; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
+.fo-cap.bad { color: var(--warn); }
+.fo-cap .fo-tap { display: block; margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--info); }
+@media (max-width: 1000px) { .fo .fo-row { grid-template-columns: 1fr; } .fo-dev { --w: 240px; } }

@@ -132,7 +132,7 @@
       case "funnels": return sc.funnels.length;
       case "decisions": return sc.rows.length;
       case "showcase": return sc.pairs.length;
-      case "versions": return sc.stages.length - 1 + (sc.decisions ? sc.decisions.zones.length : 0);
+      case "versions": return sc.views ? sc.decisions.zones.length : sc.stages.length - 1 + (sc.decisions ? sc.decisions.zones.length : 0);
       case "kpis": return sc.groups.length + 1;
       case "results": return 2;
       case "close": return 2;
@@ -837,6 +837,40 @@
       }).join("");
       var head = "<div class='sl'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
         (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") + "</div>" + evidencePill(sc.evidence) + "</div>";
+      // focus layout: reasoning on the left, one interactive phone on the right (views = Before + each category)
+      if (sc.views) {
+        var fz = sc.decisions.zones;
+        var fzones = fz.map(function (z, j) {
+          return "<div class='vs-zone reveal' data-step='" + (j + 1) + "'>" +
+            "<span class='vs-zone-n'>" + (j + 1) + "</span><div class='vs-zone-body'>" +
+            "<div class='vs-zone-k'>" + esc(z.k) + "<span class='vs-zone-where'>" + esc(z.where) + "</span>" +
+            "<span class='vs-laws'>" + z.laws.map(function (l) { return "<span class='vs-law'>" + esc(l) + "</span>"; }).join("") + "</span></div>" +
+            "<p class='vs-zone-t'>" + esc(z.t) + "</p><ul class='vs-zone-pts'>" + z.pts.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>" +
+            (z.stat ? "<div class='vs-zone-stat'><b>" + esc(z.stat[0]).replace("→", "<i>→</i>") + "</b><span>" + esc(z.stat[1]) + "</span></div>" : "") + "</div>";
+        }).join("");
+        var def = sc.focusDefault || sc.views[1].v;
+        var fpins = fz.map(function (z, j) { return "<span class='vs-pin reveal' data-step='" + (j + 1) + "' style='top:" + z.pin + "%'>" + (j + 1) + "</span>"; }).join("");
+        var tabs = "<div class='pt-tog fo-tabs' role='group'>" + sc.views.map(function (v) {
+          return "<button type='button' data-v='" + v.v + "'" + (v.v === def ? " class='on'" : "") + ">" + esc(v.label) + "</button>"; }).join("") + "</div>";
+        var vis = sc.views.map(function (v) {
+          var on = v.v === def ? " on" : "";
+          var hot = (v.hot || []).map(function (h) {
+            return "<button type='button' class='pt-hot' data-open='" + img(h.open) + "' aria-label='" + esc(h.label) + "' style='left:" + (h.x / 3.6) + "%;top:" + (h.y / v.h * 100) + "%;width:" + (h.w / 3.6) + "%;height:" + (h.h / v.h * 100) + "%'><span>Tap · " + esc(h.label) + "</span></button>";
+          }).join("");
+          return "<div class='pt-view " + v.v + on + "'><img src='" + img(v.img) + "' alt='" + esc(v.label) + "'" + (v.v === def ? "" : " loading='lazy'") + ">" + hot + "</div>";
+        }).join("");
+        var ctas = sc.views.filter(function (v) { return v.cta; }).map(function (v) {
+          return "<img class='pt-view fo-cta " + v.v + (v.v === def ? " on" : "") + "' src='" + img(v.cta) + "' alt=''>"; }).join("");
+        var caps = sc.views.map(function (v) {
+          return "<p class='pt-view fo-cap " + v.v + (v.v === def ? " on" : "") + (v.v === "old" ? " bad" : "") + "'>" + esc(v.n || "") +
+            ((v.hot || []).length ? "<span class='fo-tap'>Tap " + v.hot.map(function (h) { return esc(h.label); }).join(" · ") + "</span>" : "") + "</p>"; }).join("");
+        var mock = "<div class='fo-mock" + (def === "old" ? " is-old" : "") + "' data-pins='" + (sc.pinsOn || def) + "'>" + tabs +
+          "<span class='vs-pinned fo-pinned'>" + fpins + "<div class='device pt-dev fo-dev'><div class='dn'></div><div class='ds'><div class='pt-scroll'>" + vis + "</div>" + ctas +
+          "<div class='pt-sheet' hidden><img alt=''><button type='button' class='pt-x' aria-label='Close'>✕</button></div></div></div></span>" + caps + "</div>";
+        return "<div class='sl fo'><div class='fo-row'><div class='fo-left'><div class='sl-head sc-head'><div><div class='eyebrow'>" + esc(sc.eyebrow) + "</div>" + L(sc.headline, "h2") +
+          (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") + "</div>" + evidencePill(sc.evidence) + "</div>" +
+          "<div class='vs-dec fo-dec'><div class='vs-zones'>" + fzones + "</div></div></div><div class='fo-right'>" + mock + "</div></div></div>";
+      }
       // Before → After, then the design decisions behind the After screen, zone by zone (Top, Mid, Bottom)
       if (sc.decisions) {
         var zs = sc.decisions.zones, s0 = n; // zone j reveals at step n + j
@@ -1396,9 +1430,12 @@
     if (pts) { pts.classList.remove("on"); setTimeout(function () { pts.hidden = true; }, 260); return; }
     var ptt = e.target.closest(".pt-tog button");
     if (ptt) {
-      var card = ptt.closest(".pt-card"), v = ptt.getAttribute("data-v");
+      var card = ptt.closest(".pt-card, .fo-mock"), v = ptt.getAttribute("data-v");
       card.querySelectorAll(".pt-tog button").forEach(function (b) { b.classList.toggle("on", b === ptt); });
       card.querySelectorAll(".pt-view").forEach(function (x) { x.classList.toggle("on", x.classList.contains(v)); });
+      card.classList.toggle("is-old", v === "old");
+      if (card.getAttribute("data-pins")) card.classList.toggle("pins-off", card.getAttribute("data-pins") !== v);
+      var shx = card.querySelector(".pt-sheet"); if (shx) { shx.classList.remove("on"); shx.hidden = true; }
       card.querySelector(".pt-scroll").scrollTop = 0;
       return;
     }
