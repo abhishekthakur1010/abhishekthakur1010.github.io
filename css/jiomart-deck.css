@@ -2234,3 +2234,4 @@ a.prb-ev { text-decoration: none; }
 .so-stage .slide { display: flex; align-items: center; justify-content: center; }
 .so-stage .fv-slide { grid-template-columns: minmax(0, 760px) auto; gap: 64px; }
 .so-x { top: 24px; right: 24px; }
+.so-stage .fv-slide { grid-template-columns: minmax(0, 900px) auto; }
