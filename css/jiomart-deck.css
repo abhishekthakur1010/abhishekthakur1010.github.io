@@ -2132,3 +2132,18 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .bd-tall .bd-img { width: 58% !important; min-height: clamp(150px, calc((100vh - 360px) / 2), 300px) !important; }
 .bd-tall .bd-stat b { font-size: clamp(22px, 2vw, 34px) !important; white-space: nowrap; }
 .bd-tall .bd-body { min-width: 0; }
+/* heuristic record: every page, side-scrolling */
+.sl.rec { width: 100%; }
+.rec-h { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+.rec-h h2 { margin: 0 0 6px; }
+.rec-h .sub { margin: 0; }
+.rec-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 10px; -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent); mask-image: linear-gradient(90deg, #000 92%, transparent); }
+.rec-pg { flex: 0 0 auto; margin: 0; scroll-snap-align: start; cursor: zoom-in; }
+.rec-img { height: min(calc(100vh - 330px), 560px); aspect-ratio: 879 / 1376; overflow: hidden; border: 1px solid var(--line2); border-radius: 10px; background: #fff; transition: transform .2s, box-shadow .2s; }
+.rec-pg:hover .rec-img { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+.rec-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.rec-pg figcaption { margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.rec-pg figcaption b { color: var(--dim); font-weight: 600; margin-right: 4px; }
+/* heuristic record pages open as readable documents, not phones */
+.lightbox.tall.doc .lb-imgwrap { width: min(900px, 72vw) !important; aspect-ratio: auto !important; height: 84vh !important; max-height: 84vh !important; border: 0 !important; border-radius: 12px !important; overflow-y: auto !important; }
+.lightbox.tall.doc .lb-imgwrap img { width: 100% !important; height: auto !important; }

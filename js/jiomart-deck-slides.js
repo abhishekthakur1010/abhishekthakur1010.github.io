@@ -341,6 +341,40 @@ window.DECK = {
       notes: "This is where priorities came from. Severity times ease told us what to fix first."
     },
 
+    /* HEURISTIC RECORD — every page */
+    {
+      section: "research", type: "record",
+      title: "The full heuristic record",
+      sub: "24 pages. Click any page to read it.",
+      pages: [
+        ["research/he-rec-01.webp", "Scope & method"],
+        ["research/he-rec-02.webp", "10 heuristics"],
+        ["research/he-rec-03.webp", "Rating scales"],
+        ["research/he-rec-04.webp", "Executive summary"],
+        ["research/he-rec-05.webp", "Ranked findings"],
+        ["research/he-rec-06.webp", "Onboarding · sign in"],
+        ["research/he-rec-07.webp", "Categories · list & scan"],
+        ["research/he-rec-08.webp", "List feature"],
+        ["research/he-rec-09.webp", "Search"],
+        ["research/he-rec-10.webp", "Scan"],
+        ["research/he-rec-11.webp", "Voice search"],
+        ["research/he-rec-12.webp", "Top categories"],
+        ["research/he-rec-13.webp", "Top deals · address"],
+        ["research/he-rec-14.webp", "Profile · My List"],
+        ["research/he-rec-15.webp", "Support · menu"],
+        ["research/he-rec-16.webp", "Filter & sort"],
+        ["research/he-rec-17.webp", "Checkout"],
+        ["research/he-rec-18.webp", "Banners"],
+        ["research/he-rec-19.webp", "Cart"],
+        ["research/he-rec-20.webp", "Order tracking"],
+        ["research/he-rec-21.webp", "Product page"],
+        ["research/he-rec-22.webp", "Listing page"],
+        ["research/he-rec-23.webp", "End of scroll"],
+        ["research/he-rec-24.webp", "Flow pipeline"]
+      ],
+      notes: "The complete heuristic evaluation by the Central UI/UX research team, page by page. Personal details in the app screenshots are blurred."
+    },
+
     /* 08 — DEFINING THE PROBLEM */
     {
       section: "research", type: "synthesis",

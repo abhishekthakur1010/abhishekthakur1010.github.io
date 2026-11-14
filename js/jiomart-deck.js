@@ -1117,6 +1117,13 @@
         return "<div class='usp-i'><span class='usp-n'>" + (i + 1) + "</span><h3>" + esc(x[0]) + "</h3><p>" + esc(x[1]) + "</p></div>";
       }).join("") + "</div></div>";
     },
+    record: function (sc) {
+      return "<div class='sl rec'><div class='rec-h'><div><h2>" + esc(sc.title) + "</h2><p class='sub'>" + esc(sc.sub) + "</p></div>" +
+        "<div class='ov-nav'><button class='sw-btn' data-sw='-1' aria-label='Scroll left'>←</button><button class='sw-btn' data-sw='1' aria-label='Scroll right'>→</button></div></div>" +
+        "<div class='rec-track sw-track' tabindex='0'>" + sc.pages.map(function (p, i) {
+          return "<figure class='rec-pg' data-i='" + i + "'><div class='rec-img'><img loading='lazy' src='" + img(p[0]) + "' alt='" + esc(p[1]) + "'></div><figcaption><b>" + pad(i + 1) + "</b> " + esc(p[1]) + "</figcaption></figure>";
+        }).join("") + "</div></div>";
+    },
     overview: function (sc) {
       var tiles = sc.screens.map(function (x, i) {
         if (x.sheet) {
@@ -1408,6 +1415,7 @@
     lb.querySelector(".lb-cap").textContent = caption || "";
     lb.classList.toggle("tall", !!tall);
     lb.classList.toggle("gallery", !!gal);
+    lb.classList.toggle("doc", !!(gal && gal.doc));
     var w = lb.querySelector(".lb-imgwrap"); if (w) w.scrollTop = 0;
     lb.classList.add("open");
     if (li.complete && li.naturalWidth && !flipped) { flipped = true; lbFlip(false); }
@@ -1558,6 +1566,12 @@
       if (card.getAttribute("data-pins")) card.classList.toggle("pins-off", card.getAttribute("data-pins") !== v);
       var shx = card.querySelector(".pt-sheet"); if (shx) { shx.classList.remove("on"); shx.hidden = true; }
       card.querySelector(".pt-scroll").scrollTop = 0;
+      return;
+    }
+    var rp = e.target.closest(".rec-pg");
+    if (rp) {
+      var rl = Array.prototype.map.call(rp.parentNode.querySelectorAll(".rec-pg"), function (f) { return { src: f.querySelector("img").src, title: f.querySelector("img").alt }; });
+      gal = { list: rl, i: 0, doc: true }; showGal(parseInt(rp.getAttribute("data-i"), 10) || 0);
       return;
     }
     var swb = e.target.closest(".sw-btn");
