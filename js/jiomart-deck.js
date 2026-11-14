@@ -885,7 +885,7 @@
         var vlinks = (sc.links || []).map(function (x) {
           return "<button type='button' class='prb-chip vp-link' data-ov='" + esc(x.ov) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b><i aria-hidden='true'>\u203A</i></button>"; }).join("");
         return "<div class='sl vp'><div class='vp-left'>" + L(sc.headline, "h2") + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
-          "<div class='vp-zones'>" + fzones + "</div>" + (vlinks ? "<div class='vp-links'>" + vlinks + "</div>" : "") + "</div><div class='vp-right'>" + phones + "</div></div>";
+          "<div class='vp-zones'>" + (vlinks ? fzones.replace(/<\/ul><\/div>((?:(?!<\/ul><\/div>)[\s\S])*)$/, "</ul><div class='vp-links vp-in'>" + vlinks + "</div></div>$1") : fzones) + "</div></div><div class='vp-right'>" + phones + "</div></div>";
         var def = sc.focusDefault || sc.views[1].v;
         var fpins = fz.map(function (z, j) { return "<span class='vs-pin reveal' data-step='" + (j + 1) + "' style='top:" + z.pin + "%'>" + (j + 1) + "</span>"; }).join("");
         var tabs = "<div class='pt-tog fo-tabs' role='group'>" + sc.views.map(function (v) {
