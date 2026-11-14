@@ -2014,3 +2014,6 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .slide.type-versions .vp h2 { max-width: 16ch !important; }
 .vs-zone-stat { text-align: right; }
 .vp-ph .device { --w: min(16.5vw, 34vh, 270px) !important; }
+/* phones always fit the slide height, on any screen */
+.sl.overview .ov-n .device { --w: min(16.5vw, calc((100vh - 430px) / 2.1), 270px) !important; }
+.vp-ph .device { --w: min(16.5vw, calc((100vh - 290px) / 2.15), 270px) !important; }
