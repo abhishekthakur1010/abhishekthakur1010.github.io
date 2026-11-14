@@ -1166,15 +1166,14 @@
         "<div class='fig-img'><img src='" + img(sc.img) + "' alt='" + esc(sc.alt || sc.title) + "'></div></div>";
     },
     plan: function (sc) {
-      function card(c, cls) {
-        return "<div class='p2-c" + (cls || "") + "'><span class='p2-n'>" + esc(c.n) + "</span><h3>" + esc(c.t) + "</h3>" + (c.d ? "<p>" + esc(c.d) + "</p>" : "") +
-          "<ul>" + c.chips.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
-      }
-      var ar = "<div class='p2-ar' aria-hidden='true'><svg viewBox='0 0 40 12'><path d='M0 6h36M31 1l5 5-5 5' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg></div>";
-      return "<div class='sl plan2'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
-        "<div class='p2'><div class='p2-col'><span class='p2-lab'>Inputs</span><div class='p2-stack'>" + sc.inputs.map(function (c) { return card(c); }).join("") + "</div></div>" + ar +
-        "<div class='p2-col'><span class='p2-lab'>Synthesis</span>" + card(sc.map, " p2-fill") + "</div>" + ar +
-        "<div class='p2-col'><span class='p2-lab'>Outcome</span>" + card(sc.goal, " p2-fill p2-goal") + "</div></div></div>";
+      var steps = sc.inputs.concat([sc.map, sc.goal]);
+      return "<div class='sl plan3'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
+        "<div class='p3'><div class='p3-labs'><span class='p3-lab p3-l2'>Inputs</span><span class='p3-lab'>Synthesis</span><span class='p3-lab p3-lout'>Outcome</span></div>" +
+        "<div class='p3-track'>" + steps.map(function (c, i) {
+          return "<div class='p3-s" + (i === steps.length - 1 ? " p3-end" : "") + "'><span class='p3-dot'>" + (i + 1) + "</span>" +
+            "<h3>" + esc(c.t) + "</h3><p>" + esc(c.d || "") + "</p>" +
+            "<ul>" + c.chips.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+        }).join("") + "</div></div></div>";
     },
     field: function (sc) {
       return "<div class='sl field'><h2>" + esc(sc.title) + "</h2><div class='fd-grid'>" + sc.photos.map(function (p, i) {

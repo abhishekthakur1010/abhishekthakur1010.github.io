@@ -2407,3 +2407,30 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .p2-col > .p2-fill { flex: 0 0 auto; margin: auto 0; }
 .p2-col > .p2-fill ul { margin-top: 14px; }
 .p2-stack { gap: 20px; }
+
+/* plan v4: horizontal timeline */
+.sl.plan3 h2 { margin: 0 0 .25em; }
+.sl.plan3 .sub { margin: 0 0 3em; }
+.p3 { --acc: #1e5fa0; }
+[data-theme=dark] .p3 { --acc: #6fa8e0; }
+.p3-labs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 40px; margin-bottom: 14px; }
+.p3-lab { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); padding-bottom: 8px; border-bottom: 1.5px solid var(--line2, rgba(0,0,0,.12)); }
+.p3-l2 { grid-column: span 2; }
+.p3-lout { color: var(--acc); border-color: var(--acc); }
+.p3-track { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 40px; padding-top: 22px; }
+.p3-track::before { content: ""; position: absolute; left: 22px; right: calc(25% - 10px); top: 43px; height: 2px; background: linear-gradient(90deg, rgba(30,95,160,.15), var(--acc)); }
+.p3-s { position: relative; min-width: 0; }
+.p3-dot { position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 800; color: var(--acc); background: var(--bg, #fff); border: 2px solid var(--acc); }
+[data-theme=dark] .p3-dot { background: #0b0d10; }
+.p3-end .p3-dot { background: var(--acc); color: #fff; box-shadow: 0 0 0 8px rgba(30,95,160,.12); }
+.p3-s h3 { margin: 22px 0 6px; font-size: clamp(18px,1.5vw,24px); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
+.p3-end h3 { color: var(--acc); }
+.p3-s p { margin: 0 0 12px; font-size: 14px; color: var(--dim); line-height: 1.45; }
+.p3-s ul { list-style: none; margin: 14px 0 0; padding: 14px 0 0; border-top: 1px dashed var(--line2, rgba(0,0,0,.14)); display: grid; gap: 8px; }
+.p3-s li { font-size: 15px; color: var(--ink); opacity: .82; }
+.p3-end li { opacity: 1; }
+@media (max-height: 760px) { .sl.plan3 .sub { margin-bottom: 1.6em; } .p3-s h3 { margin-top: 14px; } .p3-s ul { gap: 5px; margin-top: 10px; padding-top: 10px; } .p3-s li { font-size: 14px; } }
+@media (max-width: 900px) { .p3-labs { display: none; } .p3-track { grid-template-columns: 1fr 1fr; gap: 28px; } .p3-track::before { display: none; } }
+.p3-track { grid-template-rows: auto auto auto 1fr; }
+.p3-s { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+.p3-s p { margin-bottom: 0; }

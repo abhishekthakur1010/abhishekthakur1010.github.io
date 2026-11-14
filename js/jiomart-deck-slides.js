@@ -311,7 +311,7 @@ window.DECK = {
       title: "How we researched",
       sub: "Two inputs fed one emotional map, which defined the ideal journey.",
       inputs: [
-        { n: "01", t: "Competitive benchmarking", chips: ["USPs", "Product experience", "Content design", "Service operations"] },
+        { n: "01", t: "Competitive benchmarking", d: "Learning best practices from leaders.", chips: ["USPs", "Product experience", "Content design", "Service operations"] },
         { n: "02", t: "Current journey analysis", d: "Finding the pain points.", chips: ["Heuristics", "Data analysis", "User survey", "Sentiment analysis"] }
       ],
       map: { n: "03", t: "Emotional journey mapping", d: "JioMart vs competitors, as one emotional graph.", chips: ["Moments of delight", "Happy next", "Emotion patterns", "Journey break points"] },
