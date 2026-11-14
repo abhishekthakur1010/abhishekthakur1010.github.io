@@ -1168,7 +1168,7 @@
           var more = r[2] && OVERLAYS[r[2]];
           var inner = "<b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "");
           return "<li class='reveal kw" + (more ? " has-more" : "") + "' data-step='" + (i + 1) + "'>" +
-            (more ? "<button class='kw-more' data-ov='" + esc(r[2]) + "' title='See the funnel'>" + inner + "<i class='kw-chev' aria-hidden='true'>›</i></button>" : inner) + "</li>";
+            (more ? "<button class='kw-more' data-ov='" + esc(r[2]) + "' aria-label='See the funnel'>" + inner + "<i class='kw-chev' aria-hidden='true'>›</i></button>" : inner) + "</li>";
         }).join("") + "</ol>" + (sc.src ? "<p class='why-src'>" + esc(sc.src) + "</p>" : "") + "</div></div>";
     },
     close: function (sc) {
@@ -1617,7 +1617,8 @@
     if (z) { lbFrom = z; openLightbox(z.src, ""); }
   });
   document.addEventListener("click", function (e) {
-    var m = e.target.closest && e.target.closest(".kw-more");
+    var m = e.target.closest && e.target.closest(".kw-more, li.has-more");
+    if (m && m.tagName === "LI") m = m.querySelector(".kw-more");
     if (m) { e.preventDefault(); e.stopPropagation(); openOverlay(m.getAttribute("data-ov")); }
   }, true);
 
