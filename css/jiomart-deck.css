@@ -2281,3 +2281,4 @@ a.prb-ev { text-decoration: none; }
 .kw-more:hover, .kw-more:focus-visible { background: none !important; padding-left: 0 !important; padding-right: 0 !important; }
 .kw-more:focus-visible { outline: none; }
 .slide.type-why .why-r ol li.kw.has-more:hover .kw-chev { transform: translateX(4px); background: var(--bg); }
+.so-panel { width: min(86vw, calc(100vw - 72px)); }
