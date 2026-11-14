@@ -1595,7 +1595,7 @@
     if (sl2) sl2.style.width = (pw - 2 * 56) / k + "px";   // fill the width: no dead space at the sides
   }
   function openOverlay(id) {
-    var sc = OVERLAYS[id]; if (!sc) return;
+    var sc = typeof id === "object" ? id : OVERLAYS[id]; if (!sc) return;
     var el = document.createElement("section");
     el.className = "slide active sec-" + sc.section + " type-" + sc.type;
     el.innerHTML = (T[sc.type] || T.opening)(sc);
@@ -1728,7 +1728,7 @@
       return;
     }
     var pgo = e.target.closest(".p3-a[data-go]");
-    if (pgo) { var gk = pgo.getAttribute("data-go"); for (var gi = 0; gi < slides.length; gi++) { if (slides[gi].id === gk || slides[gi].type === gk) { go(gi); break; } } return; }
+    if (pgo) { var gk = pgo.getAttribute("data-go"); for (var gi = 0; gi < slides.length; gi++) { if (slides[gi].id === gk || slides[gi].type === gk) { openOverlay(slides[gi]); break; } } return; }
     var psrc = e.target.closest(".prb-chip[data-img], .p3-a[data-img]");
     if (psrc) { lbFrom = psrc; openLightbox(psrc.getAttribute("data-img"), psrc.getAttribute("data-cap") || ""); return; }
     var pe = e.target.closest(".prb-ev");
