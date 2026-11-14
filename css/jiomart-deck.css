@@ -2087,3 +2087,14 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 /* Old / New: slightly smaller phones, tighter gutters */
 .sl.overview .ov-n .device { --w: min(22vw, calc((100vh - 370px) / 2.12), 320px) !important; }
 .sl.overview .ov-grid.sw-track { gap: clamp(10px, 1vw, 18px) !important; }
+/* Why redesign: keyword rows, stat + 2-3 words */
+.slide.type-why .why-r ol li.kw { display: flex !important; align-items: baseline; gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--line2); }
+.slide.type-why .why-r ol li.kw b { font-size: clamp(30px, 3vw, 48px) !important; font-weight: 800; letter-spacing: -0.03em; color: var(--info, #0078ad); min-width: 5.2em; line-height: 1; }
+.slide.type-why .why-r ol li.kw span { font-size: clamp(18px, 1.5vw, 24px) !important; font-weight: 600; color: var(--ink) !important; margin: 0 !important; }
+.slide.type-why .why-r ol li.kw { display: grid !important; grid-template-columns: auto 1fr; column-gap: 16px; align-items: baseline; }
+.slide.type-why .why-r ol li.kw b { min-width: 0; }
+.slide.type-why .why-r ol li.kw span { color: var(--dim) !important; font-weight: 500; }
+.slide.type-why .why-src { margin-top: 14px; font-size: 12px; color: var(--dim); }
+.slide.type-why .why-r ol li.kw { display: flex !important; align-items: baseline; gap: 14px; }
+.slide.type-why .why-r ol li.kw b { flex: 0 0 auto; min-width: 0 !important; }
+.slide.type-why .why-r ol li.kw span { flex: 1 1 auto; }

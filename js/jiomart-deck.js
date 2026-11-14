@@ -1142,8 +1142,8 @@
     why: function (sc) {
       return "<div class='sl why'><div class='why-l'><span class='why-tag'>" + esc(sc.tag) + "</span><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div>" +
         "<div class='why-r'><h3>" + esc(sc.ask) + "</h3><ol>" + sc.reasons.map(function (r, i) {
-          return "<li class='reveal' data-step='" + (i + 1) + "'><b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "") + "</li>";
-        }).join("") + "</ol></div></div>";
+          return "<li class='reveal kw' data-step='" + (i + 1) + "'><b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "") + "</li>";
+        }).join("") + "</ol>" + (sc.src ? "<p class='why-src'>" + esc(sc.src) + "</p>" : "") + "</div></div>";
     },
     close: function (sc) {
       var wins = sc.wins.map(function (w) { return "<div class='cl-win'><b>" + esc(w.n) + "</b><span>" + esc(w.l) + "</span></div>"; }).join("");

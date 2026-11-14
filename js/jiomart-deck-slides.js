@@ -247,16 +247,17 @@ window.DECK = {
       section: "context", type: "why",
       tag: "#Product discovery",
       title: "JioMart 2.0",
-      sub: "Redesigning how shoppers find and choose.",
+      sub: "Find. Compare. Choose.",
       ask: "Why redesign?",
       reasons: [
-        ["Only 1 in 10 visits ended in a cart.", "10.41% of sessions, Google Analytics"],
-        ["Searchers bought 4× more than browsers.", "41.4% vs 10.4%: browsing was the gap"],
-        ["Every listing card looked alike.", "No rating, size or unit price to compare"],
-        ["Price, size and trust sat below the fold.", "Product page rated critical in the audit"],
-        ["23 usability issues, 5 critical.", "Heuristic audit across Home, search, listing and PDP"]
+        ["1 in 10", "visits reached cart"],
+        ["4×", "search beat browse"],
+        ["Look-alike", "listing cards"],
+        ["Buried", "price, size, trust"],
+        ["23", "usability issues"]
       ],
-      notes: "Set up the why before the who. Each reason is measured or from the audit."
+      src: "Google Analytics · heuristic audit",
+      notes: "1 in 10 sessions added to cart (10.41%, GA). Searchers converted 41.4% vs 10.4%. Cards had no rating, size or unit price. Product page rated S3 critical. 23 audit issues, 5 critical."
     },
 
     /* 02 — WHO WE DESIGNED FOR */
