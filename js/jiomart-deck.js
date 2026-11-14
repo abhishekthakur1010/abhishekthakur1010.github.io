@@ -733,7 +733,7 @@
       var steps = sc.steps.map(function (s, i) {
         return "<div class='cb-step reveal' data-step='" + (i + 1) + "'>" +
           "<button class='tile cb-photo" + (s.fit === "contain" ? " contain" : "") + "' data-img='" + img(s.img) + "' title='Click to enlarge'>" +
-          "<img src='" + img(s.img) + "' onerror=\"this.parentElement.classList.add('failed')\"><span class='tile-t'>" + esc(s.t) + "</span></button>" +
+          "<img src='" + img(s.img) + "'" + (s.pos ? " style='object-position:" + s.pos + "'" : "") + " onerror=\"this.parentElement.classList.add('failed')\"><span class='tile-t'>" + esc(s.t) + "</span></button>" +
           "<div class='cb-meta'><span class='cb-n'>" + pad(i + 1) + "</span><b>" + esc(s.t) + "</b><span class='cb-who'>" + esc(s.who) + "</span>" +
           "<p class='cb-out'>" + esc(s.out) + "</p></div></div>";
       }).join("");

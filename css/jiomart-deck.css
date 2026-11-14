@@ -2197,3 +2197,7 @@ a.prb-ev { text-decoration: none; }
 /* evidence slide without pictures */
 .ev-c.ev-txt { padding: 18px 18px 16px; }
 .ev-c.ev-txt .ev-m { position: static; display: inline-block; margin-bottom: 10px; }
+/* collab · 5 steps */
+.cb-row:has(> .cb-step:nth-child(5)) { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.cb-row:has(> .cb-step:nth-child(5)) .cb-out { font-size: 13px; }
+.cb-photo.contain img { object-position: center !important; }
