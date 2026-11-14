@@ -2551,3 +2551,11 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .kpm-sup .kpm-i h3 { font-size: clamp(13px,1.05vw,16px); }
 .kpm-sup .kpm-i p { font-size: clamp(12px,.95vw,14px); }
 @media (max-width: 760px) { .kpm-sup { grid-template-columns: 1fr 1fr; } }
+/* metrics type scale: one ratio for both rows (number : label : line ≈ 3.6 : 1 : .8) */
+.kpm-v2 .kpm-hero .kpm-i b { font-size: clamp(52px,5vw,84px); }
+.kpm-v2 .kpm-hero .kpm-i h3 { font-size: clamp(17px,1.45vw,23px); margin: .55em 0 .2em; }
+.kpm-v2 .kpm-hero .kpm-i p { font-size: clamp(14px,1.15vw,18px); }
+.kpm-v2 .kpm-sup .kpm-i b { font-size: clamp(36px,3.4vw,56px); }
+.kpm-v2 .kpm-sup .kpm-i h3 { font-size: clamp(14px,1.15vw,18px); margin: .55em 0 .2em; }
+.kpm-v2 .kpm-sup .kpm-i p { font-size: clamp(12px,.95vw,15px); }
+.kpm-v2 .kpm-tgt { font-size: clamp(11px,.85vw,13px); }
