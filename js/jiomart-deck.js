@@ -1131,7 +1131,7 @@
         sc.items.map(function (it, i) {
           return "<article class='prb-c'><div class='prb-img'><img loading='lazy' src='" + img(it.img) + "' alt='" + esc(it.k) + "'></div>" +
             "<div class='prb-b'><div class='prb-t'><b>" + esc(it.k) + "</b><span class='prb-se'><i class='sev s" + esc(it.s.slice(1)) + "'>" + esc(it.s) + "</i><i class='ease'>" + esc(it.e) + "</i></span></div>" +
-            "<p class='prb-i'>" + esc(it.issue) + "</p>" +
+            (Array.isArray(it.issue) ? "<ul class='prb-kw'>" + it.issue.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("") + "</ul>" : "<p class='prb-i'>" + esc(it.issue) + "</p>") +
             "<div class='prb-h2'>" + it.h.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>" +
             (it.fix ? "<p class='prb-f'><em>Fix</em>" + esc(it.fix) + "</p>" : "") +
             "<a class='prb-ev' href='" + doc + "#page=" + it.page + "' target='_blank' rel='noopener'>Evidence · PDF p." + it.page + " ↗</a></div></article>";

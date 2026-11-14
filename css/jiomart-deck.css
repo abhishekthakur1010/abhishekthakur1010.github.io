@@ -2469,3 +2469,8 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 /* image-only sheet: never crop, box follows the image */
 .so-sub-in .ev-img.full, .so-sub-in .ev-img.full .ev-imgbox { max-height: none !important; height: auto !important; overflow: visible !important; }
 .so-sub-in .ev-img.full img { height: auto !important; max-height: calc(100vh - 150px) !important; object-fit: contain !important; object-position: 50% 50% !important; display: block; margin: 0 auto; }
+
+/* keyword problems */
+.prb-kw { list-style: none; margin: 2px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.prb-kw li { position: relative; padding-left: 16px; font-size: clamp(13px, 1vw, 15.5px); font-weight: 600; line-height: 1.3; color: var(--ink); }
+.prb-kw li::before { content: ""; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: #d9534f; }
