@@ -2122,3 +2122,13 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .slide.type-why .why-r ol li.kw span { font-size: clamp(17px, 1.4vw, 22px) !important; }
 .slide.type-why .why-r ol li.kw::before { font-size: clamp(17px, 1.4vw, 22px) !important; color: var(--dim); font-weight: 700; min-width: 1.4em; }
 .slide.type-why .why-r ol li.kw { padding: 14px 0 !important; }
+/* research board: 4 cards, 2x2, image-led */
+.bd-tall .bd-grid { grid-template-columns: 1fr 1fr !important; }
+.bd-tall .bd-card { flex-direction: row !important; }
+.bd-tall .bd-img { width: 62% !important; min-height: clamp(150px, calc((100vh - 400px) / 2), 260px) !important; }
+.bd-tall .bd-img.fit img { padding: 14px; }
+.bd-tall .bd-body { justify-content: center; padding: 18px 20px !important; }
+.bd-tall .bd-stat b { font-size: clamp(28px, 2.6vw, 42px); }
+.bd-tall .bd-img { width: 58% !important; min-height: clamp(150px, calc((100vh - 360px) / 2), 300px) !important; }
+.bd-tall .bd-stat b { font-size: clamp(22px, 2vw, 34px) !important; white-space: nowrap; }
+.bd-tall .bd-body { min-width: 0; }
