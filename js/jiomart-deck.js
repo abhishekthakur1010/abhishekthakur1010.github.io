@@ -1351,7 +1351,7 @@
   /* ---------- evidence overlay ---------- */
   function wireEvidence(el, sc) {
     var pill = el.querySelector(".ev-pill");
-    if (pill && sc.evidence) pill.addEventListener("click", function (e) { e.stopPropagation(); openEvidence(sc.evidence); });
+    if (pill && sc.evidence) pill.addEventListener("click", function (e) { e.stopPropagation(); openSheetEv(sc.evidence); });
   }
   function openEvidence(ev) {
     if (!panel) return;
@@ -1364,8 +1364,8 @@
     }).join("") + "</div>" : "";
     return "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
       "<div class='ev-method'>" + esc(ev.method) + "</div>" +
-      (ev.img ? "<div class='ev-img" + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
-        "<span class='ev-imgbox'><img src='" + img(ev.img) + "' onerror=\"this.closest('.ev-img').classList.add('failed')\">" +
+      (ev.img || ev.src ? "<div class='ev-img" + (ev.full ? " full" : "") + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
+        "<span class='ev-imgbox'><img src='" + (ev.src || img(ev.img)) + "' onerror=\"this.closest('.ev-img').classList.add('failed')\">" +
         (ev.hl ? ev.hl.map(function (r) {
           return "<span class='ev-hl' style='top:" + (r[0] / ev.hlH * 100).toFixed(2) + "%;height:" + ((r[1] - r[0]) / ev.hlH * 100).toFixed(2) + "%'></span>";
         }).join("") : "") + "</span>" +
@@ -1402,12 +1402,12 @@
     var vr = e.target.closest(".ov-n.vr .ds");
     if (vr) { vr.closest(".ov-n").classList.toggle("open"); e.stopPropagation(); return; }
     var cp = e.target.closest && e.target.closest("[data-card-proof]");
-    if (cp && !e.target.closest(".bd-img, .ev-link")) { e.preventDefault(); e.stopPropagation(); var pc = PROOFS[cp.getAttribute("data-card-proof")]; if (pc) openEvidence(pc); return; }
+    if (cp && !e.target.closest(".bd-img, .ev-link")) { e.preventDefault(); e.stopPropagation(); var pc = PROOFS[cp.getAttribute("data-card-proof")]; if (pc) openSheetEv(pc); return; }
     var l = e.target.closest && e.target.closest(".ev-link");
     if (!l) return;
     e.preventDefault(); e.stopPropagation();
     var pr = PROOFS[l.getAttribute("data-proof")];
-    if (pr) openEvidence(pr);
+    if (pr) openSheetEv(pr);
   }, true);
 
   /* ---------- presenter notes (N to toggle) ---------- */
@@ -1607,6 +1607,15 @@
     setTimeout(function () { focusImgs(el); }, 30);
     sov.querySelector(".so-x").focus();
   }
+  /* every popup opens in the same full-height side sheet */
+  function openSheetEv(ev) {
+    soStage.innerHTML = ""; soPanel.classList.remove("is-sub");
+    var sc = slides[index] || {};
+    soTitle = sc.ask || [].concat(sc.headline || sc.title || "").join(" ");
+    sov.classList.add("open", "proof-only"); sov.setAttribute("aria-hidden", "false");
+    soOpenSub(ev);
+  }
+  function openImgSheet(src, cap) { openSheetEv({ src: src, img: 1, crop: 1, full: 1, method: cap || "Research artifact", tag: "Research artifact" }); }
   function openProofSheet(key, from) {
     var pr = PROOFS[key]; if (!pr) return;
     soStage.innerHTML = ""; soPanel.classList.remove("is-sub");
@@ -1730,7 +1739,7 @@
     var pgo = e.target.closest(".p3-a[data-go]");
     if (pgo) { var gk = pgo.getAttribute("data-go"); for (var gi = 0; gi < slides.length; gi++) { if (slides[gi].id === gk || slides[gi].type === gk) { openOverlay(slides[gi]); break; } } return; }
     var psrc = e.target.closest(".prb-chip[data-img], .p3-a[data-img]");
-    if (psrc) { lbFrom = psrc; openLightbox(psrc.getAttribute("data-img"), psrc.getAttribute("data-cap") || ""); return; }
+    if (psrc) { openImgSheet(psrc.getAttribute("data-img"), psrc.getAttribute("data-cap") || ""); return; }
     var pe = e.target.closest(".prb-ev");
     if (pe) {
       var pl = Array.prototype.map.call(pe.closest(".prb-grid").querySelectorAll(".prb-ev"), function (b) { return { src: b.getAttribute("data-src"), title: b.getAttribute("data-k") + " \u00b7 audit page" }; });

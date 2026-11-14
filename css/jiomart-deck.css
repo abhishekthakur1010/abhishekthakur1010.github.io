@@ -2453,3 +2453,10 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .p3-s li .p3-a { color: var(--ink); }
 .p3-s li .p3-a:hover { color: var(--acc); }
 .p3-s h3 { font-size: clamp(16px,1.3vw,20px); }
+
+/* image-only sheet: fill the sheet width */
+.so-sub-in .ev-img.full { width: 100%; max-width: none; }
+.so-sub-in .ev-img.full .ev-imgbox, .so-sub-in .ev-img.full img { width: 100%; max-width: 100%; height: auto; max-height: calc(100vh - 260px); object-fit: contain; }
+.so-sub-in > .ev-img.full { grid-column: 1 / -1; grid-row: auto; max-width: none; }
+.so-sub-in .ev-img.full .ev-imgbox { display: block; width: 100%; }
+.so-sub-in .ev-img.full img { width: 100% !important; height: auto !important; max-height: calc(100vh - 300px) !important; object-fit: contain; }
