@@ -1595,7 +1595,7 @@
     if (sl2) sl2.style.width = (pw - 2 * 56) / k + "px";   // fill the width: no dead space at the sides
   }
   function openOverlay(id) {
-    var sc = typeof id === "object" ? id : OVERLAYS[id]; if (!sc) return;
+    var sc = typeof id === "object" ? id : OVERLAYS[id]; if (!sc) return; soPanel.style.width = ""; soPanel.classList.remove("img-fit");
     var el = document.createElement("section");
     el.className = "slide active sec-" + sc.section + " type-" + sc.type;
     el.innerHTML = (T[sc.type] || T.opening)(sc);
@@ -1624,7 +1624,7 @@
     sov.classList.add("open", "proof-only"); sov.setAttribute("aria-hidden", "false");
     soOpenSub(pr);
   }
-  function closeOverlay() { sov.classList.remove("proof-only"); sov.classList.remove("open"); sov.setAttribute("aria-hidden", "true"); setTimeout(function () { if (!overlayOpen()) soStage.innerHTML = ""; }, 300); }
+  function closeOverlay() { soPanel.style.width = ""; soPanel.classList.remove("img-fit"); sov.classList.remove("proof-only"); sov.classList.remove("open"); sov.setAttribute("aria-hidden", "true"); setTimeout(function () { if (!overlayOpen()) soStage.innerHTML = ""; }, 300); }
   window.addEventListener("resize", fitOverlay);
   var soTitle = "";
   function soSubOpen() { return soPanel.classList.contains("is-sub"); }
@@ -1635,6 +1635,16 @@
       "<span class='so-path'><button class='so-crumb'>" + esc(soTitle) + "</button><i>\u203A</i><b>" + esc(ev.method || "") + "</b></span></div>" +
       "<div class='so-sub-in ev-body'>" + evHTML(ev) + "</div>";
     v.scrollTop = 0;
+    soPanel.style.width = ""; soPanel.classList.toggle("img-fit", !!ev.full);
+    if (ev.full) {
+      var im = v.querySelector(".ev-img.full img");
+      var fit = function () {
+        if (!im || !im.naturalWidth || !soPanel.classList.contains("img-fit")) return;
+        var h = window.innerHeight - 150, w = im.naturalWidth / im.naturalHeight * h;
+        soPanel.style.width = Math.round(Math.min(window.innerWidth * 0.86, Math.max(560, w + 112))) + "px";
+      };
+      if (im) { if (im.complete) fit(); else im.addEventListener("load", fit); }
+    }
     requestAnimationFrame(function () { soPanel.classList.add("is-sub"); });
     v.querySelector(".so-ret").focus();
   }

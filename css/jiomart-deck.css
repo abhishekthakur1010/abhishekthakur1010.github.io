@@ -2466,3 +2466,6 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .so-sub-in .ev-img.full .ev-imgbox { background: none; padding: 0; border: 0; box-shadow: none; }
 .so-sub-in .ev-img.full img { width: 100% !important; max-height: calc(100vh - 150px) !important; border-radius: 12px; }
 .so-sub-in:has(> .ev-img.full) { padding-top: 24px; }
+/* image-only sheet: never crop, box follows the image */
+.so-sub-in .ev-img.full, .so-sub-in .ev-img.full .ev-imgbox { max-height: none !important; height: auto !important; overflow: visible !important; }
+.so-sub-in .ev-img.full img { height: auto !important; max-height: calc(100vh - 150px) !important; object-fit: contain !important; object-position: 50% 50% !important; display: block; margin: 0 auto; }
