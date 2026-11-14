@@ -547,17 +547,17 @@ window.DECK = {
       headline: ["Product page: trust before the fold"],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
-        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" },
-        { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, n: "EMI and full specs open in a sheet, so the page stays short",
+        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "new/pdp-cta-groc.webp", n: "Brand, rating, price and every pack size up front" },
+        { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, cta: "new/pdp-cta-elec.webp", n: "EMI and full specs open in a sheet, so the page stays short",
           hot: [ { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
-        { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, n: "Brand first, then the name; colour and size before the fold" },
-        { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, n: "Shades as swatches, offers grouped, reviews with photos" }
+        { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, cta: "new/pdp-cta-fash.webp", n: "Brand first, then the name; colour and size before the fold" },
+        { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, cta: "new/pdp-cta-beauty.webp", n: "Shades as swatches, offers grouped, reviews with photos" }
       ],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "new/pdp-grocery-fold.webp", scroll: "new/pdp-grocery.webp", cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" }
+        { img: "new/pdp-grocery-fold.webp", scroll: "new/pdp-grocery.webp", cta: "new/pdp-cta-groc.webp", n: "Brand, rating, price and every pack size up front" }
       ],
       decisions: {
         title: "Design decisions",

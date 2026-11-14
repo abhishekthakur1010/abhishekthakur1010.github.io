@@ -37,9 +37,14 @@
   function ph(s) { return /^\[ADD/.test(String(s)); } // is a placeholder token
   function L(arr, tag) { tag = tag || "h1"; return "<" + tag + ">" + (arr || []).map(esc).join("<br>") + "</" + tag + ">"; }
   function sub(s) { return s ? "<p class='sub'>" + esc(s) + "</p>" : ""; }
+  // each product page keeps its own sticky Add to cart bar (from the Figma PDP file)
+  var PDP_CTA = { "new/pdp-grocery.webp": "groc", "new/pdp-grocery-fold.webp": "groc", "new/pdp-grocery-b.webp": "groc",
+    "new/pdp-electronics.webp": "elec", "new/pdp-mobile.webp": "elec", "new/pdp-fashion.webp": "fash", "new/pdp-beauty.webp": "beauty" };
   function device(src, focus, extra) {
-    return "<div class='device " + (extra || "") + "'><div class='dn'></div><div class='ds'>" +
-      "<img src='" + img(src) + "' data-focus='" + (focus || 0) + "'></div></div>";
+    var c = PDP_CTA[src];
+    return "<div class='device " + (extra || "") + (c ? " has-cta" : "") + "'><div class='dn'></div><div class='ds'>" +
+      "<img src='" + img(src) + "' data-focus='" + (focus || 0) + "'>" +
+      (c ? "<img class='pdp-cta' src='" + img("new/pdp-cta-" + c + ".webp") + "' alt=''>" : "") + "</div></div>";
   }
   // a long screen that scrolls inside the phone, with an optional sticky bottom bar
   function scrollDevice(s) {
