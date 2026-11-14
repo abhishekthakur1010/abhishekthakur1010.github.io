@@ -1106,12 +1106,12 @@
         };
         return "<div class='sl usp up2'><div class='up-top'><div class='up-l'><h2>" + esc(sc.title) + "</h2><div class='up-cats'>" +
           sc.cats.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div></div><div class='up-stores'>" +
-          sc.stores.map(function (x) {
-            return "<figure class='up-st'><img src='" + img(x.img) + "' alt=''><figcaption><small>" + esc(x.name) + "</small><b>" + esc(x.rate) + " <i>★</i></b><span>" + esc(x.sub) + "</span></figcaption></figure>";
+          sc.stats.map(function (x) {
+            return "<div class='up-stat'><b>" + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span></div>";
           }).join("") + "</div></div><div class='up-row'>" +
           sc.usps.map(function (u) {
             return "<div class='up-i'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'>" + (IC[u[0]] || "") + "</svg><span>" + esc(u[1]) + "</span></div>";
-          }).join("") + "</div></div>";
+          }).join("") + "</div>" + (sc.src ? "<p class='up-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
       }
       return "<div class='sl usp'><h2>" + esc(sc.title) + "</h2><div class='usp-grid'>" + sc.items.map(function (x, i) {
         return "<div class='usp-i'><span class='usp-n'>" + (i + 1) + "</span><h3>" + esc(x[0]) + "</h3><p>" + esc(x[1]) + "</p></div>";

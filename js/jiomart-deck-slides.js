@@ -227,18 +227,22 @@ window.DECK = {
       section: "context", type: "usp",
       title: "One app. Many kinds of shopping.",
       cats: ["Grocery", "Mobiles", "Electronics", "Fashion", "Beauty", "Home & Living", "Furniture", "Medicine"],
-      stores: [
-        { img: "enhance-store-appstore.png", name: "App Store", rate: "4.6", sub: "213K ratings · No. 16 in Shopping" },
-        { img: "enhance-store-playstore-v2.png", name: "Play Store", rate: "4.0", sub: "10Cr+ downloads · 25.3L reviews" }
+      stats: [
+        ["10Cr+", "downloads"],
+        ["4.6★", "App Store"],
+        ["4.0★", "Play Store"],
+        ["No. 16", "in Shopping"]
       ],
+      stores: true,
       usps: [
-        ["cart", "One cart for everything"],
-        ["tag", "Savings vs MRP"],
-        ["pin", "50%+ orders beyond metros"],
-        ["chat", "Order on WhatsApp"],
-        ["store", "Kirana partners"],
-        ["phone", "Mobile first"]
+        ["cart", "One cart"],
+        ["tag", "MRP savings"],
+        ["pin", "Tier 2+"],
+        ["chat", "WhatsApp"],
+        ["store", "Kirana"],
+        ["phone", "Mobile-first"]
       ],
+      src: "App Store · Play Store · Reliance AGM 2021",
       notes: "Groceries and TVs in the same app, one design for both. What JioMart already did well; the redesign had to make it visible at the moment of choice."
     },
 
