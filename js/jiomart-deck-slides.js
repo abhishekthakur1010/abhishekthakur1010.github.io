@@ -383,7 +383,7 @@ window.DECK = {
       screens: [
         { src: "enhance-v1-home.png", cap: "Home" },
         { src: "new/plp-grocery.webp", cap: "Listing" },
-        { src: "new/plp-grocery-variant.webp", cap: "Pack size" },
+        { src: "new/plp-grocery-variant.webp", cap: "Add to cart" },
         { src: "new/pdp-grocery-fold.webp", cap: "Product page" }
       ],
       notes: "The reveal. The next three slides explain the decisions behind each screen."
