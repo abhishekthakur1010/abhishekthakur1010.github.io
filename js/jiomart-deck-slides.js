@@ -518,7 +518,7 @@ window.DECK = {
       views: [
         { v: "old", label: "Before", img: "enhance-problem-plp.png", n: "Name and price only" },
         { v: "new", label: "Grocery", img: "new/plp-grocery.webp", h: 800, n: "Discount, size and wishlist on every card",
-          hot: [ { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" }, { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" }, { x: 142, y: 362, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" } ] },
+          hot: [ { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" }, { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" }, { x: 142, y: 370, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" } ] },
         { v: "mob", label: "Mobiles", img: "new/plp-electronics.webp", h: 978, n: "Applied filters stay visible as chips; specs on every card",
           hot: [ { x: 236, y: 142, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" }, { x: 305, y: 142, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" } ] },
         { v: "fash", label: "Fashion", img: "new/plp-fashion.webp", h: 1024, n: "Size, fit and brand filters up top; colour dots on the card" },
@@ -753,7 +753,7 @@ window.DECK = {
           hot: [
             { x: 236, y: 140, w: 66, h: 30, open: "new/plp-filter.webp", label: "Filter" },
             { x: 305, y: 140, w: 32, h: 30, open: "new/plp-sort.webp", label: "Sort" },
-            { x: 142, y: 362, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" }
+            { x: 142, y: 370, w: 58, h: 28, open: "new/plp-grocery-variant.webp", label: "Pack size" }
           ],
           why: "Pick a pack size, filter or sort without leaving the list.", proof: "Listing rated S2 in the {{audit|audit}}: name and price only on the old card." },
         { k: "Mobiles listing", img: "new/plp-electronics.webp", h: 978, old: "enhance-iter-mobile-before.png",

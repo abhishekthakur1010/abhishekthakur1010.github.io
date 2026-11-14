@@ -1120,7 +1120,7 @@
     overview: function (sc) {
       var tiles = sc.screens.map(function (x, i) {
         if (x.sheet) {
-          var h = x.hot || [37, 44.5, 20, 5.5];
+          var h = x.hot || [38, 45.5, 18, 5.5];
           return "<figure class='ov-n vr'><div class='device ov-dev'><div class='dn'></div><div class='ds'><div class='vr-wrap'>" +
             "<img src='" + img(x.src) + "' alt=''>" +
             "<img class='vr-dim' src='" + img(x.sheet) + "' alt=''>" +
