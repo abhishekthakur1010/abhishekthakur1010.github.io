@@ -2478,3 +2478,16 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 /* sticky Add to cart bar on product page phones */
 .device.has-cta .ds { position: relative; }
 .device.has-cta .ds > img.pdp-cta { position: absolute; left: 0; right: 0; bottom: 0; top: auto; width: 100%; height: auto !important; max-height: none; object-fit: fill; z-index: 2; pointer-events: none; box-shadow: 0 -2px 8px rgba(0,0,0,.08); transform: none !important; }
+
+/* After phone: switch category */
+.vp-multi { position: relative; }
+.vp-cats { display: inline-flex; gap: 2px; padding: 3px; border-radius: 99px; background: #eef0f3; }
+.vp-cats button { border: 0; background: none; font: inherit; font-size: 12px; font-weight: 700; color: var(--dim); padding: 5px 11px; border-radius: 99px; cursor: pointer; transition: background .2s, color .2s; }
+.vp-cats button:hover { color: var(--ink); }
+.vp-cats button.on { background: var(--info, #0078ad); color: #fff; box-shadow: 0 2px 6px rgba(0,120,173,.25); }
+.vp-alt { display: none; flex-direction: column; align-items: center; gap: 10px; }
+.vp-alt.on { display: flex; animation: vpIn .35s ease; }
+@keyframes vpIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+[data-theme=dark] .vp-cats { background: rgba(255,255,255,.08); }
+[data-theme=dark] .vp-cats button { color: #9aa3ad; }
+[data-theme=dark] .vp-cats button.on { color: #fff; }

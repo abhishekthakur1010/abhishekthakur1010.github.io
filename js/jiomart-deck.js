@@ -869,7 +869,16 @@
         }).join("");
         // side-by-side: Before and After phones together, reasoning on the left (no tabs, no reveals)
         var pair = [sc.views[0], sc.views.filter(function (v) { return v.v === (sc.focusDefault || sc.views[1].v); })[0] || sc.views[1]];
+        var alts = sc.views.filter(function (v) { return v.v !== "old"; });
         var phones = pair.map(function (v, i) {
+          if (i && alts.length > 1) {
+            // After phone with a category switch: one device per category, only the picked one shows
+            return "<figure class='vp-ph after vp-multi'><div class='vp-cats' role='tablist' aria-label='Category'>" + alts.map(function (a) {
+                return "<button type='button' role='tab' data-vp='" + a.v + "'" + (a.v === v.v ? " class='on' aria-selected='true'" : " aria-selected='false'") + ">" + esc(a.label) + "</button>"; }).join("") + "</div>" +
+              alts.map(function (a) {
+                return "<div class='vp-alt" + (a.v === v.v ? " on" : "") + "' data-vp='" + a.v + "'><span class='evo-media zoomable' title='Click to enlarge'>" + device(a.img, 0, "vp-dev") + "</span><figcaption>" + esc(a.n || "") + "</figcaption></div>"; }).join("") +
+              "</figure>";
+          }
           return "<figure class='vp-ph " + (i ? "after" : "before") + "'><span class='vp-chip'>" + (i ? "After" : "Before") + "</span>" +
             "<span class='evo-media zoomable' title='Click to enlarge'>" + device(v.img, 0, "vp-dev") + "</span><figcaption>" + esc(v.n || "") + "</figcaption></figure>";
         }).join("<span class='vp-arrow'><svg viewBox='0 0 24 24' width='26' height='26' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span>");
@@ -1654,6 +1663,13 @@
     v.querySelector(".so-ret").focus();
   }
   function soCloseSub() { soPanel.classList.remove("is-sub"); var x = sov.querySelector(".so-x"); if (x) x.focus(); }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest(".vp-cats [data-vp]"); if (!t) return;
+    e.preventDefault(); e.stopPropagation();
+    var fig = t.closest(".vp-multi"), k = t.getAttribute("data-vp");
+    fig.querySelectorAll(".vp-cats [data-vp]").forEach(function (b) { var on = b === t; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
+    fig.querySelectorAll(".vp-alt").forEach(function (d) { d.classList.toggle("on", d.getAttribute("data-vp") === k); });
+  }, true);
   sov.addEventListener("click", function (e) {
     var lk = e.target.closest(".ev-link, [data-card-proof]");
     if (lk && !e.target.closest(".so-sub")) {
