@@ -2147,3 +2147,6 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 /* heuristic record pages open as readable documents, not phones */
 .lightbox.tall.doc .lb-imgwrap { width: min(900px, 72vw) !important; aspect-ratio: auto !important; height: 84vh !important; max-height: 84vh !important; border: 0 !important; border-radius: 12px !important; overflow-y: auto !important; }
 .lightbox.tall.doc .lb-imgwrap img { width: 100% !important; height: auto !important; }
+/* record viewer: show the whole page, never upscale */
+.lightbox.tall.doc .lb-imgwrap { width: auto !important; height: auto !important; max-height: none !important; overflow: visible !important; background: #fff; border-radius: 12px !important; padding: 0 !important; }
+.lightbox.tall.doc .lb-imgwrap img { width: auto !important; height: auto !important; max-height: 84vh !important; max-width: min(879px, 80vw) !important; display: block; border-radius: 12px; }
