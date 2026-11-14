@@ -2041,3 +2041,4 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .sl.overview .ov-grid.sw-track { margin-top: 1vh !important; }
 .sl.overview .ov-n figcaption { margin-top: 10px !important; }
 .ov-new .ov-n .device { box-shadow: none !important; }
+.sl.overview .ov-n .device { box-shadow: none !important; filter: none !important; }
