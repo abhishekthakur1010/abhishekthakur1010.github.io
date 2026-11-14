@@ -257,9 +257,9 @@ window.DECK = {
       reasons: [
         ["1 in 10", "visits reached cart", "funnel"],
         ["4×", "search beat browse", "proof:searchers"],
-        ["Look-alike", "listing cards", "proof:interviews"],
-        ["Buried", "price, size, trust", "proof:store"],
-        ["23", "usability issues", "proof:audit"]
+        ["Look-alike", "listing cards"],
+        ["Buried", "price, size, trust"],
+        ["23", "usability issues"]
       ],
       src: "Google Analytics · heuristic audit",
       notes: "1 in 10 sessions added to cart (10.41%, GA). Searchers converted 41.4% vs 10.4%. Cards had no rating, size or unit price. Product page rated S3 critical. 23 audit issues, 5 critical."
