@@ -1161,6 +1161,10 @@
         "<div class='ov-nav'><span class='ov-hint'>Scroll sideways · " + sc.screens.length + " screens</span><button class='sw-btn' data-sw='-1' aria-label='Scroll left'>←</button><button class='sw-btn' data-sw='1' aria-label='Scroll right'>→</button></div>" +
         "<div class='ov-grid sw-track' tabindex='0'>" + tiles + "</div></div>";
     },
+    figure: function (sc) {
+      return "<div class='sl fig'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
+        "<div class='fig-img'><img src='" + img(sc.img) + "' alt='" + esc(sc.alt || sc.title) + "'></div></div>";
+    },
     field: function (sc) {
       return "<div class='sl field'><h2>" + esc(sc.title) + "</h2><div class='fd-grid'>" + sc.photos.map(function (p, i) {
         return "<figure class='fd-p fd-" + i + "'><img src='" + img(p.src) + "' alt='" + esc(p.cap) + "' loading='lazy' style='object-position:" + (p.pos || "center") + "'><figcaption>" + esc(p.cap) + "</figcaption></figure>";

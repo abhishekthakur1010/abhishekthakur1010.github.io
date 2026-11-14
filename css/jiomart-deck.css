@@ -2315,3 +2315,9 @@ a.prb-ev { text-decoration: none; }
 
 /* problems slide with 1-2 cards: taller screens */
 .prb.prb-few .prb-img { height: min(calc(100vh - 470px), 400px) !important; }
+
+/* figure slide: one full diagram */
+.sl.fig { display: flex; flex-direction: column; }
+.sl.fig h2 { margin: 0 0 .5em; }
+.fig-img { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.fig-img img { max-width: 100%; max-height: calc(100vh - 300px); object-fit: contain; display: block; }

@@ -305,6 +305,15 @@ window.DECK = {
       notes: "Context: ~95M visitors but only 1 in 10 sessions added to cart, while searchers did at 41% (4x), so browsing was the gap. Business wanted more carts, product asked for a refresh of 3 pages, and shoppers asked: can I trust this? The brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
     },
 
+    /* RESEARCH PLAN */
+    {
+      section: "research", type: "figure",
+      title: "How we researched",
+      img: "enhance-research-strategy.png",
+      alt: "Research plan: competitive benchmarking and current journey analysis feed emotional journey mapping, leading to the ideal journey.",
+      notes: "Benchmarking and a current-journey audit fed an emotional journey map, which defined the ideal journey."
+    },
+
     /* FIELD — glimpses from research */
     {
       section: "research", type: "field",
