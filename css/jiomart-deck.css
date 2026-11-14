@@ -2229,3 +2229,8 @@ a.prb-ev { text-decoration: none; }
 .so.open { visibility: visible; transition: none; }
 .so-back { opacity: 0; transition: opacity .4s ease; }
 .so.open .so-back { opacity: 1; }
+.so-stage .slide { padding: 0; }
+.so-stage .sl { max-width: none; width: auto; margin: 0; }
+.so-stage .slide { display: flex; align-items: center; justify-content: center; }
+.so-stage .fv-slide { grid-template-columns: minmax(0, 760px) auto; gap: 64px; }
+.so-x { top: 24px; right: 24px; }

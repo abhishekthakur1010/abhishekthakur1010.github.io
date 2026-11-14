@@ -1551,12 +1551,17 @@
   function overlayOpen() { return sov.classList.contains("open"); }
   function fitOverlay() {
     if (!overlayOpen()) return;
-    var w = window.innerWidth, h = stage.clientHeight || window.innerHeight - 136;
-    var pw = soPanel.clientWidth - 48, ph = soPanel.clientHeight - 48;
-    var k = Math.min(pw / w, ph / h, 1);
-    soStage.style.width = w + "px"; soStage.style.height = h + "px";
+    var pw = soPanel.clientWidth, ph = soPanel.clientHeight, pad = 64, k = 1;
+    soFit.style.width = pw + "px"; soFit.style.height = ph + "px";
+    for (var n = 0; n < 3; n++) {
+      soStage.style.width = pw / k + "px"; soStage.style.height = ph / k + "px";
+      soStage.style.transform = "scale(" + k + ")";
+      var sl = soStage.querySelector(".sl"); if (!sl) return;
+      var w = sl.offsetWidth, h = sl.offsetHeight; if (!w || !h) return;
+      k = Math.max(0.6, Math.min((pw - 2 * pad) / w, (ph - 2 * pad) / h, 1.5));
+    }
+    soStage.style.width = pw / k + "px"; soStage.style.height = ph / k + "px";
     soStage.style.transform = "scale(" + k + ")";
-    soFit.style.width = w * k + "px"; soFit.style.height = h * k + "px";
   }
   function openOverlay(id) {
     var sc = OVERLAYS[id]; if (!sc) return;
