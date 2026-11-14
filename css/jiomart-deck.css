@@ -2282,3 +2282,16 @@ a.prb-ev { text-decoration: none; }
 .kw-more:focus-visible { outline: none; }
 .slide.type-why .why-r ol li.kw.has-more:hover .kw-chev { transform: translateX(4px); background: var(--bg); }
 .so-panel { width: min(86vw, calc(100vw - 72px)); }
+/* stuck-points slide · evidence sources beside the PDF link */
+.prb-srcs { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: nowrap; flex: none; }
+.prb-srcs .prb-doc { margin-bottom: 0; }
+.prb-chip { all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line2); background: var(--card, #fff); white-space: nowrap; }
+.prb-chip span { font-size: 13px; color: var(--dim); font-weight: 600; }
+.prb-chip b { font-size: 15px; font-weight: 800; color: var(--ink); }
+.prb-chip:hover, .prb-chip:focus-visible { border-color: var(--info, #0078ad); }
+.prb-h h2 { white-space: nowrap; }
+.prb-h > div:first-child { min-width: 0; }
+.prb-top h2 { margin: 0 0 6px; white-space: nowrap; }
+.prb-top .prb-h { align-items: center; }
+.prb-top .prb-h .sub { margin: 0 0 18px; }
+@media (max-height: 760px) { .prb .prb-img { height: calc(100vh - 572px) !important; } }

@@ -313,22 +313,11 @@ window.DECK = {
     },
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */
-    {
-      section: "research", type: "board", tall: true,
-      eyebrow: "Research",
-      headline: ["Where shoppers got stuck"],
-      cards: [
-        { k: "Google Analytics", tag: "Validated", img: "enhance-ga-pre-conversion.png", fit: "contain", stat: "{{41%|search}} vs {{10%|carts}}" },
-        { k: "Competitive benchmark", tag: "Benchmark", proof: "competitors", img: "enhance-pdp-competitor-benchmark.webp", pos: "left top", stat: "{{5 apps|competitors}}" },
-        { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}" }
-      ],
-      notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. Six sources, in order: plan, analytics, journey map, competitors, audit, interviews. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
-    },
 
     /* TOP PROBLEMS — audit evidence to action */
     {
       section: "research", type: "problems",
-      title: "From audit finding to fix",
+      title:"Where shoppers got stuck", sources:[{k:"Google Analytics",v:"41% vs 10%",img:"enhance-ga-pre-conversion.png",cap:"Google Analytics: search-assisted add-to-cart 41.40% vs 10.41% of all sessions"},{k:"Benchmark",v:"5 apps",proof:"competitors"}],
       sub: "Nielsen's 10 heuristics, severity S0–S4, ease E0–E3. Worst first.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
