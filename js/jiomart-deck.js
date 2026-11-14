@@ -1272,14 +1272,16 @@
   }
 
   function focusImgs(scope) {
-    // sideways phone strips: show whole phones only, centred with equal margins left and right
+    // sideways phone strips: the track is exactly N whole phones wide and centred, so no neighbour shows at either edge
     Array.prototype.forEach.call(scope.querySelectorAll(".sl.overview .sw-track"), function (t) {
-      t.style.paddingLeft = t.style.paddingRight = "0px"; t.style.scrollPaddingLeft = "0px";
       var first = t.querySelector(".ov-n"); if (!first) return;
+      t.style.width = ""; t.style.maxWidth = ""; t.style.marginLeft = t.style.marginRight = "";
+      t.style.paddingLeft = t.style.paddingRight = "0px"; t.style.scrollPaddingLeft = "0px";
       var w = first.getBoundingClientRect().width, g = parseFloat(getComputedStyle(t).columnGap) || 0, W = t.clientWidth;
+      if (!w || !W) return;
       var k = Math.max(1, Math.min(t.querySelectorAll(".ov-n").length, Math.floor((W + g) / (w + g))));
-      var pad = Math.max(0, Math.floor((W - (k * w + (k - 1) * g)) / 2));
-      t.style.paddingLeft = pad + "px"; t.style.paddingRight = pad + "px"; t.style.scrollPaddingLeft = pad + "px";
+      var tw = Math.ceil(k * w + (k - 1) * g);
+      t.style.width = tw + "px"; t.style.maxWidth = tw + "px"; t.style.marginLeft = t.style.marginRight = "auto";
     });
     Array.prototype.forEach.call(scope.querySelectorAll(".ds img[data-focus]"), function (im) {
       var apply = function () {
@@ -1328,6 +1330,7 @@
         n.classList.toggle("on", parseInt(n.getAttribute("data-fv"), 10) === step);
       });
       setTimeout(function () { focusImgs(slideEl); }, 30);
+      setTimeout(function () { if (slideEl) focusImgs(slideEl); }, 450);   // again once the slide transition has settled
     }
     // play V2 video when its reveal is reached; pause otherwise
     var vids = slideEl.querySelectorAll("video");
@@ -1847,6 +1850,7 @@
     if (z) z.classList.toggle("zoom");
   });
   window.addEventListener("resize", function () { if (slideEl) focusImgs(slideEl); });
+  window.addEventListener("load", function () { if (slideEl) focusImgs(slideEl); });
 
   /* ---------- theme ---------- */
   (function () {
