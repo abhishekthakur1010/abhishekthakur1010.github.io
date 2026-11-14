@@ -2571,3 +2571,6 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 [data-theme="dark"] .kpm-v2 .kpm-hero .kpm-i { background: rgba(79,209,139,.08); border-color: rgba(79,209,139,.22); }
 [data-theme="dark"] .kpm-v2 .kpm-hero .kpm-tgt { background: rgba(79,209,139,.14); }
 .kpm-v2 .kpm-sup { margin-top: 4.5vh; padding-top: 4vh; }
+/* sideways galleries: no visible scrollbar, the arrows and trackpad still scroll */
+.sw-track { scrollbar-width: none !important; }
+.sw-track::-webkit-scrollbar { display: none !important; height: 0 !important; }
