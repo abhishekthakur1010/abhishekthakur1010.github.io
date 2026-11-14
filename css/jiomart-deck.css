@@ -2150,3 +2150,9 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 /* record viewer: show the whole page, never upscale */
 .lightbox.tall.doc .lb-imgwrap { width: auto !important; height: auto !important; max-height: none !important; overflow: visible !important; background: #fff; border-radius: 12px !important; padding: 0 !important; }
 .lightbox.tall.doc .lb-imgwrap img { width: auto !important; height: auto !important; max-height: 84vh !important; max-width: min(879px, 80vw) !important; display: block; border-radius: 12px; }
+/* record viewer: arrows stay put while pages of different heights change */
+.lightbox.tall.doc .lb-nav { position: fixed !important; top: 50% !important; transform: translateY(-50%); margin: 0 !important; }
+.lightbox.tall.doc .lb-prev { left: max(20px, calc(50vw - 520px)) !important; right: auto !important; }
+.lightbox.tall.doc .lb-next { right: max(20px, calc(50vw - 520px)) !important; left: auto !important; }
+.lightbox.tall.doc .lb-nav:hover { transform: translateY(-50%) scale(1.04); }
+.lightbox .lb-nav:focus:not(:focus-visible) { outline: none; box-shadow: none; }

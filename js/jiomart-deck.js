@@ -1402,13 +1402,16 @@
     bd.animate([{ opacity: 0 }, { opacity: 1 }], { duration: opt.duration, direction: back ? "reverse" : "normal", fill: back ? "forwards" : "none" });
     lbAnim.onfinish = function () { lbAnim = null; if (done) done(); };
   }
-  function openLightbox(src, caption, tall) {
+  function openLightbox(src, caption, tall, step) {
     var li = lb.querySelector("img");
+    var stepping = !!step && lb.classList.contains("open");
     lb.classList.remove("fit", "zoomed", "closing");
     li.style.width = "";
     var flipped = false;
+    if (stepping) flipped = true;   // paging inside an open gallery: slide the page, don't re-zoom from the thumbnail
     li.onload = function () {
       lb.classList.toggle("fit", !!tall && li.naturalHeight / li.naturalWidth <= 2.4);
+      if (stepping && li.animate && !(lbStill && lbStill.matches)) li.animate([{ opacity: 0, transform: "translateX(" + (step * 28) + "px)" }, { opacity: 1, transform: "none" }], { duration: 220, easing: "cubic-bezier(.2,.7,.2,1)" });
       if (!flipped) { flipped = true; lbFlip(false); }
     };
     li.src = src;
@@ -1422,9 +1425,12 @@
   }
   function showGal(i) {
     if (!gal) return;
-    gal.i = (i + gal.list.length) % gal.list.length;
+    var prev = gal.i, n = gal.list.length;
+    gal.i = (i + n) % n;
     var it = gal.list[gal.i];
-    openLightbox(it.src, "", true);
+    var step = lb.classList.contains("open") && gal.i !== prev ? ((gal.i - prev + n) % n <= n / 2 ? 1 : -1) : 0;
+    if (gal.doc) { var th = document.querySelector(".rec-pg[data-i='" + gal.i + "'] .rec-img"); if (th) lbFrom = th; }
+    openLightbox(it.src, "", true, step);
     lb.querySelector(".lb-cap").innerHTML = "<span class='lb-n'>" + pad(gal.i + 1) + " / " + pad(gal.list.length) + "</span>" +
       "<span class='lb-t'>" + esc(it.title || it.cap) + "</span>" + (it.pain ? "<span class='lb-p'>" + esc(it.pain) + "</span>" : "");
     lb.querySelector(".lb-dots").innerHTML = gal.list.map(function (x, k) {
