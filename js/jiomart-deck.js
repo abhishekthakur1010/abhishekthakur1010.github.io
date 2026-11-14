@@ -1271,18 +1271,22 @@
     return el;
   }
 
-  function focusImgs(scope) {
-    // sideways phone strips: the track is exactly N whole phones wide and centred, so no neighbour shows at either edge
-    Array.prototype.forEach.call(scope.querySelectorAll(".sl.overview .sw-track"), function (t) {
+  // sideways phone strips: the track is exactly N whole phones wide and centred, so no neighbour shows at either edge
+  // (layout sizes, not getBoundingClientRect, so the slide's enter transform doesn't skew them)
+  function fitStrips(scope) {
+    Array.prototype.forEach.call((scope || document).querySelectorAll(".sl.overview .sw-track"), function (t) {
       var first = t.querySelector(".ov-n"); if (!first) return;
       t.style.width = ""; t.style.maxWidth = ""; t.style.marginLeft = t.style.marginRight = "";
       t.style.paddingLeft = t.style.paddingRight = "0px"; t.style.scrollPaddingLeft = "0px";
-      var w = first.getBoundingClientRect().width, g = parseFloat(getComputedStyle(t).columnGap) || 0, W = t.clientWidth;
+      var w = first.offsetWidth, g = parseFloat(getComputedStyle(t).columnGap) || 0, W = t.clientWidth;
       if (!w || !W) return;
       var k = Math.max(1, Math.min(t.querySelectorAll(".ov-n").length, Math.floor((W + g) / (w + g))));
-      var tw = Math.ceil(k * w + (k - 1) * g);
-      t.style.width = tw + "px"; t.style.maxWidth = tw + "px"; t.style.marginLeft = t.style.marginRight = "auto";
+      var tw = Math.ceil(k * w + (k - 1) * g) + 2;
+      t.style.boxSizing = "border-box"; t.style.width = tw + "px"; t.style.maxWidth = tw + "px"; t.style.marginLeft = t.style.marginRight = "auto";
     });
+  }
+  function focusImgs(scope) {
+    fitStrips(scope);
     Array.prototype.forEach.call(scope.querySelectorAll(".ds img[data-focus]"), function (im) {
       var apply = function () {
         var s = im.closest(".ds"); if (!s) return;
@@ -1330,7 +1334,6 @@
         n.classList.toggle("on", parseInt(n.getAttribute("data-fv"), 10) === step);
       });
       setTimeout(function () { focusImgs(slideEl); }, 30);
-      setTimeout(function () { if (slideEl) focusImgs(slideEl); }, 450);   // again once the slide transition has settled
     }
     // play V2 video when its reveal is reached; pause otherwise
     var vids = slideEl.querySelectorAll("video");
@@ -1367,6 +1370,7 @@
       el.classList.remove("enter"); el.classList.add("active");
       focusImgs(el);
       wireEvidence(el, slides[i]);
+      setTimeout(function () { fitStrips(el); }, 480);   // again once the enter transition has settled
       wireTiles(el);
       applyStep();
     });
