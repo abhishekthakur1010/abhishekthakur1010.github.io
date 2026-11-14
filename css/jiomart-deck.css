@@ -2576,3 +2576,7 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .sw-track::-webkit-scrollbar { display: none !important; height: 0 !important; }
 /* overview strips: taller phones to fill the slide, captions stay clear of the nav */
 .sl.overview .ov-n .device { --w: min(22vw, calc((100vh - 335px) / 2.12), 330px) !important; }
+.sl.overview .ov-grid.sw-track { -webkit-mask-image: none !important; mask-image: none !important; }
+/* overview strips: block centred between the top bar and the slide arrows */
+.slide.type-overview { padding-top: 12px !important; padding-bottom: 12px !important; align-items: center !important; }
+.slide.type-overview .sl.overview { margin-top: auto !important; margin-bottom: auto !important; }

@@ -1272,6 +1272,15 @@
   }
 
   function focusImgs(scope) {
+    // sideways phone strips: show whole phones only, centred with equal margins left and right
+    Array.prototype.forEach.call(scope.querySelectorAll(".sl.overview .sw-track"), function (t) {
+      t.style.paddingLeft = t.style.paddingRight = "0px"; t.style.scrollPaddingLeft = "0px";
+      var first = t.querySelector(".ov-n"); if (!first) return;
+      var w = first.getBoundingClientRect().width, g = parseFloat(getComputedStyle(t).columnGap) || 0, W = t.clientWidth;
+      var k = Math.max(1, Math.min(t.querySelectorAll(".ov-n").length, Math.floor((W + g) / (w + g))));
+      var pad = Math.max(0, Math.floor((W - (k * w + (k - 1) * g)) / 2));
+      t.style.paddingLeft = pad + "px"; t.style.paddingRight = pad + "px"; t.style.scrollPaddingLeft = pad + "px";
+    });
     Array.prototype.forEach.call(scope.querySelectorAll(".ds img[data-focus]"), function (im) {
       var apply = function () {
         var s = im.closest(".ds"); if (!s) return;
