@@ -320,33 +320,16 @@ window.DECK = {
       cards: [
         { k: "Google Analytics", tag: "Validated", img: "enhance-ga-pre-conversion.png", fit: "contain", stat: "{{41%|search}} vs {{10%|carts}}" },
         { k: "Competitive benchmark", tag: "Benchmark", proof: "competitors", img: "enhance-pdp-competitor-benchmark.webp", pos: "left top", stat: "{{5 apps|competitors}}" },
-        { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}" },
-        { k: "User interviews", tag: "Validated", img: "enhance-design-team-04.png", stat: "{{8 shoppers|interviews}}", est: true }
+        { k: "Heuristic audit", tag: "Validated", img: "enhance-heuristic-table-zoom.png", pos: "left top", stat: "{{23 issues|audit}}" }
       ],
       notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. Six sources, in order: plan, analytics, journey map, competitors, audit, interviews. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
     },
-
-    /* HEURISTIC EVALUATION — ranked */
-    {
-      section: "research", type: "chain",
-      title: "23 issues, ranked before anything was drawn",
-      sub: "A heuristic evaluation of the live app against Nielsen's 10 heuristics, done with the Central UI/UX research team.",
-      steps: [
-        { k: "Method", chips: ["10 heuristics", "Severity S0\u2013S4", "Ease to fix E0\u2013E3", "23 problem areas"], t: "Every issue was scored on how much it hurts and how hard it is to fix." },
-        { k: "Ranked", img: "research/he-table.webp", pos: "top center", t: "Eight areas scored S3 or worse, the product page among them." },
-        { k: "Product page \u00b7 S3", img: "research/he-pdp.webp", pos: "top center", t: "Brand hidden, EMI not tappable, delivery date needed a pincode, rating greyed out." },
-        { k: "Listing \u00b7 S2", img: "research/he-plp.webp", fit: "contain", pos: "center", t: "At the max quantity the + button silently stopped working. No message." }
-      ],
-      src: "Heuristic evaluation, Central UI/UX research team.",
-      notes: "This is where priorities came from. Severity times ease told us what to fix first."
-    },
-
 
     /* TOP PROBLEMS — audit evidence to action */
     {
       section: "research", type: "problems",
       title: "From audit finding to fix",
-      sub: "Heuristic evaluation of the discovery journey, worst first.",
+      sub: "Nielsen's 10 heuristics, severity S0–S4, ease E0–E3. Worst first.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
         { k: "Product page", s: "S3", e: "E2", img: "research/prob-pdp.webp", page: 12,
@@ -405,12 +388,12 @@ window.DECK = {
       title: "Every decision traced back to something we saw",
       stats: [["20", "interviews"], ["8", "benchmarks"], ["2", "usability tests (12 + 8 users)"], ["23", "audit issues"]],
       items: [
-        { m: "Analytics", img: "enhance-ga-pre-conversion.png", fit: "contain", saw: "Searchers added to cart 4\u00d7 more than browsers (41% vs 10%).", dec: "Search first on Home." },
-        { m: "Shopper interviews", img: "enhance-user-interview.png", pos: "center 35%", saw: "\u201cI can\u2019t tell which one to buy.\u201d", dec: "Size, price and rating on every card." },
-        { m: "Store observation", img: "offline-price-tag.webp", saw: "Every shelf tag leads with the price, MRP smallest.", dec: "Price is the biggest text." },
-        { m: "Heuristic audit", img: "enhance-heuristic-table.png", pos: "top left", saw: "23 issues, 5 critical. The product page was the worst.", dec: "Key details above the fold." },
-        { m: "Home audit", img: "research/fold-map.webp", pos: "top left", saw: "6 folds, banners back to back, 27 banner issues.", dec: "One system for every promo." },
-        { m: "Benchmark", img: "research/benchmark.webp", pos: "left center", saw: "Leaders keep text left, image right, one clear CTA.", dec: "One card pattern across categories." }
+        { m: "Analytics", saw: "Searchers added to cart 4\u00d7 more than browsers (41% vs 10%).", dec: "Search first on Home." },
+        { m: "Shopper interviews", saw: "\u201cI can\u2019t tell which one to buy.\u201d", dec: "Size, price and rating on every card." },
+        { m: "Store observation", saw: "Every shelf tag leads with the price, MRP smallest.", dec: "Price is the biggest text." },
+        { m: "Heuristic audit", saw: "23 issues, 5 critical. The product page was the worst.", dec: "Key details above the fold." },
+        { m: "Home audit", saw: "6 folds, banners back to back, 27 banner issues.", dec: "One system for every promo." },
+        { m: "Benchmark", saw: "Leaders keep text left, image right, one clear CTA.", dec: "One card pattern across categories." }
       ],
       notes: "Method, what we saw, what we decided. This is the logic the rest of the deck follows."
     },

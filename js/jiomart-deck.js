@@ -1047,7 +1047,7 @@
     /* 12 · contribution, learning, next time + award */
     evidence: function (sc) {
       return "<div class='sl evidence'><h2>" + esc(sc.title) + "</h2>" + (sc.stats ? "<div class='ev-stats'>" + sc.stats.map(function (x) { return "<span><b>" + esc(x[0]) + "</b> " + esc(x[1]) + "</span>"; }).join("") + "</div>" : "") + "<div class='ev-grid'>" + sc.items.map(function (x) {
-        return "<div class='ev-c'><div class='ev-img'><img src='" + img(x.img) + "' alt='' loading='lazy' style='object-fit:" + (x.fit || "cover") + ";object-position:" + (x.pos || "center") + "'><span class='ev-m'>" + esc(x.m) + "</span></div>" +
+        return "<div class='ev-c" + (x.img ? "" : " ev-txt") + "'>" + (x.img ? "<div class='ev-img'><img src='" + img(x.img) + "' alt='' loading='lazy' style='object-fit:" + (x.fit || "cover") + ";object-position:" + (x.pos || "center") + "'><span class='ev-m'>" + esc(x.m) + "</span></div>" : "<span class='ev-m'>" + esc(x.m) + "</span>") +
           "<p class='ev-saw'>" + esc(x.saw) + "</p><p class='ev-dec'><b>\u2192</b> " + esc(x.dec) + "</p></div>";
       }).join("") + "</div></div>";
     },

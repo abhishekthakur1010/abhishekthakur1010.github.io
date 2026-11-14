@@ -2190,3 +2190,10 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .prb-doc svg { width: 18px; height: 18px; color: var(--info, #0078ad); }
 .prb-doc:hover { border-color: var(--info, #0078ad); }
 a.prb-ev { text-decoration: none; }
+/* research board with 3 sources: one row, image on top */
+.bd-tall .bd-grid:has(> .bd-card:nth-child(3):last-child) { grid-template-columns: repeat(3, 1fr) !important; }
+.bd-tall .bd-grid:has(> .bd-card:nth-child(3):last-child) .bd-card { flex-direction: column !important; }
+.bd-tall .bd-grid:has(> .bd-card:nth-child(3):last-child) .bd-img { width: 100% !important; min-height: 0 !important; height: min(calc(100vh - 470px), 380px) !important; border-right: 0 !important; border-bottom: 1px solid var(--panel-line); }
+/* evidence slide without pictures */
+.ev-c.ev-txt { padding: 18px 18px 16px; }
+.ev-c.ev-txt .ev-m { position: static; display: inline-block; margin-bottom: 10px; }
