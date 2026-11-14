@@ -2537,3 +2537,5 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .vp-links.vp-in .vp-link i { color: var(--info, #0078ad); opacity: 1; font-size: 16px; }
 .vp-links.vp-in .vp-link:hover span, .vp-links.vp-in .vp-link:hover b { text-decoration: underline; text-underline-offset: 3px; }
 [data-theme=dark] .vp-links.vp-in .vp-link span, [data-theme=dark] .vp-links.vp-in .vp-link b, [data-theme=dark] .vp-links.vp-in .vp-link i { color: #5bb8e8; }
+/* versions pair: product pages scroll inside the phone, bar pinned */
+.vp-ph .device.scrolls .ds-scroll img { transform: none !important; object-fit: initial; max-height: none; }

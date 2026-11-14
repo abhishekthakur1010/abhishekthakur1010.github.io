@@ -46,6 +46,13 @@
       "<img src='" + img(src) + "' data-focus='" + (focus || 0) + "'>" +
       (c ? "<img class='pdp-cta' src='" + img("new/pdp-cta-" + c + ".webp?v=2") + "' alt=''>" : "") + "</div></div>";
   }
+  // product page in the versions pair: the long screen scrolls inside the phone, its Add to cart bar stays pinned
+  function pdpScroll(v) {
+    var before = v.v === "old";
+    var cta = before ? v.cta : v.cta + "?v=2";
+    return "<div class='device vp-dev scrolls has-cta' style='--cta-h:" + (before ? "37%" : "19%") + "'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(v.img) + "' alt=''></div>" +
+      "<img class='pdp-cta' src='" + img(cta) + "' alt=''><span class='ds-hint'>Scroll</span></div></div>";
+  }
   // a long screen that scrolls inside the phone, with an optional sticky bottom bar
   function scrollDevice(s) {
     return "<div class='device vs scrolls' style='--cta-h:" + (s.ctaH || "16%") + "'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(s.scroll) + "' alt=''></div>" +
@@ -876,11 +883,11 @@
             return "<figure class='vp-ph after vp-multi'><div class='vp-cats' role='tablist' aria-label='Category'>" + alts.map(function (a) {
                 return "<button type='button' role='tab' data-vp='" + a.v + "'" + (a.v === v.v ? " class='on' aria-selected='true'" : " aria-selected='false'") + ">" + esc(a.label) + "</button>"; }).join("") + "</div>" +
               alts.map(function (a) {
-                return "<div class='vp-alt" + (a.v === v.v ? " on" : "") + "' data-vp='" + a.v + "'><span class='vp-chip'>After</span><span class='evo-media zoomable' title='Click to enlarge'>" + device(a.img, 0, "vp-dev") + "</span><figcaption>" + esc(a.n || "") + "</figcaption></div>"; }).join("") +
+                return "<div class='vp-alt" + (a.v === v.v ? " on" : "") + "' data-vp='" + a.v + "'><span class='vp-chip'>After</span><span class='evo-media zoomable' title='Click to enlarge'>" + (a.cta ? pdpScroll(a) : device(a.img, 0, "vp-dev")) + "</span><figcaption>" + esc(a.n || "") + "</figcaption></div>"; }).join("") +
               "</figure>";
           }
           return "<figure class='vp-ph " + (i ? "after" : "before") + "'><span class='vp-chip'>" + (i ? "After" : "Before") + "</span>" +
-            "<span class='evo-media zoomable' title='Click to enlarge'>" + device(v.img, 0, "vp-dev") + "</span><figcaption>" + esc(v.n || "") + "</figcaption></figure>";
+            "<span class='evo-media zoomable' title='Click to enlarge'>" + (v.cta ? pdpScroll(v) : device(v.img, 0, "vp-dev")) + "</span><figcaption>" + esc(v.n || "") + "</figcaption></figure>";
         }).join("<span class='vp-arrow'><svg viewBox='0 0 24 24' width='26' height='26' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span>");
         var vlinks = (sc.links || []).map(function (x) {
           return "<button type='button' class='prb-chip vp-link' data-ov='" + esc(x.ov) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b><i aria-hidden='true'>\u203A</i></button>"; }).join("");
@@ -1678,6 +1685,7 @@
     var fig = t.closest(".vp-multi"), k = t.getAttribute("data-vp");
     fig.querySelectorAll(".vp-cats [data-vp]").forEach(function (b) { var on = b === t; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     fig.querySelectorAll(".vp-alt").forEach(function (d) { d.classList.toggle("on", d.getAttribute("data-vp") === k); });
+    fig.querySelectorAll(".ds-scroll").forEach(function (sc) { sc.scrollTop = 0; });   // each category starts at the top
   }, true);
   sov.addEventListener("click", function (e) {
     var lk = e.target.closest(".ev-link, [data-card-proof]");
