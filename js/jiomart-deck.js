@@ -9,7 +9,10 @@
   var D = window.DECK;
   if (!D) return;
   var IMG = D.imgBase || "";
-  var slides = D.slides || [];
+  var ALL = D.slides || [];
+  var OVERLAYS = {};
+  ALL.forEach(function (x) { if (x.overlay && x.id) OVERLAYS[x.id] = x; });
+  var slides = ALL.filter(function (x) { return !x.overlay; });
   var SECTIONS = D.sections || [];
   var TOTAL = slides.length;
 
@@ -1162,7 +1165,10 @@
     why: function (sc) {
       return "<div class='sl why'><div class='why-l'><span class='why-tag'>" + esc(sc.tag) + "</span><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div>" +
         "<div class='why-r'><h3>" + esc(sc.ask) + "</h3><ol>" + sc.reasons.map(function (r, i) {
-          return "<li class='reveal kw' data-step='" + (i + 1) + "'><b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "") + "</li>";
+          var more = r[2] && OVERLAYS[r[2]];
+          var inner = "<b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "");
+          return "<li class='reveal kw" + (more ? " has-more" : "") + "' data-step='" + (i + 1) + "'>" +
+            (more ? "<button class='kw-more' data-ov='" + esc(r[2]) + "' title='See the funnel'>" + inner + "<i class='kw-chev' aria-hidden='true'>›</i></button>" : inner) + "</li>";
         }).join("") + "</ol>" + (sc.src ? "<p class='why-src'>" + esc(sc.src) + "</p>" : "") + "</div></div>";
     },
     close: function (sc) {
@@ -1536,7 +1542,64 @@
     var idx = sectionStart(item.getAttribute("data-section"));
     if (idx >= 0) go(idx);
   });
+  /* ---------- slide overlay: a hidden slide opened from a link, scaled to fit ---------- */
+  var sov = document.createElement("div");
+  sov.className = "so"; sov.setAttribute("aria-hidden", "true");
+  sov.innerHTML = "<div class='so-back'></div><div class='so-panel' role='dialog' aria-modal='true'><button class='so-x' aria-label='Close'>\u2715</button><div class='so-fit'><div class='so-stage'></div></div></div>";
+  document.body.appendChild(sov);
+  var soStage = sov.querySelector(".so-stage"), soFit = sov.querySelector(".so-fit"), soPanel = sov.querySelector(".so-panel");
+  function overlayOpen() { return sov.classList.contains("open"); }
+  function fitOverlay() {
+    if (!overlayOpen()) return;
+    var w = window.innerWidth, h = stage.clientHeight || window.innerHeight - 136;
+    var pw = soPanel.clientWidth - 48, ph = soPanel.clientHeight - 48;
+    var k = Math.min(pw / w, ph / h, 1);
+    soStage.style.width = w + "px"; soStage.style.height = h + "px";
+    soStage.style.transform = "scale(" + k + ")";
+    soFit.style.width = w * k + "px"; soFit.style.height = h * k + "px";
+  }
+  function openOverlay(id) {
+    var sc = OVERLAYS[id]; if (!sc) return;
+    var el = document.createElement("section");
+    el.className = "slide active sec-" + sc.section + " type-" + sc.type;
+    el.innerHTML = (T[sc.type] || T.opening)(sc);
+    Array.prototype.forEach.call(el.querySelectorAll(".reveal"), function (r) { r.classList.add("in"); });
+    soStage.innerHTML = ""; soStage.appendChild(el);
+    sov.classList.add("open"); sov.setAttribute("aria-hidden", "false");
+    fitOverlay();
+    setTimeout(function () { focusImgs(el); }, 30);
+    sov.querySelector(".so-x").focus();
+  }
+  function closeOverlay() { sov.classList.remove("open"); sov.setAttribute("aria-hidden", "true"); setTimeout(function () { if (!overlayOpen()) soStage.innerHTML = ""; }, 300); }
+  window.addEventListener("resize", fitOverlay);
+  sov.addEventListener("click", function (e) {
+    if (e.target.closest(".so-x") || e.target.classList.contains("so-back") || e.target === soPanel) { closeOverlay(); return; }
+    var fv = e.target.closest(".fv-step");
+    if (fv) {
+      var n = parseInt(fv.getAttribute("data-fv"), 10);
+      Array.prototype.forEach.call(soStage.querySelectorAll("[data-fv]"), function (x) { x.classList.toggle("on", parseInt(x.getAttribute("data-fv"), 10) === n); });
+      setTimeout(function () { focusImgs(soStage); }, 30);
+      return;
+    }
+    var z = e.target.closest(".zoomable img, .device img");
+    if (z) { lbFrom = z; openLightbox(z.src, ""); }
+  });
+  document.addEventListener("click", function (e) {
+    var m = e.target.closest && e.target.closest(".kw-more");
+    if (m) { e.preventDefault(); e.stopPropagation(); openOverlay(m.getAttribute("data-ov")); }
+  }, true);
+
   document.addEventListener("keydown", function (e) {
+    if (overlayOpen() && !lightboxOpen() && !evidenceOpen()) {
+      if (e.key === "Escape") closeOverlay();
+      else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        var on = soStage.querySelector(".fv-step.on"), all = soStage.querySelectorAll(".fv-step");
+        var i = Array.prototype.indexOf.call(all, on) + (e.key === "ArrowDown" ? 1 : -1);
+        if (all[i]) all[i].click();
+      }
+      return;
+    }
     if (lightboxOpen()) {
       if (e.key === "Escape") closeLightbox();
       else if (gal && e.key === "ArrowRight") { e.preventDefault(); showGal(gal.i + 1); }

@@ -249,7 +249,7 @@ window.DECK = {
       sub: "Find. Compare. Choose.",
       ask: "Why redesign?",
       reasons: [
-        ["1 in 10", "visits reached cart"],
+        ["1 in 10", "visits reached cart", "funnel"],
         ["4×", "search beat browse"],
         ["Look-alike", "listing cards"],
         ["Buried", "price, size, trust"],
@@ -283,7 +283,7 @@ window.DECK = {
 
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
     {
-      section: "context", type: "flowview",
+      section: "context", type: "flowview", id: "funnel", overlay: true,
       eyebrow: "Requirement · The existing experience",
       headline: ["1 in 10 visits ended in a cart"],
       sub: "{{~95M visitors|visitors}}, but only {{1 in 10 sessions|carts}} added to cart.",
