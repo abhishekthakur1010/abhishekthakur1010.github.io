@@ -425,17 +425,6 @@ window.DECK = {
     },
 
     /* SYSTEM APPLIED */
-    {
-      section: "home", type: "applied",
-      title: "Same content, one system",
-      sub: "Templates from the system, applied to real promos.",
-      pairs: [
-        { b: "research/land-before.webp", a: "research/land-after.webp", cap: "Category offer" },
-        { b: "research/offer-before.webp", a: "research/offer-after.webp", cap: "Weekly deal" },
-        { b: "research/bank-before.webp", a: "research/bank-after.webp", cap: "Bank offers become a card set" }
-      ],
-      notes: "Same words, same offer. Only the system changed: one layout, readable contrast, one CTA."
-    },
 
     {
       section: "home", type: "versions",
