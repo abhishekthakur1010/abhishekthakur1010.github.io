@@ -882,7 +882,10 @@
           return "<figure class='vp-ph " + (i ? "after" : "before") + "'><span class='vp-chip'>" + (i ? "After" : "Before") + "</span>" +
             "<span class='evo-media zoomable' title='Click to enlarge'>" + device(v.img, 0, "vp-dev") + "</span><figcaption>" + esc(v.n || "") + "</figcaption></figure>";
         }).join("<span class='vp-arrow'><svg viewBox='0 0 24 24' width='26' height='26' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span>");
+        var vlinks = (sc.links || []).map(function (x) {
+          return "<button type='button' class='prb-chip vp-link' data-ov='" + esc(x.ov) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b><i aria-hidden='true'>\u203A</i></button>"; }).join("");
         return "<div class='sl vp'><div class='vp-left'>" + L(sc.headline, "h2") + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
+          (vlinks ? "<div class='vp-links'>" + vlinks + "</div>" : "") +
           "<div class='vp-zones'>" + fzones + "</div></div><div class='vp-right'>" + phones + "</div></div>";
         var def = sc.focusDefault || sc.views[1].v;
         var fpins = fz.map(function (z, j) { return "<span class='vs-pin reveal' data-step='" + (j + 1) + "' style='top:" + z.pin + "%'>" + (j + 1) + "</span>"; }).join("");
@@ -1779,6 +1782,8 @@
       card.querySelector(".pt-scroll").scrollTop = 0;
       return;
     }
+    var vl = e.target.closest(".vp-link[data-ov]");
+    if (vl) { openOverlay(vl.getAttribute("data-ov")); return; }
     var pgo = e.target.closest(".p3-a[data-go]");
     if (pgo) { var gk = pgo.getAttribute("data-go"); for (var gi = 0; gi < slides.length; gi++) { if (slides[gi].id === gk || slides[gi].type === gk) { openOverlay(slides[gi]); break; } } return; }
     var psrc = e.target.closest(".prb-chip[data-img], .p3-a[data-img]");

@@ -382,7 +382,7 @@ window.DECK = {
 
     /* HOME AUDIT — banners, search and icons in one view */
     {
-      section: "home", type: "problems", cls: "prb-home",
+      section: "home", type: "problems", id: "home-audit", overlay: true,
       title: "Home was a wall of banners",
       sub: "Heuristic audit of Home. Worst first.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
@@ -407,6 +407,7 @@ window.DECK = {
       section: "home", type: "versions",
       eyebrow: "The solution",
       headline: ["Home: search first, then categories"],
+      links: [ { k: "Home audit", v: "3 problems", ov: "home-audit" } ],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
         { v: "new", label: "After", img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
@@ -455,7 +456,7 @@ window.DECK = {
 
     /* PRODUCT CARD — prioritise, explore, ship */
     {
-      section: "listing", type: "chain",
+      section: "listing", type: "chain", id: "plp-card", overlay: true,
       title: "One card doesn't fit every category",
       sub: "The listing card, from audit to shipped: decide what earns a place on it, then test layouts across categories.",
       steps: [
@@ -471,6 +472,7 @@ window.DECK = {
       section: "listing", type: "versions",
       eyebrow: "The solution",
       headline: ["Listing: the decision on the card"],
+      links: [ { k: "Card research", v: "Saw → Shipped", ov: "plp-card" } ],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-plp.png", n: "Name and price only" },
         { v: "new", label: "Grocery", img: "new/plp-grocery.webp", h: 800, n: "Discount, size and wishlist on every card",
@@ -513,7 +515,7 @@ window.DECK = {
 
     /* ELECTRONICS PDP — the ask, the benchmark, the answer */
     {
-      section: "pdp", type: "chain",
+      section: "pdp", type: "chain", id: "pdp-proof", overlay: true,
       title: "Product asked for proof, so we benchmarked",
       sub: "The brief: make warranty, installation and replacement visible on electronics product pages, and justify where they go.",
       steps: [
@@ -531,6 +533,7 @@ window.DECK = {
       section: "pdp", type: "versions",
       eyebrow: "The solution",
       headline: ["Product page: trust before the fold"],
+      links: [ { k: "Electronics benchmark", v: "Ask → Shipped", ov: "pdp-proof" } ],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
         { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "new/pdp-cta-groc.webp", n: "Brand, rating, price and every pack size up front" },

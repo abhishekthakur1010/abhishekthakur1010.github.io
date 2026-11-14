@@ -2513,3 +2513,9 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .vp:has(.vp-multi) .vp-right { gap: 1.1vw; }
 .sl.vp:has(.vp-multi) { grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 2.6vw; }
 .sl.vp:has(.vp-multi) .vp-right { justify-content: flex-end; }
+
+/* Home: open the audit from the solution slide */
+.vp-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 22px; }
+.vp-link { cursor: pointer; }
+.vp-link i { font-style: normal; font-weight: 700; margin-left: 2px; opacity: .55; transition: transform .2s, opacity .2s; }
+.vp-link:hover i { transform: translateX(3px); opacity: 1; }
