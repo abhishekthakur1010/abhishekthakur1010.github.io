@@ -579,7 +579,7 @@ window.DECK = {
         { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
         { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" },
         { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, n: "EMI and full specs open in a sheet, so the page stays short",
-          hot: [ { x: 252, y: 664, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1949, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
+          hot: [ { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
         { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, n: "Brand first, then the name; colour and size before the fold" },
         { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, n: "Shades as swatches, offers grouped, reviews with photos" }
       ],
@@ -767,8 +767,8 @@ window.DECK = {
           why: "Brand, rating, price and every pack size before the fold.", proof: "PDP rated S3 critical in the {{audit|audit}}; brand hidden on 4 of 4 verticals." },
         { k: "Electronics product", img: "new/pdp-electronics.webp", h: 4098,
           hot: [
-            { x: 252, y: 664, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI plans" },
-            { x: 24, y: 1949, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" }
+            { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI plans" },
+            { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" }
           ],
           why: "EMI and full specs open in a sheet, so the page stays short.", proof: "EMI didn't look tappable on 3 of 4 audited verticals." }
       ],
