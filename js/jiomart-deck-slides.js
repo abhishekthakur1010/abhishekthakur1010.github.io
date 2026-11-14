@@ -193,10 +193,10 @@ window.DECK = {
       screens: [
         { src: "enhance-problem-home.png", cap: "Home" },
         { src: "enhance-problem-plp.png", cap: "Listing · grocery" },
-        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
         { src: "enhance-ba-electronics-before.png", cap: "Listing · mobiles" },
         { src: "enhance-problem-pdp-nobar.png", cap: "Product page" },
         { src: "enhance-iter-reviews-before.png", cap: "Reviews" },
+        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
         { src: "enhance-iter-search-before.png", cap: "Search" },
         { src: "enhance-cart-before.webp", cap: "Cart" }
       ],
@@ -210,8 +210,7 @@ window.DECK = {
       sub: "One pattern from Home to product page.",
       screens: [
         { src: "enhance-v1-home.png", cap: "Home" },
-        { src: "new/plp-grocery.webp", cap: "Listing · grocery" },
-        { src: "new/plp-grocery-variant.webp", cap: "Add to cart" },
+        { src: "new/plp-grocery.webp", sheet: "new/plp-grocery-variant.webp", cap: "Listing · grocery", hint: "Tap 500 g to pick a pack size" },
         { src: "new/plp-electronics.webp", cap: "Listing · mobiles" },
         { src: "new/pdp-grocery-fold.webp", cap: "Product page" },
         { src: "new/pdp-reviews.webp", cap: "Reviews" },

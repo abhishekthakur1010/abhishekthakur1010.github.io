@@ -1101,6 +1101,15 @@
     },
     overview: function (sc) {
       var tiles = sc.screens.map(function (x, i) {
+        if (x.sheet) {
+          var h = x.hot || [37, 44.5, 20, 5.5];
+          return "<figure class='ov-n vr'><div class='device ov-dev'><div class='dn'></div><div class='ds'><div class='vr-wrap'>" +
+            "<img src='" + img(x.src) + "' alt=''>" +
+            "<img class='vr-dim' src='" + img(x.sheet) + "' alt=''>" +
+            "<img class='vr-sheet' src='" + img(x.sheet) + "' alt=''>" +
+            "<button class='vr-hot' aria-label='Choose pack size' style='left:" + h[0] + "%;top:" + h[1] + "%;width:" + h[2] + "%;height:" + h[3] + "%'></button>" +
+            "</div></div></div><figcaption>" + esc(x.cap) + (x.hint ? "<small class='vr-hint'>" + esc(x.hint) + "</small>" : "") + "</figcaption></figure>";
+        }
         return "<figure class='ov-n'>" + device(x.src, 0, "ov-dev") + "<figcaption>" + esc(x.cap) + "</figcaption></figure>";
       }).join("");
       return "<div class='sl overview" + (sc.old ? " ov-old" : " ov-new") + "'><div class='ov-l'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p>" + esc(sc.sub) + "</p>" : "") + "</div>" +
@@ -1317,6 +1326,8 @@
   });
 
   document.addEventListener("click", function (e) {
+    var vr = e.target.closest(".ov-n.vr .ds");
+    if (vr) { vr.closest(".ov-n").classList.toggle("open"); e.stopPropagation(); return; }
     var cp = e.target.closest && e.target.closest("[data-card-proof]");
     if (cp && !e.target.closest(".bd-img, .ev-link")) { e.preventDefault(); e.stopPropagation(); var pc = PROOFS[cp.getAttribute("data-card-proof")]; if (pc) openEvidence(pc); return; }
     var l = e.target.closest && e.target.closest(".ev-link");

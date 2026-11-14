@@ -2042,3 +2042,16 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .sl.overview .ov-n figcaption { margin-top: 10px !important; }
 .ov-new .ov-n .device { box-shadow: none !important; }
 .sl.overview .ov-n .device { box-shadow: none !important; filter: none !important; }
+/* interactive listing: tap the variant, the pack-size sheet slides up */
+.ov-n.vr .ds { cursor: pointer; }
+.vr-wrap { position: relative; }
+.vr-wrap img { display: block; width: 100%; height: auto; transform: none !important; }
+.vr-wrap .vr-dim, .vr-wrap .vr-sheet { position: absolute; inset: 0; pointer-events: none; }
+.vr-wrap .vr-dim { clip-path: inset(0 0 74% 0); opacity: 0; transition: opacity .3s ease; }
+.vr-wrap .vr-sheet { clip-path: inset(25.8% 0 0 0); transform: translateY(76%) !important; transition: transform .42s cubic-bezier(.2,.8,.2,1); }
+.ov-n.vr.open .vr-dim { opacity: 1; }
+.ov-n.vr.open .vr-sheet { transform: translateY(0) !important; }
+.vr-hot { position: absolute; border: 0; background: transparent; border-radius: 8px; cursor: pointer; padding: 0; box-shadow: 0 0 0 2px rgba(0,120,173,.55); animation: vrPulse 1.6s ease-out infinite; }
+.ov-n.vr.open .vr-hot { opacity: 0; animation: none; }
+@keyframes vrPulse { 0% { box-shadow: 0 0 0 0 rgba(0,120,173,.55); } 70% { box-shadow: 0 0 0 9px rgba(0,120,173,0); } 100% { box-shadow: 0 0 0 0 rgba(0,120,173,0); } }
+.vr-hint { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-top: 4px; }
