@@ -1127,7 +1127,7 @@
     },
     problems: function (sc) {
       var doc = img(sc.doc);
-      return "<div class='sl prb" + (sc.items.length <= 2 ? " prb-few" : "") + "'><div class='prb-top'><h2>" + esc(sc.title) + "</h2><div class='prb-h'><p class='sub'>" + esc(sc.sub) + "</p>" +
+      return "<div class='sl prb" + (sc.items.length <= 3 ? " prb-few" : "") + "'><div class='prb-top'><h2>" + esc(sc.title) + "</h2><div class='prb-h'><p class='sub'>" + esc(sc.sub) + "</p>" +
         "<div class='prb-srcs'>" + (sc.sources || []).map(function (x) {
           return x.proof ? "<button class='prb-chip ev-link' data-proof='" + esc(x.proof) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b></button>"
             : "<button class='prb-chip' data-img='" + img(x.img) + "' data-cap='" + esc(x.cap || x.k) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b></button>";

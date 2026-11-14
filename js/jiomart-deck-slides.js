@@ -380,39 +380,25 @@ window.DECK = {
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and plotted every idea on impact vs effort: quick wins like discount tags and category clarity shipped first, while 3D icons and gamified categories were parked."
     },
 
-    /* HOME BANNER AUDIT */
+    /* HOME AUDIT — banners, search and icons in one view */
     {
-      section: "home", type: "audit",
+      section: "home", type: "problems", cls: "prb-home",
       title: "Home was a wall of banners",
-      sub: "We audited every Home banner first.",
-      findings: [
-        ["No pattern.", "New layout on every banner."],
-        ["Weak CTAs.", "Small, low-contrast buttons."],
-        ["Hard to read.", "Text lost on loud backgrounds."],
-        ["Logos anywhere.", "Logos over the product."],
-        ["Endless scroll.", "4 banner sizes, stacked."]
-      ],
-      src: "Central UI/UX team audit: 27 banner issues.",
-      screens: ["research/as-is-0.webp","research/as-is-1.webp","research/as-is-4.webp","research/as-is-8.webp","research/as-is-9.webp"],
-      notes: "This is why Home moved to search first and one card style: the banners were competing with each other, not helping shoppers start."
-    },
-
-    /* HOME — search bar and shortcuts audit */
-    {
-      section: "home", type: "problems",
-      title: "Search and categories confused shoppers",
-      sub: "Heuristic audit of Home search and categories.",
+      sub: "Heuristic audit of Home. Worst first.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
-        { k: "Search page", s: "S1", e: "E1", img: "research/home-prob-search.webp", page:9,
+        { k: "Banners", s: "S2", e: "E2", img: "research/home-prob-banners.webp?v=2", page:8,
+          h: ["Consistency", "Minimalist design"],
+          issue: ["No pattern", "Weak CTAs", "Endless scroll"] },
+        { k: "Search", s: "S1", e: "E1", img: "research/home-prob-search.webp", page:9,
           h: ["User control", "Recognition"],
-          issue: "Wrong categories. No typo help." },
+          issue: ["Wrong categories", "No typo help"] },
         { k: "Icons", s: "S0", e: "E0", img: "research/home-prob-icons.webp", page:6,
           h: ["Recognition", "Consistency"],
-          issue: "Unclear icons. Mismatched colours." }
+          issue: ["Unclear icons", "Mismatched colours"] }
       ],
-      src: "Heuristic evaluation, Central UI/UX research team. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
-      notes: "The two Home search issues the redesign answered: search results and the category icons."
+      src: "Central UI/UX team audit: 27 banner issues. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
+      notes: "This is why Home moved to search first and one card style: banners competed with each other, search misrouted queries, and the category icons didn't read as one set."
     },
 
     /* SYSTEM APPLIED */
