@@ -227,12 +227,6 @@ window.DECK = {
       section: "context", type: "usp",
       title: "One app. Many kinds of shopping.",
       cats: ["Grocery", "Mobiles", "Electronics", "Fashion", "Beauty", "Home & Living", "Furniture", "Medicine"],
-      stats: [
-        ["4.6★", "App Store"],
-        ["4.0★", "Play Store"],
-        ["No. 16", "in Shopping"],
-        ["10Cr+", "downloads"]
-      ],
       stores: true,
       shots: [["enhance-store-appstore.png","App Store listing"],["enhance-store-playstore-v2.png","Play Store listing"]],
       usps: [

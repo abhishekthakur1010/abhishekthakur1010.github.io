@@ -2114,3 +2114,5 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .up2 .up-stores { column-gap: clamp(12px, 1.4vw, 24px); }
 .up2 .up-right .up-stat { padding: 12px 4px 10px; }
 .up2 .up-right .up-stat b { font-size: clamp(28px, 2.8vw, 46px); }
+.up2 .up-shots { margin-bottom: 0; }
+.up2 .up-shots img { max-height: min(34vh, 340px); }
