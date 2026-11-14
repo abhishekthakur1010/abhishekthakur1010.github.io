@@ -189,12 +189,13 @@ window.DECK = {
     {
       section: "redesign", type: "overview", old: true,
       title: "Old designs",
-      sub: "Four screens, four different patterns. Nothing to compare on.",
+      sub: "Five screens, five different patterns. Nothing to compare on.",
       screens: [
         { src: "enhance-problem-home.png", cap: "Home" },
         { src: "enhance-problem-plp.png", cap: "Listing" },
         { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
-        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" }
+        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" },
+        { src: "enhance-iter-reviews-before.png", cap: "Reviews" }
       ],
       notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
     },
@@ -203,12 +204,13 @@ window.DECK = {
     {
       section: "redesign", type: "overview",
       title: "New designs",
-      sub: "The same four screens, one pattern from Home to product page.",
+      sub: "The same five screens, one pattern from Home to product page.",
       screens: [
         { src: "enhance-v1-home.png", cap: "Home" },
         { src: "new/plp-grocery.webp", cap: "Listing" },
         { src: "new/plp-grocery-variant.webp", cap: "Add to cart" },
-        { src: "new/pdp-grocery-fold.webp", cap: "Product page" }
+        { src: "new/pdp-grocery-fold.webp", cap: "Product page" },
+        { src: "new/pdp-reviews.webp", cap: "Reviews" }
       ],
       notes: "The reveal. The next three slides explain the decisions behind each screen."
     },

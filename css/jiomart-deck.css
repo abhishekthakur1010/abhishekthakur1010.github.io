@@ -2017,3 +2017,8 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 /* phones always fit the slide height, on any screen */
 .sl.overview .ov-n .device { --w: min(16.5vw, calc((100vh - 430px) / 2.1), 270px) !important; }
 .vp-ph .device { --w: min(16.5vw, calc((100vh - 290px) / 2.15), 270px) !important; }
+/* Old / New: five phones, as big as the slide allows */
+.slide.type-overview .sl.overview { max-width: 1480px !important; }
+.sl.overview .ov-grid { grid-template-columns: repeat(5, 1fr) !important; gap: 1.6vw !important; }
+.sl.overview .ov-n .device { --w: min(15.5vw, calc((100vh - 380px) / 2.08), 290px) !important; }
+.sl.overview .ov-l { margin-bottom: 3vh !important; }
