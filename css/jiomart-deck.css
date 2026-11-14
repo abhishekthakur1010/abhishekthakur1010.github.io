@@ -2305,3 +2305,6 @@ a.prb-ev { text-decoration: none; }
 .slide.type-why .why-r ol li.kw { padding: 20px 12px !important; min-height: 0; }
 .slide.type-why .why-r ol li.kw.has-more { padding: 0 12px !important; }
 .slide.type-why .why-r ol li.kw.has-more .kw-more { min-height: 0; padding: 20px 0; }
+.slide.type-why .why-r ol li.kw { min-height: 81px; padding-top: 0 !important; padding-bottom: 0 !important; align-content: center; }
+.slide.type-why .why-r ol li.kw.has-more .kw-more { min-height: 81px; padding: 0; align-content: center; }
+.slide.type-why .why-r ol li.kw:not(.has-more) { padding-top: 20px !important; }
