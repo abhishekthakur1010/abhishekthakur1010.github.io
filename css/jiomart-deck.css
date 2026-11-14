@@ -2185,3 +2185,8 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .prb-h h2 { max-width: none !important; }
 .prb-img { height: min(calc(100vh - 560px), 230px); min-height: 120px; }
 @media (max-height: 760px) { .prb-b { gap: 6px; padding: 10px 12px 12px; } .prb-h .sub { margin-bottom: 12px; } }
+.prb-h { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.prb-doc { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line2); color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; background: var(--card, #fff); }
+.prb-doc svg { width: 18px; height: 18px; color: var(--info, #0078ad); }
+.prb-doc:hover { border-color: var(--info, #0078ad); }
+a.prb-ev { text-decoration: none; }

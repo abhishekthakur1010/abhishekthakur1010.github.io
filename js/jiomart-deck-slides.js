@@ -341,50 +341,31 @@ window.DECK = {
       notes: "This is where priorities came from. Severity times ease told us what to fix first."
     },
 
-    /* HEURISTIC RECORD — every page */
-    {
-      section: "research", type: "record",
-      title: "Discovery journey, audited",
-      sub: "Home to product page, 11 audits. Click any page to read it.",
-      pages: [
-        ["research/he-rec-07.webp", "Home · categories, list & scan"],
-        ["research/he-rec-12.webp", "Top categories"],
-        ["research/he-rec-18.webp", "Banners"],
-        ["research/he-rec-09.webp", "Search"],
-        ["research/he-rec-10.webp", "Scan"],
-        ["research/he-rec-11.webp", "Voice search"],
-        ["research/he-rec-08.webp", "List feature"],
-        ["research/he-rec-22.webp", "Listing page"],
-        ["research/he-rec-16.webp", "Filter & sort"],
-        ["research/he-rec-21.webp", "Product page"],
-        ["research/he-rec-23.webp", "End of scroll"]
-      ],
-      notes: "The complete heuristic evaluation by the Central UI/UX research team, page by page. Personal details in the app screenshots are blurred."
-    },
 
     /* TOP PROBLEMS — audit evidence to action */
     {
       section: "research", type: "problems",
-      title: "5 problems, 5 fixes",
-      sub: "From the heuristic audit, worst first. Evidence opens the audit page.",
+      title: "From audit finding to fix",
+      sub: "Heuristic evaluation of the discovery journey, worst first.",
+      doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
-        { k: "Product page", s: "S3", e: "E2", img: "research/prob-pdp.webp", ev: "research/he-rec-21.webp",
+        { k: "Product page", s: "S3", e: "E2", img: "research/prob-pdp.webp", page: 12,
           h: ["Error prevention", "User control", "Consistency"],
           issue: "Brand hidden, EMI not tappable, delivery needs a pincode.",
           fix: "Brand, rating, price and size above the fold. One sticky Add to cart." },
-        { k: "Filter & sort", s: "S2", e: "E2", img: "research/prob-filter.webp", ev: "research/he-rec-16.webp",
+        { k: "Filter & sort", s: "S2", e: "E2", img: "research/prob-filter.webp", page: 11,
           h: ["Recover from errors"],
           issue: "Applied filters barely visible. The red dot is unclear.",
           fix: "Filter and Sort as clear buttons. Applied filters shown as chips." },
-        { k: "Banners", s: "S2", e: "E2", img: "research/prob-banners.webp", ev: "research/he-rec-18.webp",
+        { k: "Banners", s: "S2", e: "E2", img: "research/prob-banners.webp", page: 3,
           h: ["Consistency", "Minimalist design"],
           issue: "7+ carousel cards, random fonts and colours.",
           fix: "One banner carousel. One system for every promo." },
-        { k: "Menu & categories", s: "S2", e: "E1", img: "research/prob-menu.webp", ev: "research/he-rec-15.webp",
+        { k: "Menu & categories", s: "S2", e: "E1", img: "research/prob-menu.webp", page: 9,
           h: ["Real world", "Consistency", "Recognition"],
           issue: "Category order changes by entry point. Old icons.",
           fix: "Categories right under search, in one icon style." },
-        { k: "Top deals", s: "S2", e: "E1", img: "research/prob-deals.webp", ev: "research/he-rec-13.webp",
+        { k: "Top deals", s: "S2", e: "E1", img: "research/prob-deals.webp", page: 8,
           h: ["Error prevention"],
           issue: "No feedback at max quantity. Price and discount hierarchy unclear.",
           fix: "The same deal card everywhere, price first." }

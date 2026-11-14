@@ -1118,14 +1118,16 @@
       }).join("") + "</div></div>";
     },
     problems: function (sc) {
-      return "<div class='sl prb'><div class='prb-h'><h2>" + esc(sc.title) + "</h2><p class='sub'>" + esc(sc.sub) + "</p></div><div class='prb-grid'>" +
+      var doc = img(sc.doc);
+      return "<div class='sl prb'><div class='prb-h'><div><h2>" + esc(sc.title) + "</h2><p class='sub'>" + esc(sc.sub) + "</p></div>" +
+        (sc.doc ? "<a class='prb-doc' href='" + doc + "' target='_blank' rel='noopener'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h4'/></svg>Full audit (PDF)</a>" : "") + "</div><div class='prb-grid'>" +
         sc.items.map(function (it, i) {
           return "<article class='prb-c'><div class='prb-img'><img loading='lazy' src='" + img(it.img) + "' alt='" + esc(it.k) + "'></div>" +
             "<div class='prb-b'><div class='prb-t'><b>" + esc(it.k) + "</b><span class='prb-se'><i class='sev s" + esc(it.s.slice(1)) + "'>" + esc(it.s) + "</i><i class='ease'>" + esc(it.e) + "</i></span></div>" +
             "<p class='prb-i'>" + esc(it.issue) + "</p>" +
             "<div class='prb-h2'>" + it.h.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>" +
             "<p class='prb-f'><em>Fix</em>" + esc(it.fix) + "</p>" +
-            "<button type='button' class='prb-ev' data-ev='" + i + "' data-src='" + img(it.ev) + "' data-k='" + esc(it.k) + "'>Evidence ↗</button></div></article>";
+            "<a class='prb-ev' href='" + doc + "#page=" + it.page + "' target='_blank' rel='noopener'>Evidence · PDF p." + it.page + " ↗</a></div></article>";
         }).join("") + "</div>" + (sc.src ? "<p class='prb-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
     },
     record: function (sc) {
