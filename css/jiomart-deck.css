@@ -2308,3 +2308,7 @@ a.prb-ev { text-decoration: none; }
 .slide.type-why .why-r ol li.kw { min-height: 81px; padding-top: 0 !important; padding-bottom: 0 !important; align-content: center; }
 .slide.type-why .why-r ol li.kw.has-more .kw-more { min-height: 81px; padding: 0; align-content: center; }
 .slide.type-why .why-r ol li.kw:not(.has-more) { padding-top: 20px !important; }
+
+/* audit slide: fewer, larger screens */
+.sl.audit { grid-template-columns: minmax(360px,.85fr) 1.7fr; }
+.au-grid img { max-height: 58vh; }

@@ -436,21 +436,6 @@ window.DECK = {
       notes: "Beyond the banners, the audit checked every way to start a search from Home. Scan and the shopping list were the most severe."
     },
 
-    /* REDESIGN STRATEGY */
-    {
-      section: "home", type: "strategy",
-      title: "Redesign strategy: fix the system, not each screen",
-      goals: ["User-centric", "Standard sizes", "Shorter scroll", "Guidelines for consistency"],
-      steps: [
-        { k: "Map the page", t: "Home ran 6 folds, with banners back to back.", img: "research/fold-map.webp" },
-        { k: "Name the parts", t: "Every promo is the same 6 parts, in a fixed order.", chips: ["Title", "Offer", "Image", "Logo", "CTA", "Validity"] },
-        { k: "Benchmark", t: "Leaders use light backgrounds, text left, image right, one clear CTA.", img: "research/benchmark.webp" },
-        { k: "Fix the sizes", t: "4 ratios on one 344px grid, 8px corners.", sizes: [["Strip", "344/56", "344\u00d756"], ["Slim", "4/1", "4:1"], ["Landscape", "2/1", "2:1"], ["Square", "1/1", "1:1"]] }
-      ],
-      src: "Five-stage process with the Central UI/UX team: audit, elements, scenarios, benchmark, templates.",
-      notes: "The point is the system: once the parts and sizes were fixed, any team could make a promo that fits."
-    },
-
     /* SYSTEM APPLIED */
 
     {
