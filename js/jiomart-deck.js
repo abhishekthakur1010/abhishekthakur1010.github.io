@@ -1165,6 +1165,16 @@
       return "<div class='sl fig'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
         "<div class='fig-img'><img src='" + img(sc.img) + "' alt='" + esc(sc.alt || sc.title) + "'></div></div>";
     },
+    plan: function (sc) {
+      function card(c, cls) {
+        return "<div class='pl-c" + (cls || "") + "'><span class='pl-n'>" + esc(c.n) + "</span><h3>" + esc(c.t) + "</h3>" + (c.d ? "<p>" + esc(c.d) + "</p>" : "") +
+          "<div class='pl-chips'>" + c.chips.map(function (x) { return "<i>" + esc(x) + "</i>"; }).join("") + "</div></div>";
+      }
+      return "<div class='sl plan'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
+        "<div class='pl-flow'><div class='pl-in'>" + sc.inputs.map(function (c) { return card(c); }).join("") + "</div>" +
+        "<div class='pl-br' aria-hidden='true'></div>" + card(sc.map) + "</div>" +
+        "<div class='pl-down' aria-hidden='true'></div>" + card(sc.goal, " pl-goal") + "</div>";
+    },
     field: function (sc) {
       return "<div class='sl field'><h2>" + esc(sc.title) + "</h2><div class='fd-grid'>" + sc.photos.map(function (p, i) {
         return "<figure class='fd-p fd-" + i + "'><img src='" + img(p.src) + "' alt='" + esc(p.cap) + "' loading='lazy' style='object-position:" + (p.pos || "center") + "'><figcaption>" + esc(p.cap) + "</figcaption></figure>";

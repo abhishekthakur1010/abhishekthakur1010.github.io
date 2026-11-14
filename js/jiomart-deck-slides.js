@@ -307,10 +307,15 @@ window.DECK = {
 
     /* RESEARCH PLAN */
     {
-      section: "research", type: "figure",
+      section: "research", type: "plan",
       title: "How we researched",
-      img: "enhance-research-strategy.png",
-      alt: "Research plan: competitive benchmarking and current journey analysis feed emotional journey mapping, leading to the ideal journey.",
+      sub: "Two inputs fed one emotional map, which defined the ideal journey.",
+      inputs: [
+        { n: "01", t: "Competitive benchmarking", chips: ["USPs", "Product experience", "Content design", "Service operations"] },
+        { n: "02", t: "Current journey analysis", d: "Finding the pain points.", chips: ["Heuristics", "Data analysis", "User survey", "Sentiment analysis"] }
+      ],
+      map: { n: "03", t: "Emotional journey mapping", d: "JioMart vs competitors, as one emotional graph.", chips: ["Moments of delight", "Happy next", "Emotion patterns", "Journey break points"] },
+      goal: { n: "04", t: "Defining the ideal journey", chips: ["Seamless-journey ingredients", "Opportunity areas", "Quick wins", "Design insights & recommendations"] },
       notes: "Benchmarking and a current-journey audit fed an emotional journey map, which defined the ideal journey."
     },
 
