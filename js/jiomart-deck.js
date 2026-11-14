@@ -1743,6 +1743,8 @@
       return;
     }
     if (evidenceOpen()) { if (e.key === "Escape") closeEvidence(); return; }
+    var zm = document.querySelector(".zoomable.zoom");
+    if (zm && e.key === "Escape") { zm.classList.remove("zoom"); return; }
     if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); next(); }
     else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
     else if (e.key === "n" || e.key === "N") toggleNotes();
