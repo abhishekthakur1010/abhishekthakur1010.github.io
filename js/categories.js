@@ -24,7 +24,7 @@
     : { out: 380, quiet: 320, move: 820, rise: 620, settle: 700, away: 650 };
   // Both pages are still being built: they open through a password dialog.
   var WIP = { gamified: 'Gamified', scrolly: 'Scrollytelling' };
-  var ROUTES = { gamified: './ghar/index.html', scrolly: './scrolly/index.html' };
+  var ROUTES = { gamified: './world/index.html', scrolly: './scrolly/index.html' };
   // SHA-256 of the shared preview password. A light gate only: the pages themselves stay public.
   var PASS_HASH = 'e2855c23afcb9cdde9a6bbb315fc71376be098e28e4f8a5b8576cddc9179e3f0';
   var EMAIL = 'abhishekiit2k12@gmail.com';
