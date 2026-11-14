@@ -27,7 +27,7 @@
   var index = 0, step = 0, stepsOnSlide = 0, slideEl = null;
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
-  function img(n) { return n ? IMG + n : ""; }
+  function img(n) { return n ? IMG + n + (/^new\/pdp-(fashion|electronics|grocery|beauty)\.webp$/.test(n) ? "?v=3" : "") : ""; }   // refreshed Figma exports
   function esc(s) {
     return s == null ? "" : String(s).replace(/\{\{([^|}]+)\|([^}]+)\}\}/g, function (m, t, k) {
       return "<button type='button' class='ev-link' data-proof='" + k + "' title='See evidence'>" + t + "</button>";
