@@ -223,16 +223,21 @@ window.DECK = {
     /* USPs OF JIOMART */
     {
       section: "context", type: "usp",
-      title: "USPs of JioMart",
-      items: [
-        ["Everything in one app", "Grocery, fresh, electronics, fashion and beauty, all in one cart."],
-        ["Value pricing", "Every product shows what you save against MRP."],
-        ["Reach beyond the metros", "Over half of orders come from Tier 2 cities and beyond."],
-        ["Shop on WhatsApp", "Since 2022, shoppers can order end to end inside WhatsApp."],
-        ["Local kirana partners", "Neighbourhood stores sell and deliver through JioMart Partner."],
-        ["Built for the phone", "Almost every shopper arrives on mobile."]
+      title: "One app. Many kinds of shopping.",
+      cats: ["Grocery", "Mobiles", "Electronics", "Fashion", "Beauty", "Home & Living", "Furniture", "Medicine"],
+      stores: [
+        { img: "enhance-store-appstore.png", name: "App Store", rate: "4.6", sub: "213K ratings · No. 16 in Shopping" },
+        { img: "enhance-store-playstore-v2.png", name: "Play Store", rate: "4.0", sub: "10Cr+ downloads · 25.3L reviews" }
       ],
-      notes: "What JioMart already did well. The redesign had to make these visible at the moment of choice."
+      usps: [
+        ["cart", "One cart for everything"],
+        ["tag", "Savings vs MRP"],
+        ["pin", "50%+ orders beyond metros"],
+        ["chat", "Order on WhatsApp"],
+        ["store", "Kirana partners"],
+        ["phone", "Mobile first"]
+      ],
+      notes: "Groceries and TVs in the same app, one design for both. What JioMart already did well; the redesign had to make it visible at the moment of choice."
     },
 
     /* 02 — WHY REDESIGN */

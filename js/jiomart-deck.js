@@ -1095,6 +1095,24 @@
         }).join("") + "</div><p class='kpm-src'>" + esc(sc.src) + "</p></div>";
     },
     usp: function (sc) {
+      if (sc.stores) {
+        var IC = {
+          cart: "<path d='M3 4h2l2.4 11h10.8L21 7H6.2'/><circle cx='9' cy='19.5' r='1.5'/><circle cx='17' cy='19.5' r='1.5'/>",
+          tag: "<path d='M3 12V4h8l10 10-8 8z'/><circle cx='7.5' cy='8.5' r='1.5'/>",
+          pin: "<path d='M12 21s-7-6.3-7-11.5A7 7 0 0 1 19 9.5C19 14.7 12 21 12 21z'/><circle cx='12' cy='9.5' r='2.5'/>",
+          chat: "<path d='M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5z'/>",
+          store: "<path d='M4 9l1.5-5h13L20 9M4 9h16v11H4zM4 9c0 1.7 1.3 3 3 3s2.7-1.3 2.7-3c0 1.7 1.3 3 2.3 3s2.3-1.3 2.3-3c0 1.7 1 3 2.7 3s3-1.3 3-3M10 20v-5h4v5'/>",
+          phone: "<rect x='7' y='2.5' width='10' height='19' rx='2.5'/><path d='M11 18.5h2'/>"
+        };
+        return "<div class='sl usp up2'><div class='up-top'><div class='up-l'><h2>" + esc(sc.title) + "</h2><div class='up-cats'>" +
+          sc.cats.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div></div><div class='up-stores'>" +
+          sc.stores.map(function (x) {
+            return "<figure class='up-st'><img src='" + img(x.img) + "' alt=''><figcaption><small>" + esc(x.name) + "</small><b>" + esc(x.rate) + " <i>★</i></b><span>" + esc(x.sub) + "</span></figcaption></figure>";
+          }).join("") + "</div></div><div class='up-row'>" +
+          sc.usps.map(function (u) {
+            return "<div class='up-i'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'>" + (IC[u[0]] || "") + "</svg><span>" + esc(u[1]) + "</span></div>";
+          }).join("") + "</div></div>";
+      }
       return "<div class='sl usp'><h2>" + esc(sc.title) + "</h2><div class='usp-grid'>" + sc.items.map(function (x, i) {
         return "<div class='usp-i'><span class='usp-n'>" + (i + 1) + "</span><h3>" + esc(x[0]) + "</h3><p>" + esc(x[1]) + "</p></div>";
       }).join("") + "</div></div>";

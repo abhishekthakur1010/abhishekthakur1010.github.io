@@ -2055,3 +2055,22 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .ov-n.vr.open .vr-hot { opacity: 0; animation: none; }
 @keyframes vrPulse { 0% { box-shadow: 0 0 0 0 rgba(0,120,173,.55); } 70% { box-shadow: 0 0 0 9px rgba(0,120,173,0); } 100% { box-shadow: 0 0 0 0 rgba(0,120,173,0); } }
 .vr-hint { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-top: 4px; }
+/* USPs + product, merged and visual */
+.sl.usp.up2 { width: 100%; max-width: 1320px; display: flex; flex-direction: column; gap: clamp(22px, 4.5vh, 48px); }
+.up2 .up-top { display: grid; grid-template-columns: 1fr 1.15fr; gap: 4vw; align-items: center; }
+.up2 h2 { max-width: 12ch !important; }
+.up2 .up-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(14px, 3vh, 28px); }
+.up2 .up-cats span { padding: 7px 14px; border: 1px solid var(--line2); border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.up2 .up-stores { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.up2 .up-st { margin: 0; border: 1px solid var(--line2); border-radius: 18px; overflow: hidden; background: var(--bg); }
+.up2 .up-st img { display: block; width: 100%; aspect-ratio: 990/560; object-fit: cover; object-position: top; }
+.up2 .up-st figcaption { padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px; }
+.up2 .up-st small { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+.up2 .up-st b { font-size: clamp(26px, 2.4vw, 36px); font-weight: 800; color: var(--ink); line-height: 1.1; }
+.up2 .up-st b i { font-style: normal; color: #2fa84f; font-size: .75em; }
+.up2 .up-st span { font-size: 13px; color: var(--dim); }
+.up2 .up-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.up2 .up-i { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px 16px; border-radius: 16px; background: color-mix(in srgb, var(--info, #0078ad) 7%, transparent); }
+.up2 .up-i svg { width: 30px; height: 30px; color: var(--info, #0078ad); }
+.up2 .up-i span { font-size: clamp(14px, 1.1vw, 17px); font-weight: 700; color: var(--ink); line-height: 1.25; }
+.slide.type-usp { align-items: center !important; padding-top: 0 !important; }
