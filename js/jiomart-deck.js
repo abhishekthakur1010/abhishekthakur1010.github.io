@@ -1556,12 +1556,14 @@
     for (var n = 0; n < 3; n++) {
       soStage.style.width = pw / k + "px"; soStage.style.height = ph / k + "px";
       soStage.style.transform = "scale(" + k + ")";
-      var sl = soStage.querySelector(".sl"); if (!sl) return;
+      var sl = soStage.querySelector(".sl"); if (!sl) return; sl.style.width = "";
       var w = sl.offsetWidth, h = sl.offsetHeight; if (!w || !h) return;
       k = Math.max(0.6, Math.min((pw - 2 * pad) / w, (ph - 2 * pad) / h, 1.5));
     }
     soStage.style.width = pw / k + "px"; soStage.style.height = ph / k + "px";
     soStage.style.transform = "scale(" + k + ")";
+    var sl2 = soStage.querySelector(".sl");
+    if (sl2) sl2.style.width = (pw - 2 * 56) / k + "px";   // fill the width: no dead space at the sides
   }
   function openOverlay(id) {
     var sc = OVERLAYS[id]; if (!sc) return;

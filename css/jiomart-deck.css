@@ -2235,3 +2235,4 @@ a.prb-ev { text-decoration: none; }
 .so-stage .fv-slide { grid-template-columns: minmax(0, 760px) auto; gap: 64px; }
 .so-x { top: 24px; right: 24px; }
 .so-stage .fv-slide { grid-template-columns: minmax(0, 900px) auto; }
+.so-stage .fv-slide { grid-template-columns: minmax(0, 1fr) auto; }
