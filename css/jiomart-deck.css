@@ -2272,3 +2272,4 @@ a.prb-ev { text-decoration: none; }
 .so-sub-in .ev-img { display: flex; justify-content: center; }
 .so-sub-in .ev-imgbox { display: inline-block; }
 .so-sub-in .ev-img img { width: auto !important; max-width: 100%; height: auto !important; max-height: calc(100vh - 300px) !important; }
+.so-sub-in .ev-img img { max-height: calc(100vh - 320px) !important; }
