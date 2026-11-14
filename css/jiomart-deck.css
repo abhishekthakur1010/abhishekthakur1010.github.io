@@ -2295,3 +2295,5 @@ a.prb-ev { text-decoration: none; }
 .prb-top .prb-h { align-items: center; }
 .prb-top .prb-h .sub { margin: 0 0 18px; }
 @media (max-height: 760px) { .prb .prb-img { height: calc(100vh - 572px) !important; } }
+.slide.type-why .why-r ol li.kw.has-more { border-radius: 0; }
+.slide.type-why .why-r ol li.kw.has-more:hover, .slide.type-why .why-r ol li.kw.has-more:focus-within { border-radius: 12px; border-bottom-color: transparent !important; }

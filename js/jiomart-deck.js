@@ -1169,7 +1169,7 @@
     why: function (sc) {
       return "<div class='sl why'><div class='why-l'><span class='why-tag'>" + esc(sc.tag) + "</span><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div>" +
         "<div class='why-r'><h3>" + esc(sc.ask) + "</h3><ol>" + sc.reasons.map(function (r, i) {
-          var more = r[2] && OVERLAYS[r[2]];
+          var more = r[2] && (OVERLAYS[r[2]] || /^(proof|pdf):/.test(r[2]));
           var inner = "<b>" + esc(r[0]) + "</b>" + (r[1] ? "<span>" + esc(r[1]) + "</span>" : "");
           return "<li class='reveal kw" + (more ? " has-more" : "") + "' data-step='" + (i + 1) + "'>" +
             (more ? "<button class='kw-more' data-ov='" + esc(r[2]) + "' aria-label='See the funnel'>" + inner + "<i class='kw-chev' aria-hidden='true'>›</i></button>" : inner) + "</li>";
@@ -1585,7 +1585,15 @@
     setTimeout(function () { focusImgs(el); }, 30);
     sov.querySelector(".so-x").focus();
   }
-  function closeOverlay() { sov.classList.remove("open"); sov.setAttribute("aria-hidden", "true"); setTimeout(function () { if (!overlayOpen()) soStage.innerHTML = ""; }, 300); }
+  function openProofSheet(key, from) {
+    var pr = PROOFS[key]; if (!pr) return;
+    soStage.innerHTML = ""; soPanel.classList.remove("is-sub");
+    var sc = slides[index] || {};
+    soTitle = sc.ask || [].concat(sc.headline || sc.title || "").join(" ");
+    sov.classList.add("open", "proof-only"); sov.setAttribute("aria-hidden", "false");
+    soOpenSub(pr);
+  }
+  function closeOverlay() { sov.classList.remove("proof-only"); sov.classList.remove("open"); sov.setAttribute("aria-hidden", "true"); setTimeout(function () { if (!overlayOpen()) soStage.innerHTML = ""; }, 300); }
   window.addEventListener("resize", fitOverlay);
   var soTitle = "";
   function soSubOpen() { return soPanel.classList.contains("is-sub"); }
@@ -1606,7 +1614,7 @@
       var pr = PROOFS[lk.getAttribute("data-proof") || lk.getAttribute("data-card-proof")];
       if (pr) { e.preventDefault(); e.stopPropagation(); soOpenSub(pr); return; }
     }
-    if (e.target.closest(".so-ret, .so-crumb")) { soCloseSub(); return; }
+    if (e.target.closest(".so-ret, .so-crumb")) { if (sov.classList.contains("proof-only")) closeOverlay(); else soCloseSub(); return; }
     var si = e.target.closest(".so-sub img");
     if (si) { lbFrom = si; openLightbox(si.src, ""); return; }
     if (e.target.closest(".so-x") || e.target.classList.contains("so-back") || e.target === soPanel) { closeOverlay(); return; }
@@ -1623,12 +1631,18 @@
   document.addEventListener("click", function (e) {
     var m = e.target.closest && e.target.closest(".kw-more, li.has-more");
     if (m && m.tagName === "LI") m = m.querySelector(".kw-more");
-    if (m) { e.preventDefault(); e.stopPropagation(); openOverlay(m.getAttribute("data-ov")); }
+    if (m) {
+      e.preventDefault(); e.stopPropagation();
+      var t = m.getAttribute("data-ov") || "";
+      if (t.indexOf("proof:") === 0) openProofSheet(t.slice(6), m);
+      else if (t.indexOf("pdf:") === 0) window.open(img(t.slice(4)), "_blank", "noopener");
+      else openOverlay(t);
+    }
   }, true);
 
   document.addEventListener("keydown", function (e) {
     if (overlayOpen() && !lightboxOpen() && !evidenceOpen()) {
-      if (e.key === "Escape") { if (soSubOpen()) soCloseSub(); else closeOverlay(); }
+      if (e.key === "Escape") { if (soSubOpen() && !sov.classList.contains("proof-only")) soCloseSub(); else closeOverlay(); }
       else if (soSubOpen()) return;
       else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
         e.preventDefault();

@@ -101,6 +101,12 @@ window.DECK = {
       observed: "Jio's town hall listed 94.6M visitors for JioMart, alongside MyJio and Jio.com.",
       takeaway: "Scale context: small percentage gains mean millions of shoppers."
     },
+    store: {
+      method: "Store observation", tag: "Field research",
+      img: "offline-price-tag.webp", crop: 0.5,
+      observed: "Every shelf tag leads with the price, MRP smallest.",
+      takeaway: "Price is the biggest text on the card."
+    },
     audit: {
       method: "Heuristic evaluation", tag: "UX audit",
       img: "enhance-heuristic-table.png", crop: 0,
@@ -250,10 +256,10 @@ window.DECK = {
       ask: "Why redesign?",
       reasons: [
         ["1 in 10", "visits reached cart", "funnel"],
-        ["4×", "search beat browse"],
-        ["Look-alike", "listing cards"],
-        ["Buried", "price, size, trust"],
-        ["23", "usability issues"]
+        ["4×", "search beat browse", "proof:searchers"],
+        ["Look-alike", "listing cards", "proof:interviews"],
+        ["Buried", "price, size, trust", "proof:store"],
+        ["23", "usability issues", "proof:audit"]
       ],
       src: "Google Analytics · heuristic audit",
       notes: "1 in 10 sessions added to cart (10.41%, GA). Searchers converted 41.4% vs 10.4%. Cards had no rating, size or unit price. Product page rated S3 critical. 23 audit issues, 5 critical."
@@ -369,22 +375,6 @@ window.DECK = {
         { k: "Time to decide", v: "{{\u221220%|decide}} est." }
       ],
       notes: "Read each row left to right: what shoppers felt, why it happened, and how we know. Every claim has a source: audit, analytics, interviews or benchmark. The key milestone. Show the shift from 'refresh the UI' to 'help shoppers decide'. Then the statement and the success metrics we set. Time-to-decide is illustrative (est.)."
-    },
-
-    /* EVIDENCE TO DECISION */
-    {
-      section: "research", type: "evidence",
-      title: "Every decision traced back to something we saw",
-      stats: [["20", "interviews"], ["8", "benchmarks"], ["2", "usability tests (12 + 8 users)"], ["23", "audit issues"]],
-      items: [
-        { m: "Analytics", saw: "Searchers added to cart 4\u00d7 more than browsers (41% vs 10%).", dec: "Search first on Home." },
-        { m: "Shopper interviews", saw: "\u201cI can\u2019t tell which one to buy.\u201d", dec: "Size, price and rating on every card." },
-        { m: "Store observation", saw: "Every shelf tag leads with the price, MRP smallest.", dec: "Price is the biggest text." },
-        { m: "Heuristic audit", saw: "23 issues, 5 critical. The product page was the worst.", dec: "Key details above the fold." },
-        { m: "Home audit", saw: "6 folds, banners back to back, 27 banner issues.", dec: "One system for every promo." },
-        { m: "Benchmark", saw: "Leaders keep text left, image right, one clear CTA.", dec: "One card pattern across categories." }
-      ],
-      notes: "Method, what we saw, what we decided. This is the logic the rest of the deck follows."
     },
 
     /* 09 — IDEATION & COLLABORATION */
