@@ -2236,3 +2236,22 @@ a.prb-ev { text-decoration: none; }
 .so-x { top: 24px; right: 24px; }
 .so-stage .fv-slide { grid-template-columns: minmax(0, 900px) auto; }
 .so-stage .fv-slide { grid-template-columns: minmax(0, 1fr) auto; }
+
+/* slide sheet · sub view (a link opened inside the sheet) */
+.so-fit { transition: transform .45s cubic-bezier(.22,.9,.24,1), opacity .3s; }
+.so-panel.is-sub .so-fit { transform: translateX(-12%); opacity: 0; pointer-events: none; }
+.so-sub { position: absolute; inset: 0; z-index: 2; background: var(--bg); overflow-y: auto; transform: translateX(100%); transition: transform .45s cubic-bezier(.22,.9,.24,1); }
+.so-panel.is-sub .so-sub { transform: none; }
+.so-bar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 18px; padding: 24px 96px 18px 56px; background: var(--bg); border-bottom: 1px solid var(--line2); }
+.so-ret { all: unset; white-space: nowrap; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--ink); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line2); }
+.so-ret:hover, .so-ret:focus-visible { background: var(--card); }
+.so-path { white-space: nowrap; overflow: hidden; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--dim); min-width: 0; }
+.so-path i { font-style: normal; }
+.so-path b { color: var(--ink); font-weight: 600; }
+.so-crumb { all: unset; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line2); }
+.so-crumb:hover { color: var(--ink); }
+.so-sub-in.ev-body { max-width: 960px; padding: 40px 56px 64px; }
+.so-sub-in .ev-method { font-size: clamp(26px, 2.4vw, 38px); }
+.so-sub-in .ev-block { font-size: 17px; }
+.so-sub-in .ev-img img { max-height: 52vh; }
+.so-sub .so-x { display: none; }

@@ -1329,11 +1329,14 @@
   }
   function openEvidence(ev) {
     if (!panel) return;
+    panel.querySelector(".ev-body").innerHTML = evHTML(ev);
+    panel.classList.add("open");
+  }
+  function evHTML(ev) {
     var calc = ev.calc ? "<div class='ev-calc'>" + ev.calc.map(function (r) {
       return "<div class='ev-calc-row" + (r[2] ? " hi" : "") + "'><span>" + esc(r[0]) + "</span><b>" + esc(r[1]) + "</b></div>";
     }).join("") + "</div>" : "";
-    panel.querySelector(".ev-body").innerHTML =
-      "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
+    return "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
       "<div class='ev-method'>" + esc(ev.method) + "</div>" +
       (ev.img ? "<div class='ev-img" + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
         "<span class='ev-imgbox'><img src='" + img(ev.img) + "' onerror=\"this.closest('.ev-img').classList.add('failed')\">" +
@@ -1358,7 +1361,6 @@
       (ev.observed ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.observedL || "What we observed") + "</span>" + esc(ev.observed) + "</div>" : "") +
       (ev.takeaway ? "<div class='ev-block'><span class='ev-l'>" + esc(ev.takeawayL || "One takeaway") + "</span>" + esc(ev.takeaway) + "</div>" : "") +
       (ev.implication ? "<div class='ev-block impl'><span class='ev-l'>" + esc(ev.implicationL || "Design implication") + "</span>" + esc(ev.implication) + "</div>" : "");
-    panel.classList.add("open");
   }
   function closeEvidence() { if (panel) panel.classList.remove("open"); }
   function evidenceOpen() { return panel && panel.classList.contains("open"); }
@@ -1370,6 +1372,7 @@
   });
 
   document.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest(".so")) return;   // the slide sheet handles its own links
     var vr = e.target.closest(".ov-n.vr .ds");
     if (vr) { vr.closest(".ov-n").classList.toggle("open"); e.stopPropagation(); return; }
     var cp = e.target.closest && e.target.closest("[data-card-proof]");
@@ -1572,6 +1575,7 @@
     el.innerHTML = (T[sc.type] || T.opening)(sc);
     Array.prototype.forEach.call(el.querySelectorAll(".reveal"), function (r) { r.classList.add("in"); });
     soStage.innerHTML = ""; soStage.appendChild(el);
+    soTitle = [].concat(sc.headline || sc.title || "").join(" "); soPanel.classList.remove("is-sub");
     sov.classList.add("open"); sov.setAttribute("aria-hidden", "false");
     fitOverlay();
     setTimeout(function () { focusImgs(el); }, 30);
@@ -1579,7 +1583,28 @@
   }
   function closeOverlay() { sov.classList.remove("open"); sov.setAttribute("aria-hidden", "true"); setTimeout(function () { if (!overlayOpen()) soStage.innerHTML = ""; }, 300); }
   window.addEventListener("resize", fitOverlay);
+  var soTitle = "";
+  function soSubOpen() { return soPanel.classList.contains("is-sub"); }
+  function soOpenSub(ev) {
+    var v = soPanel.querySelector(".so-sub");
+    if (!v) { v = document.createElement("div"); v.className = "so-sub"; soPanel.appendChild(v); }
+    v.innerHTML = "<div class='so-bar'><button class='so-ret' aria-label='Back'>\u2190 Back</button>" +
+      "<span class='so-path'><button class='so-crumb'>" + esc(soTitle) + "</button><i>\u203A</i><b>" + esc(ev.method || "") + "</b></span></div>" +
+      "<div class='so-sub-in ev-body'>" + evHTML(ev) + "</div>";
+    v.scrollTop = 0;
+    requestAnimationFrame(function () { soPanel.classList.add("is-sub"); });
+    v.querySelector(".so-ret").focus();
+  }
+  function soCloseSub() { soPanel.classList.remove("is-sub"); var x = sov.querySelector(".so-x"); if (x) x.focus(); }
   sov.addEventListener("click", function (e) {
+    var lk = e.target.closest(".ev-link, [data-card-proof]");
+    if (lk && !e.target.closest(".so-sub")) {
+      var pr = PROOFS[lk.getAttribute("data-proof") || lk.getAttribute("data-card-proof")];
+      if (pr) { e.preventDefault(); e.stopPropagation(); soOpenSub(pr); return; }
+    }
+    if (e.target.closest(".so-ret, .so-crumb")) { soCloseSub(); return; }
+    var si = e.target.closest(".so-sub img");
+    if (si) { lbFrom = si; openLightbox(si.src, ""); return; }
     if (e.target.closest(".so-x") || e.target.classList.contains("so-back") || e.target === soPanel) { closeOverlay(); return; }
     var fv = e.target.closest(".fv-step");
     if (fv) {
@@ -1598,7 +1623,8 @@
 
   document.addEventListener("keydown", function (e) {
     if (overlayOpen() && !lightboxOpen() && !evidenceOpen()) {
-      if (e.key === "Escape") closeOverlay();
+      if (e.key === "Escape") { if (soSubOpen()) soCloseSub(); else closeOverlay(); }
+      else if (soSubOpen()) return;
       else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
         e.preventDefault();
         var on = soStage.querySelector(".fv-step.on"), all = soStage.querySelectorAll(".fv-step");
