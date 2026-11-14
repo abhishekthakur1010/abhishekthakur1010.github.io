@@ -2116,3 +2116,9 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .up2 .up-right .up-stat b { font-size: clamp(28px, 2.8vw, 46px); }
 .up2 .up-shots { margin-bottom: 0; }
 .up2 .up-shots img { max-height: min(34vh, 340px); }
+/* why slide: balanced type scale — heading > keyword > label */
+.slide.type-why .why-r h3 { font-size: clamp(32px, 3vw, 48px) !important; line-height: 1.1; margin: 0 0 .5em !important; }
+.slide.type-why .why-r ol li.kw b { font-size: clamp(24px, 2.2vw, 34px) !important; }
+.slide.type-why .why-r ol li.kw span { font-size: clamp(17px, 1.4vw, 22px) !important; }
+.slide.type-why .why-r ol li.kw::before { font-size: clamp(17px, 1.4vw, 22px) !important; color: var(--dim); font-weight: 700; min-width: 1.4em; }
+.slide.type-why .why-r ol li.kw { padding: 14px 0 !important; }
