@@ -2373,3 +2373,4 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .pl-goal .pl-chips { justify-content: center; }
 .pl-goal { width: min(780px, 72%); }
 @media (max-height: 760px) { .sl.plan .pl-c p { display: none; } .sl.plan .pl-c { padding: 12px 18px; } .sl.plan .sub { margin-bottom: .8em; } .pl-goal { margin-top: 20px; } .pl-down { height: 18px; } }
+.prb-ref em, .prb-ref em span { font-size: 14px; }

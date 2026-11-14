@@ -362,7 +362,7 @@ window.DECK = {
           issue: "No feedback at max quantity. Price and discount hierarchy unclear.",
           fix: "The same deal card everywhere, price first." }
       ],
-      refined: { from: "Refresh the UI", to: "Help shoppers decide with confidence", targets: [["Add-to-cart","10.4% → 12%"],["Search","41% → 45%"],["Time to decide","−20%"]] },
+      refined: { from: "Refresh the UI", to: "Help shoppers decide with confidence", targets: [["Add-to-cart","10.4% → 12%"],["Search","41% → 45%"],["Time to decide","−20% est."]] },
       notes: "Five audit findings on the discovery journey, each tied to the redesign decision that answered it. Scan (S3) and the list feature (S3) were also severe but are not on this slide because the redesign did not change them."
     },
 
