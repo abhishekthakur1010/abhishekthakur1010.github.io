@@ -192,12 +192,12 @@ window.DECK = {
       sub: "Every screen a different pattern. Nothing to compare on.",
       screens: [
         { src: "enhance-problem-home.png", cap: "Home" },
-        { src: "enhance-iter-search-before.png", cap: "Search" },
         { src: "enhance-problem-plp.png", cap: "Listing · grocery" },
         { src: "enhance-ba-electronics-before.png", cap: "Listing · mobiles" },
         { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
         { src: "enhance-problem-pdp-nobar.png", cap: "Product page" },
         { src: "enhance-iter-reviews-before.png", cap: "Reviews" },
+        { src: "enhance-iter-search-before.png", cap: "Search" },
         { src: "enhance-cart-before.webp", cap: "Cart" }
       ],
       notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
@@ -212,11 +212,11 @@ window.DECK = {
         { src: "enhance-v1-home.png", cap: "Home" },
         { src: "new/plp-grocery.webp", cap: "Listing · grocery" },
         { src: "new/plp-electronics.webp", cap: "Listing · mobiles" },
-        { src: "new/plp-grocery-variant.webp", cap: "Pack size" },
+        { src: "new/plp-grocery-variant.webp", cap: "Add to cart · pack size" },
+        { src: "new/pdp-grocery-fold.webp", cap: "Product page" },
+        { src: "new/pdp-reviews.webp", cap: "Reviews" },
         { src: "new/plp-filter.webp", cap: "Filter" },
-        { src: "new/pdp-grocery-fold.webp", cap: "Product page · grocery" },
-        { src: "new/pdp-electronics.webp", cap: "Product page · electronics" },
-        { src: "new/pdp-reviews.webp", cap: "Reviews" }
+        { src: "new/pdp-electronics.webp", cap: "Product page · electronics" }
       ],
       notes: "The reveal. The next three slides explain the decisions behind each screen."
     },
