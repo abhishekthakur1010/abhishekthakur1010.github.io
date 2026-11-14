@@ -2156,3 +2156,4 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .lightbox.tall.doc .lb-next { right: max(20px, calc(50vw - 520px)) !important; left: auto !important; }
 .lightbox.tall.doc .lb-nav:hover { transform: translateY(-50%) scale(1.04); }
 .lightbox .lb-nav:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+.lightbox.doc.at-start .lb-prev, .lightbox.doc.at-end .lb-next { opacity: 0 !important; pointer-events: none; }

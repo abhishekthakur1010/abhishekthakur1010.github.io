@@ -1426,7 +1426,10 @@
   function showGal(i) {
     if (!gal) return;
     var prev = gal.i, n = gal.list.length;
+    if (gal.doc && (i < 0 || i >= n)) return;   // record pages stop at the ends
     gal.i = (i + n) % n;
+    lb.classList.toggle("at-start", !!gal.doc && gal.i === 0);
+    lb.classList.toggle("at-end", !!gal.doc && gal.i === n - 1);
     var it = gal.list[gal.i];
     var step = lb.classList.contains("open") && gal.i !== prev ? ((gal.i - prev + n) % n <= n / 2 ? 1 : -1) : 0;
     if (gal.doc) { var th = document.querySelector(".rec-pg[data-i='" + gal.i + "'] .rec-img"); if (th) lbFrom = th; }
