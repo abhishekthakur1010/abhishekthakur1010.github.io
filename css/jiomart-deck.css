@@ -2559,3 +2559,9 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .kpm-v2 .kpm-sup .kpm-i h3 { font-size: clamp(14px,1.15vw,18px); margin: .55em 0 .2em; }
 .kpm-v2 .kpm-sup .kpm-i p { font-size: clamp(12px,.95vw,15px); }
 .kpm-v2 .kpm-tgt { font-size: clamp(11px,.85vw,13px); }
+.kpm-v2 .kpm-hero .kpm-i b { font-size: clamp(52px,4.8vw,80px); }
+.kpm-v2 .kpm-hero .kpm-i p { font-size: clamp(13px,.95vw,15px); }
+.kpm-v2 .kpm-sup .kpm-i b { font-size: clamp(32px,2.7vw,44px); }
+.kpm-v2 .kpm-sup .kpm-i h3 { font-size: clamp(13px,1vw,16px); }
+.kpm-v2 .kpm-sup .kpm-i p { font-size: clamp(11px,.8vw,13px); }
+.kpm-v2 .kpm-tgt, .kpm-v2 .kpm-when-chip { font-size: clamp(11px,.8vw,13px); }
