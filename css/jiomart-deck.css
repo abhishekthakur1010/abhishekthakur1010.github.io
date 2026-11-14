@@ -2491,3 +2491,9 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 [data-theme=dark] .vp-cats { background: rgba(255,255,255,.08); }
 [data-theme=dark] .vp-cats button { color: #9aa3ad; }
 [data-theme=dark] .vp-cats button.on { color: #fff; }
+
+/* lightbox: product page keeps its sticky Add to cart bar */
+.lb-imgwrap { position: relative; }
+.lightbox.tall .lb-imgwrap { flex-direction: column; }
+.lb-imgwrap .lb-cta { position: sticky; bottom: 0; display: block; width: min(420px, 82vw); height: auto; max-width: none; z-index: 2; box-shadow: 0 -2px 10px rgba(0,0,0,.1); }
+.lb-imgwrap .lb-cta[hidden] { display: none; }

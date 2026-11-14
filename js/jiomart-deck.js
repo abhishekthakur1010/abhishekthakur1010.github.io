@@ -44,7 +44,7 @@
     var c = PDP_CTA[src];
     return "<div class='device " + (extra || "") + (c ? " has-cta" : "") + "'><div class='dn'></div><div class='ds'>" +
       "<img src='" + img(src) + "' data-focus='" + (focus || 0) + "'>" +
-      (c ? "<img class='pdp-cta' src='" + img("new/pdp-cta-" + c + ".webp") + "' alt=''>" : "") + "</div></div>";
+      (c ? "<img class='pdp-cta' src='" + img("new/pdp-cta-" + c + ".webp?v=2") + "' alt=''>" : "") + "</div></div>";
   }
   // a long screen that scrolls inside the phone, with an optional sticky bottom bar
   function scrollDevice(s) {
@@ -1464,6 +1464,7 @@
     bd.animate([{ opacity: 0 }, { opacity: 1 }], { duration: opt.duration, direction: back ? "reverse" : "normal", fill: back ? "forwards" : "none" });
     lbAnim.onfinish = function () { lbAnim = null; if (done) done(); };
   }
+  var lbCta = "";
   function openLightbox(src, caption, tall, step) {
     var li = lb.querySelector("img");
     var stepping = !!step && lb.classList.contains("open");
@@ -1482,6 +1483,12 @@
     lb.classList.toggle("gallery", !!gal);
     lb.classList.toggle("doc", !!(gal && gal.doc));
     var w = lb.querySelector(".lb-imgwrap"); if (w) w.scrollTop = 0;
+    if (w) {
+      var lc = w.querySelector(".lb-cta");
+      if (!lc) { lc = document.createElement("img"); lc.className = "lb-cta"; lc.alt = ""; w.appendChild(lc); }
+      if (lbCta) { lc.src = lbCta; lc.hidden = false; } else { lc.hidden = true; lc.removeAttribute("src"); }
+      lbCta = "";
+    }
     lb.classList.add("open");
     if (li.complete && li.naturalWidth && !flipped) { flipped = true; lbFlip(false); }
   }
@@ -1688,7 +1695,12 @@
       return;
     }
     var z = e.target.closest(".zoomable img, .device img");
-    if (z) { lbFrom = z; openLightbox(z.src, ""); }
+    if (z) {
+      lbFrom = z;
+      var pc = z.closest(".has-cta") && z.closest(".has-cta").querySelector(".pdp-cta");
+      if (pc && z !== pc) { lbCta = pc.src; openLightbox(z.src, "", true); }   // product page: full scroll with its sticky Add to cart bar
+      else openLightbox(z.src, "");
+    }
   });
   document.addEventListener("click", function (e) {
     var m = e.target.closest && e.target.closest(".kw-more, li.has-more");
