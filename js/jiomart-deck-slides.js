@@ -25,14 +25,14 @@ window.DECK = {
     carts: {
       method: "Sessions with add-to-cart", tag: "Google Analytics · measured",
       img: "enhance-impact-longterm.png", crop: 0, hlH: 896, hl: [[150, 214]],
-      calc: [["Before launch", "10.41%"], ["First read after launch", "11.48%"], ["After launch (report, Aug 2023)", "13.35%"], ["Change", "+2.94 points (+294 bps)"], ["Relative lift", "+28.2%", 1]],
+      calc: [["Before launch", "10.41%"], ["First read after launch", "11.48%"], ["5 months after launch", "13.35%"], ["Change", "+2.94 points (+294 bps)"], ["Relative lift", "+28.2%", 1]],
       observed: "Share of all sessions where a shopper added at least one product to cart.",
-      takeaway: "About 1 in 10 visits ended in a cart before; about 1 in 7.5 by the Aug 2023 report. The lift kept growing after launch."
+      takeaway: "About 1 in 10 visits ended in a cart before; about 1 in 7.5 five months after launch. The lift kept growing after launch."
     },
     search: {
       method: "Search-assisted add-to-cart", tag: "Google Analytics · measured",
       img: "enhance-impact-longterm.png", crop: 0, hlH: 896, hl: [[214, 279]],
-      calc: [["Before launch", "41.40%"], ["First read after launch", "44.33%"], ["After launch (report, Aug 2023)", "50.20%"], ["Change", "+8.8 points (+880 bps)"], ["Relative lift", "+21.3%", 1]],
+      calc: [["Before launch", "41.40%"], ["First read after launch", "44.33%"], ["5 months after launch", "50.20%"], ["Change", "+8.8 points (+880 bps)"], ["Relative lift", "+21.3%", 1]],
       observed: "Share of search sessions that ended with an add-to-cart.",
       takeaway: "Half of all searchers now add to cart, up from 41 in 100."
     },
@@ -47,7 +47,7 @@ window.DECK = {
     pages: {
       method: "Page views per user", tag: "Google Analytics · measured",
       img: "enhance-impact-longterm.png", crop: 0, hlH: 896, hl: [[476, 542]],
-      calc: [["Before launch", "5.81"], ["First read after launch", "6.49"], ["After launch (report, Aug 2023)", "7.04"], ["Change", "+21.2%", 1]],
+      calc: [["Before launch", "5.81"], ["First read after launch", "6.49"], ["5 months after launch", "7.04"], ["Change", "+21.2%", 1]],
       observed: "Average pages each shopper viewed: Home, listings and product pages.",
       takeaway: "Rose together with add-to-cart, so shoppers explored more and decided more, not got lost."
     },
@@ -55,14 +55,14 @@ window.DECK = {
       method: "Engagement time", tag: "Google Analytics · measured",
       img: "enhance-impact-longterm.png", crop: 0, hlH: 896, hl: [[346, 476], [542, 607]],
       calc: [["Per active user", "4m 14s → 5m 15s"], ["Per session", "1m 46s → 2m 13s"], ["Engagement rate", "80.51% → 84.21%"], ["Change per user", "+24.0%", 1]],
-      observed: "Average active time, before launch vs after launch (report evaluated Aug 2023).",
+      observed: "Average active time, before launch vs after launch (5 months after launch).",
       takeaway: "Read with add-to-cart: more time plus more carts means exploration, not friction."
     },
     speed: {
       method: "Page speed", tag: "Google Analytics · measured",
       img: "enhance-impact-longterm.png", crop: 0, hlH: 896, hl: [[672, 868]],
       calc: [["Page download time", "0.17s → 0.12s"], ["Server response time", "0.47s → 0.37s"], ["Redirection time", "0.13s → 0.09s"], ["Page download change", "−29.4% (faster)", 1]],
-      observed: "Average load times before launch vs after launch (report evaluated Aug 2023).",
+      observed: "Average load times before launch vs after launch (5 months after launch).",
       takeaway: "Lighter, consistent components made pages load faster."
     },
     volume: {
@@ -184,11 +184,11 @@ window.DECK = {
       badge: { n: "{{+28%|carts}}", l: "More visits end in a cart" },
       meta: [
         { l: "My role", v: "Design lead · research to handoff" },
-        { l: "Timeline", v: "Jan – Mar 2023 · results Aug 2023" },
+        { l: "Timeline", v: "8 months · 3 build, 5 measure" },
         { l: "Team", v: "PM · Engineering · Analytics" },
         { l: "After launch", v: "{{50%|search}} search → cart · {{29%|speed}} faster" }
       ],
-      notes: "Open simply: shoppers could find products but struggled to choose, so I simplified the journey from discovery to purchase. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
+      notes: "Open simply: shoppers could find products but struggled to choose, so I simplified the journey from discovery to purchase. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). The build took 3 months; results are from a report 5 months after launch; the first read was smaller (+1.07 points), and the gains kept growing."
     },
 
     /* OLD DESIGNS — overview */
@@ -280,11 +280,11 @@ window.DECK = {
       stats: [
         { n: "86%", l: "of Indian households earn under ₹3.4L a year", src: "India Stack", key: true },
         { n: "50%+", l: "of JioMart orders from Tier 2 cities and beyond", src: "Reliance AGM, 2021" },
-        { n: "~98%", l: "of JioMart shoppers on mobile", src: "JioMart live analytics, Jan 2023" },
-        { n: "~25K", l: "shoppers at any moment, mostly browsing, not searching", src: "JioMart live analytics, Jan 2023" }
+        { n: "~98%", l: "of JioMart shoppers on mobile", src: "JioMart live analytics" },
+        { n: "~25K", l: "shoppers at any moment, mostly browsing, not searching", src: "JioMart live analytics" }
       ],
       foot: "Price-sensitive, mobile-only, browsing to decide: price, size and trust have to read at a glance.",
-      notes: "Before the problem, who the shopper is. JioMart started with value-conscious households beyond the metros, the India 2 aspirers and India 3. 86% of Indian households earn under ₹3.4L a year, about ₹28K a month. Reliance said at its 2021 AGM that over half of JioMart orders came from Tier 2 and 3 cities. A live analytics snapshot from Jan 2023: about 25K shoppers on the app at any moment, about 98% on mobile, and far more of them on home and category pages than on search. So they browse to decide, on a phone, watching the price. Every later decision follows: price first, unit price and size on the card, trust signals up front."
+      notes: "Before the problem, who the shopper is. JioMart started with value-conscious households beyond the metros, the India 2 aspirers and India 3. 86% of Indian households earn under ₹3.4L a year, about ₹28K a month. Reliance said at its 2021 AGM that over half of JioMart orders came from Tier 2 and 3 cities. A live analytics snapshot from before the redesign: about 25K shoppers on the app at any moment, about 98% on mobile, and far more of them on home and category pages than on search. So they browse to decide, on a phone, watching the price. Every later decision follows: price first, unit price and size on the card, trust signals up front."
     },
 
     /* 04 — UNDERSTANDING THE EXISTING EXPERIENCE */
@@ -414,7 +414,7 @@ window.DECK = {
         { v: "cat", label: "Categories", img: "new/cat-grocery.webp", n: "One category tray, the same from every entry point" }
       ],
       labels: ["Before", "After"],
-      when: ["Until Dec 2022", "Jan – Mar 2023"],
+      when: ["Before", "3-month build"],
       stages: [
         { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
         { img: "enhance-v1-home.png", n: "Search, categories, one icon style" }
@@ -483,7 +483,7 @@ window.DECK = {
         { v: "beauty", label: "Beauty", img: "new/plp-beauty-grid.webp", h: 1067, n: "Shade swatches on every card" }
       ],
       labels: ["Before", "After"],
-      when: ["Until Dec 2022", "Jan – Mar 2023"],
+      when: ["Before", "3-month build"],
       stages: [
         { img: "enhance-problem-plp.png", n: "Name and price only" },
         { img: "new/plp-grocery.webp", scroll: "new/plp-grocery.webp", n: "Discount, size and wishlist on every card; filter and sort up top" }
@@ -543,7 +543,7 @@ window.DECK = {
         { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, cta: "new/pdp-cta-beauty.webp", n: "Shades as swatches, offers grouped, reviews with photos" }
       ],
       labels: ["Before", "After"],
-      when: ["Until Dec 2022", "Jan – Mar 2023"],
+      when: ["Before", "3-month build"],
       stages: [
         { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
         { img: "new/pdp-grocery-fold.webp", scroll: "new/pdp-grocery.webp", cta: "new/pdp-cta-groc.webp", n: "Brand, rating, price and every pack size up front" }
@@ -573,7 +573,7 @@ window.DECK = {
       section: "impact", type: "kpm",
       title: "Key performance metrics",
       sub: "Before vs after launch. Both targets beaten.",
-      when: "Jan – Aug 2023",
+      when: "8 months",
       items: [
         ["+28%", "Sessions with add-to-cart", "10.41% vs 13.35% \u00b7 target was 12%"],
         ["+21%", "Search add-to-cart", "41.4% vs 50.2% \u00b7 target was 45%"],
@@ -582,7 +582,7 @@ window.DECK = {
         ["+21%", "Page views per user", "5.81 vs 7.04"],
         ["\u221229%", "Page download time", "0.17s vs 0.12s"]
       ],
-      src: "Google Analytics, report evaluated Aug 2023.",
+      src: "Google Analytics, 5 months after launch.",
       notes: "Lead with +28%: one in ten visits ending in a cart became more than one in eight."
     },
 
@@ -602,7 +602,7 @@ window.DECK = {
         { k: "Learned", d: "Same gap everywhere? Fix the system, not the screen." },
         { k: "Next time", d: "Track every step and A/B test from day one." }
       ],
-      award: { img: "enhance-award.png", caption: "Jio Spotlight Award · Q4 2022–23" },
+      award: { img: "enhance-award.png", caption: "Jio Spotlight Award" },
       cta: [
         { label: "Full case study", href: "./jiomart-discovery.html", primary: true },
         { label: "Next project →", href: "./index.html" }
@@ -635,8 +635,8 @@ window.DECK = {
         { l: "Page views per user", pt: "5.81", qt: "7.04", d: "{{+21.2%|pages}}" },
         { l: "Server response time", pt: "0.47s", qt: "0.37s", d: "{{−21.3%|speed}}" }
       ],
-      disclaimer: "Google Analytics, before launch vs after launch (report evaluated Aug 2023). Iteration and review counts are illustrative (est.).",
-      notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results from the Aug 2023 report: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
+      disclaimer: "Google Analytics, before launch vs after launch (5 months after launch). Iteration and review counts are illustrative (est.).",
+      notes: "Validation first: 9 of 12 completed the usability test; the wishlist icon needed work, so we iterated. Then results five months after launch: add-to-cart +294 bps (+28%), search add-to-cart +880 bps (+21%), more time and pages, faster loads. The first read was smaller; gains grew as shoppers adapted. These are before/after, not an A/B test."
     },
     /* WHERE I HELD THE LINE — real stories only: fill every [ADD] before presenting */
     {
@@ -659,7 +659,7 @@ window.DECK = {
       eyebrow: "Today",
       headline: ["If I built it now"],
       today: {
-        k: "If I designed this today", lead: "2023 constraints shaped the UI. Here's how I'd evolve it now.",
+        k: "If I designed this today", lead: "The constraints back then shaped the UI. Here's how I'd evolve it now.",
         items: [
           { t: "Visual system", d: "[ADD · tokens, type scale, colour and dark mode]" },
           { t: "Motion & feedback", d: "[ADD · micro-interactions for add to cart, wishlist, filters]" },
