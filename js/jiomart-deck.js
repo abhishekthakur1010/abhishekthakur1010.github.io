@@ -876,7 +876,7 @@
             return "<figure class='vp-ph after vp-multi'><div class='vp-cats' role='tablist' aria-label='Category'>" + alts.map(function (a) {
                 return "<button type='button' role='tab' data-vp='" + a.v + "'" + (a.v === v.v ? " class='on' aria-selected='true'" : " aria-selected='false'") + ">" + esc(a.label) + "</button>"; }).join("") + "</div>" +
               alts.map(function (a) {
-                return "<div class='vp-alt" + (a.v === v.v ? " on" : "") + "' data-vp='" + a.v + "'><span class='evo-media zoomable' title='Click to enlarge'>" + device(a.img, 0, "vp-dev") + "</span><figcaption>" + esc(a.n || "") + "</figcaption></div>"; }).join("") +
+                return "<div class='vp-alt" + (a.v === v.v ? " on" : "") + "' data-vp='" + a.v + "'><span class='vp-chip'>After</span><span class='evo-media zoomable' title='Click to enlarge'>" + device(a.img, 0, "vp-dev") + "</span><figcaption>" + esc(a.n || "") + "</figcaption></div>"; }).join("") +
               "</figure>";
           }
           return "<figure class='vp-ph " + (i ? "after" : "before") + "'><span class='vp-chip'>" + (i ? "After" : "Before") + "</span>" +
