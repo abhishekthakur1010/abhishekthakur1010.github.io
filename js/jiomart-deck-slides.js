@@ -315,7 +315,7 @@ window.DECK = {
         { n: "02", t: "Current journey analysis", d: "Finding the pain points.", chips: ["Heuristics", "Data analysis", "User survey", "Sentiment analysis"] }
       ],
       map: { n: "03", t: "Emotional journey mapping", d: "JioMart vs competitors, as one emotional graph.", chips: ["Moments of delight", "Happy next", "Emotion patterns", "Journey break points"] },
-      goal: { n: "04", t: "Defining the ideal journey", chips: ["Seamless-journey ingredients", "Opportunity areas", "Quick wins", "Design insights & recommendations"] },
+      goal: { n: "04", t: "Defining the ideal journey", d: "What a seamless journey needs.", chips: ["Opportunity areas", "Quick wins", "Design insights", "Recommendations"] },
       notes: "Benchmarking and a current-journey audit fed an emotional journey map, which defined the ideal journey."
     },
 

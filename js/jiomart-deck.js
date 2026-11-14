@@ -1167,13 +1167,14 @@
     },
     plan: function (sc) {
       function card(c, cls) {
-        return "<div class='pl-c" + (cls || "") + "'><span class='pl-n'>" + esc(c.n) + "</span><h3>" + esc(c.t) + "</h3>" + (c.d ? "<p>" + esc(c.d) + "</p>" : "") +
-          "<div class='pl-chips'>" + c.chips.map(function (x) { return "<i>" + esc(x) + "</i>"; }).join("") + "</div></div>";
+        return "<div class='p2-c" + (cls || "") + "'><span class='p2-n'>" + esc(c.n) + "</span><h3>" + esc(c.t) + "</h3>" + (c.d ? "<p>" + esc(c.d) + "</p>" : "") +
+          "<ul>" + c.chips.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
       }
-      return "<div class='sl plan'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
-        "<div class='pl-flow'><div class='pl-in'>" + sc.inputs.map(function (c) { return card(c); }).join("") + "</div>" +
-        "<div class='pl-br' aria-hidden='true'></div>" + card(sc.map) + "</div>" +
-        "<div class='pl-down' aria-hidden='true'></div>" + card(sc.goal, " pl-goal") + "</div>";
+      var ar = "<div class='p2-ar' aria-hidden='true'><svg viewBox='0 0 40 12'><path d='M0 6h36M31 1l5 5-5 5' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg></div>";
+      return "<div class='sl plan2'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
+        "<div class='p2'><div class='p2-col'><span class='p2-lab'>Inputs</span><div class='p2-stack'>" + sc.inputs.map(function (c) { return card(c); }).join("") + "</div></div>" + ar +
+        "<div class='p2-col'><span class='p2-lab'>Synthesis</span>" + card(sc.map, " p2-fill") + "</div>" + ar +
+        "<div class='p2-col'><span class='p2-lab'>Outcome</span>" + card(sc.goal, " p2-fill p2-goal") + "</div></div></div>";
     },
     field: function (sc) {
       return "<div class='sl field'><h2>" + esc(sc.title) + "</h2><div class='fd-grid'>" + sc.photos.map(function (p, i) {
