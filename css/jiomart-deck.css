@@ -2406,3 +2406,4 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 @media (max-width: 900px) { .p2 { grid-template-columns: 1fr; gap: 14px; } .p2-ar { display: none; } }
 .p2-col > .p2-fill { flex: 0 0 auto; margin: auto 0; }
 .p2-col > .p2-fill ul { margin-top: 14px; }
+.p2-stack { gap: 20px; }
