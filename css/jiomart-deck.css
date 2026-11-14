@@ -2565,3 +2565,9 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .kpm-v2 .kpm-sup .kpm-i h3 { font-size: clamp(13px,1vw,16px); }
 .kpm-v2 .kpm-sup .kpm-i p { font-size: clamp(11px,.8vw,13px); }
 .kpm-v2 .kpm-tgt, .kpm-v2 .kpm-when-chip { font-size: clamp(11px,.8vw,13px); }
+/* metrics: the two goal figures sit in light green cards */
+.kpm-v2 .kpm-hero .kpm-i { background: #eef8f1; border: 1px solid #d6efdf; border-radius: 20px !important; padding: 3.2vh 2vw 3.4vh; }
+.kpm-v2 .kpm-hero .kpm-tgt { background: #fff; }
+[data-theme="dark"] .kpm-v2 .kpm-hero .kpm-i { background: rgba(79,209,139,.08); border-color: rgba(79,209,139,.22); }
+[data-theme="dark"] .kpm-v2 .kpm-hero .kpm-tgt { background: rgba(79,209,139,.14); }
+.kpm-v2 .kpm-sup { margin-top: 4.5vh; padding-top: 4vh; }
