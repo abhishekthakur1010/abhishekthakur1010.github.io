@@ -2580,3 +2580,6 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 /* overview strips: block centred between the top bar and the slide arrows */
 .slide.type-overview { padding-top: 12px !important; padding-bottom: 12px !important; align-items: center !important; }
 .slide.type-overview .sl.overview { margin-top: auto !important; margin-bottom: auto !important; }
+/* scroll hint sits just above the pinned bar and fades once the page has been scrolled */
+.vp-ph .device.scrolls .ds-hint { bottom: calc(var(--cta-h, 19%) * 0.4615 + 10px); }
+.device.scrolls.scrolled .ds-hint { opacity: 0; }

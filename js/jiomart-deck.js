@@ -1855,6 +1855,10 @@
   });
   window.addEventListener("resize", function () { if (slideEl) focusImgs(slideEl); });
   window.addEventListener("load", function () { if (slideEl) focusImgs(slideEl); });
+  document.addEventListener("scroll", function (e) {
+    var t = e.target; if (!t.classList || !t.classList.contains("ds-scroll")) return;
+    var d = t.closest(".device"); if (d && t.scrollTop > 20) d.classList.add("scrolled");
+  }, true);
 
   /* ---------- theme ---------- */
   (function () {
