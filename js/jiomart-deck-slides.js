@@ -212,6 +212,8 @@ window.DECK = {
         { src: "enhance-v1-home.png", cap: "Home" },
         { src: "new/plp-grocery.webp", sheet: "new/plp-grocery-variant.webp", cap: "Listing · grocery", hint: "Tap 500 g to pick a pack size" },
         { src: "new/plp-electronics.webp", cap: "Listing · mobiles" },
+        { src: "new/plp-fashion.webp", cap: "Listing · fashion" },
+        { src: "new/plp-beauty-grid.webp", cap: "Listing · beauty" },
         { src: "new/pdp-grocery-fold.webp", cap: "Product page" },
         { src: "new/pdp-reviews.webp", cap: "Reviews" },
         { src: "new/plp-filter.webp", cap: "Filter" },
