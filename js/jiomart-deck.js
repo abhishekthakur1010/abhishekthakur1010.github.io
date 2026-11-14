@@ -1133,7 +1133,7 @@
             "<div class='prb-b'><div class='prb-t'><b>" + esc(it.k) + "</b><span class='prb-se'><i class='sev s" + esc(it.s.slice(1)) + "'>" + esc(it.s) + "</i><i class='ease'>" + esc(it.e) + "</i></span></div>" +
             "<p class='prb-i'>" + esc(it.issue) + "</p>" +
             "<div class='prb-h2'>" + it.h.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>" +
-            "<p class='prb-f'><em>Fix</em>" + esc(it.fix) + "</p>" +
+            (it.fix ? "<p class='prb-f'><em>Fix</em>" + esc(it.fix) + "</p>" : "") +
             "<a class='prb-ev' href='" + doc + "#page=" + it.page + "' target='_blank' rel='noopener'>Evidence · PDF p." + it.page + " ↗</a></div></article>";
         }).join("") + "</div>" + (sc.src ? "<p class='prb-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
     },
