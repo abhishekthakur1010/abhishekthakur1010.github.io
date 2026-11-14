@@ -2583,3 +2583,7 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 /* scroll hint sits just above the pinned bar and fades once the page has been scrolled */
 .vp-ph .device.scrolls .ds-hint { bottom: calc(var(--cta-h, 19%) * 0.4615 + 10px); }
 .device.scrolls.scrolled .ds-hint { opacity: 0; }
+/* design-decision lists: no rule above the first item, more air between items */
+.vp-zones .vs-zone:first-child { border-top: 0 !important; }
+.vp-zones { margin-top: clamp(18px, 4vh, 40px) !important; }
+.vp-zones .vs-zone { padding: clamp(14px, 2.4vh, 24px) 0 !important; }
