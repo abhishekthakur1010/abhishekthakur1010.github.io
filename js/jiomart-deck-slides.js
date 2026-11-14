@@ -193,8 +193,8 @@ window.DECK = {
       screens: [
         { src: "enhance-problem-home.png", cap: "Home" },
         { src: "enhance-problem-plp.png", cap: "Listing · grocery" },
-        { src: "enhance-ba-electronics-before.png", cap: "Listing · mobiles" },
         { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
+        { src: "enhance-ba-electronics-before.png", cap: "Listing · mobiles" },
         { src: "enhance-problem-pdp-nobar.png", cap: "Product page" },
         { src: "enhance-iter-reviews-before.png", cap: "Reviews" },
         { src: "enhance-iter-search-before.png", cap: "Search" },
@@ -211,8 +211,8 @@ window.DECK = {
       screens: [
         { src: "enhance-v1-home.png", cap: "Home" },
         { src: "new/plp-grocery.webp", cap: "Listing · grocery" },
+        { src: "new/plp-grocery-variant.webp", cap: "Add to cart" },
         { src: "new/plp-electronics.webp", cap: "Listing · mobiles" },
-        { src: "new/plp-grocery-variant.webp", cap: "Add to cart · pack size" },
         { src: "new/pdp-grocery-fold.webp", cap: "Product page" },
         { src: "new/pdp-reviews.webp", cap: "Reviews" },
         { src: "new/plp-filter.webp", cap: "Filter" },
