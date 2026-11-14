@@ -1979,3 +1979,15 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .ov-n .device { --w: min(11.5vw, 34vh, 220px) !important; }
 .sl.chain { margin-top: 0 !important; }
 .slide.type-why .sl h2, .slide.type-overview .sl h2 { font-size: clamp(40px, 4.4vw, 68px) !important; line-height: 1 !important; }
+/* Old / New designs: same frame, same five surfaces, so they read as a pair */
+.sl.overview { display: block !important; min-height: 0 !important; }
+.sl.overview .ov-l { margin-bottom: 4.5vh; }
+.sl.overview .ov-l h2 { max-width: none !important; }
+.sl.overview .ov-grid { display: grid !important; grid-template-columns: repeat(5, 1fr) !important; gap: 2vw !important; align-items: start !important; }
+.sl.overview .ov-n .device { --w: min(13.5vw, 27vh, 230px) !important; }
+.sl.overview .ov-n figcaption { margin-top: 14px; font-size: 14px; font-weight: 700; color: var(--ink); text-align: center; }
+.ov-old .ov-n .ds img { filter: saturate(.75); }
+.ov-old .ov-n figcaption { color: var(--dim); }
+.ov-new .ov-n .device { box-shadow: 0 24px 48px -18px color-mix(in srgb, var(--info, #0078ad) 45%, transparent); border-radius: 28px; }
+.sl.overview .ov-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 2.4vw !important; }
+.sl.overview .ov-n .device { --w: min(16.5vw, 34vh, 270px) !important; }

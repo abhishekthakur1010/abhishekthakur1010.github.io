@@ -1092,8 +1092,7 @@
     },
     overview: function (sc) {
       var tiles = sc.screens.map(function (x, i) {
-        return sc.old ? "<figure class='ov-t'><img src='" + img(x.src) + "' alt='" + esc(x.cap) + "' loading='lazy'><figcaption>" + esc(x.cap) + "</figcaption></figure>"
-          : "<figure class='ov-n'>" + device(x.src, 0, "ov-dev") + "<figcaption>" + esc(x.cap) + "</figcaption></figure>";
+        return "<figure class='ov-n'>" + device(x.src, 0, "ov-dev") + "<figcaption>" + esc(x.cap) + "</figcaption></figure>";
       }).join("");
       return "<div class='sl overview" + (sc.old ? " ov-old" : " ov-new") + "'><div class='ov-l'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p>" + esc(sc.sub) + "</p>" : "") + "</div>" +
         "<div class='ov-grid'>" + tiles + "</div></div>";

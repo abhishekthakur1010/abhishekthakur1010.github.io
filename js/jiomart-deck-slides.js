@@ -12,11 +12,13 @@
 window.DECK = {
   imgBase: "./images/enhanceProduct/",
   sections: [
-    { id: "context", n: "01", label: "Requirement" },
-    { id: "discover", n: "02", label: "Discovery" },
-    { id: "define", n: "03", label: "Define" },
-    { id: "design", n: "04", label: "Design" },
-    { id: "results", n: "05", label: "Impact" }
+    { id: "context", n: "01", label: "Context" },
+    { id: "research", n: "02", label: "Research" },
+    { id: "redesign", n: "03", label: "Old \u2192 New" },
+    { id: "home", n: "04", label: "Home" },
+    { id: "listing", n: "05", label: "Listing" },
+    { id: "pdp", n: "06", label: "Product page" },
+    { id: "impact", n: "07", label: "Impact" }
   ],
   proofs: {
     carts: {
@@ -254,24 +256,6 @@ window.DECK = {
       notes: "Context: ~95M visitors but only 1 in 10 sessions added to cart, while searchers did at 41% (4x), so browsing was the gap. Business wanted more carts, product asked for a refresh of 3 pages, and shoppers asked: can I trust this? The brief asked for a facelift, but asking why (why fix it, what stops shoppers, where they get stuck, what is out of scope) turned it into helping shoppers choose with confidence. Then press → to walk the journey step by step; each step shows the real screen. 100% and 10.4% are from analytics; the middle steps are illustrative (est.). The audit found 23 issues; the product page was the weakest part of discovery."
     },
 
-    /* OLD DESIGNS — overview */
-    {
-      section: "context", type: "overview", old: true,
-      title: "Old designs",
-      sub: "Every surface had its own pattern.",
-      screens: [
-        { src: "enhance-problem-home.png", cap: "Home" },
-        { src: "enhance-iter-search-before.png", cap: "Search" },
-        { src: "enhance-problem-plp.png", cap: "Grocery listing" },
-        { src: "enhance-iter-mobile-before.png", cap: "Mobile listing" },
-        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" },
-        { src: "enhance-iter-reviews-before.png", cap: "Reviews" },
-        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
-        { src: "enhance-cart-before.webp", cap: "Cart" }
-      ],
-      notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
-    },
-
     /* FIELD — glimpses from research */
     {
       section: "research", type: "field",
@@ -287,7 +271,7 @@ window.DECK = {
 
     /* 05 — RESEARCH & PROBLEM DISCOVERY */
     {
-      section: "discover", type: "board", tall: true,
+      section: "research", type: "board", tall: true,
       eyebrow: "Research",
       headline: ["Where shoppers got stuck"],
       cards: [
@@ -307,9 +291,24 @@ window.DECK = {
       notes: "A live product and limited time, so analytics first: searchers added to cart at 41.4% vs 10.4% overall, about 4x. The heuristic audit rated 23 problem areas; 5 were critical (S3 or worse). Interviews confirmed shoppers couldn't tell products apart. Six sources, in order: plan, analytics, journey map, competitors, audit, interviews. We planned the research first: benchmark competitors, analyse the current journey (heuristics, data, surveys), map emotions, then define the ideal journey. Interview count is illustrative (est.). Click any image to open it full size."
     },
 
+    /* HEURISTIC EVALUATION — ranked */
+    {
+      section: "research", type: "chain",
+      title: "23 issues, ranked before anything was drawn",
+      sub: "A heuristic evaluation of the live app against Nielsen's 10 heuristics, done with the Central UI/UX research team.",
+      steps: [
+        { k: "Method", chips: ["10 heuristics", "Severity S0\u2013S4", "Ease to fix E0\u2013E3", "23 problem areas"], t: "Every issue was scored on how much it hurts and how hard it is to fix." },
+        { k: "Ranked", img: "research/he-table.webp", pos: "top center", t: "Eight areas scored S3 or worse, the product page among them." },
+        { k: "Product page \u00b7 S3", img: "research/he-pdp.webp", pos: "top center", t: "Brand hidden, EMI not tappable, delivery date needed a pincode, rating greyed out." },
+        { k: "Listing \u00b7 S2", img: "research/he-plp.webp", fit: "contain", pos: "center", t: "At the max quantity the + button silently stopped working. No message." }
+      ],
+      src: "Heuristic evaluation, Central UI/UX research team.",
+      notes: "This is where priorities came from. Severity times ease told us what to fix first."
+    },
+
     /* 08 — DEFINING THE PROBLEM */
     {
-      section: "define", type: "synthesis",
+      section: "research", type: "synthesis",
       eyebrow: "Defining the problem",
       headline: ["They could find products, not choose one"],
       cols: ["What shoppers felt", "Why it happened", "How we know"],
@@ -334,7 +333,7 @@ window.DECK = {
 
     /* EVIDENCE TO DECISION */
     {
-      section: "define", type: "evidence",
+      section: "research", type: "evidence",
       title: "Every decision traced back to something we saw",
       stats: [["20", "interviews"], ["8", "benchmarks"], ["2", "usability tests (12 + 8 users)"], ["23", "audit issues"]],
       items: [
@@ -348,24 +347,9 @@ window.DECK = {
       notes: "Method, what we saw, what we decided. This is the logic the rest of the deck follows."
     },
 
-    /* HEURISTIC EVALUATION — ranked */
-    {
-      section: "define", type: "chain",
-      title: "23 issues, ranked before anything was drawn",
-      sub: "A heuristic evaluation of the live app against Nielsen's 10 heuristics, done with the Central UI/UX research team.",
-      steps: [
-        { k: "Method", chips: ["10 heuristics", "Severity S0\u2013S4", "Ease to fix E0\u2013E3", "23 problem areas"], t: "Every issue was scored on how much it hurts and how hard it is to fix." },
-        { k: "Ranked", img: "research/he-table.webp", pos: "top center", t: "Eight areas scored S3 or worse, the product page among them." },
-        { k: "Product page \u00b7 S3", img: "research/he-pdp.webp", pos: "top center", t: "Brand hidden, EMI not tappable, delivery date needed a pincode, rating greyed out." },
-        { k: "Listing \u00b7 S2", img: "research/he-plp.webp", fit: "contain", pos: "center", t: "At the max quantity the + button silently stopped working. No message." }
-      ],
-      src: "Heuristic evaluation, Central UI/UX research team.",
-      notes: "This is where priorities came from. Severity times ease told us what to fix first."
-    },
-
     /* 09 — IDEATION & COLLABORATION */
     {
-      section: "design", type: "collab",
+      section: "research", type: "collab",
       eyebrow: "Ideation & collaboration",
       headline: ["From whiteboard to build plan"],
       steps: [
@@ -377,11 +361,25 @@ window.DECK = {
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and plotted every idea on impact vs effort: quick wins like discount tags and category clarity shipped first, while 3D icons and gamified categories were parked."
     },
 
+    /* OLD DESIGNS — overview */
+    {
+      section: "redesign", type: "overview", old: true,
+      title: "Old designs",
+      sub: "Four screens, four different patterns. Nothing to compare on.",
+      screens: [
+        { src: "enhance-problem-home.png", cap: "Home" },
+        { src: "enhance-problem-plp.png", cap: "Listing" },
+        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
+        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" }
+      ],
+      notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
+    },
+
     /* NEW DESIGNS — overview */
     {
-      section: "design", type: "overview",
+      section: "redesign", type: "overview",
       title: "New designs",
-      sub: "One pattern from Home to product page.",
+      sub: "The same four screens, one pattern from Home to product page.",
       screens: [
         { src: "enhance-v1-home.png", cap: "Home" },
         { src: "new/plp-grocery.webp", cap: "Listing" },
@@ -391,63 +389,87 @@ window.DECK = {
       notes: "The reveal. The next three slides explain the decisions behind each screen."
     },
 
-    /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
+    /* HOME BANNER AUDIT */
     {
-      section: "design", type: "versions",
+      section: "home", type: "audit",
+      title: "Home was a wall of banners",
+      sub: "We audited every banner on the Home page before redesigning it.",
+      findings: [
+        ["No pattern.", "Image, text and offer sat somewhere new on every banner."],
+        ["Weak CTAs.", "Small, low-contrast buttons in a different shape each time."],
+        ["Hard to read.", "A new background colour per category, text lost on top."],
+        ["Logos anywhere.", "Brand logos and symbols overlapped the product."],
+        ["Endless scroll.", "Banners stacked one after another in 4 different sizes."]
+      ],
+      src: "Home banner audit with the Central UI/UX team: 27 issues across text, image, CTA, logo, background and space.",
+      screens: ["research/as-is-0.webp","research/as-is-1.webp","research/as-is-2.webp","research/as-is-3.webp","research/as-is-4.webp","research/as-is-5.webp","research/as-is-6.webp","research/as-is-7.webp","research/as-is-8.webp","research/as-is-9.webp"],
+      notes: "This is why Home moved to search first and one card style: the banners were competing with each other, not helping shoppers start."
+    },
+
+    /* REDESIGN STRATEGY */
+    {
+      section: "home", type: "strategy",
+      title: "Redesign strategy: fix the system, not each screen",
+      goals: ["User-centric", "Standard sizes", "Shorter scroll", "Guidelines for consistency"],
+      steps: [
+        { k: "Map the page", t: "Home ran 6 folds, with banners back to back.", img: "research/fold-map.webp" },
+        { k: "Name the parts", t: "Every promo is the same 6 parts, in a fixed order.", chips: ["Title", "Offer", "Image", "Logo", "CTA", "Validity"] },
+        { k: "Benchmark", t: "Leaders use light backgrounds, text left, image right, one clear CTA.", img: "research/benchmark.webp" },
+        { k: "Fix the sizes", t: "4 ratios on one 344px grid, 8px corners.", sizes: [["Strip", "344/56", "344\u00d756"], ["Slim", "4/1", "4:1"], ["Landscape", "2/1", "2:1"], ["Square", "1/1", "1:1"]] }
+      ],
+      src: "Five-stage process with the Central UI/UX team: audit, elements, scenarios, benchmark, templates.",
+      notes: "The point is the system: once the parts and sizes were fixed, any team could make a promo that fits."
+    },
+
+    /* SYSTEM APPLIED */
+    {
+      section: "home", type: "applied",
+      title: "Same content, one system",
+      sub: "Templates from the system, applied to real promos.",
+      pairs: [
+        { b: "research/land-before.webp", a: "research/land-after.webp", cap: "Category offer" },
+        { b: "research/offer-before.webp", a: "research/offer-after.webp", cap: "Weekly deal" },
+        { b: "research/bank-before.webp", a: "research/bank-after.webp", cap: "Bank offers become a card set" }
+      ],
+      notes: "Same words, same offer. Only the system changed: one layout, readable contrast, one CTA."
+    },
+
+    {
+      section: "home", type: "versions",
       eyebrow: "The solution",
-      headline: ["Product page: trust before the fold"],
+      headline: ["Home: search first, then categories"],
       views: [
-        { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
-        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" },
-        { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, n: "EMI and full specs open in a sheet, so the page stays short",
-          hot: [ { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
-        { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, n: "Brand first, then the name; colour and size before the fold" },
-        { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, n: "Shades as swatches, offers grouped, reviews with photos" }
+        { v: "old", label: "Before", img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
+        { v: "new", label: "After", img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
+        { v: "cat", label: "Categories", img: "new/cat-grocery.webp", n: "One category tray, the same from every entry point" }
       ],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
-        { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
-        { img: "new/pdp-grocery-fold.webp", scroll: "new/pdp-grocery.webp", cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" }
+        { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
+        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" }
       ],
       decisions: {
         title: "Design decisions",
         zones: [
           { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
-            t: "Fewer actions, less to remember",
-            pts: ["Only back, search, voice and cart"],
-            stat: ["8 → 4", "header actions"], pin: 9 },
-          { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy"],
-            t: "Build trust above the fold",
-            pts: ["Brand, then name, then ratings"],
-            stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
-          { k: "Bottom", where: "Action bar", laws: ["Fitts's law"],
-            t: "One next step, not five exits",
-            pts: ["Nav bar drove bounce"],
-            stat: ["6 → 1", "exits → one CTA"], pin: 95 }
+            t: "Search first, fewer actions",
+            pts: ["Searchers added to cart {{4× more|searchers}}"],
+            stat: ["7 → 4", "header actions"], pin: 7 },
+          { k: "Mid", where: "Categories", laws: ["Law of similarity", "Minimalist design"],
+            t: "One clear way in",
+            pts: ["Categories under search, one icon style"], pin: 25 },
+          { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall"],
+            t: "Pick up where you left off",
+            pts: ["Recent items shown, not recalled"], pin: 62 }
         ]
       },
-      notes: "Product answers: can I trust it? Read the After screen top to bottom. Top: the header went from 8 actions to 4 (Hick's and Miller's law). Mid: brand before name, ratings under it, price, size and offers above the fold, which is where trust is built. Bottom: the nav bar gave five ways out on a page meant for one decision and drove bounce, so it became a sticky price + Add to cart bar."
-    },
-
-    /* ELECTRONICS PDP — the ask, the benchmark, the answer */
-    {
-      section: "design", type: "chain",
-      title: "Product asked for proof, so we benchmarked",
-      sub: "The brief: make warranty, installation and replacement visible on electronics product pages, and justify where they go.",
-      steps: [
-        { k: "The ask", quote: "We need to have a justification for why placing it above or below something is likely to result in greater conversions.", by: "Product manager's brief", t: "A placement question, framed around conversion." },
-        { k: "Saw", img: "research/pdp-ask-asis.webp", pos: "top left", t: "No warranty or replacement callout. Return policy sat near the bottom; compare opened its own flow." },
-        { k: "Benchmarked", chips: ["Flipkart", "Amazon", "Tata CLiQ", "By Jio / Reliance", "By the seller", "By both"], t: "Listed every value-add competitors show, and who offers it." },
-        { k: "Shipped", img: "research/pdp-valueprops.webp", pos: "center 100%", t: "One icon row under offers, above delivery: warranty, ResQ, cash on delivery, 7-day return." }
-      ],
-      src: "Electronics PDP research, Central UI/UX team.",
-      notes: "The PM wanted a conversion argument. The answer was evidence from three competitors and a clear split of who offers what."
+      notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
     },
 
     /* PRODUCT CARD — prioritise, explore, ship */
     {
-      section: "design", type: "chain",
+      section: "listing", type: "chain",
       title: "One card doesn't fit every category",
       sub: "The listing card, from audit to shipped: decide what earns a place on it, then test layouts across categories.",
       steps: [
@@ -461,7 +483,23 @@ window.DECK = {
     },
 
     {
-      section: "design", type: "versions",
+      section: "listing", type: "pricecue",
+      eyebrow: "The solution · Why the price is big",
+      headline: ["Why the price is the biggest text"],
+      sub: "For a family on ₹12–28K a month, price decides. We copied the shelf tag.",
+      cards: [
+        { src: "In store", t: "Shoppers read the price first", d: "Every shelf tag leads with what you pay. Name next, MRP smallest.",
+          img: "offline-price-spices.webp", inset: "offline-price-tag.webp", fit: "cover", alt: "Spice aisle; close-up tag: ₹79.50 large, MRP ₹106 small" },
+        { src: "On JioMart · PDP", t: "MRP anchors, it doesn't lead", d: "Big selling price, struck-through MRP: the saving reads at a glance.",
+          img: "price-pdp-product.png", fit: "contain still", alt: "PDP from brand and product image down to ₹900.00 large, MRP ₹1084 struck through" },
+        { src: "On JioMart · PLP", t: "Faster comparison on a list", d: "A column of bold prices: compare cards without reading every line.",
+          img: "price-plp-cards.png", fit: "contain still", alt: "Two PLP cards with ₹77.00 in bold" }
+      ],
+      notes: "An interviewer asked why the rupee price is bigger than the product name. Answer with the shelf: in every Indian supermarket the tag leads with the price you pay, big and bold, and puts MRP small and struck through. Shoppers already decide this way. On the PLP a column of bold prices makes cards quick to compare; on the PDP the big price next to the struck MRP makes the saving obvious. We didn't invent a pattern, we reused one they trust."
+    },
+
+    {
+      section: "listing", type: "versions",
       eyebrow: "The solution",
       headline: ["Listing: the decision on the card"],
       views: [
@@ -504,98 +542,58 @@ window.DECK = {
       notes: "Listing answers: which one? Top: the same 4-action header, with Sort and Filter as clear buttons. Mid: sub-category tiles and chips let shoppers narrow in small steps. Bottom: the card carries the decision: price, MRP, % off, unit price, size and wishlist, the same in every category."
     },
 
+    /* ELECTRONICS PDP — the ask, the benchmark, the answer */
     {
-      section: "design", type: "pricecue",
-      eyebrow: "The solution · Why the price is big",
-      headline: ["Why the price is the biggest text"],
-      sub: "For a family on ₹12–28K a month, price decides. We copied the shelf tag.",
-      cards: [
-        { src: "In store", t: "Shoppers read the price first", d: "Every shelf tag leads with what you pay. Name next, MRP smallest.",
-          img: "offline-price-spices.webp", inset: "offline-price-tag.webp", fit: "cover", alt: "Spice aisle; close-up tag: ₹79.50 large, MRP ₹106 small" },
-        { src: "On JioMart · PDP", t: "MRP anchors, it doesn't lead", d: "Big selling price, struck-through MRP: the saving reads at a glance.",
-          img: "price-pdp-product.png", fit: "contain still", alt: "PDP from brand and product image down to ₹900.00 large, MRP ₹1084 struck through" },
-        { src: "On JioMart · PLP", t: "Faster comparison on a list", d: "A column of bold prices: compare cards without reading every line.",
-          img: "price-plp-cards.png", fit: "contain still", alt: "Two PLP cards with ₹77.00 in bold" }
-      ],
-      notes: "An interviewer asked why the rupee price is bigger than the product name. Answer with the shelf: in every Indian supermarket the tag leads with the price you pay, big and bold, and puts MRP small and struck through. Shoppers already decide this way. On the PLP a column of bold prices makes cards quick to compare; on the PDP the big price next to the struck MRP makes the saving obvious. We didn't invent a pattern, we reused one they trust."
-    },
-
-    /* HOME BANNER AUDIT */
-    {
-      section: "design", type: "audit",
-      title: "Home was a wall of banners",
-      sub: "We audited every banner on the Home page before redesigning it.",
-      findings: [
-        ["No pattern.", "Image, text and offer sat somewhere new on every banner."],
-        ["Weak CTAs.", "Small, low-contrast buttons in a different shape each time."],
-        ["Hard to read.", "A new background colour per category, text lost on top."],
-        ["Logos anywhere.", "Brand logos and symbols overlapped the product."],
-        ["Endless scroll.", "Banners stacked one after another in 4 different sizes."]
-      ],
-      src: "Home banner audit with the Central UI/UX team: 27 issues across text, image, CTA, logo, background and space.",
-      screens: ["research/as-is-0.webp","research/as-is-1.webp","research/as-is-2.webp","research/as-is-3.webp","research/as-is-4.webp","research/as-is-5.webp","research/as-is-6.webp","research/as-is-7.webp","research/as-is-8.webp","research/as-is-9.webp"],
-      notes: "This is why Home moved to search first and one card style: the banners were competing with each other, not helping shoppers start."
-    },
-
-    /* REDESIGN STRATEGY */
-    {
-      section: "design", type: "strategy",
-      title: "Redesign strategy: fix the system, not each screen",
-      goals: ["User-centric", "Standard sizes", "Shorter scroll", "Guidelines for consistency"],
+      section: "pdp", type: "chain",
+      title: "Product asked for proof, so we benchmarked",
+      sub: "The brief: make warranty, installation and replacement visible on electronics product pages, and justify where they go.",
       steps: [
-        { k: "Map the page", t: "Home ran 6 folds, with banners back to back.", img: "research/fold-map.webp" },
-        { k: "Name the parts", t: "Every promo is the same 6 parts, in a fixed order.", chips: ["Title", "Offer", "Image", "Logo", "CTA", "Validity"] },
-        { k: "Benchmark", t: "Leaders use light backgrounds, text left, image right, one clear CTA.", img: "research/benchmark.webp" },
-        { k: "Fix the sizes", t: "4 ratios on one 344px grid, 8px corners.", sizes: [["Strip", "344/56", "344\u00d756"], ["Slim", "4/1", "4:1"], ["Landscape", "2/1", "2:1"], ["Square", "1/1", "1:1"]] }
+        { k: "The ask", quote: "We need to have a justification for why placing it above or below something is likely to result in greater conversions.", by: "Product manager's brief", t: "A placement question, framed around conversion." },
+        { k: "Saw", img: "research/pdp-ask-asis.webp", pos: "top left", t: "No warranty or replacement callout. Return policy sat near the bottom; compare opened its own flow." },
+        { k: "Benchmarked", chips: ["Flipkart", "Amazon", "Tata CLiQ", "By Jio / Reliance", "By the seller", "By both"], t: "Listed every value-add competitors show, and who offers it." },
+        { k: "Shipped", img: "research/pdp-valueprops.webp", pos: "center 100%", t: "One icon row under offers, above delivery: warranty, ResQ, cash on delivery, 7-day return." }
       ],
-      src: "Five-stage process with the Central UI/UX team: audit, elements, scenarios, benchmark, templates.",
-      notes: "The point is the system: once the parts and sizes were fixed, any team could make a promo that fits."
+      src: "Electronics PDP research, Central UI/UX team.",
+      notes: "The PM wanted a conversion argument. The answer was evidence from three competitors and a clear split of who offers what."
     },
 
-    /* SYSTEM APPLIED */
+    /* 10–12 — SOLUTION: each screen Before → After, with the design decisions behind it (Top · Mid · Bottom) */
     {
-      section: "design", type: "applied",
-      title: "Same content, one system",
-      sub: "Templates from the system, applied to real promos.",
-      pairs: [
-        { b: "research/land-before.webp", a: "research/land-after.webp", cap: "Category offer" },
-        { b: "research/offer-before.webp", a: "research/offer-after.webp", cap: "Weekly deal" },
-        { b: "research/bank-before.webp", a: "research/bank-after.webp", cap: "Bank offers become a card set" }
-      ],
-      notes: "Same words, same offer. Only the system changed: one layout, readable contrast, one CTA."
-    },
-
-    {
-      section: "design", type: "versions",
+      section: "pdp", type: "versions",
       eyebrow: "The solution",
-      headline: ["Home: search first, then categories"],
+      headline: ["Product page: trust before the fold"],
       views: [
-        { v: "old", label: "Before", img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
-        { v: "new", label: "After", img: "enhance-v1-home.png", n: "Search, categories, one icon style" },
-        { v: "cat", label: "Categories", img: "new/cat-grocery.webp", n: "One category tray, the same from every entry point" }
+        { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
+        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" },
+        { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, n: "EMI and full specs open in a sheet, so the page stays short",
+          hot: [ { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
+        { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, n: "Brand first, then the name; colour and size before the fold" },
+        { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, n: "Shades as swatches, offers grouped, reviews with photos" }
       ],
       labels: ["Before", "After"],
       when: ["Until Dec 2022", "Jan – Mar 2023"],
       stages: [
-        { img: "enhance-problem-home.png", n: "Banners first, mixed icon styles" },
-        { img: "enhance-v1-home.png", n: "Search, categories, one icon style" }
+        { img: "enhance-problem-pdp.png", scroll: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", ctaH: "37%", n: "Long page, key details buried" },
+        { img: "new/pdp-grocery-fold.webp", scroll: "new/pdp-grocery.webp", cta: "enhance-v1-pdp-cta.png?v=2", n: "Brand, rating, price and every pack size up front" }
       ],
       decisions: {
         title: "Design decisions",
         zones: [
           { k: "Top", where: "Header", laws: ["Hick's law", "Miller's law"],
-            t: "Search first, fewer actions",
-            pts: ["Searchers added to cart {{4× more|searchers}}"],
-            stat: ["7 → 4", "header actions"], pin: 7 },
-          { k: "Mid", where: "Categories", laws: ["Law of similarity", "Minimalist design"],
-            t: "One clear way in",
-            pts: ["Categories under search, one icon style"], pin: 25 },
-          { k: "Bottom", where: "Below the fold", laws: ["Recognition over recall"],
-            t: "Pick up where you left off",
-            pts: ["Recent items shown, not recalled"], pin: 62 }
+            t: "Fewer actions, less to remember",
+            pts: ["Only back, search, voice and cart"],
+            stat: ["8 → 4", "header actions"], pin: 9 },
+          { k: "Mid", where: "Content", laws: ["Social proof", "Visual hierarchy"],
+            t: "Build trust above the fold",
+            pts: ["Brand, then name, then ratings"],
+            stat: ["S3", "critical in the {{audit|audit}}"], pin: 50 },
+          { k: "Bottom", where: "Action bar", laws: ["Fitts's law"],
+            t: "One next step, not five exits",
+            pts: ["Nav bar drove bounce"],
+            stat: ["6 → 1", "exits → one CTA"], pin: 95 }
         ]
       },
-      notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
+      notes: "Product answers: can I trust it? Read the After screen top to bottom. Top: the header went from 8 actions to 4 (Hick's and Miller's law). Mid: brand before name, ratings under it, price, size and offers above the fold, which is where trust is built. Bottom: the nav bar gave five ways out on a page meant for one decision and drove bounce, so it became a sticky price + Add to cart bar."
     },
 
     /* KEY PERFORMANCE METRICS */
@@ -620,7 +618,7 @@ window.DECK = {
     /* 12 — KEY TAKEAWAYS */
 
     {
-      section: "results", type: "close",
+      section: "impact", type: "close",
       eyebrow: "Key takeaways",
       headline: ["What I took away"],
       wins: [
