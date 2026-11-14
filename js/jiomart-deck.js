@@ -89,6 +89,7 @@
 
   /* ---------- steps per slide ---------- */
   function stepsFor(sc) {
+    return 0; // every slide shows all its content at once
     switch (sc.type) {
       case "opening": return 0;
       case "categories": return 2;
@@ -858,6 +859,14 @@
             "<p class='vs-zone-t'>" + esc(z.t) + "</p><ul class='vs-zone-pts'>" + z.pts.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>" +
             (z.stat ? "<div class='vs-zone-stat'><b>" + esc(z.stat[0]).replace("→", "<i>→</i>") + "</b><span>" + esc(z.stat[1]) + "</span></div>" : "") + "</div>";
         }).join("");
+        // side-by-side: Before and After phones together, reasoning on the left (no tabs, no reveals)
+        var pair = [sc.views[0], sc.views.filter(function (v) { return v.v === (sc.focusDefault || sc.views[1].v); })[0] || sc.views[1]];
+        var phones = pair.map(function (v, i) {
+          return "<figure class='vp-ph " + (i ? "after" : "before") + "'><span class='vp-chip'>" + (i ? "After" : "Before") + "</span>" +
+            "<span class='evo-media zoomable' title='Click to enlarge'>" + device(v.img, 0, "vp-dev") + "</span><figcaption>" + esc(v.n || "") + "</figcaption></figure>";
+        }).join("<span class='vp-arrow'><svg viewBox='0 0 24 24' width='26' height='26' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span>");
+        return "<div class='sl vp'><div class='vp-left'>" + L(sc.headline, "h2") + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
+          "<div class='vp-zones'>" + fzones + "</div></div><div class='vp-right'>" + phones + "</div></div>";
         var def = sc.focusDefault || sc.views[1].v;
         var fpins = fz.map(function (z, j) { return "<span class='vs-pin reveal' data-step='" + (j + 1) + "' style='top:" + z.pin + "%'>" + (j + 1) + "</span>"; }).join("");
         var tabs = "<div class='pt-tog fo-tabs' role='group'>" + sc.views.map(function (v) {
@@ -1190,7 +1199,7 @@
       var raw = r.getAttribute("data-step");
       var st = raw == null ? 1 : parseFloat(raw);
       if (isNaN(st)) st = 1;
-      r.classList.toggle("in", step >= st);
+      r.classList.add("in"); // no click-by-click reveals
     });
     if (sc.type === "pdp-scroll") {
       var im = slideEl.querySelector(".ds img");

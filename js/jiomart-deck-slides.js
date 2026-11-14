@@ -12,13 +12,14 @@
 window.DECK = {
   imgBase: "./images/enhanceProduct/",
   sections: [
-    { id: "context", n: "01", label: "Context" },
-    { id: "research", n: "02", label: "Research" },
-    { id: "redesign", n: "03", label: "Old \u2192 New" },
-    { id: "home", n: "04", label: "Home" },
-    { id: "listing", n: "05", label: "Listing" },
-    { id: "pdp", n: "06", label: "Product page" },
-    { id: "impact", n: "07", label: "Impact" }
+    { id: "intro", n: "01", label: "Intro" },
+    { id: "redesign", n: "02", label: "Old \u2192 New" },
+    { id: "context", n: "03", label: "Why redesign" },
+    { id: "research", n: "04", label: "Research" },
+    { id: "home", n: "05", label: "Home" },
+    { id: "listing", n: "06", label: "Listing" },
+    { id: "pdp", n: "07", label: "Product page" },
+    { id: "impact", n: "08", label: "Impact" }
   ],
   proofs: {
     carts: {
@@ -167,7 +168,7 @@ window.DECK = {
   slides: [
     /* 01 — PROJECT OVERVIEW & OUTCOME (mockups + hover unchanged) */
     {
-      section: "context", type: "opening",
+      section: "intro", type: "opening",
       eyebrow: "JioMart · Product discovery redesign",
       headline: ["Enhancing ", "Product Discovery", " on JioMart"],
       highlight: "Product Discovery",
@@ -182,6 +183,34 @@ window.DECK = {
         { l: "After launch", v: "{{50%|search}} search → cart · {{29%|speed}} faster" }
       ],
       notes: "Open simply: shoppers could find products but struggled to choose, so I simplified the journey from discovery to purchase. Hover the phone for my V1 Home and listing. Numbers are underlined; click any to show its evidence. +28%: sessions with add-to-cart went from 10.41% to 13.35%. Half of searchers now add to cart (50.2%, up from 41.4%). Project ran Jan – Mar 2023; results are from the report evaluated in Aug 2023; the first read was smaller (+1.07 points), and the gains kept growing."
+    },
+
+    /* OLD DESIGNS — overview */
+    {
+      section: "redesign", type: "overview", old: true,
+      title: "Old designs",
+      sub: "Four screens, four different patterns. Nothing to compare on.",
+      screens: [
+        { src: "enhance-problem-home.png", cap: "Home" },
+        { src: "enhance-problem-plp.png", cap: "Listing" },
+        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
+        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" }
+      ],
+      notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
+    },
+
+    /* NEW DESIGNS — overview */
+    {
+      section: "redesign", type: "overview",
+      title: "New designs",
+      sub: "The same four screens, one pattern from Home to product page.",
+      screens: [
+        { src: "enhance-v1-home.png", cap: "Home" },
+        { src: "new/plp-grocery.webp", cap: "Listing" },
+        { src: "new/plp-grocery-variant.webp", cap: "Add to cart" },
+        { src: "new/pdp-grocery-fold.webp", cap: "Product page" }
+      ],
+      notes: "The reveal. The next three slides explain the decisions behind each screen."
     },
 
     /* USPs OF JIOMART */
@@ -359,34 +388,6 @@ window.DECK = {
         { img: "enhance-impact-effort-matrix.png", t: "Impact vs effort", who: "PM + Design + Engineering", out: "Quick wins first: discount tags, category clarity", fit: "contain" }
       ],
       notes: "Every decision was made with the team. We explored three concepts at the whiteboard, critiqued them with the wider design team, reviewed screens with engineering to catch gaps early, and plotted every idea on impact vs effort: quick wins like discount tags and category clarity shipped first, while 3D icons and gamified categories were parked."
-    },
-
-    /* OLD DESIGNS — overview */
-    {
-      section: "redesign", type: "overview", old: true,
-      title: "Old designs",
-      sub: "Four screens, four different patterns. Nothing to compare on.",
-      screens: [
-        { src: "enhance-problem-home.png", cap: "Home" },
-        { src: "enhance-problem-plp.png", cap: "Listing" },
-        { src: "enhance-addtocart-before.webp", cap: "Add to cart" },
-        { src: "enhance-problem-pdp-nobar.png", cap: "Product page" }
-      ],
-      notes: "Let the grid speak: dense, inconsistent, nothing to compare on."
-    },
-
-    /* NEW DESIGNS — overview */
-    {
-      section: "redesign", type: "overview",
-      title: "New designs",
-      sub: "The same four screens, one pattern from Home to product page.",
-      screens: [
-        { src: "enhance-v1-home.png", cap: "Home" },
-        { src: "new/plp-grocery.webp", cap: "Listing" },
-        { src: "new/plp-grocery-variant.webp", cap: "Add to cart" },
-        { src: "new/pdp-grocery-fold.webp", cap: "Product page" }
-      ],
-      notes: "The reveal. The next three slides explain the decisions behind each screen."
     },
 
     /* HOME BANNER AUDIT */

@@ -1991,3 +1991,26 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .ov-new .ov-n .device { box-shadow: 0 24px 48px -18px color-mix(in srgb, var(--info, #0078ad) 45%, transparent); border-radius: 28px; }
 .sl.overview .ov-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 2.4vw !important; }
 .sl.overview .ov-n .device { --w: min(16.5vw, 34vh, 270px) !important; }
+/* versions as a side-by-side pair: text left (centred, larger), Before + After phones together */
+.slide.type-versions { align-items: center !important; padding-top: 0 !important; }
+.sl.vp { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 4vw; align-items: center; }
+.vp-left { display: flex; flex-direction: column; justify-content: center; }
+.vp-zones { display: grid; gap: 16px; margin-top: 4vh; }
+.vp-zones .vs-zone { opacity: 1 !important; transform: none !important; display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; align-items: start; padding: 14px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 9%, transparent); }
+.vp-zones .vs-zone-n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--info-soft, #e6f2f8); color: var(--info, #0078ad); font-weight: 800; font-size: 14px; }
+.vp-zones .vs-zone-k { font-size: 12px !important; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--info, #0078ad); }
+.vp-zones .vs-zone-t { font-size: clamp(17px, 1.45vw, 22px) !important; font-weight: 700; color: var(--ink); margin: 4px 0 2px; line-height: 1.3; }
+.vp-zones .vs-zone-pts { margin: 0; padding: 0; list-style: none; font-size: clamp(14px, 1.1vw, 16px) !important; color: var(--soft); }
+.vp-zones .vs-zone-stat b { font-size: clamp(22px, 2vw, 30px) !important; font-weight: 800; }
+.vp-zones .vs-zone-stat span { display: block; font-size: 12px; color: var(--dim); }
+.vp-right { display: flex; align-items: center; justify-content: center; gap: 1.6vw; }
+.vp-ph { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.vp-ph .device { --w: min(15vw, 30vh, 250px) !important; }
+.vp-ph.before .ds img { filter: saturate(.75); }
+.vp-chip { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; background: #eef0f3; color: var(--dim); }
+.vp-ph.after .vp-chip { background: var(--info-soft, #e6f2f8); color: var(--info, #0078ad); }
+.vp-ph figcaption { font-size: 13.5px; font-weight: 600; color: var(--soft); text-align: center; max-width: 24ch; line-height: 1.4; }
+.vp-arrow { color: var(--dim); display: grid; place-items: center; }
+.slide.type-versions .vp h2 { max-width: 16ch !important; }
+.vs-zone-stat { text-align: right; }
+.vp-ph .device { --w: min(16.5vw, 34vh, 270px) !important; }
