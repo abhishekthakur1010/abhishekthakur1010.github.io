@@ -2312,3 +2312,6 @@ a.prb-ev { text-decoration: none; }
 /* audit slide: fewer, larger screens */
 .sl.audit { grid-template-columns: minmax(360px,.85fr) 1.7fr; }
 .au-grid img { max-height: 58vh; }
+
+/* problems slide with 1-2 cards: taller screens */
+.prb.prb-few .prb-img { height: min(calc(100vh - 470px), 400px) !important; }

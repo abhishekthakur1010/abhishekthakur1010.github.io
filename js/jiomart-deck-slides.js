@@ -412,8 +412,8 @@ window.DECK = {
     /* HOME — search bar and shortcuts audit */
     {
       section: "home", type: "problems",
-      title: "Search tools confused shoppers",
-      sub: "Heuristic audit of the search bar.",
+      title: "Search and categories confused shoppers",
+      sub: "Heuristic audit of Home search and categories.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
         { k: "Search page", s: "S1", e: "E1", img: "research/home-prob-search.webp", page:9,
