@@ -312,7 +312,7 @@ window.DECK = {
       sub: "Two inputs fed one emotional map, which defined the ideal journey.",
       inputs: [
         { n: "01", t: "Benchmarking", d: "Best practices from leaders.", link: ["5 apps benchmarked", "proof:competitors"],
-          chips: [["USPs", "go:usp"], "Product experience", "Content design", "Service operations"] },
+          chips: [["USPs", "go:usp"], ["Product experience", "img:research/flow-pipeline.webp|JioMart flow pipeline: every screen, marked for improvement or removal"], "Content design", "Service operations"] },
         { n: "02", t: "Journey analysis", d: "Finding the pain points.", link: ["Heuristic audit (PDF)", "pdf:research/jiomart-heuristic-audit-discovery.pdf"],
           chips: [["Heuristics", "go:problems"], ["Data analysis", "proof:searchers"], "User survey", "Sentiment analysis"] }
       ],
