@@ -413,21 +413,18 @@ window.DECK = {
     {
       section: "home", type: "problems",
       title: "Search tools confused shoppers",
-      sub: "Heuristic audit of the search bar. Worst first.",
+      sub: "Heuristic audit of the search bar.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
-        { k: "Scan", s: "S3", e: "E3", img: "research/home-prob-scan.webp", page:10,
-          h: ["Recognition", "Error prevention", "Help"],
-          issue: "Unclear icon. Blank photo scan." },
-        { k: "Shopping list", s: "S3", e: "E2", img: "research/home-prob-list.webp", page:12,
-          h: ["Real world", "User control"],
-          issue: "First item only. No edits." },
-        { k: "Voice", s: "S2", e: "E2", img: "research/home-prob-voice.webp", page:11,
-          h: ["Flexibility", "Help"],
-          issue: "Visible mic. 3 confusing panels." },
+        { k: "Search page", s: "S1", e: "E1", img: "research/home-prob-search.webp", page:9,
+          h: ["User control", "Recognition"],
+          issue: "Wrong categories. No typo help." },
+        { k: "Icons", s: "S0", e: "E0", img: "research/home-prob-icons.webp", page:6,
+          h: ["Recognition", "Consistency"],
+          issue: "Unclear icons. Mismatched colours." }
       ],
       src: "Heuristic evaluation, Central UI/UX research team. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
-      notes: "The three most severe Home search issues: scan, the shopping list and voice."
+      notes: "The two Home search issues the redesign answered: search results and the category icons."
     },
 
     /* SYSTEM APPLIED */
