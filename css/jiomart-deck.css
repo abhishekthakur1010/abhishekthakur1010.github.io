@@ -2221,3 +2221,11 @@ a.prb-ev { text-decoration: none; }
 .so-fit { position: relative; overflow: hidden; }
 .so-stage { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
 .so-stage .slide { opacity: 1; transform: none; }
+/* slide overlay · full-height sheet from the right */
+.so { justify-content: flex-end; align-items: stretch; transition: opacity .35s ease; }
+.so-panel { width: calc(100vw - 72px); height: 100vh; border-radius: 22px 0 0 22px; transform: translateX(100%); transition: transform .5s cubic-bezier(.22,.9,.24,1); }
+.so.open .so-panel { transform: translateX(0); }
+.so { opacity: 1; visibility: hidden; transition: visibility 0s linear .5s; }
+.so.open { visibility: visible; transition: none; }
+.so-back { opacity: 0; transition: opacity .4s ease; }
+.so.open .so-back { opacity: 1; }
