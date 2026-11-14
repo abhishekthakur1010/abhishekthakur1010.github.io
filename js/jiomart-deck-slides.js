@@ -362,6 +362,37 @@ window.DECK = {
       notes: "The complete heuristic evaluation by the Central UI/UX research team, page by page. Personal details in the app screenshots are blurred."
     },
 
+    /* TOP PROBLEMS — audit evidence to action */
+    {
+      section: "research", type: "problems",
+      title: "5 problems, 5 fixes",
+      sub: "From the heuristic audit, worst first. Evidence opens the audit page.",
+      items: [
+        { k: "Product page", s: "S3", e: "E2", img: "research/prob-pdp.webp", ev: "research/he-rec-21.webp",
+          h: ["Error prevention", "User control", "Consistency"],
+          issue: "Brand hidden, EMI not tappable, delivery needs a pincode.",
+          fix: "Brand, rating, price and size above the fold. One sticky Add to cart." },
+        { k: "Filter & sort", s: "S2", e: "E2", img: "research/prob-filter.webp", ev: "research/he-rec-16.webp",
+          h: ["Recover from errors"],
+          issue: "Applied filters barely visible. The red dot is unclear.",
+          fix: "Filter and Sort as clear buttons. Applied filters shown as chips." },
+        { k: "Banners", s: "S2", e: "E2", img: "research/prob-banners.webp", ev: "research/he-rec-18.webp",
+          h: ["Consistency", "Minimalist design"],
+          issue: "7+ carousel cards, random fonts and colours.",
+          fix: "One banner carousel. One system for every promo." },
+        { k: "Menu & categories", s: "S2", e: "E1", img: "research/prob-menu.webp", ev: "research/he-rec-15.webp",
+          h: ["Real world", "Consistency", "Recognition"],
+          issue: "Category order changes by entry point. Old icons.",
+          fix: "Categories right under search, in one icon style." },
+        { k: "Top deals", s: "S2", e: "E1", img: "research/prob-deals.webp", ev: "research/he-rec-13.webp",
+          h: ["Error prevention"],
+          issue: "No feedback at max quantity. Price and discount hierarchy unclear.",
+          fix: "The same deal card everywhere, price first." }
+      ],
+      src: "Heuristic evaluation, Central UI/UX research team. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
+      notes: "Five audit findings on the discovery journey, each tied to the redesign decision that answered it. Scan (S3) and the list feature (S3) were also severe but are not on this slide because the redesign did not change them."
+    },
+
     /* 08 — DEFINING THE PROBLEM */
     {
       section: "research", type: "synthesis",

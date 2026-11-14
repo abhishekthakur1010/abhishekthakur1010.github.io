@@ -1117,6 +1117,17 @@
         return "<div class='usp-i'><span class='usp-n'>" + (i + 1) + "</span><h3>" + esc(x[0]) + "</h3><p>" + esc(x[1]) + "</p></div>";
       }).join("") + "</div></div>";
     },
+    problems: function (sc) {
+      return "<div class='sl prb'><div class='prb-h'><h2>" + esc(sc.title) + "</h2><p class='sub'>" + esc(sc.sub) + "</p></div><div class='prb-grid'>" +
+        sc.items.map(function (it, i) {
+          return "<article class='prb-c'><div class='prb-img'><img loading='lazy' src='" + img(it.img) + "' alt='" + esc(it.k) + "'></div>" +
+            "<div class='prb-b'><div class='prb-t'><b>" + esc(it.k) + "</b><span class='prb-se'><i class='sev s" + esc(it.s.slice(1)) + "'>" + esc(it.s) + "</i><i class='ease'>" + esc(it.e) + "</i></span></div>" +
+            "<p class='prb-i'>" + esc(it.issue) + "</p>" +
+            "<div class='prb-h2'>" + it.h.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>" +
+            "<p class='prb-f'><em>Fix</em>" + esc(it.fix) + "</p>" +
+            "<button type='button' class='prb-ev' data-ev='" + i + "' data-src='" + img(it.ev) + "' data-k='" + esc(it.k) + "'>Evidence ↗</button></div></article>";
+        }).join("") + "</div>" + (sc.src ? "<p class='prb-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
+    },
     record: function (sc) {
       return "<div class='sl rec'><div class='rec-h'><div><h2>" + esc(sc.title) + "</h2><p class='sub'>" + esc(sc.sub) + "</p></div>" +
         "<div class='ov-nav'><button class='sw-btn' data-sw='-1' aria-label='Scroll left'>←</button><button class='sw-btn' data-sw='1' aria-label='Scroll right'>→</button></div></div>" +
@@ -1432,7 +1443,7 @@
     lb.classList.toggle("at-end", !!gal.doc && gal.i === n - 1);
     var it = gal.list[gal.i];
     var step = lb.classList.contains("open") && gal.i !== prev ? ((gal.i - prev + n) % n <= n / 2 ? 1 : -1) : 0;
-    if (gal.doc) { var th = document.querySelector(".rec-pg[data-i='" + gal.i + "'] .rec-img"); if (th) lbFrom = th; }
+    if (gal.doc) { var th = document.querySelector(".slide.active .rec-pg[data-i='" + gal.i + "'] .rec-img, .slide.active .prb-ev[data-ev='" + gal.i + "']"); if (th) lbFrom = th.classList.contains("prb-ev") ? th.closest(".prb-c").querySelector(".prb-img") : th; }
     openLightbox(it.src, "", true, step);
     lb.querySelector(".lb-cap").innerHTML = "<span class='lb-n'>" + pad(gal.i + 1) + " / " + pad(gal.list.length) + "</span>" +
       "<span class='lb-t'>" + esc(it.title || it.cap) + "</span>" + (it.pain ? "<span class='lb-p'>" + esc(it.pain) + "</span>" : "");
@@ -1575,6 +1586,13 @@
       if (card.getAttribute("data-pins")) card.classList.toggle("pins-off", card.getAttribute("data-pins") !== v);
       var shx = card.querySelector(".pt-sheet"); if (shx) { shx.classList.remove("on"); shx.hidden = true; }
       card.querySelector(".pt-scroll").scrollTop = 0;
+      return;
+    }
+    var pe = e.target.closest(".prb-ev");
+    if (pe) {
+      var pl = Array.prototype.map.call(pe.closest(".prb-grid").querySelectorAll(".prb-ev"), function (b) { return { src: b.getAttribute("data-src"), title: b.getAttribute("data-k") + " \u00b7 audit page" }; });
+      lbFrom = pe.closest(".prb-c").querySelector(".prb-img");
+      gal = { list: pl, i: 0, doc: true }; showGal(parseInt(pe.getAttribute("data-ev"), 10) || 0);
       return;
     }
     var rp = e.target.closest(".rec-pg");

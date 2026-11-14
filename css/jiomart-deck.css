@@ -2157,3 +2157,31 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .lightbox.tall.doc .lb-nav:hover { transform: translateY(-50%) scale(1.04); }
 .lightbox .lb-nav:focus:not(:focus-visible) { outline: none; box-shadow: none; }
 .lightbox.doc.at-start .lb-prev, .lightbox.doc.at-end .lb-next { opacity: 0 !important; pointer-events: none; }
+/* top problems: audit evidence → action */
+.sl.prb { width: 100%; }
+.prb-h h2 { margin: 0 0 6px; }
+.prb-h .sub { margin: 0 0 18px; }
+.prb-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.prb-c { display: flex; flex-direction: column; border: 1px solid var(--line2); border-radius: 14px; overflow: hidden; background: var(--card, #fff); }
+.prb-img { height: min(26vh, 230px); background: #fff; border-bottom: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; padding: 10px; }
+.prb-img img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.prb-b { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.prb-t { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.prb-t b { font-size: clamp(14px, 1.15vw, 17px); font-weight: 800; color: var(--ink); line-height: 1.2; }
+.prb-se { display: flex; gap: 4px; flex: none; }
+.prb-se i { font-style: normal; font-size: 11px; font-weight: 800; padding: 3px 7px; border-radius: 6px; letter-spacing: .02em; }
+.prb-se .sev { background: #fde8e8; color: #b42318; }
+.prb-se .sev.s2 { background: #fff1e0; color: #b54708; }
+.prb-se .ease { background: var(--bg2, #f2f4f7); color: var(--dim); }
+.prb-i { margin: 0; font-size: clamp(12.5px, 0.95vw, 14px); line-height: 1.4; color: var(--ink); }
+.prb-h2 { display: flex; flex-wrap: wrap; gap: 4px; }
+.prb-h2 span { font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line2); color: var(--dim); }
+.prb-f { margin: auto 0 0; padding-top: 8px; border-top: 1px dashed var(--line2); font-size: clamp(12.5px, 0.95vw, 14px); line-height: 1.4; color: var(--ink); font-weight: 600; }
+.prb-f em { display: block; font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--info, #0078ad); margin-bottom: 2px; }
+.prb-ev { align-self: flex-start; font: inherit; font-size: 12px; font-weight: 700; color: var(--info, #0078ad); background: none; border: 0; padding: 0; cursor: pointer; }
+.prb-ev:hover { text-decoration: underline; }
+.prb-src { margin: 12px 0 0; font-size: 12px; color: var(--dim); }
+@media (max-width: 1100px) { .prb-grid { grid-template-columns: repeat(3, 1fr); } }
+.prb-h h2 { max-width: none !important; }
+.prb-img { height: min(calc(100vh - 560px), 230px); min-height: 120px; }
+@media (max-height: 760px) { .prb-b { gap: 6px; padding: 10px 12px 12px; } .prb-h .sub { margin-bottom: 12px; } }
