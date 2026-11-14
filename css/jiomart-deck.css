@@ -2434,3 +2434,12 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .p3-track { grid-template-rows: auto auto auto 1fr; }
 .p3-s { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
 .p3-s p { margin-bottom: 0; }
+
+/* plan links */
+.p3-a { all: unset; cursor: pointer; color: inherit; border-bottom: 1px solid rgba(30,95,160,.35); transition: color .15s, border-color .15s; }
+.p3-a i { font-style: normal; color: var(--acc); margin-left: 2px; transition: transform .15s; display: inline-block; }
+.p3-a:hover { color: var(--acc); border-color: var(--acc); }
+.p3-a:hover i { transform: translateX(2px); }
+.p3-a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; border-radius: 3px; }
+.p3-ev { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--acc); border-bottom-color: transparent; }
+.p3-ev:hover { border-bottom-color: var(--acc); }

@@ -1167,12 +1167,20 @@
     },
     plan: function (sc) {
       var steps = sc.inputs.concat([sc.map, sc.goal]);
+      function lnk(l, label, cls) {
+        var m = /^(\w+):(.*)$/.exec(l), k = m[1], v = m[2], c = "p3-a" + (cls ? " " + cls : "");
+        if (k === "proof") return "<button type='button' class='" + c + " ev-link' data-proof='" + esc(v) + "'>" + label + "</button>";
+        if (k === "img") { var q = v.split("|"); return "<button type='button' class='" + c + "' data-img='" + img(q[0]) + "' data-cap='" + esc(q[1] || "") + "'>" + label + "</button>"; }
+        if (k === "pdf") return "<a class='" + c + "' href='" + img(v) + "' target='_blank' rel='noopener'>" + label + "</a>";
+        if (k === "go") return "<button type='button' class='" + c + "' data-go='" + esc(v) + "'>" + label + "</button>";
+        return label;
+      }
       return "<div class='sl plan3'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p class='sub'>" + esc(sc.sub) + "</p>" : "") +
         "<div class='p3'><div class='p3-labs'><span class='p3-lab p3-l2'>Inputs</span><span class='p3-lab'>Synthesis</span><span class='p3-lab p3-lout'>Outcome</span></div>" +
         "<div class='p3-track'>" + steps.map(function (c, i) {
           return "<div class='p3-s" + (i === steps.length - 1 ? " p3-end" : "") + "'><span class='p3-dot'>" + (i + 1) + "</span>" +
-            "<h3>" + esc(c.t) + "</h3><p>" + esc(c.d || "") + "</p>" +
-            "<ul>" + c.chips.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+            "<h3>" + esc(c.t) + "</h3><p>" + esc(c.d || "") + (c.link ? "<br>" + lnk(c.link[1], esc(c.link[0]) + " <i aria-hidden='true'>›</i>", "p3-ev") : "") + "</p>" +
+            "<ul>" + c.chips.map(function (x) { return "<li>" + (Array.isArray(x) ? lnk(x[1], esc(x[0]) + " <i aria-hidden='true'>›</i>") : esc(x)) + "</li>"; }).join("") + "</ul></div>";
         }).join("") + "</div></div></div>";
     },
     field: function (sc) {
@@ -1719,7 +1727,9 @@
       card.querySelector(".pt-scroll").scrollTop = 0;
       return;
     }
-    var psrc = e.target.closest(".prb-chip[data-img]");
+    var pgo = e.target.closest(".p3-a[data-go]");
+    if (pgo) { var gk = pgo.getAttribute("data-go"); for (var gi = 0; gi < slides.length; gi++) { if (slides[gi].id === gk || slides[gi].type === gk) { go(gi); break; } } return; }
+    var psrc = e.target.closest(".prb-chip[data-img], .p3-a[data-img]");
     if (psrc) { lbFrom = psrc; openLightbox(psrc.getAttribute("data-img"), psrc.getAttribute("data-cap") || ""); return; }
     var pe = e.target.closest(".prb-ev");
     if (pe) {
