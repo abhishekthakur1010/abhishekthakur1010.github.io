@@ -2074,3 +2074,13 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .up2 .up-i svg { width: 30px; height: 30px; color: var(--info, #0078ad); }
 .up2 .up-i span { font-size: clamp(14px, 1.1vw, 17px); font-weight: 700; color: var(--ink); line-height: 1.25; }
 .slide.type-usp { align-items: center !important; padding-top: 0 !important; }
+/* every content slide sits in the vertical middle of the stage */
+.slide:not(.type-opening) { align-items: center !important; padding-top: 0 !important; }
+.slide.type-why .sl.why { align-items: center !important; }
+/* use the freed height: bigger visuals on roomy slides */
+.fd-grid { height: min(68vh, 760px) !important; }
+.ev-img { height: min(20vh, 210px) !important; }
+.bd-tall .bd-img { height: clamp(110px, calc((100vh - 470px) / 2), 230px) !important; }
+.cb-photo { height: min(52vh, 520px) !important; aspect-ratio: auto !important; }
+.slide.type-why .why-r li b, .slide.type-why .sl.why ol b { font-size: clamp(20px, 1.9vw, 30px); }
+@media (max-height: 760px) { .ev-img { height: 16vh !important; } .cb-photo { height: 40vh !important; } }
