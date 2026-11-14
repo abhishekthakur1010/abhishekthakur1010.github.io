@@ -345,9 +345,8 @@ window.DECK = {
     {
       section: "research", type: "record",
       title: "The full heuristic record",
-      sub: "24 pages. Click any page to read it.",
+      sub: "23 pages. Click any page to read it.",
       pages: [
-        ["research/he-rec-01.webp", "Scope & method"],
         ["research/he-rec-02.webp", "10 heuristics"],
         ["research/he-rec-03.webp", "Rating scales"],
         ["research/he-rec-04.webp", "Executive summary"],
