@@ -459,20 +459,6 @@ window.DECK = {
       notes: "Home answers: where do I start? Top: search leads, header down from 7 actions to 4, because searchers converted 4× better. Mid: categories right under search in one icon style, and one banner carousel instead of four promo blocks. Bottom: Continue Shopping For and consistent deal cards."
     },
 
-    /* PRODUCT CARD — prioritise, explore, ship */
-    {
-      section: "listing", type: "chain",
-      title: "One card doesn't fit every category",
-      sub: "The listing card, from audit to shipped: decide what earns a place on it, then test layouts across categories.",
-      steps: [
-        { k: "Saw", img: "research/card-old.webp", pos: "top center", t: "Six categories, six cards. Desktop and mobile differed, brand came before name, no rating." },
-        { k: "Prioritised \u00b7 MoSCoW", moscow: [["Must", "Image, name, price, discount, rating"], ["Should", "Brand, variant or size, booster, source, wishlist"], ["Could", "Delivery date, coupons, share"]], t: "Must-haves are the minimum usable set. The rest earn their place by category." },
-        { k: "Explored", opts: [{ img: "research/card-opt1.webp", cap: "Option 1 \u00b7 shipped", win: true }, { img: "research/card-opt3.webp", cap: "Option 3" }, { img: "research/card-opt4.webp", cap: "Option 4" }], t: "Wishlist and discount placement tried on beauty, grocery, fashion, furniture and mobiles." },
-        { k: "Shipped", img: "new/plp-grocery.webp", pos: "center 40%", t: "Option 1, then by category: pack size for grocery, specs for mobiles, swatches for fashion and beauty." }
-      ],
-      src: "Product card research, Central UI/UX team.",
-      notes: "Real alternatives, real prioritisation. Option 1 kept the discount right next to the price."
-    },
 
     {
       section: "listing", type: "pricecue",
@@ -490,6 +476,20 @@ window.DECK = {
       notes: "An interviewer asked why the rupee price is bigger than the product name. Answer with the shelf: in every Indian supermarket the tag leads with the price you pay, big and bold, and puts MRP small and struck through. Shoppers already decide this way. On the PLP a column of bold prices makes cards quick to compare; on the PDP the big price next to the struck MRP makes the saving obvious. We didn't invent a pattern, we reused one they trust."
     },
 
+    /* PRODUCT CARD — prioritise, explore, ship */
+    {
+      section: "listing", type: "chain",
+      title: "One card doesn't fit every category",
+      sub: "The listing card, from audit to shipped: decide what earns a place on it, then test layouts across categories.",
+      steps: [
+        { k: "Saw", img: "research/card-old.webp", pos: "top center", t: "Six categories, six cards. Desktop and mobile differed, brand came before name, no rating." },
+        { k: "Prioritised \u00b7 MoSCoW", moscow: [["Must", "Image, name, price, discount, rating"], ["Should", "Brand, variant or size, booster, source, wishlist"], ["Could", "Delivery date, coupons, share"]], t: "Must-haves are the minimum usable set. The rest earn their place by category." },
+        { k: "Explored", opts: [{ img: "research/card-opt1.webp", cap: "Option 1 \u00b7 shipped", win: true }, { img: "research/card-opt3.webp", cap: "Option 3" }, { img: "research/card-opt4.webp", cap: "Option 4" }], t: "Wishlist and discount placement tried on beauty, grocery, fashion, furniture and mobiles." },
+        { k: "Shipped", img: "new/plp-grocery.webp", pos: "center 40%", t: "Option 1, then by category: pack size for grocery, specs for mobiles, swatches for fashion and beauty." }
+      ],
+      src: "Product card research, Central UI/UX team.",
+      notes: "Real alternatives, real prioritisation. Option 1 kept the discount right next to the price."
+    },
     {
       section: "listing", type: "versions",
       eyebrow: "The solution",
