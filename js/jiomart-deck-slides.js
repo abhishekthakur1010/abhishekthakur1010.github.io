@@ -412,25 +412,25 @@ window.DECK = {
     /* HOME — search bar and shortcuts audit */
     {
       section: "home", type: "problems",
-      title: "Home's search tools left shoppers guessing",
-      sub: "Heuristic audit of the Home search bar and its shortcuts. Worst first.",
+      title: "Search tools confused shoppers",
+      sub: "Heuristic audit of the search bar. Worst first.",
       doc: "research/jiomart-heuristic-audit-discovery.pdf",
       items: [
         { k: "Scan", s: "S3", e: "E3", img: "research/home-prob-scan.webp", page:10,
           h: ["Recognition", "Error prevention", "Help"],
-          issue: "Scanner's purpose unclear, icon confusing. Photo scan opened a blank screen." },
+          issue: "Unclear icon. Blank photo scan." },
         { k: "Shopping list", s: "S3", e: "E2", img: "research/home-prob-list.webp", page:12,
           h: ["Real world", "User control"],
-          issue: "Only the first item in the list was searched. Items couldn't be added or removed." },
+          issue: "First item only. No edits." },
         { k: "Voice", s: "S2", e: "E2", img: "research/home-prob-voice.webp", page:11,
           h: ["Flexibility", "Help"],
-          issue: "The mic was easy to spot, then opened three different panels: settings, assistant and keyboard." },
+          issue: "Visible mic. 3 confusing panels." },
         { k: "Search page", s: "S1", e: "E1", img: "research/home-prob-search.webp", page:9,
           h: ["User control", "Recognition"],
-          issue: "Wrong categories (orange in Fashion), plain text results, and no fix for typos." },
+          issue: "Wrong categories. No typo help." },
         { k: "Icons", s: "S0", e: "E0", img: "research/home-prob-icons.webp", page:6,
           h: ["Recognition", "Consistency"],
-          issue: "List and scan icons were hard to read. Category icons and colours didn't match." }
+          issue: "Unclear icons. Mismatched colours." }
       ],
       src: "Heuristic evaluation, Central UI/UX research team. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
       notes: "Beyond the banners, the audit checked every way to start a search from Home. Scan and the shopping list were the most severe."
