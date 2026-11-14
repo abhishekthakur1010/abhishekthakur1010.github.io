@@ -572,15 +572,15 @@ window.DECK = {
     {
       section: "impact", type: "kpm",
       title: "Key performance metrics",
-      sub: "Before vs after launch. Both targets beaten.",
+      sub: "Before \u2192 after launch.",
       when: "8 months",
       items: [
-        ["+28%", "Sessions with add-to-cart", "10.41% vs 13.35% \u00b7 target was 12%"],
-        ["+21%", "Search add-to-cart", "41.4% vs 50.2% \u00b7 target was 45%"],
-        ["+24%", "Time per active user", "4m 14s vs 5m 15s"],
-        ["+25%", "Time per session", "1m 46s vs 2m 13s"],
-        ["+21%", "Page views per user", "5.81 vs 7.04"],
-        ["\u221229%", "Page download time", "0.17s vs 0.12s"]
+        ["+28%", "Add-to-cart sessions", "10.41% \u2192 13.35%", "Target 12%"],
+        ["+21%", "Search add-to-cart", "41.4% \u2192 50.2%", "Target 45%"],
+        ["+24%", "Time per user", "4m 14s \u2192 5m 15s"],
+        ["+25%", "Time per session", "1m 46s \u2192 2m 13s"],
+        ["+21%", "Pages per user", "5.81 \u2192 7.04"],
+        ["\u221229%", "Page load time", "0.17s \u2192 0.12s"]
       ],
       src: "Google Analytics, 5 months after launch.",
       notes: "Lead with +28%: one in ten visits ending in a cart became more than one in eight."

@@ -2539,3 +2539,15 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 [data-theme=dark] .vp-links.vp-in .vp-link span, [data-theme=dark] .vp-links.vp-in .vp-link b, [data-theme=dark] .vp-links.vp-in .vp-link i { color: #5bb8e8; }
 /* versions pair: product pages scroll inside the phone, bar pinned */
 .vp-ph .device.scrolls .ds-scroll img { transform: none !important; object-fit: initial; max-height: none; }
+/* metrics: two goal figures lead, four supporting figures in a quieter row */
+.kpm-v2 .kpm-h { margin-bottom: 5vh; }
+.kpm-when-chip { display: inline-block; vertical-align: .15em; margin-left: .5em; font-size: .62em; font-weight: 700; letter-spacing: .02em; padding: .3em .8em; border-radius: 999px; border: 1px solid var(--line, #d9d9d9); color: var(--dim); }
+.kpm-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; text-align: center; }
+.kpm-v2 .kpm-i p { white-space: nowrap; }
+.kpm-tgt { display: inline-block; margin-top: .7em; font-size: clamp(11px,.9vw,14px); font-weight: 700; letter-spacing: .01em; color: #1a8f4c; background: rgba(26,143,76,.1); padding: .3em .85em; border-radius: 999px; }
+[data-theme="dark"] .kpm-tgt { color: #4fd18b; background: rgba(79,209,139,.12); }
+.kpm-sup { display: grid; grid-template-columns: repeat(4,1fr); gap: 2vw; text-align: center; margin-top: 6vh; padding-top: 4.5vh; border-top: 1px solid var(--line, rgba(127,127,127,.2)); }
+.kpm-sup .kpm-i b { font-size: clamp(30px,3vw,48px); }
+.kpm-sup .kpm-i h3 { font-size: clamp(13px,1.05vw,16px); }
+.kpm-sup .kpm-i p { font-size: clamp(12px,.95vw,14px); }
+@media (max-width: 760px) { .kpm-sup { grid-template-columns: 1fr 1fr; } }

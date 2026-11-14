@@ -1115,10 +1115,16 @@
         "<div class='au-grid'>" + sc.screens.map(function (x) { return "<img src='" + img(x) + "' alt='' loading='lazy'>"; }).join("") + "</div></div>";
     },
     kpm: function (sc) {
-      return "<div class='sl kpm'><div class='kpm-h'><div><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) + "</p></div><span class='kpm-when'>" + esc(sc.when) + "</span></div>" +
-        "<div class='kpm-grid'>" + sc.items.map(function (x) {
-          return "<div class='kpm-i'><b>" + esc(x[0]) + "</b><h3>" + esc(x[1]) + "</h3><p>" + esc(x[2]) + "</p></div>";
-        }).join("") + "</div><p class='kpm-src'>" + esc(sc.src) + "</p></div>";
+      // the two goal metrics lead, the four supporting ones sit in a quieter row underneath
+      var cell = function (x) {
+        return "<div class='kpm-i'><b>" + esc(x[0]) + "</b><h3>" + esc(x[1]) + "</h3><p>" + esc(x[2]) + "</p>" +
+          (x[3] ? "<span class='kpm-tgt'>" + esc(x[3]) + " beaten \u2713</span>" : "") + "</div>";
+      };
+      var hero = sc.items.filter(function (x) { return x[3]; }), rest = sc.items.filter(function (x) { return !x[3]; });
+      return "<div class='sl kpm kpm-v2'><div class='kpm-h'><div><h2>" + esc(sc.title) + "</h2><p>" + esc(sc.sub) +
+        (sc.when ? " <span class='kpm-when-chip'>" + esc(sc.when) + "</span>" : "") + "</p></div></div>" +
+        "<div class='kpm-hero'>" + hero.map(cell).join("") + "</div>" +
+        "<div class='kpm-sup'>" + rest.map(cell).join("") + "</div><p class='kpm-src'>" + esc(sc.src) + "</p></div>";
     },
     usp: function (sc) {
       if (sc.stores) {
