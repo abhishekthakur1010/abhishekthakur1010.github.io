@@ -1104,7 +1104,8 @@
         return "<figure class='ov-n'>" + device(x.src, 0, "ov-dev") + "<figcaption>" + esc(x.cap) + "</figcaption></figure>";
       }).join("");
       return "<div class='sl overview" + (sc.old ? " ov-old" : " ov-new") + "'><div class='ov-l'><h2>" + esc(sc.title) + "</h2>" + (sc.sub ? "<p>" + esc(sc.sub) + "</p>" : "") + "</div>" +
-        "<div class='ov-grid'>" + tiles + "</div></div>";
+        "<div class='ov-nav'><span class='ov-hint'>Scroll sideways · " + sc.screens.length + " screens</span><button class='sw-btn' data-sw='-1' aria-label='Scroll left'>←</button><button class='sw-btn' data-sw='1' aria-label='Scroll right'>→</button></div>" +
+        "<div class='ov-grid sw-track' tabindex='0'>" + tiles + "</div></div>";
     },
     field: function (sc) {
       return "<div class='sl field'><h2>" + esc(sc.title) + "</h2><div class='fd-grid'>" + sc.photos.map(function (p, i) {
