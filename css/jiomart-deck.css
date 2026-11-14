@@ -2321,3 +2321,17 @@ a.prb-ev { text-decoration: none; }
 .sl.fig h2 { margin: 0 0 .5em; }
 .fig-img { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
 .fig-img img { max-width: 100%; max-height: calc(100vh - 300px); object-fit: contain; display: block; }
+
+/* problems: refined problem strip */
+.prb-ref { margin-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 12px 18px; border-radius: 12px; background: rgba(30,95,160,.08); border: 1px solid rgba(30,95,160,.28); font-size: clamp(14px,1.1vw,17px); }
+.prb-ref span { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #1e5fa0; }
+.prb-ref s { color: #c0392b; opacity: .8; }
+.prb-ref i { font-style: normal; color: var(--dim); }
+.prb-ref b { color: var(--ink); font-weight: 700; }
+.prb-ref em { margin-left: auto; font-style: normal; display: flex; gap: 14px; font-size: 13px; color: var(--dim); white-space: nowrap; }
+.prb-ref em span { font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--dim); }
+.prb-ref em u { text-decoration: none; font-weight: 700; color: #1f7a3d; }
+@media (max-height: 760px) { .prb .prb-img { height: calc(100vh - 630px) !important; } }
+@media (max-width: 1400px) { .prb-ref > span { display: none; } }
+@media (max-height: 760px) { .prb .prb-h2 { display: none; } }
+html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }

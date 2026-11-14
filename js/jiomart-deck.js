@@ -1135,7 +1135,7 @@
             "<div class='prb-h2'>" + it.h.map(function (h) { return "<span>" + esc(h) + "</span>"; }).join("") + "</div>" +
             (it.fix ? "<p class='prb-f'><em>Fix</em>" + esc(it.fix) + "</p>" : "") +
             "<a class='prb-ev' href='" + doc + "#page=" + it.page + "' target='_blank' rel='noopener'>Evidence · PDF p." + it.page + " ↗</a></div></article>";
-        }).join("") + "</div>" + (sc.src ? "<p class='prb-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
+        }).join("") + "</div>" + (sc.refined ? "<div class='prb-ref'><span>Refined problem</span><s>" + esc(sc.refined.from) + "</s><i aria-hidden='true'>→</i><b>" + esc(sc.refined.to) + "</b>" + (sc.refined.targets ? "<em>" + sc.refined.targets.map(function (t) { return "<span><u>" + esc(t[0]) + "</u> " + esc(t[1]) + "</span>"; }).join("") + "</em>" : "") + "</div>" : "") + (sc.src ? "<p class='prb-src'>" + esc(sc.src) + "</p>" : "") + "</div>";
     },
     record: function (sc) {
       return "<div class='sl rec'><div class='rec-h'><div><h2>" + esc(sc.title) + "</h2><p class='sub'>" + esc(sc.sub) + "</p></div>" +

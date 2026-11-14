@@ -357,33 +357,8 @@ window.DECK = {
           issue: "No feedback at max quantity. Price and discount hierarchy unclear.",
           fix: "The same deal card everywhere, price first." }
       ],
-      src: "Heuristic evaluation, Central UI/UX research team. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
+      refined: { from: "Refresh the UI", to: "Help shoppers decide with confidence", targets: [["Add-to-cart","10.4% → 12%"],["Search","41% → 45%"],["Time to decide","−20%"]] },
       notes: "Five audit findings on the discovery journey, each tied to the redesign decision that answered it. Scan (S3) and the list feature (S3) were also severe but are not on this slide because the redesign did not change them."
-    },
-
-    /* 08 — DEFINING THE PROBLEM */
-    {
-      section: "research", type: "synthesis",
-      eyebrow: "Defining the problem",
-      headline: ["They could find products, not choose one"],
-      cols: ["What shoppers felt", "Why it happened", "How we know"],
-      rows: [
-        { theme: "Finding", symptom: "\u201cWhere do I start?\u201d", cause: "Inconsistent icons and categories",
-          how: [["Audit", "Icons flagged in the {{23-issue audit|audit}}"], ["Measured", "Only {{1 in 10|carts}} visits reached the cart"]] },
-        { theme: "Comparing", symptom: "\u201cWhich one do I pick?\u201d", cause: "Every card showed different info",
-          how: [["Research", "{{Interviews|interviews}}: \u201cI can\u2019t tell which to buy\u201d"], ["Benchmark", "{{5 leading apps|competitors}} show price and rating on cards"]] },
-        { theme: "Choosing", symptom: "\u201cCan I trust this?\u201d", cause: "Key details buried below the fold",
-          how: [["Audit", "Product page rated critical (S3)"], ["Measured", "Searchers bought {{4× more|searchers}}, so intent was there"]] }
-      ],
-      from: "Refresh the UI",
-      to: "Help shoppers decide with confidence",
-      statement: "Shoppers didn't lack products. They lacked the information to choose one with confidence.",
-      goals: [
-        { k: "Add-to-cart", v: "{{10.4%|carts}} \u2192 12% target" },
-        { k: "Search add-to-cart", v: "{{41%|search}} \u2192 45% target" },
-        { k: "Time to decide", v: "{{\u221220%|decide}} est." }
-      ],
-      notes: "Read each row left to right: what shoppers felt, why it happened, and how we know. Every claim has a source: audit, analytics, interviews or benchmark. The key milestone. Show the shift from 'refresh the UI' to 'help shoppers decide'. Then the statement and the success metrics we set. Time-to-decide is illustrative (est.)."
     },
 
     /* 09 — IDEATION & COLLABORATION */
