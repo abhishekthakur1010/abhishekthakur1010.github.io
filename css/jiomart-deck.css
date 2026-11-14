@@ -2460,3 +2460,9 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .so-sub-in > .ev-img.full { grid-column: 1 / -1; grid-row: auto; max-width: none; }
 .so-sub-in .ev-img.full .ev-imgbox { display: block; width: 100%; }
 .so-sub-in .ev-img.full img { width: 100% !important; height: auto !important; max-height: calc(100vh - 300px) !important; object-fit: contain; }
+
+/* image-only sheet: just the header bar and the image, stretched */
+.so-sub-in > .ev-img.full { background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }
+.so-sub-in .ev-img.full .ev-imgbox { background: none; padding: 0; border: 0; box-shadow: none; }
+.so-sub-in .ev-img.full img { width: 100% !important; max-height: calc(100vh - 150px) !important; border-radius: 12px; }
+.so-sub-in:has(> .ev-img.full) { padding-top: 24px; }

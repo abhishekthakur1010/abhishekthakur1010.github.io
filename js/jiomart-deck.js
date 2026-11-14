@@ -1362,8 +1362,8 @@
     var calc = ev.calc ? "<div class='ev-calc'>" + ev.calc.map(function (r) {
       return "<div class='ev-calc-row" + (r[2] ? " hi" : "") + "'><span>" + esc(r[0]) + "</span><b>" + esc(r[1]) + "</b></div>";
     }).join("") + "</div>" : "";
-    return "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
-      "<div class='ev-method'>" + esc(ev.method) + "</div>" +
+    return (ev.full ? "" : "<div class='ev-tag" + (ev.est ? " est" : "") + "'>" + esc(ev.tag || (ev.est ? "Estimate" : "Real project artifact")) + "</div>" +
+      "<div class='ev-method'>" + esc(ev.method) + "</div>") +
       (ev.img || ev.src ? "<div class='ev-img" + (ev.full ? " full" : "") + (ev.pending ? " pending" : "") + "' style='--crop:" + Math.round((ev.crop || 0.3) * 100) + "%'>" +
         "<span class='ev-imgbox'><img src='" + (ev.src || img(ev.img)) + "' onerror=\"this.closest('.ev-img').classList.add('failed')\">" +
         (ev.hl ? ev.hl.map(function (r) {
