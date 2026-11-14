@@ -2443,3 +2443,13 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .p3-a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; border-radius: 3px; }
 .p3-ev { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--acc); border-bottom-color: transparent; }
 .p3-ev:hover { border-bottom-color: var(--acc); }
+/* plan: simplify, one line only (the timeline) */
+.p3-lab { border-bottom: 0; padding-bottom: 0; }
+.p3-labs { margin-bottom: 4px; }
+.p3-s ul { border-top: 0; padding-top: 0; margin-top: 18px; }
+.p3-a { border-bottom: 0; }
+.p3-a i { opacity: .7; }
+.p3-a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.p3-s li .p3-a { color: var(--ink); }
+.p3-s li .p3-a:hover { color: var(--acc); }
+.p3-s h3 { font-size: clamp(16px,1.3vw,20px); }

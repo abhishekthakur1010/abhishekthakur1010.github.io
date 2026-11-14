@@ -311,14 +311,14 @@ window.DECK = {
       title: "How we researched",
       sub: "Two inputs fed one emotional map, which defined the ideal journey.",
       inputs: [
-        { n: "01", t: "Competitive benchmarking", d: "Learning best practices from leaders.", link: ["5 apps benchmarked", "proof:competitors"],
+        { n: "01", t: "Benchmarking", d: "Best practices from leaders.", link: ["5 apps benchmarked", "proof:competitors"],
           chips: [["USPs", "go:usp"], "Product experience", "Content design", "Service operations"] },
-        { n: "02", t: "Current journey analysis", d: "Finding the pain points.", link: ["Heuristic audit (PDF)", "pdf:research/jiomart-heuristic-audit-discovery.pdf"],
+        { n: "02", t: "Journey analysis", d: "Finding the pain points.", link: ["Heuristic audit (PDF)", "pdf:research/jiomart-heuristic-audit-discovery.pdf"],
           chips: [["Heuristics", "go:problems"], ["Data analysis", "proof:searchers"], "User survey", "Sentiment analysis"] }
       ],
-      map: { n: "03", t: "Emotional journey mapping", d: "JioMart vs competitors, as one emotional graph.", link: ["Journey map", "img:enhance-user-journey-01.png|Journey map: search, browse and recommendation"],
+      map: { n: "03", t: "Emotion mapping", d: "JioMart vs competitors.", link: ["Journey map", "img:enhance-user-journey-01.png|Journey map: search, browse and recommendation"],
         chips: ["Moments of delight", "Happy next", "Emotion patterns", "Journey break points"] },
-      goal: { n: "04", t: "Defining the ideal journey", d: "What a seamless journey needs.", link: ["Priority board", "img:enhance-user-journey-02.png|MoSCoW priority board for the product card"],
+      goal: { n: "04", t: "Ideal journey", d: "Priorities and quick wins.", link: ["Priority board", "img:enhance-user-journey-02.png|MoSCoW priority board for the product card"],
         chips: [["Opportunity areas", "go:problems"], ["Quick wins", "img:enhance-user-journey-02.png|MoSCoW priority board for the product card"], "Design insights", ["Recommendations", "go:versions"]] },
       notes: "Benchmarking and a current-journey audit fed an emotional journey map, which defined the ideal journey."
     },
