@@ -425,15 +425,9 @@ window.DECK = {
         { k: "Voice", s: "S2", e: "E2", img: "research/home-prob-voice.webp", page:11,
           h: ["Flexibility", "Help"],
           issue: "Visible mic. 3 confusing panels." },
-        { k: "Search page", s: "S1", e: "E1", img: "research/home-prob-search.webp", page:9,
-          h: ["User control", "Recognition"],
-          issue: "Wrong categories. No typo help." },
-        { k: "Icons", s: "S0", e: "E0", img: "research/home-prob-icons.webp", page:6,
-          h: ["Recognition", "Consistency"],
-          issue: "Unclear icons. Mismatched colours." }
       ],
       src: "Heuristic evaluation, Central UI/UX research team. S0 cosmetic to S4 critical; E0 easy to E3 hard.",
-      notes: "Beyond the banners, the audit checked every way to start a search from Home. Scan and the shopping list were the most severe."
+      notes: "The three most severe Home search issues: scan, the shopping list and voice."
     },
 
     /* SYSTEM APPLIED */

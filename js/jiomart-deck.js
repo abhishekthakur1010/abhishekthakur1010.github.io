@@ -1127,7 +1127,7 @@
           return x.proof ? "<button class='prb-chip ev-link' data-proof='" + esc(x.proof) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b></button>"
             : "<button class='prb-chip' data-img='" + img(x.img) + "' data-cap='" + esc(x.cap || x.k) + "'><span>" + esc(x.k) + "</span><b>" + esc(x.v) + "</b></button>";
         }).join("") +
-        (sc.doc ? "<a class='prb-doc' href='" + doc + "' target='_blank' rel='noopener'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h4'/></svg>Full audit (PDF)</a>" : "") + "</div></div></div><div class='prb-grid'>" +
+        (sc.doc ? "<a class='prb-doc' href='" + doc + "' target='_blank' rel='noopener'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5M9 13h6M9 17h4'/></svg>Full audit (PDF)</a>" : "") + "</div></div></div><div class='prb-grid' style='grid-template-columns:repeat(" + Math.max(sc.items.length,3) + ",1fr)'>" +
         sc.items.map(function (it, i) {
           return "<article class='prb-c'><div class='prb-img'><img loading='lazy' src='" + img(it.img) + "' alt='" + esc(it.k) + "'></div>" +
             "<div class='prb-b'><div class='prb-t'><b>" + esc(it.k) + "</b><span class='prb-se'><i class='sev s" + esc(it.s.slice(1)) + "'>" + esc(it.s) + "</i><i class='ease'>" + esc(it.e) + "</i></span></div>" +
