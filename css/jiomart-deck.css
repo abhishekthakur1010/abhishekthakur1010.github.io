@@ -2084,3 +2084,6 @@ body.deck[data-theme="light"] .kp-bar.post, body.deck[data-theme="light"] .im-ba
 .cb-photo { height: min(52vh, 520px) !important; aspect-ratio: auto !important; }
 .slide.type-why .why-r li b, .slide.type-why .sl.why ol b { font-size: clamp(20px, 1.9vw, 30px); }
 @media (max-height: 760px) { .ev-img { height: 16vh !important; } .cb-photo { height: 40vh !important; } }
+/* Old / New: slightly smaller phones, tighter gutters */
+.sl.overview .ov-n .device { --w: min(22vw, calc((100vh - 370px) / 2.12), 320px) !important; }
+.sl.overview .ov-grid.sw-track { gap: clamp(10px, 1vw, 18px) !important; }
