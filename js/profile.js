@@ -184,6 +184,8 @@
   // Visitor count: 1,011 plus each browser counted once by the public counter service (shown in the intro and on the banner strip).
   var visitNums = document.querySelectorAll('[data-visit-num]');
   if (visitNums.length && window.fetch) {
+    var FLOOR = 1181;  // last count seen before the counter service dropped it; never show less
+    visitNums.forEach(function (el) { el.textContent = FLOOR.toLocaleString('en-IN'); });
     var BASE = 1011, COUNTER = 'https://abacus.jasoncameron.dev';  // free, keyless (counterapi.dev v1 was shut down)
     var seen = false;
     try { seen = localStorage.getItem('at-visit-counted-v2') === '1'; } catch (e) {}
@@ -192,7 +194,7 @@
       .then(function (d) {
         var n = d && (d.count != null ? d.count : d.value);
         if (typeof n !== 'number') return;
-        var shown = (BASE + n).toLocaleString('en-IN');
+        var shown = Math.max(FLOOR, BASE + n).toLocaleString('en-IN');
         visitNums.forEach(function (el) { el.textContent = shown; });
         if (!seen) { try { localStorage.setItem('at-visit-counted-v2', '1'); } catch (e) {} }
       })
