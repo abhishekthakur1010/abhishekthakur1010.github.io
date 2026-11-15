@@ -5,8 +5,8 @@
 //   Back          the page glides to the top, the profile content slides away, the banner
 //                 grows while the circle travels back to the middle, and only then do the
 //                 other circles rise in, one after another.
-//   Gamified,     still being built: a dialog says so and offers to request a password.
-//   Story
+//   Gamified      opens Abhishek's World (the 3D map) straight away.
+//   Story         still being built: a dialog says so and offers to request a password.
 //   +             the feedback dialog fades and lifts in, and fades out when closed.
 // Opened with profile.html#categories (the home page redirects there); a script in
 // <head> sets the first state so the profile never flashes before the circles, then shows
@@ -22,8 +22,8 @@
   // Timings (ms); keep MOVE in step with --cat-move in categories.css.
   var T = reduce ? { out: 0, quiet: 0, move: 0, rise: 0, settle: 0, away: 0 }
     : { out: 380, quiet: 320, move: 820, rise: 620, settle: 700, away: 650 };
-  // Both pages are still being built: they open through a password dialog.
-  var WIP = { gamified: 'Gamified', scrolly: 'Scrollytelling' };
+  // Scrollytelling is still being built: it opens through a password dialog. Gamified is open to all.
+  var WIP = { scrolly: 'Scrollytelling' };
   var ROUTES = { gamified: './world/index.html', scrolly: './scrolly/index.html' };
   // SHA-256 of the shared preview password. A light gate only: the pages themselves stay public.
   var PASS_HASH = 'e2855c23afcb9cdde9a6bbb315fc71376be098e28e4f8a5b8576cddc9179e3f0';
@@ -302,6 +302,7 @@
     if (key === 'resume') return toProfile(false);
     // Work-in-progress categories ask for the password every time.
     if (WIP[key]) return openWip(key);
+    if (ROUTES[key]) return away(b, ROUTES[key]);
     if (key === 'feedback') { fbDlg.classList.remove('sent'); open(fbDlg); }
   });
 
