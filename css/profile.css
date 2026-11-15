@@ -1255,11 +1255,11 @@ html, body { overflow-x: clip; }
 @media (max-width: 600px) { .story-cta .sc-btn { width: 100%; } }
 
 /* ── Journey strip: flat navy illustration above the footer ── */
-.journey { position: relative; margin: 32px 0 0; background: #0f2557; color: #fff; overflow: hidden; }
-.journey .jr-head { max-width: 744px; margin: 0 auto; padding: 44px 16px 8px; text-align: center; position: relative; z-index: 1; }
-.journey .jr-kicker { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #9fbdf5; }
+.journey { position: relative; margin: 32px 0 0; background: radial-gradient(60% 50% at 20% 30%, rgba(255,170,120,.10), transparent 70%), radial-gradient(50% 40% at 85% 20%, rgba(255,200,140,.08), transparent 70%), linear-gradient(180deg, #3e0f22 0%, #7a1530 42%, #b3262f 76%, #d9533a 100%); color: #fff; overflow: hidden; }
+.journey .jr-head { max-width: 744px; margin: 0 auto; padding: 52px 16px 8px; text-align: center; position: relative; z-index: 1; }
+.journey .jr-kicker { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #f2c66d; }
 .journey h2 { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 48px); line-height: 1.05; letter-spacing: -.01em; }
-.journey .jr-sub { margin: 12px auto 0; max-width: 460px; font-size: 15px; line-height: 1.5; color: #c9d8f8; }
+.journey .jr-sub { margin: 12px auto 0; max-width: 460px; font-size: 15px; line-height: 1.5; color: #ffe3cf; }
 .journey .jr-scene { position: relative; }
 .journey .js-svg { display: block; width: 100%; height: 310px; }
 .journey .js-track { animation: jr-pan 110s linear infinite; }
