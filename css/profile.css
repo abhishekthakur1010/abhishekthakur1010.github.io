@@ -343,7 +343,7 @@ button { font: inherit; cursor: pointer; }
 .cover { transition: height .3s ease; }
 .cover.has-canvas { background: linear-gradient(118deg, #0e2340 0%, #17406f 48%, #2a6db3 100%); }
 .cover-canvas { position: absolute; inset: 0; z-index: 0; touch-action: none; pointer-events: none; }
-.cover.is-playing { height: 300px; }
+.cover.is-playing { height: 310px; }
 .cover.is-playing .cover-canvas { pointer-events: auto; cursor: grab; }
 .cover.is-playing .cover-canvas:active { cursor: grabbing; }
 .cover-copy { transition: opacity .25s; }
@@ -1253,3 +1253,35 @@ html, body { overflow-x: clip; }
 .story-cta .sc-sub { margin: 0; color: var(--text-2); font-size: 16px; line-height: 1.5; max-width: 560px; }
 .story-cta .sc-btn { height: 44px; padding: 0 22px; font-size: 15px; flex: none; }
 @media (max-width: 600px) { .story-cta .sc-btn { width: 100%; } }
+
+/* ── Journey strip: flat navy illustration above the footer ── */
+.journey { position: relative; margin: 32px 0 0; background: #0f2557; color: #fff; overflow: hidden; }
+.journey .jr-head { max-width: 744px; margin: 0 auto; padding: 44px 16px 8px; text-align: center; position: relative; z-index: 1; }
+.journey .jr-kicker { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #9fbdf5; }
+.journey h2 { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 48px); line-height: 1.05; letter-spacing: -.01em; }
+.journey .jr-sub { margin: 12px auto 0; max-width: 460px; font-size: 15px; line-height: 1.5; color: #c9d8f8; }
+.journey .jr-scene { position: relative; }
+.journey .js-svg { display: block; width: 100%; height: 310px; }
+.journey .js-track { animation: jr-pan 110s linear infinite; }
+.journey:hover .js-track { animation-play-state: paused; }
+@keyframes jr-pan { to { transform: translateX(-2600px); } }
+.journey .js-lbl { font: 600 11px/1 Inter, system-ui, sans-serif; fill: #fff; }
+.journey .js-place { font: 600 12px/1 Inter, system-ui, sans-serif; fill: #9fbdf5; letter-spacing: .04em; }
+.journey .js-big { font: 700 26px/1 "Fraunces", Georgia, serif; fill: #f2c66d; }
+.journey .js-sm { font: 500 11px/1 Inter, system-ui, sans-serif; fill: #c9d8f8; }
+.journey .js-tw { font: 800 12px/1 Inter, system-ui, sans-serif; fill: #fff; letter-spacing: .1em; }
+.journey .js-trk { font: 800 8px/1 Inter, system-ui, sans-serif; fill: #0f2557; letter-spacing: .06em; }
+.journey .js-spk { animation: jr-twinkle 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.journey .js-spk:nth-of-type(2n) { animation-delay: -1.6s; }
+@keyframes jr-twinkle { 50% { opacity: .35; transform: scale(.7); } }
+.journey .jr-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.journey + .footer { margin-top: 0; padding-top: 20px; padding-bottom: 0; }
+@media (max-width: 720px) {
+  .journey .jr-head { padding-top: 34px; }
+  .journey .js-svg { height: 230px; }
+  .journey .js-track { animation-duration: 80s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey .js-track, .journey .js-spk { animation: none; }
+  .journey .jr-scene { overflow-x: auto; }
+}
