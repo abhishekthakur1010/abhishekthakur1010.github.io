@@ -1291,9 +1291,13 @@ html, body { overflow-x: clip; }
 .is-next .jr-year, .is-next .jr-co { color: var(--text-2); }
 .jr-spk { transform-box: fill-box; transform-origin: center; animation: jr-tw 3s ease-in-out infinite; }
 @keyframes jr-tw { 50% { opacity: .3; transform: scale(.7); } }
-.jr-cta { text-align: center; padding: 0 20px 48px; margin-top: -12px; }
-.jr-cta .btn { display: inline-flex; align-items: center; gap: 8px; }
-.jr-cta .btn svg { width: 16px; height: 16px; }
+.jr-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.journey .jr-track { padding-top: 48px; }
+.jr-cta { text-align: center; padding: 0 20px 40px; margin-top: -16px; }
+.jr-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--text-2); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: color .2s, border-color .2s; }
+.jr-link svg { width: 14px; height: 14px; transition: transform .2s; }
+.jr-link:hover, .jr-link:focus-visible { color: var(--accent); border-color: currentColor; }
+.jr-link:hover svg { transform: translateX(3px); }
 .journey + .footer { margin-top: 0; padding-top: 18px; }
 @media (prefers-reduced-motion: reduce) {
   .jr-bike, .jr-spoke, .jr-plane, .jr-sig, .jr-spk { animation: none; }
