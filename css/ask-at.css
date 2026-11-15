@@ -47,7 +47,7 @@
 
 .aat-head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 14px 22px; border-bottom: 1px solid var(--aat-soft); }
 .aat-head .aat-orb { width: 30px; height: 30px; }
-.aat-title { margin: 0; font-size: 15.5px; font-weight: 650; letter-spacing: -.01em; line-height: 1.2; }
+.aat-title { margin: 0; font-size: 17px; font-weight: 750; letter-spacing: -.01em; line-height: 1.2; }
 .aat-sub { margin: 2px 0 0; font-size: 12.5px; color: var(--aat-ink-3); }
 .aat-head-txt { flex: 1; min-width: 0; }
 .aat-sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -146,4 +146,3 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
 .aat-contact a:first-child { background: var(--aat-ink); border-color: var(--aat-ink); color: var(--aat-bg); }
 .aat-contact a:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
 .aat-contact svg { width: 16px; height: 16px; }
-.aat-msg--bot .aat-bubble p:first-child strong:only-child { font-weight: 650; letter-spacing: -.01em; }
