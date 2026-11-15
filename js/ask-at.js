@@ -18,7 +18,7 @@
     { id: 'recruiter', as: 'a recruiter', label: 'Recruiter', who: 'recruiters', k: ['recruit', 'recruiter', 'hr', 'talent', 'recruiting'], qs: [
       ['Quick summary?', ['Lead Product Designer at Delhivery, 10+ years, products used by 100M+ people. Before this: Jio, Swiggy Dineout, Times Internet.']],
       ['Can I get your resume?', ['Sure, here it is: ' + CV + '.']],
-      ['What roles interest you?', ['Senior and lead design roles where design moves real business numbers. Happy to chat on ' + LI + '.']],
+      ['What roles interest you?', ['Yes, I\'m actively looking! Senior and lead design roles where design moves real business numbers. Let\'s talk on ' + LI + '.']],
       ['Where are you based?', ['Gurgaon. Easiest to reach me on ' + LI + '.']]
     ] },
     { id: 'hiring', as: 'a hiring manager', label: 'Hiring manager', who: 'hiring managers', k: ['hiring', 'hiring manager', 'design manager', 'head of design', 'director'], qs: [
@@ -230,7 +230,7 @@
   function chooseRole(p, typed) {
     if (!typed) userSays(p.label);
     setPersona(p);
-    say({ who: 'bot', parts: ['Nice! Ask me anything, or pick one:'], chips: nextQs(2) });
+    say({ who: 'bot', parts: [(p.id === 'recruiter' || p.id === 'hiring') ? 'Great timing! 🎉 Good news, Abhishek is actively looking for his next role. How can I help?' : 'Nice! Ask me anything, or pick one:'], chips: nextQs(2) });
   }
   function ask(text) {
     text = text.trim();
