@@ -1,0 +1,121 @@
+/* Ask AT: right-side, full-height assistant drawer (mock UI; no AI connected yet).
+   Black-and-white to match the profile; uses the page's own colour tokens so the Look panel's dark mode carries over. */
+.aat { --aat-bg: var(--bg, #fff); --aat-ink: var(--text, #1d1f23); --aat-ink-2: var(--text-2, #5e6168); --aat-ink-3: var(--text-3, #8a8d93);
+       --aat-line: var(--line, #e3e1dc); --aat-soft: var(--line-soft, #efede9); --aat-ease: cubic-bezier(.22, .8, .24, 1); font: 15px/1.55 var(--font, system-ui, sans-serif); }
+
+/* Launcher: a quiet black pill that sits beside the Look button */
+.aat-launch { position: fixed; right: 80px; bottom: 24px; z-index: 61; display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 18px 0 7px;
+  border: 0; border-radius: 999px; background: var(--aat-ink); color: var(--aat-bg); font: 600 14px/1 var(--font, system-ui, sans-serif); letter-spacing: .01em; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,.16), 0 1px 3px rgba(0,0,0,.12); transition: transform .25s var(--aat-ease), box-shadow .25s ease, opacity .25s ease; }
+.aat-launch:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.2), 0 1px 3px rgba(0,0,0,.12); }
+.aat-launch:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 3px; }
+.aat-launch .aat-orb { width: 30px; height: 30px; }
+.aat-launch kbd { font: 500 11px/1 var(--font, system-ui, sans-serif); opacity: .55; margin-left: 2px; }
+.aat.is-open .aat-launch { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+/* The orb: an original monochrome "ink drop" that slowly turns and breathes */
+.aat-orb { position: relative; display: inline-block; flex: none; border-radius: 50%; isolation: isolate; overflow: hidden;
+  background: radial-gradient(circle at 32% 28%, #fff 0 8%, rgba(255,255,255,0) 30%), #0d0d0f; box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+.aat-orb::before { content: ""; position: absolute; inset: -30%; z-index: -1; border-radius: 50%;
+  background: conic-gradient(from 0deg, #0d0d0f, #6b6b70 18%, #0d0d0f 34%, #c9c9cc 52%, #1b1b1e 68%, #8d8d92 84%, #0d0d0f);
+  filter: blur(5px); animation: aat-spin 7s linear infinite; }
+.aat-orb::after { content: ""; position: absolute; inset: 22%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.75), rgba(255,255,255,0) 70%);
+  mix-blend-mode: screen; animation: aat-breathe 3.2s ease-in-out infinite; }
+.aat-orb.is-thinking::before { animation-duration: 1.6s; }
+.aat-orb.is-thinking::after { animation-duration: 1.1s; }
+@keyframes aat-spin { to { transform: rotate(1turn); } }
+@keyframes aat-breathe { 0%, 100% { transform: scale(.7); opacity: .35; } 50% { transform: scale(1.08); opacity: .9; } }
+
+/* Scrim keeps the portfolio visible, just a touch dimmer */
+.aat-scrim { position: fixed; inset: 0; z-index: 70; background: rgba(12,12,14,.18); opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
+.aat.is-open .aat-scrim { opacity: 1; visibility: visible; transition: opacity .4s ease; }
+
+/* Drawer */
+.aat-drawer { position: fixed; top: 0; right: 0; z-index: 71; width: clamp(420px, 48vw, 760px); height: 100vh; height: 100dvh;
+  display: grid; grid-template-rows: auto 1fr auto; background: var(--aat-bg); color: var(--aat-ink); border-left: 1px solid var(--aat-line);
+  box-shadow: -24px 0 60px rgba(0,0,0,.10); transform: translateX(100%); visibility: hidden;
+  transition: transform .5s var(--aat-ease), visibility 0s linear .5s; }
+.aat.is-open .aat-drawer { transform: none; visibility: visible; transition: transform .5s var(--aat-ease); }
+
+.aat-head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 14px 22px; border-bottom: 1px solid var(--aat-soft); }
+.aat-head .aat-orb { width: 30px; height: 30px; }
+.aat-title { margin: 0; font-size: 15.5px; font-weight: 650; letter-spacing: -.01em; line-height: 1.2; }
+.aat-sub { margin: 2px 0 0; font-size: 12.5px; color: var(--aat-ink-3); display: flex; align-items: center; gap: 6px; }
+.aat-sub::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--aat-ink-3); }
+.aat-head-txt { flex: 1; min-width: 0; }
+.aat-icon-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 10px; background: none; color: var(--aat-ink-2); cursor: pointer; transition: background .15s ease, color .15s ease; }
+.aat-icon-btn:hover { background: var(--aat-soft); color: var(--aat-ink); }
+.aat-icon-btn:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 1px; }
+.aat-icon-btn svg { width: 18px; height: 18px; }
+.aat-icon-btn[hidden] { display: none; }
+
+/* Conversation: the only part that scrolls */
+.aat-log { overflow-y: auto; overscroll-behavior: contain; padding: 28px clamp(20px, 4vw, 44px) 24px; scroll-behavior: smooth; }
+.aat-log:focus-visible { outline: none; }
+
+.aat-welcome { max-width: 520px; margin: 4vh auto 0; text-align: center; animation: aat-rise .6s var(--aat-ease) both .12s; }
+.aat-welcome .aat-orb { width: 76px; height: 76px; box-shadow: 0 14px 40px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.14); }
+.aat-welcome .aat-orb::before { filter: blur(9px); }
+.aat-welcome h3 { margin: 22px 0 8px; font-size: clamp(22px, 2.2vw, 27px); font-weight: 650; letter-spacing: -.02em; line-height: 1.2; }
+.aat-welcome p { margin: 0 auto; max-width: 400px; color: var(--aat-ink-2); }
+.aat-sugs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 8px; text-align: left; }
+.aat-sug { width: 100%; display: flex; align-items: center; gap: 12px; padding: 13px 16px; border: 1px solid var(--aat-line); border-radius: 12px; background: var(--aat-bg);
+  color: var(--aat-ink); font: inherit; font-size: 14.5px; text-align: left; cursor: pointer; transition: border-color .15s ease, background .15s ease, transform .2s var(--aat-ease); }
+.aat-sug:hover { border-color: var(--aat-ink); transform: translateX(2px); }
+.aat-sug:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
+.aat-sug span { flex: 1; }
+.aat-sug svg { width: 16px; height: 16px; color: var(--aat-ink-3); flex: none; }
+.aat-sugs li { animation: aat-rise .5s var(--aat-ease) both; }
+.aat-sugs li:nth-child(1) { animation-delay: .22s; } .aat-sugs li:nth-child(2) { animation-delay: .28s; }
+.aat-sugs li:nth-child(3) { animation-delay: .34s; } .aat-sugs li:nth-child(4) { animation-delay: .40s; }
+@keyframes aat-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.aat-msgs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; max-width: 680px; margin-inline: auto; }
+.aat-msg { display: flex; gap: 12px; animation: aat-rise .35s var(--aat-ease) both; }
+.aat-msg--user { justify-content: flex-end; }
+.aat-msg--user .aat-bubble { max-width: 80%; padding: 10px 15px; border-radius: 18px 18px 4px 18px; background: var(--aat-ink); color: var(--aat-bg); white-space: pre-wrap; overflow-wrap: anywhere; }
+.aat-msg--bot .aat-orb { width: 26px; height: 26px; margin-top: 1px; }
+.aat-msg--bot .aat-bubble { flex: 1; min-width: 0; color: var(--aat-ink); overflow-wrap: anywhere; }
+.aat-bubble p { margin: 0 0 10px; } .aat-bubble p:last-child { margin-bottom: 0; }
+.aat-bubble ul { margin: 0 0 10px; padding-left: 18px; } .aat-bubble li { margin: 3px 0; }
+.aat-bubble a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--aat-ink-3); }
+.aat-bubble a:hover { text-decoration-color: currentColor; }
+.aat-follow { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.aat-follow button { padding: 6px 12px; border: 1px solid var(--aat-line); border-radius: 999px; background: none; color: var(--aat-ink-2); font: inherit; font-size: 13px; cursor: pointer; transition: border-color .15s, color .15s; }
+.aat-follow button:hover { border-color: var(--aat-ink); color: var(--aat-ink); }
+.aat-follow button:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
+.aat-typing { display: inline-flex; gap: 4px; padding: 9px 0; }
+.aat-typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--aat-ink-3); animation: aat-dot 1s ease-in-out infinite; }
+.aat-typing i:nth-child(2) { animation-delay: .15s; } .aat-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes aat-dot { 0%, 80%, 100% { opacity: .3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+.aat-caret::after { content: ""; display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px; background: currentColor; animation: aat-blink 1s steps(1) infinite; }
+@keyframes aat-blink { 50% { opacity: 0; } }
+
+/* Composer: pinned to the bottom */
+.aat-foot { padding: 12px clamp(16px, 3.4vw, 40px) max(14px, env(safe-area-inset-bottom)); border-top: 1px solid var(--aat-soft); background: var(--aat-bg); }
+.aat-form { max-width: 680px; margin: 0 auto; display: flex; align-items: flex-end; gap: 8px; padding: 7px 7px 7px 16px; border: 1px solid var(--aat-line); border-radius: 16px; background: var(--aat-bg); transition: border-color .15s ease, box-shadow .15s ease; }
+.aat-form:focus-within { border-color: var(--aat-ink); box-shadow: 0 0 0 3px rgba(0,0,0,.05); }
+.aat-input { flex: 1; min-height: 38px; max-height: 160px; padding: 8px 0; border: 0; outline: 0; resize: none; background: none; color: var(--aat-ink); font: inherit; line-height: 1.45; }
+.aat-input::placeholder { color: var(--aat-ink-3); }
+.aat-send { display: inline-grid; place-items: center; width: 38px; height: 38px; flex: none; border: 0; border-radius: 11px; background: var(--aat-ink); color: var(--aat-bg); cursor: pointer; transition: opacity .15s ease, transform .15s ease; }
+.aat-send:disabled { opacity: .25; cursor: default; }
+.aat-send:not(:disabled):hover { transform: translateY(-1px); }
+.aat-send:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
+.aat-send svg { width: 17px; height: 17px; }
+.aat-note { max-width: 680px; margin: 8px auto 0; font-size: 11.5px; color: var(--aat-ink-3); text-align: center; }
+
+html.aat-lock, html.aat-lock body { overflow: hidden; }
+
+@media (max-width: 720px) {
+  .aat-drawer { width: 100vw; border-left: 0; box-shadow: none; }
+  .aat-launch { right: auto; left: 16px; bottom: 20px; }
+  .aat-launch kbd { display: none; }
+  .aat-welcome { margin-top: 3vh; }
+  .aat-note .aat-keys { display: none; }
+  .aat-msg--user .aat-bubble { max-width: 88%; }
+  .aat-input { font-size: 16px; } /* no iOS zoom on focus */
+}
+@media (prefers-reduced-motion: reduce) {
+  .aat-drawer, .aat-scrim, .aat-launch { transition: none !important; }
+  .aat-orb::before, .aat-orb::after, .aat-welcome, .aat-sugs li, .aat-msg, .aat-typing i { animation: none !important; }
+}
