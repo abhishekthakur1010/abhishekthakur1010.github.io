@@ -1256,7 +1256,7 @@ html, body { overflow-x: clip; }
 
 /* ── Journey strip: quiet fine-line timeline above the footer ── */
 .journey { --jr-bg: #f7f5f1; --jr-ink: #b9b2a6; position: relative; margin: 40px 0 0; background: var(--jr-bg); border-top: 1px solid var(--line); overflow: hidden; }
-.journey .jr-head { max-width: 640px; margin: 0 auto; padding: 48px 20px 0; text-align: center; }
+.journey .jr-head { max-width: 640px; margin: 0 auto; padding: 44px 20px 0; text-align: center; }
 .journey h2 { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; letter-spacing: -.01em; color: var(--text); }
 .journey .jr-sub { margin: 8px 0 0; font-size: 14px; color: var(--text-2); }
 .jr-scroll { overflow-x: auto; scrollbar-width: none; outline: none; }
@@ -1275,7 +1275,7 @@ html, body { overflow-x: clip; }
 @keyframes jr-sig { 0%, 100% { opacity: .2; } 45% { opacity: 1; } }
 .jr-stops { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: subgrid; margin: 0; padding: 0; list-style: none; }
 .jr-stop { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
-.jr-dot { width: 9px; height: 9px; margin-top: -7px; border-radius: 50%; background: var(--jr-bg); border: 1.5px solid #9d968a; box-sizing: border-box; }
+.jr-dot { position: relative; z-index: 1; width: 9px; height: 9px; margin-top: -7px; border-radius: 50%; background: var(--jr-bg); border: 1.5px solid #9d968a; box-sizing: border-box; }
 .is-now .jr-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(10, 102, 194, .15); }
 .jr-info { display: flex; flex-direction: column; align-items: center; margin-top: 16px; }
 .jr-tile { display: grid; place-items: center; width: 36px; height: 36px; padding: 6px; box-sizing: border-box; border-radius: 10px; background: #fff; border: 1px solid var(--line); margin-bottom: 10px; color: #8f887c; }
@@ -1283,7 +1283,7 @@ html, body { overflow-x: clip; }
 .jr-tile--wide { padding: 3px; }
 .jr-info p { margin: 0; }
 .jr-year { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); }
-.jr-co { margin-top: 4px !important; font-size: 14px; font-weight: 600; color: var(--text); }
+.jr-co { margin-top: 2px !important; font-size: 14px; font-weight: 600; color: var(--text); }
 .jr-role { margin-top: 2px !important; font-size: 12.5px; line-height: 1.4; color: var(--text-2); max-width: 150px; }
 .journey + .footer { margin-top: 0; padding-top: 18px; }
 @media (prefers-reduced-motion: reduce) {
