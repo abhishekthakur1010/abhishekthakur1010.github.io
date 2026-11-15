@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="./css/profile.css?v=92" rel="stylesheet" />
-    <link href="./css/categories.css?v=34" rel="stylesheet" />
+    <link href="./css/categories.css?v=35" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="./css/look.css?v=3" rel="stylesheet" />
     <script src="./js/look.js?v=4"></script>
@@ -96,6 +96,17 @@
             <ul class="cats-row" aria-label="Choose how to explore">
               <li><button type="button" class="cat" data-key="resume">
                 <span class="cat-pic"><img src="./images/profile-photo.jpg" alt="" /></span>
+                <!-- Christmas season: a Santa hat perched on the photo circle -->
+                <svg class="xmas-hat" viewBox="0 0 120 100" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="hatRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2453c"/><stop offset=".6" stop-color="#c0262c"/><stop offset="1" stop-color="#8e1520"/></linearGradient>
+                    <linearGradient id="hatFur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6e0da"/></linearGradient>
+                  </defs>
+                  <path d="M14 78 C 22 44, 46 14, 78 10 C 96 8, 108 22, 104 40 C 100 30, 92 26, 84 30 C 72 38, 76 62, 92 76 Z" fill="url(#hatRed)"/>
+                  <path d="M60 22 C 70 16, 82 14, 90 18" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
+                  <rect x="6" y="70" width="94" height="22" rx="11" fill="url(#hatFur)"/>
+                  <circle cx="104" cy="44" r="11" fill="url(#hatFur)"/>
+                </svg>
                 <span class="cat-name">Professional</span><span class="cat-tag cat-rec">Recommended</span>
               </button></li>
               <li><button type="button" class="cat" data-key="gamified">
