@@ -1255,7 +1255,7 @@ html, body { overflow-x: clip; }
 @media (max-width: 600px) { .story-cta .sc-btn { width: 100%; } }
 
 /* ── Journey strip: quiet fine-line timeline above the footer ── */
-.journey { --jr-bg: #f7f5f1; --jr-ink: #b9b2a6; position: relative; margin: 40px 0 0; background: var(--jr-bg); border-top: 1px solid var(--line); overflow: hidden; }
+.journey { --jr-bg: #ffffff; --jr-ink: #c4beb3; position: relative; margin: 24px 0 0; background: linear-gradient(180deg, #fff 0%, #fff 48%, #f8f6f2 72%, #fff 100%); overflow: hidden; }
 .journey .jr-head { max-width: 640px; margin: 0 auto; padding: 44px 20px 0; text-align: center; }
 .journey h2 { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; letter-spacing: -.01em; color: var(--text); }
 .journey .jr-sub { margin: 8px 0 0; font-size: 14px; color: var(--text-2); }
