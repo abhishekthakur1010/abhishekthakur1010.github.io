@@ -32,7 +32,7 @@
 
 /* Drawer */
 .aat-drawer { position: fixed; top: 0; right: 0; z-index: 71; width: clamp(420px, 48vw, 760px); height: 100vh; height: 100dvh;
-  display: grid; grid-template-rows: auto 1fr auto; background: var(--aat-bg); color: var(--aat-ink); border-left: 1px solid var(--aat-line);
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto; grid-template-columns: minmax(0, 1fr); background: var(--aat-bg); color: var(--aat-ink); border-left: 1px solid var(--aat-line);
   box-shadow: -24px 0 60px rgba(0,0,0,.10); transform: translateX(100%); visibility: hidden;
   transition: transform .5s var(--aat-ease), visibility 0s linear .5s; }
 .aat.is-open .aat-drawer { transform: none; visibility: visible; transition: transform .5s var(--aat-ease); }
@@ -40,9 +40,9 @@
 .aat-head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 14px 22px; border-bottom: 1px solid var(--aat-soft); }
 .aat-head .aat-orb { width: 30px; height: 30px; }
 .aat-title { margin: 0; font-size: 15.5px; font-weight: 650; letter-spacing: -.01em; line-height: 1.2; }
-.aat-sub { margin: 2px 0 0; font-size: 12.5px; color: var(--aat-ink-3); display: flex; align-items: center; gap: 6px; }
-.aat-sub::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--aat-ink-3); }
+.aat-sub { margin: 2px 0 0; font-size: 12.5px; color: var(--aat-ink-3); }
 .aat-head-txt { flex: 1; min-width: 0; }
+.aat-sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .aat-icon-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 10px; background: none; color: var(--aat-ink-2); cursor: pointer; transition: background .15s ease, color .15s ease; }
 .aat-icon-btn:hover { background: var(--aat-soft); color: var(--aat-ink); }
 .aat-icon-btn:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 1px; }
