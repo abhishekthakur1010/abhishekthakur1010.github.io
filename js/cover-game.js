@@ -381,6 +381,7 @@
 
   // A hanging Christmas star: a soft halo, a gold five-pointed star with a lighter face, gently twinkling.
   function star(x, y, s, p) {
+    s *= 0.85; y -= 1.5; // a touch smaller than the original star
     // The glow breathes: it dims right down, then swells bright again (about every 2.5 seconds, each star out of step).
     var tw = reduce ? 1 : 0.5 + 0.5 * Math.sin(now * 2.5 + p * 1.7), sw = reduce ? 0 : Math.sin(now * 1.1 + p) * 0.08;
     var hr = (14 + 12 * tw) * s, g = ctx.createRadialGradient(x, y, 0, x, y, hr);
