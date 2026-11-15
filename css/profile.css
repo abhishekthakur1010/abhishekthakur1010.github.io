@@ -1261,13 +1261,13 @@ html, body { overflow-x: clip; }
 .journey .jr-sub { margin: 8px 0 0; font-size: 14px; color: var(--text-2); }
 .jr-scroll { overflow-x: auto; scrollbar-width: none; outline: none; }
 .jr-scroll::-webkit-scrollbar { display: none; }
-.jr-track { min-width: 900px; max-width: 1128px; margin: 0 auto; padding: 24px 24px 44px; box-sizing: border-box;
-  display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: auto auto; }
+.jr-track { min-width: 1000px; max-width: 1240px; margin: 0 auto; padding: 24px 24px 44px; box-sizing: border-box;
+  display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: auto auto; }
 .jr-scene { grid-column: 1 / -1; grid-row: 1; position: relative; color: var(--jr-ink); }
 .jr-land { display: block; width: 100%; height: auto; overflow: visible; }
-.jr-bike { position: absolute; left: 0; bottom: 1px; width: 34px; height: 31px; color: #8f887c; animation: jr-ride 34s linear infinite; }
+.jr-bike { position: absolute; left: 0; bottom: 1px; width: 34px; height: 31px; color: #8f887c; animation: jr-ride 36s linear infinite; }
 .jr-spoke { transform-box: fill-box; transform-origin: center; animation: jr-spin .7s linear infinite; }
-@keyframes jr-ride { from { transform: translateX(-50px); } to { transform: translateX(1160px); } }
+@keyframes jr-ride { from { left: -50px; } to { left: 86%; } }
 @keyframes jr-spin { to { transform: rotate(360deg); } }
 .jr-plane { animation: jr-bob 5s ease-in-out infinite; }
 @keyframes jr-bob { 50% { transform: translateY(-3px); } }
@@ -1285,8 +1285,17 @@ html, body { overflow-x: clip; }
 .jr-year { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); }
 .jr-co { margin-top: 2px !important; font-size: 14px; font-weight: 600; color: var(--text); }
 .jr-role { margin-top: 2px !important; font-size: 12.5px; line-height: 1.4; color: var(--text-2); max-width: 150px; }
+.journey .jr-sub { margin: 8px 0 0; font-size: 14px; color: var(--text-2); }
+.is-next .jr-dot { border-style: dashed; border-color: #9d968a; }
+.is-next .jr-tile { border-style: dashed; background: transparent; color: #8f887c; }
+.is-next .jr-year, .is-next .jr-co { color: var(--text-2); }
+.jr-spk { transform-box: fill-box; transform-origin: center; animation: jr-tw 3s ease-in-out infinite; }
+@keyframes jr-tw { 50% { opacity: .3; transform: scale(.7); } }
+.jr-cta { text-align: center; padding: 0 20px 48px; margin-top: -12px; }
+.jr-cta .btn { display: inline-flex; align-items: center; gap: 8px; }
+.jr-cta .btn svg { width: 16px; height: 16px; }
 .journey + .footer { margin-top: 0; padding-top: 18px; }
 @media (prefers-reduced-motion: reduce) {
-  .jr-bike, .jr-spoke, .jr-plane, .jr-sig { animation: none; }
+  .jr-bike, .jr-spoke, .jr-plane, .jr-sig, .jr-spk { animation: none; }
   .jr-bike { display: none; }
 }
