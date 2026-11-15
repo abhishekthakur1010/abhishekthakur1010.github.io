@@ -1245,3 +1245,11 @@ html, body { overflow-x: clip; }
 [data-mode="dark"] .feat-row .feat-logo { box-shadow: none; }
 :root[data-skin="instagram"] .feat-row .feat-logo { display: none; }
 @media (max-width: 720px) { .feat-row .feat-logo { width: 36px; height: 36px; } .feat-row .feat-logo img { width: 28px; height: 28px; } }
+
+/* About me: a single call to action in place of the interests grid */
+.story-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap; }
+.story-cta .sc-text { flex: 1 1 340px; min-width: 0; }
+.story-cta .card-title { margin-bottom: 6px; }
+.story-cta .sc-sub { margin: 0; color: var(--text-2); font-size: 16px; line-height: 1.5; max-width: 560px; }
+.story-cta .sc-btn { height: 44px; padding: 0 22px; font-size: 15px; flex: none; }
+@media (max-width: 600px) { .story-cta .sc-btn { width: 100%; } }

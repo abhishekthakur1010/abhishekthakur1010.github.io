@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="./images/favicon.png?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="./css/profile.css?v=92" rel="stylesheet" />
+    <link href="./css/profile.css?v=93" rel="stylesheet" />
     <link href="./css/categories.css?v=38" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="./css/look.css?v=3" rel="stylesheet" />
@@ -74,7 +74,7 @@
           <li><a href="#ui-visual">UI &amp; visual</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#recommendations">Recommendations</a></li>
-          <li><a href="#interests">Beyond work</a></li>
+          <li><a href="#interests">About me</a></li>
           <li class="toc-end"><a href="./about-us.html">My story</a></li>
         </ul>
       </div>
@@ -486,17 +486,13 @@
           <div class="card-foot"><button type="button" data-show-all="rec-list" aria-expanded="false"><span>Show all 12 recommendations</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
         </section>
 
-        <!-- Interests -->
-        <section class="card" id="interests" aria-labelledby="h-interests">
-          <h2 class="card-title" id="h-interests">Beyond work</h2>
-          <p class="card-sub">What keeps me curious when I step away from the screen.</p>
-          <div class="interests">
-            <div class="interest is-sky"><span class="ico" aria-hidden="true">✈️</span><div><b>Travel</b><span>6–7 countries so far.</span></div></div>
-            <div class="interest is-sun"><span class="ico" aria-hidden="true">🚴</span><div><b>Cycling</b><span>Solo Gurgaon–Dehradun ride, cyclothons.</span></div></div>
-            <div class="interest is-rose"><span class="ico" aria-hidden="true">❤️</span><div><b>Giving back</b><span>CRY Foundation, Robin Hood Army.</span></div></div>
-            <div class="interest is-leaf"><span class="ico" aria-hidden="true">🌿</span><div><b>Outdoors</b><span>Usually with Luna &amp; Bruno.</span></div></div>
+        <!-- About me: one clear way into the full story (the old "Beyond work" grid lives on in about-us.html) -->
+        <section class="card story-cta" id="interests" aria-labelledby="h-interests">
+          <div class="sc-text">
+            <h2 class="card-title" id="h-interests">About me</h2>
+            <p class="sc-sub">From the hills of Himachal to leading product design at scale: the people, places and turns that shaped me.</p>
           </div>
-          <div class="card-foot"><a href="./about-us.html">Read my full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <a class="btn btn-primary sc-btn" href="./about-us.html">Read my full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </section>
       </main>
 

@@ -53,10 +53,10 @@ export const HUBS = {
     theme: { ...SUNSET, fog: '#cfe2ee', top: '#3a74c4', mid: '#8dbae6', hor: '#f5ead0', sun: '#fff1d6', sunI: 2.7, hemiSky: '#dcefff', hemiGround: '#5d6b4a', hemiI: 1.15, fill: '#e6f2ff', amb: '#8fa3b8', cloud: '#ffffff', glow: [1, .95, .82], rays: .1, exposure: 1.05, snowLo: 52, snowHi: 70, motes: '#fffbe6', bg: '#9fc6e8', veil: 'rgba(150,196,232,.5)', sunTint: ['255,250,225', '255,236,190', '255,226,170'] },
     buildings: [
       { slot: 'market', style: 'market', name: 'The Gym', sub: 'Strength', kind: 'Daily reps', tint: '#e76f51', href: '../ghar/index.html', desc: 'Strength training keeps the mind sharp. In the ghar you can even do a workout with me.' },
-      { slot: 'barn', style: 'barn', name: 'Cycling Club', sub: 'Long rides', kind: 'Solo Gurgaon–Dehradun', tint: '#0f6fff', href: '../profile.html#interests', desc: 'Solo ride from Gurgaon to Dehradun, plus cyclothons. Thousands of kilometres on two wheels.' },
-      { slot: 'cabin', style: 'cabin', name: 'Trek Base Camp', sub: 'Outdoors', kind: 'Into the hills', tint: '#2a9d8f', href: '../profile.html#interests', desc: 'Weekends in the outdoors, usually with Luna and Bruno.' },
+      { slot: 'barn', style: 'barn', name: 'Cycling Club', sub: 'Long rides', kind: 'Solo Gurgaon–Dehradun', tint: '#0f6fff', href: '../about-us.html', desc: 'Solo ride from Gurgaon to Dehradun, plus cyclothons. Thousands of kilometres on two wheels.' },
+      { slot: 'cabin', style: 'cabin', name: 'Trek Base Camp', sub: 'Outdoors', kind: 'Into the hills', tint: '#2a9d8f', href: '../about-us.html', desc: 'Weekends in the outdoors, usually with Luna and Bruno.' },
       { slot: 'arcade', style: 'arcade', name: 'Game Room', sub: 'Play', kind: 'Play a game', tint: '#ff4fd8', href: '../profile.html', desc: 'Games and play. Try the archery game hidden in the banner on my profile.' },
-      { slot: 'studio', style: 'studio', name: 'Music Corner', sub: 'Unwind', kind: 'Turn it up', tint: '#d4a83a', href: '../profile.html#interests', desc: 'The playlist that keeps the long rides and late design nights going.' },
+      { slot: 'studio', style: 'studio', name: 'Music Corner', sub: 'Unwind', kind: 'Turn it up', tint: '#d4a83a', href: '../about-us.html', desc: 'The playlist that keeps the long rides and late design nights going.' },
     ],
   },
 
@@ -82,7 +82,7 @@ export const HUBS = {
     gate: ['TRAVEL HARBOUR', '6–7 COUNTRIES · MANY MORE TO GO'], board: ['THE HARBOUR', 'Every building is a trip', 'More on the way'],
     theme: { ...SUNSET, fog: '#efc79a', top: '#4a5fa8', mid: '#e6a070', hor: '#ffe0a0', sun: '#ffc27a', sunI: 2.5, hemiSky: '#ffe2c0', hemiGround: '#6a5a4a', hemiI: 1.2, cloud: '#ffe0c0', exposure: 1.1, snowLo: 50, snowHi: 68, bg: '#f0b27a' },
     buildings: [
-      { slot: 'market', style: 'market', name: 'Passport Office', sub: 'Countries visited', kind: 'Travel log', tint: '#ff8a3d', href: '../profile.html#interests', desc: '6–7 countries so far, and counting.' },
+      { slot: 'market', style: 'market', name: 'Passport Office', sub: 'Countries visited', kind: 'Travel log', tint: '#ff8a3d', href: '../about-us.html', desc: '6–7 countries so far, and counting.' },
       { slot: 'chapel', style: 'chapel', name: 'Lessons from the Road', sub: 'Design notes', kind: 'What travel teaches', tint: '#2a9d8f', href: '../about-us.html', desc: 'Watching people use products in other countries is the best user research there is.' },
       { slot: 'cabin', style: 'cabin', name: 'Next Stop', sub: 'Bucket list', kind: 'Still on the list', tint: '#d62839', href: 'mailto:abhishekiit2k12@gmail.com?subject=Travel%20tips', desc: 'The places still on the list. Got a recommendation? Send it over.' },
     ],
