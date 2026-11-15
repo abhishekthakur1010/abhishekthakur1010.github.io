@@ -1,99 +1,90 @@
 #!/usr/bin/env python3
-"""Journey strip v2: six clear chapters (logo tile, calm landmark, road milestone, year + role)."""
+"""Journey strip v3: light, fine-line (monoline) illustration that sits quietly above the footer."""
 import re, sys
 
-FILL, LINE, GLOW = '#5a1528', '#ffcfb8', '#f2c66d'
-S = f'fill="{FILL}" stroke="{LINE}" stroke-width="1.6" stroke-linejoin="round"'
-G = 200  # ground in the landmark svg (viewBox 1200 x 200)
+G = 150                       # ground line in a 1200 x 150 viewBox
+L = []
+A = L.append
+BG = 'var(--jr-bg)'           # fills hide lines behind shapes, matching the band
 
-def win(x, y, n, gap=14, w=8, h=10, lit=()):
-    return ''.join(f'<rect x="{x+i*gap}" y="{y}" width="{w}" height="{h}" rx="1.5" fill="{GLOW if i in lit else "none"}" stroke="{LINE}" stroke-opacity=".55" stroke-width="1"/>' for i in range(n))
+# 1. Himachal: layered ridges, snow caps, a small home and pines
+A(f'<path d="M14 {G}L58 92l18 20 36 -56 30 40 14 -12 40 66" fill="{BG}"/>'
+  f'<path d="M14 {G}L58 92l18 20 36 -56 30 40 14 -12 40 66"/>'
+  '<path d="M49 104l9 -12 7 8M101 72l11 -16 11 15" />'
+  f'<path d="M62 {G}v-30h34v30" fill="{BG}"/><path d="M56 {G-30}l23 -18 23 18"/>'
+  f'<path d="M88 {G-40}v-10h5v14"/><path d="M75 {G}v-14h8v14M67 {G-22}h6v6h-6z"/>'
+  f'<path d="M150 {G}l9 -26 9 26M154 {G-12}h10M164 {G}l7 -20 7 20"/>')
+# 2. IIIT Allahabad: pediment, columns and steps
+A(f'<path d="M244 {G-58}h112v58h-112z" fill="{BG}" stroke="none"/>'
+  f'<path d="M236 {G-58}l64 -24 64 24zM240 {G-58}h120"/><path d="M244 {G-52}h112"/>'
+  + ''.join(f'<path d="M{252+i*19.2:.1f} {G-52}v44"/>' for i in range(6)) +
+  f'<path d="M240 {G-8}h120M234 {G-4}h132"/><circle cx="300" cy="{G-68}" r="4"/>')
+# 3. Swiggy Dineout: café with scalloped awning, window with a cloche, hanging sign
+A(f'<path d="M444 {G}v-62h112v62" fill="{BG}"/>'
+  f'<path d="M440 {G-62}h120"/>'
+  + ''.join(f'<path d="M{440+i*20} {G-62}v6a10 10 0 0 0 20 0v-6"/>' for i in range(6)) +
+  f'<path d="M454 {G-38}h44v28h-44zM512 {G}v-38h30v38M535 {G-18}v2"/>'
+  f'<path d="M462 {G-18}h28M465 {G-18}a11 9 0 0 1 22 0M476 {G-27}v-2"/>'
+  f'<path d="M566 {G-46}h14v14h-14zM573 {G-46}v-8"/>')
+# 4. Travacations: palms, a sun and a small plane on a dotted route
+for x, h, lean in ((664, 64, 6), (694, 50, -4), (744, 58, 5)):
+    tx = x + lean
+    A(f'<path d="M{x} {G}q{lean*.2:.1f} -{h*.55:.1f} {lean} -{h}"/>'
+      + ''.join(f'<path d="M{tx} {G-h}q{dx*.5} {-9 if dy<0 else -6} {dx} {dy}"/>' for dx, dy in ((-18, 6), (-12, -6), (12, -6), (18, 6))))
+A('<circle cx="770" cy="54" r="12"/>')
+A('<path class="jr-route" d="M612 70q50 -40 110 -26" stroke-dasharray="2 5"/>'
+  '<g class="jr-plane"><path d="M724 44l8 -1 14 -8h5l-6 9 10 -1 4 -4h3l-2 6 2 6h-3l-4 -4 -10 -1 6 9h-5l-14 -8 -8 -1a1.5 1.5 0 0 1 0 -2z" fill="var(--jr-bg)" transform="rotate(-10 740 44) translate(740 44) scale(1.35) translate(-740 -44)"/></g>')
+# 5. Jio Platforms: tower with antenna and signal arcs, a lower block beside it
+A(f'<path d="M872 {G}v-118h56v118" fill="{BG}"/><path d="M866 {G-118}h68"/>'
+  + ''.join(f'<path d="M{884+i*12} {G-108}v96" stroke-opacity=".55"/>' for i in range(4)) +
+  f'<path d="M900 {G-118}v-14"/>'
+  + ''.join(f'<path class="jr-sig" style="animation-delay:{i*.3}s" d="M{900-r} {G-138}a{r} {r} 0 0 1 {2*r} 0"/>' for i, r in enumerate((6, 12, 18))) +
+  f'<path d="M934 {G}v-56h36v56" fill="{BG}"/>' + ''.join(f'<path d="M940 {G-46+r*12}h24" stroke-opacity=".55"/>' for r in range(4)) +
+  f'<path d="M828 {G}v-38h32v38" fill="{BG}"/><path d="M836 {G-28}h6v6h-6zM848 {G-28}h6v6h-6z"/>')
+# 6. Delhivery, Gurgaon: three towers (one with a slanted crown) and a parked van
+A(f'<path d="M1024 {G}v-96l40 -14v110" fill="{BG}"/>' + ''.join(f'<path d="M1030 {G-84+r*12}h28" stroke-opacity=".55"/>' for r in range(7)) +
+  f'<path d="M1072 {G}v-128h44v128" fill="{BG}"/><path d="M1094 {G-128}v-10"/>' + ''.join(f'<path d="M{1080+c*10} {G-118}v108" stroke-opacity=".55"/>' for c in range(3)) +
+  f'<path d="M1124 {G}v-74h34v74" fill="{BG}"/>' + ''.join(f'<path d="M1130 {G-64+r*12}h22" stroke-opacity=".55"/>' for r in range(5)) +
+  f'<path d="M1166 {G-4}v-22h22l8 9v13" fill="{BG}"/><circle cx="1172" cy="{G-3}" r="3" fill="{BG}"/><circle cx="1190" cy="{G-3}" r="3" fill="{BG}"/>')
+# horizon
+A(f'<path d="M-400 {G}H1600" class="jr-ground"/>')
 
-land = []
-L = land.append
-# 1. Himachal: two peaks, snow caps, a small home, pines
-L(f'<path d="M20 {G}L78 104l26 30 34 -58 62 {124}z" {S}/>'
-  f'<path d="M78 104l-13 18 8 -3 6 6 7 -7 6 3zM138 76l-16 24 9 -4 7 8 8 -8 8 4z" fill="{LINE}"/>'
-  f'<path d="M64 {G}v-34h40v34z" {S}/><path d="M58 {G-34}l26 -20 26 20z" {S}/>'
-  f'<rect x="78" y="{G-18}" width="12" height="18" fill="none" stroke="{LINE}" stroke-width="1.2"/><rect x="69" y="{G-28}" width="7" height="7" fill="{GLOW}"/>'
-  f'<path d="M150 {G}l12 -34 12 34zM172 {G}l9 -26 9 26z" {S}/>')
-# 2. IIIT Allahabad: pediment + columns
-L(f'<path d="M232 {G}v-62h136v62z" {S}/><path d="M224 {G-62}l76 -28 76 28z" {S}/>'
-  + ''.join(f'<path d="M{246+i*22} {G-54}v54" stroke="{LINE}" stroke-opacity=".7" stroke-width="5"/>' for i in range(6))
-  + f'<rect x="292" y="{G-24}" width="16" height="24" fill="{FILL}" stroke="{LINE}" stroke-width="1.2"/>')
-# 3. Dineout: restaurant with scalloped awning and a cloche sign
-L(f'<path d="M438 {G}v-58h124v58z" {S}/>'
-  + ''.join(f'<path d="M{438+i*20.67:.1f} {G-58}h20.67v8a10.33 10.33 0 0 1 -20.67 0z" fill="{LINE if i%2 else FILL}" stroke="{LINE}" stroke-width="1.2"/>' for i in range(6))
-  + f'<rect x="452" y="{G-34}" width="38" height="24" rx="2" fill="none" stroke="{LINE}" stroke-opacity=".6"/><rect x="506" y="{G-36}" width="28" height="36" fill="none" stroke="{LINE}" stroke-opacity=".6"/>'
-  f'<path d="M461 {G-17}h20M463 {G-17}a8 8 0 0 1 16 0M471 {G-27}v2" fill="none" stroke="{GLOW}" stroke-width="1.6" stroke-linecap="round"/>')
-# 4. Travacations: palms + a small plane above
-for x, h in ((660, 70), (690, 56), (744, 64)):
-    L(f'<path d="M{x} {G}q3 -{h/2} -2 -{h}" fill="none" stroke="{LINE}" stroke-width="2.4"/>'
-      + ''.join(f'<path d="M{x-2} {G-h}q{dx*.6} -10 {dx} {dy}" fill="none" stroke="{LINE}" stroke-width="2.2" stroke-linecap="round"/>' for dx, dy in ((-20, 4), (-12, -10), (12, -10), (20, 4))))
-L('<g class="jr-plane"><g transform="translate(672 66)">'
-  '<path d="M-36 6h26" stroke="#ffe6d6" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="4 6" opacity=".8"/>'
-  f'<path d="M34 4l12 -14h7l-5 14z" fill="#ffe6d6"/><path d="M0 1l-6 -15h8l11 14z" fill="#ffe6d6"/>'
-  '<path d="M3 0h55c11 0 20 3 25 6c-5 3 -14 6 -25 6h-55a6 6 0 0 1 0 -12z" fill="#fff"/>'
-  + ''.join(f'<circle cx="{18+i*7}" cy="5.5" r="1.4" fill="{FILL}"/>' for i in range(7)) +
-  f'<path d="M32 8l15 19h8l-5 -19z" fill="{GLOW}"/></g></g>')
-# 5. Jio: tower with antenna + pulsing signal
-L(f'<path d="M866 {G}v-128h68v128z" {S}/><path d="M900 {G-128}v-26" stroke="{LINE}" stroke-width="2"/>'
-  + ''.join(win(878, G - 112 + r * 22, 4, lit=((r + 1) % 4,)) for r in range(5))
-  + ''.join(f'<path class="jr-sig" style="animation-delay:{i*.35}s" d="M{900-r} {G-158}a{r} {r} 0 0 1 {2*r} 0" fill="none" stroke="{LINE}" stroke-width="1.6" stroke-linecap="round"/>' for i, r in enumerate((8, 15, 22)))
-  + f'<path d="M944 {G}v-70h40v70z" {S}/>' + ''.join(win(952, G - 58 + r * 20, 2, gap=14, lit=() if r else (1,)) for r in range(3))
-  + f'<path d="M820 {G}v-54h36v54z" {S}/>' + ''.join(win(827, G - 44 + r * 20, 2, gap=12) for r in range(2)))
-# 6. Delhivery, Gurgaon: glass towers
-L(f'<path d="M1030 {G}v-112h44v112z" {S}/><path d="M1052 {G-112}v-18" stroke="{LINE}" stroke-width="1.6"/>'
-  + ''.join(win(1038, G - 98 + r * 22, 2, gap=16, lit=(r % 2,) if r < 3 else ()) for r in range(4))
-  + f'<path d="M1082 {G}v-146h52v146z" {S}/>' + ''.join(f'<path d="M1092 {G-132+r*16}h32" stroke="{LINE}" stroke-opacity=".5"/>' for r in range(8))
-  + f'<rect x="1100" y="{G-104}" width="16" height="10" fill="{GLOW}"/>'
-  + f'<path d="M1142 {G}v-92h40v92z" {S}/>' + ''.join(win(1150, G - 78 + r * 22, 2, gap=14, lit=(0,) if r == 1 else ()) for r in range(3)))
-# sparkles
-for x, y in ((180, 40), (420, 70), (560, 30), (800, 80), (1000, 40), (1190, 74)):
-    L(f'<path class="jr-spk" style="animation-delay:{(x%5)*.5}s" d="M{x} {y-6}q1 5 6 6q-5 1 -6 6q-1 -5 -6 -6q5 -1 6 -6z" fill="{GLOW}"/>')
+landsvg = ('<svg class="jr-land" viewBox="0 0 1200 152" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">'
+           f'<g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">{"".join(L)}</g></svg>')
 
-landsvg = f'<svg class="jr-land" viewBox="0 14 1200 186" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">{"".join(land)}</svg>'
+bike = ('<svg class="jr-bike" viewBox="-13 -44 64 58" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
+        + ''.join(f'<g transform="translate({cx} 0)"><circle r="10"/><path class="jr-spoke" d="M-10 0h20M0 -10v20" stroke-opacity=".5"/></g>' for cx in (0, 36)) +
+        '<path d="M0 0l11 -18h19l6 18M11 -18l7 18h-18M18 0l12 -18M9 -23h6M28 -21l4 -5h4"/>'
+        '<path d="M20 -21l-5 -11 8 -6M17 -30l10 3 4 5"/><circle cx="24" cy="-41" r="3.5"/></g></svg>')
 
-bike = ('<svg class="jr-bike" viewBox="-14 -58 66 72" aria-hidden="true" focusable="false"><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">'
-        + ''.join(f'<g transform="translate({cx} 0)"><circle r="11"/><path class="jr-spoke" d="M-11 0h22M0 -11v22" stroke-width="1.2"/></g>' for cx in (0, 38)) +
-        f'<path d="M0 0l12 -20h20l6 20M12 -20l8 20h-20M20 0l12 -20M10 -26h7M30 -24l4 -6h5"/>'
-        f'<path d="M22 -24l-6 -14 10 -8M18 -36l12 4 4 6" stroke="{GLOW}"/></g><circle cx="26" cy="-50" r="5" fill="{GLOW}"/></svg>')
-
-def tile(src, alt='', cls=''):
+def tile(src, alt, cls=''):
     return f'<span class="jr-tile{cls}"><img src="./images/{src}" alt="{alt}" loading="lazy" /></span>'
 
-home_icon = (f'<span class="jr-tile jr-tile--icon" role="img" aria-label="Himachal Pradesh"><svg viewBox="0 0 40 40" aria-hidden="true">'
-             f'<path d="M4 32 15 14l6 8 5-8 10 18z" fill="{FILL}"/><path d="M15 14l-3.6 5.4 2.6-1 1.5 1.6 1.7-1.7z" fill="#fff"/></svg></span>')
-
 stops = [
-    ('2012 and before', 'Himachal', 'Where it began', home_icon, ''),
+    ('Before 2012', 'Himachal', 'Where it began', '<span class="jr-tile jr-tile--home" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 9 9l3 4 3-5 6 11z"/><path d="M7.5 11.5 9 9l1.5 2"/></svg></span>', ''),
     ('2012 – 2016', 'IIIT Allahabad', 'B.Tech, Information Technology', tile('iiit-logo.png', 'IIIT Allahabad'), ''),
-    ('2016 – 2019', 'Swiggy Dineout', 'Senior UX Designer, Manager II', tile('brandLogo/swiggy-dineout.svg', 'Swiggy Dineout'),
-     tile('brandLogo/times-internet.svg', 'Times Internet', ' jr-tile--sm')),
-    ('2019 – 2022', 'Travacations', 'Design Strategy', tile('brandLogo/trava-cation.svg', cls=' jr-tile--wide', alt='Travacations'), ''),
-    ('2022 – 2023', 'Jio Platforms', 'Senior UX Manager', tile('brandLogo/jio.svg', 'Jio'),
-     tile('brandLogo/jiomart.svg', 'JioMart', ' jr-tile--sm') + tile('brandLogo/netmeds.svg', 'Netmeds', ' jr-tile--sm') + tile('brandLogo/urban-ladder.svg', 'Urban Ladder', ' jr-tile--sm')),
-    ('2023 – now', 'Delhivery', 'Lead, Gurgaon Design Team', tile('brandLogo/delhivery.svg', cls=' jr-tile--wide', alt='Delhivery'), ''),
+    ('2016 – 2019', 'Swiggy Dineout', 'Senior UX Designer, Manager II', tile('brandLogo/swiggy-dineout.svg', 'Swiggy Dineout'), ''),
+    ('2019 – 2022', 'Travacations', 'Design Strategy', tile('brandLogo/trava-cation.svg', 'Travacations', ' jr-tile--wide'), ''),
+    ('2022 – 2023', 'Jio Platforms', 'Senior UX Manager', tile('brandLogo/jio.svg', 'Jio'), ''),
+    ('2023 – now', 'Delhivery', 'Lead, Gurgaon Design Team', tile('brandLogo/delhivery.svg', 'Delhivery', ' jr-tile--wide'), ''),
 ]
 lis = ''.join(
-    f'<li class="jr-stop{" is-now" if i == len(stops)-1 else ""}"><div class="jr-badges">{main}{"<span class=jr-minis>"+minis+"</span>" if minis else ""}</div>'
-    f'<div class="jr-info"><span class="jr-dot" aria-hidden="true"></span><p class="jr-year">{yr}</p><p class="jr-co">{co}</p><p class="jr-role">{role}</p></div></li>'
-    for i, (yr, co, role, main, minis) in enumerate(stops))
+    f'<li class="jr-stop{" is-now" if i == len(stops)-1 else ""}">'
+    f'<span class="jr-dot" aria-hidden="true"></span><div class="jr-info">{main}<p class="jr-year">{yr}</p><p class="jr-co">{co}</p><p class="jr-role">{role}</p></div></li>'
+    for i, (yr, co, role, main, _) in enumerate(stops))
 
 section = f'''<!-- JOURNEY STRIP:START (generated by tools/journey-strip.py) -->
     <section class="journey" aria-labelledby="h-journey">
       <div class="jr-head">
-        <p class="jr-kicker">10 years · 7 brands · 100M+ users</p>
         <h2 id="h-journey">The road so far</h2>
-        <p class="jr-sub">From a home in the Himachal hills to designing for some of India's biggest consumer brands.</p>
+        <p class="jr-sub">From the Himachal hills to India's biggest consumer brands.</p>
       </div>
-      <div class="jr-scroll" tabindex="0" aria-label="Career timeline, scroll sideways on small screens">
+      <div class="jr-scroll" tabindex="0" aria-label="Career timeline">
         <div class="jr-track">
-          <div class="jr-scene">{landsvg}<div class="jr-road" aria-hidden="true">{bike}</div></div>
+          <div class="jr-scene">{landsvg}{bike}</div>
           <ol class="jr-stops">{lis}</ol>
         </div>
       </div>
-      <p class="jr-hint" aria-hidden="true">Swipe to follow the road →</p>
     </section>
     <!-- JOURNEY STRIP:END -->'''
 
