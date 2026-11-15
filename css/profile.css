@@ -1255,7 +1255,7 @@ html, body { overflow-x: clip; }
 @media (max-width: 600px) { .story-cta .sc-btn { width: 100%; } }
 
 /* ── Journey strip: quiet fine-line timeline above the footer ── */
-.journey { --jr-bg: #ffffff; --jr-ink: #dfdbd3; position: relative; margin: 0; background: linear-gradient(180deg, #fff 0%, #fff 62%, #f7f5f1 100%); overflow: hidden; }
+.journey { --jr-bg: #ffffff; --jr-ink: #e9e6e0; position: relative; margin: 0; background: linear-gradient(180deg, #fff 0%, #fff 62%, #f7f5f1 100%); overflow: hidden; }
 .journey .jr-head { max-width: 640px; margin: 0 auto; padding: 44px 20px 0; text-align: center; }
 .journey h2 { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; letter-spacing: -.01em; color: var(--text); }
 .journey .jr-sub { margin: 8px 0 0; font-size: 14px; color: var(--text-2); }
@@ -1275,7 +1275,7 @@ html, body { overflow-x: clip; }
 @keyframes jr-sig { 0%, 100% { opacity: .2; } 45% { opacity: 1; } }
 .jr-stops { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: subgrid; margin: 0; padding: 0; list-style: none; }
 .jr-stop { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; }
-.jr-dot { position: relative; z-index: 1; width: 9px; height: 9px; margin-top: -7px; border-radius: 50%; background: var(--jr-bg); border: 1.5px solid #9d968a; box-sizing: border-box; }
+.jr-dot { position: relative; z-index: 1; width: 9px; height: 9px; margin-top: -7px; border-radius: 50%; background: var(--jr-bg); border: 1.5px solid #cfcac1; box-sizing: border-box; }
 .is-now .jr-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(10, 102, 194, .15); }
 .jr-info { display: flex; flex-direction: column; align-items: center; margin-top: 14px; }
 .jr-tile { display: grid; place-items: center; width: 36px; height: 36px; padding: 6px; box-sizing: border-box; border-radius: 10px; background: #fff; border: 1px solid var(--line); margin-bottom: 10px; color: #8f887c; }
@@ -1316,18 +1316,18 @@ html, body { overflow-x: clip; }
 /* journey: one quiet text line per stop (replaces the logo/year row) */
 .jr-chip { display: inline-flex; align-items: baseline; gap: 6px; margin-top: 12px; font-size: 12.5px; line-height: 1.2; white-space: nowrap; }
 .jr-chip b { font-weight: 500; color: var(--text); }
-.jr-chip span { color: #b3ada2; font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.jr-chip span { color: #cdc8bf; font-size: 11.5px; font-variant-numeric: tabular-nums; }
 .is-next .jr-chip b { color: var(--text-2); }
 .journey .jr-track { padding-top: 40px; padding-bottom: 36px; }
 .jr-land path, .jr-land circle, .jr-land rect { vector-effect: non-scaling-stroke; }
 
 /* cycle highlight: the place it is passing turns darker, then fades back */
 .jr-lm { transition: color .6s ease; }
-.jr-lm.is-lit { color: #948d81; }
+.jr-lm.is-lit { color: #b2ab9f; }
 .jr-chip b, .jr-chip span { transition: color .6s ease; }
-.jr-chip b { color: #9a9488; font-weight: 500; }
-.jr-stop.is-lit .jr-chip b { color: var(--text); }
-.jr-stop.is-lit .jr-chip span { color: #6f695f; }
+.jr-chip b { color: #b7b2a9; font-weight: 500; }
+.jr-stop.is-lit .jr-chip b { color: #5e5a54; }
+.jr-stop.is-lit .jr-chip span { color: #8f897e; }
 .jr-dot { transition: border-color .6s ease; }
-.jr-stop.is-lit .jr-dot { border-color: #5f594f; }
-.jr-bike { color: #6f695f; }
+.jr-stop.is-lit .jr-dot { border-color: #8f897e; }
+.jr-bike { color: #9a9488; }
