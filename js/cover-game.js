@@ -295,7 +295,7 @@
   // Lowest point of the flags at x: the swag's curve (sag 16) plus a flag's height (13), as drawn below.
   function buntingBottom(x) {
     var swags = W < 600 ? 2 : 3, sw = W / swags, u = (x % sw) / sw;
-    if (XMAS) return (1 - u) * (1 - u) * 12 + 2 * u * (1 - u) * 80 + 3 + 8;   // below the lower light strand
+    if (XMAS) return 4 + 2 * u * (1 - u) * 48 + 3 + 8;   // below the light strand
     return 2 + 16 * 4 * u * (1 - u) + 13 + 2;
   }
   // Christmas: warm fairy lights on thin wires instead of flags, two strands per swag crossing each other.
@@ -309,7 +309,7 @@
     var BULB = ['255,214,140', '255,226,170', '255,200,120', '255,236,200'];
     for (var s = 0; s < swags; s++) {
       var x0 = s * sw;
-      [{ yA: 2, yB: 10, sag: 22, ph: 0 }, { yA: 12, yB: 0, sag: 34, ph: 2.1 }].forEach(function (wire, wi) {
+      [{ yA: 4, yB: 4, sag: 24, ph: 0 }].forEach(function (wire, wi) {
         var cy = Math.max(wire.yA, wire.yB) + wire.sag * 2;
         ctx.strokeStyle = 'rgba(96,52,36,.9)'; ctx.lineWidth = 1.2;
         ctx.beginPath(); ctx.moveTo(x0, wire.yA); ctx.quadraticCurveTo(x0 + sw / 2, cy, x0 + sw, wire.yB); ctx.stroke();
@@ -403,7 +403,7 @@
     (scene.minis || []).forEach(function (d) {
       ctx.fillStyle = 'rgba(255,225,180,.38)';
       for (var y = 4; y < d.len; y += 5) { ctx.beginPath(); ctx.arc(d.x, y, 0.8, 0, 6.2832); ctx.fill(); }
-      star(d.x, d.len + 7, DIYA_S * 0.62, d.p);
+      star(d.x, d.len + 10, DIYA_S, d.p);
     });
   }
 
