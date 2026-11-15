@@ -12,10 +12,10 @@
   var stage = document.getElementById('sp-stage'), fdefs = document.getElementById('sp-fdefs');
   var W = 1920, H = 1080, CX = 960, CY = 540, DUR = 5;
   var SAF = '#F28B30', BLK = '#0B0B0E', WHT = '#FFFFFF';
-  // The ball wears the Diwali banner's dusk gradient, so it opens straight into the banner.
-  var DUSK = 'linear-gradient(180deg, #4a2378, #8e2f7c 45%, #d4513f 78%, #ef8a3c)';
+  // The ball wears the banner's sky gradient (now the Christmas red), so it opens straight into the banner.
+  var DUSK = 'linear-gradient(180deg, #3e0f22, #7a1530 42%, #b3262f 76%, #d9533a)';
   // HUMAN + AI takes the warm end of the banner sky.
-  var GLOW = 'linear-gradient(180deg, #D3784F, #DE8E54 50%, #E8A45A)';
+  var GLOW = 'linear-gradient(180deg, #C8433A, #D6593D 50%, #E27348)';
   function dusk(white) { white = clamp(white); return white <= 0 ? DUSK : white >= 1 ? WHT : 'linear-gradient(rgba(255,255,255,' + white.toFixed(3) + '), rgba(255,255,255,' + white.toFixed(3) + ')), ' + DUSK; }
   var VW = W, VH = H;   // the screen, in stage units (set by fitStage)
 
