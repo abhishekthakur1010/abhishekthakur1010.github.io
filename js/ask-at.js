@@ -15,41 +15,41 @@
   /* ---------- content: Abhishek speaks in first person ---------- */
   var LI = '[LinkedIn](https://www.linkedin.com/in/abhishekthakur1010/)', CV = '[resume](./resume.pdf?v=3)';
   var PERSONAS = [
-    { id: 'recruiter', as: 'a recruiter', label: 'Recruiter / HR', me: 'I\'m a recruiter', who: 'recruiters', k: ['recruit', 'hr', 'talent', 'sourcer', 'people team'], qs: [
-      ['Give me a quick summary', ['I\'m a **Lead Product Designer at Delhivery**, with 10+ years across B2C, B2B and platform companies: Jio, Swiggy Dineout, Times Internet and a few startups.', 'My work has reached 100M+ users. I also have an engineering degree (B.Tech IT, IIIT Allahabad), which helps a lot when working with tech teams.']],
-      ['What roles are you looking for?', ['Senior and lead product design roles where design is tied to real business outcomes: leading a team, owning a product area, or building something 0 to 1.', 'For level and timing, let\'s talk directly on ' + LI + '.']],
-      ['Where are you based?', ['I\'m in Gurgaon, where I lead the design team at Delhivery. The quickest way to reach me is ' + LI + '.']],
-      ['Can I get your resume?', ['Of course, here\'s my ' + CV + '. It opens as a PDF.']]
+    { id: 'recruiter', as: 'a recruiter', label: 'Recruiting', who: 'recruiters', k: ['recruit', 'recruiter', 'hr', 'talent', 'recruiting'], qs: [
+      ['Quick summary?', ['Lead Product Designer at Delhivery, 10+ years, products used by 100M+ people. Before this: Jio, Swiggy Dineout, Times Internet.']],
+      ['Can I get your resume?', ['Sure, here it is: ' + CV + '.']],
+      ['What roles interest you?', ['Senior and lead design roles where design moves real business numbers. Happy to chat on ' + LI + '.']],
+      ['Where are you based?', ['Gurgaon. Easiest to reach me on ' + LI + '.']]
     ] },
-    { id: 'hiring', as: 'a hiring manager', label: 'Hiring manager', me: 'I\'m a hiring manager', who: 'hiring managers', k: ['hiring manager', 'design manager', 'head of design', 'design lead', 'director', 'vp'], qs: [
-      ['How do you lead a design team?', ['I lead the Gurgaon design team at Delhivery, and managed designers at Swiggy Dineout and Jio before that.', 'I care most about growing people. The 12 recommendations on this page, from managers, peers and reports, say it better than I can.']],
-      ['Which case study shows your best thinking?', ['Start with **JioMart**: it goes from a business problem (only 1 in 10 sessions added to cart) through research and decisions to a **+28% add-to-cart** result.', 'Then **DelFin**, a 0 to 1 financial services platform I designed at Delhivery that reached **80.4% self-serve activation**.']],
-      ['What do past managers say?', ['The words that come up most: methodical with complex problems, a natural sense for users, strong leadership on long projects, and easy to work with.', 'You can read them in full in the Recommendations section.']],
-      ['How do you measure design impact?', ['I start from the business number that matters, then set a design goal people can see move. On JioMart that was add-to-cart (+28%), and on DelFin it was self-serve activation (80.4%).']]
+    { id: 'hiring', as: 'a hiring manager', label: 'Hiring', who: 'hiring managers', k: ['hiring', 'hiring manager', 'design manager', 'head of design', 'director'], qs: [
+      ['Best case study to read?', ['**JioMart**: one redesign, **+28% add-to-cart**. Then **DelFin**, a 0 to 1 product at 80.4% self-serve activation.']],
+      ['How do you lead a team?', ['I lead the Gurgaon design team at Delhivery. I care most about helping people grow, and my recommendations on this page say it better than I can.']],
+      ['How do you measure impact?', ['I pick the business number that matters and design to move it: add-to-cart on JioMart, activation on DelFin.']],
+      ['What do past managers say?', ['Mostly: methodical, user-focused, and good to work with. The Recommendations section has 12 of them.']]
     ] },
-    { id: 'product', as: 'a product manager', label: 'Product manager', me: 'I\'m a product manager', who: 'product managers', k: ['product manager', 'pm', 'product owner', 'product lead'], qs: [
-      ['How do you work with PMs?', ['I like to start from the shared goal, then reframe the ask together. On JioMart, "refresh 3 pages" became "help shoppers choose", and that changed what we built first.']],
-      ['What results has your design moved?', ['- **+28% add-to-cart** on JioMart\n- **80.4% self-serve activation** on DelFin at Delhivery\n- Products used by **100M+ people** across my career']],
-      ['How do you balance business and user needs?', ['I put the business ask, the product ask and the user\'s real question side by side, then look for the design that answers all three. The JioMart case study shows it step by step.']],
-      ['How do you research on a tight timeline?', ['Small and fast: existing data first, a few quick conversations with users, then prototypes we can test rather than long reports.']]
+    { id: 'product', as: 'a product manager', label: 'Product', who: 'product folks', k: ['product', 'pm', 'product manager', 'product owner'], qs: [
+      ['What results have you moved?', ['**+28% add-to-cart** on JioMart and **80.4% self-serve activation** on DelFin.']],
+      ['How do you work with PMs?', ['We start from the shared goal and reframe the ask together. On JioMart, "refresh 3 pages" became "help shoppers choose".']],
+      ['Business vs user needs?', ['I put both side by side and look for the design that answers each. JioMart shows how.']],
+      ['Research on a tight timeline?', ['Data first, a few quick user chats, then prototypes we can test.']]
     ] },
-    { id: 'engineer', as: 'an engineer', label: 'Engineer', me: 'I\'m an engineer', who: 'engineers', k: ['engineer', 'developer', 'dev', 'frontend', 'backend', 'tech lead', 'cto', 'sde'], qs: [
-      ['Are you technical?', ['Yes. I have a B.Tech in Information Technology from IIIT Allahabad, so I\'m comfortable talking constraints, APIs and edge cases.']],
-      ['How do you hand off designs?', ['Clear specs with states, edge cases and real data, plus a walkthrough with the team before build. I stay close during development so we can make calls quickly.']],
-      ['How do you handle technical constraints?', ['I bring engineers in early, before designs are final, so we decide trade-offs together rather than finding them late.']],
-      ['What are you like to work with?', ['My recommendations describe me as collaborative, patient and quick to jump in when a team needs help. You can read 12 of them on this page.']]
+    { id: 'engineer', as: 'an engineer', label: 'Engineering', who: 'engineers', k: ['engineer', 'engineering', 'developer', 'dev', 'frontend', 'backend', 'cto', 'sde'], qs: [
+      ['Are you technical?', ['Yes, I studied IT at IIIT Allahabad. Constraints, APIs and edge cases are fair game.']],
+      ['How do you hand off designs?', ['Specs with states and edge cases, a walkthrough before build, and I stay close during dev.']],
+      ['Tech constraints?', ['I bring engineers in early, so we decide trade-offs together, not late.']],
+      ['What are you like to work with?', ['Collaborative and quick to jump in, according to my recommendations. I\'d like to think so too.']]
     ] },
-    { id: 'founder', as: 'a founder', label: 'Founder', me: 'I\'m a founder', who: 'founders', k: ['founder', 'startup', 'ceo', 'co-founder', 'cofounder'], qs: [
-      ['Have you built something 0 to 1?', ['Yes. **DelFin** at Delhivery is a 0 to 1 financial services platform for truckers and fleet owners. It reached **80.4% self-serve activation**.']],
-      ['Can you work in a small team?', ['I\'ve worked at large companies like Jio and with startups like Travacations, so I\'m used to both scale and speed.']],
-      ['How fast can you show results?', ['I work in small, measurable steps so there\'s something real to look at early. Happy to talk timelines on ' + LI + '.']],
-      ['How do we start a conversation?', ['Message me on ' + LI + '. You can skim my ' + CV + ' first if you like.']]
+    { id: 'founder', as: 'a founder', label: 'Founder', who: 'founders', k: ['founder', 'startup', 'ceo', 'co-founder', 'cofounder'], qs: [
+      ['Built anything 0 to 1?', ['Yes, **DelFin** at Delhivery, a fintech product for truckers. It hit 80.4% self-serve activation.']],
+      ['Startup speed?', ['I\'ve worked at Jio scale and at startups like Travacations, so I\'m used to both.']],
+      ['How fast can you show results?', ['I ship in small, measurable steps, so there\'s something real early.']],
+      ['How do we talk?', ['Ping me on ' + LI + '.']]
     ] },
-    { id: 'browsing', as: 'just browsing', label: 'Just browsing', me: 'Just browsing', who: 'visitors', k: ['browsing', 'curious', 'just looking', 'exploring', 'student', 'designer'], qs: [
-      ['What do you do at Delhivery?', ['I lead the Gurgaon design team at **Delhivery**, where I\'ve been since 2023. My team designs the products behind Delhivery\'s logistics network.']],
-      ['Walk me through your career', ['Here\'s the road so far:', '- **2012**, B.Tech in IT at IIIT Allahabad\n- **2016**, Senior UX Designer, then Manager II at Swiggy Dineout (Times Internet)\n- **2019**, Design strategy at Travacations\n- **2022**, Senior UX Manager at Jio Platforms (JioMart, Netmeds, Urban Ladder)\n- **2023**, Lead designer at Delhivery', 'Ten years, seven brands and products used by 100M+ people.']],
-      ['Which case study should I read first?', ['Start with **JioMart**. It shows the full arc: the business problem, the research, the decisions and the results (+28% add-to-cart).']],
-      ['What\'s your story?', ['I grew up in the hills of Himachal, studied engineering at IIIT Allahabad and found my way into design. The full story is on my [story page](./about-us.html).']]
+    { id: 'browsing', as: 'just looking', label: 'Just looking', who: 'people', k: ['browsing', 'curious', 'looking', 'exploring', 'student'], qs: [
+      ['What do you do?', ['I lead the Gurgaon design team at **Delhivery**.']],
+      ['Your career so far?', ['IIIT Allahabad, then Swiggy Dineout, Travacations, Jio and now Delhivery. Ten years, seven brands.']],
+      ['Which case study first?', ['**JioMart**. It\'s the full story, from problem to +28% add-to-cart.']],
+      ['What\'s your story?', ['Grew up in the Himachal hills, studied engineering, fell into design. Full version on my [story page](./about-us.html).']]
     ] }
   ];
   var ANSWERS = {};
@@ -62,19 +62,19 @@
 
   /* Free-typed questions: matched by keywords. */
   var MOCK = [
-    { k: ['delhivery', 'current', 'now', 'today'], q: 'What do you do at Delhivery?' },
-    { k: ['career', 'journey', 'experience', 'background', 'walk'], q: 'Walk me through your career' },
-    { k: ['jio', 'jiomart', 'netmeds'], a: ['At **Jio Platforms** I was a Senior UX Manager across JioMart, Netmeds and Urban Ladder.', 'One highlight: JioMart had ~95M visitors but only 1 in 10 sessions added to cart, so I led a redesign of browsing and discovery. It lifted add-to-cart by 28%.'] },
-    { k: ['case', 'study', 'portfolio', 'project'], q: 'Which case study should I read first?' },
+    { k: ['delhivery', 'current', 'now', 'today'], q: 'What do you do?' },
+    { k: ['career', 'journey', 'experience', 'background', 'walk'], q: 'Your career so far?' },
+    { k: ['jio', 'jiomart', 'netmeds'], a: ['At Jio I was a Senior UX Manager on JioMart, Netmeds and Urban Ladder. Highlight: JioMart\'s redesign lifted add-to-cart by 28%.'] },
+    { k: ['case', 'study', 'portfolio', 'project'], q: 'Which case study first?' },
     { k: ['resume', 'cv'], q: 'Can I get your resume?' },
-    { k: ['open', 'role', 'hire', 'hiring', 'job', 'available'], q: 'What roles are you looking for?' },
+    { k: ['open', 'role', 'hire', 'hiring', 'job', 'available'], q: 'What roles interest you?' },
     { k: ['contact', 'connect', 'reach', 'email', 'linkedin', 'talk'], a: ['The quickest way to reach me is ' + LI + '. I reply there.'] },
-    { k: ['team', 'lead', 'manage', 'mentor'], q: 'How do you lead a design team?' },
-    { k: ['impact', 'metric', 'result', 'measure'], q: 'What results has your design moved?' },
+    { k: ['team', 'lead', 'manage', 'mentor'], q: 'How do you lead a team?' },
+    { k: ['impact', 'metric', 'result', 'measure'], q: 'What results have you moved?' },
     { k: ['story', 'himachal', 'grew', 'about'], q: 'What\'s your story?' },
-    { k: ['hi', 'hello', 'hey', 'namaste'], a: ['Hey! 👋 Ask me anything about my work, or pick one of the questions below.'] }
+    { k: ['hi', 'hello', 'hey', 'namaste'], a: ['Hey! 👋 What would you like to know?'] }
   ];
-  var FALLBACK = ['Good question! I\'m running on preview answers for now, so I can only cover my work, career, case studies and how to reach me.', 'Try one of these:'];
+  var FALLBACK = ['Hmm, I can only answer a few things in this preview. Try one of these?'];
 
   function nextQs(n) {
     var p = persona || personaById('browsing'), asked = {};
@@ -116,12 +116,11 @@
         '<button type="button" class="aat-icon-btn aat-close" aria-label="Close" title="Close (Esc)">' + ICON.close + '</button>' +
       '</header>' +
       '<div class="aat-log" tabindex="-1" aria-live="polite" aria-relevant="additions">' +
-        '<div class="aat-hero" aria-hidden="true">' + ORB + '</div>' +
         '<ol class="aat-msgs" aria-label="Conversation"></ol>' +
       '</div>' +
       '<footer class="aat-foot">' +
         '<form class="aat-form"><label for="aat-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Message</label>' +
-          '<textarea class="aat-input" id="aat-input" rows="1" placeholder="Say hi, or ask me anything…" autocomplete="off"></textarea>' +
+          '<textarea class="aat-input" id="aat-input" rows="1" placeholder="Message Abhishek…" autocomplete="off"></textarea>' +
           '<button type="submit" class="aat-send" aria-label="Send" disabled>' + ICON.send + '</button></form>' +
         '<p class="aat-note">Preview with sample answers.<span class="aat-keys"> Enter to send, Shift + Enter for a new line.</span></p>' +
       '</footer>' +
@@ -165,9 +164,9 @@
     list.appendChild(li);
     return li;
   }
-  function syncChrome() { reset.hidden = history.length < 3; root.classList.toggle('aat-has-chat', history.length > 0); }
+  function syncChrome() { reset.hidden = !history.length; root.classList.toggle('aat-has-chat', history.length > 0); }
   function toBottom() { log.scrollTop = log.scrollHeight; }
-  // Once the visitor answers or asks, the chips above are spent: they stay readable but can't be clicked again.
+  // Once the visitor answers or asks, the chips above are spent and fold away, like quick replies in a chat app.
   function retireChips() { Array.prototype.forEach.call(list.querySelectorAll('.aat-follow, .aat-qs'), function (c) { c.classList.add('is-spent'); }); }
   history.forEach(function (m, i) { render(m, false); if (m.who === 'user') retireChips(); });
   syncChrome();
@@ -204,24 +203,21 @@
   function userSays(text) {
     var u = { who: 'user', text: text }; history.push(u); save(); render(u, true); retireChips(); syncChrome(); toBottom();
   }
-  function roleChips() { return PERSONAS.map(function (p) { return { t: p.me, p: p.id }; }); }
+  function roleChips() { return PERSONAS.map(function (p) { return { t: p.label, p: p.id }; }); }
 
-  /* The opening: hi, a line about me, then "who am I talking to?" */
+  /* The opening: short, one bubble at a time, like a real chat. */
   function intro() {
     started = true;
     var back = persona && persona.id !== 'browsing';
-    say({ who: 'bot', parts: [back ? 'Hi again! 👋 Good to see you back.' : 'Hi, I\'m **Abhishek** 👋', 'I lead product design at Delhivery and have spent 10+ years designing for brands like Jio and Swiggy Dineout. Ask me anything about my work.'] }, function () {
-      if (back) say({ who: 'bot', parts: ['Last time you said you\'re ' + persona.as + '. Here\'s what ' + persona.who + ' usually ask me:'], chips: persona.qs.map(function (q) { return q[0]; }), style: 'list' }, function () {
-        say({ who: 'bot', parts: ['Not you? Tell me who you are.'], chips: roleChips(), style: 'roles' }, null, 350);
-      }, 450);
-      else say({ who: 'bot', parts: ['Before we start, who am I talking to?'], chips: roleChips(), style: 'roles' }, null, 500);
-    }, 450);
+    say({ who: 'bot', parts: [back ? 'Hey, welcome back 👋' : 'Hey, I\'m Abhishek 👋'] }, function () {
+      if (back) say({ who: 'bot', parts: ['Anything I can help with?'], chips: nextQs(2) }, null, 700);
+      else say({ who: 'bot', parts: ['What brings you here?'], chips: roleChips(), style: 'roles' }, null, 700);
+    }, 300);
   }
   function chooseRole(p, typed) {
-    if (!typed) userSays(p.me);
+    if (!typed) userSays(p.label);
     setPersona(p);
-    var hi = p.id === 'browsing' ? 'Welcome, have a look around! People often start with these:' : 'Nice to meet you! Here\'s what ' + p.who + ' usually ask me:';
-    say({ who: 'bot', parts: [hi], chips: p.qs.map(function (q) { return q[0]; }), style: 'list' });
+    say({ who: 'bot', parts: [p.id === 'browsing' ? 'Nice, have a look around! Maybe start here?' : 'Nice! ' + p.who.charAt(0).toUpperCase() + p.who.slice(1) + ' usually ask me these:'], chips: nextQs(2) });
   }
   function ask(text) {
     text = text.trim();

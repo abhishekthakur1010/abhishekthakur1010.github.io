@@ -1,7 +1,7 @@
 /* Ask AT: right-side, full-height assistant drawer (mock UI; no AI connected yet).
    Black-and-white to match the profile; uses the page's own colour tokens so the Look panel's dark mode carries over. */
 /* Orb palette: the banner's deep red by default; add data-orb="mono" on .aat for black and white */
-.aat { --orb-0: #4a0c1c; --orb-1: #b3262f; --orb-2: #f08a5d; --orb-3: #7a1530; --orb-glow: rgba(179,38,47,.28); }
+.aat { --orb-0: #b0182c; --orb-1: #ec3a3f; --orb-2: #ff9a63; --orb-3: #d42a37; --orb-glow: rgba(226,52,60,.34); }
 .aat[data-orb="mono"] { --orb-0: #0d0d0f; --orb-1: #6b6b70; --orb-2: #c9c9cc; --orb-3: #8d8d92; --orb-glow: rgba(0,0,0,.18); }
 .aat { --aat-bg: var(--bg, #fff); --aat-ink: var(--text, #1d1f23); --aat-ink-2: var(--text-2, #5e6168); --aat-ink-3: var(--text-3, #8a8d93);
        --aat-line: var(--line, #e3e1dc); --aat-soft: var(--line-soft, #efede9); --aat-ease: cubic-bezier(.22, .8, .24, 1); font: 15px/1.55 var(--font, system-ui, sans-serif); }
@@ -130,7 +130,5 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
 .is-spent { display: none; }
 @media (prefers-reduced-motion: reduce) { .aat-qs .aat-sug { animation: none !important; } }
 /* Earlier choices stay readable but quiet; spent role chips go away */
-.aat-qs.is-spent, .aat-follow.is-spent { display: flex; flex-wrap: wrap; opacity: .45; pointer-events: none; }
-.aat-qs.is-spent { display: grid; }
-.aat-roles.is-spent { display: none; }
+.aat-qs.is-spent, .aat-follow.is-spent { display: none; }
 @media (max-width: 720px) { .aat-hero { padding-bottom: 18px; } .aat-hero .aat-orb { width: 48px; height: 48px; } }
