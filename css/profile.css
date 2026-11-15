@@ -1363,3 +1363,11 @@ html, body { overflow-x: clip; }
 .journey.jr-reset .jr-trail { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .jr-bike { display: block; } }
 .jr-bike { color: #b3262f; }
+
+/* tidy the hi moment: smaller rider and bubble, clear of the signpost, quiet focus ring */
+.jr-person { width: 18px; height: 36px; }
+.jr-hi { bottom: 70px; gap: 4px; padding: 4px 10px; font-size: 11.5px; font-weight: 600; box-shadow: 0 4px 12px rgba(122, 21, 48, .10); }
+.jr-hi::after { width: 6px; height: 6px; margin-left: -3px; bottom: -4px; }
+.jr-hi svg { width: 11px; height: 11px; }
+.jr-hi:focus { outline: none; }
+.jr-hi:focus-visible { outline: 2px solid #b3262f; outline-offset: 2px; }

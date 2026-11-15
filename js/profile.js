@@ -219,17 +219,17 @@
     for (var i = 0; i < stops.length; i++) { var lit = px + 14 >= c[i] - 6; stops[i].classList.toggle('is-lit', lit); if (lms[i]) lms[i].classList.toggle('is-lit', lit); }
   }
   function arrive(c) {
-    var stand = c[c.length - 1] - 36;
-    person.style.left = (stand + 34) + 'px'; hi.style.left = (stand + 45) + 'px';
+    var stand = c[c.length - 1] - 78;
+    person.style.left = (stand + 32) + 'px'; hi.style.left = (stand + 41) + 'px';
     sec.classList.add('jr-arrived');
     stops[stops.length - 1].classList.add('is-lit'); if (lms[lms.length - 1]) lms[lms.length - 1].classList.add('is-lit');
   }
   if (hi) { hi.addEventListener('mouseenter', function () { hovering = true; }); hi.addEventListener('mouseleave', function () { hovering = false; }); hi.addEventListener('focus', function () { hovering = true; }); hi.addEventListener('blur', function () { hovering = false; }); }
-  if (reduce) { var c0 = centers(); x = c0[c0.length - 1] - 36; place(x); arrive(c0); return; }
+  if (reduce) { var c0 = centers(); x = c0[c0.length - 1] - 78; place(x); arrive(c0); return; }
   function tick(t) {
     if (!on) { last = 0; return; }
     var dt = last ? Math.min(0.05, (t - last) / 1000) : 0; last = t;
-    var c = centers(), end = c[c.length - 1] - 36, speed = scene.clientWidth / 30;
+    var c = centers(), end = c[c.length - 1] - 78, speed = scene.clientWidth / 30;
     if (state === 'ride') {
       x += speed * dt; if (x >= end) x = end;
       place(x);
