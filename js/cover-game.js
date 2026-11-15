@@ -12,6 +12,10 @@
   // Diwali is over: the crackers (skyrockets, anaars and the sparkler cursor) are switched off.
   // The bunting, kandils, diyas and warm sky stay. Set to true to bring the crackers back.
   var CRACKERS = false;
+  // Christmas season: flags and kandils recoloured to sit with the red sky, and stars hang where the diyas were.
+  // Set XMAS to false to bring back the Diwali colours and diyas.
+  var XMAS = true;
+  var X = { gold: '#f2c66d', cream: '#fff1dc', pine: '#2f6b52', pineDark: '#1f4a39', rose: '#f3a59a', cap: '#3a0d1c', string: 'rgba(255,225,200,.5)' };
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Categories heading: a hint until the sparkler peaks, then "Happy Diwali" with the skyrockets.
   // Without motion nothing can be lit, so it greets at once.
@@ -293,7 +297,7 @@
       var x0 = s * sw, sag = 16;
       ctx.strokeStyle = 'rgba(255,230,190,.55)'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(x0, 2); ctx.quadraticCurveTo(x0 + sw / 2, 2 + sag * 2, x0 + sw, 2); ctx.stroke();
-      var flags = Math.floor(sw / 24), cols = [C.gold, C.vermilion, C.leaf, C.marigold];
+      var flags = Math.floor(sw / 24), cols = XMAS ? [X.gold, X.cream, X.pine, X.rose] : [C.gold, C.vermilion, C.leaf, C.marigold];
       for (var i = 1; i < flags; i++) {
         var u = i / flags, x = x0 + sw * u, y = 2 + sag * 2 * 2 * u * (1 - u);
         var sway = reduce ? 0 : Math.sin(now * 1.4 + i + s) * 1.2;
@@ -324,11 +328,25 @@
     flame(x + 3 * s, y - 1 * s, s * 0.8, p);
   }
 
+  // A hanging Christmas star: a soft halo, a gold five-pointed star with a lighter face, gently twinkling.
+  function star(x, y, s, p) {
+    var tw = reduce ? 1 : 0.85 + 0.15 * Math.sin(now * 2.2 + p * 1.7), sw = reduce ? 0 : Math.sin(now * 1.1 + p) * 0.08;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, 26 * s);
+    g.addColorStop(0, 'rgba(255,224,150,' + (0.5 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,200,120,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 26 * s, 0, 6.2832); ctx.fill();
+    ctx.save(); ctx.translate(x, y); ctx.rotate(sw); ctx.scale(s, s);
+    function path(R, r) { ctx.beginPath(); for (var i = 0; i < 10; i++) { var a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r : R; ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } ctx.closePath(); }
+    path(10, 4.2); ctx.fillStyle = '#d99a2b'; ctx.fill();
+    path(7.4, 3.1); ctx.fillStyle = X.gold; ctx.fill();
+    ctx.globalAlpha *= tw; path(3.6, 1.6); ctx.fillStyle = '#fff6d8'; ctx.fill();
+    ctx.restore();
+  }
+
   function drawDiyaStrings() {
     scene.diyas.forEach(function (d) {
       ctx.fillStyle = 'rgba(255,225,180,.38)';
       for (var y = 4; y < d.len; y += 5) { ctx.beginPath(); ctx.arc(d.x, y, 0.8, 0, 6.2832); ctx.fill(); }
-      diya(d.x, d.len + 4, DIYA_S, d.p);
+      if (XMAS) star(d.x, d.len + 10, DIYA_S, d.p); else diya(d.x, d.len + 4, DIYA_S, d.p);
     });
   }
 
@@ -342,17 +360,18 @@
     var g = ctx.createRadialGradient(0, y + 34, 0, 0, y + 34, 60);
     g.addColorStop(0, 'rgba(255,190,80,.35)'); g.addColorStop(1, 'rgba(255,150,60,0)');
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, y + 34, 60, 0, 6.2832); ctx.fill();
-    ctx.fillStyle = C.deep; ctx.fillRect(-9, y, 18, 6);
+    var K = XMAS ? { cap: X.cap, body: X.gold, pane: X.cream, core: X.pine, tassel: X.gold } : { cap: C.deep, body: C.vermilion, pane: C.cream, core: C.gold, tassel: C.gold };
+    ctx.fillStyle = K.cap; ctx.fillRect(-9, y, 18, 6);
     // kandil body: an outer diamond with lit panes inside
-    ctx.fillStyle = C.vermilion;
+    ctx.fillStyle = K.body;
     ctx.beginPath(); ctx.moveTo(0, y + 6); ctx.lineTo(26, y + 32); ctx.lineTo(0, y + 58); ctx.lineTo(-26, y + 32); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = C.cream;
+    ctx.fillStyle = K.pane;
     ctx.beginPath(); ctx.moveTo(-13, y + 19); ctx.lineTo(0, y + 32); ctx.lineTo(-13, y + 45); ctx.lineTo(-24, y + 32); ctx.closePath(); ctx.fill();
     ctx.beginPath(); ctx.moveTo(13, y + 19); ctx.lineTo(24, y + 32); ctx.lineTo(13, y + 45); ctx.lineTo(0, y + 32); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = C.gold;
+    ctx.fillStyle = K.core;
     ctx.beginPath(); ctx.moveTo(0, y + 10); ctx.lineTo(9, y + 32); ctx.lineTo(0, y + 54); ctx.lineTo(-9, y + 32); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = C.deep; ctx.fillRect(-10, y + 57, 20, 4);
-    ctx.strokeStyle = C.gold; ctx.lineWidth = 1.2;
+    ctx.fillStyle = K.cap; ctx.fillRect(-10, y + 57, 20, 4);
+    ctx.strokeStyle = K.tassel; ctx.lineWidth = 1.2;
     for (var i = -8; i <= 8; i += 2.6) {
       var tw = reduce ? 0 : Math.sin(now * 2 + i) * 1.5;
       ctx.beginPath(); ctx.moveTo(i, y + 61); ctx.lineTo(i * 1.15 + tw, y + 88); ctx.stroke();
