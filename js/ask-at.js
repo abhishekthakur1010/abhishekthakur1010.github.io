@@ -217,7 +217,7 @@
   function chooseRole(p, typed) {
     if (!typed) userSays(p.label);
     setPersona(p);
-    say({ who: 'bot', parts: [p.id === 'browsing' ? 'Nice, have a look around! Maybe start here?' : 'Nice! ' + p.who.charAt(0).toUpperCase() + p.who.slice(1) + ' usually ask me these:'], chips: nextQs(2) });
+    say({ who: 'bot', parts: [p.id === 'browsing' ? 'Cool, have a look around! What would you like to know?' : 'Nice! What would you like to know?'], chips: nextQs(2) });
   }
   function ask(text) {
     text = text.trim();
