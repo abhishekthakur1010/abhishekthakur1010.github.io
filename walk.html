@@ -10,8 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="./story/assets/kf/kf5-1920.webp" />
-  <link rel="stylesheet" href="./css/walk.css?v=1" />
+    <link rel="stylesheet" href="./css/walk.css?v=2" />
 </head>
 <body>
   <a class="skip" href="#story">Skip to the steps</a>
@@ -39,157 +38,83 @@
     </ol>
   </nav>
 
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="scene-shade" aria-hidden="true"></div>
+
   <!-- Hero -->
   <section class="hero" id="top">
-    <div class="hero-bg"><img src="./story/assets/kf/kf5-1920.webp" srcset="./story/assets/kf/kf5-1280.webp 1280w, ./story/assets/kf/kf5-1920.webp 1920w" sizes="100vw" alt="Golden-hour light over the Himalayan foothills of Himachal, with a village on the terraced slopes." /></div>
     <div class="hero-copy">
       <p class="hero-stat"><b>100M+</b> people use what I've designed</p>
       <h1>From the mountains<br /><em>to millions.</em></h1>
-      <p class="hero-sub">A village road in Himachal, seven stops, ten years of design. Walk it with me.</p>
+      <p class="hero-sub">One mountain path, seven stops, ten years of design. Walk it with me.</p>
       <div class="hero-actions">
-        <a class="btn btn-solid" href="#ch1">Start the walk</a>
+        <a class="btn btn-solid" href="#story" data-walk-start>Start the walk</a>
         <a class="btn btn-ghost" href="https://cal.com/abhishek-thakur-adhbch/30min" target="_blank" rel="noopener">Book a call</a>
       </div>
     </div>
-    <a class="walk-cue" href="#ch1">
+    <a class="walk-cue" href="#story" data-walk-start>
       <span class="steps" aria-hidden="true"><i></i><i></i><i></i></span>
       Scroll to walk
     </a>
   </section>
 
-  <main id="story">
-
-    <!-- 01 Home -->
-    <section class="ch" id="ch1" data-mode="bleed">
-      <div class="stage">
-        <div class="bg"><img loading="lazy" src="./story/assets/kf/kf6-1920.webp" srcset="./story/assets/kf/kf6-1280.webp 1280w, ./story/assets/kf/kf6-1920.webp 1920w" sizes="100vw" alt="A boy with a school bag stands outside a stone house, looking down a winding mountain road." style="--pos: 42% 60%" /></div>
-        <span class="bignum" aria-hidden="true">01</span>
-        <div class="copy">
-          <p class="eyebrow"><b>01</b> Home · Himachal · before 2012</p>
-          <h2>It started on a mountain road.</h2>
-          <p>Tech was rare where I grew up, so I learned to watch closely. That habit is still how I design.</p>
-          <p class="result"><span>What I took with me</span>Pay attention first. Then build.</p>
-        </div>
+  <!-- Stops: shown while you pause at each arch -->
+  <main class="hud" id="story">
+    <article class="stop" data-num="01" data-label="Home" data-year="Himachal · before 2012" data-photo="./story/assets/kf/kf6-1280.webp">
+      <p class="eyebrow"><b>01</b> Home · Himachal · before 2012</p>
+      <h2>It started on a mountain road.</h2>
+      <p>Tech was rare where I grew up, so I learned to watch closely. That habit is still how I design.</p>
+      <p class="result"><span>What I took with me</span>Pay attention first. Then build.</p>
+    </article>
+    <article class="stop" data-num="02" data-label="College" data-year="IIIT Allahabad · 2012–16" data-photo="./images/about/codetodesign/code-to-design-02.png">
+      <p class="eyebrow"><b>02</b> College · IIIT Allahabad · 2012–16</p>
+      <h2>Design found me in an engineering college.</h2>
+      <p>A B.Tech in IT, and a side job leading design for our tech society. I fell for people more than tools.</p>
+      <p class="result"><span>What I took with me</span>Engineer by degree, designer by instinct.</p>
+    </article>
+    <article class="stop" data-num="03" data-label="Dineout" data-year="Swiggy Dineout · 2016–19" data-photo="./images/about/2016-19-designing/designing-01.png">
+      <p class="eyebrow"><b>03</b> Swiggy Dineout · 2016–19</p>
+      <h2>Mobile-first, and fast.</h2>
+      <p>India went mobile and so did dining out. I led Predict &amp; Win and the Great Indian Restaurant Festival.</p>
+      <p class="result"><span>Key result</span>Mega Mind Award · app rated 4.7 on Play</p>
+    </article>
+    <article class="stop" data-num="04" data-label="The pause" data-year="Travacations · 2019–22" data-photo="./images/about/2019-22-pandemic/pandemic-02.png">
+      <p class="eyebrow"><b>04</b> The pause · Travacations · 2019–22</p>
+      <h2>The world slowed down. So did I.</h2>
+      <p>I prepared for the Civil Services and shaped design strategy for a travel startup. Stillness taught me systems.</p>
+      <p class="result"><span>What I took with me</span>Clarity beats speed.</p>
+    </article>
+    <article class="stop" data-num="05" data-label="Jio" data-year="Jio Platforms · 2022–23" data-photo="./images/walk/jio.webp">
+      <p class="eyebrow"><b>05</b> Jio Platforms · 2022–23</p>
+      <h2>Back to build, at Jio scale.</h2>
+      <p>Senior UX Manager across MyJio, JioMart and Netmeds. Apps with hundreds of millions of downloads.</p>
+      <p class="result"><span>Key result</span>+28% add-to-cart on JioMart discovery</p>
+      <a class="btn btn-solid" href="./jiomart-discovery.html">Read the JioMart story</a>
+    </article>
+    <article class="stop" data-num="06" data-label="Delhivery" data-year="2023–now" data-photo="./images/walk/delhivery.webp">
+      <p class="eyebrow"><b>06</b> Delhivery · 2023–now</p>
+      <h2>Leading design where parcels move.</h2>
+      <p>I lead the Gurgaon design team across logistics, hubs and financial services, with research on the ground.</p>
+      <p class="result"><span>Key results</span>80.4% self-serve activation · hub compliance 65% → 79%</p>
+      <div class="btn-row">
+        <a class="btn btn-solid" href="./delfin.html">See DelFin</a>
+        <a class="btn btn-ghost" href="./hubeye.html">See Hub Digital Twin</a>
       </div>
-    </section>
-
-    <!-- 02 IIIT Allahabad -->
-    <section class="ch" id="ch2" data-mode="prints">
-      <div class="stage">
-        <div class="bg bg-soft"><img loading="lazy" src="./images/about/curiosity/curiosity-02.png" alt="" /></div>
-        <div class="prints">
-          <figure class="print p1"><img loading="lazy" src="./images/about/curiosity/curiosity-01.png" alt="Abhishek as a student with a backpack and his first Nokia phone." /></figure>
-          <figure class="print p2"><img loading="lazy" src="./images/about/codetodesign/code-to-design-02.png" alt="A computer lab full of students at IIIT Allahabad." /></figure>
-          <figure class="print p3"><img loading="lazy" src="./images/about/curiosity/curiosity-02.png" alt="Abhishek with hostel friends in matching T-shirts." /></figure>
-        </div>
-        <span class="bignum" aria-hidden="true">02</span>
-        <div class="copy">
-          <p class="eyebrow"><b>02</b> College · IIIT Allahabad · 2012–16</p>
-          <h2>Design found me in an engineering college.</h2>
-          <p>A B.Tech in IT, and a side job leading design for our tech society. I fell for people more than tools.</p>
-          <p class="result"><span>What I took with me</span>Engineer by degree, designer by instinct.</p>
-        </div>
+    </article>
+    <article class="stop" data-num="07" data-label="Next chapter" data-year="2027" data-photo="./images/walk/summit.webp">
+      <p class="eyebrow"><b>07</b> Next chapter · 2027</p>
+      <h2>The next stop is yours.</h2>
+      <p>I'm looking for my next design leadership role. If you build things people use every day, let's walk together.</p>
+      <div class="btn-row">
+        <a class="btn btn-solid" href="https://cal.com/abhishek-thakur-adhbch/30min" target="_blank" rel="noopener">Book a call</a>
+        <a class="btn btn-ghost" href="mailto:abhishekiit2k12@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="./profile.html">See the portfolio</a>
       </div>
-    </section>
-
-    <!-- 03 Swiggy Dineout -->
-    <section class="ch" id="ch3" data-mode="prints">
-      <div class="stage">
-        <div class="bg bg-soft"><img loading="lazy" src="./images/about/2016-19-designing/designing-01.png" alt="" /></div>
-        <div class="prints">
-          <figure class="print p1"><img loading="lazy" src="./images/about/2016-19-designing/designing-02.png" alt="Abhishek running a paper-prototype session." /></figure>
-          <figure class="print p2"><img loading="lazy" src="./images/about/2016-19-designing/designing-01.png" alt="The Dineout team at a product event hosted by Facebook." /></figure>
-          <figure class="print p3"><img loading="lazy" src="./images/about/2016-19-designing/designing-07.png" alt="A design workshop with the Dineout team." /></figure>
-        </div>
-        <span class="bignum" aria-hidden="true">03</span>
-        <div class="copy">
-          <p class="eyebrow"><b>03</b> Swiggy Dineout · 2016–19</p>
-          <h2>Mobile-first, and fast.</h2>
-          <p>India went mobile and so did dining out. I led Predict &amp; Win and the Great Indian Restaurant Festival.</p>
-          <p class="result"><span>Key result</span>Mega Mind Award · app rated 4.7 on Play</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 Travacations / the pause -->
-    <section class="ch" id="ch4" data-mode="prints">
-      <div class="stage">
-        <div class="bg bg-soft"><img loading="lazy" src="./images/about/2019-22-pandemic/pandemic-02.png" alt="" /></div>
-        <div class="prints">
-          <figure class="print p1"><img loading="lazy" src="./images/about/2019-22-pandemic/pandemic-01.png" alt="A study desk with a laptop and walls of handwritten notes." /></figure>
-          <figure class="print p2"><img loading="lazy" src="./images/about/2019-22-pandemic/pandemic-02.png" alt="A whiteboard covered in a dense handwritten study plan." /></figure>
-          <figure class="print p3"><img loading="lazy" src="./images/about/2019-22-pandemic/pandemic-03.png" alt="Notes from the pause years." /></figure>
-        </div>
-        <span class="bignum" aria-hidden="true">04</span>
-        <div class="copy">
-          <p class="eyebrow"><b>04</b> The pause · Travacations · 2019–22</p>
-          <h2>The world slowed down. So did I.</h2>
-          <p>I prepared for the Civil Services and shaped design strategy for a travel startup. Stillness taught me systems.</p>
-          <p class="result"><span>What I took with me</span>Clarity beats speed.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 05 Jio -->
-    <section class="ch" id="ch5" data-mode="frame">
-      <div class="stage">
-        <div class="bg bg-soft"><img loading="lazy" src="./images/walk/jio.webp" alt="" /></div>
-        <div class="prints">
-          <figure class="print solo"><img loading="lazy" src="./images/walk/jio.webp" alt="Abhishek and teammates at the Jio Digital Life office." /></figure>
-        </div>
-        <span class="bignum" aria-hidden="true">05</span>
-        <div class="copy">
-          <p class="eyebrow"><b>05</b> Jio Platforms · 2022–23</p>
-          <h2>Back to build, at Jio scale.</h2>
-          <p>Senior UX Manager across MyJio, JioMart and Netmeds. Apps with hundreds of millions of downloads.</p>
-          <p class="result"><span>Key result</span>+28% add-to-cart on JioMart discovery</p>
-          <a class="btn btn-solid" href="./jiomart-discovery.html">Read the JioMart story</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 Delhivery -->
-    <section class="ch ch-busy" id="ch6" data-mode="bleed">
-      <div class="stage">
-        <div class="bg"><img loading="lazy" src="./images/walk/delhivery.webp" alt="Abhishek with the Delhivery team outside a hub." style="--pos: 50% 40%" /></div>
-        <span class="bignum" aria-hidden="true">06</span>
-        <div class="copy">
-          <p class="eyebrow"><b>06</b> Delhivery · 2023–now</p>
-          <h2>Leading design where parcels move.</h2>
-          <p>I lead the Gurgaon design team across logistics, hubs and financial services. I do research on the ground, not just in Figma.</p>
-          <p class="result"><span>Key results</span>80.4% self-serve activation · hub compliance 65% → 79%</p>
-          <div class="btn-row">
-            <a class="btn btn-solid" href="./delfin.html">See DelFin</a>
-            <a class="btn btn-ghost" href="./hubeye.html">See Hub Digital Twin</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 07 Next -->
-    <section class="ch ch-last" id="ch7" data-mode="bleed">
-      <div class="stage">
-        <div class="bg"><img loading="lazy" src="./images/walk/summit.webp" alt="Abhishek sitting on a mountain summit at sunrise." style="--pos: 50% 35%" /></div>
-        <span class="bignum" aria-hidden="true">07</span>
-        <div class="copy">
-          <p class="eyebrow"><b>07</b> Next chapter · 2027</p>
-          <h2>The next stop is yours.</h2>
-          <p>I'm looking for my next design leadership role. If you build things people use every day, let's walk together.</p>
-          <div class="btn-row">
-            <a class="btn btn-solid" href="https://cal.com/abhishek-thakur-adhbch/30min" target="_blank" rel="noopener">Book a call</a>
-            <a class="btn btn-ghost" href="mailto:abhishekiit2k12@gmail.com">Email me</a>
-            <a class="btn btn-ghost" href="./profile.html">See the portfolio</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    </article>
   </main>
 
-  <footer class="end">
-    <p>Ten years, seven stops, one road. <a href="#top">Walk it again ↑</a></p>
-    <p class="end-small">© 2026 Abhishek Thakur Design</p>
-  </footer>
+  <div id="walkSpace" class="walk-space" aria-hidden="true"></div>
 
-  <script src="./js/walk.js?v=1" defer></script>
+  <script type="module" src="./js/walk-path.js?v=2"></script>
 </body>
 </html>
