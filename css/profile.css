@@ -1331,3 +1331,12 @@ html, body { overflow-x: clip; }
 .jr-dot { transition: border-color .6s ease; }
 .jr-stop.is-lit .jr-dot { border-color: #8f897e; }
 .jr-bike { color: #9a9488; }
+
+/* One consistent "show more" style everywhere: same size, weight, colour and chevron, no divider line */
+.ui-more::after, .more-proj > summary::after { content: none; }
+.ui-more, .more-proj > summary, .card-foot button { justify-content: flex-start; gap: 6px; padding: 8px 0; color: var(--text-2); }
+.ui-more { margin-top: 16px; }
+.ui-more-label, .more-proj-label, .card-foot button span { font-size: 15px; font-weight: 600; color: inherit; }
+.ui-more .more-chev, .more-proj > summary .more-chev, .card-foot button svg { width: 18px; height: 18px; color: inherit; }
+.ui-more:hover, .more-proj > summary:hover, .more-proj > summary:hover .more-proj-label, .more-proj > summary:hover .more-chev, .card-foot button:hover { color: var(--text); background: none; }
+.ui-more:hover .ui-more-label, .more-proj > summary:hover .more-proj-label { text-decoration: none; }
