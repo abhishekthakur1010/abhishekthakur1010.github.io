@@ -15,7 +15,8 @@
   // The ball wears the banner's sky gradient (now the Christmas red), so it opens straight into the banner.
   var DUSK = 'linear-gradient(180deg, #3e0f22, #7a1530 42%, #b3262f 76%, #d9533a)';
   // HUMAN + AI takes the warm end of the banner sky.
-  var GLOW = 'linear-gradient(180deg, #A81E32, #C02634 50%, #D33438)';
+  var GLOW = 'linear-gradient(180deg, #A3234A 0%, #C22A38 45%, #DE4F3A 80%, #EC7446 100%)';   // the banner sky, lifted to read on black
+  var SUBC = 'linear-gradient(90deg, #C22A38, #DE4F3A 55%, #EC7446)';
   function dusk(white) { white = clamp(white); return white <= 0 ? DUSK : white >= 1 ? WHT : 'linear-gradient(rgba(255,255,255,' + white.toFixed(3) + '), rgba(255,255,255,' + white.toFixed(3) + ')), ' + DUSK; }
   var VW = W, VH = H;   // the screen, in stage units (set by fitStage)
 
@@ -97,7 +98,7 @@
     }
     if (t >= 4.08 && t < 4.85) word('title', 'ABHISHEK THAKUR', NS, 612, { color: WHT, clip: { t: 0, r: W, b: 636, l: 0 }, z: 31 },
       function (i) { return NS * 1.1 * (1 - eo(P(t, 4.1 + i * .012, .3))) + NS * 1.1 * ei(P(t, 4.56 + i * .006, .22)); });
-    if (t >= 4.18 && t < 4.75) word('sub', 'PRODUCT DESIGNER', 28, 698, { weight: 600, color: SAF, ls: 7, clip: { t: 644, r: W, b: H, l: 0 }, z: 31 },
+    if (t >= 4.18 && t < 4.75) word('sub', 'PRODUCT DESIGNER', 28, 698, { weight: 600, color: SUBC, ls: 7, clip: { t: 644, r: W, b: H, l: 0 }, z: 31 },
       function () { return -90 * (1 - eo(P(t, 4.2, .3))) - 90 * ei(P(t, 4.5, .2)); });
     return D;
   }
