@@ -12,7 +12,7 @@
   // Diwali is over: the crackers (skyrockets, anaars and the sparkler cursor) are switched off.
   // The bunting, kandils, diyas and warm sky stay. Set to true to bring the crackers back.
   var CRACKERS = false;
-  // Christmas season: flags and kandils recoloured to sit with the red sky, and stars hang where the diyas were.
+  // Christmas season: fairy lights instead of flags, kandils recoloured to sit with the red sky, and stars hang where the diyas were.
   // Set XMAS to false to bring back the Diwali colours and diyas.
   var XMAS = true;
   var X = { gold: '#f2c66d', cream: '#fff1dc', pine: '#2f6b52', pineDark: '#1f4a39', rose: '#f3a59a', cap: '#3a0d1c', string: 'rgba(255,225,200,.5)' };
@@ -291,7 +291,40 @@
     var swags = W < 600 ? 2 : 3, sw = W / swags, u = (x % sw) / sw;
     return 2 + 16 * 4 * u * (1 - u) + 13 + 2;
   }
+  // Christmas: warm fairy lights on thin wires instead of flags, two strands per swag crossing each other.
+  function drawLights() {
+    var swags = W < 600 ? 2 : 3, sw = W / swags, gap = W < 600 ? 30 : 36;
+    ctx.save();
+    for (var s = 0; s < swags; s++) {
+      var x0 = s * sw;
+      [{ y0: 2, sag: 17, ph: 0 }, { y0: 8, sag: 26, ph: 2.1 }].forEach(function (wire, wi) {
+        var yA = wire.y0 + (wi ? 6 : 0), yB = wire.y0 + (wi ? 0 : 6);
+        ctx.strokeStyle = 'rgba(120,70,50,.85)'; ctx.lineWidth = 1.1;
+        ctx.beginPath(); ctx.moveTo(x0, yA); ctx.quadraticCurveTo(x0 + sw / 2, wire.y0 + wire.sag * 2, x0 + sw, yB); ctx.stroke();
+        var n = Math.floor(sw / gap);
+        for (var i = 1; i < n; i++) {
+          var u = (i + (wi ? 0.5 : 0)) / n; if (u >= 1) continue;
+          var x = x0 + sw * u, y = (1 - u) * (1 - u) * yA + 2 * u * (1 - u) * (wire.y0 + wire.sag * 2) + u * u * yB + 2;
+          var seed = (s * 31 + wi * 17 + i * 7) % 13, big = seed % 4 === 0;
+          var tw = reduce ? 0.85 : 0.6 + 0.4 * Math.sin(now * (1.3 + seed * 0.17) + seed * 1.9 + wire.ph);
+          var r = (big ? 22 : 14) * (0.7 + 0.3 * tw), core = big ? 3.4 : 2.4;
+          ctx.globalCompositeOperation = 'lighter';
+          var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+          g.addColorStop(0, 'rgba(255,236,190,' + (0.75 * tw).toFixed(3) + ')'); g.addColorStop(0.3, 'rgba(255,200,125,' + (0.3 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,180,100,0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
+          if (big && tw > 0.8) {   // a little star glint on the brightest bulbs
+            var L = 9 * (tw - 0.8) / 0.2 + 3; ctx.strokeStyle = 'rgba(255,245,220,' + (0.7 * tw).toFixed(3) + ')'; ctx.lineWidth = 0.8;
+            ctx.beginPath(); ctx.moveTo(x - L, y); ctx.lineTo(x + L, y); ctx.moveTo(x, y - L); ctx.lineTo(x, y + L); ctx.stroke();
+          }
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.fillStyle = 'rgba(255,248,226,' + (0.75 + 0.25 * tw).toFixed(3) + ')'; ctx.beginPath(); ctx.arc(x, y, core, 0, 6.2832); ctx.fill();
+        }
+      });
+    }
+    ctx.restore();
+  }
   function drawBunting() {
+    if (XMAS) return drawLights();
     var swags = W < 600 ? 2 : 3, sw = W / swags;
     for (var s = 0; s < swags; s++) {
       var x0 = s * sw, sag = 16;
