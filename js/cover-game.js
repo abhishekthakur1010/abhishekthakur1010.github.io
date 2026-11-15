@@ -330,15 +330,16 @@
 
   // A hanging Christmas star: a soft halo, a gold five-pointed star with a lighter face, gently twinkling.
   function star(x, y, s, p) {
-    var tw = reduce ? 1 : 0.85 + 0.15 * Math.sin(now * 2.2 + p * 1.7), sw = reduce ? 0 : Math.sin(now * 1.1 + p) * 0.08;
-    var g = ctx.createRadialGradient(x, y, 0, x, y, 26 * s);
-    g.addColorStop(0, 'rgba(255,224,150,' + (0.5 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,200,120,0)');
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 26 * s, 0, 6.2832); ctx.fill();
+    // The glow breathes: it dims right down, then swells bright again (about every 2.5 seconds, each star out of step).
+    var tw = reduce ? 1 : 0.5 + 0.5 * Math.sin(now * 2.5 + p * 1.7), sw = reduce ? 0 : Math.sin(now * 1.1 + p) * 0.08;
+    var hr = (16 + 22 * tw) * s, g = ctx.createRadialGradient(x, y, 0, x, y, hr);
+    g.addColorStop(0, 'rgba(255,232,160,' + (0.12 + 0.68 * tw).toFixed(3) + ')'); g.addColorStop(0.45, 'rgba(255,205,120,' + (0.05 + 0.3 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,200,120,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, hr, 0, 6.2832); ctx.fill();
     ctx.save(); ctx.translate(x, y); ctx.rotate(sw); ctx.scale(s, s);
     function path(R, r) { ctx.beginPath(); for (var i = 0; i < 10; i++) { var a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r : R; ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } ctx.closePath(); }
     path(10, 4.2); ctx.fillStyle = '#d99a2b'; ctx.fill();
     path(7.4, 3.1); ctx.fillStyle = X.gold; ctx.fill();
-    ctx.globalAlpha *= tw; path(3.6, 1.6); ctx.fillStyle = '#fff6d8'; ctx.fill();
+    ctx.globalAlpha *= 0.25 + 0.75 * tw; path(3.6, 1.6); ctx.fillStyle = '#fff6d8'; ctx.fill();
     ctx.restore();
   }
 
