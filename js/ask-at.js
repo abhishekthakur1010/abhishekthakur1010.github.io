@@ -82,9 +82,27 @@
     history.forEach(function (m) { if (m.who === 'user') asked[m.text.toLowerCase()] = 1; });
     return p.qs.map(function (q) { return q[0]; }).filter(function (q) { return !asked[q.toLowerCase()]; }).slice(0, n);
   }
+  /* Small talk: short reactions like "great", "thanks" or "bye" get a warm, human reply instead of the hand-over. */
+  var TALK = [
+    { re: /\b(thanks|thank you|thank u|thx|ty|cheers|appreciate)\b/, a: ['Anytime! 😊', 'Happy to help. Anything else?', 'My pleasure!'] },
+    { re: /\b(great|nice|awesome|amazing|cool|wow|love|loved|impressive|brilliant|superb|fantastic|perfect|excellent|beautiful|good|neat|sweet)\b/, a: ['Thank you, that means a lot! 🙌', 'Glad you like it! 😊', 'Appreciate that! 🙏', 'Thanks! Abhishek will be happy to hear that.'] },
+    { re: /\b(bye|goodbye|see you|see ya|later|ciao)\b/, a: ['Thanks for stopping by! 👋 Hope to hear from you soon.'], end: 1 },
+    { re: /^(ok|okay|k|got it|sure|alright|hmm+|cool cool|fine|noted)[.!]*$/, a: ['👍 Anything else you\'d like to know?'] }
+  ];
+  var talkTurn = 0;
+  function smallTalk(t) {
+    if (t.split(/\s+/).length > 6 || /\?/.test(t)) return null;   // real questions go to the answers below
+    for (var i = 0; i < TALK.length; i++) if (TALK[i].re.test(t)) {
+      var a = TALK[i].a[talkTurn++ % TALK[i].a.length];
+      return { a: [a], f: TALK[i].end ? [] : nextQs(2), c: TALK[i].end ? 1 : 0 };
+    }
+    return null;
+  }
   function answer(text) {
     var t = text.toLowerCase().trim();
     if (ANSWERS[t]) return { a: ANSWERS[t], f: nextQs(2) };
+    var small = smallTalk(t);
+    if (small) return small;
     var best = null, score = 0;
     MOCK.forEach(function (m) { var s = m.k.filter(function (k) { return new RegExp('\\b' + k + '\\b').test(t); }).length; if (s > score) { score = s; best = m; } });
     if (best) return { a: best.a || ANSWERS[best.q.toLowerCase()], f: best.c ? [] : nextQs(2), c: best.c };
