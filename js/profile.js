@@ -200,21 +200,48 @@
   }
 })();
 
-/* Journey strip: the place the cycle is passing turns darker, then fades back */
+/* Journey strip: the cycle rides the road; places it passes (and the road behind it) turn red.
+   At the last stop the rider hops off, waves and asks to connect, then the ride starts over. */
 (function () {
   var sec = document.querySelector('.journey');
-  if (!sec || !window.IntersectionObserver || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
-  var bike = sec.querySelector('.jr-bike'), lms = sec.querySelectorAll('.jr-lm'), stops = sec.querySelectorAll('.jr-stop'), on = false;
-  if (!bike) return;
-  function tick() {
-    if (!on) return;
-    var b = bike.getBoundingClientRect(), x = b.left + b.width / 2;
-    for (var i = 0; i < stops.length; i++) {
-      var r = stops[i].getBoundingClientRect(), near = Math.abs(x - (r.left + r.width / 2)) < r.width * 0.5;
-      stops[i].classList.toggle('is-lit', near);
-      if (lms[i]) lms[i].classList.toggle('is-lit', near);
+  if (!sec || !window.IntersectionObserver) return;
+  var scene = sec.querySelector('.jr-scene'), bike = sec.querySelector('.jr-bike'), trail = sec.querySelector('.jr-trail'),
+      person = sec.querySelector('.jr-person'), hi = sec.querySelector('.jr-hi'),
+      lms = sec.querySelectorAll('.jr-lm'), stops = sec.querySelectorAll('.jr-stop');
+  if (!scene || !bike) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var on = false, x = -40, last = 0, state = 'ride', hold = 0, hovering = false;
+  function centers() { var s = scene.getBoundingClientRect(); return Array.prototype.map.call(stops, function (li) { var r = li.getBoundingClientRect(); return r.left - s.left + r.width / 2; }); }
+  function place(px) {
+    bike.style.transform = 'translateX(' + px + 'px)';
+    if (trail) trail.style.width = Math.max(0, px + 14) + 'px';
+    var c = centers();
+    for (var i = 0; i < stops.length; i++) { var lit = px + 14 >= c[i] - 6; stops[i].classList.toggle('is-lit', lit); if (lms[i]) lms[i].classList.toggle('is-lit', lit); }
+  }
+  function arrive(c) {
+    var stand = c[c.length - 1] - 36;
+    person.style.left = (stand + 34) + 'px'; hi.style.left = (stand + 45) + 'px';
+    sec.classList.add('jr-arrived');
+    stops[stops.length - 1].classList.add('is-lit'); if (lms[lms.length - 1]) lms[lms.length - 1].classList.add('is-lit');
+  }
+  if (hi) { hi.addEventListener('mouseenter', function () { hovering = true; }); hi.addEventListener('mouseleave', function () { hovering = false; }); hi.addEventListener('focus', function () { hovering = true; }); hi.addEventListener('blur', function () { hovering = false; }); }
+  if (reduce) { var c0 = centers(); x = c0[c0.length - 1] - 36; place(x); arrive(c0); return; }
+  function tick(t) {
+    if (!on) { last = 0; return; }
+    var dt = last ? Math.min(0.05, (t - last) / 1000) : 0; last = t;
+    var c = centers(), end = c[c.length - 1] - 36, speed = scene.clientWidth / 30;
+    if (state === 'ride') {
+      x += speed * dt; if (x >= end) { x = end; state = 'hi'; hold = 6; arrive(c); }
+      place(x);
+    } else if (state === 'hi') {
+      if (!hovering) hold -= dt;
+      if (hold <= 0) { state = 'reset'; hold = 0.9; sec.classList.remove('jr-arrived'); sec.classList.add('jr-reset'); }
+    } else if (state === 'reset') {
+      hold -= dt;
+      if (hold <= 0) { x = -40; place(x); sec.classList.remove('jr-reset'); state = 'ride'; }
     }
     requestAnimationFrame(tick);
   }
   new IntersectionObserver(function (e) { on = e[0].isIntersecting; if (on) requestAnimationFrame(tick); }).observe(sec);
+  window.addEventListener('resize', function () { if (state !== 'ride') arrive(centers()); });
 })();

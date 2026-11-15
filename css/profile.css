@@ -1265,7 +1265,7 @@ html, body { overflow-x: clip; }
   display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: auto auto; }
 .jr-scene { grid-column: 1 / -1; grid-row: 1; position: relative; color: var(--jr-ink); }
 .jr-land { display: block; width: 100%; height: auto; overflow: visible; }
-.jr-bike { position: absolute; left: 0; bottom: 1px; width: 26px; height: 24px; color: #8f887c; animation: jr-ride 36s linear infinite; }
+.jr-bike { position: absolute; left: 0; bottom: 1px; width: 26px; height: 24px; color: #8f887c; }
 .jr-spoke { transform-box: fill-box; transform-origin: center; animation: jr-spin .7s linear infinite; }
 @keyframes jr-ride { from { left: -40px; } to { left: 100%; } }
 @keyframes jr-spin { to { transform: rotate(360deg); } }
@@ -1339,3 +1339,27 @@ html, body { overflow-x: clip; }
 .ui-more .more-chev, .more-proj > summary .more-chev, .card-foot button svg { width: 18px; height: 18px; color: inherit; }
 .ui-more:hover, .more-proj > summary:hover, .more-proj > summary:hover .more-proj-label, .more-proj > summary:hover .more-chev, .card-foot button:hover { color: var(--text); background: none; }
 .ui-more:hover .ui-more-label, .more-proj > summary:hover .more-proj-label, .card-foot button:hover span { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Journey ride: places the cycle has passed turn the banner red, the road behind it too; at 2027 the rider hops off and says hi */
+.jr-bike { transform: translateX(-40px); will-change: transform; }
+.jr-trail { position: absolute; left: 0; bottom: 1px; height: 2px; width: 0; border-radius: 2px; pointer-events: none;
+  background: linear-gradient(90deg, #7a1530, #b3262f 55%, #d9533a); transition: opacity .8s ease; }
+.jr-lm.is-lit { stroke: url(#jr-red); color: #b3262f; }
+.jr-stop.is-lit .jr-chip b { color: #b3262f; }
+.jr-stop.is-lit .jr-chip span { color: #d58a7c; }
+.jr-stop.is-lit .jr-dot { border-color: #b3262f; }
+.jr-stop.is-now.is-lit .jr-dot { border-color: var(--accent); }
+.jr-person { position: absolute; bottom: 1px; left: 0; width: 22px; height: 44px; color: #b3262f; opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; pointer-events: none; }
+.jr-person svg { width: 100%; height: 100%; display: block; }
+.jr-hi { position: absolute; left: 0; bottom: 54px; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; white-space: nowrap;
+  background: #fff; border: 1px solid #ecd3cf; box-shadow: 0 6px 18px rgba(122, 21, 48, .12); color: #b3262f; font-size: 13px; font-weight: 600; text-decoration: none;
+  opacity: 0; transform: translate(-50%, 8px) scale(.96); transition: opacity .35s ease .15s, transform .35s ease .15s; pointer-events: none; }
+.jr-hi::after { content: ""; position: absolute; left: 50%; bottom: -5px; width: 8px; height: 8px; margin-left: -4px; background: #fff; border-right: 1px solid #ecd3cf; border-bottom: 1px solid #ecd3cf; transform: rotate(45deg); }
+.jr-hi svg { width: 13px; height: 13px; }
+.jr-hi:hover { color: #7a1530; border-color: #b3262f; }
+.journey.jr-arrived .jr-rider { opacity: 0; }
+.journey.jr-arrived .jr-person { opacity: 1; transform: none; }
+.journey.jr-arrived .jr-hi { opacity: 1; transform: translate(-50%, 0) scale(1); pointer-events: auto; }
+.journey.jr-reset .jr-trail { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .jr-bike { display: block; } }
+.jr-bike { color: #b3262f; }
