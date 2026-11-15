@@ -1374,4 +1374,4 @@ html, body { overflow-x: clip; }
 
 /* Trial: footer hidden, the journey strip closes the page on its own */
 .footer[hidden] { display: none !important; }
-.footer[hidden] + .journey { padding-top: 48px; background: linear-gradient(180deg, #fff 0%, #faf9f6 45%, #f5f3ef 100%); }
+.footer[hidden] + .journey { padding-top: 0; margin-top: -24px; background: linear-gradient(180deg, #fff 0%, #faf9f6 45%, #f5f3ef 100%); }
