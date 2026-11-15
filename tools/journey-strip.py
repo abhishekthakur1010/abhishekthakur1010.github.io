@@ -6,7 +6,7 @@ G = 150                       # ground line in a 1200 x 150 viewBox
 L = []
 A = L.append
 BG = 'var(--jr-bg)'
-K = 0.62
+K = 0.52
 grp = lambda cx: f'<g class="jr-lm"><g transform="translate({cx} {G}) scale({K}) translate({-cx} {-G})">'           # fills hide lines behind shapes, matching the band
 
 A(grp(100))
@@ -81,7 +81,7 @@ A('</g></g>')
 # horizon: solid for the road travelled, dashed for the road ahead
 A(f'<path d="M-400 {G}H1210" class="jr-ground"/><path d="M1210 {G}H1900" stroke-dasharray="5 6"/>')
 
-landsvg = ('<svg class="jr-land" viewBox="0 50 1400 102" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">'
+landsvg = ('<svg class="jr-land" viewBox="0 64 1400 88" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">'
            f'<g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">{"".join(L)}</g></svg>')
 
 bike = ('<svg class="jr-bike" viewBox="-13 -44 64 58" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
