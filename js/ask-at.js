@@ -108,7 +108,7 @@
   root.className = 'aat';
   if (/[?&]orb=mono\b/.test(location.search)) root.setAttribute('data-orb', 'mono');  // preview the black-and-white orb
   root.innerHTML =
-    '<button type="button" class="aat-launch" aria-haspopup="dialog" aria-controls="aat-drawer" aria-expanded="false">' + ORB + '<span>Ask Abhizag</span><kbd aria-hidden="true"></kbd></button>' +
+    '<button type="button" class="aat-launch" aria-haspopup="dialog" aria-controls="aat-drawer" aria-expanded="false" aria-label="Ask Abhizag, Abhishek\'s AI assistant">' + ORB + '<span class="aat-launch-txt" aria-hidden="true"><span>Ask Abhizag</span><kbd></kbd></span></button>' +
     '<div class="aat-scrim" aria-hidden="true"></div>' +
     '<section class="aat-drawer" id="aat-drawer" role="dialog" aria-modal="true" aria-labelledby="aat-title" aria-describedby="aat-sub" inert>' +
       '<header class="aat-head">' + ORB +

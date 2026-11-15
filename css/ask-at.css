@@ -146,3 +146,9 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
 .aat-contact a:first-child { background: var(--aat-ink); border-color: var(--aat-ink); color: var(--aat-bg); }
 .aat-contact a:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
 .aat-contact svg { width: 16px; height: 16px; }
+
+/* Launcher: just the orb in a circle; it opens into the "Ask Abhizag" pill on hover or keyboard focus */
+.aat-launch { gap: 0; padding: 0 7px; }
+.aat-launch-txt { display: inline-flex; align-items: center; gap: 9px; max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
+  transition: max-width .45s var(--aat-ease), opacity .25s ease, padding .45s var(--aat-ease); }
+.aat-launch:hover .aat-launch-txt, .aat-launch:focus-visible .aat-launch-txt { max-width: 180px; opacity: 1; padding: 0 11px 0 10px; transition-delay: 0s, .08s, 0s; }
