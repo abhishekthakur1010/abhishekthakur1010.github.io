@@ -119,3 +119,13 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
   .aat-drawer, .aat-scrim, .aat-launch { transition: none !important; }
   .aat-orb::before, .aat-orb::after, .aat-welcome, .aat-sugs li, .aat-msg, .aat-typing i { animation: none !important; }
 }
+
+/* Persona picker: who's asking decides the suggested questions */
+.aat-who { margin: 26px 0 10px !important; font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--aat-ink-3) !important; }
+.aat-personas { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.aat-persona { padding: 7px 14px; border: 1px solid var(--aat-line); border-radius: 999px; background: var(--aat-bg); color: var(--aat-ink-2); font: inherit; font-size: 13.5px; cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.aat-persona:hover { border-color: var(--aat-ink); color: var(--aat-ink); }
+.aat-persona[aria-pressed="true"] { background: var(--aat-ink); border-color: var(--aat-ink); color: var(--aat-bg); }
+.aat-persona:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
+.aat-personas + .aat-sugs { margin-top: 18px; }
