@@ -67,11 +67,35 @@ button,a{font:inherit;color:inherit}
 #intro .panel{text-align:center;width:min(560px,100%)}
 #intro .row{justify-content:center}
 #intro .hintline{font-size:.78rem;color:var(--dim);margin-top:12px}
-#card{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 86px);transform:translateX(-50%);z-index:6;width:min(92vw,420px);padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 20px 50px rgba(0,0,0,.22)}
-#card .k{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
-#card .n{font:700 1.3rem/1.15 Cinzel,serif;margin:2px 0 4px}
-#card .d{color:var(--dim);font-size:.86rem}
-#card .row{margin-top:10px}
+#card{position:fixed;right:18px;top:calc(env(safe-area-inset-top,0px) + 76px);z-index:6;width:min(92vw,440px);border-radius:6px;overflow:hidden;background:#f3efe6;box-shadow:0 24px 60px rgba(0,0,0,.28);animation:cardIn .35s ease}
+@keyframes cardIn{from{transform:translateX(24px)}}
+#card .pv{position:relative;height:200px;background:linear-gradient(135deg,var(--tint),#14181f);display:grid;place-items:center;overflow:hidden}
+#card .pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#card .pv i{font-style:normal;font-size:4rem;filter:drop-shadow(0 6px 16px rgba(0,0,0,.35))}
+#card .x{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;border:0;background:#14181f;color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;z-index:2}
+#card .body{padding:20px 24px 20px}
+#card .k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#9a6a00}
+#card .n{font:700 1.75rem/1.12 Cinzel,serif;margin:6px 0 8px}
+#card .d{color:#3a3f48;font-size:1rem}
+#card .tip{margin:12px 0 0;padding:10px 12px;border-radius:8px;background:rgba(20,24,31,.06);font-size:.86rem;color:#3a3f48}
+#card .tip b{color:#14181f}
+#card .row{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#card .row .btn{justify-content:center;border-radius:4px;padding:.85rem .6rem}
+#card .row .ghost{background:transparent;border:1.5px solid #14181f;backdrop-filter:none}
+#card .ft{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-weight:700;font-size:.9rem;color:#3a3f48}
+#card .ft button{background:none;border:0;padding:0;font-weight:800;text-decoration:underline;cursor:pointer;color:#14181f}
+@media (max-width:640px){#card{left:10px;right:10px;width:auto;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}#card .pv{height:120px}#card .body{padding:14px 16px}#card .n{font-size:1.35rem}#card .d{font-size:.9rem}}
+/* walking */
+#walkHud{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 76px);transform:translateX(-50%);z-index:6;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;width:min(94vw,560px)}
+#walkHud>*{pointer-events:auto}
+#walkHud .wh{text-align:center;padding:10px 16px;border-radius:10px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#walkHud .wh b{display:block;font:700 1.05rem/1.2 Cinzel,serif;letter-spacing:.04em}
+#walkHud .wh span{font-size:.8rem;color:var(--dim)}
+#walkHud .row{margin:0;justify-content:center}
+#joy{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);transform:translateX(-50%);width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.6);z-index:6;touch-action:none}
+#joy i{position:absolute;left:50%;top:50%;width:50px;height:50px;margin:-25px 0 0 -25px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+body.walking .tod,body.walking .br{display:none}
+@media (max-width:640px){#walkHud{top:calc(env(safe-area-inset-top,0px) + 96px)}#walkHud .wh span{font-size:.74rem}}
 #fade{position:fixed;inset:0;z-index:20;background:#fff;opacity:0;pointer-events:none;transition:opacity .7s ease}
 .credit{position:fixed;right:16px;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:4;font:600 10px/1 Manrope,sans-serif;color:rgba(255,255,255,.75);text-decoration:none;background:rgba(0,0,0,.25);padding:5px 8px;border-radius:99px}
 @media (max-width:640px){.tod input{width:110px}.tod label{display:none}.brand b{font-size:1rem}.br a{display:none}.lab .t{font-size:.7rem;padding:6px 8px 5px}.lab .s{font-size:.66rem}.credit{display:none}}
@@ -90,7 +114,21 @@ button,a{font:inherit;color:inherit}
 <div class="tod"><label for="tod">Time of day</label><input id="tod" type="range" min="5" max="22" step=".05" value="16.5" aria-label="Time of day"><output id="todOut">4:30 PM</output></div>
 <div class="br"><button class="btn" id="wholeBtn" type="button">Whole world</button><a href="../profile.html">Classic portfolio</a></div>
 
-<div id="card" hidden><div class="k" id="kK"></div><div class="n" id="kN"></div><div class="d" id="kD"></div><div class="row"><button class="btn dark" id="kGo" type="button">Walk in →</button><button class="btn" id="kX" type="button">Close</button></div></div>
+<div id="card" hidden role="dialog" aria-labelledby="kN">
+  <div class="pv" id="kPv"><i id="kIco"></i><img id="kImg" alt="" hidden></div>
+  <button class="x" id="kX" type="button" aria-label="Close">×</button>
+  <div class="body">
+    <div class="k" id="kK"></div><div class="n" id="kN"></div><div class="d" id="kD"></div>
+    <p class="tip">Tip: tap <b>Land here and explore</b> to drop in and walk the streets yourself.</p>
+    <div class="row"><button class="btn dark" id="kGo" type="button">Visit site</button><button class="btn ghost" id="kLand" type="button">Land here and explore</button></div>
+    <div class="ft"><span id="kUrl"></span><button id="kAll" type="button">All places</button></div>
+  </div>
+</div>
+<div id="walkHud" hidden>
+  <div class="wh"><b id="wName">Exploring</b><span id="wHint">Walk with W A S D or the arrow keys, or tap the ground. Hold Shift to run. Drag to look around.</span></div>
+  <div class="row"><button class="btn dark" id="wEnter" type="button">Visit site</button><button class="btn" id="wUp" type="button">Take off ↑</button></div>
+</div>
+<div id="joy" hidden><i></i></div>
 
 <div id="intro" class="veil">
   <div class="panel">
@@ -291,6 +329,8 @@ function pine(g, x, z, s, snowy) { const y = H(x + g.position.x, z + g.position.
 function gableGeo() { const A = [-.5, 0, -.5], B = [.5, 0, -.5], C = [.5, 0, .5], D = [-.5, 0, .5], E = [-.5, 1, 0], F = [.5, 1, 0];
   const v = [A, E, F, A, F, B, D, C, F, D, F, E, A, D, E, B, F, C].flat(); const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3)); g.computeVertexNormals(); return g; }
 const SOFT = (() => { const [c, x] = cvs(128, 128); const gr = x.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, '#fff'); gr.addColorStop(.8, '#fff'); gr.addColorStop(1, '#000'); x.fillStyle = gr; x.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c); })();
+const COLL = [], OCC = [];   // OCC: meshes the walking camera must not sit behind
+   // footprints the explorer can't walk through: { x, z, r } in world units
 const UNIT = new THREE.BoxGeometry(1, 1, 1).translate(0, .5, 0), GABLE = gableGeo();
 function town(g, o) {
   const { r = 14, cell = 3, walls = ['#efe8dc'], roofs = ['#a5523a'], hmin = 1, hmax = 2, gable = true, rot = 0, road = 3, avoid = () => false, ground = '#b7ad98', lit = .6, roofH = .55, cbd = 0, roadCol = '#77716a', fill = .9 } = o;
@@ -305,13 +345,14 @@ function town(g, o) {
   const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), Y = new THREE.Vector3(0, 1, 0), s = new THREE.Vector3(), v = new THREE.Vector3(), c = new THREE.Color(); let nw = 0;
   items.forEach(([x, z], k) => {
     const ry = -rot + (rnd() < .5 ? 0 : Math.PI / 2), w = cell * (.5 + rnd() * .25), d = cell * (.45 + rnd() * .25);
+    COLL.push({ x: g.position.x + x, z: g.position.z + z, r: Math.max(w, d) * .62 });
     const h = (hmin + rnd() * (hmax - hmin)) * (1 + cbd * Math.pow(1 - Math.hypot(x, z) / r, 2));
     q.setFromAxisAngle(Y, ry); m4.compose(v.set(x, 0, z), q, s.set(w, h, d)); wm.setMatrixAt(k, m4); wm.setColorAt(k, c.set(walls[Math.floor(rnd() * walls.length)]).multiplyScalar(.92 + rnd() * .12));
     if (gable) m4.compose(v.set(x, h, z), q, s.set(w * 1.12, roofH * Math.min(w, d) * 1.4, d * 1.15)); else m4.compose(v.set(x, h, z), q, s.set(w * 1.03, .14, d * 1.03));
     rm.setMatrixAt(k, m4); rm.setColorAt(k, c.set(roofs[Math.floor(rnd() * roofs.length)]).multiplyScalar(.9 + rnd() * .15));
     if (rnd() < lit) { const ox = Math.sin(ry) * (d / 2 + .02), oz = Math.cos(ry) * (d / 2 + .02); m4.compose(v.set(x + ox, h * .35, z + oz), q, s.set(w * .45, Math.min(.5, h * .3), .05)); win.setMatrixAt(nw++, m4); }
   });
-  win.count = nw; [wm, rm].forEach(o2 => { o2.castShadow = true; o2.receiveShadow = true; g.add(o2); }); g.add(win);
+  win.count = nw; [wm, rm].forEach(o2 => { o2.castShadow = true; o2.receiveShadow = true; g.add(o2); OCC.push(o2); }); g.add(win);
   const rmat = M(roadCol, { roughness: .95 });
   for (let k = -n; k <= n; k++) { if (((k % road) + road) % road) continue; const off = k * cell; if (Math.abs(off) >= r) continue; const L = 2 * Math.sqrt(r * r - off * off);
     [[off, 0, .4, L], [0, off, L, .4]].forEach(([lx, lz, sx, sz], t) => { const [x, z] = R2(lx, lz); const o2 = box(g, rmat, t ? L : cell * .42, .05, t ? cell * .42 : L, x, .05, z, -rot); o2.castShadow = false; }); }
@@ -331,7 +372,7 @@ const BUILD = {
   home(g) {   // snowy hamlet on the mountain's shoulder: a log cabin, chalets under snow, deodars, chimney smoke
     town(g, { r: 11, cell: 2.6, walls: ['#7a5236', '#8a5c3c', '#6d4a33', '#cdbfa8'], roofs: ['#eef2f6', '#e6ebf0'], hmin: 1, hmax: 1.6, rot: .5, road: 4, ground: '#e9edf1', roadCol: '#b9b3aa', avoid: (x, z) => Math.hypot(x, z) < 4.5, lit: .8 });
     const wood = M('#8a5634'), slate = M('#5b6470', { roughness: .6 }), snow = M('#f4f7fb', { roughness: .9 });
-    box(g, M('#cfc6b4'), 5, .4, 4, 0, 0, 0); box(g, wood, 4.2, 2.2, 3.2, 0, .4, 0);
+    box(g, M('#cfc6b4'), 5, .4, 4, 0, 0, 0); COLL.push({ x: g.position.x, z: g.position.z, r: 2.9 }); box(g, wood, 4.2, 2.2, 3.2, 0, .4, 0);
     const roof = new THREE.Mesh(GABLE, snow); roof.scale.set(5, 1.8, 4.2); roof.position.set(0, 2.6, 0); roof.castShadow = true; g.add(roof);
     const win = glowMat('#ffb050', 1.2); [-1.1, 1.1].forEach(x => box(g, win, .7, .7, .1, x, 1.2, 1.62)); box(g, M('#9c9488'), .5, 1.6, .5, 1.3, 3, -.6);
     for (let i = 0; i < 26; i++) { const a = rnd() * 6.28, d = 11 + rnd() * 8; pine(g, Math.cos(a) * d, Math.sin(a) * d, .7 + rnd() * .6, true); }
@@ -344,7 +385,7 @@ const BUILD = {
     for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) {
       const h = (i === 0 && j === 0) ? 17 : 6 + rnd() * 8, w = 2.2 + rnd() * .8, d = 2.2 + rnd() * .8;
       const wm = glowMat('#ffcf7a', .9); wm.emissiveMap = windowTex(4, Math.max(4, Math.round(h))); wm.color.set(glass[(i * 3 + j + 9) % 5]); wm.metalness = .35; wm.roughness = .35;
-      const x = i * 3.6 + Math.sin(.25) * j * .9, z = j * 3.6; box(g, wm, w, h, d, x, 0, z, -.25); box(g, M('#d8d3c8'), w + .2, .2, d + .2, x, h, z, -.25); }
+      const x = i * 3.6 + Math.sin(.25) * j * .9, z = j * 3.6; OCC.push(box(g, wm, w, h, d, x, 0, z, -.25)); COLL.push({ x: g.position.x + x, z: g.position.z + z, r: Math.max(w, d) * .72 }); box(g, M('#d8d3c8'), w + .2, .2, d + .2, x, h, z, -.25); }
     const crane = M('#f2b705'); box(g, crane, .3, 13, .3, 9, 0, -6); const jib = box(g, crane, 7, .3, .3, 10.5, 13, -6); g.userData.jib = jib;
     trees(g, null, 15.5, 20, 40, LEAF);
   },
@@ -360,7 +401,7 @@ const BUILD = {
   },
   dream(g) {   // white villas round a glowing pool, and a studio on an island floating above with a waterfall
     town(g, { r: 13, cell: 2.4, walls: ['#f6f3ec', '#efeae0', '#fbfaf6'], roofs: ['#3f7fb5', '#f6f3ec', '#4a8cc2'], gable: false, hmin: .8, hmax: 1.6, rot: .7, road: 4, ground: '#d9d1bf', avoid: (x, z) => Math.hypot(x, z) < 6, lit: .7 });
-    const pool = new THREE.Mesh(new THREE.CircleGeometry(5, 40), new THREE.MeshStandardMaterial({ color: '#4fc3d8', emissive: '#2a9dc0', emissiveIntensity: .35, roughness: .1, metalness: .2 })); pool.rotation.x = -Math.PI / 2; pool.position.y = .1; g.add(pool);
+    const pool = new THREE.Mesh(new THREE.CircleGeometry(5, 40), new THREE.MeshStandardMaterial({ color: '#4fc3d8', emissive: '#2a9dc0', emissiveIntensity: .35, roughness: .1, metalness: .2 })); pool.rotation.x = -Math.PI / 2; pool.position.y = .1; g.add(pool); COLL.push({ x: g.position.x, z: g.position.z, r: 4.8 });
     const isl = new THREE.Group(); isl.position.y = 20; g.add(isl); g.userData.isl = isl;
     const rock = new THREE.Mesh(new THREE.ConeGeometry(6.5, 10, 11), M('#76705f', { flatShading: true })); rock.rotation.x = Math.PI; rock.position.y = -5; rock.castShadow = true; isl.add(rock);
     add(isl, new THREE.CylinderGeometry(6.5, 6.5, .9, 22), M('#6f8c4a'), 0, 0, 0);
@@ -377,7 +418,7 @@ const BUILD = {
     const lag = new THREE.Mesh(new THREE.CircleGeometry(7, 40), new THREE.MeshStandardMaterial({ color: '#3f93a8', roughness: .15 })); lag.rotation.x = -Math.PI / 2; lag.position.set(5.5, .11, 5.5); g.add(lag);
     box(g, M('#8a5634'), 1, .25, 6, 1.6, 0, 4.5);
     const boats = []; for (let i = 0; i < 3; i++) { const b = new THREE.Group(); b.position.set(4.5 + i * 2.2, .2, 3.5 + i * 2.2); g.add(b); add(b, BOX, M(['#e63946', '#f4f1ea', '#2f5f8f'][i]), 0, .2, 0).scale.set(.8, .4, 2); add(b, new THREE.CylinderGeometry(.04, .04, 2, 6), M('#5a3d22'), 0, 1.2, 0); const sail = add(b, new THREE.ConeGeometry(.6, 1.6, 3), M('#fffaf0'), .15, 1.3, 0); sail.scale.z = .1; boats.push(b); } g.userData.boats = boats;
-    add(g, new THREE.CylinderGeometry(.6, .8, 6, 12), M('#f4f1ea'), -7, 3, -5); for (let i = 0; i < 3; i++) add(g, new THREE.CylinderGeometry(.62 + i * .07, .65 + i * .07, .5, 12), M('#c23a3a'), -7, 1.1 + i * 1.8, -5);
+    add(g, new THREE.CylinderGeometry(.6, .8, 6, 12), M('#f4f1ea'), -7, 3, -5); COLL.push({ x: g.position.x - 7, z: g.position.z - 5, r: 1 }, { x: g.position.x + 5.5, z: g.position.z + 5.5, r: 6.6 }); for (let i = 0; i < 3; i++) add(g, new THREE.CylinderGeometry(.62 + i * .07, .65 + i * .07, .5, 12), M('#c23a3a'), -7, 1.1 + i * 1.8, -5);
     const lamp = add(g, new THREE.SphereGeometry(.5, 12, 10), glowMat('#fff2c0', 2), -7, 6.4, -5); g.userData.lamp = lamp;
     trees(g, null, 15, 19, 30, ['#617a43', '#6d8448', '#566f3c']);
   },
@@ -472,15 +513,15 @@ const HOME_VIEW = { th: .32, ph: .98, dist: cam.dist }, HOME_TGT = cam.tgt.clone
 let drag = null, pinch = null, idle = 0, fly = null, hot = null;
 canvas.addEventListener('pointerdown', e => { drag = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: 0 }; canvas.setPointerCapture(e.pointerId); canvas.classList.add('grabbing'); idle = 0; });
 canvas.addEventListener('pointermove', e => {
-  if (drag && e.pointerId === drag.id && !pinch) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx) + Math.abs(dy); want.th -= dx * .005; want.ph = Math.max(.32, Math.min(1.3, want.ph - dy * .004)); idle = 0; return; }
-  if (!drag) { const h = rayHub(e.clientX, e.clientY); setHot(h); canvas.classList.toggle('hot', !!h); }
+  if (drag && e.pointerId === drag.id && !pinch) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx) + Math.abs(dy); want.th -= dx * .005; want.ph = Math.max(.32, Math.min(walk.on ? 1.42 : 1.3, want.ph - dy * .004)); idle = 0; return; }
+  if (!drag && !walk.on) { const h = rayHub(e.clientX, e.clientY); setHot(h); canvas.classList.toggle('hot', !!h); }
 });
-function endDrag(e) { if (!drag || e.pointerId !== drag.id) return; canvas.classList.remove('grabbing'); if (drag.moved < 6) { const h = rayHub(e.clientX, e.clientY); if (h) pick(h); else if (rayCenter(e.clientX, e.clientY)) leave('../profile.html', '#fff3cf'); } drag = null; }
+function endDrag(e) { if (!drag || e.pointerId !== drag.id) return; canvas.classList.remove('grabbing'); if (drag.moved < 6 && walk.on) { tapWalk(e.clientX, e.clientY); } else if (drag.moved < 6) { const h = rayHub(e.clientX, e.clientY); if (h) pick(h); else if (rayCenter(e.clientX, e.clientY)) leave('../profile.html', '#fff3cf'); } drag = null; }
 canvas.addEventListener('pointerup', endDrag); canvas.addEventListener('pointercancel', endDrag);
-canvas.addEventListener('wheel', e => { e.preventDefault(); want.dist = Math.max(80, Math.min(640, want.dist * (1 + e.deltaY * .001))); idle = 0; }, { passive: false });
+canvas.addEventListener('wheel', e => { e.preventDefault(); want.dist = walk.on ? Math.max(4, Math.min(40, want.dist * (1 + e.deltaY * .001))) : Math.max(80, Math.min(640, want.dist * (1 + e.deltaY * .001))); idle = 0; }, { passive: false });
 const touches = new Map();
 canvas.addEventListener('touchstart', e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), dist: want.dist }; } }, { passive: true });
-canvas.addEventListener('touchmove', e => { if (pinch && e.touches.length === 2) { const [a, b] = e.touches; const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY); want.dist = Math.max(80, Math.min(640, pinch.dist * pinch.d / d)); } }, { passive: true });
+canvas.addEventListener('touchmove', e => { if (pinch && e.touches.length === 2) { const [a, b] = e.touches; const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY); want.dist = walk.on ? Math.max(4, Math.min(40, pinch.dist * pinch.d / d)) : Math.max(80, Math.min(640, pinch.dist * pinch.d / d)); } }, { passive: true });
 canvas.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; }, { passive: true });
 const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
 function rayHub(x, y) { ndc.set(x / innerWidth * 2 - 1, -(y / innerHeight) * 2 + 1); ray.setFromCamera(ndc, camera); const hit = ray.intersectObjects(hubs.map(h => h.hit), false)[0]; return hit ? hubs.find(h => h.hit === hit.object) : null; }
@@ -491,18 +532,102 @@ function setHot(h) { if (hot === h) return; hot = h; hubs.forEach(q => q.label.c
 const card = $('#card'); let picked = null;
 function pick(h) {
   picked = h; idle = 0; card.hidden = false; card.style.setProperty('--tint', h.hub.tint);
-  $('#kK').textContent = h.hub.eyebrow.replace("Abhishek's World · ", ''); $('#kK').style.color = h.hub.tint; $('#kN').textContent = `${h.hub.icon}  ${h.hub.name}`; $('#kD').textContent = h.hub.lede;
+  $('#kK').textContent = h.hub.place; $('#kN').textContent = h.hub.name; $('#kD').textContent = h.hub.lede; $('#kIco').textContent = h.hub.icon;
+  const im = $('#kImg'); im.hidden = true; im.onload = () => { im.hidden = false; }; im.src = `./shots/${h.id}.jpg`;
+  $('#kUrl').textContent = `${h.hub.buildings.length} places to visit`;
   const p = h.g.position; want.tgt.set(p.x, p.y, p.z); want.dist = 120; want.ph = .72;
 }
 $('#kX').onclick = () => { card.hidden = true; picked = null; Object.assign(want, { ...HOME_VIEW, tgt: HOME_TGT.clone() }); };
+$('#kLand').onclick = () => { if (picked) land(picked); };
+$('#kAll').onclick = () => { $('#places').hidden = false; };
 $('#kGo').onclick = () => { if (picked) enter(picked); };
 function enter(h) {
-  card.hidden = true; const p = h.g.position; want.tgt.set(p.x, p.y + 4, p.z); want.dist = 26; want.ph = .95;
+  card.hidden = true; $('#walkHud').hidden = true; $('#joy').hidden = true; const p = h.g.position; want.tgt.set(p.x, p.y + 4, p.z); want.dist = 26; want.ph = .95;
   fly = { t: 0 }; labelsEl.style.opacity = 0;
   setTimeout(() => leave(`./town.html?hub=${h.id}&arrive=sky`, h.hub.theme.bg), reduced ? 0 : 1400);
 }
 function leave(url, color) { const f = $('#fade'); f.style.background = color || '#fff'; f.style.opacity = 1; setTimeout(() => { location.href = url; }, reduced ? 30 : 650); }
 addEventListener('pageshow', e => { if (e.persisted) { $('#fade').style.opacity = 0; labelsEl.style.opacity = 1; fly = null; } });
+
+
+/* ---------- land here and explore: a little explorer walks the island ---------- */
+function makeExplorer() {
+  const g = new THREE.Group(), skin = M('#e2b48e'), coat = M('#c2412d', { roughness: .7 }), pants = M('#2d3a4f'), boot = M('#3a2a1e'), hair = M('#2a1d15'), pack = M('#d4a83a');
+  const part = (geo, m, x, y, z, parent = g) => { const o = new THREE.Mesh(geo, m); o.position.set(x, y, z); o.castShadow = true; parent.add(o); return o; };
+  part(new THREE.CapsuleGeometry(.17, .3, 4, 12), coat, 0, .66, 0);
+  part(new THREE.SphereGeometry(.14, 16, 12), skin, 0, 1.02, 0);
+  part(new THREE.SphereGeometry(.148, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), hair, 0, 1.04, -.01);
+  part(new THREE.BoxGeometry(.24, .28, .12), pack, 0, .7, -.18);
+  const limb = (x, y, w, len, m, foot) => { const p = new THREE.Group(); p.position.set(x, y, 0); g.add(p); part(new THREE.BoxGeometry(w, len, w + .02), m, 0, -len / 2, 0, p); if (foot) part(new THREE.BoxGeometry(w + .02, .07, w + .1), boot, 0, -len + .02, .04, p); return p; };
+  const legs = [limb(-.08, .42, .11, .4, pants, true), limb(.08, .42, .11, .4, pants, true)], arms = [limb(-.22, .84, .08, .36, coat), limb(.22, .84, .08, .36, coat)];
+  const ring = new THREE.Mesh(new THREE.RingGeometry(.35, .5, 32), new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, opacity: 0, depthWrite: false })); ring.rotation.x = -Math.PI / 2; scene.add(ring);
+  g.scale.setScalar(.8); g.visible = false; scene.add(g); return { g, legs, arms, ring };
+}
+const explorer = makeExplorer();
+const walk = { on: false, hub: null, near: null, p: new THREE.Vector3(), yaw: 0, dest: null, phase: 0, drop: 1, joy: null };
+const keys = {};
+addEventListener('keydown', e => { if (!walk.on) return; keys[e.code] = true; if (/^(Arrow|Space)/.test(e.code)) e.preventDefault(); });
+addEventListener('keyup', e => { keys[e.code] = false; });
+addEventListener('blur', () => { for (const k in keys) keys[k] = false; });
+const blocked = (x, z) => H(x, z) < .45 || COLL.some(c => (x - c.x) ** 2 + (z - c.z) ** 2 < (c.r + .18) ** 2);
+const SHADOW_WIDE = { left: -165, right: 165, top: 165, bottom: -165 }, SHADOW_NEAR = { left: -28, right: 28, top: 28, bottom: -28 };
+function shadowBox(b) { Object.assign(sun.shadow.camera, b); sun.shadow.camera.updateProjectionMatrix(); }
+function land(h) {
+  card.hidden = true; picked = null; $('#places').hidden = true; $('#intro').hidden = true;
+  const f = FLAT.find(q => q.id === h.id); let sx = f.x, sz = f.z + 3;
+  // arrive at the edge of town on the camera's side, facing in, so the streets are ahead
+  const th0 = cam.th; for (let k = 0; k < 60; k++) { const a = th0 + (k % 2 ? 1 : -1) * Math.floor(k / 2) * .12, d = f.r - 1 + (k % 6) * .5, x = f.x + Math.sin(a) * d, z = f.z + Math.cos(a) * d; if (!blocked(x, z) && H(x, z) > .6) { sx = x; sz = z; break; } }
+  walk.on = true; walk.hub = h; walk.dest = null; walk.drop = 0; walk.p.set(sx, H(sx, sz), sz); walk.yaw = Math.atan2(f.x - sx, f.z - sz); want.th = Math.atan2(sx - f.x, sz - f.z);
+  explorer.g.visible = true; explorer.g.position.copy(walk.p); explorer.g.position.y += 14;
+  want.tgt.set(sx, walk.p.y + .8, sz); want.dist = 9; want.ph = 1.18; shadowBox(SHADOW_NEAR);
+  document.body.classList.add('walking'); $('#walkHud').hidden = false; const touch = matchMedia('(pointer: coarse)').matches; $('#joy').hidden = !touch; if (touch) $('#wHint').textContent = 'Use the stick or tap the ground to walk. Drag to look around.'; centerLabel.classList.add('dim'); idle = 0;
+}
+function takeOff() {
+  walk.on = false; walk.dest = null; explorer.g.visible = false; explorer.ring.material.opacity = 0; shadowBox(SHADOW_WIDE);
+  document.body.classList.remove('walking'); $('#walkHud').hidden = true; $('#joy').hidden = true;
+  Object.assign(want, { ...HOME_VIEW, tgt: HOME_TGT.clone() });
+}
+$('#wUp').onclick = takeOff;
+$('#wEnter').onclick = () => { const h = walk.near || walk.hub; if (h) enter(h); };
+function tapWalk(x, y) { ndc.set(x / innerWidth * 2 - 1, -(y / innerHeight) * 2 + 1); ray.setFromCamera(ndc, camera); const hit = ray.intersectObject(terrain, false)[0]; if (!hit) return;
+  walk.dest = hit.point.clone(); explorer.ring.position.set(hit.point.x, H(hit.point.x, hit.point.z) + .06, hit.point.z); explorer.ring.material.opacity = .9; }
+// on touch screens, a thumb stick
+const joy = $('#joy'), knob = joy.querySelector('i');
+joy.addEventListener('pointerdown', e => { joy.setPointerCapture(e.pointerId); walk.joy = { x: 0, y: 0 }; moveJoy(e); });
+joy.addEventListener('pointermove', e => { if (walk.joy) moveJoy(e); });
+const endJoy = () => { walk.joy = null; knob.style.transform = ''; };
+joy.addEventListener('pointerup', endJoy); joy.addEventListener('pointercancel', endJoy);
+function moveJoy(e) { const r = joy.getBoundingClientRect(); let x = (e.clientX - r.left - r.width / 2) / 45, y = (e.clientY - r.top - r.height / 2) / 45; const l = Math.hypot(x, y); if (l > 1) { x /= l; y /= l; } walk.joy = { x, y }; knob.style.transform = `translate(${x * 35}px,${y * 35}px)`; }
+const mv = new THREE.Vector2();
+function stepWalk(dt) {
+  const ex = explorer;
+  // input: keys and the thumb stick move relative to the camera; a tap sets a destination
+  let ix = (keys.KeyD || keys.ArrowRight ? 1 : 0) - (keys.KeyA || keys.ArrowLeft ? 1 : 0), iz = (keys.KeyS || keys.ArrowDown ? 1 : 0) - (keys.KeyW || keys.ArrowUp ? 1 : 0);
+  if (walk.joy) { ix = walk.joy.x; iz = walk.joy.y; }
+  const fx = -Math.sin(cam.th), fz = -Math.cos(cam.th); mv.set(0, 0);
+  if (ix || iz) { walk.dest = null; mv.set(-fz * ix - fx * iz, fx * ix - fz * iz); idle = 0; }
+  else if (walk.dest) { mv.set(walk.dest.x - walk.p.x, walk.dest.z - walk.p.z); if (mv.length() < .25) { walk.dest = null; mv.set(0, 0); } }
+  const run = keys.ShiftLeft || keys.ShiftRight || (walk.dest && walk.p.distanceTo(walk.dest) > 14) || (walk.joy && Math.hypot(walk.joy.x, walk.joy.y) > .95);
+  const moving = mv.lengthSq() > 1e-4 && walk.drop >= 1;
+  if (moving) {
+    mv.normalize(); const sp = (run ? 7 : 3.2) * dt, nx = walk.p.x + mv.x * sp, nz = walk.p.z + mv.y * sp, y0 = H(walk.p.x, walk.p.z);
+    const ok = (x, z) => !blocked(x, z) && H(x, z) - y0 < sp * 1.6;
+    if (ok(nx, nz)) { walk.p.x = nx; walk.p.z = nz; } else if (ok(nx, walk.p.z)) walk.p.x = nx; else if (ok(walk.p.x, nz)) walk.p.z = nz; else walk.dest = null;
+    let dy = Math.atan2(mv.x, mv.y) - walk.yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); walk.yaw += dy * Math.min(1, dt * 12);
+    walk.phase += dt * (run ? 15 : 9);
+  }
+  const sw = moving ? Math.sin(walk.phase) * (run ? .9 : .6) : 0;
+  ex.legs[0].rotation.x += (sw - ex.legs[0].rotation.x) * .3; ex.legs[1].rotation.x += (-sw - ex.legs[1].rotation.x) * .3;
+  ex.arms[0].rotation.x += (-sw * .8 - ex.arms[0].rotation.x) * .3; ex.arms[1].rotation.x += (sw * .8 - ex.arms[1].rotation.x) * .3;
+  walk.p.y = H(walk.p.x, walk.p.z);
+  walk.drop = Math.min(1, walk.drop + dt * (reduced ? 10 : 1.1)); const fall = Math.pow(1 - walk.drop, 2) * 14;
+  ex.g.position.set(walk.p.x, walk.p.y + fall + (moving ? Math.abs(Math.cos(walk.phase)) * .04 : 0), walk.p.z); ex.g.rotation.y = walk.yaw;
+  ex.ring.material.opacity = walk.dest ? .55 + Math.sin(performance.now() / 160) * .3 : Math.max(0, ex.ring.material.opacity - dt * 3);
+  want.tgt.set(walk.p.x, walk.p.y + .8, walk.p.z);
+  // which place are we in?
+  let near = null; for (const f of FLAT) { if (f.id === 'center') continue; if (Math.hypot(walk.p.x - f.x, walk.p.z - f.z) < f.r + 6) near = hubs.find(q => q.id === f.id); }
+  if (near !== walk.near) { walk.near = near; $('#wName').textContent = near ? `${near.hub.icon} You're in ${near.hub.name}` : "Exploring Abhishek's World"; $('#wEnter').hidden = !near; $('#wEnter').textContent = near ? `Visit ${near.hub.name} →` : ''; }
+}
 
 /* ---------- places menu + intro ---------- */
 const grid = $('#placeGrid');
@@ -511,9 +636,10 @@ $('#placesBtn').onclick = () => { $('#places').hidden = false; }; $('#placesX').
 $('#introPlaces').onclick = () => { $('#intro').hidden = true; $('#places').hidden = false; };
 $('#go').onclick = () => { $('#intro').hidden = true; };
 $('#wholeBtn').onclick = () => { card.hidden = true; picked = null; Object.assign(want, { ...HOME_VIEW, tgt: HOME_TGT.clone() }); };
-addEventListener('keydown', e => { if (e.key === 'Escape') { $('#places').hidden = true; $('#intro').hidden = true; card.hidden = true; } if (e.key === 'Enter' && picked && !card.hidden) enter(picked); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && walk.on && $('#places').hidden) { takeOff(); return; } if (e.key === 'Escape') { $('#places').hidden = true; $('#intro').hidden = true; card.hidden = true; } if (e.key === 'Enter' && picked && !card.hidden) enter(picked); });
 // coming back from a valley: start close to it and pull out
 if (FROM && HUBPOS[FROM]) { $('#intro').hidden = true; const h = hubs.find(q => q.id === FROM); const p = h.g.position; cam.tgt.set(p.x, p.y, p.z); cam.dist = 30; cam.ph = 1.0; pick(h); want.dist = 140; }
+const LAND = params.get('land'); if (LAND && HUBPOS[LAND]) { $('#intro').hidden = true; land(hubs.find(q => q.id === LAND)); cam.tgt.copy(want.tgt); }
 try { if (sessionStorage.getItem('aw_seen') === '1' && !FROM) $('#intro').hidden = true; sessionStorage.setItem('aw_seen', '1'); } catch {}
 
 /* ---------- time of day ---------- */
@@ -526,19 +652,24 @@ function resize() { renderer.setSize(innerWidth, innerHeight, false); camera.asp
 addEventListener('resize', resize); resize();
 function frame() {
   requestAnimationFrame(frame); const dt = Math.min(clock.getDelta(), .1), t = clock.elapsedTime;
-  idle += dt; if (!reduced && idle > 6 && !picked && !fly && !drag) want.th += dt * .025;
+  idle += dt; if (!reduced && idle > 6 && !picked && !fly && !drag && !walk.on) want.th += dt * .025;
   const k = Math.min(1, dt * (fly ? 2.2 : 3)); cam.th += (want.th - cam.th) * k; cam.ph += (want.ph - cam.ph) * k; cam.dist += (want.dist - cam.dist) * k; cam.tgt.lerp(want.tgt, k);
   camera.position.set(cam.tgt.x + Math.sin(cam.th) * Math.sin(cam.ph) * cam.dist, cam.tgt.y + Math.cos(cam.ph) * cam.dist, cam.tgt.z + Math.cos(cam.th) * Math.sin(cam.ph) * cam.dist); camera.lookAt(cam.tgt);
+  if (walk.on && OCC.length) {   // keep the camera in front of buildings
+    v3.copy(camera.position).sub(cam.tgt); const L = v3.length(); v3.normalize(); ray.set(cam.tgt, v3); ray.far = L; const hit = ray.intersectObjects(OCC, false)[0]; ray.far = Infinity;
+    if (hit) { camera.position.copy(cam.tgt).addScaledVector(v3, Math.max(1.2, hit.distance - .35)); camera.lookAt(cam.tgt); }
+  }
   sun.target.position.copy(cam.tgt); sun.position.copy(cam.tgt).addScaledVector(sun.userData.dir, 420);
+  if (walk.on) stepWalk(dt);
   anims.forEach(f => f(t, dt));
   // labels follow their hubs; hide those behind the camera or too small
   const W = innerWidth, Hh = innerHeight;
-  hubs.forEach(h => { v3.copy(h.g.position); v3.y += h.top; v3.project(camera); const vis = v3.z < 1 && Math.abs(v3.x) < 1.1 && Math.abs(v3.y) < 1.1; h.label.classList.toggle('dim', !vis || (fly && h !== picked)); h.label.style.left = ((v3.x + 1) / 2 * W) + 'px'; h.label.style.top = ((1 - v3.y) / 2 * Hh) + 'px'; });
+  hubs.forEach(h => { v3.copy(h.g.position); v3.y += h.top; v3.project(camera); const vis = v3.z < 1 && Math.abs(v3.x) < 1.1 && Math.abs(v3.y) < 1.1; h.label.classList.toggle('dim', !vis || (fly && h !== picked) || (walk.on && (h === walk.near || v3.z > .9995))); h.label.style.left = ((v3.x + 1) / 2 * W) + 'px'; h.label.style.top = ((1 - v3.y) / 2 * Hh) + 'px'; });
   v3.set(P0.x, H(P0.x, P0.z) + 9, P0.z).project(camera); centerLabel.classList.toggle('dim', v3.z > 1 || !!fly || cam.dist < 80); centerLabel.style.left = ((v3.x + 1) / 2 * W) + 'px'; centerLabel.style.top = ((1 - v3.y) / 2 * Hh) + 'px';
   renderer.render(scene, camera);
 }
 frame();
-window.__world = { hubs, cam, want, setTime, pick, enter };
+window.__world = { hubs, cam, want, setTime, pick, enter, land, takeOff, walk, keys };
 </script>
 </body>
 </html>
