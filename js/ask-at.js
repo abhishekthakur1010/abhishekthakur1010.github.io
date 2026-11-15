@@ -68,13 +68,14 @@
     { k: ['case', 'study', 'portfolio', 'project'], q: 'Which case study first?' },
     { k: ['resume', 'cv'], q: 'Can I get your resume?' },
     { k: ['open', 'role', 'hire', 'hiring', 'job', 'available'], q: 'What roles interest you?' },
-    { k: ['contact', 'connect', 'reach', 'email', 'linkedin', 'talk'], a: ['The quickest way to reach me is ' + LI + '. I reply there.'] },
+    { k: ['contact', 'connect', 'reach', 'email', 'mail', 'linkedin', 'talk', 'call', 'phone', 'number', 'mobile', 'whatsapp'], a: ['Sure, here\'s how to reach me directly:'], c: 1 },
+    { k: ['ctc', 'salary', 'compensation', 'package', 'pay', 'lpa', 'notice', 'expected', 'expectation', 'joining', 'offer'], a: ['That\'s best discussed with me directly. Pick whatever\'s easiest:'], c: 1 },
     { k: ['team', 'lead', 'manage', 'mentor'], q: 'How do you lead a team?' },
     { k: ['impact', 'metric', 'result', 'measure'], q: 'What results have you moved?' },
     { k: ['story', 'himachal', 'grew', 'about'], q: 'What\'s your story?' },
     { k: ['hi', 'hello', 'hey', 'namaste'], a: ['Hey! 👋 What would you like to know?'] }
   ];
-  var FALLBACK = ['Hmm, I can only answer a few things in this preview. Try one of these?'];
+  var FALLBACK = ['Good one, but that\'s better answered by me in person. Reach out here:'];
 
   function nextQs(n) {
     var p = persona || personaById('browsing'), asked = {};
@@ -86,8 +87,8 @@
     if (ANSWERS[t]) return { a: ANSWERS[t], f: nextQs(2) };
     var best = null, score = 0;
     MOCK.forEach(function (m) { var s = m.k.filter(function (k) { return new RegExp('\\b' + k + '\\b').test(t); }).length; if (s > score) { score = s; best = m; } });
-    if (best) return { a: best.a || ANSWERS[best.q.toLowerCase()], f: nextQs(2) };
-    return { a: FALLBACK, f: nextQs(3) };
+    if (best) return { a: best.a || ANSWERS[best.q.toLowerCase()], f: best.c ? [] : nextQs(2), c: best.c };
+    return { a: FALLBACK, f: [], c: 1 };  // can't answer: hand over to the real Abhishek
   }
 
   /* Tiny, safe formatter: escape, then **bold**, [links](url), "- " lists and paragraphs. */
@@ -155,12 +156,23 @@
       return typeof q === 'string' ? '<button type="button">' + esc(q) + '</button>' : '<button type="button" data-p="' + q.p + '">' + esc(q.t) + '</button>';
     }).join('') + '</div>';
   }
+  /* Contact card: shown whenever Abhizag can't (or shouldn't) answer */
+  var CONTACT = [
+    ['Email', 'mailto:abhishekiit2k12@gmail.com', '<path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/>'],
+    ['Book a call', 'https://cal.com/abhishek-thakur-adhbch/30min', '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/>'],
+    ['LinkedIn', 'https://www.linkedin.com/in/abhishekthakur1010/', '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 10v6M8 7.5v.01M12 16v-3.5a2 2 0 0 1 4 0V16M12 10v6"/>']
+  ];
+  function contactHTML() {
+    return '<div class="aat-contact">' + CONTACT.map(function (c) {
+      return '<a href="' + c[1] + '"' + (c[1].charAt(0) === 'h' ? ' target="_blank" rel="noopener"' : '') + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + c[2] + '</svg>' + c[0] + '</a>';
+    }).join('') + '</div>';
+  }
   function render(m, animate) {
     var li = document.createElement('li');
     li.className = 'aat-msg aat-msg--' + m.who;
     if (!animate) li.style.animation = 'none';
     if (m.who === 'user') li.innerHTML = '<div class="aat-bubble">' + esc(m.text) + '</div>';
-    else li.innerHTML = ORB + '<div class="aat-bubble">' + m.parts.map(block).join('') + chipsHTML(m.chips, m.style) + '</div>';
+    else li.innerHTML = ORB + '<div class="aat-bubble">' + m.parts.map(block).join('') + (m.contact ? contactHTML() : '') + chipsHTML(m.chips, m.style) + '</div>';
     list.appendChild(li);
     return li;
   }
@@ -185,7 +197,7 @@
     setTimeout(function () {
       var full = m.parts.join('\n\n'), i = 0;
       function done() {
-        bubble.innerHTML = m.parts.map(block).join('') + chipsHTML(m.chips, m.style);
+        bubble.innerHTML = m.parts.map(block).join('') + (m.contact ? contactHTML() : '') + chipsHTML(m.chips, m.style);
         orbs.forEach(function (o) { o.classList.remove('is-thinking'); });
         history.push(m); save(); syncChrome();
         busy = false; send.disabled = !input.value.trim(); toBottom();
@@ -229,7 +241,7 @@
     var p = personaFromText(text);
     if (p && (awaitingRole || /\bi('| a)?m\b|\bi am\b/i.test(text))) return chooseRole(p, true);
     var r = answer(text);
-    say({ who: 'bot', parts: r.a, chips: r.f });
+    say({ who: 'bot', parts: r.a, chips: r.f, contact: r.c ? 1 : 0 });
   }
 
   /* ---------- open / close, focus ---------- */
