@@ -146,3 +146,4 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
 .aat-contact a:first-child { background: var(--aat-ink); border-color: var(--aat-ink); color: var(--aat-bg); }
 .aat-contact a:focus-visible { outline: 2px solid var(--aat-ink); outline-offset: 2px; }
 .aat-contact svg { width: 16px; height: 16px; }
+.aat-msg--bot .aat-bubble p:first-child strong:only-child { font-weight: 650; letter-spacing: -.01em; }

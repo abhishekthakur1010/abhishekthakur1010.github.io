@@ -144,7 +144,7 @@
   function setPersona(p) {
     persona = p;
     try { p ? localStorage.setItem(PKEY, p.id) : localStorage.removeItem(PKEY); } catch (e) {}
-    sub.textContent = p && p.id !== 'browsing' ? 'Chatting with ' + p.as : 'Abhishek\'s AI · preview';
+    sub.textContent = p && p.id !== 'browsing' ? 'Chatting with ' + p.as : 'Abhishek\'s personal AI assistant · preview';
   }
   setPersona(persona);
 
@@ -221,7 +221,7 @@
   function intro() {
     started = true;
     var back = persona && persona.id !== 'browsing';
-    say({ who: 'bot', parts: [back ? 'Hey, welcome back 👋' : 'Hey, I\'m Abhizag, Abhishek\'s AI 👋'] }, function () {
+    say({ who: 'bot', parts: ['**Abhizag, Abhishek\'s personal AI assistant**', back ? 'Hey, welcome back 👋' : 'Hey there 👋 Nice to have you here.'] }, function () {
       if (back) say({ who: 'bot', parts: ['Anything I can help with?'], chips: nextQs(2) }, null, 700);
       else say({ who: 'bot', parts: ['What describes you best?'], chips: roleChips(), style: 'roles' }, null, 700);
     }, 300);
