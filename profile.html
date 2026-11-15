@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="./css/profile.css?v=92" rel="stylesheet" />
-    <link href="./css/categories.css?v=35" rel="stylesheet" />
+    <link href="./css/categories.css?v=37" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="./css/look.css?v=3" rel="stylesheet" />
     <script src="./js/look.js?v=4"></script>
@@ -97,15 +97,20 @@
               <li><button type="button" class="cat" data-key="resume">
                 <span class="cat-pic"><img src="./images/profile-photo.jpg" alt="" /></span>
                 <!-- Christmas season: a Santa hat perched on the photo circle -->
-                <svg class="xmas-hat" viewBox="0 0 120 100" aria-hidden="true">
+                <svg class="xmas-hat" viewBox="0 -16 200 216" aria-hidden="true">
                   <defs>
-                    <linearGradient id="hatRed" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2453c"/><stop offset=".6" stop-color="#c0262c"/><stop offset="1" stop-color="#8e1520"/></linearGradient>
-                    <linearGradient id="hatFur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6e0da"/></linearGradient>
+                    <linearGradient id="hatRed" x1=".1" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#e0453c"/><stop offset=".5" stop-color="#b8232b"/><stop offset="1" stop-color="#7a1120"/></linearGradient>
+                    <linearGradient id="hatFur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e4ddd6"/></linearGradient>
+                    <radialGradient id="hatPom" cx=".38" cy=".32" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset=".65" stop-color="#f1ece6"/><stop offset="1" stop-color="#cfc6bd"/></radialGradient>
                   </defs>
-                  <path d="M14 78 C 22 44, 46 14, 78 10 C 96 8, 108 22, 104 40 C 100 30, 92 26, 84 30 C 72 38, 76 62, 92 76 Z" fill="url(#hatRed)"/>
-                  <path d="M60 22 C 70 16, 82 14, 90 18" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
-                  <rect x="6" y="70" width="94" height="22" rx="11" fill="url(#hatFur)"/>
-                  <circle cx="104" cy="44" r="11" fill="url(#hatFur)"/>
+                  <!-- the cap: rises from the rim, peaks, and flops over to the right -->
+                  <path d="M46.5,50.5 C 52,6 96,-14 136,-8 C 166,-4 188,16 192,48 C 193,58 190,68 186,74 C 182,62 174,52 166,50 C 164,58 166,64 169.3,70.0 A 80 80 0 0 0 46.5,50.5 Z" fill="url(#hatRed)"/>
+                  <path d="M70,24 C 92,4 124,-4 150,2" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M160,14 C 176,24 184,38 186,56" fill="none" stroke="rgba(60,0,10,.28)" stroke-width="4" stroke-linecap="round"/>
+                  <!-- the fur brim: a soft band that hugs the circle, fluffed at both edges -->
+                  <g fill="url(#hatFur)"><circle cx="38.5" cy="46.3" r="6.2"/><circle cx="45.5" cy="40.3" r="6.2"/><circle cx="53.1" cy="34.9" r="6.2"/><circle cx="61.2" cy="30.5" r="6.2"/><circle cx="69.7" cy="26.8" r="6.2"/><circle cx="78.6" cy="24.1" r="6.2"/><circle cx="87.7" cy="22.4" r="6.2"/><circle cx="96.9" cy="21.6" r="6.2"/><circle cx="106.2" cy="21.7" r="6.2"/><circle cx="115.4" cy="22.8" r="6.2"/><circle cx="124.4" cy="24.9" r="6.2"/><circle cx="133.2" cy="27.9" r="6.2"/><circle cx="141.5" cy="31.9" r="6.2"/><circle cx="149.5" cy="36.6" r="6.2"/><circle cx="156.9" cy="42.2" r="6.2"/><circle cx="163.7" cy="48.5" r="6.2"/><circle cx="169.7" cy="55.5" r="6.2"/><circle cx="175.1" cy="63.1" r="6.2"/><circle cx="179.5" cy="71.2" r="6.2"/><circle cx="49.5" cy="51.9" r="5"/><circle cx="56.9" cy="46.2" r="5"/><circle cx="65.0" cy="41.4" r="5"/><circle cx="73.7" cy="37.6" r="5"/><circle cx="82.7" cy="35.0" r="5"/><circle cx="92.0" cy="33.4" r="5"/><circle cx="101.3" cy="33.0" r="5"/><circle cx="110.7" cy="33.7" r="5"/><circle cx="119.9" cy="35.6" r="5"/><circle cx="128.8" cy="38.6" r="5"/><circle cx="137.3" cy="42.7" r="5"/><circle cx="145.3" cy="47.7" r="5"/><circle cx="152.5" cy="53.7" r="5"/><circle cx="159.0" cy="60.5" r="5"/><circle cx="164.6" cy="68.1" r="5"/><circle cx="169.2" cy="76.2" r="5"/></g>
+                  <path d="M40.3,52.3 A 83 83 0 0 1 174.6,73.6" fill="none" stroke="url(#hatFur)" stroke-width="15" stroke-linecap="round"/>
+                  <circle cx="186" cy="80" r="12" fill="url(#hatPom)"/>
                 </svg>
                 <span class="cat-name">Professional</span><span class="cat-tag cat-rec">Recommended</span>
               </button></li>

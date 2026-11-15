@@ -291,11 +291,12 @@ html.cat-out .cats-live { opacity: 0; transition-delay: 0s; }
    and fades out before the circle travels into the profile photo. */
 .cat[data-key="resume"] { position: relative; }
 .xmas-hat {
-  position: absolute; z-index: 2; pointer-events: none; width: 92px; height: auto;
-  top: -44px; left: calc(50% - 22px); transform: rotate(10deg); transform-origin: 30% 90%;
-  filter: drop-shadow(0 6px 10px rgba(40,6,16,.35));
+  /* drawn in the circle's own coordinates: the circle is centred at (100,110) of the 200-wide box, radius 76 */
+  position: absolute; z-index: 2; pointer-events: none; width: 200px; height: 216px;
+  top: -50px; left: calc(50% - 100px); transform-origin: 100px 126px;
+  filter: drop-shadow(0 4px 6px rgba(40,6,16,.28));
   transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
 }
-html:not(.cat-anim) .cat:hover .xmas-hat, html:not(.cat-anim) .cat:focus-visible .xmas-hat { transform: translateY(-8px) rotate(4deg); }
+html:not(.cat-anim) .cat:hover .xmas-hat, html:not(.cat-anim) .cat:focus-visible .xmas-hat { transform: translateY(-6px) scale(1.04); }
 html.cat-anim .xmas-hat, html.cat-out .xmas-hat, html:not(.cat-mode) .xmas-hat { opacity: 0; }
-@media (max-width: 600px) { .xmas-hat { width: 64px; top: -30px; left: calc(50% - 16px); } }
+@media (max-width: 720px) { .xmas-hat { width: 137px; height: 148px; top: -34px; left: calc(50% - 68.5px); transform-origin: 68.5px 86px; } }
