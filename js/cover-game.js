@@ -304,7 +304,7 @@
     ctx.save();
     // a faint warm haze the lights throw onto the sky just below them
     var hz = ctx.createLinearGradient(0, 0, 0, 90);
-    hz.addColorStop(0, 'rgba(255,190,120,.14)'); hz.addColorStop(1, 'rgba(255,190,120,0)');
+    hz.addColorStop(0, 'rgba(255,190,120,.06)'); hz.addColorStop(1, 'rgba(255,190,120,0)');
     ctx.fillStyle = hz; ctx.fillRect(0, 0, W, 90);
     var BULB = ['255,214,140', '255,226,170', '255,200,120', '255,236,200'];
     for (var s = 0; s < swags; s++) {
@@ -317,16 +317,16 @@
         for (var i = 1; i < n; i++) {
           var u = (i + (wi ? 0.5 : 0)) / n; if (u >= 1) continue;
           var x = x0 + sw * u, y = (1 - u) * (1 - u) * wire.yA + 2 * u * (1 - u) * cy + u * u * wire.yB + 3;
-          var seed = (s * 31 + wi * 17 + i * 7) % 13, big = seed % 3 === 0, col = BULB[seed % 4];
+          var seed = (s * 31 + wi * 17 + i * 7) % 13, big = seed % 5 === 0, col = BULB[seed % 4];
           var tw = reduce ? 0.85 : 0.55 + 0.45 * Math.pow(0.5 + 0.5 * Math.sin(now * (0.9 + seed * 0.15) + seed * 1.9 + wire.ph), 1.5);
-          var r = (big ? 30 : 18) * (0.65 + 0.35 * tw), core = big ? 3.6 : 2.6;
+          var r = (big ? 16 : 11) * (0.7 + 0.3 * tw), core = big ? 3 : 2.4;
           ctx.globalCompositeOperation = 'lighter';
           var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-          g.addColorStop(0, 'rgba(' + col + ',' + (0.7 * tw).toFixed(3) + ')'); g.addColorStop(0.18, 'rgba(' + col + ',' + (0.38 * tw).toFixed(3) + ')');
-          g.addColorStop(0.5, 'rgba(255,170,90,' + (0.1 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,160,80,0)');
+          g.addColorStop(0, 'rgba(' + col + ',' + (0.4 * tw).toFixed(3) + ')'); g.addColorStop(0.25, 'rgba(' + col + ',' + (0.16 * tw).toFixed(3) + ')');
+          g.addColorStop(0.55, 'rgba(255,170,90,' + (0.04 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,160,80,0)');
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-          if (big && tw > 0.75) {   // a soft cross-shaped glint on the brightest bulbs
-            var L = 4 + 12 * (tw - 0.75) / 0.25;
+          if (big && tw > 0.88) {   // a soft cross-shaped glint on the brightest bulbs
+            var L = 3 + 6 * (tw - 0.88) / 0.12;
             var gl = ctx.createLinearGradient(x - L, y, x + L, y); gl.addColorStop(0, 'rgba(255,245,220,0)'); gl.addColorStop(.5, 'rgba(255,245,220,.8)'); gl.addColorStop(1, 'rgba(255,245,220,0)');
             ctx.fillStyle = gl; ctx.fillRect(x - L, y - 0.6, 2 * L, 1.2);
             var gv = ctx.createLinearGradient(x, y - L, x, y + L); gv.addColorStop(0, 'rgba(255,245,220,0)'); gv.addColorStop(.5, 'rgba(255,245,220,.8)'); gv.addColorStop(1, 'rgba(255,245,220,0)');
