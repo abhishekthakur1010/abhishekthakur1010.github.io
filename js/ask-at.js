@@ -158,13 +158,14 @@
   }
   /* Contact card: shown whenever Abhizag can't (or shouldn't) answer */
   var CONTACT = [
+    ['+91 95604 02668', 'tel:+919560402668', '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1"/>'],
     ['Email', 'mailto:abhishekiit2k12@gmail.com', '<path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/>'],
     ['Book a call', 'https://cal.com/abhishek-thakur-adhbch/30min', '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/>'],
     ['LinkedIn', 'https://www.linkedin.com/in/abhishekthakur1010/', '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 10v6M8 7.5v.01M12 16v-3.5a2 2 0 0 1 4 0V16M12 10v6"/>']
   ];
   function contactHTML() {
     return '<div class="aat-contact">' + CONTACT.map(function (c) {
-      return '<a href="' + c[1] + '"' + (c[1].charAt(0) === 'h' ? ' target="_blank" rel="noopener"' : '') + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + c[2] + '</svg>' + c[0] + '</a>';
+      return '<a href="' + c[1] + '"' + (c[1].charAt(0) === 'h' ? ' target="_blank" rel="noopener"' : '') + (c[1].indexOf('tel:') === 0 ? ' aria-label="Call Abhishek on +91 95604 02668"' : '') + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + c[2] + '</svg>' + c[0] + '</a>';
     }).join('') + '</div>';
   }
   function render(m, animate) {
