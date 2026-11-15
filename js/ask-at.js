@@ -1,4 +1,4 @@
-/* Ask AT: a right-side assistant drawer. UI preview only: answers come from the mock set below, no AI is connected.
+/* Abhizag (Ask AT): a right-side assistant drawer. UI preview only: answers come from the mock set below, no AI is connected.
    It opens like a conversation: Abhishek says hi, asks who the visitor is, then suggests questions for that role.
    Chat history lives in this tab (sessionStorage); the visitor's role is remembered (localStorage). */
 (function () {
@@ -107,11 +107,11 @@
   root.className = 'aat';
   if (/[?&]orb=mono\b/.test(location.search)) root.setAttribute('data-orb', 'mono');  // preview the black-and-white orb
   root.innerHTML =
-    '<button type="button" class="aat-launch" aria-haspopup="dialog" aria-controls="aat-drawer" aria-expanded="false">' + ORB + '<span>Ask AT</span><kbd aria-hidden="true"></kbd></button>' +
+    '<button type="button" class="aat-launch" aria-haspopup="dialog" aria-controls="aat-drawer" aria-expanded="false">' + ORB + '<span>Ask Abhizag</span><kbd aria-hidden="true"></kbd></button>' +
     '<div class="aat-scrim" aria-hidden="true"></div>' +
     '<section class="aat-drawer" id="aat-drawer" role="dialog" aria-modal="true" aria-labelledby="aat-title" aria-describedby="aat-sub" inert>' +
       '<header class="aat-head">' + ORB +
-        '<div class="aat-head-txt"><h2 class="aat-title" id="aat-title">Ask AT</h2><p class="aat-sub" id="aat-sub"></p></div>' +
+        '<div class="aat-head-txt"><h2 class="aat-title" id="aat-title">Abhizag</h2><p class="aat-sub" id="aat-sub"></p></div>' +
         '<button type="button" class="aat-icon-btn aat-reset" aria-label="Start over" title="Start over" hidden>' + ICON.reset + '</button>' +
         '<button type="button" class="aat-icon-btn aat-close" aria-label="Close" title="Close (Esc)">' + ICON.close + '</button>' +
       '</header>' +
@@ -120,7 +120,7 @@
       '</div>' +
       '<footer class="aat-foot">' +
         '<form class="aat-form"><label for="aat-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Message</label>' +
-          '<textarea class="aat-input" id="aat-input" rows="1" placeholder="Message Abhishek…" autocomplete="off"></textarea>' +
+          '<textarea class="aat-input" id="aat-input" rows="1" placeholder="Message Abhizag…" autocomplete="off"></textarea>' +
           '<button type="submit" class="aat-send" aria-label="Send" disabled>' + ICON.send + '</button></form>' +
         '<p class="aat-note">Preview with sample answers.<span class="aat-keys"> Enter to send, Shift + Enter for a new line.</span></p>' +
       '</footer>' +
@@ -133,7 +133,7 @@
       headOrb = $('.aat-head .aat-orb'), sub = $('.aat-sub');
   var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   $('.aat-launch kbd').textContent = isMac ? '⌘K' : 'Ctrl K';
-  launch.title = 'Ask AT (' + (isMac ? '⌘K' : 'Ctrl+K') + ')';
+  launch.title = 'Ask Abhizag (' + (isMac ? '⌘K' : 'Ctrl+K') + ')';
 
   /* ---------- state ---------- */
   var KEY = 'aat-chat-v2', PKEY = 'aat-persona', history = [], busy = false, lastFocus = null, persona = null, started = false;
@@ -143,7 +143,7 @@
   function setPersona(p) {
     persona = p;
     try { p ? localStorage.setItem(PKEY, p.id) : localStorage.removeItem(PKEY); } catch (e) {}
-    sub.textContent = p && p.id !== 'browsing' ? 'Chatting with ' + p.as : 'Abhishek\'s portfolio assistant · preview';
+    sub.textContent = p && p.id !== 'browsing' ? 'Chatting with ' + p.as : 'Abhishek\'s AI · preview';
   }
   setPersona(persona);
 
@@ -209,7 +209,7 @@
   function intro() {
     started = true;
     var back = persona && persona.id !== 'browsing';
-    say({ who: 'bot', parts: [back ? 'Hey, welcome back 👋' : 'Hey, I\'m Abhishek 👋'] }, function () {
+    say({ who: 'bot', parts: [back ? 'Hey, welcome back 👋' : 'Hey, I\'m Abhizag, Abhishek\'s AI 👋'] }, function () {
       if (back) say({ who: 'bot', parts: ['Anything I can help with?'], chips: nextQs(2) }, null, 700);
       else say({ who: 'bot', parts: ['What describes you best?'], chips: roleChips(), style: 'roles' }, null, 700);
     }, 300);
