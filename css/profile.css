@@ -477,6 +477,9 @@ button { font: inherit; cursor: pointer; }
 .cover.is-festive .cover-lockup { pointer-events: none; }
 .cover.is-festive .cover-lockup a, .cover.is-festive .cover-lockup button { pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .cover.is-festive:not(.is-playing) { cursor: auto; } }
+/* Crackers off: an ordinary cursor, and the kandil reads as clickable. */
+.cover.is-festive.no-crackers:not(.is-playing) { cursor: auto; }
+.cover.is-festive.no-crackers .cover-hint { cursor: pointer; }
 /* Keep the photo's negative margin from pulling the whole profile body over the banner. */
 .profile-body { display: flow-root; }
 

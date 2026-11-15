@@ -9,12 +9,16 @@
   if (!cover || !document.createElement('canvas').getContext) return;
 
   var DIYA_S = 1.5; // diya size on the strings
+  // Diwali is over: the crackers (skyrockets, anaars and the sparkler cursor) are switched off.
+  // The bunting, kandils, diyas and warm sky stay. Set to true to bring the crackers back.
+  var CRACKERS = false;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Categories heading: a hint until the sparkler peaks, then "Happy Diwali" with the skyrockets.
   // Without motion nothing can be lit, so it greets at once.
   var crackerLit = false, chStage = '';
   if (reduce) { document.documentElement.classList.add('sky-peak'); document.documentElement.setAttribute('data-ch', 'wish'); }
   function headStage(st) {
+    if (!CRACKERS) return;
     var next = peak ? (crackerLit || welcome > 0 ? 'wish' : 'cracker') : sparkler.lit ? (st < RAMP ? 'catch' : 'fade') : sparkler.everLit ? 'again' : 'hint';
     if (next === chStage) return;
     chStage = next;
@@ -36,7 +40,8 @@
   cover.insertBefore(canvas, cover.firstChild);
   cover.classList.add('has-canvas', 'is-festive');
   // The greeting waits for a fully lit sparkler (shown at once when motion is reduced).
-  if (!reduce) cover.classList.add('awaits-greeting');
+  if (!reduce && CRACKERS) cover.classList.add('awaits-greeting');
+  if (!CRACKERS) cover.classList.add('no-crackers');
   var ctx = canvas.getContext('2d');
 
   // The hidden way into the game: an invisible button over the big kandil.
@@ -416,20 +421,20 @@
 
   function drawScene(dt, dim) {
     var hc = document.documentElement.classList;
-    if (welcome < 0 && !reduce && mode === 'idle' && hc.contains('cat-mode') && !hc.contains('splash-on') && !hc.contains('cat-out')) {
+    if (CRACKERS && welcome < 0 && !reduce && mode === 'idle' && hc.contains('cat-mode') && !hc.contains('splash-on') && !hc.contains('cat-out')) {
       welcome = WELCOME; nextRocket = 0;
       fountains.forEach(function (F) { F.t = 0; });
     }
     if (welcome > 0) { welcome = Math.max(0, welcome - dt); if (mode !== 'idle') welcome = 0; }
-    if (!dim) drawFireworks(dt);
+    if (!dim && CRACKERS) drawFireworks(dt);
     ctx.globalAlpha = dim ? 0.45 : 1;
     drawDiyaStrings();
     scene.lanterns.forEach(lantern);
     drawBunting();
     ctx.globalAlpha = 1;
     drawEmbers(dt);
-    if (!dim && document.documentElement.classList.contains('cat-mode')) drawFountains(dt);
-    if (!dim) drawSparkler(dt);
+    if (!dim && CRACKERS && document.documentElement.classList.contains('cat-mode')) drawFountains(dt);
+    if (!dim && CRACKERS) drawSparkler(dt);
   }
 
   // ---------- anaar: a fountain cracker in each bottom corner of the full-screen banner ----------
