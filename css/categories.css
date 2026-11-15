@@ -287,16 +287,3 @@ html.cat-out .cats-live { opacity: 0; transition-delay: 0s; }
 .cats-head .ch-sub { margin-top: 12px; font-size: 15px; letter-spacing: .01em; color: rgba(255,238,225,.72); text-shadow: none; }
 @media (max-width: 600px) { .ch-eyebrow { font-size: 10.5px; letter-spacing: .22em; gap: 10px; } .ch-eyebrow::before, .ch-eyebrow::after { width: 20px; } }
 
-/* Christmas season: a Santa hat on the Professional circle. It rides along with the hover lift
-   and fades out before the circle travels into the profile photo. */
-.cat[data-key="resume"] { position: relative; }
-.xmas-hat {
-  /* drawn in the circle's own coordinates: the circle is centred at (100,110) of the 200-wide box, radius 76 */
-  position: absolute; z-index: 2; pointer-events: none; width: 200px; height: 216px;
-  top: -50px; left: calc(50% - 100px); transform-origin: 100px 126px;
-  filter: drop-shadow(0 4px 6px rgba(40,6,16,.28));
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
-}
-html:not(.cat-anim) .cat:hover .xmas-hat, html:not(.cat-anim) .cat:focus-visible .xmas-hat { transform: translateY(-6px) scale(1.04); }
-html.cat-anim .xmas-hat, html.cat-out .xmas-hat, html:not(.cat-mode) .xmas-hat { opacity: 0; }
-@media (max-width: 720px) { .xmas-hat { width: 137px; height: 148px; top: -34px; left: calc(50% - 68.5px); transform-origin: 68.5px 86px; } }
