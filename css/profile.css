@@ -1332,11 +1332,10 @@ html, body { overflow-x: clip; }
 .jr-stop.is-lit .jr-dot { border-color: #8f897e; }
 .jr-bike { color: #9a9488; }
 
-/* One consistent "show more" style everywhere: same size, weight, colour and chevron, no divider line */
-.ui-more::after, .more-proj > summary::after { content: none; }
-.ui-more, .more-proj > summary, .card-foot button { justify-content: flex-start; gap: 6px; padding: 8px 0; color: var(--text-2); }
-.ui-more { margin-top: 16px; }
-.ui-more-label, .more-proj-label, .card-foot button span { font-size: 15px; font-weight: 600; color: inherit; }
+/* One consistent "show more" style everywhere: label, chevron, then a hairline running to the edge */
+.ui-more, .more-proj > summary, .card-foot button { display: flex; align-items: center; justify-content: flex-start; gap: 6px; width: 100%; padding: 4px 0; color: var(--text-2); background: none; }
+.ui-more::after, .more-proj > summary::after, .card-foot button::after { content: ""; flex: 1; height: 1px; margin-left: 10px; background: var(--line); }
+.ui-more-label, .more-proj-label, .card-foot button span { font-size: 14.5px; font-weight: 400; color: inherit; }
 .ui-more .more-chev, .more-proj > summary .more-chev, .card-foot button svg { width: 18px; height: 18px; color: inherit; }
 .ui-more:hover, .more-proj > summary:hover, .more-proj > summary:hover .more-proj-label, .more-proj > summary:hover .more-chev, .card-foot button:hover { color: var(--text); background: none; }
-.ui-more:hover .ui-more-label, .more-proj > summary:hover .more-proj-label { text-decoration: none; }
+.ui-more:hover .ui-more-label, .more-proj > summary:hover .more-proj-label, .card-foot button:hover span { text-decoration: underline; text-underline-offset: 3px; }
