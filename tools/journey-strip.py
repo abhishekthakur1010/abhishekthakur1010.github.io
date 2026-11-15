@@ -1,192 +1,99 @@
 #!/usr/bin/env python3
-"""Generate the 'journey strip' flat illustration for profile.html (inline SVG)."""
-import re, sys, math
+"""Journey strip v2: six clear chapters (logo tile, calm landmark, road milestone, year + role)."""
+import re, sys
 
-W, H, G = 2600, 372, 292        # tile width, height, ground line
-C = dict(bg='#3e0f22', far='#4d1229', mid='#5e1830', near='#74203a',
-         ln='#ffc9b0', lt='#ffe6d6', wh='#ffffff', road='#2c0915', gold='#f2c66d')
-o = []
-A = o.append
+FILL, LINE, GLOW = '#5a1528', '#ffcfb8', '#f2c66d'
+S = f'fill="{FILL}" stroke="{LINE}" stroke-width="1.6" stroke-linejoin="round"'
+G = 200  # ground in the landmark svg (viewBox 1200 x 200)
 
-def bld(x, w, h, rows=None, cols=None, fill=None, roof=None):
-    y = G - h
-    A(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill or C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>')
-    rows = rows or max(2, h // 26); cols = cols or max(2, w // 22)
-    gw, gh = (w - 16) / cols, (h - 24) / rows
-    for r in range(rows):
-        for c in range(cols):
-            lit = (r * 7 + c * 3 + x) % 5 == 0
-            A(f'<rect x="{x+8+c*gw+3:.1f}" y="{y+12+r*gh+3:.1f}" width="{gw-6:.1f}" height="{gh-8:.1f}" rx="1" fill="{C["gold"] if lit else C["far"]}" fill-opacity="{.85 if lit else 1}" stroke="{C["ln"]}" stroke-width=".8" stroke-opacity=".7"/>')
-    if roof == 'spire':
-        A(f'<path d="M{x+w/2-6} {y}h12l-6 -34z" fill="{C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>')
-    elif roof == 'step':
-        A(f'<rect x="{x+10}" y="{y-14}" width="{w-20}" height="14" fill="{C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>')
+def win(x, y, n, gap=14, w=8, h=10, lit=()):
+    return ''.join(f'<rect x="{x+i*gap}" y="{y}" width="{w}" height="{h}" rx="1.5" fill="{GLOW if i in lit else "none"}" stroke="{LINE}" stroke-opacity=".55" stroke-width="1"/>' for i in range(n))
 
-def tree(x, s=1, kind='round'):
-    if kind == 'pine':
-        A(f'<path d="M{x} {G-60*s}l{16*s} {28*s}h-{8*s}l{14*s} {24*s}h-{44*s}l{14*s} -{24*s}h-{8*s}z" fill="{C["near"]}" stroke="{C["ln"]}" stroke-width="1.2"/>'
-          f'<rect x="{x-2}" y="{G-8*s}" width="4" height="{8*s}" fill="{C["ln"]}"/>')
-    elif kind == 'palm':
-        A(f'<path d="M{x} {G}q4 -40 -2 -70" fill="none" stroke="{C["ln"]}" stroke-width="3"/>')
-        for a in (-150, -110, -70, -30, 10):
-            r = math.radians(a)
-            A(f'<path d="M{x-2} {G-70}q{22*math.cos(r):.1f} {22*math.sin(r)-10:.1f} {36*math.cos(r):.1f} {36*math.sin(r)+8:.1f}" fill="none" stroke="{C["lt"]}" stroke-width="3" stroke-linecap="round"/>')
-    else:
-        A(f'<rect x="{x-1.5}" y="{G-22*s}" width="3" height="{22*s}" fill="{C["ln"]}"/>'
-          f'<circle cx="{x}" cy="{G-34*s}" r="{16*s}" fill="{C["near"]}" stroke="{C["ln"]}" stroke-width="1.2"/>')
+land = []
+L = land.append
+# 1. Himachal: two peaks, snow caps, a small home, pines
+L(f'<path d="M20 {G}L78 104l26 30 34 -58 62 {124}z" {S}/>'
+  f'<path d="M78 104l-13 18 8 -3 6 6 7 -7 6 3zM138 76l-16 24 9 -4 7 8 8 -8 8 4z" fill="{LINE}"/>'
+  f'<path d="M64 {G}v-34h40v34z" {S}/><path d="M58 {G-34}l26 -20 26 20z" {S}/>'
+  f'<rect x="78" y="{G-18}" width="12" height="18" fill="none" stroke="{LINE}" stroke-width="1.2"/><rect x="69" y="{G-28}" width="7" height="7" fill="{GLOW}"/>'
+  f'<path d="M150 {G}l12 -34 12 34zM172 {G}l9 -26 9 26z" {S}/>')
+# 2. IIIT Allahabad: pediment + columns
+L(f'<path d="M232 {G}v-62h136v62z" {S}/><path d="M224 {G-62}l76 -28 76 28z" {S}/>'
+  + ''.join(f'<path d="M{246+i*22} {G-54}v54" stroke="{LINE}" stroke-opacity=".7" stroke-width="5"/>' for i in range(6))
+  + f'<rect x="292" y="{G-24}" width="16" height="24" fill="{FILL}" stroke="{LINE}" stroke-width="1.2"/>')
+# 3. Dineout: restaurant with scalloped awning and a cloche sign
+L(f'<path d="M438 {G}v-58h124v58z" {S}/>'
+  + ''.join(f'<path d="M{438+i*20.67:.1f} {G-58}h20.67v8a10.33 10.33 0 0 1 -20.67 0z" fill="{LINE if i%2 else FILL}" stroke="{LINE}" stroke-width="1.2"/>' for i in range(6))
+  + f'<rect x="452" y="{G-34}" width="38" height="24" rx="2" fill="none" stroke="{LINE}" stroke-opacity=".6"/><rect x="506" y="{G-36}" width="28" height="36" fill="none" stroke="{LINE}" stroke-opacity=".6"/>'
+  f'<path d="M461 {G-17}h20M463 {G-17}a8 8 0 0 1 16 0M471 {G-27}v2" fill="none" stroke="{GLOW}" stroke-width="1.6" stroke-linecap="round"/>')
+# 4. Travacations: palms + a small plane above
+for x, h in ((660, 70), (690, 56), (744, 64)):
+    L(f'<path d="M{x} {G}q3 -{h/2} -2 -{h}" fill="none" stroke="{LINE}" stroke-width="2.4"/>'
+      + ''.join(f'<path d="M{x-2} {G-h}q{dx*.6} -10 {dx} {dy}" fill="none" stroke="{LINE}" stroke-width="2.2" stroke-linecap="round"/>' for dx, dy in ((-20, 4), (-12, -10), (12, -10), (20, 4))))
+L('<g class="jr-plane"><g transform="translate(672 66)">'
+  '<path d="M-36 6h26" stroke="#ffe6d6" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="4 6" opacity=".8"/>'
+  f'<path d="M34 4l12 -14h7l-5 14z" fill="#ffe6d6"/><path d="M0 1l-6 -15h8l11 14z" fill="#ffe6d6"/>'
+  '<path d="M3 0h55c11 0 20 3 25 6c-5 3 -14 6 -25 6h-55a6 6 0 0 1 0 -12z" fill="#fff"/>'
+  + ''.join(f'<circle cx="{18+i*7}" cy="5.5" r="1.4" fill="{FILL}"/>' for i in range(7)) +
+  f'<path d="M32 8l15 19h8l-5 -19z" fill="{GLOW}"/></g></g>')
+# 5. Jio: tower with antenna + pulsing signal
+L(f'<path d="M866 {G}v-128h68v128z" {S}/><path d="M900 {G-128}v-26" stroke="{LINE}" stroke-width="2"/>'
+  + ''.join(win(878, G - 112 + r * 22, 4, lit=((r + 1) % 4,)) for r in range(5))
+  + ''.join(f'<path class="jr-sig" style="animation-delay:{i*.35}s" d="M{900-r} {G-158}a{r} {r} 0 0 1 {2*r} 0" fill="none" stroke="{LINE}" stroke-width="1.6" stroke-linecap="round"/>' for i, r in enumerate((8, 15, 22)))
+  + f'<path d="M944 {G}v-70h40v70z" {S}/>' + ''.join(win(952, G - 58 + r * 20, 2, gap=14, lit=() if r else (1,)) for r in range(3))
+  + f'<path d="M820 {G}v-54h36v54z" {S}/>' + ''.join(win(827, G - 44 + r * 20, 2, gap=12) for r in range(2)))
+# 6. Delhivery, Gurgaon: glass towers
+L(f'<path d="M1030 {G}v-112h44v112z" {S}/><path d="M1052 {G-112}v-18" stroke="{LINE}" stroke-width="1.6"/>'
+  + ''.join(win(1038, G - 98 + r * 22, 2, gap=16, lit=(r % 2,) if r < 3 else ()) for r in range(4))
+  + f'<path d="M1082 {G}v-146h52v146z" {S}/>' + ''.join(f'<path d="M1092 {G-132+r*16}h32" stroke="{LINE}" stroke-opacity=".5"/>' for r in range(8))
+  + f'<rect x="1100" y="{G-104}" width="16" height="10" fill="{GLOW}"/>'
+  + f'<path d="M1142 {G}v-92h40v92z" {S}/>' + ''.join(win(1150, G - 78 + r * 22, 2, gap=14, lit=(0,) if r == 1 else ()) for r in range(3)))
+# sparkles
+for x, y in ((180, 40), (420, 70), (560, 30), (800, 80), (1000, 40), (1190, 74)):
+    L(f'<path class="jr-spk" style="animation-delay:{(x%5)*.5}s" d="M{x} {y-6}q1 5 6 6q-5 1 -6 6q-1 -5 -6 -6q5 -1 6 -6z" fill="{GLOW}"/>')
 
-def sign(x, logo, label, h=96, r=34):
-    cy = G - h
-    A(f'<g class="js-sign"><rect x="{x-2}" y="{cy}" width="4" height="{h}" fill="{C["lt"]}"/>'
-      f'<circle cx="{x}" cy="{cy}" r="{r+5}" fill="{C["bg"]}" stroke="{C["lt"]}" stroke-width="2"/>'
-      f'<circle cx="{x}" cy="{cy}" r="{r}" fill="#fff"/>'
-      f'<image href="./images/{logo}" x="{x-r*0.78:.1f}" y="{cy-r*0.78:.1f}" width="{r*1.56:.1f}" height="{r*1.56:.1f}" preserveAspectRatio="xMidYMid meet"/>'
-      f'<rect x="{x-len(label)*3.6-8:.1f}" y="{cy+r+12}" width="{len(label)*7.2+16:.1f}" height="18" rx="9" fill="{C["bg"]}" stroke="{C["ln"]}" stroke-width="1"/>'
-      f'<text x="{x}" y="{cy+r+25}" text-anchor="middle" class="js-lbl">{label}</text></g>')
+landsvg = f'<svg class="jr-land" viewBox="0 14 1200 186" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">{"".join(land)}</svg>'
 
-def board(x, big, small, w=150, h=74, post=70):
-    y = G - post - h
-    A(f'<rect x="{x+w*0.25-2}" y="{y+h}" width="4" height="{post}" fill="{C["ln"]}"/><rect x="{x+w*0.75-2}" y="{y+h}" width="4" height="{post}" fill="{C["ln"]}"/>'
-      f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{C["bg"]}" stroke="{C["lt"]}" stroke-width="2"/>'
-      f'<text x="{x+w/2}" y="{y+38}" text-anchor="middle" class="js-big">{big}</text>'
-      f'<text x="{x+w/2}" y="{y+58}" text-anchor="middle" class="js-sm">{small}</text>')
-
-def cloud(x, y, s=1):
-    A(f'<path d="M{x} {y}h{70*s}a{14*s} {14*s} 0 0 0 -{14*s} -{14*s}a{20*s} {20*s} 0 0 0 -{36*s} -{6*s}a{14*s} {14*s} 0 0 0 -{20*s} {20*s}z" fill="{C["near"]}" fill-opacity=".55" stroke="{C["ln"]}" stroke-opacity=".7" stroke-width="1.2"/>')
-
-def spark(x, y, s=1):
-    A(f'<path class="js-spk" d="M{x} {y-8*s}q1.5 6.5 8 8q-6.5 1.5 -8 8q-1.5 -6.5 -8 -8q6.5 -1.5 8 -8z" fill="{C["gold"]}"><animate attributeName="opacity" values="1;.25;1" dur="{2.4+(x%7)*.3:.1f}s" repeatCount="indefinite"/></path>')
-
-def lights(y0=10, sag=30, step=44):
-    half = W / 2
-    A(f'<path d="M0 {y0}Q{W/4} {y0+sag} {half} {y0}T{W} {y0}" fill="none" stroke="{C["ln"]}" stroke-opacity=".45" stroke-width="1"/>')
-    for i in range(int(W / step)):
-        x = i * step + step / 2
-        t = (x % half) / half
-        y = y0 + sag * 2 * t * (1 - t)
-        A(f'<circle cx="{x}" cy="{y+3:.1f}" r="2.6" fill="#ffe7a8"><animate attributeName="opacity" values="1;.4;1" dur="{2+(i%4)*.5}s" begin="{(i%5)*.4}s" repeatCount="indefinite"/></circle>')
-
-# ---------- road ----------
-A(f'<rect x="-1" y="{G}" width="{W+2}" height="{H-G}" fill="{C["road"]}"/>'
-  f'<path d="M0 {G}H{W}" stroke="{C["ln"]}" stroke-width="2"/>'
-  f'<path d="M0 {G+34}H{W}" stroke="{C["ln"]}" stroke-width="2" stroke-dasharray="22 18" opacity=".55"/>')
-
-# ---------- sky ----------
-lights()
-for x, y, s in [(60, 70, 1), (420, 50, .8), (760, 90, 1.1), (1180, 60, .9), (1520, 80, 1), (1900, 48, .8), (2280, 86, 1.1)]:
-    cloud(x, y, s)
-for x, y in [(240, 40), (600, 120), (980, 36), (1350, 130), (1700, 30), (2080, 120), (2480, 40)]:
-    spark(x, y, .9)
-
-# ---------- 1. Himachal: mountains, pines, home ----------
-A(f'<path d="M0 {G}L90 150l50 60 70 -110 120 {G-100}z" fill="{C["far"]}" stroke="{C["ln"]}" stroke-width="1.8"/>'
-  f'<path d="M90 150l-22 30 12 -4 10 10 12 -12 10 6zM210 100l-26 36 14 -6 12 12 14 -14 14 8z" fill="{C["lt"]}"/>')
-for x in (30, 70, 250, 300):
-    tree(x, 1, 'pine')
-A(f'<g><rect x="130" y="{G-46}" width="70" height="46" fill="{C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>'
-  f'<path d="M122 {G-46}l43 -30 43 30z" fill="{C["near"]}" stroke="{C["lt"]}" stroke-width="1.5"/>'
-  f'<rect x="158" y="{G-26}" width="14" height="26" fill="{C["far"]}" stroke="{C["ln"]}"/>'
-  f'<rect x="140" y="{G-36}" width="12" height="10" fill="{C["gold"]}" opacity=".85"/><rect x="180" y="{G-36}" width="12" height="10" fill="{C["gold"]}" opacity=".85"/></g>')
-A(f'<text x="165" y="{G+22}" text-anchor="middle" class="js-place">Himachal · where it began</text>')
-
-# ---------- 2. IIIT Allahabad campus ----------
-A(f'<g><rect x="380" y="{G-92}" width="180" height="92" fill="{C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>'
-  f'<path d="M370 {G-92}h200l-100 -36z" fill="{C["near"]}" stroke="{C["lt"]}" stroke-width="1.5"/>')
-for i in range(6):
-    A(f'<rect x="{392+i*28}" y="{G-80}" width="10" height="80" fill="{C["far"]}" stroke="{C["ln"]}"/>')
-A(f'<path d="M455 {G-30}h30v30h-30z" fill="{C["bg"]}" stroke="{C["lt"]}"/></g>')
-sign(610, 'iiit-logo.png', 'IIIT Allahabad', 110)
-A(f'<text x="470" y="{G+22}" text-anchor="middle" class="js-place">B.Tech, IIIT Allahabad</text>')
-
-# ---------- 3. Times Internet / Dineout restaurant street ----------
-bld(690, 90, 150, roof='step')
-A(f'<g><rect x="800" y="{G-80}" width="150" height="80" fill="{C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>')
-for i in range(6):
-    A(f'<path d="M{800+i*25} {G-80}h25v14a12.5 12.5 0 0 1 -25 0z" fill="{C["lt"] if i%2 else C["near"]}" stroke="{C["ln"]}"/>')
-A(f'<rect x="815" y="{G-50}" width="44" height="34" fill="{C["far"]}" stroke="{C["ln"]}"/><rect x="890" y="{G-50}" width="44" height="50" fill="{C["far"]}" stroke="{C["ln"]}"/>'
-  f'<circle cx="837" cy="{G-33}" r="9" fill="none" stroke="{C["gold"]}" stroke-width="2"/><path d="M822 {G-33}v-8M852 {G-33}v-8" stroke="{C["gold"]}" stroke-width="2"/></g>')
-sign(990, 'brandLogo/swiggy-dineout.svg', 'Swiggy Dineout', 104)
-sign(1070, 'brandLogo/times-internet.svg', 'Times Internet', 70, 26)
-A(f'<text x="870" y="{G+22}" text-anchor="middle" class="js-place">Dineout · Times Internet</text>')
-
-# ---------- 4. Travacations: plane + palm ----------
-tree(1130, 1, 'palm'); tree(1165, .8, 'palm')
-A(f'<g transform="translate(1150 92)"><g>'
-  f'<path d="M-70 8h62" stroke="{C["lt"]}" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 8"><animate attributeName="stroke-dashoffset" values="0;28" dur="1s" repeatCount="indefinite"/></path>'
-  f'<path d="M44 6l16 -18h9l-6 18z" fill="{C["lt"]}"/>'
-  f'<path d="M2 2l-8 -22h11l15 20z" fill="{C["lt"]}"/>'
-  f'<path d="M4 0h76c16 0 28 4 34 8c-6 4 -18 8 -34 8h-76a8 8 0 0 1 0 -16z" fill="#fff"/>'
-  f'<path d="M100 3.5c5 1 9 2.5 12 4.5h-12z" fill="{C["bg"]}"/>'
-  + ''.join(f'<circle cx="{24+i*9}" cy="7" r="1.8" fill="{C["bg"]}"/>' for i in range(8)) +
-  f'<path d="M42 11l20 26h10l-6 -26z" fill="{C["gold"]}"/>'
-  f'<animateTransform attributeName="transform" type="translate" values="0 0;0 -7;0 0" dur="4s" repeatCount="indefinite"/></g></g>')
-sign(1230, 'brandLogo/trava-cation.svg', 'Travacations', 96)
-
-# ---------- 5. Jio / Reliance tower ----------
-bld(1310, 110, 210, roof='spire')
-A(f'<rect x="1335" y="{G-196}" width="60" height="22" rx="4" fill="{C["bg"]}" stroke="{C["lt"]}"/><text x="1365" y="{G-180}" text-anchor="middle" class="js-tw">JIO</text>')
-for r in (14, 24, 34):
-    A(f'<path d="M{1365-r} {G-244-r*0.4:.0f}a{r} {r} 0 0 1 {2*r} 0" fill="none" stroke="{C["lt"]}" stroke-width="1.6" class="js-wave"/>')
-bld(1430, 70, 140)
-board(1510, '100M+', 'users impacted')
-sign(1690, 'brandLogo/jio.svg', 'Jio', 120)
-sign(1760, 'brandLogo/jiomart.svg', 'JioMart', 84, 26)
-sign(1830, 'brandLogo/netmeds.svg', 'Netmeds', 112)
-A(f'<text x="1400" y="{G+22}" text-anchor="middle" class="js-place">Jio Platforms · Reliance</text>')
-
-# ---------- 6. Urban Ladder ----------
-A(f'<g><rect x="1880" y="{G-70}" width="110" height="70" fill="{C["mid"]}" stroke="{C["ln"]}" stroke-width="1.8"/>'
-  f'<path d="M1896 {G-12}v-20a6 6 0 0 1 6 -6h66a6 6 0 0 1 6 6v20zM1902 {G-38}v-10h66v10" fill="{C["near"]}" stroke="{C["lt"]}" stroke-width="1.4"/></g>')
-sign(2030, 'brandLogo/urban-ladder.svg', 'Urban Ladder', 92, 26)
-
-# ---------- 7. Delhivery, Gurgaon skyline ----------
-bld(2090, 80, 230, roof='spire'); bld(2180, 100, 180, roof='step'); bld(2290, 70, 250)
-board(2380, '10 yrs', 'designing products', 150)
-sign(2560, 'brandLogo/delhivery.svg', 'Delhivery', 110)
-A(f'<text x="2230" y="{G+22}" text-anchor="middle" class="js-place">Delhivery · Gurgaon</text>')
-
-
-# ---------- movers (overlay, not tiled) ----------
-truck = (f'<g class="js-truck"><rect x="0" y="-34" width="58" height="34" rx="3" fill="{C["wh"]}"/>'
-         f'<path d="M58 -24h16l10 12v12h-26z" fill="{C["lt"]}"/><rect x="64" y="-20" width="10" height="8" fill="{C["bg"]}"/>'
-         f'<text x="29" y="-12" text-anchor="middle" class="js-trk">DELHIVERY</text>'
-         f'<circle cx="16" cy="2" r="7" fill="{C["bg"]}" stroke="{C["wh"]}" stroke-width="2.5"/><circle cx="68" cy="2" r="7" fill="{C["bg"]}" stroke="{C["wh"]}" stroke-width="2.5"/></g>')
-bike = (f'<g class="js-bike" fill="none" stroke="{C["wh"]}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
-        + ''.join(f'<g transform="translate({cx} 0)"><circle r="11"/><path d="M-11 0h22M0 -11v22" stroke-width="1.2"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".6s" repeatCount="indefinite"/></path></g>' for cx in (0, 38)) +
+bike = ('<svg class="jr-bike" viewBox="-14 -58 66 72" aria-hidden="true" focusable="false"><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">'
+        + ''.join(f'<g transform="translate({cx} 0)"><circle r="11"/><path class="jr-spoke" d="M-11 0h22M0 -11v22" stroke-width="1.2"/></g>' for cx in (0, 38)) +
         f'<path d="M0 0l12 -20h20l6 20M12 -20l8 20h-20M20 0l12 -20M10 -26h7M30 -24l4 -6h5"/>'
-        f'<path d="M22 -24l-6 -14 10 -8M18 -36l12 4 4 6" stroke="{C["gold"]}"/><circle cx="26" cy="-50" r="5" fill="{C["gold"]}" stroke="none"/></g>')
-dog = lambda x, s: (f'<g transform="translate({x} 0) scale({s})"><path d="M0 -14h26a6 6 0 0 1 6 -6l4 -4v8l4 2v6h-8v14h-4v-8h-20v8h-4v-14l-6 -8z" fill="{C["lt"]}"/></g>')
-dogs = f'<g class="js-dogs">{dog(0, 1)}{dog(54, .85)}</g>'
+        f'<path d="M22 -24l-6 -14 10 -8M18 -36l12 4 4 6" stroke="{GLOW}"/></g><circle cx="26" cy="-50" r="5" fill="{GLOW}"/></svg>')
 
-A(f'<g transform="translate(0 {G+44})"><g>{truck}<animateTransform attributeName="transform" type="translate" values="{W} 0;0 0" dur="60s" repeatCount="indefinite"/></g></g>')
-A(f'<g transform="translate(0 {G+66})"><g>{bike}<animateTransform attributeName="transform" type="translate" values="0 0;{W} 0" dur="38s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 -1.5;0 0" dur=".6s" repeatCount="indefinite"/></g></g><g transform="translate(240 {G+70})">{dogs}</g>')
-tile = ''.join(o)
-F='font-family="Inter, system-ui, sans-serif"'; SF='font-family="Fraunces, Georgia, serif"'
-for k,v in {'js-lbl':f'{F} font-size="11" font-weight="600" fill="#fff"',
-            'js-place':f'{F} font-size="12" font-weight="600" fill="#ffd2b8" letter-spacing=".5"',
-            'js-big':f'{SF} font-size="26" font-weight="700" fill="#f2c66d"',
-            'js-sm':f'{F} font-size="11" font-weight="500" fill="#ffe3cf"',
-            'js-tw':f'{F} font-size="12" font-weight="800" fill="#fff" letter-spacing="1.2"',
-            'js-trk':f'{F} font-size="7.5" font-weight="800" fill="#3e0f22" letter-spacing=".4"'}.items():
-    tile=tile.replace(f'class="{k}"', v)
-svg = (f'<svg class="js-svg" viewBox="0 0 {W} {H}" preserveAspectRatio="xMinYMax slice" aria-hidden="true" focusable="false">'
-       f'<defs><g id="js-tile">{tile}</g></defs>'
-       f'<g class="js-track"><use href="#js-tile"/><use href="#js-tile" x="{W}"/></g></svg>')
+def tile(src, alt='', cls=''):
+    return f'<span class="jr-tile{cls}"><img src="./images/{src}" alt="{alt}" loading="lazy" /></span>'
 
-section = f'''<!-- JOURNEY STRIP:START (generated) -->
+home_icon = (f'<span class="jr-tile jr-tile--icon" role="img" aria-label="Himachal Pradesh"><svg viewBox="0 0 40 40" aria-hidden="true">'
+             f'<path d="M4 32 15 14l6 8 5-8 10 18z" fill="{FILL}"/><path d="M15 14l-3.6 5.4 2.6-1 1.5 1.6 1.7-1.7z" fill="#fff"/></svg></span>')
+
+stops = [
+    ('2012 and before', 'Himachal', 'Where it began', home_icon, ''),
+    ('2012 – 2016', 'IIIT Allahabad', 'B.Tech, Information Technology', tile('iiit-logo.png', 'IIIT Allahabad'), ''),
+    ('2016 – 2019', 'Swiggy Dineout', 'Senior UX Designer, Manager II', tile('brandLogo/swiggy-dineout.svg', 'Swiggy Dineout'),
+     tile('brandLogo/times-internet.svg', 'Times Internet', ' jr-tile--sm')),
+    ('2019 – 2022', 'Travacations', 'Design Strategy', tile('brandLogo/trava-cation.svg', cls=' jr-tile--wide', alt='Travacations'), ''),
+    ('2022 – 2023', 'Jio Platforms', 'Senior UX Manager', tile('brandLogo/jio.svg', 'Jio'),
+     tile('brandLogo/jiomart.svg', 'JioMart', ' jr-tile--sm') + tile('brandLogo/netmeds.svg', 'Netmeds', ' jr-tile--sm') + tile('brandLogo/urban-ladder.svg', 'Urban Ladder', ' jr-tile--sm')),
+    ('2023 – now', 'Delhivery', 'Lead, Gurgaon Design Team', tile('brandLogo/delhivery.svg', cls=' jr-tile--wide', alt='Delhivery'), ''),
+]
+lis = ''.join(
+    f'<li class="jr-stop{" is-now" if i == len(stops)-1 else ""}"><div class="jr-badges">{main}{"<span class=jr-minis>"+minis+"</span>" if minis else ""}</div>'
+    f'<div class="jr-info"><span class="jr-dot" aria-hidden="true"></span><p class="jr-year">{yr}</p><p class="jr-co">{co}</p><p class="jr-role">{role}</p></div></li>'
+    for i, (yr, co, role, main, minis) in enumerate(stops))
+
+section = f'''<!-- JOURNEY STRIP:START (generated by tools/journey-strip.py) -->
     <section class="journey" aria-labelledby="h-journey">
       <div class="jr-head">
         <p class="jr-kicker">10 years · 7 brands · 100M+ users</p>
         <h2 id="h-journey">The road so far</h2>
-        <p class="jr-sub">From a home in the Himachal hills to designing at India's biggest consumer brands.</p>
+        <p class="jr-sub">From a home in the Himachal hills to designing for some of India's biggest consumer brands.</p>
       </div>
-      <div class="jr-scene">
-        {svg}
-        <ul class="jr-sr">
-          <li>Grew up in Himachal Pradesh</li><li>Studied design at IIIT Allahabad</li><li>Swiggy Dineout and Times Internet</li>
-          <li>Travacations</li><li>Jio Platforms: MyJio, JioMart, Netmeds</li><li>Urban Ladder</li><li>Delhivery, Gurgaon</li>
-        </ul>
+      <div class="jr-scroll" tabindex="0" aria-label="Career timeline, scroll sideways on small screens">
+        <div class="jr-track">
+          <div class="jr-scene">{landsvg}<div class="jr-road" aria-hidden="true">{bike}</div></div>
+          <ol class="jr-stops">{lis}</ol>
+        </div>
       </div>
+      <p class="jr-hint" aria-hidden="true">Swipe to follow the road →</p>
     </section>
     <!-- JOURNEY STRIP:END -->'''
 
