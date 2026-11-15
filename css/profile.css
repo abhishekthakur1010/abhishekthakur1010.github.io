@@ -1343,13 +1343,13 @@ html, body { overflow-x: clip; }
 /* Journey ride: places the cycle has passed turn the banner red, the road behind it too; at 2027 the rider hops off and says hi */
 .jr-bike { transform: translateX(-40px); will-change: transform; }
 .jr-trail { position: absolute; left: 0; bottom: 1px; height: 2px; width: 0; border-radius: 2px; pointer-events: none;
-  background: linear-gradient(90deg, #7a1530, #b3262f 55%, #d9533a); transition: opacity .8s ease; }
-.jr-lm.is-lit { stroke: url(#jr-red); color: #b3262f; }
-.jr-stop.is-lit .jr-chip b { color: #b3262f; }
-.jr-stop.is-lit .jr-chip span { color: #d58a7c; }
-.jr-stop.is-lit .jr-dot { border-color: #b3262f; }
+  background: linear-gradient(90deg, #c76a7d, #db6b6b 55%, #eb9a7e); transition: opacity .8s ease; }
+.jr-lm.is-lit { stroke: url(#jr-red); color: #d77373; }
+.jr-stop.is-lit .jr-chip b { color: #c9545a; }
+.jr-stop.is-lit .jr-chip span { color: #e0a397; }
+.jr-stop.is-lit .jr-dot { border-color: #d77373; }
 .jr-stop.is-now.is-lit .jr-dot { border-color: var(--accent); }
-.jr-person { position: absolute; bottom: 1px; left: 0; width: 22px; height: 44px; color: #b3262f; opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; pointer-events: none; }
+.jr-person { position: absolute; bottom: 1px; left: 0; width: 22px; height: 44px; color: #d26a6a; opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; pointer-events: none; }
 .jr-person svg { width: 100%; height: 100%; display: block; }
 .jr-hi { position: absolute; left: 0; bottom: 54px; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; white-space: nowrap;
   background: #fff; border: 1px solid #ecd3cf; box-shadow: 0 6px 18px rgba(122, 21, 48, .12); color: #b3262f; font-size: 13px; font-weight: 600; text-decoration: none;
@@ -1362,7 +1362,7 @@ html, body { overflow-x: clip; }
 .journey.jr-arrived .jr-hi { opacity: 1; transform: translate(-50%, 0) scale(1); pointer-events: auto; }
 .journey.jr-reset .jr-trail { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .jr-bike { display: block; } }
-.jr-bike { color: #b3262f; }
+.jr-bike { color: #d26a6a; }
 
 /* tidy the hi moment: smaller rider and bubble, clear of the signpost, quiet focus ring */
 .jr-person { width: 18px; height: 36px; }
@@ -1374,4 +1374,4 @@ html, body { overflow-x: clip; }
 
 /* Trial: footer hidden, the journey strip closes the page on its own */
 .footer[hidden] { display: none !important; }
-.footer[hidden] + .journey { --jr-bg: #fcf8f1; padding-top: 0; margin-top: -24px; background: radial-gradient(70% 90% at 50% 120%, rgba(242, 198, 109, .16), transparent 70%), linear-gradient(180deg, #fff 0%, #fcf8f1 45%, #f6ecd9 100%); }
+.footer[hidden] + .journey { padding-top: 0; margin-top: -24px; background: linear-gradient(180deg, #fff 0%, #faf9f6 45%, #f5f3ef 100%); }
