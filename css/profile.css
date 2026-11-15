@@ -1255,19 +1255,19 @@ html, body { overflow-x: clip; }
 @media (max-width: 600px) { .story-cta .sc-btn { width: 100%; } }
 
 /* ── Journey strip: quiet fine-line timeline above the footer ── */
-.journey { --jr-bg: #ffffff; --jr-ink: #c4beb3; position: relative; margin: 0; background: linear-gradient(180deg, #fff 0%, #fff 62%, #f7f5f1 100%); overflow: hidden; }
+.journey { --jr-bg: #ffffff; --jr-ink: #d3cec5; position: relative; margin: 0; background: linear-gradient(180deg, #fff 0%, #fff 62%, #f7f5f1 100%); overflow: hidden; }
 .journey .jr-head { max-width: 640px; margin: 0 auto; padding: 44px 20px 0; text-align: center; }
 .journey h2 { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 500; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.1; letter-spacing: -.01em; color: var(--text); }
 .journey .jr-sub { margin: 8px 0 0; font-size: 14px; color: var(--text-2); }
 .jr-scroll { overflow-x: auto; scrollbar-width: none; outline: none; }
 .jr-scroll::-webkit-scrollbar { display: none; }
-.jr-track { min-width: 1120px; max-width: 1320px; margin: 0 auto; padding: 24px 24px 44px; box-sizing: border-box;
+.jr-track { min-width: 1140px; max-width: 1480px; margin: 0 auto; padding: 24px 24px 44px; box-sizing: border-box;
   display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: auto auto; }
 .jr-scene { grid-column: 1 / -1; grid-row: 1; position: relative; color: var(--jr-ink); }
 .jr-land { display: block; width: 100%; height: auto; overflow: visible; }
 .jr-bike { position: absolute; left: 0; bottom: 1px; width: 26px; height: 24px; color: #8f887c; animation: jr-ride 36s linear infinite; }
 .jr-spoke { transform-box: fill-box; transform-origin: center; animation: jr-spin .7s linear infinite; }
-@keyframes jr-ride { from { left: -50px; } to { left: 86%; } }
+@keyframes jr-ride { from { left: -40px; } to { left: 100%; } }
 @keyframes jr-spin { to { transform: rotate(360deg); } }
 .jr-plane { animation: jr-bob 5s ease-in-out infinite; }
 @keyframes jr-bob { 50% { transform: translateY(-3px); } }
@@ -1320,3 +1320,14 @@ html, body { overflow-x: clip; }
 .is-next .jr-chip b { color: var(--text-2); }
 .journey .jr-track { padding-top: 40px; padding-bottom: 36px; }
 .jr-land path, .jr-land circle, .jr-land rect { vector-effect: non-scaling-stroke; }
+
+/* cycle highlight: the place it is passing turns darker, then fades back */
+.jr-lm { transition: color .6s ease; }
+.jr-lm.is-lit { color: #7d766a; }
+.jr-chip b, .jr-chip span { transition: color .6s ease; }
+.jr-chip b { color: #8a8478; font-weight: 500; }
+.jr-stop.is-lit .jr-chip b { color: var(--text); }
+.jr-stop.is-lit .jr-chip span { color: #6f695f; }
+.jr-dot { transition: border-color .6s ease; }
+.jr-stop.is-lit .jr-dot { border-color: #5f594f; }
+.jr-bike { color: #6f695f; }

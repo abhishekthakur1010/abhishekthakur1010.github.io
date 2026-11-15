@@ -199,3 +199,22 @@
       .catch(function () { /* keep the starting number */ });
   }
 })();
+
+/* Journey strip: the place the cycle is passing turns darker, then fades back */
+(function () {
+  var sec = document.querySelector('.journey');
+  if (!sec || !window.IntersectionObserver || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var bike = sec.querySelector('.jr-bike'), lms = sec.querySelectorAll('.jr-lm'), stops = sec.querySelectorAll('.jr-stop'), on = false;
+  if (!bike) return;
+  function tick() {
+    if (!on) return;
+    var b = bike.getBoundingClientRect(), x = b.left + b.width / 2;
+    for (var i = 0; i < stops.length; i++) {
+      var r = stops[i].getBoundingClientRect(), near = Math.abs(x - (r.left + r.width / 2)) < r.width * 0.5;
+      stops[i].classList.toggle('is-lit', near);
+      if (lms[i]) lms[i].classList.toggle('is-lit', near);
+    }
+    requestAnimationFrame(tick);
+  }
+  new IntersectionObserver(function (e) { on = e[0].isIntersecting; if (on) requestAnimationFrame(tick); }).observe(sec);
+})();
