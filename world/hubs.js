@@ -103,10 +103,10 @@ export const HUBS = {
 
 /* the order hubs appear in on the world map, and where they sit on the island (x, z in map units) */
 export const MAP = [
-  { id: 'home', x: -34, z: -40 },
-  { id: 'city', x: 30, z: -6 },
-  { id: 'play', x: -38, z: 22 },
-  { id: 'dream', x: 4, z: -62 },
-  { id: 'travel', x: 46, z: 36 },
-  { id: 'give', x: -4, z: 48 },
+  { id: 'home', x: -42, z: -16 },
+  { id: 'city', x: 46, z: 4 },
+  { id: 'play', x: -52, z: 36 },
+  { id: 'dream', x: 34, z: -48 },
+  { id: 'travel', x: 44, z: 60 },
+  { id: 'give', x: -4, z: 58 },
 ];
