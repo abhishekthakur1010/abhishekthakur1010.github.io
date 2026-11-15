@@ -7,7 +7,7 @@
        --aat-line: var(--line, #e3e1dc); --aat-soft: var(--line-soft, #efede9); --aat-ease: cubic-bezier(.22, .8, .24, 1); font: 15px/1.55 var(--font, system-ui, sans-serif); }
 
 /* Launcher: a quiet black pill that sits beside the Look button */
-.aat-launch { position: fixed; right: 80px; bottom: 24px; z-index: 61; display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 18px 0 7px;
+.aat-launch { position: fixed; right: 22px; bottom: 22px; z-index: 61; display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 18px 0 7px;
   border: 0; border-radius: 999px; background: var(--aat-ink); color: var(--aat-bg); font: 600 14px/1 var(--font, system-ui, sans-serif); letter-spacing: .01em; cursor: pointer;
   box-shadow: 0 6px 20px rgba(0,0,0,.16), 0 1px 3px rgba(0,0,0,.12); transition: transform .25s var(--aat-ease), box-shadow .25s ease, opacity .25s ease; }
 .aat-launch:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.2), 0 1px 3px rgba(0,0,0,.12); }
@@ -111,7 +111,6 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
 
 @media (max-width: 720px) {
   .aat-drawer { width: 100vw; border-left: 0; box-shadow: none; }
-  .aat-launch { right: auto; left: 16px; bottom: 20px; }
   .aat-launch kbd { display: none; }
     .aat-note .aat-keys { display: none; }
   .aat-msg--user .aat-bubble { max-width: 88%; }
@@ -152,3 +151,11 @@ html.aat-lock, html.aat-lock body { overflow: hidden; }
 .aat-launch-txt { display: inline-flex; align-items: center; gap: 9px; max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0;
   transition: max-width .45s var(--aat-ease), opacity .25s ease, padding .45s var(--aat-ease); }
 .aat-launch:hover .aat-launch-txt, .aat-launch:focus-visible .aat-launch-txt { max-width: 180px; opacity: 1; padding: 0 11px 0 10px; transition-delay: 0s, .08s, 0s; }
+
+/* Abhizag takes the Customize button's old corner; Customize stacks just above it */
+.lk { right: 24px; bottom: 80px; }
+@media (max-width: 899px) {
+  .aat-launch { right: 70px; bottom: 16px; }
+  .lk { right: 72px; bottom: 72px; }
+  .lk-panel { bottom: 128px; }
+}
