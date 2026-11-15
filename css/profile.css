@@ -397,12 +397,13 @@ button { font: inherit; cursor: pointer; }
 
 /* ---------- Festive ember banner ---------- */
 .cover.is-festive {
-  /* Diwali dusk: violet sky warming to a saffron glow along the bottom. */
+  /* Christmas season: a deep wine-red evening warming to a soft golden glow along the bottom.
+     (Diwali dusk was: linear-gradient(180deg, #4a2378 0%, #8e2f7c 45%, #d4513f 78%, #ef8a3c 100%).) */
   background:
-    radial-gradient(ellipse 75% 70% at 50% 120%, rgba(255,196,92,.75), transparent 70%),
-    radial-gradient(ellipse 35% 60% at 0% 105%, rgba(255,128,64,.4), transparent 70%),
-    radial-gradient(ellipse 35% 60% at 100% 105%, rgba(255,128,64,.4), transparent 70%),
-    linear-gradient(180deg, #4a2378 0%, #8e2f7c 45%, #d4513f 78%, #ef8a3c 100%);
+    radial-gradient(ellipse 75% 70% at 50% 120%, rgba(255,198,120,.6), transparent 70%),
+    radial-gradient(ellipse 35% 60% at 0% 105%, rgba(240,110,70,.35), transparent 70%),
+    radial-gradient(ellipse 35% 60% at 100% 105%, rgba(240,110,70,.35), transparent 70%),
+    linear-gradient(180deg, #3e0f22 0%, #7a1530 42%, #b3262f 76%, #d9533a 100%);
 }
 .cover.is-festive .cl-title, .cover.is-festive .cl-sub { text-shadow: 0 1px 2px rgba(90,20,40,.35), 0 1px 14px rgba(90,20,40,.5); }
 .cover.is-festive .cl-sub { color: #fff3d6; }
