@@ -231,8 +231,9 @@
     var dt = last ? Math.min(0.05, (t - last) / 1000) : 0; last = t;
     var c = centers(), end = c[c.length - 1] - 36, speed = scene.clientWidth / 30;
     if (state === 'ride') {
-      x += speed * dt; if (x >= end) { x = end; state = 'hi'; hold = 6; arrive(c); }
+      x += speed * dt; if (x >= end) x = end;
       place(x);
+      if (x >= end) { state = 'hi'; hold = 6; arrive(c); }
     } else if (state === 'hi') {
       if (!hovering) hold -= dt;
       if (hold <= 0) { state = 'reset'; hold = 0.9; sec.classList.remove('jr-arrived'); sec.classList.add('jr-reset'); }
