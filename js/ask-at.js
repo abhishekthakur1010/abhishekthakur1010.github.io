@@ -221,15 +221,15 @@
   function intro() {
     started = true;
     var back = persona && persona.id !== 'browsing';
-    say({ who: 'bot', parts: [back ? 'Hey, welcome back 👋' : 'Hey there 👋 Nice to have you here.'] }, function () {
-      if (back) say({ who: 'bot', parts: ['Anything I can help with?'], chips: nextQs(2) }, null, 700);
+    say({ who: 'bot', parts: [back ? 'Welcome back 👋 Abhizag here, still up to speed on Abhishek\'s work.' : 'Hi there 👋 I\'m Abhizag. I know Abhishek\'s work, projects and journey inside out.'] }, function () {
+      if (back) say({ who: 'bot', parts: ['Ask me anything, or pick one:'], chips: nextQs(2) }, null, 700);
       else say({ who: 'bot', parts: ['What describes you best?'], chips: roleChips(), style: 'roles' }, null, 700);
     }, 300);
   }
   function chooseRole(p, typed) {
     if (!typed) userSays(p.label);
     setPersona(p);
-    say({ who: 'bot', parts: [p.id === 'browsing' ? 'Cool, have a look around! What would you like to know?' : 'Nice! What would you like to know?'], chips: nextQs(2) });
+    say({ who: 'bot', parts: ['Nice! Ask me anything, or pick one:'], chips: nextQs(2) });
   }
   function ask(text) {
     text = text.trim();
