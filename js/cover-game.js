@@ -255,6 +255,12 @@
            { x: W * 0.87, len: 10, s: 0.53, p: 0.9 }, { x: W * 0.955, len: 30, s: 0.45, p: 2.4 }],
       diyas: strings.map(function (d, i) { return { x: W * d[0], len: base * d[1], p: i * 1.3 }; })
     };
+    // Christmas: keep only the outermost kandil on each side; the inner pair become small hanging stars.
+    scene.minis = [];
+    if (XMAS && !narrow) {
+      scene.minis = [{ x: W * 0.13, len: buntingBottom(W * 0.13) + 22, p: 0.7 }, { x: W * 0.87, len: buntingBottom(W * 0.87) + 12, p: 2.2 }];
+      scene.lanterns = [scene.lanterns[1], scene.lanterns[3]];
+    }
     // Each kandil hangs clear of the bunting: its top sits a little below the flags above it.
     scene.lanterns.forEach(function (L) { L.len = Math.max(L.len, (buntingBottom(L.x) + 6) / L.s) + 4 / L.s; });
     // Flame positions, used to light the sparkler.
@@ -289,35 +295,47 @@
   // Lowest point of the flags at x: the swag's curve (sag 16) plus a flag's height (13), as drawn below.
   function buntingBottom(x) {
     var swags = W < 600 ? 2 : 3, sw = W / swags, u = (x % sw) / sw;
+    if (XMAS) return (1 - u) * (1 - u) * 12 + 2 * u * (1 - u) * 80 + 3 + 8;   // below the lower light strand
     return 2 + 16 * 4 * u * (1 - u) + 13 + 2;
   }
   // Christmas: warm fairy lights on thin wires instead of flags, two strands per swag crossing each other.
   function drawLights() {
-    var swags = W < 600 ? 2 : 3, sw = W / swags, gap = W < 600 ? 30 : 36;
+    var swags = W < 600 ? 2 : 3, sw = W / swags, gap = W < 600 ? 28 : 34;
     ctx.save();
+    // a faint warm haze the lights throw onto the sky just below them
+    var hz = ctx.createLinearGradient(0, 0, 0, 90);
+    hz.addColorStop(0, 'rgba(255,190,120,.14)'); hz.addColorStop(1, 'rgba(255,190,120,0)');
+    ctx.fillStyle = hz; ctx.fillRect(0, 0, W, 90);
+    var BULB = ['255,214,140', '255,226,170', '255,200,120', '255,236,200'];
     for (var s = 0; s < swags; s++) {
       var x0 = s * sw;
-      [{ y0: 2, sag: 17, ph: 0 }, { y0: 8, sag: 26, ph: 2.1 }].forEach(function (wire, wi) {
-        var yA = wire.y0 + (wi ? 6 : 0), yB = wire.y0 + (wi ? 0 : 6);
-        ctx.strokeStyle = 'rgba(120,70,50,.85)'; ctx.lineWidth = 1.1;
-        ctx.beginPath(); ctx.moveTo(x0, yA); ctx.quadraticCurveTo(x0 + sw / 2, wire.y0 + wire.sag * 2, x0 + sw, yB); ctx.stroke();
+      [{ yA: 2, yB: 10, sag: 22, ph: 0 }, { yA: 12, yB: 0, sag: 34, ph: 2.1 }].forEach(function (wire, wi) {
+        var cy = Math.max(wire.yA, wire.yB) + wire.sag * 2;
+        ctx.strokeStyle = 'rgba(96,52,36,.9)'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(x0, wire.yA); ctx.quadraticCurveTo(x0 + sw / 2, cy, x0 + sw, wire.yB); ctx.stroke();
         var n = Math.floor(sw / gap);
         for (var i = 1; i < n; i++) {
           var u = (i + (wi ? 0.5 : 0)) / n; if (u >= 1) continue;
-          var x = x0 + sw * u, y = (1 - u) * (1 - u) * yA + 2 * u * (1 - u) * (wire.y0 + wire.sag * 2) + u * u * yB + 2;
-          var seed = (s * 31 + wi * 17 + i * 7) % 13, big = seed % 4 === 0;
-          var tw = reduce ? 0.85 : 0.6 + 0.4 * Math.sin(now * (1.3 + seed * 0.17) + seed * 1.9 + wire.ph);
-          var r = (big ? 22 : 14) * (0.7 + 0.3 * tw), core = big ? 3.4 : 2.4;
+          var x = x0 + sw * u, y = (1 - u) * (1 - u) * wire.yA + 2 * u * (1 - u) * cy + u * u * wire.yB + 3;
+          var seed = (s * 31 + wi * 17 + i * 7) % 13, big = seed % 3 === 0, col = BULB[seed % 4];
+          var tw = reduce ? 0.85 : 0.55 + 0.45 * Math.pow(0.5 + 0.5 * Math.sin(now * (0.9 + seed * 0.15) + seed * 1.9 + wire.ph), 1.5);
+          var r = (big ? 30 : 18) * (0.65 + 0.35 * tw), core = big ? 3.6 : 2.6;
           ctx.globalCompositeOperation = 'lighter';
           var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-          g.addColorStop(0, 'rgba(255,236,190,' + (0.75 * tw).toFixed(3) + ')'); g.addColorStop(0.3, 'rgba(255,200,125,' + (0.3 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,180,100,0)');
+          g.addColorStop(0, 'rgba(' + col + ',' + (0.7 * tw).toFixed(3) + ')'); g.addColorStop(0.18, 'rgba(' + col + ',' + (0.38 * tw).toFixed(3) + ')');
+          g.addColorStop(0.5, 'rgba(255,170,90,' + (0.1 * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,160,80,0)');
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-          if (big && tw > 0.8) {   // a little star glint on the brightest bulbs
-            var L = 9 * (tw - 0.8) / 0.2 + 3; ctx.strokeStyle = 'rgba(255,245,220,' + (0.7 * tw).toFixed(3) + ')'; ctx.lineWidth = 0.8;
-            ctx.beginPath(); ctx.moveTo(x - L, y); ctx.lineTo(x + L, y); ctx.moveTo(x, y - L); ctx.lineTo(x, y + L); ctx.stroke();
+          if (big && tw > 0.75) {   // a soft cross-shaped glint on the brightest bulbs
+            var L = 4 + 12 * (tw - 0.75) / 0.25;
+            var gl = ctx.createLinearGradient(x - L, y, x + L, y); gl.addColorStop(0, 'rgba(255,245,220,0)'); gl.addColorStop(.5, 'rgba(255,245,220,.8)'); gl.addColorStop(1, 'rgba(255,245,220,0)');
+            ctx.fillStyle = gl; ctx.fillRect(x - L, y - 0.6, 2 * L, 1.2);
+            var gv = ctx.createLinearGradient(x, y - L, x, y + L); gv.addColorStop(0, 'rgba(255,245,220,0)'); gv.addColorStop(.5, 'rgba(255,245,220,.8)'); gv.addColorStop(1, 'rgba(255,245,220,0)');
+            ctx.fillStyle = gv; ctx.fillRect(x - 0.6, y - L, 1.2, 2 * L);
           }
           ctx.globalCompositeOperation = 'source-over';
-          ctx.fillStyle = 'rgba(255,248,226,' + (0.75 + 0.25 * tw).toFixed(3) + ')'; ctx.beginPath(); ctx.arc(x, y, core, 0, 6.2832); ctx.fill();
+          var cg = ctx.createRadialGradient(x - core * .3, y - core * .3, 0, x, y, core);
+          cg.addColorStop(0, '#fffaf0'); cg.addColorStop(1, 'rgba(' + col + ',1)');
+          ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(x, y, core, 0, 6.2832); ctx.fill();
         }
       });
     }
@@ -381,6 +399,11 @@
       ctx.fillStyle = 'rgba(255,225,180,.38)';
       for (var y = 4; y < d.len; y += 5) { ctx.beginPath(); ctx.arc(d.x, y, 0.8, 0, 6.2832); ctx.fill(); }
       if (XMAS) star(d.x, d.len + 10, DIYA_S, d.p); else diya(d.x, d.len + 4, DIYA_S, d.p);
+    });
+    (scene.minis || []).forEach(function (d) {
+      ctx.fillStyle = 'rgba(255,225,180,.38)';
+      for (var y = 4; y < d.len; y += 5) { ctx.beginPath(); ctx.arc(d.x, y, 0.8, 0, 6.2832); ctx.fill(); }
+      star(d.x, d.len + 7, DIYA_S * 0.62, d.p);
     });
   }
 
