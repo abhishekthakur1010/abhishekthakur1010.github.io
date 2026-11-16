@@ -13,7 +13,7 @@
     />
     <link href="./css/case-study-v2.css?v=77" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
-    <link href="./css/jiomart-cs-deck.css?v=9" rel="stylesheet" />
+    <link href="./css/jiomart-cs-deck.css?v=10" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
   </head>
@@ -327,22 +327,14 @@
           <span class="sec-label">Solution &amp; decisions</span>
         </div>
         <h2 class="sec-title">Rebuilt for clarity, recall, and trust.</h2>
-        <p class="lead">
-          Grounded in research — competitive benchmarking, heuristic evaluation,
-          and heatmaps — every change optimized for one thing: helping shoppers
-          scan, compare, and decide faster.
-        </p>
+        <p class="lead">Every change had one job: help shoppers scan, compare and decide faster.</p>
 
         <!-- Flow 1 -->
         <div class="flow">
           <div>
             <div class="tag">Homepage</div>
             <h3>A first impression that guides</h3>
-            <p>
-              Standardized category icons and colors, clearer search &amp; scan,
-              accurate search categorization, real-time quantity alerts, GPS
-              address detection, and simplified navigation.
-            </p>
+            <p>Consistent category icons, clearer search, and an address picked up by GPS.</p>
             <div class="win"><b>Decision:</b> consistency over novelty — reduce cognitive load first.</div>
           </div>
           <div class="ba">
@@ -362,11 +354,7 @@
           <div>
             <div class="tag">Product Listing Page</div>
             <h3>From scroll to selection</h3>
-            <p>
-              Better filters and sorting, simplified scannable cards, prominent
-              ratings, clear pricing and offers, an intuitive wishlist, urgency
-              tags like "Best Seller," and larger high-quality images.
-            </p>
+            <p>Simpler cards with ratings, price and offers up front, plus better filters.</p>
             <div class="win"><b>Decision:</b> put decision-boosters — ratings, price, urgency — on the card.</div>
           </div>
           <div class="ba">
@@ -386,11 +374,7 @@
           <div>
             <div class="tag">Electronics PLP</div>
             <h3>Right fit, faster</h3>
-            <p>
-              Bigger, sharper visuals for better product recall, refined
-              categories, jargon-free labels, and smoother scroll and pagination
-              for a category that demands comparison.
-            </p>
+            <p>Bigger images and plain labels for a category people compare closely.</p>
             <div class="win"><b>Decision:</b> speak the shopper's language, not the catalog's.</div>
           </div>
           <div class="ba">
@@ -410,12 +394,7 @@
           <div>
             <div class="tag">Product Detail Page · 1st fold</div>
             <h3>Where decisions happen</h3>
-            <p>
-              High-quality images with real-life context tags, a clear delivery
-              location strip, brand name above product name, social signifiers
-              (reviews, likes, shares), and product variants upfront with price
-              and discount.
-            </p>
+            <p>Brand, reviews, variants and price all sit above the fold.</p>
             <div class="win"><b>Decision:</b> surface the deciding details before the fold.</div>
           </div>
           <div class="ba">
@@ -437,12 +416,7 @@
               <div class="tag">Pricing · PLP &amp; PDP</div>
               <h3>Price first</h3>
             </div>
-            <p>
-              For a family on ₹12–28K a month, the price tag is the decision.
-              So the selling price is the largest type on every card and on the
-              product page. We didn't invent that hierarchy: it's the one
-              shoppers already trust on every grocery shelf tag.
-            </p>
+            <p>For a family on ₹12–28K a month, price is the decision. So it's the biggest text on every card, just like a shelf tag.</p>
           </div>
           <div class="pq-bento">
               <div class="pq-card">
@@ -791,8 +765,9 @@
         });
       })();
 
-      // Section rail on the left, like the deck's navigator
+      // Section rail on the left: six short stops, nearby sections fold into them
       (function () {
+        var MAP = { "Overview": "Overview", "Problem": "Problem", "Research & process": "Research", "Solution & decisions": "Solution", "Shipped": "Impact", "Customer feedback": "Feedback" };
         var secs = Array.prototype.slice.call(document.querySelectorAll("section.block, section.next")).filter(function (s) {
           return s.querySelector(".sec-label");
         });
@@ -800,19 +775,24 @@
         var rail = document.createElement("nav");
         rail.className = "jm-rail";
         rail.setAttribute("aria-label", "Sections");
-        var links = secs.map(function (s, i) {
-          if (!s.id) s.id = "sec-" + (i + 1);
-          var a = document.createElement("a");
-          a.href = "#" + s.id;
-          a.innerHTML = "<b>" + ("0" + (i + 1)).slice(-2) + "</b>" + s.querySelector(".sec-label").textContent;
-          rail.appendChild(a);
-          return a;
+        var stops = [], owner = [];
+        secs.forEach(function (s, i) {
+          var name = MAP[s.querySelector(".sec-label").textContent.trim()];
+          if (name) {
+            if (!s.id) s.id = "sec-" + (i + 1);
+            var a = document.createElement("a");
+            a.href = "#" + s.id;
+            a.textContent = name;
+            rail.appendChild(a);
+            stops.push(a);
+          }
+          owner.push(stops.length - 1);
         });
         document.body.appendChild(rail);
         function onScroll() {
           var y = window.innerHeight * 0.4, cur = -1;
-          secs.forEach(function (s, i) { if (s.getBoundingClientRect().top < y) cur = i; });
-          links.forEach(function (a, i) { a.classList.toggle("now", i === cur); });
+          secs.forEach(function (s, i) { if (s.getBoundingClientRect().top < y) cur = owner[i]; });
+          stops.forEach(function (a, i) { a.classList.toggle("now", i === cur); });
           rail.classList.toggle("on", cur >= 0);
         }
         addEventListener("scroll", onScroll, { passive: true });
