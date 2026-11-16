@@ -537,9 +537,10 @@ window.DECK = {
       links: [ { k: "Electronics benchmark", v: "Ask → Shipped", ov: "pdp-proof" } ],
       views: [
         { v: "old", label: "Before", img: "enhance-problem-pdp-nobar.png", cta: "enhance-before-pdp-bar.png", n: "Long page, key details buried" },
-        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "new/pdp-cta-groc.webp", n: "Brand, rating, price and every pack size up front" },
-        { v: "elec", label: "Electronics", img: "new/pdp-electronics.webp", h: 4098, cta: "new/pdp-cta-elec.webp", n: "EMI and full specs open in a sheet, so the page stays short",
+        { v: "elec", label: "Mobiles", img: "new/pdp-electronics.webp", h: 4098, cta: "new/pdp-cta-elec.webp", n: "EMI and full specs open in a sheet, so the page stays short",
+          before: { img: "enhance-before-pdp-mobile.webp?v=2", cta: "enhance-before-pdp-mobile-bar.webp", ctaH: "14%", n: "Specs and reviews buried below the fold" },
           hot: [ { x: 252, y: 656, w: 84, h: 30, open: "new/pdp-emi.webp", label: "EMI" }, { x: 24, y: 1941, w: 126, h: 34, open: "new/pdp-details.webp", label: "Details" } ] },
+        { v: "new", label: "Grocery", img: "new/pdp-grocery.webp", h: 4098, cta: "new/pdp-cta-groc.webp", n: "Brand, rating, price and every pack size up front" },
         { v: "fash", label: "Fashion", img: "new/pdp-fashion.webp", h: 4098, cta: "new/pdp-cta-fash.webp", n: "Brand first, then the name; colour and size before the fold" },
         { v: "beauty", label: "Beauty", img: "new/pdp-beauty.webp", h: 4098, cta: "new/pdp-cta-beauty.webp", n: "Shades as swatches, offers grouped, reviews with photos" }
       ],
@@ -750,7 +751,7 @@ window.DECK = {
           saw: "EMI didn't look tappable; compare chart had no buy CTA; lots of white space.",
           proof: "Same gaps on 4 of 4 audited verticals: brand, pincode wall, weak rating and CTA.",
           decided: "[ADD · what changed on the Electronics PDP]" },
-        { k: "Mobiles", beforeNote: "[ADD OLD SCREEN · Mobile PDP]", after: "new/pdp-mobile.webp",
+        { k: "Mobiles", before: "enhance-before-pdp-mobile.webp?v=2", after: "new/pdp-mobile.webp",
           saw: "Colour and storage variants missing; specs text-heavy, main purpose not up front.",
           proof: "Section-by-section comparison across Beauty, Electronics, Mobile and Fashion PDPs.",
           decided: "[ADD · what changed on the Mobile PDP]" },

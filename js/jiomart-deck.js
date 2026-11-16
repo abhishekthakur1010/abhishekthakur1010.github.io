@@ -48,9 +48,9 @@
   }
   // product page in the versions pair: the long screen scrolls inside the phone, its Add to cart bar stays pinned
   function pdpScroll(v) {
-    var before = v.v === "old";
+    var before = v.v === "old" || v.isBefore;
     var cta = before ? v.cta : v.cta + "?v=2";
-    return "<div class='device vp-dev scrolls has-cta' style='--cta-h:" + (before ? "37%" : "19%") + "'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(v.img) + "' alt=''></div>" +
+    return "<div class='device vp-dev scrolls has-cta' style='--cta-h:" + (v.ctaH || (before ? "37%" : "19%")) + "'><div class='dn'></div><div class='ds'><div class='ds-scroll'><img src='" + img(v.img) + "' alt=''></div>" +
       "<img class='pdp-cta' src='" + img(cta) + "' alt=''><span class='ds-hint'>Scroll</span></div></div>";
   }
   // a long screen that scrolls inside the phone, with an optional sticky bottom bar
@@ -890,7 +890,7 @@
           if (!i && bAlts.length) {
             // Before phone follows the category switch when a category has its own old screen
             var plain = alts.filter(function (a) { return !a.before; }).map(function (a) { return a.v; }).join(" ");
-            var bl = [{ vps: plain, img: v.img, n: v.n, cta: v.cta, h: v.h }].concat(bAlts.map(function (a) { return { vps: a.v, img: a.before.img, n: a.before.n }; }));
+            var bl = [{ vps: plain, v: v.v, img: v.img, n: v.n, cta: v.cta, h: v.h }].concat(bAlts.map(function (a) { return { vps: a.v, isBefore: true, img: a.before.img, n: a.before.n, cta: a.before.cta, ctaH: a.before.ctaH }; }));
             return "<figure class='vp-ph before vp-bmulti'><span class='vp-chip'>Before</span>" + bl.map(function (b) {
               var on = (" " + b.vps + " ").indexOf(" " + pair[1].v + " ") > -1;
               return "<div class='vp-balt" + (on ? " on" : "") + "' data-vps='" + b.vps + "'><span class='evo-media zoomable' title='Click to enlarge'>" + (b.cta ? pdpScroll(b) : device(b.img, 0, "vp-dev")) + "</span><figcaption>" + esc(b.n || "") + "</figcaption></div>"; }).join("") + "</figure>";
