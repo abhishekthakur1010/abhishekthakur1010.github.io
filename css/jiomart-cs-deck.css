@@ -1,0 +1,147 @@
+/* JioMart case study, dressed like the JioMart deck (its light theme):
+   white stage, heavy tight headings, JioMart blue for action, green for wins,
+   thin hairlines instead of soft grey blocks, and a numbered section rail on the left.
+   Loaded only by jiomart-discovery.html, after case-study-v2.css. */
+
+body.csv2.jm-deck {
+  --bg: #ffffff;
+  --bg-soft: #fafafa;
+  --bg-dark: #0a0a0a;
+  --card: #f7f7f7;
+  --card-hi: #ffffff;
+  --ink: #0a0a0a;
+  --ink-2: #3d3d3d;
+  --muted: #6b6b6b;
+  --faint: #9a9a9a;
+  --line: #ececec;
+  --line2: #e2e2e2;
+  --jm-blue: #0078ad; --jm-blue-20: #e5f1f7;
+  --jm-red: #e30513;  --jm-red-20: #fde8ea;
+  --jm-green: #00873f; --jm-green-20: #e2f6ec;
+  --accent: var(--jm-blue); --accent-soft: var(--jm-blue-20);
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: light;
+}
+html:has(body.jm-deck) { background: #ffffff; }
+
+/* top bar */
+.jm-deck .st-bar { background: rgba(255,255,255,.85) !important; border-bottom-color: var(--line) !important; color: var(--ink); }
+.jm-deck .st-bar .st-brand small { color: var(--muted) !important; }
+.jm-deck .st-bar .st-back, .jm-deck .st-bar .st-btn { color: var(--ink) !important; border-color: var(--line2) !important; background: transparent !important; }
+.jm-deck .st-bar .st-btn:hover { border-color: var(--ink) !important; }
+.jm-deck .st-progress span { background: var(--jm-blue) !important; }
+
+/* type: heavy, tight headings */
+.jm-deck h1, .jm-deck .sec-title, .jm-deck h2, .jm-deck h3, .jm-deck h4 { color: var(--ink); }
+.jm-deck .hero h1 { font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; }
+.jm-deck .hero h1 .hl { color: var(--jm-blue) !important; }
+.jm-deck .sec-title { font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; font-size: clamp(32px, 3.6vw, 52px); }
+.jm-deck .lead, .jm-deck p, .jm-deck .hero .sub { color: var(--ink-2); }
+
+/* eyebrows in blue caps */
+.jm-deck .eyebrow { color: var(--jm-blue) !important; text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px; font-weight: 600; }
+.jm-deck .eyebrow::before { background: var(--jm-blue) !important; }
+.jm-deck .cs-type { background: var(--jm-blue-20) !important; color: var(--jm-blue) !important; border-color: transparent !important; }
+.jm-deck .sec-head .sec-num { color: var(--jm-blue) !important; }
+.jm-deck .sec-head .sec-label { color: var(--muted) !important; }
+
+/* surfaces */
+.jm-deck .block, .jm-deck .block.soft, .jm-deck .product-band, .jm-deck .showcase, .jm-deck .next { background: var(--bg) !important; border-top: 1px solid var(--line); }
+.jm-deck .impact { background: #0a0a0a !important; }
+.jm-deck .impact .sec-title, .jm-deck .impact h2 { color: #f5f5f5 !important; }
+.jm-deck .impact p, .jm-deck .impact .lead { color: #c4c4c4 !important; }
+.jm-deck .impact .stat { border-color: #2e2e2e !important; }
+.jm-deck .meta { border-top-color: var(--line) !important; }
+@media (min-width: 901px) { .jm-deck .meta { grid-template-columns: repeat(3, 1fr); } }
+.jm-deck .meta .label { color: var(--muted) !important; }
+.jm-deck .meta .val { color: var(--ink) !important; font-weight: 600; }
+
+/* cards: dark panels with a hairline */
+.jm-deck .act, .jm-deck .statcard, .jm-deck .loop li, .jm-deck .problem, .jm-deck .rv-card,
+.jm-deck .rv-summary, .jm-deck .rv-big, .jm-deck .pb-store, .jm-deck .nextcard,
+.jm-deck .flow, .jm-deck .reflection, .jm-deck .recog-img {
+  background: var(--card) !important;
+  border-color: var(--line2) !important;
+  box-shadow: none !important;
+  color: var(--ink);
+}
+.jm-deck .act .k .n, .jm-deck .act .k .t { color: var(--jm-blue) !important; }
+.jm-deck .statcard .n { color: var(--ink) !important; }
+.jm-deck .statcard .l { color: var(--muted) !important; }
+.jm-deck .loop li:last-child { background: var(--jm-green-20) !important; border-color: rgba(0,135,63,.4) !important; }
+.jm-deck .loop li::before { color: var(--jm-green) !important; }
+.jm-deck .loop span { color: var(--muted) !important; }
+.jm-deck .problem .idx { background: var(--jm-red-20) !important; color: var(--jm-red) !important; }
+
+/* audience pyramid + stats */
+.jm-deck .au-cs .tag { color: var(--jm-blue) !important; }
+.jm-deck .au-band { background: #ececec !important; color: var(--ink) !important; }
+.jm-deck .au-row.focus .au-band { background: #dcecf5 !important; }
+.jm-deck .au-row.focus .au-band b, .jm-deck .au-row.focus .au-lab b, .jm-deck .au-row.focus .au-lab span { color: var(--jm-blue) !important; }
+.jm-deck .au-band small, .jm-deck .au-lab small { color: var(--muted) !important; }
+.jm-deck .au-stat { background: transparent !important; border-color: var(--line2) !important; }
+.jm-deck .au-stat b { color: var(--ink) !important; }
+.jm-deck .au-stat.key b { color: var(--jm-blue) !important; }
+.jm-deck .au-stat em, .jm-deck figcaption { color: var(--muted) !important; }
+
+/* chips + tabs */
+.jm-deck .pb-cats span, .jm-deck .rv-chip, .jm-deck .iter-tabs, .jm-deck .iter-tab { background: #fff !important; color: var(--ink-2) !important; border-color: var(--line2) !important; }
+.jm-deck .rv-chip.is-on, .jm-deck .iter-tab.is-on { background: var(--ink) !important; color: #fff !important; }
+
+/* phones keep white screens in black bezels */
+.jm-deck .phone, .jm-deck .mockf { background: #0a0a0a !important; border-color: #0a0a0a !important; box-shadow: 0 24px 60px rgba(0,0,0,.14) !important; }
+.jm-deck .device-badge { background: #fff !important; border: 1px solid rgba(0,135,63,.35) !important; color: var(--ink) !important; box-shadow: 0 20px 50px rgba(0,0,0,.12) !important; }
+.jm-deck .device-badge b, .jm-deck .device-badge b em { color: var(--jm-green) !important; }
+.jm-deck .device-badge span { color: var(--muted) !important; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+
+/* outcome numbers read green */
+.jm-deck .impact .stat .num, .jm-deck .impact .stat .num .accent { color: #3dd68c !important; }
+
+
+/* reviews */
+.jm-deck .rv-bar { background: transparent !important; }
+.jm-deck .rv-help { background: transparent !important; color: var(--muted) !important; border-color: var(--line2) !important; }
+
+/* buttons: blue pill */
+.jm-deck .deck-link { background: var(--jm-blue) !important; color: #fff !important; box-shadow: 0 10px 30px rgba(0,120,173,.25) !important; }
+.jm-deck .cta, .jm-deck .cta-btn { background: var(--jm-blue) !important; color: #fff !important; }
+
+.jm-deck .teamrow img, .jm-deck .adgrid figure { border: 1px solid var(--line2); }
+.jm-deck .recog-tag { background: var(--jm-green-20) !important; color: var(--jm-green) !important; }
+.jm-deck .nextinfo .l { color: var(--jm-blue) !important; }
+.jm-deck .nextinfo p { color: var(--muted) !important; }
+.jm-deck .foot { color: var(--muted); border-top: 1px solid var(--line); }
+.jm-deck .foot a { color: var(--ink); }
+
+/* section rail, like the deck's left navigator */
+.jm-rail {
+  position: fixed; left: 28px; top: 50%; transform: translateY(-50%); z-index: 40;
+  display: none; flex-direction: column; gap: 6px; width: 170px;
+  opacity: 0; transition: opacity .35s ease; pointer-events: none;
+}
+.jm-rail.on { opacity: 1; pointer-events: auto; }
+.jm-rail a {
+  display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px;
+  border: 1px solid transparent; color: #6b6b6b; font-size: 13.5px; font-weight: 600; text-decoration: none;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.jm-rail a b { font-size: 11px; font-weight: 600; color: #b5b5b5; min-width: 16px; transition: color .2s; }
+.jm-rail a:hover { color: #0a0a0a; }
+.jm-rail a.now { color: #0a0a0a; border-color: rgba(0,120,173,.5); background: #e5f1f7; }
+.jm-rail a.now b { color: #0078ad; }
+@media (min-width: 1380px) { .jm-rail { display: flex; } }
+
+/* fixes after the first look */
+.jm-deck .st-bar .st-brand span { color: var(--ink) !important; }
+.jm-deck .st-bar .st-brand:hover span { color: var(--jm-blue) !important; }
+.jm-deck .pq-card { background: var(--card) !important; border: 1px solid var(--line2); }
+.jm-deck .pq-card b { color: var(--ink) !important; }
+.jm-deck .pq-card p { color: var(--muted) !important; }
+.jm-deck .pq-src.store { color: #a85b00 !important; background: rgba(168,91,0,.09) !important; }
+.jm-deck .pq-src.app { color: var(--jm-blue) !important; background: var(--jm-blue-20) !important; }
+.jm-deck .pq-card:hover { box-shadow: 0 14px 34px rgba(0,0,0,.08) !important; }
+.jm-rail { left: 18px; width: 150px; gap: 2px; }
+.jm-rail a { font-size: 12.5px; padding: 7px 10px; white-space: nowrap; }
+.jm-deck .rv-bar i { background: #e7e9ec !important; }
+.jm-deck .au-cs-grid:has(.au-row.focus:hover) .au-stat.key { background: var(--jm-blue-20) !important; }
