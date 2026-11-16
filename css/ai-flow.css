@@ -103,3 +103,40 @@
   .af-wide { margin: 0 -16px; width: auto; }
   .af-row { grid-template-columns: 150px 150px 150px 200px 150px; }
 }
+
+/* v7: more air around and between the logos */
+.ai-flow .af-wide > .card-sub { margin-bottom: 44px !important; }
+.af-name { margin: 8px 0 20px; }
+.af-tools { margin-top: 32px; gap: 14px; padding-right: 16px; }
+.af-tool { width: 44px; height: 44px; border-radius: 13px; }
+.af-tool img { width: 24px; height: 24px; }
+.af-tool:has(img[src*="github-pages"]) { width: 102px; }
+.af-tool:has(img[src*="github-pages"]) img { width: 76px; height: 15px; }
+.af-cap { margin-top: 16px; }
+@media (max-width: 760px) { .ai-flow .af-wide > .card-sub { margin-bottom: 30px !important; } }
+
+/* v8: equal rhythm. Every stage gets its logos' width plus the same share of spare room,
+   so the gap between each logo group is identical; vertical steps use one 24px unit. */
+.af-row { grid-template-columns: repeat(5, auto); }
+.af-tools { flex-wrap: wrap; max-width: 176px; padding-right: 0; }
+.af-name { margin: 8px 0 24px; }
+.af-tools { margin-top: 24px; gap: 14px; }
+.af-cap { margin-top: 14px; }
+.ai-flow .af-wide > .card-sub { margin-bottom: 40px !important; }
+@media (max-width: 760px) {
+  .af-row { grid-template-columns: repeat(5, max-content); column-gap: 0; }
+  .af-stage { padding-right: 36px; }
+  .af-stage:last-child { padding-right: 16px; }
+}
+
+/* v9: fixed logo-group widths + one equal gap between every group; the line runs through the gaps */
+.af-row { --g: 36px; grid-template-columns: 102px 102px 102px 160px 102px; column-gap: var(--g); justify-content: start; }
+.af-stage { padding-right: 0 !important; }
+.af-tools { max-width: none; padding: 0; }
+.af-num, .af-name, .af-cap { padding-right: 0; white-space: nowrap; }
+.af-stage:not(:last-child) .af-rule { margin-right: calc(-1 * var(--g)); }
+.af-stage:last-child .af-rule { margin-right: 0; }
+@media (max-width: 760px) {
+  .af-row { --g: 32px; width: max-content; }
+  .af-stage:last-child { padding-right: 16px !important; }
+}
