@@ -1375,3 +1375,13 @@ html, body { overflow-x: clip; }
 /* Trial: footer hidden, the journey strip closes the page on its own */
 .footer[hidden] { display: none !important; }
 .footer[hidden] + .journey { padding-top: 0; margin-top: -24px; background: linear-gradient(180deg, #fff 0%, #faf9f6 45%, #f5f3ef 100%); }
+
+/* Hide Abhizag while the archery game is open, so it never covers the game controls */
+html.game-on .aat-launch,
+html.game-on .aat-scrim,
+html.game-on .aat-drawer {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity .25s ease, visibility 0s .25s !important;
+}

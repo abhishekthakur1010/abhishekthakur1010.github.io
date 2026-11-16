@@ -872,6 +872,7 @@
   function start() {
     welcome = 0; mouse = null; sparkles = []; rockets = []; stars = []; peak = false;
     cover.classList.add('is-playing');
+    document.documentElement.classList.add('game-on'); // Abhizag steps aside while you play
     mode = 'aim';
     setTimeout(function () { resize(); newRound(); }, reduce ? 0 : 320);
     hud.querySelector('[data-act="close"]').focus({ preventScroll: true });
@@ -880,6 +881,7 @@
   function stop() {
     mode = 'idle'; arrow = null; pull = null; sparks = []; trail = []; mouse = null;
     cover.classList.remove('is-playing', 'is-won');
+    document.documentElement.classList.remove('game-on');
     setTimeout(function () { resize(); kick(); }, reduce ? 0 : 320);
     peek.focus({ preventScroll: true });
   }
