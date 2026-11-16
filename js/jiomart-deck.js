@@ -886,6 +886,15 @@
                 return "<div class='vp-alt" + (a.v === v.v ? " on" : "") + "' data-vp='" + a.v + "'><span class='vp-chip'>After</span><span class='evo-media zoomable' title='Click to enlarge'>" + (a.cta ? pdpScroll(a) : device(a.img, 0, "vp-dev")) + "</span><figcaption>" + esc(a.n || "") + "</figcaption></div>"; }).join("") +
               "</figure>";
           }
+          var bAlts = alts.filter(function (a) { return a.before; });
+          if (!i && bAlts.length) {
+            // Before phone follows the category switch when a category has its own old screen
+            var plain = alts.filter(function (a) { return !a.before; }).map(function (a) { return a.v; }).join(" ");
+            var bl = [{ vps: plain, img: v.img, n: v.n, cta: v.cta, h: v.h }].concat(bAlts.map(function (a) { return { vps: a.v, img: a.before.img, n: a.before.n }; }));
+            return "<figure class='vp-ph before vp-bmulti'><span class='vp-chip'>Before</span>" + bl.map(function (b) {
+              var on = (" " + b.vps + " ").indexOf(" " + pair[1].v + " ") > -1;
+              return "<div class='vp-balt" + (on ? " on" : "") + "' data-vps='" + b.vps + "'><span class='evo-media zoomable' title='Click to enlarge'>" + (b.cta ? pdpScroll(b) : device(b.img, 0, "vp-dev")) + "</span><figcaption>" + esc(b.n || "") + "</figcaption></div>"; }).join("") + "</figure>";
+          }
           return "<figure class='vp-ph " + (i ? "after" : "before") + "'><span class='vp-chip'>" + (i ? "After" : "Before") + "</span>" +
             "<span class='evo-media zoomable' title='Click to enlarge'>" + (v.cta ? pdpScroll(v) : device(v.img, 0, "vp-dev")) + "</span><figcaption>" + esc(v.n || "") + "</figcaption></figure>";
         }).join("<span class='vp-arrow'><svg viewBox='0 0 24 24' width='26' height='26' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span>");
@@ -1707,6 +1716,8 @@
     var fig = t.closest(".vp-multi"), k = t.getAttribute("data-vp");
     fig.querySelectorAll(".vp-cats [data-vp]").forEach(function (b) { var on = b === t; b.classList.toggle("on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
     fig.querySelectorAll(".vp-alt").forEach(function (d) { d.classList.toggle("on", d.getAttribute("data-vp") === k); });
+    var row = fig.closest(".vp-right");
+    if (row) row.querySelectorAll(".vp-balt").forEach(function (d) { d.classList.toggle("on", (" " + d.getAttribute("data-vps") + " ").indexOf(" " + k + " ") > -1); });
     fig.querySelectorAll(".ds-scroll").forEach(function (sc) { sc.scrollTop = 0; });   // each category starts at the top
   }, true);
   sov.addEventListener("click", function (e) {

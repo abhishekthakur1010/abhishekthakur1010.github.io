@@ -2587,3 +2587,7 @@ html.dark .prb-ref span, [data-theme=dark] .prb-ref span { color: #7fb2e5; }
 .vp-zones .vs-zone:first-child { border-top: 0 !important; }
 .vp-zones { margin-top: clamp(18px, 4vh, 40px) !important; }
 .vp-zones .vs-zone { padding: clamp(14px, 2.4vh, 24px) 0 !important; }
+/* Before phone that follows the category switch */
+.vp-bmulti { display: flex; flex-direction: column; align-items: center; }
+.vp-balt { display: none; flex-direction: column; align-items: center; gap: 10px; }
+.vp-balt.on { display: flex; animation: vpIn .35s ease; }
