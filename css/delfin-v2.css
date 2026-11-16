@@ -218,3 +218,13 @@ html:has(body.delfin), body.csv2.delfin { overflow-x: hidden; }
 .dv { --wrap: 1096px; }
 .dv-wrap { width: min(var(--wrap), 100% - 32px); }
 .dv-rail { padding-left: max(16px, calc((100vw - var(--wrap)) / 2)); padding-right: max(16px, calc((100vw - var(--wrap)) / 2)); scroll-padding-inline: max(16px, calc((100vw - var(--wrap)) / 2)); }
+
+/* v8: fewer words, bigger pictures, side rail */
+.dv-h2 { max-width: none; }
+.dv-sec { padding: 96px 0; }
+.dv-dec-copy p:not(.dv-why) { font-size: 17px; }
+.dv-dec-copy h3 { font-size: 24px; letter-spacing: -.01em; }
+.dv-dec-copy .csd-open { margin-top: 18px; }
+.dv-stat span { font-size: 14px; }
+.dv-rail { grid-auto-columns: 250px; }
+.dv-grid4 figcaption b { font-size: 15px; }

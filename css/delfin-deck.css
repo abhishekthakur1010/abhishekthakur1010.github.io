@@ -61,3 +61,4 @@ body.deck.delfin .device.vs { --w: min(15vw, calc((100vh - 470px) * 0.46)); }
 body.deck.delfin .award.is-phone { display: flex; flex-direction: column; align-items: center; }
 body.deck.delfin .award.is-phone .device { --w: min(17vw, calc((100vh - 330px) * 0.46)); }
 body.deck.delfin[data-theme] .device.vs { --w: min(15vw, calc((100vh - 500px) * 0.46)); }
+body.deck.delfin .vp-links .vp-link span, body.deck.delfin .vp-links .vp-link b, body.deck.delfin .vp-links .vp-link i { color: var(--info) !important; }

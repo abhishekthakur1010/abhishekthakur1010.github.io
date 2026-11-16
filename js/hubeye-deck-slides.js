@@ -206,6 +206,20 @@ window.DECK = {
       notes: "The hub, mapped 1:1; problems show where they happen. The screen opens on the old Overview tab, then the curtain wipes it away to the digital twin. Three ideas carry it. The map: every dock, sector and yard lane sits where it is on the floor. Grey or red: two states, no in-between colours to decode, so supervisors scan 300+ sectors in seconds. One click for the why: bags, ETD, ageing and compliance, with red rows saying what's wrong. Around the map: always-on hub vitals (shipments, yard, docks, manpower and compliance), an hour-by-hour yard forecast of vehicles in yard vs planned docks with overflow in red, and 158 live floor camera views, so a red dock can be checked on camera without leaving the map. Click the screen to enlarge."
     },
 
+    /* AROUND THE MAP — the why on click, and what's coming next */
+    {
+      section: "design", type: "pair",
+      eyebrow: "Around the map", device: "laptop",
+      headline: ["The why, one click away"],
+      highlight: "one click away",
+      sub: "Click a sector for its reasons. Look ahead at the yard and the floor.",
+      figs: [
+        { img: "hub-zoom-panel.webp", t: "Click any sector", d: "Bags, ETD and only the signals that matter.", tag: "After" },
+        { img: "yard-waiting.webp", t: "What's coming next", d: "Yard forecast by the hour, overflow in red.", tag: "After" }
+      ],
+      notes: "Around the map: click any sector to get the why, bags, ETD, ageing and compliance, red rows for what's wrong. And look ahead: the yard forecast shows vehicles against planned docks hour by hour, overflow in red."
+    },
+
     /* 07 — IMPACT (outcomes and the money card built by the enhancer; numbers in green) */
     {
       section: "results", type: "results",

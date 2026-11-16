@@ -1,0 +1,9 @@
+/* HubEye case study: fewer words, side rail, drawers for the detail */
+.csv2 .sec-num, .csv2 .acts .k .n { display: none; }
+.csv2 .sec-title { max-width: none !important; }
+.csv2 .lead { max-width: 720px; }
+.csv2 .problems.slim .problem, .csv2 .hx-principles.slim > div { padding-top: 18px; padding-bottom: 18px; }
+.csv2 .problems.slim h4, .csv2 .hx-principles.slim h4 { margin-bottom: 0; }
+.csv2 .csd-open { margin-top: 20px; }
+.csv2 .impact .csd-open { background: transparent; color: #fff; border-color: rgba(255,255,255,.3); }
+body.csv2 { --rail-line: rgba(255,45,45,.4); --rail-bg: #fff0f0; }

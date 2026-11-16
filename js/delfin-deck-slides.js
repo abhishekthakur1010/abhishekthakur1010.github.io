@@ -50,7 +50,7 @@ window.DECK = {
       eyebrow: "DelFin by Delhivery · 0→1 fintech",
       headline: ["Fleet finance a truck owner can ", "run alone"],
       highlight: "run alone",
-      body: "FASTag and GPS used to mean sales calls, paper KYC and days of silence. I led design for DelFin to make it self-serve, from first tap to an active tag.",
+      body: "I led design for DelFin, Delhivery's app that lets truck owners buy and run FASTag and GPS alone.",
       hero: "home-refined.webp",
       backShots: ["tut-drive.webp", "sheet-fastag.webp"],
       badge: { n: "{{80.4%|fastag}}", l: "FASTag orders activated in-app" },
@@ -68,7 +68,7 @@ window.DECK = {
       section: "context", type: "qa",
       eyebrow: "Asking the right questions",
       headline: ["We asked why before we designed"],
-      sub: "Six questions turned 'build a FASTag app' into a platform for a new business.",
+      sub: "Six questions turned a FASTag flow into a platform.",
       qs: [
         { tag: "Business", q: "Why build it?", a: "Delhivery already works with thousands of truck owners. Tolls are a daily spend." },
         { tag: "Business", q: "What does success look like?", a: "Orders that reach an active tag, with no sales call." },
@@ -111,8 +111,8 @@ window.DECK = {
     {
       section: "define", type: "stack",
       eyebrow: "The platform bet",
-      headline: ["Not a feature. The base layer for a new business."],
-      sub: "Identity, vehicles, documents and one wallet under every service.",
+      headline: ["One base layer, many services"],
+      sub: "One wallet and profile under every service.",
       services: [
         { k: "FASTag", s: "Live", on: true }, { k: "GPS", s: "Live", on: true },
         { k: "Fuel", s: "Next" }, { k: "Insurance", s: "Next" }, { k: "Credit", s: "Next" }
@@ -148,7 +148,7 @@ window.DECK = {
       labels: ["First visit", "Returning owner"],
       when: ["Buy FASTag or GPS", "Pending actions first"],
       jump: "After first purchase",
-      sub: "New owners see what to buy. Returning owners see their trucks and what's pending.",
+      sub: "New owners see what to buy. Returning owners see what's pending.",
       stages: [
         { img: "home-first.webp", n: "Buy cards and wallet" },
         { img: "home-refined.webp", n: "Active counts, pending actions, wallet" }
@@ -164,7 +164,7 @@ window.DECK = {
       labels: ["FASTag", "GPS"],
       when: ["6 steps", "4 steps"],
       jump: "Same pattern",
-      sub: "Handover and installation happen in the field, hours later. The tracker remembers where you stopped.",
+      sub: "Field steps happen hours later. The tracker remembers.",
       stages: [
         { img: "sheet-fastag.webp", n: "Verification, KYC, payment, handover, activation, KYV" },
         { img: "sheet-gps.webp", n: "Address, payment, device link, installation" }
@@ -172,20 +172,46 @@ window.DECK = {
       notes: "One tracker pattern for both services. Each truck has its own progress and a Continue button."
     },
 
-    /* 08 — REFUND ITERATION */
+    /* 08 — REFUND ITERATION (Before / After side by side, reasoning left) */
     {
       section: "design", type: "versions",
       eyebrow: "Decision · Money, said clearly",
       headline: ["Say exactly what happens to the money"],
+      links: [ { k: "Every screen", v: "12 in the flow", ov: "all-screens" } ],
+      views: [
+        { v: "old", label: "Before", img: "delete-v1.webp", n: "“Amount will be refunded”" },
+        { v: "new", label: "After", img: "delete-v2.webp", n: "“₹599 back to your DelFin wallet”" }
+      ],
       labels: ["Before", "After"],
       when: ["Refund mentioned", "Amount and destination"],
-      jump: "Iterated",
-      sub: "Vague refund copy made owners call support. The new dialog names the amount and where it goes.",
       stages: [
         { img: "delete-v1.webp", n: "“Amount will be refunded”" },
         { img: "delete-v2.webp", n: "“₹599 back to your DelFin wallet”" }
       ],
-      notes: "Small change, big trust signal: the exact amount, highlighted, and where it goes."
+      decisions: {
+        title: "Design decisions",
+        zones: [
+          { k: "Amount", where: "Dialog copy", laws: ["Clarity"], t: "Name the exact amount", pts: ["₹599, not “the amount”"], pin: 40 },
+          { k: "Destination", where: "Highlighted line", laws: ["Trust"], t: "Say where it goes", pts: ["Back to the DelFin wallet"], pin: 55 }
+        ]
+      },
+      notes: "Vague refund copy made owners call support. The new dialog names the amount and where it goes."
+    },
+
+    /* SHEET — every screen in the purchase flow (opens from the right) */
+    {
+      section: "design", type: "overview", id: "all-screens", overlay: true,
+      title: "Every screen, install to active tag",
+      sub: "Twelve screens, one straight path.",
+      screens: [
+        { src: "tut-earn.webp", cap: "Benefits first" }, { src: "login.webp", cap: "Phone OTP" },
+        { src: "role.webp", cap: "Pick a role" }, { src: "owner-details.webp", cap: "Three fields" },
+        { src: "home-first.webp", cap: "Home" }, { src: "doc-verify.webp", cap: "Upload RC, PAN" },
+        { src: "kyc.webp", cap: "Digital KYC" }, { src: "add-money.webp", cap: "Top up" },
+        { src: "pay-summary.webp", cap: "Pay ₹599" }, { src: "scan-tag.webp", cap: "Scan the tag" },
+        { src: "sample-image.webp", cap: "Know your vehicle" }, { src: "sheet-fastag.webp", cap: "Track activation" }
+      ],
+      notes: "The full purchase path, screen by screen."
     },
 
     /* 09 — BEYOND PURCHASE */
@@ -193,7 +219,7 @@ window.DECK = {
       section: "design", type: "collab",
       eyebrow: "Beyond the purchase",
       headline: ["Everything after buying, without a call"],
-      sub: "Account, GST, geofences and buying again, all self-serve.",
+      sub: "Four screens replace the support line.",
       steps: [
         { img: "account.webp", t: "Account", who: "One menu", out: "Services, wallets and help together" },
         { img: "profile-business.webp", t: "Business profile", who: "GSTIN", out: "Fills name and address automatically" },
@@ -207,7 +233,7 @@ window.DECK = {
     {
       section: "results", type: "funnels",
       eyebrow: "Impact",
-      headline: ["We tracked every step, so we know where people stop"],
+      headline: ["Every step tracked"],
       funnels: [
         { k: "FASTag purchase", proof: "fastag", rows: [
           { l: "Order created", v: 840 }, { l: "Payment done", v: 708 }, { l: "Tag handed over", v: 701 },
@@ -224,7 +250,7 @@ window.DECK = {
     {
       section: "next", type: "qa",
       eyebrow: "What the data changed",
-      headline: ["Where people stopped became the next quarter"],
+      headline: ["Drop-offs became the roadmap"],
       sub: "Fix the leaks, then extend the platform.",
       qs: [
         { tag: "Fix", q: "37% drop after login", a: "Carry people from OTP straight into setup." },
