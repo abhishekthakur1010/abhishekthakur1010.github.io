@@ -185,3 +185,5 @@ html:has(body.jm-deck) { background: #ffffff; }
   .jm-deck .jmh-chip { right: auto; left: 0; bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .jm-deck .jmh-ph, .jm-deck a.jmh-btn { transition: none; } }
+@media (min-width: 600px) { .jm-deck .hero .jmh h1 em { white-space: nowrap; } }
+.jm-deck .hero .jmh h1 { font-size: clamp(36px, 3.7vw, 52px); }
