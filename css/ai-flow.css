@@ -159,3 +159,4 @@
 .af-scroll { margin: -10px 0 0; padding: 10px 0 6px; }
 .af-row { width: max-content; min-width: 0; }
 @media (max-width: 760px) { .af-scroll { padding: 10px 16px 6px; } }
+.ai-flow .af-wide > .card-head + .card-sub { margin-top: -8px !important; }
