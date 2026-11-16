@@ -140,3 +140,22 @@
   .af-row { --g: 32px; width: max-content; }
   .af-stage:last-child { padding-right: 16px !important; }
 }
+
+/* v10: hover name takes the place of the stage number, so no reserved space under the row */
+.af-stage { position: relative; }
+.af-cap { position: absolute; left: 0; top: -3px; margin: 0; min-height: 0; font-size: 12px; line-height: 1.2; font-weight: 600; white-space: nowrap; }
+.af-num { transition: opacity .2s ease; }
+.af-stage:has(.af-cap.on) .af-num { opacity: 0 !important; }
+.af-scroll { padding-bottom: 6px; }
+
+/* v11: more distance between stages; the row scrolls sideways with arrows like Products */
+.af-row { --g: 88px; }
+.af-wide > .card-head { align-items: center; }
+.af-wide > .card-head .card-title { margin: 0 !important; }
+.ai-flow .af-wide > .card-head + .card-sub { margin-top: 6px !important; }
+.af-scroll { scroll-snap-type: x mandatory; scroll-padding-inline: 0; }
+.af-stage { scroll-snap-align: start; }
+@media (max-width: 760px) { .af-row { --g: 56px; } .af-scroll { scroll-padding-inline: 16px; } }
+.af-scroll { margin: -10px 0 0; padding: 10px 0 6px; }
+.af-row { width: max-content; min-width: 0; }
+@media (max-width: 760px) { .af-scroll { padding: 10px 16px 6px; } }

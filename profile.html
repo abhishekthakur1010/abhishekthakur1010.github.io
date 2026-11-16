@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="./css/profile.css?v=134" rel="stylesheet" />
-    <link href="./css/ai-flow.css?v=9" rel="stylesheet" />
+    <link href="./css/ai-flow.css?v=12" rel="stylesheet" />
     <link href="./css/categories.css?v=38" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="./css/look.css?v=3" rel="stylesheet" />
@@ -290,7 +290,13 @@
         <!-- How I design, build & ship with AI: five stages, logo-led -->
         <section class="card ai-flow" id="ai-flow" aria-labelledby="h-ai-flow">
           <div class="af-wide">
-            <h2 class="card-title" id="h-ai-flow">How I Design, Build &amp; Ship with AI</h2>
+            <div class="card-head">
+              <h2 class="card-title" id="h-ai-flow">How I Design, Build &amp; Ship with AI</h2>
+              <div class="rail-nav">
+                <button type="button" data-af-dir="-1" aria-label="Previous stages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+                <button type="button" data-af-dir="1" aria-label="Next stages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
             <p class="card-sub">From idea to execution.</p>
             <div class="af-scroll" role="region" aria-label="AI workflow: think, design, build, connect, ship" tabindex="0">
               <ol class="af-row">
@@ -623,6 +629,23 @@
           t.addEventListener('mouseenter', on); t.addEventListener('focus', on);
           t.addEventListener('mouseleave', off); t.addEventListener('blur', off);
         });
+        // back / forward arrows, one stage per click, disabled at the ends
+        var sc = row.parentNode;
+        var btns = document.querySelectorAll('#ai-flow [data-af-dir]');
+        function sync() {
+          var max = sc.scrollWidth - sc.clientWidth - 2;
+          btns.forEach(function (b) { b.disabled = +b.getAttribute('data-af-dir') < 0 ? sc.scrollLeft <= 2 : sc.scrollLeft >= max; });
+        }
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            var st = row.querySelector('.af-stage');
+            var step = st.getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 0);
+            sc.scrollBy({ left: +b.getAttribute('data-af-dir') * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+          });
+        });
+        sc.addEventListener('scroll', sync, { passive: true });
+        addEventListener('resize', sync);
+        sync();
         if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || !('IntersectionObserver' in window)) return;
         row.classList.add('af-armed');
         var io = new IntersectionObserver(function (es) {
