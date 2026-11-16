@@ -195,3 +195,16 @@ html:has(body.jm-deck) { background: #ffffff; }
 .jm-deck .pq-head { display: block; max-width: 640px; }
 .jm-deck .pq-head h3 { margin: 6px 0 10px; }
 .jm-deck .pq-head p { margin: 0; }
+
+/* section heads: one-line titles and intros on desktop */
+@media (min-width: 1000px) {
+  .jm-deck .sec-title { max-width: none; }
+  .jm-deck .lead { max-width: none; }
+}
+/* closing quote sits on the dark impact band: no light box */
+.jm-deck .impact .reflection, .jm-deck .reflection { background: transparent !important; border: 0 !important; border-left: 3px solid var(--jm-blue) !important; border-radius: 0 !important; padding: 4px 0 4px 24px !important; box-shadow: none !important; }
+.jm-deck .impact .reflection .q, .jm-deck .reflection .q { color: #fff !important; background: transparent !important; font-size: clamp(20px, 2vw, 26px); }
+@media (min-width: 1000px) {
+  .jm-deck .sec-title, .jm-deck .lead { max-width: none !important; }
+  .jm-deck .reflection, .jm-deck .reflection .q { max-width: none !important; }
+}
