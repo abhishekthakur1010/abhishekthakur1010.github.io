@@ -58,7 +58,7 @@ html:has(body.jm-deck) { background: #ffffff; }
 .jm-deck .impact .stat { border-color: #2e2e2e !important; }
 .jm-deck .meta { border-top-color: var(--line) !important; }
 /* header facts: four columns, one line each */
-@media (min-width: 1200px) { .jm-deck .meta { grid-template-columns: auto auto auto auto; justify-content: space-between; gap: 24px; } .jm-deck .meta .val { white-space: nowrap; font-size: 14px; } }
+@media (min-width: 1200px) { .jm-deck .meta { grid-template-columns: repeat(4, 1fr); gap: 24px; } .jm-deck .meta .val { white-space: nowrap; } }
 @media (max-width: 1199px) and (min-width: 561px) { .jm-deck .meta { grid-template-columns: repeat(2, 1fr); } }
 .jm-deck .meta .label { color: var(--muted) !important; }
 .jm-deck .meta .val { color: var(--ink) !important; font-weight: 600; }
