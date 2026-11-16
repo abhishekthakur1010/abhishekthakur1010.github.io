@@ -86,3 +86,20 @@
 .ai-flow .af-wide > .card-title { margin: 0 0 6px !important; }
 .ai-flow .af-wide > .card-sub { margin: 0 0 34px !important; }
 @media (max-width: 760px) { .ai-flow .af-wide > .card-sub { margin-bottom: 24px !important; } }
+
+/* v6: stay inside the page column, aligned with every other section */
+.af-wide { --w: 100%; width: 100%; margin-left: 0; }
+.af-row { grid-template-columns: 1fr 1fr 1fr 1.42fr 1fr; }
+.af-name { font-size: 21px; margin: 6px 0 14px; padding-right: 12px; }
+.af-num { padding-right: 12px; }
+.af-tools { margin-top: 20px; padding-right: 12px; gap: 8px; }
+.af-tool { width: 48px; height: 48px; border-radius: 14px; }
+.af-tool img { width: 26px; height: 26px; }
+.af-tool:has(img[src*="github-pages"]) { width: 104px; padding: 0; }
+.af-tool:has(img[src*="github-pages"]) img { width: 80px; height: 16px; }
+.af-cap { padding-right: 12px; font-size: 12.5px; margin-top: 12px; }
+.af-stage:last-child .af-rule { margin-right: 0; }
+@media (max-width: 760px) {
+  .af-wide { margin: 0 -16px; width: auto; }
+  .af-row { grid-template-columns: 150px 150px 150px 200px 150px; }
+}
