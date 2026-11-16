@@ -1,93 +1,88 @@
 /* How I Design, Build & Ship with AI: one continuous row, logos first */
-.ai-flow { --af-ink: #0a0a0a; --af-line: #e3e1dc; --af-ease: cubic-bezier(.2, .8, .2, 1); }
+.card.ai-flow { overflow: visible; --af-ink: #0a0a0a; --af-line: #e6e4df; --af-ease: cubic-bezier(.2, .8, .2, 1); }
 
-.af-scroll {
-  margin: 22px -24px 0; padding: 0 24px;
-  overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
-  scroll-snap-type: x proximity; scroll-padding-inline: 24px;
-}
+/* on wide screens the row steps out of the text column for room to breathe */
+.af-wide { --w: min(1040px, calc(100vw - 180px)); width: var(--w); margin: 34px 0 6px calc((100% - var(--w)) / 2); }
+@media (max-width: 1100px) { .af-wide { --w: 100%; } }
+
+.af-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; scroll-snap-type: x proximity; }
 .af-scroll::-webkit-scrollbar { display: none; }
-.af-scroll:focus-visible { outline: 2px solid var(--af-ink); outline-offset: -2px; border-radius: 6px; }
+.af-scroll:focus-visible { outline: 2px solid var(--af-ink); outline-offset: 4px; border-radius: 8px; }
 
-.af-row {
-  position: relative; list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(5, minmax(128px, 1fr));
-  min-width: 640px;
-}
-/* the thread that runs through every stage */
-.af-row::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 30px; height: 1px;
-  background: var(--af-ink); transform-origin: left center;
-}
+.af-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.af-stage { position: relative; min-width: 0; scroll-snap-align: start; }
 
-.af-stage { position: relative; display: flex; flex-direction: column; padding: 0 0 30px; scroll-snap-align: start; }
-/* back-to-back: a hairline between stages, no gaps */
-.af-stage + .af-stage { box-shadow: inset 1px 0 0 var(--af-line); }
+.af-num { display: block; padding-right: 20px; font: 500 11px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: .06em; color: var(--text-3, #8a8d93); }
+.af-name { margin: 8px 0 18px; padding-right: 20px; font-size: 26px; line-height: 1.1; font-weight: 600; letter-spacing: -.02em; color: var(--af-ink); }
 
-.af-head { display: flex; align-items: baseline; gap: 8px; height: 22px; padding: 0 14px; }
-.af-num { font: 600 11px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--text-3, #8a8d93); letter-spacing: .04em; }
-.af-name { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--af-ink); }
-
-/* node on the thread at the start of each stage, arrow at its end */
-.af-stage::before {
-  content: ""; position: absolute; left: 14px; top: 27px; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--af-ink); box-shadow: 0 0 0 3px var(--card, #fff);
-}
-.af-stage:not(:last-child)::after {
-  content: ""; position: absolute; right: 9px; top: 27px; width: 6px; height: 6px;
+/* the thread: one continuous line, a node where each stage starts, an arrow into the next */
+.af-rule { position: relative; display: block; height: 1px; background: var(--af-ink); transform-origin: left center; }
+.af-rule::before { content: ""; position: absolute; left: 0; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--af-ink); }
+.af-stage:not(:last-child) .af-rule::after {
+  content: ""; position: absolute; right: 2px; top: -3px; width: 6px; height: 6px;
   border-top: 1px solid var(--af-ink); border-right: 1px solid var(--af-ink); transform: rotate(45deg);
 }
+.af-stage:last-child .af-rule { margin-right: 20px; }
 
-.af-tools {
-  list-style: none; margin: 30px 0 0; padding: 0 12px; flex: 1;
-  display: grid; grid-template-columns: repeat(2, 52px); gap: 12px 10px;
-  justify-content: center; align-content: center;
-}
+.af-tools { list-style: none; margin: 26px 0 0; padding: 0 20px 0 0; display: flex; flex-wrap: wrap; gap: 10px; max-width: 200px; }
 .af-tool {
-  position: relative; width: 52px; height: 52px; border-radius: 14px; background: #fff;
-  box-shadow: 0 0 0 1px var(--af-line); display: grid; place-items: center; cursor: default;
-  transition: transform .35s var(--af-ease), opacity .3s ease, box-shadow .3s ease;
+  width: 56px; height: 56px; border-radius: 16px; background: #fff; display: grid; place-items: center;
+  box-shadow: 0 0 0 1px var(--af-line), 0 1px 2px rgba(0,0,0,.03); cursor: default;
+  transition: transform .35s var(--af-ease), box-shadow .3s ease, opacity .3s ease, filter .3s ease;
 }
 .af-tool img { width: 30px; height: 30px; object-fit: contain; display: block; }
-.af-tag {
-  position: absolute; right: -6px; bottom: -6px; padding: 2px 5px; border-radius: 6px;
-  background: var(--af-ink); color: #fff; font-size: 8.5px; font-weight: 700; letter-spacing: .06em;
-  text-transform: uppercase; line-height: 1.2; pointer-events: none;
-}
-.af-tip {
-  position: absolute; left: 50%; top: calc(100% + 8px); transform: translate(-50%, -4px);
-  white-space: nowrap; font-size: 11.5px; font-weight: 500; color: var(--af-ink);
-  opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .25s var(--af-ease); z-index: 2;
-}
+.af-tool:has(img[src*="github-pages"]) { width: auto; padding: 0 16px; }
+.af-tool:has(img[src*="github-pages"]) img { width: 92px; height: 18px; }
+
+.af-cap { min-height: 18px; margin: 14px 0 0; padding-right: 20px; font-size: 13px; color: var(--af-ink); font-weight: 500;
+  opacity: 0; transform: translateY(-3px); transition: opacity .2s ease, transform .25s var(--af-ease); }
+.af-cap.on { opacity: 1; transform: none; }
 
 /* hover / focus: lift one, quiet the rest */
-.af-row .af-tool:hover, .af-row .af-tool:focus-visible { transform: scale(1.1); box-shadow: 0 0 0 1px var(--af-ink), 0 10px 24px rgba(0,0,0,.08); z-index: 3; outline: none; }
-.af-tool:hover .af-tip, .af-tool:focus-visible .af-tip { opacity: 1; transform: translate(-50%, 0); }
+.af-row .af-tool:hover, .af-row .af-tool:focus-visible { transform: translateY(-3px) scale(1.06); box-shadow: 0 0 0 1px var(--af-ink), 0 12px 26px rgba(0,0,0,.08); outline: none; }
 .af-row:has(.af-tool:hover) .af-tool:not(:hover),
-.af-row:has(.af-tool:focus-visible) .af-tool:not(:focus-visible) { opacity: .4; }
+.af-row:has(.af-tool:focus-visible) .af-tool:not(:focus-visible) { opacity: .45; filter: grayscale(.7); }
 
-/* entrance: the thread draws left to right, each stage's logos follow it */
-.af-armed::before { transform: scaleX(0); }
-.af-armed .af-stage::before, .af-armed .af-stage::after, .af-armed .af-head { opacity: 0; }
-.af-armed .af-tool { opacity: 0; transform: translateY(10px) scale(.92); }
-.af-in::before { transform: scaleX(1); transition: transform 1.4s var(--af-ease); }
-.af-in .af-stage::before, .af-in .af-stage::after, .af-in .af-head {
-  opacity: 1; transition: opacity .5s ease; transition-delay: calc(var(--i) * .22s + .1s);
-}
-.af-in .af-tool {
-  opacity: 1; transform: none;
-  transition: opacity .55s ease, transform .6s var(--af-ease), box-shadow .3s ease;
-  transition-delay: calc(var(--i) * .22s + var(--j) * .07s + .25s);
-}
-/* once in, hover responds instantly */
-.af-row.af-in.af-done .af-tool { transition-delay: 0s; transition: transform .35s var(--af-ease), opacity .3s ease, box-shadow .3s ease; }
+/* entrance: the thread draws left to right, each stage follows it */
+.af-armed .af-rule { transform: scaleX(0); }
+.af-armed .af-num, .af-armed .af-name { opacity: 0; transform: translateY(6px); }
+.af-armed .af-tool { opacity: 0; transform: translateY(10px) scale(.94); }
+.af-in .af-rule { transform: none; transition: transform .7s var(--af-ease); transition-delay: calc(var(--i) * .2s); }
+.af-in .af-num, .af-in .af-name { opacity: 1; transform: none; transition: opacity .5s ease, transform .6s var(--af-ease); transition-delay: calc(var(--i) * .2s); }
+.af-in .af-tool { opacity: 1; transform: none; transition: opacity .5s ease, transform .6s var(--af-ease), box-shadow .3s ease, filter .3s ease;
+  transition-delay: calc(var(--i) * .2s + var(--j) * .07s + .3s); }
+.af-row.af-in.af-done .af-tool { transition: transform .35s var(--af-ease), box-shadow .3s ease, opacity .3s ease, filter .3s ease; transition-delay: 0s; }
 
-@media (max-width: 720px) {
-  .af-scroll { margin: 18px -16px 0; padding: 0 16px; scroll-padding-inline: 16px; }
-  .af-row { grid-template-columns: repeat(5, 136px); min-width: 0; width: max-content; }
+/* phones: swipe through the stages */
+@media (max-width: 760px) {
+  .af-wide { margin: 26px -16px 0; width: auto; }
+  .af-scroll { padding: 0 16px; scroll-padding-inline: 16px; }
+  .af-row { grid-template-columns: repeat(5, 190px); width: max-content; }
+  .af-name { font-size: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .af-row::before, .af-tool, .af-tip, .af-head, .af-stage::before, .af-stage::after { transition: none !important; }
+  .af-rule, .af-tool, .af-cap, .af-num, .af-name { transition: none !important; }
   .af-row .af-tool:hover, .af-row .af-tool:focus-visible { transform: none; }
 }
+/* header sits with the row; room so lifted tiles never clip */
+.af-wide { margin-top: 0; }
+.af-wide > .card-sub { margin-bottom: 34px; }
+.af-scroll { margin: -10px -10px 0; padding: 10px 10px 4px; }
+@media (max-width: 760px) {
+  .af-wide > .card-title, .af-wide > .card-sub { padding: 0 16px; }
+  .af-wide > .card-sub { margin-bottom: 26px; }
+  .af-scroll { margin: -10px 0 0; padding: 10px 16px 4px; }
+}
+.af-wide > .card-title { margin: 0 0 6px; line-height: 1.3; }
+.af-wide > .card-sub { margin: 0 0 34px; line-height: 1.5; }
+.af-tools { max-width: none; }
+@media (max-width: 760px) {
+  .af-wide > .card-sub { margin-bottom: 26px; }
+  .af-tool { width: 48px; height: 48px; border-radius: 14px; }
+  .af-tool img { width: 26px; height: 26px; }
+  .af-tools { gap: 8px; }
+}
+.ai-flow .af-wide > .card-title { margin: 0 0 6px !important; }
+.ai-flow .af-wide > .card-sub { margin: 0 0 34px !important; }
+@media (max-width: 760px) { .ai-flow .af-wide > .card-sub { margin-bottom: 24px !important; } }
