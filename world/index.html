@@ -67,6 +67,16 @@ button,a{font:inherit;color:inherit}
 #intro .panel{text-align:center;width:min(560px,100%)}
 #intro .row{justify-content:center}
 #intro .hintline{font-size:.78rem;color:var(--dim);margin-top:12px}
+/* intro, tightened: one short line, equal buttons, hints as a quiet row */
+#intro .panel{width:min(480px,100%);padding:34px 34px 22px}
+#intro h1{margin:.25em 0 .35em}
+#intro .lede{font-size:1.02rem;line-height:1.5;margin:0 auto 22px;text-wrap:balance}
+#intro .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#intro .row .btn{width:100%;justify-content:center}
+#intro .hintline{display:flex;justify-content:center;gap:18px;margin:22px -34px 0;padding-top:16px;border-top:1px solid rgba(0,0,0,.07);font-size:.74rem;letter-spacing:.02em}
+#intro .hintline span+span{position:relative}
+#intro .hintline span+span::before{content:'';position:absolute;left:-10px;top:50%;width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.5;transform:translateY(-50%)}
+@media (max-width:420px){#intro .eye{letter-spacing:.1em;font-size:.64rem}#intro .panel{padding:28px 22px 18px}#intro .row{grid-template-columns:1fr}#intro .hintline{margin:20px -22px 0;gap:14px;font-size:.7rem}}
 #card{position:fixed;right:18px;top:calc(env(safe-area-inset-top,0px) + 76px);z-index:6;width:min(92vw,440px);border-radius:6px;overflow:hidden;background:#f3efe6;box-shadow:0 24px 60px rgba(0,0,0,.28);animation:cardIn .35s ease}
 @keyframes cardIn{from{transform:translateX(24px)}}
 #card .pv{position:relative;height:200px;background:linear-gradient(135deg,var(--tint),#14181f);display:grid;place-items:center;overflow:hidden}
@@ -134,9 +144,9 @@ body.walking .tod,body.walking .br{display:none}
   <div class="panel">
     <p class="eye">Abhishek Thakur · Lead Product Designer</p>
     <h1>Abhishek's World</h1>
-    <p>Home in Himachal, work in Gurugram, and the place I'll build next. Pick one and walk in.</p>
+    <p class="lede">Where I grew up, where I work, and what I'll build next.</p>
     <div class="row"><button class="btn dark" id="go" type="button">Explore the world</button><button class="btn" id="introPlaces" type="button">Show me the places</button></div>
-    <p class="hintline">Drag to turn · scroll to zoom · click a place</p>
+    <p class="hintline"><span>Drag to turn</span><span>Scroll to zoom</span><span>Click a place</span></p>
   </div>
 </div>
 
