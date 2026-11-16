@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="./css/profile.css?v=134" rel="stylesheet" />
+    <link href="./css/ai-flow.css?v=1" rel="stylesheet" />
     <link href="./css/categories.css?v=38" rel="stylesheet" />
     <link href="./css/splash.css?v=6" rel="stylesheet" />
     <link href="./css/look.css?v=3" rel="stylesheet" />
@@ -63,7 +64,7 @@
     <script src="./js/splash.js?v=14"></script>
     <nav class="toc" aria-label="Contents">
       <a class="toc-home" href="#categories" aria-label="All categories" title="All categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7.5" cy="7.5" r="3.2"/><circle cx="16.5" cy="7.5" r="3.2"/><circle cx="7.5" cy="16.5" r="3.2"/><circle cx="16.5" cy="16.5" r="3.2"/></svg></a>
-      <button type="button" class="toc-rail" aria-expanded="false" aria-controls="toc-panel" aria-label="Contents"><span class="toc-ticks" aria-hidden="true"><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick is-end"></span></span></button>
+      <button type="button" class="toc-rail" aria-expanded="false" aria-controls="toc-panel" aria-label="Contents"><span class="toc-ticks" aria-hidden="true"><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick"></span><span class="toc-tick is-end"></span></span></button>
       <div class="toc-panel" id="toc-panel" hidden>
         <p class="toc-title">Contents</p>
         <ul class="toc-list">
@@ -72,6 +73,7 @@
           <li><a href="#experience">Experience</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#featured">Selected work</a></li>
+          <li><a href="#ai-flow">AI workflow</a></li>
           <li><a href="#ui-visual">UI &amp; visual</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#recommendations">Recommendations</a></li>
@@ -282,6 +284,55 @@
             <div class="feat-img"><video class="feat-video" src="./images/hubeye/twin-thumb.mp4?v=2" poster="./images/hubeye/twin-thumb.webp?v=2" muted loop playsinline preload="metadata" aria-label="Hub Digital Twin case study cover: the physical hub scanned into its live digital twin"><source src="./images/hubeye/twin-thumb.webm?v=2" type="video/webm" /><source src="./images/hubeye/twin-thumb.mp4?v=2" type="video/mp4" /></video></div>
             <div class="feat-body feat-row"><span class="feat-logo"><img src="./images/brandLogo/delhivery.svg" alt="Delhivery" /></span><div class="feat-text"><div class="feat-title">Hub Digital Twin</div><div class="feat-meta">Delhivery · put compliance 65% → 79%</div></div><span class="cs-type b2b">B2B</span></div>
           </a>
+          </div>
+        </section>
+
+        <!-- How I design, build & ship with AI: five stages, logo-led -->
+        <section class="card ai-flow" id="ai-flow" aria-labelledby="h-ai-flow">
+          <h2 class="card-title" id="h-ai-flow">How I Design, Build &amp; Ship with AI</h2>
+          <p class="card-sub">From idea to execution.</p>
+          <div class="af-scroll" role="region" aria-label="AI workflow: think, design, build, connect, ship" tabindex="0">
+            <ol class="af-row">
+              <li class="af-stage" style="--i:0">
+                <div class="af-head"><span class="af-num">01</span><span class="af-name">Think</span></div>
+                <ul class="af-tools" aria-label="Think">
+                  <li class="af-tool" style="--j:0" tabindex="0" aria-label="ChatGPT"><img src="./images/ai-stack/chatgpt.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">ChatGPT</span></li>
+                  <li class="af-tool" style="--j:1" tabindex="0" aria-label="Gemini Pro"><img src="./images/ai-stack/gemini.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Gemini Pro</span></li>
+                </ul>
+              </li>
+              <li class="af-stage" style="--i:1">
+                <div class="af-head"><span class="af-num">02</span><span class="af-name">Design</span></div>
+                <ul class="af-tools" aria-label="Design">
+                  <li class="af-tool" style="--j:0" tabindex="0" aria-label="Figma Make"><img src="./images/ai-stack/figma.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tag" aria-hidden="true">Make</span><span class="af-tip" aria-hidden="true">Figma Make</span></li>
+                  <li class="af-tool" style="--j:1" tabindex="0" aria-label="Figma Agent"><img src="./images/ai-stack/figma.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tag" aria-hidden="true">Agent</span><span class="af-tip" aria-hidden="true">Figma Agent</span></li>
+                  <li class="af-tool" style="--j:2" tabindex="0" aria-label="Lovable"><img src="./images/ai-stack/lovable.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Lovable</span></li>
+                </ul>
+              </li>
+              <li class="af-stage" style="--i:2">
+                <div class="af-head"><span class="af-num">03</span><span class="af-name">Build</span></div>
+                <ul class="af-tools" aria-label="Build">
+                  <li class="af-tool" style="--j:0" tabindex="0" aria-label="Claude Code"><img src="./images/ai-stack/claude-code.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Claude Code</span></li>
+                  <li class="af-tool" style="--j:1" tabindex="0" aria-label="Kiro"><img src="./images/ai-stack/kiro.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Kiro</span></li>
+                </ul>
+              </li>
+              <li class="af-stage" style="--i:3">
+                <div class="af-head"><span class="af-num">04</span><span class="af-name">Connect</span></div>
+                <ul class="af-tools" aria-label="Connect">
+                  <li class="af-tool" style="--j:0" tabindex="0" aria-label="Figma MCP"><img src="./images/ai-stack/figma.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tag" aria-hidden="true">MCP</span><span class="af-tip" aria-hidden="true">Figma MCP</span></li>
+                  <li class="af-tool" style="--j:1" tabindex="0" aria-label="21st.dev MCP"><img src="./images/ai-stack/21st.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tag" aria-hidden="true">MCP</span><span class="af-tip" aria-hidden="true">21st.dev MCP</span></li>
+                  <li class="af-tool" style="--j:2" tabindex="0" aria-label="Design System"><img src="./images/ai-stack/design-system.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Design System</span></li>
+                  <li class="af-tool" style="--j:3" tabindex="0" aria-label="Storybook"><img src="./images/ai-stack/storybook.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Storybook</span></li>
+                  <li class="af-tool" style="--j:4" tabindex="0" aria-label="Mintlify"><img src="./images/ai-stack/mintlify.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">Mintlify</span></li>
+                </ul>
+              </li>
+              <li class="af-stage" style="--i:4">
+                <div class="af-head"><span class="af-num">05</span><span class="af-name">Ship</span></div>
+                <ul class="af-tools" aria-label="Ship">
+                  <li class="af-tool" style="--j:0" tabindex="0" aria-label="GitHub"><img src="./images/ai-stack/github.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tip" aria-hidden="true">GitHub</span></li>
+                  <li class="af-tool" style="--j:1" tabindex="0" aria-label="GitHub Pages"><img src="./images/ai-stack/github.svg" alt="" width="34" height="34" loading="lazy" decoding="async" /><span class="af-tag" aria-hidden="true">Pages</span><span class="af-tip" aria-hidden="true">GitHub Pages</span></li>
+                </ul>
+              </li>
+            </ol>
           </div>
         </section>
 
@@ -542,6 +593,19 @@
           es.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
         }, { threshold: 0.25 });
         vids.forEach(function (v) { io.observe(v); });
+      })();
+    </script>
+    <script>
+      // AI workflow: draw left to right once it scrolls into view
+      (function () {
+        var row = document.querySelector('#ai-flow .af-row');
+        if (!row) return;
+        if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || !('IntersectionObserver' in window)) return;
+        row.classList.add('af-armed');
+        var io = new IntersectionObserver(function (es) {
+          if (es[0].isIntersecting) { row.classList.add('af-in'); io.disconnect(); setTimeout(function () { row.classList.add('af-done'); }, 2600); }
+        }, { threshold: 0.35 });
+        io.observe(row);
       })();
     </script>
     <script src="./js/cover-game.js?v=52"></script>
