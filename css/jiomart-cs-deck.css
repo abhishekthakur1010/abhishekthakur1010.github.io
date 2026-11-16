@@ -5,7 +5,7 @@
 
 body.csv2.jm-deck {
   --bg: #ffffff;
-  --bg-soft: #fafafa;
+  --bg-soft: #f5f5f5;
   --bg-dark: #0a0a0a;
   --card: #f7f7f7;
   --card-hi: #ffffff;
@@ -47,7 +47,11 @@ html:has(body.jm-deck) { background: #ffffff; }
 .jm-deck .sec-head .sec-label { color: var(--muted) !important; }
 
 /* surfaces */
-.jm-deck .block, .jm-deck .block.soft, .jm-deck .product-band, .jm-deck .showcase, .jm-deck .next { background: var(--bg) !important; border-top: 1px solid var(--line); }
+.jm-deck .block, .jm-deck .product-band, .jm-deck .showcase, .jm-deck .next { background: var(--bg) !important; }
+/* grey bands alternate with white, as on the original page */
+.jm-deck .block.soft { background: var(--bg-soft) !important; }
+.jm-deck .block.soft .act, .jm-deck .block.soft .statcard, .jm-deck .block.soft .loop li, .jm-deck .block.soft .problem,
+.jm-deck .block.soft .rv-card, .jm-deck .block.soft .pq-card, .jm-deck .block.soft .nextcard, .jm-deck .block.soft .pb-store { background: #fff !important; }
 .jm-deck .impact { background: #0a0a0a !important; }
 .jm-deck .impact .sec-title, .jm-deck .impact h2 { color: #f5f5f5 !important; }
 .jm-deck .impact p, .jm-deck .impact .lead { color: #c4c4c4 !important; }
