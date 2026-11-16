@@ -13,6 +13,7 @@
     />
     <link href="./css/case-study-v2.css?v=77" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
+    <link href="./css/jiomart-cs-dark.css?v=1" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
     <style>
@@ -23,7 +24,7 @@
     </style>
   </head>
 
-  <body class="csv2 accent-blue">
+  <body class="csv2 accent-blue jm-dark">
     <!-- Top bar: same as My story (css/st-bar.css) -->
     <header class="st-bar">
       <div class="st-bar-in">
@@ -101,10 +102,6 @@
           <div>
             <div class="label">My Role</div>
             <div class="val">Design lead<br />Research to handoff</div>
-          </div>
-          <div>
-            <div class="label">Timeline</div>
-            <div class="val">Jan – Mar 2023<br />Results reviewed Aug 2023</div>
           </div>
           <div>
             <div class="label">Surfaces</div>
@@ -830,6 +827,34 @@
         targets.forEach(function (el) {
           io.observe(el);
         });
+      })();
+
+      // Section rail on the left, like the deck's navigator
+      (function () {
+        var secs = Array.prototype.slice.call(document.querySelectorAll("section.block, section.next")).filter(function (s) {
+          return s.querySelector(".sec-label");
+        });
+        if (!secs.length) return;
+        var rail = document.createElement("nav");
+        rail.className = "jm-rail";
+        rail.setAttribute("aria-label", "Sections");
+        var links = secs.map(function (s, i) {
+          if (!s.id) s.id = "sec-" + (i + 1);
+          var a = document.createElement("a");
+          a.href = "#" + s.id;
+          a.innerHTML = "<b>" + ("0" + (i + 1)).slice(-2) + "</b>" + s.querySelector(".sec-label").textContent;
+          rail.appendChild(a);
+          return a;
+        });
+        document.body.appendChild(rail);
+        function onScroll() {
+          var y = window.innerHeight * 0.4, cur = -1;
+          secs.forEach(function (s, i) { if (s.getBoundingClientRect().top < y) cur = i; });
+          links.forEach(function (a, i) { a.classList.toggle("now", i === cur); });
+          rail.classList.toggle("on", cur >= 0);
+        }
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
       })();
 
       // Iteration tabs — Before / V1 / Live
