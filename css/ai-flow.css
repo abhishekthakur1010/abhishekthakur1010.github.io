@@ -170,3 +170,7 @@
 /* v15: same rhythm as every other section: 20px from the subtitle to the content */
 .ai-flow .af-wide > .card-head + .card-sub { margin-bottom: 14px !important; }
 @media (max-width: 760px) { .ai-flow .af-wide > .card-head + .card-sub { margin-bottom: 14px !important; } }
+
+/* v16: room at the edges so the first tile's border and hover lift are never clipped */
+.ai-flow .af-scroll { margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; scroll-padding-inline: 12px; }
+@media (max-width: 760px) { .ai-flow .af-scroll { margin-left: 0; margin-right: 0; padding-left: 16px; padding-right: 16px; scroll-padding-inline: 16px; } }
