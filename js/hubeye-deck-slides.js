@@ -60,7 +60,7 @@ window.DECK = {
       highlight: "digital twin",
       body: "Live operations on the real floor, so problems show where they happen.",
       heroWide: "hub-map-panel.webp", url: "eye.delhivery.com/mid-mile/hub",
-      badge: { n: "{{−33%|ageing}}", l: "Shipment ageing, at best hub" },
+      badge: { n: "{{Up to −33%|ageing}}", l: "Shipment ageing" },
       meta: [
         { l: "My role", v: "Design lead · direction to rollout" },
         { l: "Timeline", v: "2025–26 · live in hubs" },
