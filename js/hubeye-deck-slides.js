@@ -60,7 +60,7 @@ window.DECK = {
       highlight: "digital twin",
       body: "Live operations on the real floor, so problems show where they happen.",
       heroWide: "hub-map-panel.webp", url: "eye.delhivery.com/mid-mile/hub",
-      badge: { n: "{{65% → 79%|putc}}", l: "Put compliance" },
+      badge: { n: "{{−33%|ageing}}", l: "Shipment ageing at Ionad hub" },
       meta: [
         { l: "My role", v: "Design lead · direction to rollout" },
         { l: "Timeline", v: "2025–26 · live in hubs" },
