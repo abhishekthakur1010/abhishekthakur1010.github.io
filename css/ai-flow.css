@@ -166,3 +166,7 @@
 .af-row .af-stage:has(.af-cap.on) .af-num { opacity: 0 !important; transition: opacity .08s ease 0s !important; }
 .af-row .af-cap { transition: opacity .08s ease 0s, transform .2s var(--af-ease) !important; }
 .af-row .af-cap.on { transition: opacity .14s ease .06s, transform .2s var(--af-ease) .06s !important; }
+
+/* v15: same rhythm as every other section: 20px from the subtitle to the content */
+.ai-flow .af-wide > .card-head + .card-sub { margin-bottom: 14px !important; }
+@media (max-width: 760px) { .ai-flow .af-wide > .card-head + .card-sub { margin-bottom: 14px !important; } }
