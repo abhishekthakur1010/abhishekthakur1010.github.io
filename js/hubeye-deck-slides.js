@@ -190,14 +190,14 @@ window.DECK = {
     {
       section: "design", type: "pair",
       eyebrow: "The solution",
-      headline: ["Problems show where they happen"],
-      highlight: "where they happen",
-      sub: "The hub mapped 1:1: grey is normal, red is act now.",
+      headline: ["The answer: a digital twin"],
+      highlight: "a digital twin",
+      sub: "Drag the line to compare before and after.",
       figs: [],
       twin: {
         before: "old-overview.webp?v=3", after: "hub-map-full.webp?v=2",
         cap: "HubEye digital twin: the whole hub mapped 1:1, with problem docks and sectors in red",
-        labels: [ { n: "1:1", k: "Real layout", d: "Every dock where it really is" }, { n: "2", k: "Colours only", d: "Grey is fine, red is act now" }, { n: "1 click", k: "To the why", d: "Bags, ETD and ageing" } ]
+        labels: [ { n: "1:1", k: "Real layout", d: "Every dock where it is" }, { n: "2", k: "Colours only", d: "Grey fine, red act now" }, { n: "1 click", k: "To the why", d: "Bags, ETD and ageing" } ]
       },
       notes: "The hub, mapped 1:1; problems show where they happen. The screen opens on the old Overview tab, then the curtain wipes it away to the digital twin. Three ideas carry it. The map: every dock, sector and yard lane sits where it is on the floor. Grey or red: two states, no in-between colours to decode, so supervisors scan 300+ sectors in seconds. One click for the why: bags, ETD, ageing and compliance, with red rows saying what's wrong. Around the map: always-on hub vitals (shipments, yard, docks, manpower and compliance), an hour-by-hour yard forecast of vehicles in yard vs planned docks with overflow in red, and 158 live floor camera views, so a red dock can be checked on camera without leaving the map. Click the screen to enlarge."
     },
@@ -304,10 +304,17 @@ window.DECK = {
     if (trow) {   // solution: one screen; the old Overview sits on top and a curtain wipes it away (same reveal as the Jarvis deck)
       var t = hs.twin, still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       trow.className = "hb-twin";
-      trow.innerHTML = "<span class='rv-shot zoomable hbt-shot' title='Click to enlarge'><img src='" + D.imgBase + t.after + "' alt='" + esc(t.cap) + "'>" +
-        (still ? "" : "<span class='hbt-before' aria-hidden='true'><img src='" + D.imgBase + t.before + "' alt=''></span><span class='hbt-edge' aria-hidden='true'></span><span class='hbt-tag hbt-tag-b' aria-hidden='true'>Before</span>") +
-        "<span class='hbt-tag hbt-tag-a' aria-hidden='true'>After</span></span>" +
+      // drag the line (or use arrow keys) to compare the old Overview with the twin
+      trow.innerHTML = "<span class='hbt-shot hbt-cmp' style='--x:50%'><img src='" + D.imgBase + t.after + "' alt='" + esc(t.cap) + "'>" +
+        "<span class='hbt-before' aria-hidden='true'><img src='" + D.imgBase + t.before + "' alt=''></span>" +
+        "<span class='hbt-edge' aria-hidden='true'><i></i></span>" +
+        "<span class='hbt-tag hbt-tag-b' aria-hidden='true'>Before</span><span class='hbt-tag hbt-tag-a' aria-hidden='true'>After</span>" +
+        "<input class='hbt-range' type='range' min='0' max='100' value='50' step='0.5' aria-label='Compare the old dashboard with the digital twin'></span>" +
         "<ul class='hbt-labels'>" + t.labels.map(function (x) { return typeof x === "string" ? "<li>" + esc(x) + "</li>" : "<li class='hbt-win'><b>" + esc(x.n) + "</b><span><strong>" + esc(x.k) + "</strong>" + esc(x.d) + "</span></li>"; }).join("") + "</ul>";
+      var cmp = trow.querySelector(".hbt-cmp"), rg = trow.querySelector(".hbt-range");
+      rg.addEventListener("input", function () { cmp.style.setProperty("--x", rg.value + "%"); });
+      rg.addEventListener("keydown", function (e) { e.stopPropagation(); });
+      ["click", "pointerdown"].forEach(function (ev) { rg.addEventListener(ev, function (e) { e.stopPropagation(); }); });
     }
     var low = hs.outcomes && el.querySelector(".im-low");
     if (low) {   // impact: the outcomes supervisors felt, and the money card, in place of the panels
