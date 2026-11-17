@@ -208,10 +208,10 @@ window.DECK = {
       eyebrow: "Around the map", device: "laptop",
       headline: ["The why, one click away"],
       highlight: "one click away",
-      sub: "Click a sector for its reasons. Look ahead at the yard and the floor.",
+      sub: "Click a sector for its reasons, then check it on camera.",
       figs: [
         { img: "hub-zoom-panel.webp", tone: "fit", t: "Click any sector", d: "Bags, ETD and only the signals that matter.", tag: "After" },
-        { img: "yard-waiting.webp", tone: "fit", t: "What's coming next", d: "Yard forecast by the hour, overflow in red.", tag: "After" }
+        { img: "floor-view.webp", tone: "fit", t: "See the floor live", d: "158 dock and floor cameras, one click from a red zone.", tag: "After" }
       ],
       notes: "Around the map: click any sector to get the why, bags, ETD, ageing and compliance, red rows for what's wrong. And look ahead: the yard forecast shows vehicles against planned docks hour by hour, overflow in red."
     },
