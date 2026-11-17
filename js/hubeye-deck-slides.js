@@ -60,7 +60,7 @@ window.DECK = {
       highlight: "digital twin",
       body: "Live operations on the real floor, so problems show where they happen.",
       heroWide: "hub-map-panel.webp", url: "eye.delhivery.com/mid-mile/hub",
-      badge: { n: "{{65% → 79%|putc}}", l: "Put compliance" },
+      badge: { n: "{{Up to −33%|ageing}}", l: "Shipment ageing" },
       meta: [
         { l: "My role", v: "Design lead · direction to rollout" },
         { l: "Timeline", v: "2025–26 · live in hubs" },
@@ -145,12 +145,8 @@ window.DECK = {
           learned: "Shift data rebuilt in spreadsheets and paper slips." },
         { k: "Supervisor sessions", tag: "Research", img: "on-the-floor.webp", stat: "On the floor",
           learned: "“Tell me which dock, not which row.”" },
-        { k: "Dock unloading", tag: "Observed", img: "research-dock.webp", stat: "Live",
-          learned: "Dock delays ripple into sectors within the hour." },
         { k: "Sorter line", tag: "Observed", img: "research-observe.webp", stat: "Induction",
-          learned: "Jams show on the floor before the dashboard." },
-        { k: "Operator screens", tag: "Observed", img: "research-sorter-screen.webp", stat: "Per station",
-          learned: "Data per station, never the whole hub." }
+          learned: "Jams show on the floor before the dashboard." }
       ],
       notes: "We spent time in the hubs: control room, docks, sorter, and with supervisors. Designed on the hub floor, not at a desk. In the control room, HubEye was on one screen, camera feeds on another and a sheet on the third. Shift data was rebuilt in spreadsheets and paper unloading slips. A supervisor: “Tell me which dock, not which row in a table.” Delays start at the dock and ripple into sectors within the hour. Rejections and jams are seen on the floor before the dashboard. Every station has data; nobody has the whole hub in one view. The clearest finding: the tool lost to the spreadsheet. People needed location and priority, not more numbers."
     },
@@ -194,16 +190,30 @@ window.DECK = {
     {
       section: "design", type: "pair",
       eyebrow: "The solution",
-      headline: ["Problems show where they happen"],
-      highlight: "where they happen",
-      sub: "The hub mapped 1:1: grey is normal, red is act now.",
+      headline: ["The answer: a digital twin"],
+      highlight: "a digital twin",
+      sub: "Drag the line to compare before and after.",
       figs: [],
       twin: {
         before: "old-overview.webp?v=3", after: "hub-map-full.webp?v=2",
         cap: "HubEye digital twin: the whole hub mapped 1:1, with problem docks and sectors in red",
-        labels: ["1:1 layout", "Grey or red", "1 click for the why"]
+        labels: [ { n: "1:1", k: "Real layout", d: "Every dock where it is" }, { n: "2", k: "Colours only", d: "Grey fine, red act now" }, { n: "1 click", k: "To the why", d: "Bags, ETD and ageing" } ]
       },
       notes: "The hub, mapped 1:1; problems show where they happen. The screen opens on the old Overview tab, then the curtain wipes it away to the digital twin. Three ideas carry it. The map: every dock, sector and yard lane sits where it is on the floor. Grey or red: two states, no in-between colours to decode, so supervisors scan 300+ sectors in seconds. One click for the why: bags, ETD, ageing and compliance, with red rows saying what's wrong. Around the map: always-on hub vitals (shipments, yard, docks, manpower and compliance), an hour-by-hour yard forecast of vehicles in yard vs planned docks with overflow in red, and 158 live floor camera views, so a red dock can be checked on camera without leaving the map. Click the screen to enlarge."
+    },
+
+    /* AROUND THE MAP — the why on click, and what's coming next */
+    {
+      section: "design", type: "pair",
+      eyebrow: "Around the map", device: "laptop",
+      headline: ["The why, one click away"],
+      highlight: "one click away",
+      sub: "Click a sector for its reasons, then check it on camera.",
+      figs: [
+        { img: "hub-zoom-panel.webp", tone: "fit", t: "Click any sector", d: "Bags, ETD and only the signals that matter.", tag: "After" },
+        { img: "floor-images.webp", tone: "fit", t: "See the floor live", d: "Every dock and floor camera on one screen.", tag: "After" }
+      ],
+      notes: "Around the map: click any sector to get the why, bags, ETD, ageing and compliance, red rows for what's wrong. And look ahead: the yard forecast shows vehicles against planned docks hour by hour, overflow in red."
     },
 
     /* 07 — IMPACT (outcomes and the money card built by the enhancer; numbers in green) */
@@ -294,10 +304,17 @@ window.DECK = {
     if (trow) {   // solution: one screen; the old Overview sits on top and a curtain wipes it away (same reveal as the Jarvis deck)
       var t = hs.twin, still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       trow.className = "hb-twin";
-      trow.innerHTML = "<span class='rv-shot zoomable hbt-shot' title='Click to enlarge'><img src='" + D.imgBase + t.after + "' alt='" + esc(t.cap) + "'>" +
-        (still ? "" : "<span class='hbt-before' aria-hidden='true'><img src='" + D.imgBase + t.before + "' alt=''></span><span class='hbt-edge' aria-hidden='true'></span><span class='hbt-tag hbt-tag-b' aria-hidden='true'>Before</span>") +
-        "<span class='hbt-tag hbt-tag-a' aria-hidden='true'>After</span></span>" +
-        "<ul class='hbt-labels'>" + t.labels.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      // drag the line (or use arrow keys) to compare the old Overview with the twin
+      trow.innerHTML = "<span class='hbt-shot hbt-cmp' style='--x:50%'><img src='" + D.imgBase + t.after + "' alt='" + esc(t.cap) + "'>" +
+        "<span class='hbt-before' aria-hidden='true'><img src='" + D.imgBase + t.before + "' alt=''></span>" +
+        "<span class='hbt-edge' aria-hidden='true'><i></i></span>" +
+        "<span class='hbt-tag hbt-tag-b' aria-hidden='true'>Before</span><span class='hbt-tag hbt-tag-a' aria-hidden='true'>After</span>" +
+        "<input class='hbt-range' type='range' min='0' max='100' value='50' step='0.5' aria-label='Compare the old dashboard with the digital twin'></span>" +
+        "<ul class='hbt-labels'>" + t.labels.map(function (x) { return typeof x === "string" ? "<li>" + esc(x) + "</li>" : "<li class='hbt-win'><b>" + esc(x.n) + "</b><span><strong>" + esc(x.k) + "</strong>" + esc(x.d) + "</span></li>"; }).join("") + "</ul>";
+      var cmp = trow.querySelector(".hbt-cmp"), rg = trow.querySelector(".hbt-range");
+      rg.addEventListener("input", function () { cmp.style.setProperty("--x", rg.value + "%"); });
+      rg.addEventListener("keydown", function (e) { e.stopPropagation(); });
+      ["click", "pointerdown"].forEach(function (ev) { rg.addEventListener(ev, function (e) { e.stopPropagation(); }); });
     }
     var low = hs.outcomes && el.querySelector(".im-low");
     if (low) {   // impact: the outcomes supervisors felt, and the money card, in place of the panels
