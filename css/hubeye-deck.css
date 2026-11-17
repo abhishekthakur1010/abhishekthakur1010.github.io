@@ -162,3 +162,20 @@ body.deck.hubeye[data-theme="dark"] .hb-impact .im-bar.post span { color: #04150
 .hbh-flow li { display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; color: var(--soft); }
 .hbh-flow li + li::before { content: "→"; margin-right: 8px; color: var(--accent); font-weight: 700; }
 @media (max-width: 900px) { .hb-hub { grid-template-columns: 1fr; } .hbh-visual { order: -1; } .hbh-stats { grid-template-columns: 1fr 1fr; } .hbh-shot.rv-shot { max-width: none; } }
+
+/* v17: solution slide, map left and the wins right */
+.hb-twin { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: center; gap: clamp(28px, 3vw, 48px); }
+.hb-twin .hbt-shot { max-width: none; }
+.hb-twin .hbt-labels { flex-direction: column; flex-wrap: nowrap; justify-content: center; gap: 0; }
+.hb-twin .hbt-win { display: flex; align-items: baseline; gap: 18px; padding: 22px 0; border: 0; border-top: 1px solid var(--panel-line); border-radius: 0; background: none; }
+.hb-twin .hbt-win:last-child { border-bottom: 1px solid var(--panel-line); }
+.hb-twin .hbt-win::before { display: none; }
+.hbt-win b { min-width: 84px; font-size: 34px; line-height: 1; font-weight: 800; letter-spacing: -.02em; color: var(--accent); }
+.hbt-win span { font-size: 14px; font-weight: 500; line-height: 1.45; color: var(--soft); }
+.hbt-win strong { display: block; font-size: 17px; font-weight: 700; color: var(--ink); }
+@media (max-width: 900px) { .hb-twin { grid-template-columns: 1fr; } }
+/* laptop screens that should show the whole screenshot */
+.pr-fig.fit .pr-laptop .pr-img img { aspect-ratio: 1.975; object-fit: contain; object-position: center; }
+.pr-row:has(.pr-fig.fit) { max-width: min(100%, calc((100vh - 420px) * 2 * 1.975 + 160px)); margin-inline: auto; }
+.hbt-win b { min-width: 104px; font-size: 30px; white-space: nowrap; }
+.hb-twin { grid-template-columns: minmax(0, 1fr) 320px; }
