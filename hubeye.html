@@ -14,6 +14,8 @@
     />
     <link href="./css/case-study-v2.css?v=71" rel="stylesheet" />
     <link href="./css/st-bar.css?v=5" rel="stylesheet" />
+    <link href="./css/cs-drawer.css?v=2" rel="stylesheet" />
+    <link href="./css/hubeye-lite.css?v=1" rel="stylesheet" />
   <link rel="stylesheet" href="./css/shimmer.css" />
 <script src="./js/shimmer.js"></script>
 </head>
@@ -47,11 +49,7 @@
           <div class="hero-copy">
             <div class="eyebrow">Delhivery · Mid-mile · HubEye<span class="cs-type b2b">B2B</span></div>
             <h1>From a dashboard nobody opened to a <span class="hl">digital twin</span> everyone watches</h1>
-            <p class="sub">
-              Hub managers were chasing ageing and missing shipments, fielding escalation
-              calls and firefighting delays, and every peak multiplied it. Instead of
-              patching the dashboard, we mapped the physical hub into a live digital twin.
-            </p>
+            <p class="sub">Managers chased stuck shipments all shift. We turned the hub dashboard into a live map of the floor.</p>
             <a class="hx-deck-link" href="./hubeye-deck.html"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg>View presentation<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
           </div>
           <div class="hx-hero-shot">
@@ -86,10 +84,10 @@
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">01</span><span class="sec-label">Overview</span></div>
         <div class="acts">
-          <div class="act"><div class="k"><span class="n">01</span><span class="t">The brief</span></div><h3>"Redesign HubEye"</h3><p>Behind the ask: managers lost in ageing and missing shipments, delays and escalations, worst at peak.</p></div>
-          <div class="act"><div class="k"><span class="n">02</span><span class="t">The gap</span></div><h3>Rich data, passive experience</h3><p>HubEye was everyone's source of truth, yet it was dense tables with no guidance, so teams rarely used it.</p></div>
-          <div class="act"><div class="k"><span class="n">03</span><span class="t">The idea</span></div><h3>Map the physical hub</h3><p>A live digital twin of the facility: shipments, operations, resources and blockers where they really are.</p></div>
-          <div class="act"><div class="k"><span class="n">04</span><span class="t">The result</span></div><h3>Everyone watches it now</h3><p>Put compliance 65% → 79%, on-time departures 46% → 54%, shipment ageing down 8%.</p></div>
+          <div class="act"><div class="k"><span class="n">01</span><span class="t">The brief</span></div><h3>"Redesign HubEye"</h3><p>Ageing, missing shipments and escalations, worst at peak.</p></div>
+          <div class="act"><div class="k"><span class="n">02</span><span class="t">The gap</span></div><h3>Rich data, passive experience</h3><p>Dense tables, no guidance. Teams rarely opened it.</p></div>
+          <div class="act"><div class="k"><span class="n">03</span><span class="t">The idea</span></div><h3>Map the physical hub</h3><p>A live twin of the floor, problems where they happen.</p></div>
+          <div class="act"><div class="k"><span class="n">04</span><span class="t">The result</span></div><h3>Everyone watches it now</h3><p>Compliance 65% → 79%, ageing down 8%.</p></div>
         </div>
       </div>
     </section>
@@ -98,22 +96,15 @@
     <section class="block soft">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">02</span><span class="sec-label">The brief</span></div>
-        <h2 class="sec-title">The ask was a redesign. The real brief was a floor under pressure.</h2>
-        <p class="lead">
-          We were asked to redesign the HubEye dashboard. Behind that ask, field managers
-          and facility managers kept raising the same questions, every shift.
-        </p>
-        <div class="problems">
-          <div class="problem"><div class="idx">1</div><div><h4>"Why is this shipment ageing?"</h4><p>Bags sat in a sector for hours, and nobody knew until a customer promise was already late.</p></div></div>
-          <div class="problem"><div class="idx">2</div><div><h4>"Where is it?"</h4><p>Missing shipments meant walking the floor and calling around until someone found them.</p></div></div>
-          <div class="problem"><div class="idx">3</div><div><h4>"What do I tell my seniors?"</h4><p>Every update to senior stakeholders was rebuilt by hand, under time pressure.</p></div></div>
-          <div class="problem"><div class="idx">4</div><div><h4>"Why is everything late?"</h4><p>Delays led to chase calls and a needlessly stressful floor. At peak, all of it multiplied into real business loss.</p></div></div>
+        <h2 class="sec-title">A floor under pressure, every shift.</h2>
+        <p class="lead">The ask was "redesign HubEye". Managers kept asking the same four things.</p>
+        <div class="problems slim">
+          <div class="problem"><div class="idx">1</div><div><h4>"Why is this shipment ageing?"</h4></div></div>
+          <div class="problem"><div class="idx">2</div><div><h4>"Where is it?"</h4></div></div>
+          <div class="problem"><div class="idx">3</div><div><h4>"What do I tell my seniors?"</h4></div></div>
+          <div class="problem"><div class="idx">4</div><div><h4>"Why is everything late?"</h4></div></div>
         </div>
-        <h3 class="hx-sub">And the scale makes every miss expensive</h3>
-        <p class="lead">
-          India's largest mid-mile network runs through these hubs. Some exceed 1.2 million
-          square feet, with docks, inbound zones and sectors needing decisions in minutes.
-        </p>
+        <button type="button" class="csd-open" data-drawer="h-brief">What sat behind each question<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
         <div class="statgrid">
           <div class="statcard"><div class="n">140+</div><div class="l">Hubs &amp; gateways across India</div></div>
           <div class="statcard"><div class="n">8M+</div><div class="l">Shipments processed every day</div></div>
@@ -137,13 +128,7 @@
     <section class="block">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">03</span><span class="sec-label">Understanding the gap</span></div>
-        <h2 class="sec-title">We started on the hub floor, not with the screens.</h2>
-        <p class="lead">
-          Before touching a pixel, we met the people living the problem: field managers,
-          facility managers, supervisors and floor teams. We watched docks unload, walked the
-          sorter and sat beside each shift, looking for where the gap really was and how
-          design could close it.
-        </p>
+        <h2 class="sec-title">We started on the hub floor.</h2>
         <div class="hx-photos six">
           <figure><img src="./images/hubeye/research-session.webp" alt="Walkthrough with the hub team" loading="lazy" /><figcaption>Walkthrough with the hub team</figcaption></figure>
           <figure><img src="./images/hubeye/research-observe.webp" alt="Watching the sorter induction live" loading="lazy" /><figcaption>Watching the sorter induction live</figcaption></figure>
@@ -152,11 +137,12 @@
           <figure><img src="./images/hubeye/research-workstation.webp" alt="A dock workstation" loading="lazy" /><figcaption>A dock workstation</figcaption></figure>
           <figure><img src="./images/hubeye/research-sorter-screen.webp" alt="What operators see at the sorter" loading="lazy" /><figcaption>What operators see at the sorter</figcaption></figure>
         </div>
-        <div class="hx-principles">
-          <div><span class="hx-k">Insight 1</span><h4>Location is the first question</h4><p>Supervisors don't ask "which row in the table"; they ask "which dock" and walk there.</p></div>
-          <div><span class="hx-k">Insight 2</span><h4>Decisions happen on the move</h4><p>There's no time to read. A screen has to be understood in a glance from across the room.</p></div>
-          <div><span class="hx-k">Insight 3</span><h4>Everything pointed to HubEye</h4><p>For tracking and transparency, every manager and team member used one source of truth: HubEye. So that is where we looked next.</p></div>
+        <div class="hx-principles slim">
+          <div><span class="hx-k">Insight 1</span><h4>Location is the first question</h4></div>
+          <div><span class="hx-k">Insight 2</span><h4>Decisions happen on the move</h4></div>
+          <div><span class="hx-k">Insight 3</span><h4>Everything pointed to HubEye</h4></div>
         </div>
+        <button type="button" class="csd-open" data-drawer="h-insights">What we learnt there<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -164,20 +150,16 @@
     <section class="block soft">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">04</span><span class="sec-label">Evaluating HubEye</span></div>
-        <h2 class="sec-title">So we put HubEye itself under the lens.</h2>
-        <p class="lead">
-          We evaluated its usability: how often people opened it, what they did there and
-          what feedback they kept giving. The answer was clear. A read-only wall of tiles and
-          tables across 14 tabs, heavy with data and with no guidance: no priority, no reason,
-          no next step. Most people simply stopped opening it.
-        </p>
-        <div class="problems">
-          <div class="problem"><div class="idx">1</div><div><h4>Read-only monitoring</h4><p>Counts without context. A supervisor saw "155 unassigned" but not where, or why.</p></div></div>
-          <div class="problem"><div class="idx">2</div><div><h4>Constant tab switching</h4><p>Fleet, dock, floor, inbound and outbound lived in separate tabs, so no single view of the hub.</p></div></div>
-          <div class="problem"><div class="idx">3</div><div><h4>Tables to read, not see</h4><p>Sector health meant scanning long tables of bags, putaway and compliance by hand.</p></div></div>
-          <div class="problem"><div class="idx">4</div><div><h4>Insight outside the tool</h4><p>Export, clean in Excel, pivot, then spot the bottleneck: 6+ hours lost every shift.</p></div></div>
+        <h2 class="sec-title">Then we put HubEye under the lens.</h2>
+        <p class="lead">14 tabs of tables. No priority, no reason, no next step.</p>
+        <div class="problems slim">
+          <div class="problem"><div class="idx">1</div><div><h4>Read-only monitoring</h4></div></div>
+          <div class="problem"><div class="idx">2</div><div><h4>Constant tab switching</h4></div></div>
+          <div class="problem"><div class="idx">3</div><div><h4>Tables to read, not see</h4></div></div>
+          <div class="problem"><div class="idx">4</div><div><h4>Insight outside the tool</h4></div></div>
         </div>
-        <h3 class="hx-sub">The existing HubEye: rich data, passive experience</h3>
+        <button type="button" class="csd-open" data-drawer="h-eval">Four issues we found<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
+        
         <div class="hx-photos two hx-old">
           <figure><img src="./images/hubeye/old-overview-browser.webp?v=2" alt="Overview tab: alert counts and tiles, no location or priority" loading="lazy" /><figcaption>Overview tab: alert counts and tiles, no location or priority</figcaption></figure>
           <figure><img src="./images/hubeye/old-floorops.webp?v=3" alt="Floor ops tab: sector health as long tables to scan by hand" loading="lazy" /><figcaption>Floor ops tab: sector health as long tables to scan by hand</figcaption></figure>
@@ -212,17 +194,13 @@
     <section class="block">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">06</span><span class="sec-label">The turn</span></div>
-        <h2 class="sec-title">Patch the feedback, or rethink the wheel?</h2>
-        <p class="lead">
-          We could have answered the feedback one request at a time: a filter here, a column
-          there. That is useful, but it keeps the feedback loop running forever. Rethinking the
-          whole experience could remove the reasons behind the feedback instead.
-        </p>
-        <div class="hx-principles">
-          <div><span class="hx-k">Option A</span><h4>Fix the requests</h4><p>Ship what people ask for, tab by tab. Quick wins, same passive dashboard.</p></div>
-          <div><span class="hx-k">Option B</span><h4>Redesign the tables</h4><p>Cleaner charts and better tables. Easier to read, still nothing to act on.</p></div>
-          <div><span class="hx-k">We chose</span><h4>Rethink the wheel</h4><p>Change what the screen represents, so it answers "what, where and why" before anyone asks.</p></div>
+        <h2 class="sec-title">Patch it, or rethink it?</h2>
+        <div class="hx-principles slim">
+          <div><span class="hx-k">Option A</span><h4>Fix the requests</h4></div>
+          <div><span class="hx-k">Option B</span><h4>Redesign the tables</h4></div>
+          <div><span class="hx-k">We chose</span><h4>Rethink the wheel</h4></div>
         </div>
+        <button type="button" class="csd-open" data-drawer="h-turn">Why we rethought it<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -230,22 +208,13 @@
     <section class="block soft">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">07</span><span class="sec-label">The idea</span></div>
-        <h2 class="sec-title">Why not map the physical world into the digital one?</h2>
-        <p class="lead">
-          A hub is a physical place. Managers think in docks, sectors and lanes, not table rows.
-          Digital twins already existed in industry, but no one had pointed one at our hubs.
-          So we set out to build a digital twin of the mega facility, showing in real time:
-        </p>
+        <h2 class="sec-title">Map the physical hub, digitally.</h2>
         <div class="statgrid">
           <div class="statcard"><div class="n">Shipments</div><div class="l">Where every bag is, and how long it has waited</div></div>
           <div class="statcard"><div class="n">Operations</div><div class="l">Docks, sorter and putaway, live as they run</div></div>
           <div class="statcard"><div class="n">Resources</div><div class="l">Manpower, vehicles and docks against the plan</div></div>
           <div class="statcard"><div class="n">Blockers</div><div class="l">Shown in red, exactly where they are on the floor</div></div>
         </div>
-        <p class="lead" style="margin-top:28px">
-          Everyone we shared it with, from floor supervisors to central ops, liked the idea
-          immediately. So we began building the digital twin of HubEye.
-        </p>
       </div>
     </section>
 
@@ -253,18 +222,15 @@
     <section class="block">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">08</span><span class="sec-label">What we built</span></div>
-        <h2 class="sec-title">The hub, mapped 1:1. Problems show up where they happen.</h2>
-        <p class="lead">
-          We rebuilt HubEye as a digital twin of the physical facility. Every dock,
-          sector and yard lane sits where it is on the floor, so a supervisor can
-          look at the screen and walk straight to the issue.
-        </p>
+        <h2 class="sec-title">The hub, mapped 1:1.</h2>
+        <p class="lead">Every dock and sector sits where it is, so you walk straight to the issue.</p>
         <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/hub-map-full.webp?v=2" alt="Full-screen digital twin of Tauru Gateway with every dock and sector in place" loading="lazy" /></figure>
-        <div class="hx-principles">
-          <div><span class="hx-k">Principle 1</span><h4>Grey or red. Nothing else.</h4><p>Normal is grey, act now is red. A supervisor scanning 300+ sectors and docks finds every critical zone in seconds.</p></div>
-          <div><span class="hx-k">Principle 2</span><h4>Real layout, not a list</h4><p>Docks around the edge, sectors in their rows, areas outlined. Location is the first piece of information.</p></div>
-          <div><span class="hx-k">Principle 3</span><h4>One screen, one shift</h4><p>The map, the reason and the hub's vitals live together, so nobody exports to Excel to decide.</p></div>
+        <div class="hx-principles slim">
+          <div><span class="hx-k">Principle 1</span><h4>Grey or red. Nothing else.</h4></div>
+          <div><span class="hx-k">Principle 2</span><h4>Real layout, not a list</h4></div>
+          <div><span class="hx-k">Principle 3</span><h4>One screen, one shift</h4></div>
         </div>
+        <button type="button" class="csd-open" data-drawer="h-principles">The three rules<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -273,10 +239,7 @@
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">09</span><span class="sec-label">Detail on click</span></div>
         <h2 class="sec-title">Click any sector. Get the why.</h2>
-        <p class="lead">
-          Every element opens a small card: bags in the centre, ETD, and only the
-          signals that matter. Red rows say what is wrong; green rows confirm what is fine.
-        </p>
+        <p class="lead">Red says what is wrong. Green says what is fine.</p>
         <div class="hx-pops">
           <figure><img src="./images/hubeye/pop-bangalore.webp" alt="Bangalore sector: put compliance 92.54% and 57 bags ageing over 48 hours, both flagged red" loading="lazy" /><figcaption><b>Two problems</b>Compliance below target and 57 bags ageing. Both flagged.</figcaption></figure>
           <figure><img src="./images/hubeye/pop-varanasi.webp" alt="Varanasi sector: 29 bags ageing over 48 hours flagged red, compliance 97.95% green" loading="lazy" /><figcaption><b>One problem</b>Ageing is red; compliance is fine, so it stays green.</figcaption></figure>
@@ -292,11 +255,7 @@
         <div class="hx-split">
           <div>
             <h2 class="sec-title">Every hub metric, one glance away.</h2>
-            <p class="lead">
-              A persistent snapshot panel sits beside the map: shipments in centre and
-              ageing, yard waiting, inbound and outbound docks, manpower, put compliance,
-              sorter rejection, PTL breaches and pallet stock.
-            </p>
+        <p class="lead">One panel beside the map with every number that matters.</p>
             <ul class="hx-list">
               <li><b>Collapses</b> when the floor needs the full screen.</li>
               <li><b>Turns red</b> only when a number needs action, like a 12% sorter rejection rate.</li>
@@ -315,12 +274,8 @@
     <section class="block soft">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">11</span><span class="sec-label">Plan ahead, see the floor</span></div>
-        <h2 class="sec-title">From "what's wrong now" to "what's coming next".</h2>
-        <p class="lead">
-          Expected Yard Waiting forecasts vehicles in the yard against planned docks,
-          hour by hour, with the overflow in red. Floor Images bring the real dock and
-          floor cameras into the same tool, so a red dock can be checked in one click.
-        </p>
+        <h2 class="sec-title">See what is coming next.</h2>
+        <p class="lead">Yard forecast and live floor cameras, in the same tool.</p>
         <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/yard-waiting.webp" alt="Expected Yard Waiting: hourly vehicles in yard vs planned docks, overflow in red, with an ageing breakdown tooltip" loading="lazy" /></figure>
         <figure class="hx-shot wide"><div class="hx-bar"><i></i><i></i><i></i><span>eye.delhivery.com/mid-mile/hub</span></div><img src="./images/hubeye/floor-images.webp" alt="Floor Images: grid of live dock camera snapshots with timestamps" loading="lazy" /></figure>
       </div>
@@ -330,18 +285,14 @@
     <section class="block">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">12</span><span class="sec-label">Launch</span></div>
-        <h2 class="sec-title">Nobody had to push anyone to open it.</h2>
-        <p class="lead">
-          In the first few weeks after launch, the operations team came back with something
-          a dashboard rarely gets: appreciation. Teams who had barely engaged with the old
-          HubEye now keep the twin open on their laptops through the shift, watching the
-          hub move.
-        </p>
-        <div class="hx-principles">
-          <div><span class="hx-k">Before</span><h4>Pushed to check</h4><p>People opened HubEye when someone asked them to, then exported to Excel to make sense of it.</p></div>
-          <div><span class="hx-k">After</span><h4>Open by choice</h4><p>The twin stays on screen all shift. Problems are seen as they start, not after a call.</p></div>
-          <div><span class="hx-k">The difference</span><h4>Fewer calls, fewer delays</h4><p>No chasing, no waiting for someone to check. One shared live view of the hub for every team.</p></div>
+        <h2 class="sec-title">Nobody had to push anyone.</h2>
+        <p class="lead">Teams now keep the twin open all shift.</p>
+        <div class="hx-principles slim">
+          <div><span class="hx-k">Before</span><h4>Pushed to check</h4></div>
+          <div><span class="hx-k">After</span><h4>Open by choice</h4></div>
+          <div><span class="hx-k">The difference</span><h4>Fewer calls, fewer delays</h4></div>
         </div>
+        <button type="button" class="csd-open" data-drawer="h-launch">Before and after launch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -350,7 +301,7 @@
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">13</span><span class="sec-label">Outcome</span></div>
         <h2 class="sec-title" style="color:#fff">Time, shipments and promises saved.</h2>
-        <p class="lead">Measured across hubs after rollout: fewer stuck shipments, more promises kept and real cost saved. The Ionad hub saw the biggest drop in ageing.</p>
+        <p class="lead">Measured across hubs after rollout.</p>
         <div class="stats">
           <div class="stat"><div class="num">65→79<span class="accent">%</span></div><div class="cap">Put compliance</div></div>
           <div class="stat"><div class="num">46→54<span class="accent">%</span></div><div class="cap">On-time vehicle departures (OBSL)</div></div>
@@ -364,16 +315,14 @@
     <section class="block">
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">14</span><span class="sec-label">What's next</span></div>
-        <h2 class="sec-title">From monitoring the hub to simulating it.</h2>
-        <p class="lead">
-          The map is the foundation for a true digital twin of Delhivery's growing
-          warehouse network: test a change on screen before moving a single rack.
-        </p>
-        <div class="hx-principles">
-          <div><span class="hx-k">Blind spots</span><h4>Find bottlenecks safely</h4><p>Layout changes are risky and costly on a live floor. Simulate them first instead of trial and error.</p></div>
-          <div><span class="hx-k">Rising costs</span><h4>Lower cost per parcel</h4><p>Labour and energy costs keep rising. Spot the waste in flow and staffing before it shows up in the P&amp;L.</p></div>
-          <div><span class="hx-k">Peak season</span><h4>Plan for 3× spikes</h4><p>Sale events bring 3× volume. Replace capacity guesswork with tested plans to protect SLAs.</p></div>
+        <h2 class="sec-title">Next: simulate the hub.</h2>
+        <p class="lead">Test a change on screen before moving a single rack.</p>
+        <div class="hx-principles slim">
+          <div><span class="hx-k">Blind spots</span><h4>Find bottlenecks safely</h4></div>
+          <div><span class="hx-k">Rising costs</span><h4>Lower cost per parcel</h4></div>
+          <div><span class="hx-k">Peak season</span><h4>Plan for 3× spikes</h4></div>
         </div>
+        <button type="button" class="csd-open" data-drawer="h-next">Why simulation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -382,10 +331,7 @@
       <div class="wrap">
         <div class="sec-head"><span class="sec-num">15</span><span class="sec-label">Team</span></div>
         <h2 class="sec-title">Built with the team.</h2>
-        <p class="lead">
-          I led design direction, critique and stakeholder alignment, working across design,
-          product, engineering and hub operations from the first floor visit to rollout.
-        </p>
+        <p class="lead">I led design direction, critique and alignment, from first floor visit to rollout.</p>
         <div class="statgrid">
           <div class="statcard"><div class="n">3</div><div class="l">Designers</div></div>
           <div class="statcard"><div class="n">5</div><div class="l">Product managers</div></div>
@@ -398,6 +344,15 @@
         </div>
       </div>
     </section>
+
+    <!-- drawer content -->
+    <template id="h-brief" data-title="The brief"><h3>Four questions, every shift</h3><div class="csd-list"><div><b>"Why is this shipment ageing?"</b><p>Bags sat in a sector for hours, and nobody knew until a customer promise was already late.</p></div><div><b>"Where is it?"</b><p>Missing shipments meant walking the floor and calling around until someone found them.</p></div><div><b>"What do I tell my seniors?"</b><p>Every update to senior stakeholders was rebuilt by hand, under time pressure.</p></div><div><b>"Why is everything late?"</b><p>Delays led to chase calls and a needlessly stressful floor. At peak, all of it multiplied into real business loss.</p></div></div><div class="csd-wide"><img src="./images/hubeye/hub-floor-annotated.webp" alt="Annotated hub floor" /></div></template>
+    <template id="h-insights" data-title="Research"><h3>Three insights from the floor</h3><div class="csd-list"><div><b>Location is the first question</b><p>Supervisors don't ask "which row in the table"; they ask "which dock" and walk there.</p></div><div><b>Decisions happen on the move</b><p>There's no time to read. A screen has to be understood in a glance from across the room.</p></div><div><b>Everything pointed to HubEye</b><p>For tracking and transparency, every manager and team member used one source of truth: HubEye. So that is where we looked next.</p></div></div><div class="csd-wide"><img src="./images/hubeye/on-the-floor.webp" alt="On the floor" /></div></template>
+    <template id="h-eval" data-title="Evaluating HubEye"><h3>A read-only wall of data</h3><div class="csd-list"><div><b>Read-only monitoring</b><p>Counts without context. A supervisor saw "155 unassigned" but not where, or why.</p></div><div><b>Constant tab switching</b><p>Fleet, dock, floor, inbound and outbound lived in separate tabs, so no single view of the hub.</p></div><div><b>Tables to read, not see</b><p>Sector health meant scanning long tables of bags, putaway and compliance by hand.</p></div><div><b>Insight outside the tool</b><p>Export, clean in Excel, pivot, then spot the bottleneck: 6+ hours lost every shift.</p></div></div><div class="csd-wide"><img src="./images/hubeye/old-overview.webp" alt="Old overview" /></div></template>
+    <template id="h-turn" data-title="The turn"><h3>Three ways forward</h3><div class="csd-list"><div><b>Fix the requests</b><p>Ship what people ask for, tab by tab. Quick wins, same passive dashboard.</p></div><div><b>Redesign the tables</b><p>Cleaner charts and better tables. Easier to read, still nothing to act on.</p></div><div><b>Rethink the wheel</b><p>Change what the screen represents, so it answers "what, where and why" before anyone asks.</p></div></div><p class="csd-why">Answering feedback one request at a time keeps the loop running forever. Rethinking the experience removes the reasons behind it.</p></template>
+    <template id="h-principles" data-title="Design principles"><h3>Three rules for the map</h3><div class="csd-list"><div><b>Grey or red. Nothing else.</b><p>Normal is grey, act now is red. A supervisor scanning 300+ sectors and docks finds every critical zone in seconds.</p></div><div><b>Real layout, not a list</b><p>Docks around the edge, sectors in their rows, areas outlined. Location is the first piece of information.</p></div><div><b>One screen, one shift</b><p>The map, the reason and the hub's vitals live together, so nobody exports to Excel to decide.</p></div></div><div class="csd-wide"><img src="./images/hubeye/hub-zoom-panel.webp" alt="Zoomed map with panel" /></div></template>
+    <template id="h-launch" data-title="Launch"><h3>What changed on the floor</h3><div class="csd-list"><div><b>Pushed to check</b><p>People opened HubEye when someone asked them to, then exported to Excel to make sense of it.</p></div><div><b>Open by choice</b><p>The twin stays on screen all shift. Problems are seen as they start, not after a call.</p></div><div><b>Fewer calls, fewer delays</b><p>No chasing, no waiting for someone to check. One shared live view of the hub for every team.</p></div></div><div class="csd-wide"><img src="./images/hubeye/hub-map-collapsed.webp" alt="Twin on screen" /></div></template>
+    <template id="h-next" data-title="What's next"><h3>Three reasons to simulate</h3><div class="csd-list"><div><b>Find bottlenecks safely</b><p>Layout changes are risky and costly on a live floor. Simulate them first instead of trial and error.</p></div><div><b>Lower cost per parcel</b><p>Labour and energy costs keep rising. Spot the waste in flow and staffing before it shows up in the P&amp;L.</p></div><div><b>Plan for 3× spikes</b><p>Sale events bring 3× volume. Replace capacity guesswork with tested plans to protect SLAs.</p></div></div></template>
 
     <section class="next">
       <div class="wrap">
@@ -474,5 +429,28 @@
       })();
     </script>
     <script src="./js/case-study-lightbox.js?v=7" defer></script>
+    <script src="./js/cs-drawer.js?v=1" defer></script>
+    <script>
+      // Section rail on the left: six stops, nearby sections fold into them
+      (function () {
+        var MAP = { "Overview": "Overview", "The brief": "Problem", "Understanding the gap": "Research", "The idea": "Solution", "Launch": "Impact", "What's next": "Next" };
+        var secs = Array.prototype.slice.call(document.querySelectorAll("section.block, section.impact"));
+        var rail = document.createElement("nav"); rail.className = "cs-rail"; rail.setAttribute("aria-label", "Sections");
+        var stops = [], owner = [];
+        secs.forEach(function (s, i) {
+          var l = s.querySelector(".sec-label"), name = l && MAP[l.textContent.trim()];
+          if (name) { s.id = s.id || "s-" + name.toLowerCase(); var a = document.createElement("a"); a.href = "#" + s.id; a.textContent = name; rail.appendChild(a); stops.push(a); }
+          owner.push(stops.length - 1);
+        });
+        document.body.appendChild(rail);
+        function onScroll() {
+          var y = innerHeight * .4, cur = -1;
+          secs.forEach(function (s, i) { if (s.getBoundingClientRect().top < y) cur = owner[i]; });
+          stops.forEach(function (a, i) { a.classList.toggle("now", i === cur); });
+          rail.classList.toggle("on", cur >= 0);
+        }
+        addEventListener("scroll", onScroll, { passive: true }); onScroll();
+      })();
+    </script>
   </body>
 </html>
