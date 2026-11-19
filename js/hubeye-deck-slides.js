@@ -335,7 +335,7 @@ window.DECK = {
         return "<div class='hw-leg hw-leg-" + j + "'>" + (ico[j] ? "<svg class='hw-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>" + ico[j] + "</svg>" : "") +
           "<span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b><em>" + esc(x.d) + "</em></div>";
       };
-      // the opening slide's structure: copy on the left, the wheel on the right, the numbers in a row underneath
+      // the opening slide's structure: copy and the number cards on the left, the wheel on the right
       var sl = el.querySelector(".sl"), head = el.querySelector(".sl-head");
       sl.classList.add("hw-sl");
       wrow.className = "hb-wheel";
@@ -356,7 +356,7 @@ window.DECK = {
       var meta = document.createElement("div"); meta.className = "hw-meta";
       meta.innerHTML = w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("");
       var src = document.createElement("p"); src.className = "hw-src"; src.textContent = w.src;
-      wrow.parentNode.insertBefore(meta, wrow.nextSibling); meta.parentNode.insertBefore(src, meta.nextSibling);
+      copy.appendChild(meta); copy.appendChild(src);
     }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
