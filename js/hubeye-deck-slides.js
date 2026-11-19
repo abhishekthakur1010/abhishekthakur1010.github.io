@@ -91,13 +91,13 @@ window.DECK = {
         stats: [
           { n: "~₹6,500 Cr", l: "Revenue a year" },
           { n: "~₹100 Cr", l: "Profit a year" },
-          { n: "107M+", l: "Shipments a month" },
-          { n: "~₹2 Cr", l: "Astray a month if 1 in 10,000 is misplaced", hot: 1 }
+          { n: "1 Bn+", l: "Shipments a year" },
+          { n: "~₹24 Cr", l: "Astray a year if 1 in 10,000 is misplaced", hot: 1 }
         ],
         line: "At a 1.5% margin, the hub can't afford to wobble.",
-        src: "Express and transportation charter, approximate. Shipments: Oct 2025. ~₹2 Cr is illustrative."
+        src: "Express and transportation charter, approximate. Shipments at the Sep–Oct 2025 run rate. ~₹24 Cr is illustrative."
       },
-      notes: "Before the hub floor, why the hub matters. Delhivery's Express and Transportation charter runs three legs. First mile: the pickup from the seller. Middle mile: the hub, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Last mile: delivery to the customer's doorstep. Picture a bicycle wheel: seller and doorstep sit on the rim, and everything passes through the hub at the centre, so it carries the most load and is the most sensitive part of the network. The business does around 6,500 crore rupees of revenue a year and keeps about 100 crore as profit, a margin of roughly 1.5%. It moved over 107 million shipments in October 2025 alone. At that volume and that margin, small errors are expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month (0.01% of 107 million shipments at an average value of about 1,800 rupees). That is why a hub needs a view that shows problems the moment they happen."
+      notes: "Before the hub floor, why the hub matters. Delhivery's Express and Transportation charter runs three legs. First mile: the pickup from the seller. Middle mile: the hub, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Last mile: delivery to the customer's doorstep. Picture a bicycle wheel: seller and doorstep sit on the rim, and everything passes through the hub at the centre, so it carries the most load and is the most sensitive part of the network. The business does around 6,500 crore rupees of revenue a year and keeps about 100 crore as profit, a margin of roughly 1.5%. It moved over 107 million shipments in October 2025 alone, a run rate of more than a billion a year. At that volume and that margin, small errors are expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month, roughly 24 crore a year, close to a quarter of the profit (0.01% of 107 million shipments a month at an average value of about 1,800 rupees). That is why a hub needs a view that shows problems the moment they happen."
     },
 
     /* WHAT A HUB IS — the annotated floor photo with a few numbers (built by the enhancer) */
