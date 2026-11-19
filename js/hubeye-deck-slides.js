@@ -92,7 +92,7 @@ window.DECK = {
           { n: "~₹6,500 Cr", l: "Revenue a year" },
           { n: "~₹100 Cr", l: "Profit a year" },
           { n: "1 Bn+", l: "Shipments a year" },
-          { n: "~₹24 Cr", l: "Astray a year if 1 in 10,000 is misplaced", hot: 1 }
+          { n: "~₹24 Cr", l: "Lost a year if 1 in 10,000 goes missing", hot: 1 }
         ],
         line: "At a 1.5% margin, the hub can't afford to wobble.",
         src: "Express and transportation charter, approximate. Shipments at the Sep–Oct 2025 run rate. ~₹24 Cr is illustrative."
