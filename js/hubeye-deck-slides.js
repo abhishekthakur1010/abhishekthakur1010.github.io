@@ -93,7 +93,8 @@ window.DECK = {
           { n: "~₹100 Cr", l: "Profit a year" },
           { n: "1 Bn+", l: "Shipments a year" },
           { n: "~₹60 Cr", l: "Lost a year to missing shipments", hot: 1 }
-        ]
+        ],
+        line: "Missing shipments eat about 60% of our profit."
       },
       notes: "Before the hub floor, why the hub matters. Delhivery's Express and Transportation charter runs three legs. First mile: the pickup from the seller. Middle mile: the hub, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Last mile: delivery to the customer's doorstep. Picture a bicycle wheel: seller and doorstep sit on the rim, and everything passes through the hub at the centre, so it carries the most load and is the most sensitive part of the network. The business does around 6,500 crore rupees of revenue a year and keeps about 100 crore as profit, a margin of roughly 1.5%. It moved over 107 million shipments in October 2025 alone, a run rate of more than a billion a year. At that volume and that margin, errors are expensive: missing or lost shipments at hubs cost about 60 crore rupees a year, the same figure as the business problem slide. That is why a hub needs a view that shows problems the moment they happen."
     },
