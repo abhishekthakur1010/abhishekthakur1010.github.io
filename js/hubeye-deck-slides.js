@@ -84,9 +84,9 @@ window.DECK = {
       figs: [],
       wheel: {
         legs: [
-          { k: "First mile", t: "Seller", d: "Picked up from the seller" },
+          { k: "First mile", t: "Seller" },
           { k: "Middle mile", t: "Hub", d: "Sorted, staged and line-hauled" },
-          { k: "Last mile", t: "Doorstep", d: "Delivered to the customer" }
+          { k: "Last mile", t: "Doorstep" }
         ],
         stats: [
           { n: "107M+", l: "Shipments through Delhivery in one month (Oct 2025)" },
@@ -321,30 +321,24 @@ window.DECK = {
     var wrow = hs.wheel && el.querySelector(".pr-row");
     if (wrow) {   // why hubs matter: a flat bicycle wheel; one parcel travels seller → hub → doorstep and the labels light up in step
       var w = hs.wheel, sp = "", i, a;
-      for (i = 0; i < 32; i++) {   // crossed lacing: each spoke leaves the flange and lands a few degrees on
-        a = i * Math.PI / 16; var b = a + (i % 2 ? 0.55 : -0.55);
-        sp += "<line x1='" + (13 * Math.cos(a)).toFixed(2) + "' y1='" + (13 * Math.sin(a)).toFixed(2) + "' x2='" + (86 * Math.cos(b)).toFixed(2) + "' y2='" + (86 * Math.sin(b)).toFixed(2) + "'/>";
+      for (i = 0; i < 16; i++) {   // sixteen straight spokes: enough to read as a wheel, quiet enough to sit behind the route
+        a = i * Math.PI / 8 + Math.PI / 16;
+        sp += "<line x1='" + (20 * Math.cos(a)).toFixed(2) + "' y1='" + (20 * Math.sin(a)).toFixed(2) + "' x2='" + (89 * Math.cos(a)).toFixed(2) + "' y2='" + (89 * Math.sin(a)).toFixed(2) + "'/>";
       }
-      var ico = [
-        "<path d='M3 9l1.5-5h15L21 9'/><path d='M4 9v11h16V9'/><path d='M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0'/><path d='M10 20v-6h4v6'/>",
-        "",
-        "<path d='M3 11l9-8 9 8'/><path d='M5 10v10h14V10'/><path d='M10 20v-6h4v6'/>"
-      ];
       var leg = function (j) {
         var x = w.legs[j];
-        return "<div class='hw-leg hw-leg-" + j + "'>" + (ico[j] ? "<svg class='hw-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>" + ico[j] + "</svg>" : "") +
-          "<span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b><em>" + esc(x.d) + "</em></div>";
+        return "<div class='hw-leg hw-leg-" + j + "'><span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b>" + (x.d ? "<em>" + esc(x.d) + "</em>" : "") + "</div>";
       };
       wrow.className = "hb-wheel";
       wrow.innerHTML =
         "<div class='hw-stage'><div class='hw-grid'>" + leg(1) + leg(0) +
           "<svg class='hw-svg' viewBox='-100 -100 200 200' role='img' aria-label='A bicycle wheel: the seller on the left of the rim, the hub at the centre, the doorstep on the right'>" +
-            "<circle class='hw-tire' r='93'/><circle class='hw-rim' r='87.5'/><g class='hw-spokes'>" + sp + "</g>" +
+            "<circle class='hw-tire' r='93'/><g class='hw-spokes'>" + sp + "</g>" +
             "<line class='hw-track' x1='-93' y1='0' x2='93' y2='0'/><line class='hw-go' x1='-93' y1='0' x2='93' y2='0' pathLength='186'/>" +
             "<g class='hw-parcel'><rect x='-6' y='-6' width='12' height='12' rx='2.2'/><path d='M-6 -1.2h12M0 -6v12'/></g>" +
-            "<circle class='hw-pulse' r='20'/><circle class='hw-hub-halo' r='24'/><circle class='hw-hub' r='18'/>" +
+            "<circle class='hw-pulse' r='20'/><circle class='hw-hub' r='18'/>" +
             "<path class='hw-hub-ico' d='M-8.5 7V-2.5L0 -7.5 8.5 -2.5V7Z M-3.5 7V1h7v6'/>" +
-            "<circle class='hw-pin hw-pin-l' cx='-93' r='5.5'/><circle class='hw-pin hw-pin-r' cx='93' r='5.5'/>" +
+            "<circle class='hw-pin hw-pin-l' cx='-93' r='4.5'/><circle class='hw-pin hw-pin-r' cx='93' r='4.5'/>" +
           "</svg>" + leg(2) +
         "</div></div>" +
         "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
