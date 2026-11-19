@@ -78,9 +78,9 @@ window.DECK = {
     {
       section: "context", type: "pair",
       eyebrow: "Why hubs matter",
-      headline: ["Everything turns", "on the hub"],
+      headline: ["Everything turns on the hub"],
       highlight: "the hub",
-      sub: "Like a bicycle wheel, every route meets at the hub.",
+      sub: "Like a bicycle wheel: spokes run from sellers to doorsteps, and all of them meet at the hub.",
       figs: [],
       wheel: {
         legs: [
@@ -88,13 +88,13 @@ window.DECK = {
           { k: "Middle mile", t: "Hub", d: "Sorted, staged and line-hauled" },
           { k: "Last mile", t: "Doorstep", d: "Delivered to the customer" }
         ],
-        problem: { k: "The problem", t: "When a hub loses track of its bags, every seller and doorstep feels it." },
         stats: [
-          { n: "107M+", l: "Shipments in one month (Oct 2025)" },
+          { n: "107M+", l: "Shipments through Delhivery in one month (Oct 2025)" },
           { n: "7.2M", l: "Shipments on a single peak day" },
           { n: "₹19,000 Cr+", l: "Worth of goods moved that month" },
-          { n: "~₹2 Cr", l: "Astray a month if 1 in 10,000 is misplaced", hot: 1 }
+          { n: "~₹2 Cr", l: "Of goods astray a month if just 1 in 10,000 is misplaced", hot: 1 }
         ],
+        line: "The hub is the heavy, sensitive core. If it wobbles, the whole ride does.",
         src: "Delhivery network updates, Sep–Oct 2025. ~₹2 Cr is illustrative: 0.01% of 107M shipments at that month's average value (~₹1,800)."
       },
       notes: "Before the hub floor, why the hub matters. Think of a bicycle wheel. On one side of the rim is the seller, where the first mile starts with a pickup. On the other side is the customer's doorstep, where the last mile ends. In the centre is the hub: the middle mile, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Every spoke runs through it, so it carries the most load and is the most sensitive part of the network. The scale: Delhivery moved over 107 million shipments in October 2025, worth more than 19,000 crore rupees, with a single-day peak of 7.2 million. At that volume even a tiny error rate is expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month. That is why a hub needs a view that shows problems the moment they happen."
@@ -335,12 +335,8 @@ window.DECK = {
         return "<div class='hw-leg hw-leg-" + j + "'>" + (ico[j] ? "<svg class='hw-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>" + ico[j] + "</svg>" : "") +
           "<span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b><em>" + esc(x.d) + "</em></div>";
       };
-      // the opening slide's structure: copy and the number cards on the left, the wheel on the right
-      var sl = el.querySelector(".sl"), head = el.querySelector(".sl-head");
-      sl.classList.add("hw-sl");
       wrow.className = "hb-wheel";
       wrow.innerHTML =
-        "<div class='hw-copy'><p class='hw-prob'><span>" + esc(w.problem.k) + "</span>" + esc(w.problem.t) + "</p></div>" +
         "<div class='hw-stage'><div class='hw-grid'>" + leg(1) + leg(0) +
           "<svg class='hw-svg' viewBox='-100 -100 200 200' role='img' aria-label='A bicycle wheel: the seller on the left of the rim, the hub at the centre, the doorstep on the right'>" +
             "<circle class='hw-tire' r='93'/><circle class='hw-rim' r='87.5'/><g class='hw-spokes'>" + sp + "</g>" +
@@ -350,13 +346,9 @@ window.DECK = {
             "<path class='hw-hub-ico' d='M-8.5 7V-2.5L0 -7.5 8.5 -2.5V7Z M-3.5 7V1h7v6'/>" +
             "<circle class='hw-pin hw-pin-l' cx='-93' r='5.5'/><circle class='hw-pin hw-pin-r' cx='93' r='5.5'/>" +
           "</svg>" + leg(2) +
-        "</div></div>";
-      var copy = wrow.querySelector(".hw-copy");
-      copy.insertBefore(head, copy.firstChild);
-      var meta = document.createElement("div"); meta.className = "hw-meta";
-      meta.innerHTML = w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("");
-      var src = document.createElement("p"); src.className = "hw-src"; src.textContent = w.src;
-      copy.appendChild(meta); copy.appendChild(src);
+        "</div></div>" +
+        "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
+        "<p class='hw-line'>" + esc(w.line) + "</p><p class='hw-src'>" + esc(w.src) + "</p></div>";
     }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it

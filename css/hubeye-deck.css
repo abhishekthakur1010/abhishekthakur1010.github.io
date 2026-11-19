@@ -203,15 +203,9 @@ body.deck.hubeye[data-theme="dark"] .hb-impact .im-bar.post span { color: #04150
 /* why hubs matter: a flat bicycle wheel (seller and doorstep on the rim, the hub at the centre) beside the numbers.
    Labels live in their own grid columns, so they can never sit on the wheel. One parcel runs
    seller → hub → doorstep on a single 6s clock; the route, hub pulse and label pills follow it. */
-.hb-wheel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(24px, 4vw, 64px); align-items: center; margin-top: 0; }
-.hw-copy { min-width: 0; }
-.hw-copy .sl-head { margin: 0; max-width: none; }
-.hw-copy h2 { font-size: clamp(38px, 4.6vw, 72px); line-height: 1.02; letter-spacing: -.03em; }
-.deck .hw-copy .sl-head .sub { margin-top: 18px; max-width: 34ch; font-size: clamp(16px, 1.45vw, 21px); line-height: 1.45; }
-.hw-prob { margin: clamp(16px, 3vh, 28px) 0 0; padding-left: 16px; border-left: 2px solid var(--accent); max-width: 44ch; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.55; color: var(--soft); }
-.hw-prob span { display: block; margin-bottom: 4px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.hb-wheel { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; margin-top: clamp(10px, 2vh, 22px); }
 .hw-stage { container-type: inline-size; min-width: 0; }
-.hw-grid { --d: clamp(180px, min(calc(100vh - 340px), 52cqw), 460px); --t: 6s; display: grid; grid-template-columns: minmax(0, 1fr) var(--d) minmax(0, 1fr); grid-template-rows: auto var(--d); column-gap: clamp(10px, 3cqw, 22px); row-gap: 14px; align-items: center; }
+.hw-grid { --d: clamp(180px, min(calc(100vh - 450px), 52cqw), 420px); --t: 6s; display: grid; grid-template-columns: minmax(0, 1fr) var(--d) minmax(0, 1fr); grid-template-rows: auto var(--d); column-gap: clamp(10px, 3cqw, 22px); row-gap: 14px; align-items: center; }
 .hw-svg { grid-column: 2; grid-row: 2; width: var(--d); height: var(--d); display: block; overflow: visible; --tire: #1d1d20; }
 body.deck.hubeye[data-theme="dark"] .hw-svg { --tire: #3b3b42; }
 .hw-tire { fill: none; stroke: var(--tire); stroke-width: 8; }
@@ -240,13 +234,15 @@ body.deck.hubeye[data-theme="dark"] .hw-svg { --tire: #3b3b42; }
 .hw-leg-1 span { align-self: center; animation-name: hwLeg1; }
 .hw-leg-2 { grid-column: 3; grid-row: 2; }
 .hw-leg-2 span { animation-name: hwLeg2; }
-.hw-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: clamp(16px, 3vh, 28px); max-width: 560px; }
-.hw-stat { padding: clamp(11px, 1.7vh, 16px) 16px; border-radius: 14px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.hw-stat b { font-size: clamp(22px, 2.1vw, 32px); line-height: 1; font-weight: 800; color: var(--ink); letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.hw-stat span { font-size: 12.5px; line-height: 1.4; color: var(--soft); }
+.hw-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.hw-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hw-stat { padding: clamp(12px, 1.8vh, 18px) 18px; border-radius: 16px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.hw-stat b { font-size: clamp(24px, 2.3vw, 36px); line-height: 1; font-weight: 800; color: var(--ink); letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hw-stat span { font-size: 13px; line-height: 1.4; color: var(--soft); }
 .hw-stat.hot { background: var(--neg-soft); border-color: var(--neg-line); }
 .hw-stat.hot b { color: var(--accent); }
-.hw-src { margin: 12px 0 0; max-width: 560px; font-size: 11px; line-height: 1.45; color: var(--dim); }
+.hw-line { margin: 0; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.4; font-weight: 600; color: var(--ink); }
+.hw-src { margin: 0; font-size: 11.5px; line-height: 1.45; color: var(--dim); }
 /* one clock: 0–36% first mile, 36–56% in the hub, 56–90% last mile, then a short rest */
 @keyframes hwParcel { 0% { transform: translateX(-93px); opacity: 0; } 5% { transform: translateX(-93px); opacity: 1; } 36%, 56% { transform: translateX(0); opacity: 1; } 90%, 95% { transform: translateX(93px); opacity: 1; } 100% { transform: translateX(93px); opacity: 0; } }
 @keyframes hwGo { 0%, 5% { stroke-dashoffset: 186; opacity: 1; } 36%, 56% { stroke-dashoffset: 93; opacity: 1; } 90%, 95% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
@@ -262,8 +258,6 @@ body.deck.hubeye[data-theme="dark"] .hw-svg { --tire: #3b3b42; }
 }
 @media (max-width: 900px) {
   .hb-wheel { grid-template-columns: 1fr; }
-  .hw-copy { display: contents; }
-  .hw-copy .sl-head { order: 0; } .hw-prob { order: 1; } .hw-stage { order: 2; } .hw-meta { order: 3; max-width: none; } .hw-src { order: 4; }
   .hw-grid { --d: clamp(150px, 46cqw, 300px); }
   .hw-leg em, .hw-ico { display: none; }
   .hw-leg b { font-size: 15px; }
