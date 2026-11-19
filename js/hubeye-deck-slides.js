@@ -80,7 +80,7 @@ window.DECK = {
       eyebrow: "Why hubs matter",
       headline: ["Everything turns", "on the hub"],
       highlight: "the hub",
-      sub: "Like a bicycle wheel: every spoke between a seller and a doorstep meets at the hub.",
+      sub: "Like a bicycle wheel, every route meets at the hub.",
       figs: [],
       wheel: {
         legs: [
@@ -88,7 +88,7 @@ window.DECK = {
           { k: "Middle mile", t: "Hub", d: "Sorted, staged and line-hauled" },
           { k: "Last mile", t: "Doorstep", d: "Delivered to the customer" }
         ],
-        problem: { k: "The problem", t: "Every shipment passes through a hub. When a hub can't see where its bags are, delays and losses reach every seller and doorstep it serves." },
+        problem: { k: "The problem", t: "When a hub loses track of its bags, every seller and doorstep feels it." },
         stats: [
           { n: "107M+", l: "Shipments in one month (Oct 2025)" },
           { n: "7.2M", l: "Shipments on a single peak day" },
