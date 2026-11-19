@@ -199,3 +199,82 @@ body.deck.hubeye[data-theme="dark"] .hb-impact .im-bar.post span { color: #04150
 .hb-twin { grid-template-columns: minmax(0, 1fr) minmax(240px, 320px); }
 .hb-twin .hbt-win { gap: 14px; padding: 20px 0; }
 .hbt-win b { min-width: 92px; font-size: 28px; }
+
+/* why hubs matter: a flat bicycle wheel (seller and doorstep on the rim, the hub at the centre) beside the numbers.
+   Labels live in their own grid columns, so they can never sit on the wheel. One parcel runs
+   seller → hub → doorstep on a single 6s clock; the route, hub pulse and label pills follow it. */
+.hb-wheel { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; margin-top: clamp(10px, 2vh, 22px); }
+.hw-stage { container-type: inline-size; min-width: 0; }
+.hw-grid { --d: clamp(180px, min(calc(100vh - 450px), 52cqw), 420px); --t: 6s; display: grid; grid-template-columns: minmax(0, 1fr) var(--d) minmax(0, 1fr); grid-template-rows: auto var(--d); column-gap: clamp(10px, 3cqw, 22px); row-gap: 14px; align-items: center; }
+.hw-svg { grid-column: 2; grid-row: 2; width: var(--d); height: var(--d); display: block; overflow: visible; --tire: #1d1d20; }
+body.deck.hubeye[data-theme="dark"] .hw-svg { --tire: #3b3b42; }
+.hw-tire { fill: none; stroke: var(--tire); stroke-width: 5; }
+.hw-spokes line { stroke: var(--dim); stroke-width: .5; opacity: .3; }
+.hw-track { stroke: var(--accent); stroke-width: 1; opacity: .25; }
+.hw-go { stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 186; stroke-dashoffset: 186; animation: hwGo var(--t) ease-in-out infinite; }
+.hw-parcel { animation: hwParcel var(--t) ease-in-out infinite; }
+.hw-parcel rect { fill: var(--ink); stroke: var(--bg); stroke-width: 1.4; }
+.hw-parcel path { fill: none; stroke: var(--bg); stroke-width: 1; opacity: .7; }
+.hw-hub { fill: var(--accent); }
+.hw-hub-ico { fill: none; stroke: #fff; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.hw-pulse { fill: none; stroke: var(--accent); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; animation: hwPulse var(--t) ease-out infinite; }
+.hw-pin { fill: var(--accent); stroke: var(--bg); stroke-width: 1.6; transform-box: fill-box; transform-origin: center; }
+.hw-pin-l { animation: hwPinL var(--t) ease-out infinite; }
+.hw-pin-r { animation: hwPinR var(--t) ease-out infinite; }
+.hw-leg { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.hw-leg span { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; color: var(--dim); animation: hwLeg0 var(--t) linear infinite; }
+.hw-leg b { font-size: clamp(17px, 1.5vw, 22px); line-height: 1.15; color: var(--ink); }
+.hw-leg em { font-style: normal; font-size: 13px; line-height: 1.35; color: var(--soft); }
+.hw-leg-0 { grid-column: 1; grid-row: 2; align-items: flex-end; text-align: right; }
+.hw-leg-0 span { align-self: flex-end; }
+.hw-leg-1 { grid-column: 2; grid-row: 1; align-items: center; text-align: center; }
+.hw-leg-1 span { align-self: center; animation-name: hwLeg1; }
+.hw-leg-2 { grid-column: 3; grid-row: 2; }
+.hw-leg-2 span { animation-name: hwLeg2; }
+.hw-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.hw-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hw-stat { padding: clamp(12px, 1.8vh, 18px) 18px; border-radius: 16px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.hw-stat b { font-size: clamp(24px, 2.3vw, 36px); line-height: 1; font-weight: 800; color: var(--ink); letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hw-stat span { font-size: 13px; line-height: 1.4; color: var(--soft); }
+.hw-stat.hot { background: var(--neg-soft); border-color: var(--neg-line); }
+.hw-stat.hot b { color: var(--accent); }
+.hw-line { margin: 0; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.4; font-weight: 600; color: var(--ink); }
+.hw-src { margin: 0; font-size: 11.5px; line-height: 1.45; color: var(--dim); }
+/* one clock: 0–36% first mile, 36–56% in the hub, 56–90% last mile, then a short rest */
+@keyframes hwParcel { 0% { transform: translateX(-93px); opacity: 0; } 5% { transform: translateX(-93px); opacity: 1; } 36%, 56% { transform: translateX(0); opacity: 1; } 90%, 95% { transform: translateX(93px); opacity: 1; } 100% { transform: translateX(93px); opacity: 0; } }
+@keyframes hwGo { 0%, 5% { stroke-dashoffset: 186; opacity: 1; } 36%, 56% { stroke-dashoffset: 93; opacity: 1; } 90%, 95% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes hwPulse { 0%, 36% { transform: scale(.9); opacity: 0; } 38% { transform: scale(.9); opacity: .6; } 56% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes hwPinL { 0% { transform: scale(1); } 5% { transform: scale(1.5); } 14%, 100% { transform: scale(1); } }
+@keyframes hwPinR { 0%, 88% { transform: scale(1); } 92% { transform: scale(1.5); } 100% { transform: scale(1); } }
+@keyframes hwLeg0 { 0%, 35% { color: var(--accent); } 37%, 100% { color: var(--dim); } }
+@keyframes hwLeg1 { 0%, 35% { color: var(--dim); } 37%, 55% { color: var(--accent); } 57%, 100% { color: var(--dim); } }
+@keyframes hwLeg2 { 0%, 55% { color: var(--dim); } 57%, 96% { color: var(--accent); } 100% { color: var(--dim); } }
+@media (prefers-reduced-motion: reduce) {
+  .hw-go, .hw-parcel, .hw-pulse, .hw-pin, .hw-leg span { animation: none; }
+  .hw-leg span { color: var(--accent); }
+  .hw-go { stroke-dashoffset: 0; } .hw-parcel { display: none; }
+}
+@media (max-width: 900px) {
+  .hb-wheel { grid-template-columns: 1fr; }
+  .hw-grid { --d: clamp(150px, 46cqw, 300px); }
+  .hw-leg em { display: none; }
+  .hw-leg b { font-size: 15px; }
+  .hw-leg span { font-size: 9px; letter-spacing: .08em; }
+}
+
+/* what a hub is: more photos from the hub; a thumbnail rail on the right switches the big picture */
+.hbh-stage { display: grid; grid-template-columns: minmax(0, 1fr) clamp(56px, 5.4vw, 84px); gap: 12px; align-items: stretch; width: 100%; max-width: calc((100vh - 400px) * 1.59 + 96px); }
+.hbh-stage .hbh-shot.rv-shot { max-width: none; width: 100%; aspect-ratio: 1.59; overflow: hidden; border-radius: 14px; background: var(--panel); }
+.hbh-stage .hbh-shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .22s ease; }
+.hbh-stage .hbh-shot img.swap { opacity: 0; }
+.hbh-thumbs { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.hbh-thumb { flex: 1 1 0; min-height: 0; padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; background: var(--panel); cursor: pointer; opacity: .55; transition: opacity .2s ease, border-color .2s ease; }
+.hbh-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hbh-thumb:hover { opacity: .9; }
+.hbh-thumb.on { opacity: 1; border-color: var(--accent); }
+.hbh-thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hbh-flow.cap li { font-weight: 500; }
+@media (max-width: 900px) {
+  .hbh-stage { grid-template-columns: 1fr; max-width: none; }
+  .hbh-thumbs { flex-direction: row; height: 52px; }
+}

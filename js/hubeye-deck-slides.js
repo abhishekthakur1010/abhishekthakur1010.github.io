@@ -74,6 +74,30 @@ window.DECK = {
        workaround repeat the Existing HubEye, Research and Problem slides; the brief, the 140+ hubs
        and the scope now sit in the opening's notes. */
 
+    /* WHY HUBS MATTER — the bicycle-wheel metaphor: seller → hub → doorstep (built by the enhancer) */
+    {
+      section: "context", type: "pair",
+      eyebrow: "Why hubs matter",
+      headline: ["Everything turns on the hub"],
+      highlight: "the hub",
+      sub: "Delhivery Express and Transportation: FM, MM, LM. Every shipment passes through a hub.",
+      figs: [],
+      wheel: {
+        legs: [
+          { k: "First mile", t: "Seller" },
+          { k: "Middle mile", t: "Hub" },
+          { k: "Last mile", t: "Doorstep" }
+        ],
+        stats: [
+          { n: "~₹6,500 Cr", l: "Revenue a year" },
+          { n: "~₹100 Cr", l: "Profit a year" },
+          { n: "1 Bn+", l: "Shipments a year" },
+          { n: "~₹24 Cr", l: "Lost a year if 1 in 10,000 goes missing", hot: 1 }
+        ]
+      },
+      notes: "Before the hub floor, why the hub matters. Delhivery's Express and Transportation charter runs three legs. First mile: the pickup from the seller. Middle mile: the hub, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Last mile: delivery to the customer's doorstep. Picture a bicycle wheel: seller and doorstep sit on the rim, and everything passes through the hub at the centre, so it carries the most load and is the most sensitive part of the network. The business does around 6,500 crore rupees of revenue a year and keeps about 100 crore as profit, a margin of roughly 1.5%. It moved over 107 million shipments in October 2025 alone, a run rate of more than a billion a year. At that volume and that margin, small errors are expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month, roughly 24 crore a year, close to a quarter of the profit (0.01% of 107 million shipments a month at an average value of about 1,800 rupees). That is why a hub needs a view that shows problems the moment they happen."
+    },
+
     /* WHAT A HUB IS — the annotated floor photo with a few numbers (built by the enhancer) */
     {
       section: "context", type: "pair",
@@ -91,7 +115,13 @@ window.DECK = {
           { n: "1.2M+", l: "Sq ft at the largest hubs" },
           { n: "24/7", l: "Round-the-clock operations" }
         ],
-        flow: ["Inbound dock", "Sectors", "Outbound dock"]
+        flow: ["Inbound dock", "Sectors", "Outbound dock"],
+        photos: [
+          { img: "team-tauru.webp", t: "On the sorter gantry", cap: "On the sorter gantry at Tauru Gateway" },
+          { img: "field-conveyor.webp", t: "Sorter lines", cap: "Automatic sorter lines feeding the floor sectors" },
+          { img: "me-truck.webp", t: "Line-haul", cap: "A line-haul truck at the yard" },
+          { img: "control-room.webp", t: "Control room", cap: "The hub control room, where HubEye runs" }
+        ]
       },
       notes: "Before the software, the place. A Delhivery hub is where shipments are unloaded at inbound docks, sorted by automatic sorters into floor sectors by destination, staged, and loaded onto outbound vehicles, around the clock. There are 140+ hubs and gateways across India, each with 100+ floor sectors; the largest exceed 1.2 million square feet, and a single hub holds 1,00,000+ shipments at a time. Every one of those zones needs decisions in minutes."
     },
@@ -288,9 +318,55 @@ window.DECK = {
     if (hrow) {   // what a hub is: a few numbers beside the annotated floor photo, the flow under it
       var hb = hs.hub;
       hrow.className = "hb-hub";
+      // the annotated floor first, then more photos from the hub; the thumbnails on the right switch the big picture
+      var shots = [{ img: hb.img, t: "Hub floor", cap: hb.cap, flow: 1 }].concat(hb.photos || []);
+      var flowHtml = hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
       hrow.innerHTML = "<div class='hbh-stats'>" + hb.stats.map(function (x) { return "<div class='hbh-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
-        "<div class='hbh-visual'><figure class='rv-shot hbh-shot' title='Click to enlarge'><img src='" + D.imgBase + hb.img + "' alt='" + esc(hb.cap) + "'></figure>" +
-        "<ol class='hbh-flow'>" + hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol></div>";
+        "<div class='hbh-visual'><div class='hbh-stage'><figure class='rv-shot hbh-shot' title='Click to enlarge'><img src='" + D.imgBase + hb.img + "' alt='" + esc(hb.cap) + "'></figure>" +
+        (shots.length > 1 ? "<div class='hbh-thumbs' role='tablist' aria-label='Hub photos'>" + shots.map(function (x, k) {
+          return "<button type='button' class='hbh-thumb" + (k ? "" : " on") + "' role='tab' aria-selected='" + (k ? "false" : "true") + "' data-k='" + k + "' title='" + esc(x.t) + "'><img src='" + D.imgBase + x.img + "' alt='" + esc(x.t) + "' loading='lazy'></button>";
+        }).join("") + "</div>" : "") + "</div>" +
+        "<ol class='hbh-flow'>" + flowHtml + "</ol></div>";
+      var big = hrow.querySelector(".hbh-shot img"), capEl = hrow.querySelector(".hbh-flow"), thumbs = hrow.querySelectorAll(".hbh-thumb");
+      var pick = function (k) {
+        var x = shots[k]; if (!x) return;
+        Array.prototype.forEach.call(thumbs, function (t, j) { t.classList.toggle("on", j === k); t.setAttribute("aria-selected", j === k ? "true" : "false"); });
+        big.classList.add("swap");
+        var im = new Image();
+        im.onload = im.onerror = function () { big.src = im.src; big.alt = x.cap; big.classList.remove("swap"); };
+        im.src = D.imgBase + x.img;
+        capEl.classList.toggle("cap", !x.flow);
+        capEl.innerHTML = x.flow ? flowHtml : "<li>" + esc(x.cap) + "</li>";
+      };
+      Array.prototype.forEach.call(thumbs, function (t) {
+        ["click", "pointerdown", "keydown"].forEach(function (ev) { t.addEventListener(ev, function (e) { e.stopPropagation(); if (ev === "click") pick(+t.getAttribute("data-k")); }); });
+      });
+    }
+    var wrow = hs.wheel && el.querySelector(".pr-row");
+    if (wrow) {   // why hubs matter: a flat bicycle wheel; one parcel travels seller → hub → doorstep and the labels light up in step
+      var w = hs.wheel, sp = "", i, a;
+      for (i = 0; i < 16; i++) {   // sixteen straight spokes: enough to read as a wheel, quiet enough to sit behind the route
+        a = i * Math.PI / 8 + Math.PI / 16;
+        sp += "<line x1='" + (20 * Math.cos(a)).toFixed(2) + "' y1='" + (20 * Math.sin(a)).toFixed(2) + "' x2='" + (89 * Math.cos(a)).toFixed(2) + "' y2='" + (89 * Math.sin(a)).toFixed(2) + "'/>";
+      }
+      var leg = function (j) {
+        var x = w.legs[j];
+        return "<div class='hw-leg hw-leg-" + j + "'><span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b>" + (x.d ? "<em>" + esc(x.d) + "</em>" : "") + "</div>";
+      };
+      wrow.className = "hb-wheel";
+      wrow.innerHTML =
+        "<div class='hw-stage'><div class='hw-grid'>" + leg(1) + leg(0) +
+          "<svg class='hw-svg' viewBox='-100 -100 200 200' role='img' aria-label='A bicycle wheel: the seller on the left of the rim, the hub at the centre, the doorstep on the right'>" +
+            "<circle class='hw-tire' r='93'/><g class='hw-spokes'>" + sp + "</g>" +
+            "<line class='hw-track' x1='-93' y1='0' x2='93' y2='0'/><line class='hw-go' x1='-93' y1='0' x2='93' y2='0' pathLength='186'/>" +
+            "<g class='hw-parcel'><rect x='-6' y='-6' width='12' height='12' rx='2.2'/><path d='M-6 -1.2h12M0 -6v12'/></g>" +
+            "<circle class='hw-pulse' r='20'/><circle class='hw-hub' r='18'/>" +
+            "<path class='hw-hub-ico' d='M-8.5 7V-2.5L0 -7.5 8.5 -2.5V7Z M-3.5 7V1h7v6'/>" +
+            "<circle class='hw-pin hw-pin-l' cx='-93' r='4.5'/><circle class='hw-pin hw-pin-r' cx='93' r='4.5'/>" +
+          "</svg>" + leg(2) +
+        "</div></div>" +
+        "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
+        (w.line ? "<p class='hw-line'>" + esc(w.line) + "</p>" : "") + (w.src ? "<p class='hw-src'>" + esc(w.src) + "</p>" : "") + "</div>";
     }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
