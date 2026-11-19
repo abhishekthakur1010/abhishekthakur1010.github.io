@@ -74,6 +74,32 @@ window.DECK = {
        workaround repeat the Existing HubEye, Research and Problem slides; the brief, the 140+ hubs
        and the scope now sit in the opening's notes. */
 
+    /* WHY HUBS MATTER — the bicycle-wheel metaphor: seller → hub → doorstep (built by the enhancer) */
+    {
+      section: "context", type: "pair",
+      eyebrow: "Why hubs matter",
+      headline: ["Everything turns on the hub"],
+      highlight: "the hub",
+      sub: "Like a bicycle wheel: spokes run from sellers to doorsteps, and all of them meet at the hub.",
+      figs: [],
+      wheel: {
+        legs: [
+          { k: "First mile", t: "Seller", d: "Picked up from the seller" },
+          { k: "Middle mile", t: "Hub", d: "Sorted, staged and line-hauled" },
+          { k: "Last mile", t: "Doorstep", d: "Delivered to the customer" }
+        ],
+        stats: [
+          { n: "107M+", l: "Shipments through Delhivery in one month (Oct 2025)" },
+          { n: "7.2M", l: "Shipments on a single peak day" },
+          { n: "₹19,000 Cr+", l: "Worth of goods moved that month" },
+          { n: "~₹2 Cr", l: "Of goods astray a month if just 1 in 10,000 is misplaced", hot: 1 }
+        ],
+        line: "The hub is the heavy, sensitive core. If it wobbles, the whole ride does.",
+        src: "Delhivery network updates, Sep–Oct 2025. ~₹2 Cr is illustrative: 0.01% of 107M shipments at that month's average value (~₹1,800)."
+      },
+      notes: "Before the hub floor, why the hub matters. Think of a bicycle wheel. On one side of the rim is the seller, where the first mile starts with a pickup. On the other side is the customer's doorstep, where the last mile ends. In the centre is the hub: the middle mile, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Every spoke runs through it, so it carries the most load and is the most sensitive part of the network. The scale: Delhivery moved over 107 million shipments in October 2025, worth more than 19,000 crore rupees, with a single-day peak of 7.2 million. At that volume even a tiny error rate is expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month. That is why a hub needs a view that shows problems the moment they happen."
+    },
+
     /* WHAT A HUB IS — the annotated floor photo with a few numbers (built by the enhancer) */
     {
       section: "context", type: "pair",
@@ -291,6 +317,39 @@ window.DECK = {
       hrow.innerHTML = "<div class='hbh-stats'>" + hb.stats.map(function (x) { return "<div class='hbh-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
         "<div class='hbh-visual'><figure class='rv-shot hbh-shot' title='Click to enlarge'><img src='" + D.imgBase + hb.img + "' alt='" + esc(hb.cap) + "'></figure>" +
         "<ol class='hbh-flow'>" + hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol></div>";
+    }
+    var wrow = hs.wheel && el.querySelector(".pr-row");
+    if (wrow) {   // why hubs matter: a 3D bicycle wheel, seller and doorstep on the rim, the hub at the centre
+      var w = hs.wheel, sp = "", i, a, r1, r2, discs = "";
+      for (i = 0; i < 32; i++) {   // crossed lacing: each spoke leaves the flange and lands a few degrees on
+        a = i * Math.PI / 16; var b = a + (i % 2 ? 0.55 : -0.55);
+        sp += "<line x1='" + (9 * Math.cos(a)).toFixed(2) + "' y1='" + (9 * Math.sin(a)).toFixed(2) + "' x2='" + (88 * Math.cos(b)).toFixed(2) + "' y2='" + (88 * Math.sin(b)).toFixed(2) + "'/>";
+      }
+      for (i = -12; i <= 12; i++) discs += "<i style='transform:translateZ(" + (i * 2.4) + "px)'" + (i === 12 ? " class='cap'" : "") + "></i>";
+      var tire = ""; for (i = -3; i <= 3; i++) tire += "<i class='hw-tire' style='transform:translateZ(" + (i * 1.6) + "px)'></i>";
+      var parcels = [0, 1.6, 3.2].map(function (d) {
+        return "<g class='hw-parcel'><rect x='-4' y='-4' width='8' height='8' rx='1.5'/><animateMotion dur='4.8s' begin='" + d + "s' repeatCount='indefinite' keyPoints='0;0.5;0.5;1' keyTimes='0;0.38;0.62;1' calcMode='linear' path='M-96 0 L96 0'/></g>";
+      }).join("");
+      wrow.className = "hb-wheel";
+      wrow.innerHTML =
+        "<div class='hw-stage' aria-label='A bicycle wheel: the seller on the left of the rim, the hub at the centre, the doorstep on the right'>" +
+          "<div class='hw-tilt'>" +
+            "<div class='hw-wheel'>" + tire + "<svg class='hw-spokes' viewBox='-100 -100 200 200' aria-hidden='true'><circle class='hw-rim' r='90'/>" + sp + "</svg></div>" +
+            "<svg class='hw-route' viewBox='-100 -100 200 200' aria-hidden='true'><line class='fm' x1='-92' y1='0' x2='-12' y2='0'/><line class='lm' x1='12' y1='0' x2='92' y2='0'/><circle class='hw-ring' r='20'/>" + parcels + "</svg>" +
+            "<div class='hw-axle' aria-hidden='true'>" + discs + "</div>" +
+            "<span class='hw-pin hw-pin-l'></span><span class='hw-pin hw-pin-r'></span>" +
+          "</div>" +
+          w.legs.map(function (x, j) { return "<div class='hw-leg hw-leg-" + j + "'><span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b><em>" + esc(x.d) + "</em></div>"; }).join("") +
+        "</div>" +
+        "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
+        "<p class='hw-line'>" + esc(w.line) + "</p><p class='hw-src'>" + esc(w.src) + "</p></div>";
+      var stg = wrow.querySelector(".hw-stage");
+      stg.addEventListener("pointermove", function (e) {   // lean the wheel toward the pointer
+        var r = stg.getBoundingClientRect();
+        stg.style.setProperty("--ry", (((e.clientX - r.left) / r.width - 0.5) * -30 - 30).toFixed(1) + "deg");
+        stg.style.setProperty("--rx", (((e.clientY - r.top) / r.height - 0.5) * 16 + 10).toFixed(1) + "deg");
+      });
+      stg.addEventListener("pointerleave", function () { stg.style.removeProperty("--ry"); stg.style.removeProperty("--rx"); });
     }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
