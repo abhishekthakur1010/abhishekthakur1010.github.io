@@ -200,33 +200,40 @@ body.deck.hubeye[data-theme="dark"] .hb-impact .im-bar.post span { color: #04150
 .hb-twin .hbt-win { gap: 14px; padding: 20px 0; }
 .hbt-win b { min-width: 92px; font-size: 28px; }
 
-/* why hubs matter: a flat bicycle wheel (seller and doorstep on the rim, the hub at the centre) beside the numbers */
-.hb-wheel { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; margin-top: clamp(10px, 2vh, 22px); }
-.hw-stage { --d: clamp(200px, min(calc(100vh - 430px), 21vw), 340px); position: relative; height: calc(var(--d) + 140px); padding-top: 70px; box-sizing: border-box; display: grid; place-items: center; }
-.hw-tilt { position: relative; width: var(--d); height: var(--d); }
-.hw-wheel { position: absolute; inset: 0; }
-.hw-tire { position: absolute; inset: 0; border-radius: 50%; border: calc(var(--d) * .035) solid #1d1d20; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
-body.deck.hubeye[data-theme="dark"] .hw-tire { border-color: #2b2b30; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.05); }
-.hw-spokes, .hw-route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.hw-spokes line { stroke: var(--dim); stroke-width: .55; opacity: .75; }
-.hw-rim { fill: none; stroke: var(--soft); stroke-width: 2.2; opacity: .7; }
-.hw-route line { stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 5; animation: hwDash 1s linear infinite; }
-.hw-route .fm, .hw-route .lm { stroke: var(--accent); }
-.hw-ring { fill: rgba(237, 28, 36, .12); stroke: var(--accent); stroke-width: 1; transform-origin: 0 0; animation: hwPulse 2.4s ease-out infinite; }
-.hw-parcel rect { fill: var(--ink); stroke: var(--bg); stroke-width: 1; }
-.hw-axle { position: absolute; left: 50%; top: 50%; width: 16%; height: 16%; margin: -8% 0 0 -8%; }
-.hw-axle i { position: absolute; inset: 0; border-radius: 50%; background: #b5121a; }
-.hw-axle i.cap { background: radial-gradient(circle at 35% 35%, #ff6a6f, #ed1c24 55%, #9e0d14); box-shadow: 0 0 30px 8px rgba(237, 28, 36, .45); }
-.hw-pin { position: absolute; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(237, 28, 36, .2); }
-.hw-pin-l { left: -7px; } .hw-pin-r { right: -7px; }
-.hw-leg { position: absolute; display: flex; flex-direction: column; gap: 2px; max-width: 170px; }
-.hw-leg span { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-.hw-leg b { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.15; color: var(--ink); }
+/* why hubs matter: a flat bicycle wheel (seller and doorstep on the rim, the hub at the centre) beside the numbers.
+   Labels live in their own grid columns, so they can never sit on the wheel. One parcel runs
+   seller → hub → doorstep on a single 6s clock; the route, hub pulse and label pills follow it. */
+.hb-wheel { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; margin-top: clamp(10px, 2vh, 22px); }
+.hw-stage { container-type: inline-size; min-width: 0; }
+.hw-grid { --d: clamp(180px, min(calc(100vh - 450px), 52cqw), 420px); --t: 6s; display: grid; grid-template-columns: minmax(0, 1fr) var(--d) minmax(0, 1fr); grid-template-rows: auto var(--d); column-gap: clamp(10px, 3cqw, 22px); row-gap: 14px; align-items: center; }
+.hw-svg { grid-column: 2; grid-row: 2; width: var(--d); height: var(--d); display: block; overflow: visible; --tire: #1d1d20; }
+body.deck.hubeye[data-theme="dark"] .hw-svg { --tire: #3b3b42; }
+.hw-tire { fill: none; stroke: var(--tire); stroke-width: 8; }
+.hw-rim { fill: none; stroke: var(--dim); stroke-width: 1.6; opacity: .8; }
+.hw-spokes line { stroke: var(--dim); stroke-width: .5; opacity: .55; }
+.hw-track { stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1 6; opacity: .45; }
+.hw-go { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 186; stroke-dashoffset: 186; animation: hwGo var(--t) ease-in-out infinite; }
+.hw-parcel { animation: hwParcel var(--t) ease-in-out infinite; }
+.hw-parcel rect { fill: var(--ink); stroke: var(--bg); stroke-width: 1.4; }
+.hw-parcel path { fill: none; stroke: var(--bg); stroke-width: 1; opacity: .7; }
+.hw-hub { fill: var(--accent); }
+.hw-hub-halo { fill: var(--accent); opacity: .14; }
+.hw-hub-ico { fill: none; stroke: #fff; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.hw-pulse { fill: none; stroke: var(--accent); stroke-width: 1.4; opacity: 0; transform-box: fill-box; transform-origin: center; animation: hwPulse var(--t) ease-out infinite; }
+.hw-pin { fill: var(--accent); stroke: var(--bg); stroke-width: 2.2; transform-box: fill-box; transform-origin: center; }
+.hw-pin-l { animation: hwPinL var(--t) ease-out infinite; }
+.hw-pin-r { animation: hwPinR var(--t) ease-out infinite; }
+.hw-leg { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.hw-leg span { align-self: flex-start; padding: 3px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; color: var(--accent); background: var(--neg-soft); animation: hwLeg0 var(--t) linear infinite; }
+.hw-leg b { font-size: clamp(17px, 1.5vw, 22px); line-height: 1.15; color: var(--ink); margin-top: 4px; }
 .hw-leg em { font-style: normal; font-size: 13px; line-height: 1.35; color: var(--soft); }
-.hw-leg-0, .hw-leg-2 { top: 50%; width: 120px; margin-top: 18px; }
-.hw-leg-0 { right: calc(50% + var(--d) * .5 + 14px); align-items: flex-end; text-align: right; }
-.hw-leg-1 { left: 50%; top: 0; transform: translateX(-50%); align-items: center; text-align: center; max-width: 260px; width: 260px; }
-.hw-leg-2 { left: calc(50% + var(--d) * .5 + 14px); }
+.hw-ico { width: 30px; height: 30px; padding: 6px; box-sizing: border-box; border-radius: 50%; border: 1px solid var(--panel-line); background: var(--card); color: var(--ink); margin-bottom: 6px; }
+.hw-leg-0 { grid-column: 1; grid-row: 2; align-items: flex-end; text-align: right; }
+.hw-leg-0 span { align-self: flex-end; }
+.hw-leg-1 { grid-column: 2; grid-row: 1; align-items: center; text-align: center; }
+.hw-leg-1 span { align-self: center; animation-name: hwLeg1; }
+.hw-leg-2 { grid-column: 3; grid-row: 2; }
+.hw-leg-2 span { animation-name: hwLeg2; }
 .hw-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .hw-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .hw-stat { padding: clamp(12px, 1.8vh, 18px) 18px; border-radius: 16px; border: 1px solid var(--panel-line); background: var(--card); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -236,12 +243,23 @@ body.deck.hubeye[data-theme="dark"] .hw-tire { border-color: #2b2b30; box-shadow
 .hw-stat.hot b { color: var(--accent); }
 .hw-line { margin: 0; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.4; font-weight: 600; color: var(--ink); }
 .hw-src { margin: 0; font-size: 11.5px; line-height: 1.45; color: var(--dim); }
-@keyframes hwDash { to { stroke-dashoffset: -10; } }
-@keyframes hwPulse { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .hw-route line, .hw-ring { animation: none; } .hw-parcel { display: none; } }
+/* one clock: 0–36% first mile, 36–56% in the hub, 56–90% last mile, then a short rest */
+@keyframes hwParcel { 0% { transform: translateX(-93px); opacity: 0; } 5% { transform: translateX(-93px); opacity: 1; } 36%, 56% { transform: translateX(0); opacity: 1; } 90%, 95% { transform: translateX(93px); opacity: 1; } 100% { transform: translateX(93px); opacity: 0; } }
+@keyframes hwGo { 0%, 5% { stroke-dashoffset: 186; opacity: 1; } 36%, 56% { stroke-dashoffset: 93; opacity: 1; } 90%, 95% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes hwPulse { 0%, 36% { transform: scale(.9); opacity: 0; } 38% { transform: scale(.9); opacity: .9; } 56% { transform: scale(2); opacity: 0; } 100% { transform: scale(2); opacity: 0; } }
+@keyframes hwPinL { 0% { transform: scale(1); } 5% { transform: scale(1.5); } 14%, 100% { transform: scale(1); } }
+@keyframes hwPinR { 0%, 88% { transform: scale(1); } 92% { transform: scale(1.5); } 100% { transform: scale(1); } }
+@keyframes hwLeg0 { 0%, 35% { background: var(--accent); color: #fff; } 37%, 100% { background: var(--neg-soft); color: var(--accent); } }
+@keyframes hwLeg1 { 0%, 35% { background: var(--neg-soft); color: var(--accent); } 37%, 55% { background: var(--accent); color: #fff; } 57%, 100% { background: var(--neg-soft); color: var(--accent); } }
+@keyframes hwLeg2 { 0%, 55% { background: var(--neg-soft); color: var(--accent); } 57%, 96% { background: var(--accent); color: #fff; } 100% { background: var(--neg-soft); color: var(--accent); } }
+@media (prefers-reduced-motion: reduce) {
+  .hw-go, .hw-parcel, .hw-pulse, .hw-pin, .hw-leg span { animation: none; }
+  .hw-go { stroke-dashoffset: 0; } .hw-parcel { display: none; }
+}
 @media (max-width: 900px) {
   .hb-wheel { grid-template-columns: 1fr; }
-  .hw-stage { --d: min(38vw, 240px); }
-  .hw-leg-0, .hw-leg-2 { width: 92px; }
-  .hw-leg em { display: none; }
+  .hw-grid { --d: clamp(150px, 46cqw, 300px); }
+  .hw-leg em, .hw-ico { display: none; }
+  .hw-leg b { font-size: 15px; }
+  .hw-leg span { font-size: 9px; padding: 2px 7px; letter-spacing: .06em; }
 }

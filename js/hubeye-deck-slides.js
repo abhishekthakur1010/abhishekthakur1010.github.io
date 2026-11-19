@@ -319,28 +319,34 @@ window.DECK = {
         "<ol class='hbh-flow'>" + hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol></div>";
     }
     var wrow = hs.wheel && el.querySelector(".pr-row");
-    if (wrow) {   // why hubs matter: a flat bicycle wheel, seller and doorstep on the rim, the hub at the centre
-      var w = hs.wheel, sp = "", i, a, r1, r2, discs = "";
+    if (wrow) {   // why hubs matter: a flat bicycle wheel; one parcel travels seller → hub → doorstep and the labels light up in step
+      var w = hs.wheel, sp = "", i, a;
       for (i = 0; i < 32; i++) {   // crossed lacing: each spoke leaves the flange and lands a few degrees on
         a = i * Math.PI / 16; var b = a + (i % 2 ? 0.55 : -0.55);
-        sp += "<line x1='" + (9 * Math.cos(a)).toFixed(2) + "' y1='" + (9 * Math.sin(a)).toFixed(2) + "' x2='" + (88 * Math.cos(b)).toFixed(2) + "' y2='" + (88 * Math.sin(b)).toFixed(2) + "'/>";
+        sp += "<line x1='" + (13 * Math.cos(a)).toFixed(2) + "' y1='" + (13 * Math.sin(a)).toFixed(2) + "' x2='" + (86 * Math.cos(b)).toFixed(2) + "' y2='" + (86 * Math.sin(b)).toFixed(2) + "'/>";
       }
-      discs = "<i class='cap'></i>";
-      var tire = "<i class='hw-tire'></i>";
-      var parcels = [0, 1.6, 3.2].map(function (d) {
-        return "<g class='hw-parcel'><rect x='-4' y='-4' width='8' height='8' rx='1.5'/><animateMotion dur='4.8s' begin='" + d + "s' repeatCount='indefinite' keyPoints='0;0.5;0.5;1' keyTimes='0;0.38;0.62;1' calcMode='linear' path='M-96 0 L96 0'/></g>";
-      }).join("");
+      var ico = [
+        "<path d='M3 9l1.5-5h15L21 9'/><path d='M4 9v11h16V9'/><path d='M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0'/><path d='M10 20v-6h4v6'/>",
+        "",
+        "<path d='M3 11l9-8 9 8'/><path d='M5 10v10h14V10'/><path d='M10 20v-6h4v6'/>"
+      ];
+      var leg = function (j) {
+        var x = w.legs[j];
+        return "<div class='hw-leg hw-leg-" + j + "'>" + (ico[j] ? "<svg class='hw-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>" + ico[j] + "</svg>" : "") +
+          "<span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b><em>" + esc(x.d) + "</em></div>";
+      };
       wrow.className = "hb-wheel";
       wrow.innerHTML =
-        "<div class='hw-stage' aria-label='A bicycle wheel: the seller on the left of the rim, the hub at the centre, the doorstep on the right'>" +
-          "<div class='hw-tilt'>" +
-            "<div class='hw-wheel'>" + tire + "<svg class='hw-spokes' viewBox='-100 -100 200 200' aria-hidden='true'><circle class='hw-rim' r='90'/>" + sp + "</svg></div>" +
-            "<svg class='hw-route' viewBox='-100 -100 200 200' aria-hidden='true'><line class='fm' x1='-92' y1='0' x2='-12' y2='0'/><line class='lm' x1='12' y1='0' x2='92' y2='0'/><circle class='hw-ring' r='20'/>" + parcels + "</svg>" +
-            "<div class='hw-axle' aria-hidden='true'>" + discs + "</div>" +
-            "<span class='hw-pin hw-pin-l'></span><span class='hw-pin hw-pin-r'></span>" +
-          "</div>" +
-          w.legs.map(function (x, j) { return "<div class='hw-leg hw-leg-" + j + "'><span>" + esc(x.k) + "</span><b>" + esc(x.t) + "</b><em>" + esc(x.d) + "</em></div>"; }).join("") +
-        "</div>" +
+        "<div class='hw-stage'><div class='hw-grid'>" + leg(1) + leg(0) +
+          "<svg class='hw-svg' viewBox='-100 -100 200 200' role='img' aria-label='A bicycle wheel: the seller on the left of the rim, the hub at the centre, the doorstep on the right'>" +
+            "<circle class='hw-tire' r='93'/><circle class='hw-rim' r='87.5'/><g class='hw-spokes'>" + sp + "</g>" +
+            "<line class='hw-track' x1='-93' y1='0' x2='93' y2='0'/><line class='hw-go' x1='-93' y1='0' x2='93' y2='0' pathLength='186'/>" +
+            "<g class='hw-parcel'><rect x='-6' y='-6' width='12' height='12' rx='2.2'/><path d='M-6 -1.2h12M0 -6v12'/></g>" +
+            "<circle class='hw-pulse' r='20'/><circle class='hw-hub-halo' r='24'/><circle class='hw-hub' r='18'/>" +
+            "<path class='hw-hub-ico' d='M-8.5 7V-2.5L0 -7.5 8.5 -2.5V7Z M-3.5 7V1h7v6'/>" +
+            "<circle class='hw-pin hw-pin-l' cx='-93' r='5.5'/><circle class='hw-pin hw-pin-r' cx='93' r='5.5'/>" +
+          "</svg>" + leg(2) +
+        "</div></div>" +
         "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
         "<p class='hw-line'>" + esc(w.line) + "</p><p class='hw-src'>" + esc(w.src) + "</p></div>";
     }
