@@ -80,7 +80,7 @@ window.DECK = {
       eyebrow: "Why hubs matter",
       headline: ["Everything turns on the hub"],
       highlight: "the hub",
-      sub: "Delhivery Transportation: First Mile, Middle Mile and Last Mile. Every shipment passes through a hub.",
+      sub: "Delhivery Transportation: First Mile, Middle Mile and Last Mile, around ₹6,500 Cr of revenue a year. Every shipment passes through a hub.",
       figs: [],
       wheel: {
         legs: [
@@ -95,7 +95,7 @@ window.DECK = {
           { n: "~₹2 Cr", l: "Of goods astray a month if just 1 in 10,000 is misplaced", hot: 1 }
         ],
         line: "The hub is the heavy, sensitive core. If it wobbles, the whole ride does.",
-        src: "Delhivery network updates, Sep–Oct 2025. ~₹2 Cr is illustrative: 0.01% of 107M shipments at that month's average value (~₹1,800)."
+        src: "Delhivery network updates, Sep–Oct 2025. ~₹6,500 Cr is approximate annual transportation revenue. ~₹2 Cr is illustrative: 0.01% of 107M shipments at that month's average value (~₹1,800)."
       },
       notes: "Before the hub floor, why the hub matters. Think of a bicycle wheel. On one side of the rim is the seller, where the first mile starts with a pickup. On the other side is the customer's doorstep, where the last mile ends. In the centre is the hub: the middle mile, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Every spoke runs through it, so it carries the most load and is the most sensitive part of the network. The scale: Delhivery moved over 107 million shipments in October 2025, worth more than 19,000 crore rupees, with a single-day peak of 7.2 million. At that volume even a tiny error rate is expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month. That is why a hub needs a view that shows problems the moment they happen."
     },
