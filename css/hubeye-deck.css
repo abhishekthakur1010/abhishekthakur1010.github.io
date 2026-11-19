@@ -261,3 +261,20 @@ body.deck.hubeye[data-theme="dark"] .hw-svg { --tire: #3b3b42; }
   .hw-leg b { font-size: 15px; }
   .hw-leg span { font-size: 9px; letter-spacing: .08em; }
 }
+
+/* what a hub is: more photos from the hub; a thumbnail rail on the right switches the big picture */
+.hbh-stage { display: grid; grid-template-columns: minmax(0, 1fr) clamp(56px, 5.4vw, 84px); gap: 12px; align-items: stretch; width: 100%; max-width: calc((100vh - 400px) * 1.59 + 96px); }
+.hbh-stage .hbh-shot.rv-shot { max-width: none; width: 100%; aspect-ratio: 1.59; overflow: hidden; border-radius: 14px; background: var(--panel); }
+.hbh-stage .hbh-shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .22s ease; }
+.hbh-stage .hbh-shot img.swap { opacity: 0; }
+.hbh-thumbs { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.hbh-thumb { flex: 1 1 0; min-height: 0; padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; background: var(--panel); cursor: pointer; opacity: .55; transition: opacity .2s ease, border-color .2s ease; }
+.hbh-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hbh-thumb:hover { opacity: .9; }
+.hbh-thumb.on { opacity: 1; border-color: var(--accent); }
+.hbh-thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hbh-flow.cap li { font-weight: 500; }
+@media (max-width: 900px) {
+  .hbh-stage { grid-template-columns: 1fr; max-width: none; }
+  .hbh-thumbs { flex-direction: row; height: 52px; }
+}

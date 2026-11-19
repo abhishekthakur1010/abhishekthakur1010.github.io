@@ -115,7 +115,13 @@ window.DECK = {
           { n: "1.2M+", l: "Sq ft at the largest hubs" },
           { n: "24/7", l: "Round-the-clock operations" }
         ],
-        flow: ["Inbound dock", "Sectors", "Outbound dock"]
+        flow: ["Inbound dock", "Sectors", "Outbound dock"],
+        photos: [
+          { img: "team-tauru.webp", t: "On the sorter gantry", cap: "On the sorter gantry at Tauru Gateway" },
+          { img: "field-conveyor.webp", t: "Sorter lines", cap: "Automatic sorter lines feeding the floor sectors" },
+          { img: "me-truck.webp", t: "Line-haul", cap: "A line-haul truck at the yard" },
+          { img: "control-room.webp", t: "Control room", cap: "The hub control room, where HubEye runs" }
+        ]
       },
       notes: "Before the software, the place. A Delhivery hub is where shipments are unloaded at inbound docks, sorted by automatic sorters into floor sectors by destination, staged, and loaded onto outbound vehicles, around the clock. There are 140+ hubs and gateways across India, each with 100+ floor sectors; the largest exceed 1.2 million square feet, and a single hub holds 1,00,000+ shipments at a time. Every one of those zones needs decisions in minutes."
     },
@@ -312,9 +318,29 @@ window.DECK = {
     if (hrow) {   // what a hub is: a few numbers beside the annotated floor photo, the flow under it
       var hb = hs.hub;
       hrow.className = "hb-hub";
+      // the annotated floor first, then more photos from the hub; the thumbnails on the right switch the big picture
+      var shots = [{ img: hb.img, t: "Hub floor", cap: hb.cap, flow: 1 }].concat(hb.photos || []);
+      var flowHtml = hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
       hrow.innerHTML = "<div class='hbh-stats'>" + hb.stats.map(function (x) { return "<div class='hbh-stat'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
-        "<div class='hbh-visual'><figure class='rv-shot hbh-shot' title='Click to enlarge'><img src='" + D.imgBase + hb.img + "' alt='" + esc(hb.cap) + "'></figure>" +
-        "<ol class='hbh-flow'>" + hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol></div>";
+        "<div class='hbh-visual'><div class='hbh-stage'><figure class='rv-shot hbh-shot' title='Click to enlarge'><img src='" + D.imgBase + hb.img + "' alt='" + esc(hb.cap) + "'></figure>" +
+        (shots.length > 1 ? "<div class='hbh-thumbs' role='tablist' aria-label='Hub photos'>" + shots.map(function (x, k) {
+          return "<button type='button' class='hbh-thumb" + (k ? "" : " on") + "' role='tab' aria-selected='" + (k ? "false" : "true") + "' data-k='" + k + "' title='" + esc(x.t) + "'><img src='" + D.imgBase + x.img + "' alt='" + esc(x.t) + "' loading='lazy'></button>";
+        }).join("") + "</div>" : "") + "</div>" +
+        "<ol class='hbh-flow'>" + flowHtml + "</ol></div>";
+      var big = hrow.querySelector(".hbh-shot img"), capEl = hrow.querySelector(".hbh-flow"), thumbs = hrow.querySelectorAll(".hbh-thumb");
+      var pick = function (k) {
+        var x = shots[k]; if (!x) return;
+        Array.prototype.forEach.call(thumbs, function (t, j) { t.classList.toggle("on", j === k); t.setAttribute("aria-selected", j === k ? "true" : "false"); });
+        big.classList.add("swap");
+        var im = new Image();
+        im.onload = im.onerror = function () { big.src = im.src; big.alt = x.cap; big.classList.remove("swap"); };
+        im.src = D.imgBase + x.img;
+        capEl.classList.toggle("cap", !x.flow);
+        capEl.innerHTML = x.flow ? flowHtml : "<li>" + esc(x.cap) + "</li>";
+      };
+      Array.prototype.forEach.call(thumbs, function (t) {
+        ["click", "pointerdown", "keydown"].forEach(function (ev) { t.addEventListener(ev, function (e) { e.stopPropagation(); if (ev === "click") pick(+t.getAttribute("data-k")); }); });
+      });
     }
     var wrow = hs.wheel && el.querySelector(".pr-row");
     if (wrow) {   // why hubs matter: a flat bicycle wheel; one parcel travels seller → hub → doorstep and the labels light up in step
