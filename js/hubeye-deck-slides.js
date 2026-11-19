@@ -93,9 +93,7 @@ window.DECK = {
           { n: "~₹100 Cr", l: "Profit a year" },
           { n: "1 Bn+", l: "Shipments a year" },
           { n: "~₹24 Cr", l: "Lost a year if 1 in 10,000 goes missing", hot: 1 }
-        ],
-        line: "Thin margin. No room for error.",
-        src: "Approximate figures. ~₹24 Cr is illustrative."
+        ]
       },
       notes: "Before the hub floor, why the hub matters. Delhivery's Express and Transportation charter runs three legs. First mile: the pickup from the seller. Middle mile: the hub, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Last mile: delivery to the customer's doorstep. Picture a bicycle wheel: seller and doorstep sit on the rim, and everything passes through the hub at the centre, so it carries the most load and is the most sensitive part of the network. The business does around 6,500 crore rupees of revenue a year and keeps about 100 crore as profit, a margin of roughly 1.5%. It moved over 107 million shipments in October 2025 alone, a run rate of more than a billion a year. At that volume and that margin, small errors are expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month, roughly 24 crore a year, close to a quarter of the profit (0.01% of 107 million shipments a month at an average value of about 1,800 rupees). That is why a hub needs a view that shows problems the moment they happen."
     },
@@ -342,7 +340,7 @@ window.DECK = {
           "</svg>" + leg(2) +
         "</div></div>" +
         "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
-        "<p class='hw-line'>" + esc(w.line) + "</p><p class='hw-src'>" + esc(w.src) + "</p></div>";
+        (w.line ? "<p class='hw-line'>" + esc(w.line) + "</p>" : "") + (w.src ? "<p class='hw-src'>" + esc(w.src) + "</p>" : "") + "</div>";
     }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
