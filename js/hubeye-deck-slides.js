@@ -80,7 +80,7 @@ window.DECK = {
       eyebrow: "Why hubs matter",
       headline: ["Everything turns on the hub"],
       highlight: "the hub",
-      sub: "Like a bicycle wheel: spokes run from sellers to doorsteps, and all of them meet at the hub.",
+      sub: "Logistics runs from the seller to the doorstep, and every shipment passes through a hub.",
       figs: [],
       wheel: {
         legs: [
