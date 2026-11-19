@@ -80,7 +80,7 @@ window.DECK = {
       eyebrow: "Why hubs matter",
       headline: ["Everything turns on the hub"],
       highlight: "the hub",
-      sub: "Delhivery Transportation: First Mile, Middle Mile and Last Mile, around ₹6,500 Cr of revenue a year. Every shipment passes through a hub.",
+      sub: "Delhivery Express and Transportation: First Mile, Middle Mile, Last Mile. Every shipment passes through a hub.",
       figs: [],
       wheel: {
         legs: [
@@ -89,15 +89,15 @@ window.DECK = {
           { k: "Last mile", t: "Doorstep" }
         ],
         stats: [
-          { n: "107M+", l: "Shipments through Delhivery in one month (Oct 2025)" },
-          { n: "7.2M", l: "Shipments on a single peak day" },
-          { n: "₹19,000 Cr+", l: "Worth of goods moved that month" },
-          { n: "~₹2 Cr", l: "Of goods astray a month if just 1 in 10,000 is misplaced", hot: 1 }
+          { n: "~₹6,500 Cr", l: "Revenue a year" },
+          { n: "~₹100 Cr", l: "Profit a year" },
+          { n: "107M+", l: "Shipments a month" },
+          { n: "~₹2 Cr", l: "Astray a month if 1 in 10,000 is misplaced", hot: 1 }
         ],
-        line: "The hub is the heavy, sensitive core. If it wobbles, the whole ride does.",
-        src: "Delhivery network updates, Sep–Oct 2025. ~₹6,500 Cr is approximate annual transportation revenue. ~₹2 Cr is illustrative: 0.01% of 107M shipments at that month's average value (~₹1,800)."
+        line: "At a 1.5% margin, the hub can't afford to wobble.",
+        src: "Express and transportation charter, approximate. Shipments: Oct 2025. ~₹2 Cr is illustrative."
       },
-      notes: "Before the hub floor, why the hub matters. Think of a bicycle wheel. On one side of the rim is the seller, where the first mile starts with a pickup. On the other side is the customer's doorstep, where the last mile ends. In the centre is the hub: the middle mile, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Every spoke runs through it, so it carries the most load and is the most sensitive part of the network. The scale: Delhivery moved over 107 million shipments in October 2025, worth more than 19,000 crore rupees, with a single-day peak of 7.2 million. At that volume even a tiny error rate is expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month. That is why a hub needs a view that shows problems the moment they happen."
+      notes: "Before the hub floor, why the hub matters. Delhivery's Express and Transportation charter runs three legs. First mile: the pickup from the seller. Middle mile: the hub, where every consignment is unloaded, sorted, staged and loaded onto line-haul trucks. Last mile: delivery to the customer's doorstep. Picture a bicycle wheel: seller and doorstep sit on the rim, and everything passes through the hub at the centre, so it carries the most load and is the most sensitive part of the network. The business does around 6,500 crore rupees of revenue a year and keeps about 100 crore as profit, a margin of roughly 1.5%. It moved over 107 million shipments in October 2025 alone. At that volume and that margin, small errors are expensive: misplace just 1 in 10,000 and about 2 crore rupees of goods goes astray every month (0.01% of 107 million shipments at an average value of about 1,800 rupees). That is why a hub needs a view that shows problems the moment they happen."
     },
 
     /* WHAT A HUB IS — the annotated floor photo with a few numbers (built by the enhancer) */
