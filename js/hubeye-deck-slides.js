@@ -85,7 +85,7 @@ window.DECK = {
       wheel: {
         legs: [
           { k: "First mile", t: "Seller" },
-          { k: "Middle mile", t: "Hub", d: "Sorted, staged and line-hauled" },
+          { k: "Middle mile", t: "Hub" },
           { k: "Last mile", t: "Doorstep" }
         ],
         stats: [
