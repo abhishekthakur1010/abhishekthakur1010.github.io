@@ -319,14 +319,14 @@ window.DECK = {
         "<ol class='hbh-flow'>" + hb.flow.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol></div>";
     }
     var wrow = hs.wheel && el.querySelector(".pr-row");
-    if (wrow) {   // why hubs matter: a 3D bicycle wheel, seller and doorstep on the rim, the hub at the centre
+    if (wrow) {   // why hubs matter: a flat bicycle wheel, seller and doorstep on the rim, the hub at the centre
       var w = hs.wheel, sp = "", i, a, r1, r2, discs = "";
       for (i = 0; i < 32; i++) {   // crossed lacing: each spoke leaves the flange and lands a few degrees on
         a = i * Math.PI / 16; var b = a + (i % 2 ? 0.55 : -0.55);
         sp += "<line x1='" + (9 * Math.cos(a)).toFixed(2) + "' y1='" + (9 * Math.sin(a)).toFixed(2) + "' x2='" + (88 * Math.cos(b)).toFixed(2) + "' y2='" + (88 * Math.sin(b)).toFixed(2) + "'/>";
       }
-      for (i = -12; i <= 12; i++) discs += "<i style='transform:translateZ(" + (i * 2.4) + "px)'" + (i === 12 ? " class='cap'" : "") + "></i>";
-      var tire = ""; for (i = -3; i <= 3; i++) tire += "<i class='hw-tire' style='transform:translateZ(" + (i * 1.6) + "px)'></i>";
+      discs = "<i class='cap'></i>";
+      var tire = "<i class='hw-tire'></i>";
       var parcels = [0, 1.6, 3.2].map(function (d) {
         return "<g class='hw-parcel'><rect x='-4' y='-4' width='8' height='8' rx='1.5'/><animateMotion dur='4.8s' begin='" + d + "s' repeatCount='indefinite' keyPoints='0;0.5;0.5;1' keyTimes='0;0.38;0.62;1' calcMode='linear' path='M-96 0 L96 0'/></g>";
       }).join("");
@@ -343,13 +343,6 @@ window.DECK = {
         "</div>" +
         "<div class='hw-side'><div class='hw-stats'>" + w.stats.map(function (x) { return "<div class='hw-stat" + (x.hot ? " hot" : "") + "'><b>" + esc(x.n) + "</b><span>" + esc(x.l) + "</span></div>"; }).join("") + "</div>" +
         "<p class='hw-line'>" + esc(w.line) + "</p><p class='hw-src'>" + esc(w.src) + "</p></div>";
-      var stg = wrow.querySelector(".hw-stage");
-      stg.addEventListener("pointermove", function (e) {   // lean the wheel toward the pointer
-        var r = stg.getBoundingClientRect();
-        stg.style.setProperty("--ry", (((e.clientX - r.left) / r.width - 0.5) * -30 - 30).toFixed(1) + "deg");
-        stg.style.setProperty("--rx", (((e.clientY - r.top) / r.height - 0.5) * 16 + 10).toFixed(1) + "deg");
-      });
-      stg.addEventListener("pointerleave", function () { stg.style.removeProperty("--ry"); stg.style.removeProperty("--rx"); });
     }
     var row = hs.biz && el.querySelector(".pr-row");
     if (row) {   // business problem: the money figure large, the other stats beside it
