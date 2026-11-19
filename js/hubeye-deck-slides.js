@@ -80,7 +80,7 @@ window.DECK = {
       eyebrow: "Why hubs matter",
       headline: ["Everything turns on the hub"],
       highlight: "the hub",
-      sub: "Delhivery Express and Transportation: First Mile, Middle Mile, Last Mile. Every shipment passes through a hub.",
+      sub: "Delhivery Express and Transportation: FM, MM, LM. Every shipment passes through a hub.",
       figs: [],
       wheel: {
         legs: [
